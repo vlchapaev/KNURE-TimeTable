@@ -12,4 +12,7 @@
 -(void) findLolka {
     NSLog(@"LOLKA FOUND");
 }
++(int) returnFive {
+    return 5;
+}
 @end
