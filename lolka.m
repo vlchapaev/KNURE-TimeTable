@@ -9,5 +9,7 @@
 #import "lolka.h"
 
 @implementation lolka
-
+-(void) findLolka {
+    NSLog(@"LOLKA FOUND");
+}
 @end
