@@ -21,7 +21,6 @@
 		C33FCC881819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC901819965300328F6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC8E1819965300328F6D /* InfoPlist.strings */; };
 		C33FCC921819965300328F6D /* KNURE_SkedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC911819965300328F6D /* KNURE_SkedTests.m */; };
-		C33FCC9D1819A32500328F6D /* lolka.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC9C1819A32500328F6D /* lolka.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +53,6 @@
 		C33FCC8D1819965300328F6D /* KNURE-SkedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KNURE-SkedTests-Info.plist"; sourceTree = "<group>"; };
 		C33FCC8F1819965300328F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C33FCC911819965300328F6D /* KNURE_SkedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNURE_SkedTests.m; sourceTree = "<group>"; };
-		C33FCC9B1819A32500328F6D /* lolka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lolka.h; sourceTree = "<group>"; };
-		C33FCC9C1819A32500328F6D /* lolka.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lolka.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +82,11 @@
 		C33FCC5A1819965300328F6D = {
 			isa = PBXGroup;
 			children = (
-				C33FCC9B1819A32500328F6D /* lolka.h */,
-				C33FCC9C1819A32500328F6D /* lolka.m */,
 				C33FCC6C1819965300328F6D /* KNURE-Sked */,
 				C33FCC8B1819965300328F6D /* KNURE-SkedTests */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
+				C39B5845181C0FB100C858A6 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,9 +113,9 @@
 		C33FCC6C1819965300328F6D /* KNURE-Sked */ = {
 			isa = PBXGroup;
 			children = (
+				C33FCC781819965300328F6D /* Main.storyboard */,
 				C33FCC751819965300328F6D /* AppDelegate.h */,
 				C33FCC761819965300328F6D /* AppDelegate.m */,
-				C33FCC781819965300328F6D /* Main.storyboard */,
 				C33FCC7B1819965300328F6D /* ViewController.h */,
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
@@ -155,6 +151,14 @@
 				C33FCC8E1819965300328F6D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C39B5845181C0FB100C858A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "KNURE-Sked";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +259,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
-				C33FCC9D1819A32500328F6D /* lolka.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 			);
@@ -466,6 +469,7 @@
 				C33FCC971819965300328F6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C33FCC981819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE-SkedTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +478,7 @@
 				C33FCC9A1819965300328F6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
