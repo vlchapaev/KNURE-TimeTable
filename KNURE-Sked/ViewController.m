@@ -20,9 +20,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-+ (void) goFuck {
-    NSLog(@"FUCK YOU");
-}
+-(int) returnFive {return 4;}
 
 - (void)didReceiveMemoryWarning
 {
