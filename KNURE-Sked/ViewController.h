@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    IBOutlet UILabel *label;
+    IBOutlet UITextView *label;
     NSMutableData *receivedData;
 }
 
 -(IBAction)Connect:(id)sender;
 
 @end
+
