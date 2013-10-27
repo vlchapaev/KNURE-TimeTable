@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F194F181D4AA900DA4972 /* CFNetwork.framework */; };
+		C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */; };
+		C33F1954181D4ACF00DA4972 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */; };
+		C33F1956181D4AF000DA4972 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1955181D4AF000DA4972 /* libz.dylib */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC681819965300328F6D /* CoreGraphics.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C33F1955181D4AF000DA4972 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C33FCC631819965300328F6D /* KNURE-Sked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE-Sked.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,8 +78,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A0E53F181D129E00A8AF9E /* libxml2.dylib in Frameworks */,
+				C33F1956181D4AF000DA4972 /* libz.dylib in Frameworks */,
 				C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */,
+				C33F1954181D4ACF00DA4972 /* MobileCoreServices.framework in Frameworks */,
+				C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */,
+				C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */,
+				C3A0E53F181D129E00A8AF9E /* libxml2.dylib in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
 			);
@@ -90,6 +102,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C31219A1181D5943006446D5 /* URL Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "URL Connection";
+			sourceTree = "<group>";
+		};
 		C33FCC5A1819965300328F6D = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +132,10 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C33F1955181D4AF000DA4972 /* libz.dylib */,
+				C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */,
+				C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */,
+				C33F194F181D4AA900DA4972 /* CFNetwork.framework */,
 				C3A0E53E181D129E00A8AF9E /* libxml2.dylib */,
 				C33FCC661819965300328F6D /* Foundation.framework */,
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
@@ -132,6 +155,7 @@
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
+				C31219A1181D5943006446D5 /* URL Connection */,
 				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE-Sked";
