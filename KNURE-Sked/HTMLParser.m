@@ -11,41 +11,41 @@
 
 @implementation HTMLParser
 
--(HTMLNode*)doc {
-	if (_doc == NULL)
+- (HTMLNode*)doc {
+	if (!_doc) {
 		return NULL;
+    }
 	return [[HTMLNode alloc] initWithXMLNode:(xmlNode*)_doc];
 }
 
--(HTMLNode*)html {
-	if (_doc == NULL)
+- (HTMLNode*)html {
+	if (!_doc) {
 		return NULL;
-	
+	}
 	return [[self doc] findChildTag:@"html"];
 }
 
--(HTMLNode*)head {
-	if (_doc == NULL)
+- (HTMLNode*)head {
+	if (!_doc) {
 		return NULL;
-
+    }
 	return [[self doc] findChildTag:@"head"];
 }
 
--(HTMLNode*)body {
-	if (_doc == NULL)
+- (HTMLNode*)body {
+	if (!_doc) {
 		return NULL;
-	
+	}
 	return [[self doc] findChildTag:@"body"];
 }
 
--(id)initWithString:(NSString*)string error:(NSError**)error {
+- (id)initWithString:(NSString*)string error:(NSError**)error {
 	if (self = [super init]) {
 		_doc = NULL;
 		if ([string length] > 0) {
 			CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
 			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
 			const char *enc = CFStringGetCStringPtr(cfencstr, 0);
-			// _doc = htmlParseDoc((xmlChar*)[string UTF8String], enc);
 			int optionsHtml = HTML_PARSE_RECOVER;
 			optionsHtml = optionsHtml | HTML_PARSE_NOERROR; //Uncomment this to see HTML errors
 			optionsHtml = optionsHtml | HTML_PARSE_NOWARNING;
@@ -60,14 +60,13 @@
 	return self;
 }
 
--(id)initWithData:(NSData*)data error:(NSError**)error {
+- (id)initWithData:(NSData*)data error:(NSError**)error {
 	if (self = [super init]) {
 		_doc = NULL;
 		if (data) {
 			CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
 			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
 			const char *enc = CFStringGetCStringPtr(cfencstr, 0);
-			//_doc = htmlParseDoc((xmlChar*)[data bytes], enc);
 			_doc = htmlReadDoc((xmlChar*)[data bytes],
 							 "",
 							enc,
@@ -82,9 +81,9 @@
 	return self;
 }
 
--(id)initWithContentsOfURL:(NSURL*)url error:(NSError**)error {
+- (id)initWithContentsOfURL:(NSURL*)url error:(NSError**)error {
 	NSData * _data = [[NSData alloc] initWithContentsOfURL:url options:0 error:error];
-	if (_data == nil || *error) {
+	if (!_data || *error) {
 		return nil;
 	}
 	self = [self initWithData:_data error:error];
@@ -92,7 +91,7 @@
 }
 
 
--(void)dealloc {
+- (void)dealloc {
 	if (_doc) {
 		xmlFreeDoc(_doc);
 	}

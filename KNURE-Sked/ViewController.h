@@ -13,7 +13,7 @@
     NSMutableData *receivedData;
 }
 
--(IBAction)Connect:(id)sender;
+- (IBAction)Connect:(id)sender;
 
 @end
 
