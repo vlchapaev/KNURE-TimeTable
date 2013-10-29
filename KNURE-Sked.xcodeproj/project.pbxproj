@@ -102,13 +102,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C31219A1181D5943006446D5 /* URL Connection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "URL Connection";
-			sourceTree = "<group>";
-		};
 		C33FCC5A1819965300328F6D = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +109,6 @@
 				C33FCC8B1819965300328F6D /* KNURE-SkedTests */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
-				C39B5845181C0FB100C858A6 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,7 +147,6 @@
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
-				C31219A1181D5943006446D5 /* URL Connection */,
 				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE-Sked";
@@ -188,14 +179,6 @@
 				C33FCC8E1819965300328F6D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C39B5845181C0FB100C858A6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			path = "KNURE-Sked";
 			sourceTree = "<group>";
 		};
 		C3A0E535181D0AAE00A8AF9E /* HTML Parser */ = {

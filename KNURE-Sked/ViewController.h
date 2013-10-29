@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    IBOutlet UITextView *label;
+    IBOutlet UITextView *lessonsDataTextField;
     NSMutableData *receivedData;
+    IBOutlet UILabel *currntTime;
 }
 
-- (IBAction)Connect:(id)sender;
+- (IBAction)getLastUpdate:(id)sender;
 
 @end
 
