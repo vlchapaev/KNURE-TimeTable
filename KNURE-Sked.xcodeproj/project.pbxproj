@@ -29,6 +29,12 @@
 		C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E539181D0AD000A8AF9E /* HTMLParser.m */; };
 		C3A0E53D181D0AD000A8AF9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3A0E53A181D0AD000A8AF9E /* README.md */; };
 		C3A0E53F181D129E00A8AF9E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A0E53E181D129E00A8AF9E /* libxml2.dylib */; };
+		C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE511823E5BC00BB3B84 /* ECSlidingViewController.m */; };
+		C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE531823E5BC00BB3B84 /* UIImage+ImageWithUIView.m */; };
+		C3D6FE591823E68F00BB3B84 /* TabsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE581823E68F00BB3B84 /* TabsViewController.m */; };
+		C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE641823F0C800BB3B84 /* InitViewController.m */; };
+		C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */; };
+		C3D6FE6D1823FE7700BB3B84 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE6C1823FE7700BB3B84 /* GroupList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,17 @@
 		C3A0E539181D0AD000A8AF9E /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		C3A0E53A181D0AD000A8AF9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C3A0E53E181D129E00A8AF9E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		C3D6FE501823E5BC00BB3B84 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		C3D6FE511823E5BC00BB3B84 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		C3D6FE521823E5BC00BB3B84 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		C3D6FE531823E5BC00BB3B84 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		C3D6FE571823E68F00BB3B84 /* TabsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsViewController.h; sourceTree = "<group>"; };
+		C3D6FE581823E68F00BB3B84 /* TabsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsViewController.m; sourceTree = "<group>"; };
+		C3D6FE631823F0C800BB3B84 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
+		C3D6FE641823F0C800BB3B84 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
+		C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuButton@2x.png"; sourceTree = "<group>"; };
+		C3D6FE6B1823FE7700BB3B84 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
+		C3D6FE6C1823FE7700BB3B84 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +163,11 @@
 				C33FCC7B1819965300328F6D /* ViewController.h */,
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
+				C3D6FE561823E60F00BB3B84 /* Menu Items */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
 				C33FCC6D1819965300328F6D /* Supporting Files */,
+				C3D6FE661823F24400BB3B84 /* Resources */,
+				C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */,
 			);
 			path = "KNURE-Sked";
 			sourceTree = "<group>";
@@ -191,6 +211,39 @@
 				C3A0E53A181D0AD000A8AF9E /* README.md */,
 			);
 			name = "HTML Parser";
+			sourceTree = "<group>";
+		};
+		C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C3D6FE501823E5BC00BB3B84 /* ECSlidingViewController.h */,
+				C3D6FE511823E5BC00BB3B84 /* ECSlidingViewController.m */,
+				C3D6FE521823E5BC00BB3B84 /* UIImage+ImageWithUIView.h */,
+				C3D6FE531823E5BC00BB3B84 /* UIImage+ImageWithUIView.m */,
+			);
+			name = ECSlidingViewController;
+			path = ../ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		C3D6FE561823E60F00BB3B84 /* Menu Items */ = {
+			isa = PBXGroup;
+			children = (
+				C3D6FE631823F0C800BB3B84 /* InitViewController.h */,
+				C3D6FE641823F0C800BB3B84 /* InitViewController.m */,
+				C3D6FE571823E68F00BB3B84 /* TabsViewController.h */,
+				C3D6FE581823E68F00BB3B84 /* TabsViewController.m */,
+				C3D6FE6B1823FE7700BB3B84 /* GroupList.h */,
+				C3D6FE6C1823FE7700BB3B84 /* GroupList.m */,
+			);
+			name = "Menu Items";
+			sourceTree = "<group>";
+		};
+		C3D6FE661823F24400BB3B84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +326,7 @@
 				C33FCC711819965300328F6D /* InfoPlist.strings in Resources */,
 				C3A0E53D181D0AD000A8AF9E /* README.md in Resources */,
 				C33FCC7A1819965300328F6D /* Main.storyboard in Resources */,
+				C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +345,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D6FE591823E68F00BB3B84 /* TabsViewController.m in Sources */,
+				C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */,
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
+				C3D6FE6D1823FE7700BB3B84 /* GroupList.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,
+				C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */,
+				C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

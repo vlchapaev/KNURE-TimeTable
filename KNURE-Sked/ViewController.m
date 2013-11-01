@@ -7,26 +7,86 @@
 //
 #import "ViewController.h"
 #import "HTMLNode.h"
+#import "ECSlidingViewController.h"
+#import "TabsViewController.h"
 
 @class HTMLNode;
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
-    self->lessonsDataTextField.text = [fullLessonsData objectForKey:@"LastUpdate"];
-    [self update];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
+@synthesize menuBtn;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
-- (void)update {
-    NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"dd.MM.yyy HH:mm:ss"]; //вывод
-    currntTime.text = [dataformatter stringFromDate:[NSDate date]];
+- (void)skedGridPress:(UILongPressGestureRecognizer *)recogniser {
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self update];
+    
+    //инициализация кнопки и выдвигающегося меню
+    self.view.layer.shadowOpacity = 0.75f;
+    self.view.layer.shadowRadius = 10.0f;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    menuBtn.frame = CGRectMake(13, 20, 34, 24);
+    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
+    [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.menuBtn];
+    
+    //я хз вообще что это
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
+    NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
+    self->lessonsDataTextField.text = [fullLessonsData objectForKey:@"LastUpdate"];
+    //вызов скролл меню
+    [self createScrollMenu];
+}
+
+- (void)createScrollMenu {
+    //создаёт скролл меню, заполенное uiview
+    //TODO придумат как заполнять в соответствии с предметами
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(70, 75, 245, 490)];
+    [scrollView setShowsHorizontalScrollIndicator:NO];
+    int x = 0;
+    for (int i = 0; i < 5; i++) {
+        // инициализация сетки расписания
+        UIView *skedGrid = [[UIView alloc]initWithFrame:CGRectMake(x + 5, 5, 70, 40)];
+        skedGrid.backgroundColor = [UIColor greenColor];
+        // инициализация текстовых полей
+        UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 70, 40)];
+        date.text = @"dd.mm.yy";
+        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
+        //date.textAlignment = NSTextAlignmentCenter;
+        [scrollView addSubview:skedGrid];
+        [skedGrid addSubview:date];
+        
+        x += skedGrid.frame.size.width + 5;
+    }
+    scrollView.contentSize = CGSizeMake(x, scrollView.frame.size.height);
+    scrollView.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:scrollView];
+}
+
+- (int)countLessons {
+    //пока не трогайте это
+    int result = 0;
+    return result;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +99,6 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:
                             [NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/f?p=778:201:2479955598984498:::201:P201_FIRST_DATE,P201_LAST_DATE,P201_GROUP,P201_POTOK:30.10.2013,30.10.2013,3417111,0:"]
                             cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
-    
     // создаём соединение и начинаем загрузку
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection) {
@@ -73,9 +132,7 @@
                             [error description],
                             [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
     lessonsDataTextField.text = errorString;
-    
 }
-
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // данные получены
@@ -104,6 +161,16 @@
     [fullLessonsData synchronize];
     NSLog(@"%@",[fullLessonsData objectForKey:@"LastUpdate"]);
     // освобождаем соединение и полученные данные
+}
+
+- (void)update {
+    NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
+    [dataformatter setDateFormat:@"dd.MM.yyy HH:mm:ss"]; //вывод
+    currentTime.text = [dataformatter stringFromDate:[NSDate date]];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 @end

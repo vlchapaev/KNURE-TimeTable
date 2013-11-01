@@ -10,9 +10,11 @@
 
 @interface ViewController : UIViewController {
     IBOutlet UITextView *lessonsDataTextField;
+    IBOutlet UILabel *currentTime;
     NSMutableData *receivedData;
-    IBOutlet UILabel *currntTime;
 }
+
+@property (strong, nonatomic) UIButton *menuBtn;
 
 - (IBAction)getLastUpdate:(id)sender;
 
