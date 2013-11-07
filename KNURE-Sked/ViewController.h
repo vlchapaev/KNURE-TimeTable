@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    IBOutlet UITextView *lessonsDataTextField;
     IBOutlet UILabel *currentTime;
     NSMutableData *receivedData;
 }

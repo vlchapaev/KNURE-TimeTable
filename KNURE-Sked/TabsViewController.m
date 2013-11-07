@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.menu = [NSArray arrayWithObjects:@"Расписание", @"Группы", nil];
+    self.menu = [NSArray arrayWithObjects:@"Расписание", @"Группы", @"Сводка", @"Настройки", nil];
     [self.slidingViewController setAnchorRightRevealAmount:200.0f];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
     // Uncomment the following line to preserve selection between presentations.
