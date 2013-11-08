@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4A2-Rc-Hmt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4A2-Rc-Hmt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
@@ -66,6 +66,54 @@
             </objects>
             <point key="canvasLocation" x="-1788" y="-1179"/>
         </scene>
+        <!--History List-->
+        <scene sceneID="qZc-1y-zBT">
+            <objects>
+                <tableViewController storyboardIdentifier="Группы" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Kq-Xl-kDF" customClass="HistoryList" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="oUY-3M-ucW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5wo-5y-QVr">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </imageView>
+                        <textField key="tableFooterView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="группа/преподаватель" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="sYC-fd-tBm">
+                            <rect key="frame" x="0.0" y="128" width="320" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="addName:" destination="4Kq-Xl-kDF" eventType="editingDidEndOnExit" id="hpT-9P-FLW"/>
+                            </connections>
+                        </textField>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="XRf-K4-EvN">
+                                <rect key="frame" x="0.0" y="88" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XRf-K4-EvN" id="zcH-iU-TAY">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Kq-Xl-kDF" id="NQl-eO-3yh"/>
+                            <outlet property="delegate" destination="4Kq-Xl-kDF" id="1eo-JV-vV3"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="historyTable" destination="oUY-3M-ucW" id="UIp-FJ-5f3"/>
+                        <outlet property="nameField" destination="sYC-fd-tBm" id="XEF-v2-jJH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIT-6z-C6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1339" y="-1179"/>
+        </scene>
         <!--Tabs View Controller-->
         <scene sceneID="VMm-Op-tVt">
             <objects>
@@ -98,24 +146,6 @@
             </objects>
             <point key="canvasLocation" x="-2212" y="-1179"/>
         </scene>
-        <!--Group List-->
-        <scene sceneID="Pwa-RN-BZD">
-            <objects>
-                <viewController storyboardIdentifier="Группы" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jHD-L8-Clp" customClass="GroupList" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="e7S-R2-NT1"/>
-                        <viewControllerLayoutGuide type="bottom" id="Xv6-8R-U2k"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Pnl-0m-2aJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UXZ-r6-pSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1349" y="-1185"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="3xT-rX-luP">
             <objects>
@@ -132,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmV-uG-9cY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="-1187"/>
+            <point key="canvasLocation" x="-907" y="-1179"/>
         </scene>
         <!--Summary-->
         <scene sceneID="UCi-PN-lyO">
@@ -150,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoB-0U-6eB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-430" y="-1186"/>
+            <point key="canvasLocation" x="-441" y="-1179"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

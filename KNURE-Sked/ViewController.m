@@ -52,7 +52,13 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
     
     //вызов скролл меню
-    [self createScrollMenu];
+    @try {
+        [self createScrollMenu];
+    }
+    @catch(NSException *e) {
+        [self getLastUpdate:nil];
+        [self createScrollMenu];
+    }
 }
 
 - (void)createScrollMenu {

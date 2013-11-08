@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6928EA27182D94BE00070B44 /* HistoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* HistoryList.m */; };
 		C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F194F181D4AA900DA4972 /* CFNetwork.framework */; };
 		C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */; };
 		C33F1954181D4ACF00DA4972 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */; };
@@ -34,7 +35,6 @@
 		C3D6FE591823E68F00BB3B84 /* TabsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE581823E68F00BB3B84 /* TabsViewController.m */; };
 		C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE641823F0C800BB3B84 /* InitViewController.m */; };
 		C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */; };
-		C3D6FE6D1823FE7700BB3B84 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE6C1823FE7700BB3B84 /* GroupList.m */; };
 		C3E030B0182524BE00B7AF70 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030AF182524BE00B7AF70 /* Settings.m */; };
 		C3E030B31825277800B7AF70 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030B21825277800B7AF70 /* Summary.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6928EA25182D94BE00070B44 /* HistoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryList.h; sourceTree = "<group>"; };
+		6928EA26182D94BE00070B44 /* HistoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryList.m; sourceTree = "<group>"; };
 		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -88,8 +90,6 @@
 		C3D6FE631823F0C800BB3B84 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
 		C3D6FE641823F0C800BB3B84 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
 		C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuButton@2x.png"; sourceTree = "<group>"; };
-		C3D6FE6B1823FE7700BB3B84 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
-		C3D6FE6C1823FE7700BB3B84 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
 		C3E030AE182524BE00B7AF70 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		C3E030AF182524BE00B7AF70 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		C3E030B11825277800B7AF70 /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
@@ -238,12 +238,12 @@
 				C3D6FE641823F0C800BB3B84 /* InitViewController.m */,
 				C3D6FE571823E68F00BB3B84 /* TabsViewController.h */,
 				C3D6FE581823E68F00BB3B84 /* TabsViewController.m */,
-				C3D6FE6B1823FE7700BB3B84 /* GroupList.h */,
-				C3D6FE6C1823FE7700BB3B84 /* GroupList.m */,
 				C3E030AE182524BE00B7AF70 /* Settings.h */,
 				C3E030AF182524BE00B7AF70 /* Settings.m */,
 				C3E030B11825277800B7AF70 /* Summary.h */,
 				C3E030B21825277800B7AF70 /* Summary.m */,
+				6928EA25182D94BE00070B44 /* HistoryList.h */,
+				6928EA26182D94BE00070B44 /* HistoryList.m */,
 			);
 			name = "Menu Items";
 			sourceTree = "<group>";
@@ -361,8 +361,8 @@
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C3E030B0182524BE00B7AF70 /* Settings.m in Sources */,
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
+				6928EA27182D94BE00070B44 /* HistoryList.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
-				C3D6FE6D1823FE7700BB3B84 /* GroupList.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,
 				C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */,
