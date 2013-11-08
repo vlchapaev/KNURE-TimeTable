@@ -56,26 +56,189 @@
 }
 
 - (void)createScrollMenu {
-    NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
+    
     //создаёт скролл меню, заполенное uiview
     //TODO придумат как заполнять в соответствии с предметами
     //эта часть кода вернёт все даты
     //TODO придумать как помесить это в отдельную функцию
     
     //задаём текущую дату для автопозиции scroll view
+    NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
+    
     NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"dd.MM.yyy"];
     
-    NSString *source = [fullLessonsData objectForKey:@"3802949"];
+    //NSString *lessons = [fullLessonsData objectForKey:@"3417111"];
+    NSArray *list = [fullLessonsData objectForKey:@"3417111"];
+    //сортировка эелементов
+    NSMutableArray *sorted = [[NSMutableArray alloc]init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    for (NSString *str in list) {
+        if ([str isEqual:@""]) {
+            continue;
+        }
+        NSRange rangeForSpace = [str rangeOfString:@" "];
+        NSString *objectStr = [str substringFromIndex:rangeForSpace.location];
+        NSString *dateStr = [str substringToIndex:rangeForSpace.location];
+        NSDate *date = [formatter dateFromString:dateStr];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:objectStr, @"object", date, @"date", nil];
+        [sorted addObject:dic];
+    }
+    NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    [sorted sortUsingDescriptors:[NSArray arrayWithObjects:sortDesc, nil]];
+    
+    //NSString *delRest =[delSpace stringByReplacingOccurrencesOfString:@"Дата Время начала Время завершения Пара Описание" withString:@""];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(70, 75, 245, 490)];
+    [scrollView setShowsHorizontalScrollIndicator:NO];
+    
+    int dayShift = 0;
+    int lessonShift = 25;
+    int scrollViewSize = 0;
+    int countDuplitateDays = 0;
+    
+    NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:1] valueForKey:@"date"]];
+    //NSString *tempDay = [list objectAtIndex:1];
+    //NSArray *temp = [tempDay componentsSeparatedByString:@" "];
+    
+    
+    for(int i=1; i<sorted.count; i++) {
+        NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
+        NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
+        
+        // инициализация сетки расписания
+        
+        
+        UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, 5, 110, 20)];
+        
+        
+        UIView *skedGrid;
+        dateGrid.backgroundColor = [UIColor yellowColor];
+        
+        // инициализация текстовых полей
+        UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 20)];
+        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 50)];
+        
+        //большой, непродуманный велосипед
+        date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
+        
+        //запрещает сдвиг, если текущий день равен предыдущему
+        
+        NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
+        if(i>1&&[prewDate isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]]]) {
+            countDuplitateDays = 1;
+        }
+        else
+            countDuplitateDays = 0;
+        
+        if(countDuplitateDays == 0 && i > 1) {
+            dayShift += dateGrid.frame.size.width + 5;
+        }
+
+        NSString *tempDay = [[sorted objectAtIndex:i] valueForKey:@"object"];
+        NSArray *temp = [tempDay componentsSeparatedByString:@" "];
+        
+        if(temp.count<6)
+            continue;
+        
+        //если выводимое время равно текущему, то установить автопоизицию скроллера на этом месте
+        if([[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]] isEqual: [dataformatter stringFromDate:[NSDate date]]]) {
+            scrollView.contentOffset = CGPointMake(dayShift + 20, 5);
+        }
+        
+        if([[temp objectAtIndex:1] isEqual: @"2"])
+            lessonShift += 55*1;
+        if([[temp objectAtIndex:1] isEqual: @"3"])
+            lessonShift += 55*2;
+        if([[temp objectAtIndex:1] isEqual: @"4"])
+            lessonShift += 55*3;
+        if([[temp objectAtIndex:1] isEqual: @"5"])
+            lessonShift += 55*4;
+        if([[temp objectAtIndex:1] isEqual: @"6"])
+            lessonShift += 55*5;
+        if([[temp objectAtIndex:1] isEqual: @"7"])
+            lessonShift += 55*6;
+        if([[temp objectAtIndex:1] isEqual: @"8"])
+            lessonShift += 55*7;
+        
+        /*
+        NSString *tempLesson = [NSString stringWithFormat:@"%@%@%@%@%@",
+                                [temp objectAtIndex:2],
+                                @" ",
+                                [temp objectAtIndex:3],
+                                @" ",
+                                [temp objectAtIndex:4]];
+         */
+        
+        sked.text = [[sorted objectAtIndex:i] valueForKey:@"object"];
+        
+        if ([[temp objectAtIndex:3] isEqual:@"Лк"]) {
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid.backgroundColor = [UIColor yellowColor];
+        }
+        if ([[temp objectAtIndex:3] isEqual:@"Пз"]) {
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid.backgroundColor = [UIColor greenColor];
+        }
+        if ([[temp objectAtIndex:3] isEqual:@"Лб"]) {
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid.backgroundColor = [UIColor purpleColor];
+        }
+        if ([[temp objectAtIndex:3] isEqual:@"Конс"]) {
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid.backgroundColor = [UIColor whiteColor];
+        }
+        if ([[temp objectAtIndex:3] isEqual:@"ЕкзУ"]) {
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid.backgroundColor = [UIColor redColor];
+        }
+        
+        
+        
+        //конец большого велосипеда
+        
+       
+        
+        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
+        date.textAlignment = NSTextAlignmentCenter;
+        [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
+        sked.textAlignment = NSTextAlignmentCenter;
+        
+        
+        
+        
+        scrollViewSize += dateGrid.frame.size.width + 5;
+        lessonShift = 25;
+        
+        [scrollView addSubview:dateGrid];
+        [scrollView addSubview:skedGrid];
+        [dateGrid addSubview:date];
+        [skedGrid addSubview:sked];
+    }
+    
+    scrollView.contentSize = CGSizeMake(scrollViewSize, scrollView.frame.size.height);
+    scrollView.backgroundColor = [UIColor grayColor];
+    scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [self.view addSubview:scrollView];
+}
+
+- (IBAction)getLastUpdate:(id)sender {
     NSError *error = nil;
+    NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=3417111&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"]];
+    NSString *csvResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+    //NSLog(@"%@", csvResponseString);
+    NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    NSString *modifstr2 = [modifstr stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    //NSLog(@"%@", modifstr2);
     NSRegularExpression *delGRP = [NSRegularExpression regularExpressionWithPattern:@"[А-ЯІЇЄҐ;]+[-]+[0-9]+[-]+[0-9]"
                                                                             options:NSRegularExpressionCaseInsensitive
                                                                               error:&error];
-    NSString *delgrp = [delGRP stringByReplacingMatchesInString:source
+    NSString *delgrp = [delGRP stringByReplacingMatchesInString:modifstr2
                                                         options:0
-                                                          range:NSMakeRange(0, [source length])
+                                                          range:NSMakeRange(0, [modifstr2 length])
                                                    withTemplate:@""];
-    
     NSRegularExpression *delTIME = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[:]+[0-9]+[0-9:0-9]+[0-9]"
                                                                              options:NSRegularExpressionCaseInsensitive
                                                                                error:&error];
@@ -84,142 +247,8 @@
                                                             range:NSMakeRange(0, [delgrp length])
                                                      withTemplate:@""];
     NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
-    //NSLog(@"%@", delSpace);
-    //
     NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
-    
-    /*NSArray *stringsArray = [NSArray arrayWithObjects:
-     @"string 1",
-     @"String 21",
-     @"string 12",
-     @"String 11",
-     @"String 02", nil];*/
-    
-    static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch |
-    NSWidthInsensitiveSearch | NSForcedOrderingSearch;
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    NSComparator finderSort = ^(id string1, id string2) {
-        NSRange string1Range = NSMakeRange(0, [delSpace length]);
-        return [string1 compare:string2 options:comparisonOptions range:string1Range locale:currentLocale];
-    };
-    
-    NSArray *sortedArray = [list sortedArrayUsingComparator:finderSort];
-    
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(70, 75, 245, 490)];
-    [scrollView setShowsHorizontalScrollIndicator:NO];
-    
-    int x = 0;
-    int y = 25;
-    int z = 0;
-    int frameCounter = 115;
-    int lessonShift = 0;
-    
-    for(int i = 0; i<sortedArray.count; i++) {
-        NSLog(@"%@", [sortedArray objectAtIndex:i]);
-        // инициализация сетки расписания
-        UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(x + 5, 5, 110, 20)];
-        UIView *skedGrid = [[UIView alloc]initWithFrame:CGRectMake(x + 5, y + 5, 110, 50)];
-        dateGrid.backgroundColor = [UIColor yellowColor];
-        skedGrid.backgroundColor = [UIColor greenColor];
-        // инициализация текстовых полей
-        UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 20)];
-        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 50)];
-        date.text = [sortedArray objectAtIndex:i];
-        sked.text = [sortedArray objectAtIndex:i];
-        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
-        date.textAlignment = NSTextAlignmentCenter;
-        [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
-        sked.textAlignment = NSTextAlignmentCenter;
-        //if([[source substringWithRange:[matches[i] range]]  isEqual: [dataformatter stringFromDate:[NSDate date]]]) {
-            //если выводимая дата равна текущей, то ставим эту позицию для скроллера
-        x += skedGrid.frame.size.width + 5;
-        z += dateGrid.frame.size.width + 5;
-        [scrollView addSubview:dateGrid];
-        [scrollView addSubview:skedGrid];
-        [dateGrid addSubview:date];
-        [skedGrid addSubview:sked];
-    }
-    
-    /*
-    //прорисовка пар
-    y = 25;
-    //убираем &nbsp
-    NSRegularExpression *delNBSP = [NSRegularExpression regularExpressionWithPattern:@"[&nbsp]"
-                                                                             options:NSRegularExpressionCaseInsensitive
-                                                                               error:&error];
-    NSString *delnbsp = [delNBSP stringByReplacingMatchesInString:source
-                                                          options:0
-                                                            range:NSMakeRange(0, [source length])
-                                                     withTemplate:@"$2$1"];
-    //NSLog(@"%@", delnbsp);
-    //убираем даты
-    NSRegularExpression *delDATES = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[.]+[0-9]+[.]+[0-9]+[0-9]"
-                                                                              options:NSRegularExpressionCaseInsensitive
-                                                                                error:&error];
-    NSString *deldates = [delDATES stringByReplacingMatchesInString:delnbsp
-                                                            options:0
-                                                              range:NSMakeRange(0, [delnbsp length])
-                                                       withTemplate:@"$2$1"];
-    //NSLog(@"%@", deldates);
-    //убираем время
-    NSRegularExpression *delTIMES = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[:]+[0-9]+[0-9]"
-                                                                              options:NSRegularExpressionCaseInsensitive
-                                                                                error:&error];
-    NSString *deltimes = [delTIMES stringByReplacingMatchesInString:deldates
-                                                            options:0
-                                                              range:NSMakeRange(0, [deldates length])
-                                                       withTemplate:@"$2$1"];
-    //NSLog(@"%@", deltimes);
-    NSString *del = [deltimes stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    NSLog(@"%@", del);
-    //удаляем остальное
-    NSRegularExpression *delREST = [NSRegularExpression regularExpressionWithPattern:@"\\s?[*]?[а-яіїєґ,А-ЯІЇЄҐ,a-z.',0-9]+\\s"
-                                                                             options:NSRegularExpressionCaseInsensitive
-                                                                               error:&error];
-    NSArray *matches1 = [delREST matchesInString:del
-                                        options:0
-                                          range:NSMakeRange(0, [del length])];
-    i = 28;
-    for(int j = 0; j < 6; j++) {
-        i = 28;
-        for(NSTextCheckingResult *match in matches1) {
-            if(i>=795) {
-                break;
-            }
-            NSString *result = [del substringWithRange:[matches1[i] range]];
-            NSLog(@"%@", result);
-            UIView *skedGrid = [[UIView alloc]initWithFrame:CGRectMake(x + 5, y + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor greenColor];
-            UILabel *lesson = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 70, 40)];
-                NSString *lection = [deltimes substringWithRange:[matches1[i] range]];
-                NSString *type = [deltimes substringWithRange:[matches1[i+1] range]];
-                NSString *room  =[deltimes substringWithRange:[matches1[i+2] range]];
-                NSString *tempLection = [NSString stringWithFormat:@"%@%@%@", lection,type,room];
-            
-            lesson.text = tempLection;//[deltimes substringWithRange:[matches1[i] range]];
-            [lesson setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
-            lesson.textAlignment = NSTextAlignmentCenter;
-            [scrollView addSubview:skedGrid];
-            [skedGrid addSubview:lesson];
-            x += skedGrid.frame.size.width + 5;
-        i+=3;
-        }
-        x = 0;
-        y += 55;
-   }*/
-    scrollView.contentSize = CGSizeMake(z, scrollView.frame.size.height);
-    scrollView.backgroundColor = [UIColor grayColor];
-    scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.view addSubview:scrollView];
-}
-
-- (IBAction)getLastUpdate:(id)sender {
-    NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
-    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=3802949&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"]];
-    NSString *csvResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
-    NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-    NSString *modifstr2 = [modifstr stringByReplacingOccurrencesOfString:@"," withString:@" "];
-    [fullLessonsData setObject:modifstr2 forKey: @"3802949"];
+    [fullLessonsData setObject:list forKey: @"3417111"];
     [fullLessonsData synchronize];
 }
 
