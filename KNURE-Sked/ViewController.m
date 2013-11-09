@@ -43,7 +43,7 @@
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(13, 20, 34, 24);
+    menuBtn.frame = CGRectMake(13, 30, 34, 24);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuBtn];
@@ -51,6 +51,7 @@
     //я хз вообще что это
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
     
+    [self createTimeMenu];
     //вызов скролл меню
     @try {
         [self createScrollMenu];
@@ -96,7 +97,7 @@
     
     //NSString *delRest =[delSpace stringByReplacingOccurrencesOfString:@"Дата Время начала Время завершения Пара Описание" withString:@""];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(70, 75, 245, 490)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 95, 270, 470)];
     [scrollView setShowsHorizontalScrollIndicator:NO];
     
     int dayShift = 0;
@@ -104,14 +105,12 @@
     int scrollViewSize = 0;
     int countDuplitateDays = 0;
     
-    NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:1] valueForKey:@"date"]];
     //NSString *tempDay = [list objectAtIndex:1];
     //NSArray *temp = [tempDay componentsSeparatedByString:@" "];
     
-    
     for(int i=1; i<sorted.count; i++) {
-        NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
-        NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
+        //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
+        //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
         
         // инициализация сетки расписания
         
@@ -120,11 +119,11 @@
         
         
         UIView *skedGrid;
-        dateGrid.backgroundColor = [UIColor yellowColor];
+        dateGrid.backgroundColor = [UIColor clearColor];
         
         // инициализация текстовых полей
-        UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 20)];
-        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 110, 50)];
+        UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
+        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 110, 50)];
         
         //большой, непродуманный велосипед
         date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
@@ -148,25 +147,34 @@
         if(temp.count<6)
             continue;
         
+        
+        
         //если выводимое время равно текущему, то установить автопоизицию скроллера на этом месте
         if([[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]] isEqual: [dataformatter stringFromDate:[NSDate date]]]) {
-            scrollView.contentOffset = CGPointMake(dayShift + 20, 5);
+            scrollView.contentOffset = CGPointMake(dayShift , 0);
         }
         
-        if([[temp objectAtIndex:1] isEqual: @"2"])
+        if([[temp objectAtIndex:1] isEqual: @"2"]) {
             lessonShift += 55*1;
-        if([[temp objectAtIndex:1] isEqual: @"3"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"3"]) {
             lessonShift += 55*2;
-        if([[temp objectAtIndex:1] isEqual: @"4"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"4"]) {
             lessonShift += 55*3;
-        if([[temp objectAtIndex:1] isEqual: @"5"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"5"]) {
             lessonShift += 55*4;
-        if([[temp objectAtIndex:1] isEqual: @"6"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"6"]) {
             lessonShift += 55*5;
-        if([[temp objectAtIndex:1] isEqual: @"7"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"7"]) {
             lessonShift += 55*6;
-        if([[temp objectAtIndex:1] isEqual: @"8"])
+        }
+        if([[temp objectAtIndex:1] isEqual: @"8"]) {
             lessonShift += 55*7;
+        }
         
         /*
         NSString *tempLesson = [NSString stringWithFormat:@"%@%@%@%@%@",
@@ -181,38 +189,31 @@
         
         if ([[temp objectAtIndex:3] isEqual:@"Лк"]) {
             skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor yellowColor];
+            skedGrid.backgroundColor = [UIColor colorWithRed:0.996 green:0.996 blue:0.918 alpha:1.0];
         }
         if ([[temp objectAtIndex:3] isEqual:@"Пз"]) {
             skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor greenColor];
+            skedGrid.backgroundColor = [UIColor colorWithRed:0.855 green:0.914 blue:0.851 alpha:1.0];
         }
         if ([[temp objectAtIndex:3] isEqual:@"Лб"]) {
             skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor purpleColor];
+            skedGrid.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
         }
         if ([[temp objectAtIndex:3] isEqual:@"Конс"]) {
             skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor whiteColor];
+            skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
         }
         if ([[temp objectAtIndex:3] isEqual:@"ЕкзУ"]) {
             skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor redColor];
+            skedGrid.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
         }
-        
-        
         
         //конец большого велосипеда
         
-       
-        
-        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
+        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
         date.textAlignment = NSTextAlignmentCenter;
         [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
-        
-        
-        
         
         scrollViewSize += dateGrid.frame.size.width + 5;
         lessonShift = 25;
@@ -224,10 +225,61 @@
     }
     
     scrollView.contentSize = CGSizeMake(scrollViewSize, scrollView.frame.size.height);
-    scrollView.backgroundColor = [UIColor grayColor];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:scrollView];
 }
+
+- (void) createTimeMenu {
+    int framecounter = 0;
+    for (int i=1; i<9; i++) {
+        UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(5, 125 + framecounter, 50, 50)];
+        UILabel *timeStart = [[UILabel alloc]initWithFrame:CGRectMake(5, -10, 50, 50)];
+        UILabel *timeEnd = [[UILabel alloc]initWithFrame:CGRectMake(5, 15, 50, 50)];
+        switch (i) {
+            case 1:
+                timeStart.text = @"7:45";
+                timeEnd.text = @"9:20";
+                break;
+            case 2:
+                timeStart.text = @"9:30";
+                timeEnd.text = @"11:05";
+                break;
+            case 3:
+                timeStart.text = @"11:15";
+                timeEnd.text = @"12:50";
+                break;
+            case 4:
+                timeStart.text = @"13:10";
+                timeEnd.text = @"14:45";
+                break;
+            case 5:
+                timeStart.text = @"14:55";
+                timeEnd.text = @"16:30";
+                break;
+            case 6:
+                timeStart.text = @"16:40";
+                timeEnd.text = @"18:15";
+                break;
+            case 7:
+                timeStart.text = @"18:25";
+                timeEnd.text = @"20:00";
+                break;
+            case 8:
+                timeStart.text = @"20:10";
+                timeEnd.text = @"21:45";
+                break;
+        }
+        [timeStart setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [timeEnd setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [timeGrid addSubview:timeStart];
+        [timeGrid addSubview:timeEnd];
+        framecounter+=55;
+        [self.view addSubview:timeGrid];
+    }
+}
+    
+
 
 - (IBAction)getLastUpdate:(id)sender {
     NSError *error = nil;
@@ -259,8 +311,9 @@
 }
 
 - (void)update {
-    NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"dd.MM.yyy HH.mm.ss"]; //вывод
+    NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
+    [dataformatter setDateFormat:@"HH.mm.ss"]; //вывод
+    [currentTime setFont:[UIFont fontWithName:@"HalfLife2" size:24]];
     currentTime.text = [dataformatter stringFromDate:[NSDate date]];
 }
 

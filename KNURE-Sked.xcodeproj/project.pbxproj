@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6928EA27182D94BE00070B44 /* HistoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* HistoryList.m */; };
+		C320B065182E38F8001101FF /* halflife2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C320B064182E347D001101FF /* halflife2.ttf */; };
 		C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F194F181D4AA900DA4972 /* CFNetwork.framework */; };
 		C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */; };
 		C33F1954181D4ACF00DA4972 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		6928EA25182D94BE00070B44 /* HistoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryList.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* HistoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryList.m; sourceTree = "<group>"; };
+		C320B064182E347D001101FF /* halflife2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = halflife2.ttf; path = ../halflife2.ttf; sourceTree = "<group>"; };
 		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -251,6 +253,7 @@
 		C3D6FE661823F24400BB3B84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C320B064182E347D001101FF /* halflife2.ttf */,
 				C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */,
 			);
 			name = Resources;
@@ -332,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C320B065182E38F8001101FF /* halflife2.ttf in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				C33FCC711819965300328F6D /* InfoPlist.strings in Resources */,
 				C3A0E53D181D0AD000A8AF9E /* README.md in Resources */,
