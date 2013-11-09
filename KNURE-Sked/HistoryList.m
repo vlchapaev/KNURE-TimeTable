@@ -33,8 +33,8 @@
     [super viewDidLoad];
 
     historyList = [[NSMutableArray alloc] init];
-    NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
-    historyList = (NSMutableArray *)[fullHistory objectForKey:@"LastHistory"];
+    /*NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
+    historyList = (NSMutableArray *)[fullHistory objectForKey:@"LastHistory"];*/
     self.historyTable = historyList;
     // Do any additional setup after loading the view.
     self.view.layer.shadowOpacity = 0.75f;
@@ -105,7 +105,7 @@
         // Delete the row from the data source
         [self.historyTable removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self updateHistoryData];
+        //[self updateHistoryData];
     }
     /*else if (editingStyle == UITableViewCellEditingStyleInsert) {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -156,6 +156,6 @@
     indexArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]];
     [tv insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
-    [self updateHistoryData];
+    //[self updateHistoryData];
 }
 @end
