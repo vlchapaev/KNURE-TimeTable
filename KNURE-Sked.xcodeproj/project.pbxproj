@@ -27,6 +27,7 @@
 		C33FCC881819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC901819965300328F6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC8E1819965300328F6D /* InfoPlist.strings */; };
 		C33FCC921819965300328F6D /* KNURE_SkedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC911819965300328F6D /* KNURE_SkedTests.m */; };
+		C38E75911830089D00F06366 /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E75901830089D00F06366 /* NIDropDown.m */; };
 		C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E537181D0AD000A8AF9E /* HTMLNode.m */; };
 		C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E539181D0AD000A8AF9E /* HTMLParser.m */; };
 		C3A0E53D181D0AD000A8AF9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3A0E53A181D0AD000A8AF9E /* README.md */; };
@@ -54,7 +55,7 @@
 /* Begin PBXFileReference section */
 		6928EA25182D94BE00070B44 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
-		C320B064182E347D001101FF /* halflife2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = halflife2.ttf; path = ../halflife2.ttf; sourceTree = "<group>"; };
+		C320B064182E347D001101FF /* halflife2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = halflife2.ttf; sourceTree = "<group>"; };
 		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -78,6 +79,8 @@
 		C33FCC8D1819965300328F6D /* KNURE-SkedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KNURE-SkedTests-Info.plist"; sourceTree = "<group>"; };
 		C33FCC8F1819965300328F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C33FCC911819965300328F6D /* KNURE_SkedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNURE_SkedTests.m; sourceTree = "<group>"; };
+		C38E758F1830089D00F06366 /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
+		C38E75901830089D00F06366 /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
 		C3A0E536181D0AD000A8AF9E /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		C3A0E537181D0AD000A8AF9E /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		C3A0E538181D0AD000A8AF9E /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C33FCC6C1819965300328F6D /* KNURE-Sked */,
+				C33FCC6D1819965300328F6D /* Supporting Files */,
 				C33FCC8B1819965300328F6D /* KNURE-SkedTests */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
@@ -174,9 +178,9 @@
 				C33FCC7B1819965300328F6D /* ViewController.h */,
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
+				C38E758E1830089D00F06366 /* Drop down menu */,
 				C3D6FE561823E60F00BB3B84 /* Menu Items */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
-				C33FCC6D1819965300328F6D /* Supporting Files */,
 				C3D6FE661823F24400BB3B84 /* Resources */,
 				C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */,
 			);
@@ -192,6 +196,7 @@
 				C33FCC741819965300328F6D /* KNURE-Sked-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = "KNURE-Sked";
 			sourceTree = "<group>";
 		};
 		C33FCC8B1819965300328F6D /* KNURE-SkedTests */ = {
@@ -212,6 +217,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C38E758E1830089D00F06366 /* Drop down menu */ = {
+			isa = PBXGroup;
+			children = (
+				C38E758F1830089D00F06366 /* NIDropDown.h */,
+				C38E75901830089D00F06366 /* NIDropDown.m */,
+			);
+			path = "Drop down menu";
+			sourceTree = "<group>";
+		};
 		C3A0E535181D0AAE00A8AF9E /* HTML Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +235,7 @@
 				C3A0E539181D0AD000A8AF9E /* HTMLParser.m */,
 				C3A0E53A181D0AD000A8AF9E /* README.md */,
 			);
-			name = "HTML Parser";
+			path = "HTML Parser";
 			sourceTree = "<group>";
 		};
 		C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */ = {
@@ -232,8 +246,7 @@
 				C3D6FE521823E5BC00BB3B84 /* UIImage+ImageWithUIView.h */,
 				C3D6FE531823E5BC00BB3B84 /* UIImage+ImageWithUIView.m */,
 			);
-			name = ECSlidingViewController;
-			path = ../ECSlidingViewController;
+			path = ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 		C3D6FE561823E60F00BB3B84 /* Menu Items */ = {
@@ -252,7 +265,7 @@
 				C3F6BA99182FE5A60045C0C4 /* TeachersList.h */,
 				C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */,
 			);
-			name = "Menu Items";
+			path = "Menu Items";
 			sourceTree = "<group>";
 		};
 		C3D6FE661823F24400BB3B84 /* Resources */ = {
@@ -261,7 +274,7 @@
 				C320B064182E347D001101FF /* halflife2.ttf */,
 				C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +390,7 @@
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,
 				C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */,
 				C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */,
+				C38E75911830089D00F06366 /* NIDropDown.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

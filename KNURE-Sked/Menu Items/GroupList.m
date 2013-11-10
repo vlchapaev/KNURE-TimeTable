@@ -149,7 +149,7 @@
     @try {
         
         [historyList addObject:self.nameField.text];
-        NSString *group = @"КІ-10-4";
+        NSString *group = self.nameField.text;
         NSError *error=nil;
         int i=0;
         NSArray *matches;

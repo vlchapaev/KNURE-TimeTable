@@ -9,6 +9,7 @@
 #import "HTMLNode.h"
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
+#import "QuartzCore/QuartzCore.h"
 
 @class HTMLNode;
 
@@ -19,6 +20,8 @@
 @implementation ViewController
 
 @synthesize menuBtn;
+
+@synthesize btnSelect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,20 +38,14 @@
     [self update];
     
     //инициализация кнопки и выдвигающегося меню
-    self.view.layer.shadowOpacity = 0.75f;
-    self.view.layer.shadowRadius = 10.0f;
-    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(13, 30, 34, 24);
-    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
-    [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.menuBtn];
+    [self initializeSlideMenu];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
+    
+    //инициализация dropdown menu
+    btnSelect.layer.borderWidth = 0;
+    btnSelect.layer.borderColor = [[UIColor blackColor] CGColor];
+    btnSelect.layer.cornerRadius = 5;
     
     [self createTimeMenu];
     //вызов скролл меню
@@ -241,8 +238,6 @@
         [self.view addSubview:timeGrid];
     }
 }
-    
-
 
 - (IBAction)getLastUpdate:(id)sender {
     /*
@@ -279,6 +274,35 @@
     [fullLessonsData synchronize];
 }
 
+-(void) initializeSlideMenu {
+    self.view.layer.shadowOpacity = 0.75f;
+    self.view.layer.shadowRadius = 10.0f;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    menuBtn.frame = CGRectMake(13, 30, 34, 24);
+    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
+    [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.menuBtn];
+}
+
+- (IBAction)selectClicked:(id)sender {
+    NSArray * arr = [[NSArray alloc] init];
+    arr = [NSArray arrayWithObjects:@"Hello 0", @"Hello 1", @"Hello 2", @"Hello 3", @"Hello 4", @"Hello 5", @"Hello 6", @"Hello 7", @"Hello 8", @"Hello 9",nil];
+    if(dropDown == nil) {
+        CGFloat f = 200;
+        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :@"down"];
+        dropDown.delegate = self;
+    }
+    else {
+        [dropDown hideDropDown:sender];
+        [self rel];
+    }
+}
+
 - (void)update {
     NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"HH.mm.ss"]; //вывод
@@ -293,6 +317,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidUnload {
+    //[btnSelect release];
+    btnSelect = nil;
+    [self setBtnSelect:nil];
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)dealloc {
+    //    [btnSelect release];
+    //    [super dealloc];
+}
+
+- (void) niDropDownDelegateMethod: (NIDropDown *) sender {
+    [self rel];
+}
+
+-(void)rel{
+    //    [dropDown release];
+    dropDown = nil;
 }
 
 @end
