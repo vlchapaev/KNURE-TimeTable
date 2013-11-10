@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6928EA27182D94BE00070B44 /* HistoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* HistoryList.m */; };
+		6928EA27182D94BE00070B44 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* GroupList.m */; };
 		C320B065182E38F8001101FF /* halflife2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C320B064182E347D001101FF /* halflife2.ttf */; };
 		C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F194F181D4AA900DA4972 /* CFNetwork.framework */; };
 		C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */; };
@@ -38,6 +38,7 @@
 		C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */; };
 		C3E030B0182524BE00B7AF70 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030AF182524BE00B7AF70 /* Settings.m */; };
 		C3E030B31825277800B7AF70 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030B21825277800B7AF70 /* Summary.m */; };
+		C3F6BA9B182FE5A60045C0C4 /* TeachersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6928EA25182D94BE00070B44 /* HistoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryList.h; sourceTree = "<group>"; };
-		6928EA26182D94BE00070B44 /* HistoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryList.m; sourceTree = "<group>"; };
+		6928EA25182D94BE00070B44 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
+		6928EA26182D94BE00070B44 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
 		C320B064182E347D001101FF /* halflife2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = halflife2.ttf; path = ../halflife2.ttf; sourceTree = "<group>"; };
 		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -96,6 +97,8 @@
 		C3E030AF182524BE00B7AF70 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		C3E030B11825277800B7AF70 /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
 		C3E030B21825277800B7AF70 /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
+		C3F6BA99182FE5A60045C0C4 /* TeachersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachersList.h; sourceTree = "<group>"; };
+		C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachersList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,8 +247,10 @@
 				C3E030AF182524BE00B7AF70 /* Settings.m */,
 				C3E030B11825277800B7AF70 /* Summary.h */,
 				C3E030B21825277800B7AF70 /* Summary.m */,
-				6928EA25182D94BE00070B44 /* HistoryList.h */,
-				6928EA26182D94BE00070B44 /* HistoryList.m */,
+				6928EA25182D94BE00070B44 /* GroupList.h */,
+				6928EA26182D94BE00070B44 /* GroupList.m */,
+				C3F6BA99182FE5A60045C0C4 /* TeachersList.h */,
+				C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */,
 			);
 			name = "Menu Items";
 			sourceTree = "<group>";
@@ -365,7 +370,8 @@
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C3E030B0182524BE00B7AF70 /* Settings.m in Sources */,
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
-				6928EA27182D94BE00070B44 /* HistoryList.m in Sources */,
+				6928EA27182D94BE00070B44 /* GroupList.m in Sources */,
+				C3F6BA9B182FE5A60045C0C4 /* TeachersList.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,

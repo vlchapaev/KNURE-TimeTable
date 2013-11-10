@@ -37,7 +37,7 @@
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(13, 20, 34, 24);
+    menuBtn.frame = CGRectMake(13, 30, 34, 24);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuBtn];

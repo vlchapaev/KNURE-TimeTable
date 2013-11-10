@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController {
     IBOutlet UILabel *currentTime;
     NSMutableData *receivedData;
+    NSString *CSVRequest;
 }
 
 @property (strong, nonatomic) UIButton *menuBtn;
