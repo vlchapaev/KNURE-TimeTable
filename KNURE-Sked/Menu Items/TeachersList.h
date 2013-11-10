@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TeachersList : UITableViewController
+@property (weak, nonatomic) IBOutlet UITextField *teacherField;
 @property (strong, nonatomic) UIButton *menuBtn;
+- (IBAction)addTeacher:(id)sender;
+
 @end
+NSMutableArray *teachersList;

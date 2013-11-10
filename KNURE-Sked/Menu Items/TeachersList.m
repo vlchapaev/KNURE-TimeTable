@@ -11,11 +11,13 @@
 #import "TabsViewController.h"
 
 @interface TeachersList ()
+@property (strong, nonatomic) NSMutableArray *teachersTable;
 
 @end
 
 @implementation TeachersList
 @synthesize menuBtn;
+@synthesize teachersTable;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,11 +32,8 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    teachersList = [[NSMutableArray alloc] init];
+    self.teachersTable = teachersList;
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -61,48 +60,51 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [teachersList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
-    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [teachersList objectAtIndex:indexPath.row]];
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.teachersTable removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    }
+    /*else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }   */
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -136,4 +138,16 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (IBAction)addTeacher:(id)sender {
+    [teachersList addObject:self.teacherField.text];
+    self.teacherField.text = @"Введите имя преподавателя";
+    NSUInteger indx;
+    NSArray * indxArray;
+    indx = [teachersList count]-1;
+    UITableView *tabv = (UITableView *)self.view;
+    [self.tableView beginUpdates];
+    indxArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:indx inSection:0]];
+    [tabv insertRowsAtIndexPaths:indxArray withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView endUpdates];
+}
 @end
