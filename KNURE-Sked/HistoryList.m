@@ -147,6 +147,31 @@
 
 - (IBAction)addName:(id)sender {
     [historyList addObject:self.nameField.text];
+    
+    
+    NSString *group = self.nameField.text;
+    NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
+    NSError *error=nil;
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/f?p=778:2:1713646861754784::NO"]];
+    NSString *htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+    NSRegularExpression *matchAll = [NSRegularExpression regularExpressionWithPattern:expression
+                                                                              options:NSRegularExpressionCaseInsensitive
+                                                                                error:&error];
+    NSArray *matches = [matchAll matchesInString:htmlResponseString
+                                         options:0
+                                           range:NSMakeRange(0, [htmlResponseString length])];
+    NSString* matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
+    NSLog(@"%@",matchAllResult);
+    NSRegularExpression *finalMatch = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[0-9]+[0-9]"
+                                                                                options:NSRegularExpressionCaseInsensitive
+                                                                                  error:&error];
+    NSArray *finalMatchResult = [finalMatch matchesInString:matchAllResult
+                                                    options:0
+                                                      range:NSMakeRange(0, [matchAllResult length])];
+    NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
+    NSLog(@"%@",result);
+
+    
     self.nameField.text = @"группа/преподаватель";
     NSUInteger index;
     NSArray * indexArray;
@@ -156,6 +181,7 @@
     indexArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]];
     [tv insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
+    
     //[self updateHistoryData];
 }
 @end
