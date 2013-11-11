@@ -151,9 +151,8 @@
         NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_TEACHS?p_id_fac=";
         
         do {
-            if (x == [kafedra count]){i++; x = 0;}
-            
             if (i == 0) {kafedra = kafedra1;}
+            if (x == [kafedra count]){i++; x = 0;}
             if (i == 1) {kafedra = kafedra2;}
             if (i == 2) {kafedra = kafedra3;}
             if (i == 3) {kafedra = kafedra4;}
@@ -163,6 +162,10 @@
             if (i == 7) {kafedra = kafedra8;}
             if (i == 8) {kafedra = kafedra9;}
             if (i == 9) {kafedra = kafedra10;}
+            
+            NSLog(@"%@", [kafedra objectAtIndex:2]);
+            NSLog(@"%@", [kafedra1 objectAtIndex:2]);
+            NSLog(@"%@", [kafedra2 objectAtIndex:2]);
             
             NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:x]];
             NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
@@ -175,7 +178,7 @@
                                         options:0
                                           range:NSMakeRange(0, [htmlResponseString length])];
             x++;
-        }while (i == [facults count]);
+        }while (matches.count == 0);
         
         matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
         
