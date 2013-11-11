@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self update];
-    
+
     //инициализация кнопки и выдвигающегося меню
     [self initializeSlideMenu];
     
@@ -46,6 +46,7 @@
     btnSelect.layer.borderWidth = 0;
     btnSelect.layer.borderColor = [[UIColor blackColor] CGColor];
     btnSelect.layer.cornerRadius = 5;
+    btnSelect.titleLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"curName"];
     
     [self createTimeMenu];
     //вызов скролл меню
@@ -66,6 +67,7 @@
      * После соритировки по дате внутри NSArray, данные заносятся в UILable, который располагается на UIView,
      * который располагается на scroll view.
      */
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"curGroupId"];
     int dayShift = 0;
     int lessonShift = 25;
     int scrollViewSize = 0;
@@ -73,7 +75,7 @@
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"dd.MM.yyy"];
-    NSArray *list = [fullLessonsData objectForKey:@"13"];
+    NSArray *list = [fullLessonsData objectForKey:curId];
     NSMutableArray *sorted = [[NSMutableArray alloc]init];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
@@ -246,9 +248,12 @@
      * Из файла убираем лишние символы, такие как: ", время:время:время
      * Очищенные данные отправляем в NSUserDefaults с ключем, равный id группы или преподавателя.
      */
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"curGroupId"];
+    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=",curId,@"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
+    NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
-    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_TEACHER_KAF_RASP?ATypeDoc=4&Aid_sotr=13&Aid_kaf=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"]];
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:curRequest]];
     NSString *csvResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
     //NSLog(@"%@", csvResponseString);
     NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
@@ -270,7 +275,7 @@
                                                      withTemplate:@""];
     NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
     NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
-    [fullLessonsData setObject:list forKey: @"13"];
+    [fullLessonsData setObject:list forKey: curId];
     [fullLessonsData synchronize];
 }
 
