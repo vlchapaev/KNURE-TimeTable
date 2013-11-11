@@ -147,23 +147,24 @@
         NSArray *kafedra10 = [NSArray arrayWithObjects:@"2000",nil];
         
         NSString* matchAllResult;
+        
         NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_TEACHS?p_id_fac=";
         
         do {
             if (x == [kafedra count]){i++; x = 0;}
             
-            if (i == 0) {kafedra = kafedra1; x = 0;}
-            if (i == 1) {kafedra = kafedra2; x = 0;}
-            if (i == 2) {kafedra = kafedra3; x = 0;}
-            if (i == 3) {kafedra = kafedra4; x = 0;}
-            if (i == 4) {kafedra = kafedra5; x = 0;}
-            if (i == 5) {kafedra = kafedra6; x = 0;}
-            if (i == 6) {kafedra = kafedra7; x = 0;}
-            if (i == 7) {kafedra = kafedra8; x = 0;}
-            if (i == 8) {kafedra = kafedra9; x = 0;}
-            if (i == 9) {kafedra = kafedra10; x = 0;}
+            if (i == 0) {kafedra = kafedra1;}
+            if (i == 1) {kafedra = kafedra2;}
+            if (i == 2) {kafedra = kafedra3;}
+            if (i == 3) {kafedra = kafedra4;}
+            if (i == 4) {kafedra = kafedra5;}
+            if (i == 5) {kafedra = kafedra6;}
+            if (i == 6) {kafedra = kafedra7;}
+            if (i == 7) {kafedra = kafedra8;}
+            if (i == 8) {kafedra = kafedra9;}
+            if (i == 9) {kafedra = kafedra10;}
             
-            NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@#", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:x]];
+            NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:x]];
             NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
             NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:request]];
             htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
