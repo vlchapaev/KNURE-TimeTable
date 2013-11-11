@@ -188,7 +188,7 @@
         NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
         NSLog(@"%@",result);
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
-        [fullData setValue:result forKey:@"curGroupId"];
+        [fullData setValue:result forKey:@"curTeacherId"];
         [fullData setValue:group forKey:@"curName"];
         [fullData synchronize];
     }
