@@ -147,7 +147,7 @@
         NSArray *kafedra10 = [NSArray arrayWithObjects:@"2000",nil];
         
         NSString* matchAllResult;
-        NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
+        NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_TEACHS?p_id_fac=";
         
         do {
             if (x == [kafedra count]){i++;}
@@ -174,7 +174,7 @@
                                         options:0
                                           range:NSMakeRange(0, [htmlResponseString length])];
             x++;
-        }while (matches.count == 0);
+        }while (i == [facults count]);
         
         matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
         
