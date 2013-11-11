@@ -50,6 +50,7 @@
     
     [self createTimeMenu];
     //вызов скролл меню
+    /*
     @try {
         [self createScrollMenu];
     }
@@ -57,6 +58,7 @@
         [self getLastUpdate:nil];
         [self createScrollMenu];
     }
+    */
 }
 
 - (void)createScrollMenu {

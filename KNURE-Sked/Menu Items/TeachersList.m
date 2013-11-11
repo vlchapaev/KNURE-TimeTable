@@ -82,6 +82,123 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    @try {
+        NSString *group = cell.textLabel.text;
+        NSError *error=nil;
+        NSArray *matches;
+        NSString *htmlResponseString;
+        int i = 0;
+        int x = 0;
+        NSArray *facults = [NSArray arrayWithObjects:@"95",
+                            @"114",
+                            @"54",
+                            @"152",
+                            @"192",
+                            @"287",
+                            @"237",
+                            @"6"
+                            @"64",
+                            @"128",nil];
+        
+        NSArray *kafedra;
+        NSArray *kafedra1 = [NSArray arrayWithObjects:@"97",
+                             @"356",
+                             @"118",
+                             @"136",
+                             @"669",
+                             @"287",
+                             @"237",
+                             @"2"
+                             @"672",
+                             @"6",
+                             @"2001",
+                             @"64",
+                             @"128",nil];
+        NSArray *kafedra2 = [NSArray arrayWithObjects:@"19",
+                             @"672",
+                             @"28",
+                             @"18",nil];
+        NSArray *kafedra3 = [NSArray arrayWithObjects:@"4",
+                             @"57",
+                             @"75",
+                             @"83",
+                             @"1761",nil];
+        NSArray *kafedra4 = [NSArray arrayWithObjects:@"191",
+                             @"153",
+                             @"185",
+                             @"154",nil];
+        NSArray *kafedra5 = [NSArray arrayWithObjects:@"210",
+                             @"193",
+                             @"227",
+                             @"236",nil];
+        NSArray *kafedra6 = [NSArray arrayWithObjects:@"337",
+                             @"308",
+                             @"338",
+                             @"5",nil];
+        NSArray *kafedra7 = [NSArray arrayWithObjects:@"238",
+                             @"276",
+                             @"248",nil];
+        NSArray *kafedra8 = [NSArray arrayWithObjects:@"7",
+                             @"455",
+                             @"96",nil];
+        NSArray *kafedra9 = [NSArray arrayWithObjects:@"2002",nil];
+        NSArray *kafedra10 = [NSArray arrayWithObjects:@"2000",nil];
+        
+        NSString* matchAllResult;
+        NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
+        
+        do {
+            if (x == [kafedra count]){i++;}
+            
+            if (i == 0) {kafedra = kafedra1; x = 0;}
+            if (i == 1) {kafedra = kafedra2; x = 0;}
+            if (i == 2) {kafedra = kafedra3; x = 0;}
+            if (i == 3) {kafedra = kafedra4; x = 0;}
+            if (i == 4) {kafedra = kafedra5; x = 0;}
+            if (i == 5) {kafedra = kafedra6; x = 0;}
+            if (i == 6) {kafedra = kafedra7; x = 0;}
+            if (i == 7) {kafedra = kafedra8; x = 0;}
+            if (i == 8) {kafedra = kafedra9; x = 0;}
+            if (i == 9) {kafedra = kafedra10; x = 0;}
+            
+            NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@#", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:x]];
+            NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
+            NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:request]];
+            htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+            NSRegularExpression *matchAll = [NSRegularExpression regularExpressionWithPattern:expression
+                                                                                      options:NSRegularExpressionCaseInsensitive
+                                                                                        error:&error];
+            matches = [matchAll matchesInString:htmlResponseString
+                                        options:0
+                                          range:NSMakeRange(0, [htmlResponseString length])];
+            x++;
+        }while (matches.count == 0);
+        
+        matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
+        
+        NSLog(@"%@",matchAllResult);
+        NSRegularExpression *finalMatch = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[0-9]+[0-9]"
+                                                                                    options:NSRegularExpressionCaseInsensitive
+                                                                                      error:&error];
+        NSArray *finalMatchResult = [finalMatch matchesInString:matchAllResult
+                                                        options:0
+                                                          range:NSMakeRange(0, [matchAllResult length])];
+        NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
+        NSLog(@"%@",result);
+        NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
+        [fullData setValue:result forKey:@"curGroupId"];
+        [fullData setValue:group forKey:@"curName"];
+        [fullData synchronize];
+    }
+    @catch (NSException * e) {
+        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное имя" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
+        [endGameMessage show];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,6 +262,7 @@
     NSArray * indxArray;
     indx = [teachersList count]-1;
     UITableView *tabv = (UITableView *)self.view;
+    
     [self.tableView beginUpdates];
     indxArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:indx inSection:0]];
     [tabv insertRowsAtIndexPaths:indxArray withRowAnimation:UITableViewRowAnimationRight];
