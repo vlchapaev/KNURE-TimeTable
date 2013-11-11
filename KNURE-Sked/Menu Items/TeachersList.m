@@ -150,7 +150,7 @@
         NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_TEACHS?p_id_fac=";
         
         do {
-            if (x == [kafedra count]){i++;}
+            if (x == [kafedra count]){i++; x = 0;}
             
             if (i == 0) {kafedra = kafedra1; x = 0;}
             if (i == 1) {kafedra = kafedra2; x = 0;}
