@@ -152,7 +152,6 @@
         
         do {
             if (i == 0) {kafedra = kafedra1;}
-            if (x == [kafedra count]){i++; x = 0;}
             if (i == 1) {kafedra = kafedra2;}
             if (i == 2) {kafedra = kafedra3;}
             if (i == 3) {kafedra = kafedra4;}
@@ -163,9 +162,7 @@
             if (i == 8) {kafedra = kafedra9;}
             if (i == 9) {kafedra = kafedra10;}
             
-            NSLog(@"%@", [kafedra objectAtIndex:2]);
-            NSLog(@"%@", [kafedra1 objectAtIndex:2]);
-            NSLog(@"%@", [kafedra2 objectAtIndex:2]);
+            if (x == [kafedra count]){i++; x = 0;}
             
             NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:x]];
             NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
