@@ -140,7 +140,8 @@
         NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
         NSLog(@"%@",result);
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
-        [fullData setValue:result forKey:@"curGroupId"];
+        [fullData setValue:result forKey:@"ID"];
+        [self getGroupUpdate];
         [fullData setValue:group forKey:@"curName"];
         [fullData synchronize];
     }
@@ -157,8 +158,37 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
-
+- (void) getGroupUpdate {
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
+    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
+    NSLog(@"%@",curRequest);
+    NSError *error = nil;
+    NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:curRequest]];
+    NSString *csvResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+    //NSLog(@"%@", csvResponseString);
+    NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    NSString *modifstr2 = [modifstr stringByReplacingOccurrencesOfString:@"," withString:@" "];
+    //NSLog(@"%@", modifstr2);
+    NSRegularExpression *delGRP = [NSRegularExpression regularExpressionWithPattern:@"[А-ЯІЇЄҐ;]+[-]+[0-9]+[-]+[0-9]"
+                                                                            options:NSRegularExpressionCaseInsensitive
+                                                                              error:&error];
+    NSString *delgrp = [delGRP stringByReplacingMatchesInString:modifstr2
+                                                        options:0
+                                                          range:NSMakeRange(0, [modifstr2 length])
+                                                   withTemplate:@""];
+    NSRegularExpression *delTIME = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[:]+[0-9]+[0-9:0-9]+[0-9]"
+                                                                             options:NSRegularExpressionCaseInsensitive
+                                                                               error:&error];
+    NSString *deltime = [delTIME stringByReplacingMatchesInString:delgrp
+                                                          options:0
+                                                            range:NSMakeRange(0, [delgrp length])
+                                                     withTemplate:@""];
+    NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
+    NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
+    [fullLessonsData setObject:list forKey: curId];
+    [fullLessonsData synchronize];
+}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

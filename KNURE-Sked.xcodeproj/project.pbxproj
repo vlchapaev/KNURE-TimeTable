@@ -27,11 +27,16 @@
 		C33FCC881819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC901819965300328F6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC8E1819965300328F6D /* InfoPlist.strings */; };
 		C33FCC921819965300328F6D /* KNURE_SkedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC911819965300328F6D /* KNURE_SkedTests.m */; };
-		C38E75911830089D00F06366 /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E75901830089D00F06366 /* NIDropDown.m */; };
 		C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E537181D0AD000A8AF9E /* HTMLNode.m */; };
 		C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E539181D0AD000A8AF9E /* HTMLParser.m */; };
 		C3A0E53D181D0AD000A8AF9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3A0E53A181D0AD000A8AF9E /* README.md */; };
 		C3A0E53F181D129E00A8AF9E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A0E53E181D129E00A8AF9E /* libxml2.dylib */; };
+		C3CE8F3A183280D0006B3E39 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3CE8F2F183280D0006B3E39 /* README.md */; };
+		C3CE8F3B183280D0006B3E39 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */; };
+		C3CE8F3C183280D0006B3E39 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F33183280D0006B3E39 /* REMenu.m */; };
+		C3CE8F3D183280D0006B3E39 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F35183280D0006B3E39 /* REMenuContainerView.m */; };
+		C3CE8F3E183280D0006B3E39 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F37183280D0006B3E39 /* REMenuItem.m */; };
+		C3CE8F3F183280D0006B3E39 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F39183280D0006B3E39 /* REMenuItemView.m */; };
 		C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE511823E5BC00BB3B84 /* ECSlidingViewController.m */; };
 		C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE531823E5BC00BB3B84 /* UIImage+ImageWithUIView.m */; };
 		C3D6FE591823E68F00BB3B84 /* TabsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE581823E68F00BB3B84 /* TabsViewController.m */; };
@@ -79,14 +84,23 @@
 		C33FCC8D1819965300328F6D /* KNURE-SkedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KNURE-SkedTests-Info.plist"; sourceTree = "<group>"; };
 		C33FCC8F1819965300328F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C33FCC911819965300328F6D /* KNURE_SkedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNURE_SkedTests.m; sourceTree = "<group>"; };
-		C38E758F1830089D00F06366 /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
-		C38E75901830089D00F06366 /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
 		C3A0E536181D0AD000A8AF9E /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		C3A0E537181D0AD000A8AF9E /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		C3A0E538181D0AD000A8AF9E /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		C3A0E539181D0AD000A8AF9E /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		C3A0E53A181D0AD000A8AF9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C3A0E53E181D129E00A8AF9E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		C3CE8F2F183280D0006B3E39 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		C3CE8F30183280D0006B3E39 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		C3CE8F32183280D0006B3E39 /* REMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenu.h; sourceTree = "<group>"; };
+		C3CE8F33183280D0006B3E39 /* REMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenu.m; sourceTree = "<group>"; };
+		C3CE8F34183280D0006B3E39 /* REMenuContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuContainerView.h; sourceTree = "<group>"; };
+		C3CE8F35183280D0006B3E39 /* REMenuContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuContainerView.m; sourceTree = "<group>"; };
+		C3CE8F36183280D0006B3E39 /* REMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItem.h; sourceTree = "<group>"; };
+		C3CE8F37183280D0006B3E39 /* REMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItem.m; sourceTree = "<group>"; };
+		C3CE8F38183280D0006B3E39 /* REMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItemView.h; sourceTree = "<group>"; };
+		C3CE8F39183280D0006B3E39 /* REMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItemView.m; sourceTree = "<group>"; };
 		C3D6FE501823E5BC00BB3B84 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		C3D6FE511823E5BC00BB3B84 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		C3D6FE521823E5BC00BB3B84 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -178,10 +192,10 @@
 				C33FCC7B1819965300328F6D /* ViewController.h */,
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
-				C38E758E1830089D00F06366 /* Drop down menu */,
 				C3D6FE561823E60F00BB3B84 /* Menu Items */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
 				C3D6FE661823F24400BB3B84 /* Resources */,
+				C3CE8F2E183280D0006B3E39 /* REMenu */,
 				C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */,
 			);
 			path = "KNURE-Sked";
@@ -217,15 +231,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C38E758E1830089D00F06366 /* Drop down menu */ = {
-			isa = PBXGroup;
-			children = (
-				C38E758F1830089D00F06366 /* NIDropDown.h */,
-				C38E75901830089D00F06366 /* NIDropDown.m */,
-			);
-			path = "Drop down menu";
-			sourceTree = "<group>";
-		};
 		C3A0E535181D0AAE00A8AF9E /* HTML Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +241,24 @@
 				C3A0E53A181D0AD000A8AF9E /* README.md */,
 			);
 			path = "HTML Parser";
+			sourceTree = "<group>";
+		};
+		C3CE8F2E183280D0006B3E39 /* REMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C3CE8F2F183280D0006B3E39 /* README.md */,
+				C3CE8F30183280D0006B3E39 /* RECommonFunctions.h */,
+				C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */,
+				C3CE8F32183280D0006B3E39 /* REMenu.h */,
+				C3CE8F33183280D0006B3E39 /* REMenu.m */,
+				C3CE8F34183280D0006B3E39 /* REMenuContainerView.h */,
+				C3CE8F35183280D0006B3E39 /* REMenuContainerView.m */,
+				C3CE8F36183280D0006B3E39 /* REMenuItem.h */,
+				C3CE8F37183280D0006B3E39 /* REMenuItem.m */,
+				C3CE8F38183280D0006B3E39 /* REMenuItemView.h */,
+				C3CE8F39183280D0006B3E39 /* REMenuItemView.m */,
+			);
+			path = REMenu;
 			sourceTree = "<group>";
 		};
 		C3D6FE4F1823E5BC00BB3B84 /* ECSlidingViewController */ = {
@@ -356,6 +379,7 @@
 				C320B065182E38F8001101FF /* halflife2.ttf in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				C33FCC711819965300328F6D /* InfoPlist.strings in Resources */,
+				C3CE8F3A183280D0006B3E39 /* README.md in Resources */,
 				C3A0E53D181D0AD000A8AF9E /* README.md in Resources */,
 				C33FCC7A1819965300328F6D /* Main.storyboard in Resources */,
 				C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */,
@@ -382,15 +406,19 @@
 				C3E030B31825277800B7AF70 /* Summary.m in Sources */,
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C3E030B0182524BE00B7AF70 /* Settings.m in Sources */,
+				C3CE8F3F183280D0006B3E39 /* REMenuItemView.m in Sources */,
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* GroupList.m in Sources */,
+				C3CE8F3E183280D0006B3E39 /* REMenuItem.m in Sources */,
+				C3CE8F3C183280D0006B3E39 /* REMenu.m in Sources */,
 				C3F6BA9B182FE5A60045C0C4 /* TeachersList.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
+				C3CE8F3D183280D0006B3E39 /* REMenuContainerView.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,
 				C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */,
 				C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */,
-				C38E75911830089D00F06366 /* NIDropDown.m in Sources */,
+				C3CE8F3B183280D0006B3E39 /* RECommonFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

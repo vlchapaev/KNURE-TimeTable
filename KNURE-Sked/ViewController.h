@@ -7,19 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NIDropDown.h"
 
 @interface ViewController : UIViewController {
     IBOutlet UILabel *currentTime;
     NSMutableData *receivedData;
-    IBOutlet UIButton *btnSelect;
-    NIDropDown *dropDown;
 }
 
 @property (strong, nonatomic) UIButton *menuBtn;
-@property (retain, nonatomic) IBOutlet UIButton *btnSelect;
-- (IBAction)selectClicked:(id)sender;
-- (void)rel;
 - (IBAction)getLastUpdate:(id)sender;
 
 @end

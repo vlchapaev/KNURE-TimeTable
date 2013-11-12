@@ -10,6 +10,7 @@
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
 #import "QuartzCore/QuartzCore.h"
+#include "REMenu.h"
 
 @class HTMLNode;
 
@@ -20,8 +21,6 @@
 @implementation ViewController
 
 @synthesize menuBtn;
-
-@synthesize btnSelect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,6 +33,7 @@
 //- (void)skedGridPress:(UILongPressGestureRecognizer *)recogniser {}
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self update];
 
@@ -42,15 +42,10 @@
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
     
-    //инициализация dropdown menu
-    btnSelect.layer.borderWidth = 0;
-    btnSelect.layer.borderColor = [[UIColor blackColor] CGColor];
-    btnSelect.layer.cornerRadius = 5;
-    btnSelect.titleLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"curName"];
-    
     [self createTimeMenu];
     //вызов скролл меню
-    /*
+    
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"ID"]!=nil) {
     @try {
         [self createScrollMenu];
     }
@@ -58,7 +53,7 @@
         [self getLastUpdate:nil];
         [self createScrollMenu];
     }
-    */
+    }
 }
 
 - (void)createScrollMenu {
@@ -69,13 +64,13 @@
      * После соритировки по дате внутри NSArray, данные заносятся в UILable, который располагается на UIView,
      * который располагается на scroll view.
      */
-    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"curGroupId"];
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     int dayShift = 0;
     int lessonShift = 25;
     int scrollViewSize = 0;
     int countDuplitateDays = 0;
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
-    NSDateFormatter * dataformatter = [[NSDateFormatter alloc]init];
+    NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"dd.MM.yyy"];
     NSArray *list = [fullLessonsData objectForKey:curId];
     NSMutableArray *sorted = [[NSMutableArray alloc]init];
@@ -251,7 +246,7 @@
      * Очищенные данные отправляем в NSUserDefaults с ключем, равный id группы или преподавателя.
      */
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"curGroupId"];
-    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=",curId,@"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
+    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
     NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
@@ -296,20 +291,6 @@
     [self.view addSubview:self.menuBtn];
 }
 
-- (IBAction)selectClicked:(id)sender {
-    NSArray * arr = [[NSArray alloc] init];
-    arr = [NSArray arrayWithObjects:@"Hello 0", @"Hello 1", @"Hello 2", @"Hello 3", @"Hello 4", @"Hello 5", @"Hello 6", @"Hello 7", @"Hello 8", @"Hello 9",nil];
-    if(dropDown == nil) {
-        CGFloat f = 200;
-        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :@"down"];
-        dropDown.delegate = self;
-    }
-    else {
-        [dropDown hideDropDown:sender];
-        [self rel];
-    }
-}
-
 - (void)update {
     NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"HH.mm.ss"]; //вывод
@@ -324,31 +305,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewDidUnload {
-    //[btnSelect release];
-    btnSelect = nil;
-    [self setBtnSelect:nil];
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)dealloc {
-    //    [btnSelect release];
-    //    [super dealloc];
-}
-
-- (void) niDropDownDelegateMethod: (NIDropDown *) sender {
-    [self rel];
-}
-
--(void)rel{
-    //    [dropDown release];
-    dropDown = nil;
 }
 
 @end
