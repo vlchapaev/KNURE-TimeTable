@@ -70,22 +70,12 @@
             for (HTMLNode *postNode in postNodes) {
                 NSArray *aTags = [postNode findChildTags:@"a"];
                 result = [NSString stringWithFormat:@"%@%@%@", result, @" ", postNode.allContents];
-                
-                NSRegularExpression *delTAG = [NSRegularExpression regularExpressionWithPattern:@"[/tr]"
-                                                                                        options:NSRegularExpressionCaseInsensitive
-                                                                                          error:&error];
-                deltag = [delTAG stringByReplacingMatchesInString:result
-                                                                    options:0
-                                                                      range:NSMakeRange(0, [result length])
-                                                               withTemplate:@"шшшшшш"];
             }
         }
     }
     
     
-    //abrvTextView.text = deltag;
-    NSLog(@"%@", result);
-    NSLog(@"%@", deltag);
+    abrvTextView.text = result;
     
 }
 
