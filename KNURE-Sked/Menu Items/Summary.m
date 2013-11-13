@@ -9,6 +9,8 @@
 #import "Summary.h"
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
+#import "HTMLNode.h"
+#import "HTMLParser.h"
 
 @interface Summary ()
 
@@ -17,6 +19,8 @@
 @implementation Summary
 
 @synthesize menuBtn;
+@synthesize abrvTextView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,6 +45,48 @@
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuBtn];
+    
+    
+    //Сводка
+    NSString *idgroup = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"]; //присвоение значения ID группы
+    
+    NSError *error = nil;
+    //NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/f?p=778:201:648211543257687:::201:P201_FIRST_DATE,P201_LAST_DATE,P201_GROUP,P201_POTOK:01.09.2013,31.01.2014,3417083,0:"]];
+    NSString *URL = [NSString stringWithFormat: @"%@%@", @"http://cist.kture.kharkov.ua/ias/app/tt/f?p=778:201:648211543257687:::201:P201_FIRST_DATE,P201_LAST_DATE,P201_GROUP,P201_POTOK:01.09.2013,31.01.2014,", idgroup];
+    
+    NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:URL]];
+
+    NSString *textHTML = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+    
+    HTMLParser *parser = [[HTMLParser alloc] initWithString:textHTML error:&error];
+
+    HTMLNode *bodyNode = [parser body];
+    NSString *result = @"";
+    NSString *deltag;
+    NSArray *tableNodes = [bodyNode findChildTags:@"table"];
+    for (HTMLNode *tableNode in tableNodes) {
+        if ([[tableNode getAttributeNamed:@"class"] isEqualToString:@"footer"]) {
+            NSArray *postNodes = [tableNode findChildTags:@"td"];
+            for (HTMLNode *postNode in postNodes) {
+                NSArray *aTags = [postNode findChildTags:@"a"];
+                result = [NSString stringWithFormat:@"%@%@%@", result, @" ", postNode.allContents];
+                
+                NSRegularExpression *delTAG = [NSRegularExpression regularExpressionWithPattern:@"[/tr]"
+                                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                                          error:&error];
+                deltag = [delTAG stringByReplacingMatchesInString:result
+                                                                    options:0
+                                                                      range:NSMakeRange(0, [result length])
+                                                               withTemplate:@"шшшшшш"];
+            }
+        }
+    }
+    
+    
+    //abrvTextView.text = deltag;
+    NSLog(@"%@", result);
+    NSLog(@"%@", deltag);
+    
 }
 
 - (void)didReceiveMemoryWarning {

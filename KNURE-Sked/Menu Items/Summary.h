@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface Summary : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *abrvTextView;
 @property (strong, nonatomic) UIButton *menuBtn;
 @end
