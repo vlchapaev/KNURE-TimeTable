@@ -112,7 +112,6 @@
                         @"128", nil];
         NSString* matchAllResult;
         NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
-    
         do {
             NSString *request = [NSString stringWithFormat:@"%@%@", URL, [facults objectAtIndex:i]];
             NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
@@ -153,15 +152,15 @@
 }
 
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
+
 - (void) getGroupUpdate {
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
-    NSLog(@"%@",curRequest);
+    //NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:curRequest]];
@@ -169,7 +168,7 @@
     //NSLog(@"%@", csvResponseString);
     NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
     NSString *modifstr2 = [modifstr stringByReplacingOccurrencesOfString:@"," withString:@" "];
-    //NSLog(@"%@", modifstr2);
+    //NSLog(@"%@%@",@"MODSTR2: ", modifstr2);
     NSRegularExpression *delGRP = [NSRegularExpression regularExpressionWithPattern:@"[А-ЯІЇЄҐ;]+[-]+[0-9]+[-]+[0-9]"
                                                                             options:NSRegularExpressionCaseInsensitive
                                                                               error:&error];
@@ -177,6 +176,7 @@
                                                         options:0
                                                           range:NSMakeRange(0, [modifstr2 length])
                                                    withTemplate:@""];
+    //NSLog(@"%@%@",@"DELGRP", delgrp);
     NSRegularExpression *delTIME = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[:]+[0-9]+[0-9:0-9]+[0-9]"
                                                                              options:NSRegularExpressionCaseInsensitive
                                                                                error:&error];
@@ -185,7 +185,16 @@
                                                             range:NSMakeRange(0, [delgrp length])
                                                      withTemplate:@""];
     NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
-    NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
+    //NSLog(@"%@", delSpace);
+    NSRegularExpression *delREST = [NSRegularExpression regularExpressionWithPattern:@"  (.*)"
+                                                                            options:NSRegularExpressionCaseInsensitive
+                                                                              error:&error];
+    NSString *delRest = [delREST stringByReplacingMatchesInString:delSpace
+                                                        options:0
+                                                          range:NSMakeRange(0, [delSpace length])
+                                                   withTemplate:@""];
+    //NSLog(@"%@%@",@"DELSPASE: ", delRest);
+    NSArray *list = [delRest componentsSeparatedByString:@"\r"];
     [fullLessonsData setObject:list forKey: curId];
     [fullLessonsData synchronize];
 }

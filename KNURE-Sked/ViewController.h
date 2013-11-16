@@ -13,8 +13,10 @@
     NSMutableData *receivedData;
 }
 
+@property (strong, nonatomic) IBOutlet UIView *hadView;
 @property (strong, nonatomic) UIButton *menuBtn;
-- (IBAction)getLastUpdate:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *timerView;
+- (void)getLastUpdate;
 
 @end
 
