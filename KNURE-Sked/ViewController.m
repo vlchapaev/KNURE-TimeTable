@@ -21,8 +21,6 @@
 @implementation ViewController
 
 @synthesize menuBtn;
-@synthesize hadView;
-@synthesize timerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,9 +37,6 @@
     [super viewDidLoad];
     [self update];
     
-    hadView.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight);
-    timerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
-    
     //инициализация кнопки и выдвигающегося меню
     [self initializeSlideMenu];
     
@@ -55,7 +50,7 @@
             [self createScrollMenu];
         }
         @catch(NSException *e) {
-            UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня" delegate:self cancelButtonTitle:@"Ок :С" otherButtonTitles: nil];
+            UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня :С" delegate:self cancelButtonTitle:@"Окай" otherButtonTitles: nil];
             [endGameMessage show];
         }
 }
@@ -96,6 +91,7 @@
     [sorted sortUsingDescriptors:[NSArray arrayWithObjects:sortDesc, nil]];
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 95, 270, 470)];
     [scrollView setShowsHorizontalScrollIndicator:NO];
+    [scrollView setShowsVerticalScrollIndicator:NO];
     for(int i=1; i<sorted.count; i++) {
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
@@ -103,7 +99,7 @@
         UIView *skedGrid;
         dateGrid.backgroundColor = [UIColor clearColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
-        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 110, 50)];
+        UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 50)];
         date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
         NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         if(i>1 && [prewDate isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]]]) {
@@ -117,9 +113,21 @@
         }
         NSString *tempDay = [[sorted objectAtIndex:i] valueForKey:@"object"];
         NSArray *temp = [tempDay componentsSeparatedByString:@" "];
-        if([[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]] isEqual: [dataformatter stringFromDate:[NSDate date]]]) {
-            scrollView.contentOffset = CGPointMake(dayShift , 0);
+        
+        
+        if([[dataformatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
+            scrollView.contentOffset = CGPointMake(dayShift, 0);
         }
+        else
+         
+        /*
+            if([dataformatter stringFromDate:[NSDate date]]<[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]
+               &&
+               [dataformatter stringFromDate:[NSDate date]]>[formatter stringFromDate:[[sorted objectAtIndex:i - 1] valueForKey:@"date"]]) {
+                scrollView.contentOffset = CGPointMake(dayShift, 0);
+            }
+         */
+            
         if([[temp objectAtIndex:1] isEqual: @"2"]) {
             lessonShift += 55*1;
         } else
@@ -180,6 +188,8 @@
                                     skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
                                 }
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
+        sked.numberOfLines = 3;
+        sked.lineBreakMode = 5;
         [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
         date.textAlignment = NSTextAlignmentCenter;
         [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
@@ -201,8 +211,10 @@
      * Создаёт временную шкалу.
      */
     int framecounter = 0;
+    UIScrollView *scrollViewTime = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 125, 50, self.view.frame.size.height - 125)];
+    [scrollViewTime setShowsVerticalScrollIndicator:NO];
     for (int i=1; i<9; i++) {
-        UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(5, 125 + framecounter, 50, 50)];
+        UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(5, 0 + framecounter, 50, 50)];
         UILabel *timeStart = [[UILabel alloc]initWithFrame:CGRectMake(5, -10, 50, 50)];
         UILabel *timeEnd = [[UILabel alloc]initWithFrame:CGRectMake(5, 15, 50, 50)];
         switch (i) {
@@ -243,8 +255,12 @@
         [timeEnd setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
         [timeGrid addSubview:timeStart];
         [timeGrid addSubview:timeEnd];
-        framecounter+=55;
-        [self.view addSubview:timeGrid];
+        framecounter += 55;
+        [scrollViewTime addSubview:timeGrid];
+        scrollViewTime.contentSize = CGSizeMake(0, framecounter);
+        scrollViewTime.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
+        scrollViewTime.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:scrollViewTime];
     }
 }
 
@@ -302,7 +318,7 @@
 
 - (void)update {
     NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"HH.mm.ss"]; //вывод
+    [dataformatter setDateFormat:@"HH.mm.ss"];
     [currentTime setFont:[UIFont fontWithName:@"HalfLife2" size:24]];
     currentTime.text = [dataformatter stringFromDate:[NSDate date]];
 }

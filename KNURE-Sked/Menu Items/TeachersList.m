@@ -28,8 +28,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     teachersList = [[NSMutableArray alloc] init];
@@ -48,30 +47,24 @@
     [self.view addSubview:self.menuBtn];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [teachersList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
@@ -164,21 +157,15 @@
     NSString *modifstr = [csvResponseString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
     NSString *modifstr2 = [modifstr stringByReplacingOccurrencesOfString:@"," withString:@" "];
     //NSLog(@"%@", modifstr2);
-    NSRegularExpression *delGRP = [NSRegularExpression regularExpressionWithPattern:@"[А-ЯІЇЄҐ;]+[-]+[0-9]+[-]+[0-9]"
-                                                                            options:NSRegularExpressionCaseInsensitive
-                                                                              error:&error];
-    NSString *delgrp = [delGRP stringByReplacingMatchesInString:modifstr2
-                                                        options:0
-                                                          range:NSMakeRange(0, [modifstr2 length])
-                                                   withTemplate:@""];
     NSRegularExpression *delTIME = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[:]+[0-9]+[0-9:0-9]+[0-9]"
                                                                              options:NSRegularExpressionCaseInsensitive
                                                                                error:&error];
-    NSString *deltime = [delTIME stringByReplacingMatchesInString:delgrp
+    NSString *deltime = [delTIME stringByReplacingMatchesInString:modifstr2
                                                           options:0
-                                                            range:NSMakeRange(0, [delgrp length])
+                                                            range:NSMakeRange(0, [modifstr2 length])
                                                      withTemplate:@""];
     NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
+    NSLog(@"%@", delSpace);
     NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
     [fullLessonsData setObject:list forKey: curId];
     [fullLessonsData synchronize];

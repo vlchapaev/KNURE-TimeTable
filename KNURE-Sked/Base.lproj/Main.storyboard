@@ -34,25 +34,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Таймер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-5l-hz9">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Таймер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-5l-hz9">
                                 <rect key="frame" x="0.0" y="58" width="320" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.9260663777" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YId-XJ-7Ie">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YId-XJ-7Ie">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.85287408759124084" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YId-XJ-7Ie" secondAttribute="trailing" id="95i-EU-6yn"/>
+                            <constraint firstItem="YId-XJ-7Ie" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZKj-vO-QAM"/>
+                            <constraint firstItem="nyP-5l-hz9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eN8-gB-yKP"/>
+                            <constraint firstAttribute="trailing" secondItem="nyP-5l-hz9" secondAttribute="trailing" id="qrE-jO-X3d"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="currentTime" destination="nyP-5l-hz9" id="fqY-4z-ZEv"/>
-                        <outlet property="hadView" destination="YId-XJ-7Ie" id="7DY-hv-wZG"/>
-                        <outlet property="timerView" destination="nyP-5l-hz9" id="2mb-hn-cNP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

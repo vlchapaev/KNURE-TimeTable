@@ -62,13 +62,13 @@
 
     HTMLNode *bodyNode = [parser body];
     NSString *result = @"";
-    NSString *deltag;
+    //NSString *deltag;
     NSArray *tableNodes = [bodyNode findChildTags:@"table"];
     for (HTMLNode *tableNode in tableNodes) {
         if ([[tableNode getAttributeNamed:@"class"] isEqualToString:@"footer"]) {
             NSArray *postNodes = [tableNode findChildTags:@"td"];
             for (HTMLNode *postNode in postNodes) {
-                NSArray *aTags = [postNode findChildTags:@"a"];
+                //NSArray *aTags = [postNode findChildTags:@"a"];
                 result = [NSString stringWithFormat:@"%@%@%@", result, @" ", postNode.allContents];
             }
         }
