@@ -33,9 +33,10 @@
     [super viewDidLoad];
 
     historyList = [[NSMutableArray alloc] init];
-    /*NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
-    historyList = (NSMutableArray *)[fullHistory objectForKey:@"LastHistory"];*/
-    self.historyTable = historyList;
+    if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] != nil) {
+    historyList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] mutableCopy];
+    }
+    historyTable = [[NSMutableArray alloc] initWithArray:historyList];
     // Do any additional setup after loading the view.
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
@@ -70,13 +71,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     // Return the number of rows in the section.
     return [historyList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
@@ -199,24 +198,20 @@
 }
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [historyList removeObjectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.historyTable removeObjectAtIndex:indexPath.row];
+        [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        //[self updateHistoryData];
+        [tableView endUpdates];
     }
+    [self.tableView reloadData];
     /*else if (editingStyle == UITableViewCellEditingStyleInsert) {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }*/
+    }*/
 }
 
-- (void)updateHistoryData {
-    NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
-    [fullHistory setValue:historyList forKeyPath:@"LastHistory"];
-    [fullHistory synchronize];
-}
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -246,17 +241,23 @@
 */
 
 - (IBAction)addName:(id)sender {
-        [historyList addObject:self.nameField.text];
-        self.nameField.text = @"Введите вашу группу";
-        NSUInteger index;
-        NSArray * indexArray;
-        index = [historyList count]-1;
-        UITableView *tv = (UITableView *)self.view;
-        [self.tableView beginUpdates];
-        indexArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]];
-        [tv insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationRight];
-        [self.tableView endUpdates];
-        
-        //[self updateHistoryData];
+    [historyList addObject:self.nameField.text];
+    self.nameField.text = @"Введите вашу группу";
+    NSUInteger index;
+    NSArray * indexArray;
+    index = [historyList count]-1;
+    UITableView *tv = (UITableView *)self.view;
+    [self.tableView beginUpdates];
+    indexArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]];
+    [tv insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView endUpdates];
+    [self.tableView reloadData];
     }
+
+- (void) viewWillDisappear:(BOOL)animated {
+    NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
+    [fullHistory setValue:historyList forKeyPath:@"SavedGroups"];
+    [fullHistory synchronize];
+}
+
 @end

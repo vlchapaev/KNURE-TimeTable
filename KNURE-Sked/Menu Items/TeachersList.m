@@ -30,9 +30,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     teachersList = [[NSMutableArray alloc] init];
-    self.teachersTable = teachersList;
+    if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedTeachers"] != nil) {
+    teachersList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedTeachers"] mutableCopy];
+    }
+    teachersTable = [[NSMutableArray alloc] initWithArray:teachersList];
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -72,6 +75,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [teachersList objectAtIndex:indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
 }
 
@@ -182,11 +186,14 @@
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [teachersList removeObjectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.teachersTable removeObjectAtIndex:indexPath.row];
+        [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView endUpdates];
     }
+    [self.tableView reloadData];
     /*else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   */
@@ -232,10 +239,17 @@
     NSArray * indxArray;
     indx = [teachersList count]-1;
     UITableView *tabv = (UITableView *)self.view;
-    
     [self.tableView beginUpdates];
     indxArray = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:indx inSection:0]];
     [tabv insertRowsAtIndexPaths:indxArray withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
+    [self.tableView reloadData];
 }
+
+- (void) viewWillDisappear:(BOOL)animated {
+    NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
+    [fullHistory setValue:teachersList forKeyPath:@"SavedTeachers"];
+    [fullHistory synchronize];
+}
+
 @end
