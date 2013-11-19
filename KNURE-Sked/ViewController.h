@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController {
-    IBOutlet UILabel *currentTime;
+@interface ViewController : UIViewController <UIScrollViewDelegate> {
+    IBOutlet UILabel *timer;
+    IBOutlet UIScrollView *mainSkedView;
+    IBOutlet UIView *timeLineView;
+    CGPoint staticViewDefaultCenter;
     NSMutableData *receivedData;
 }
 

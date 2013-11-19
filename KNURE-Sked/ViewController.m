@@ -41,13 +41,14 @@
     [self initializeSlideMenu];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
+    staticViewDefaultCenter = [mainSkedView center];
     
-    [self createTimeMenu];
     //вызов скролл меню
         
         @try {
             //[self getLastUpdate];
             [self createScrollMenu];
+            [self createTimeMenu];
         }
         @catch(NSException *e) {
             UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня :С" delegate:self cancelButtonTitle:@"Окай" otherButtonTitles: nil];
@@ -89,13 +90,14 @@
     }
     NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
     [sorted sortUsingDescriptors:[NSArray arrayWithObjects:sortDesc, nil]];
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(50, 95, 270, 470)];
-    [scrollView setShowsHorizontalScrollIndicator:NO];
-    [scrollView setShowsVerticalScrollIndicator:NO];
+    mainSkedView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, 600)];
+    mainSkedView.delegate = self;
+    [mainSkedView setShowsHorizontalScrollIndicator:NO];
+    [mainSkedView setShowsVerticalScrollIndicator:NO];
     for(int i=1; i<sorted.count; i++) {
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
-        UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, 5, 110, 20)];
+        UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, 5, 110, 20)];
         UIView *skedGrid;
         dateGrid.backgroundColor = [UIColor clearColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
@@ -113,21 +115,9 @@
         }
         NSString *tempDay = [[sorted objectAtIndex:i] valueForKey:@"object"];
         NSArray *temp = [tempDay componentsSeparatedByString:@" "];
-        
-        
         if([[dataformatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
-            scrollView.contentOffset = CGPointMake(dayShift, 0);
+            mainSkedView.contentOffset = CGPointMake(dayShift, 0);
         }
-        else
-         
-        /*
-            if([dataformatter stringFromDate:[NSDate date]]<[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]
-               &&
-               [dataformatter stringFromDate:[NSDate date]]>[formatter stringFromDate:[[sorted objectAtIndex:i - 1] valueForKey:@"date"]]) {
-                scrollView.contentOffset = CGPointMake(dayShift, 0);
-            }
-         */
-            
         if([[temp objectAtIndex:1] isEqual: @"2"]) {
             lessonShift += 55*1;
         } else
@@ -150,41 +140,41 @@
                                     lessonShift += 55*7;
                                 }
         if ([temp containsObject:@"Лк"]) {
-            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
             skedGrid.backgroundColor = [UIColor colorWithRed:0.996 green:0.996 blue:0.918 alpha:1.0];
         }
         else
             if ([temp containsObject:@"Пз"]) {
-                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                 skedGrid.backgroundColor = [UIColor colorWithRed:0.855 green:0.914 blue:0.851 alpha:1.0];
             }
             else
                 if ([temp containsObject:@"Лб"]) {
-                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                     skedGrid.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
                 }
                 else
                     if ([temp containsObject:@"Конс"]) {
-                        skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                        skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                         skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
                     }
                     else
                         if ([temp containsObject:@"ЕкзУ"]) {
-                            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                             skedGrid.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
                         }
                         else
                             if ([temp containsObject:@"ЕкзП"]) {
-                                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                 skedGrid.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
                             }
                             else
                                 if ([temp containsObject:@"Зал"]) {
-                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                     skedGrid.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
                                 }
                                 else {
-                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 5, lessonShift + 5, 110, 50)];
+                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                     skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
                                 }
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
@@ -195,15 +185,15 @@
         [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
         lessonShift = 25;
-        [scrollView addSubview:dateGrid];
-        [scrollView addSubview:skedGrid];
+        [mainSkedView addSubview:dateGrid];
+        [mainSkedView addSubview:skedGrid];
         [dateGrid addSubview:date];
         [skedGrid addSubview:sked];
     }
-    scrollView.contentSize = CGSizeMake(scrollViewSize, scrollView.frame.size.height);
-    scrollView.backgroundColor = [UIColor clearColor];
-    scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.view addSubview:scrollView];
+    mainSkedView.contentSize = CGSizeMake(scrollViewSize, mainSkedView.frame.size.height);
+    mainSkedView.backgroundColor = [UIColor clearColor];
+    mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [self.view addSubview:mainSkedView];
 }
 
 - (void) createTimeMenu {
@@ -211,8 +201,9 @@
      * Создаёт временную шкалу.
      */
     int framecounter = 0;
-    UIScrollView *scrollViewTime = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 125, 50, self.view.frame.size.height - 125)];
-    [scrollViewTime setShowsVerticalScrollIndicator:NO];
+    CGPoint content = [mainSkedView contentOffset];
+    CGRect contentOffset = [mainSkedView bounds];
+    timeLineView = [[UIScrollView alloc] initWithFrame:CGRectMake(contentOffset.origin.x, contentOffset.origin.y+30+(content.y*(-1)), 50, 600)];
     for (int i=1; i<9; i++) {
         UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(5, 0 + framecounter, 50, 50)];
         UILabel *timeStart = [[UILabel alloc]initWithFrame:CGRectMake(5, -10, 50, 50)];
@@ -256,12 +247,17 @@
         [timeGrid addSubview:timeStart];
         [timeGrid addSubview:timeEnd];
         framecounter += 55;
-        [scrollViewTime addSubview:timeGrid];
-        scrollViewTime.contentSize = CGSizeMake(0, framecounter);
-        scrollViewTime.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
-        scrollViewTime.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:scrollViewTime];
+        [timeLineView addSubview:timeGrid];
+        timeLineView.backgroundColor = [UIColor whiteColor];
+        [mainSkedView addSubview:timeLineView];
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGPoint content = [mainSkedView contentOffset];
+    CGRect contentOffset = [mainSkedView bounds];
+    CGRect center = CGRectMake(contentOffset.origin.x, contentOffset.origin.y+30+(content.y*(-1)), 50, 600);
+    [timeLineView setFrame:center];
 }
 
 - (void)getLastUpdate {
@@ -319,8 +315,8 @@
 - (void)update {
     NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
     [dataformatter setDateFormat:@"HH.mm.ss"];
-    [currentTime setFont:[UIFont fontWithName:@"HalfLife2" size:24]];
-    currentTime.text = [dataformatter stringFromDate:[NSDate date]];
+    [timer setFont:[UIFont fontWithName:@"HalfLife2" size:24]];
+    timer.text = [dataformatter stringFromDate:[NSDate date]];
 }
 
 - (IBAction)revealMenu:(id)sender {
