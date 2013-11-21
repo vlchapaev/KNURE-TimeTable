@@ -125,7 +125,7 @@
                                         options:0
                                           range:NSMakeRange(0, [htmlResponseString length])];
             j++;
-        }while (matches.count == 0);
+        } while(matches.count == 0);
         matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
         NSLog(@"%@",matchAllResult);
         NSRegularExpression *finalMatch = [NSRegularExpression regularExpressionWithPattern:@"\\d*\\d"
@@ -169,11 +169,47 @@
                                                             range:NSMakeRange(0, [modifstr2 length])
                                                      withTemplate:@""];
     NSString *delSpace = [deltime stringByReplacingOccurrencesOfString:@"   " withString:@" "];
-    NSLog(@"%@", delSpace);
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    NSDate *startDate = [[NSDate alloc] init];
+    NSDate *endDate = [[NSDate alloc] init];
+    NSMutableArray *dateList = [NSMutableArray array];
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    startDate = [formatter dateFromString:@"01.09.2013"];
+    endDate = [formatter dateFromString:@"02.02.2014"];
+    [dateList addObject: startDate];
+    NSDate *currentDate = startDate;
+    currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate  options:0];
+    while ( [endDate compare: currentDate] != NSOrderedAscending) {
+        [dateList addObject: currentDate];
+        currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate  options:0];
+    }
+    NSMutableArray *normalDates = [NSMutableArray array];
+    for (int i=0; i<dateList.count; i++) {
+        NSString *dates = [NSString stringWithFormat:@"%@%@", [formatter stringForObjectValue:[dateList objectAtIndex:i]], @" "];
+        [normalDates addObject:dates];
+    }
     NSArray *list = [delSpace componentsSeparatedByString:@"\r"];
-    [fullLessonsData setObject:list forKey: curId];
+    NSArray *list2 = [list arrayByAddingObjectsFromArray:normalDates];
+    NSMutableArray *sorted = [[NSMutableArray alloc]init];
+    for (NSString *str in list2) {
+        if ([str isEqual:@""]) {
+            continue;
+        }
+        NSRange rangeForSpace = [str rangeOfString:@" "];
+        NSString *objectStr = [str substringFromIndex:rangeForSpace.location];
+        NSString *dateStr = [str substringToIndex:rangeForSpace.location];
+        NSDate *date = [formatter dateFromString:dateStr];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:objectStr, @"object", date, @"date", nil];
+        [sorted addObject:dic];
+    }
+    NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    [sorted sortUsingDescriptors:[NSArray arrayWithObjects:sortDesc, nil]];
+    [fullLessonsData setObject:sorted forKey: curId];
     [fullLessonsData synchronize];
-
 }
 
 // Override to support conditional editing of the table view.

@@ -10,7 +10,7 @@
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
 #import "QuartzCore/QuartzCore.h"
-#include "REMenu.h"
+#import "REMenu.h"
 
 @class HTMLNode;
 
@@ -30,8 +30,6 @@
     return self;
 }
 
-//- (void)skedGridPress:(UILongPressGestureRecognizer *)recogniser {}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -41,6 +39,7 @@
     [self initializeSlideMenu];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
+    //[button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     staticViewDefaultCenter = [mainSkedView center];
     
     //вызов скролл меню
@@ -71,29 +70,14 @@
     int countDuplitateDays = 0;
     
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
-    NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"dd.MM.yyy"];
-    NSArray *list = [fullLessonsData objectForKey:curId];
-    NSMutableArray *sorted = [[NSMutableArray alloc]init];
+    NSArray *sorted = [fullLessonsData objectForKey:curId];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
-    for (NSString *str in list) {
-        if ([str isEqual:@""]) {
-            continue;
-        }
-        NSRange rangeForSpace = [str rangeOfString:@" "];
-        NSString *objectStr = [str substringFromIndex:rangeForSpace.location];
-        NSString *dateStr = [str substringToIndex:rangeForSpace.location];
-        NSDate *date = [formatter dateFromString:dateStr];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:objectStr, @"object", date, @"date", nil];
-        [sorted addObject:dic];
-    }
-    NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
-    [sorted sortUsingDescriptors:[NSArray arrayWithObjects:sortDesc, nil]];
     mainSkedView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, 600)];
     mainSkedView.delegate = self;
     [mainSkedView setShowsHorizontalScrollIndicator:NO];
     [mainSkedView setShowsVerticalScrollIndicator:NO];
+    
     for(int i=1; i<sorted.count; i++) {
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
@@ -102,22 +86,35 @@
         dateGrid.backgroundColor = [UIColor clearColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
         UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 50)];
-        date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
         NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
+        
         if(i>1 && [prewDate isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]]]) {
             countDuplitateDays = 1;
         }
         else
             countDuplitateDays = 0;
+        
         if(countDuplitateDays == 0 && i > 1) {
             dayShift += dateGrid.frame.size.width + 5;
-            scrollViewSize += dateGrid.frame.size.width + 8;
+            scrollViewSize += dateGrid.frame.size.width + 6;
         }
-        NSString *tempDay = [[sorted objectAtIndex:i] valueForKey:@"object"];
-        NSArray *temp = [tempDay componentsSeparatedByString:@" "];
-        if([[dataformatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
+        
+        date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
+        
+        if([[formatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
             mainSkedView.contentOffset = CGPointMake(dayShift, 0);
         }
+        
+        if([[[sorted objectAtIndex:i] valueForKey:@"object"]  isEqual: @" "]) {
+            [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+            date.textAlignment = NSTextAlignmentCenter;
+            [mainSkedView addSubview:dateGrid];
+            [dateGrid addSubview:date];
+            continue;
+        }
+        
+        NSString *tempDay = [[sorted objectAtIndex:i] valueForKey:@"object"];
+        NSArray *temp = [tempDay componentsSeparatedByString:@" "];
         if([[temp objectAtIndex:1] isEqual: @"2"]) {
             lessonShift += 55*1;
         } else
@@ -173,10 +170,6 @@
                                     skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                     skedGrid.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
                                 }
-                                else {
-                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                                    skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
-                                }
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
@@ -189,7 +182,7 @@
         [mainSkedView addSubview:skedGrid];
         [dateGrid addSubview:date];
         [skedGrid addSubview:sked];
-    }
+        }
     mainSkedView.contentSize = CGSizeMake(scrollViewSize, mainSkedView.frame.size.height);
     mainSkedView.backgroundColor = [UIColor clearColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -259,6 +252,13 @@
     CGRect center = CGRectMake(contentOffset.origin.x, contentOffset.origin.y+30+(content.y*(-1)), 50, 600);
     [timeLineView setFrame:center];
 }
+/*
+
+- (void)mainSkedView:(UILongPressGestureRecognizer *)recogniser {
+    UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"лол" message:@"похоже что работает" delegate:self cancelButtonTitle:@"Круто" otherButtonTitles: nil];
+    [endGameMessage show];
+}
+ */
 
 - (void)getLastUpdate {
     /*
