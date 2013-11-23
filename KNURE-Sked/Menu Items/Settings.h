@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Settings : UIViewController
+@interface Settings : UIViewController {
+    IBOutlet UISwitch *emptyDays;
+    BOOL showDays;
+}
+- (IBAction)showEmptyDays;
 @property (strong, nonatomic) UIButton *menuBtn;
 @end

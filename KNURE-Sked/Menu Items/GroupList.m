@@ -9,8 +9,10 @@
 #import "GroupList.h"
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
+#import "Settings.h"
 
 @interface HistoryList ()
+
 @property (strong, nonatomic) NSMutableArray *historyTable;
 
 @end
@@ -195,6 +197,7 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
+    
     NSDate *startDate = [[NSDate alloc] init];
     NSDate *endDate = [[NSDate alloc] init];
     NSMutableArray *dateList = [NSMutableArray array];
@@ -215,8 +218,10 @@
         NSString *dates = [NSString stringWithFormat:@"%@%@", [formatter stringForObjectValue:[dateList objectAtIndex:i]], @" "];
         [normalDates addObject:dates];
     }
+    
     NSArray *list = [delRest componentsSeparatedByString:@"\r"];
     NSArray *list2 = [list arrayByAddingObjectsFromArray:normalDates];
+    
     NSMutableArray *sorted = [[NSMutableArray alloc]init];
     for (NSString *str in list2) {
         if ([str isEqual:@""]) {

@@ -52,4 +52,11 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (IBAction)showEmptyDays {
+    if(emptyDays.on)
+        showDays = YES;
+    else
+        showDays = NO;
+}
+
 @end

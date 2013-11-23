@@ -29,9 +29,7 @@
 		C33FCC921819965300328F6D /* KNURE_SkedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC911819965300328F6D /* KNURE_SkedTests.m */; };
 		C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E537181D0AD000A8AF9E /* HTMLNode.m */; };
 		C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A0E539181D0AD000A8AF9E /* HTMLParser.m */; };
-		C3A0E53D181D0AD000A8AF9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3A0E53A181D0AD000A8AF9E /* README.md */; };
 		C3A0E53F181D129E00A8AF9E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A0E53E181D129E00A8AF9E /* libxml2.dylib */; };
-		C3CE8F3A183280D0006B3E39 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3CE8F2F183280D0006B3E39 /* README.md */; };
 		C3CE8F3B183280D0006B3E39 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */; };
 		C3CE8F3C183280D0006B3E39 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F33183280D0006B3E39 /* REMenu.m */; };
 		C3CE8F3D183280D0006B3E39 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CE8F35183280D0006B3E39 /* REMenuContainerView.m */; };
@@ -88,9 +86,7 @@
 		C3A0E537181D0AD000A8AF9E /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		C3A0E538181D0AD000A8AF9E /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		C3A0E539181D0AD000A8AF9E /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
-		C3A0E53A181D0AD000A8AF9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C3A0E53E181D129E00A8AF9E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		C3CE8F2F183280D0006B3E39 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C3CE8F30183280D0006B3E39 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		C3CE8F32183280D0006B3E39 /* REMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenu.h; sourceTree = "<group>"; };
@@ -238,7 +234,6 @@
 				C3A0E537181D0AD000A8AF9E /* HTMLNode.m */,
 				C3A0E538181D0AD000A8AF9E /* HTMLParser.h */,
 				C3A0E539181D0AD000A8AF9E /* HTMLParser.m */,
-				C3A0E53A181D0AD000A8AF9E /* README.md */,
 			);
 			path = "HTML Parser";
 			sourceTree = "<group>";
@@ -246,7 +241,6 @@
 		C3CE8F2E183280D0006B3E39 /* REMenu */ = {
 			isa = PBXGroup;
 			children = (
-				C3CE8F2F183280D0006B3E39 /* README.md */,
 				C3CE8F30183280D0006B3E39 /* RECommonFunctions.h */,
 				C3CE8F31183280D0006B3E39 /* RECommonFunctions.m */,
 				C3CE8F32183280D0006B3E39 /* REMenu.h */,
@@ -379,8 +373,6 @@
 				C320B065182E38F8001101FF /* halflife2.ttf in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				C33FCC711819965300328F6D /* InfoPlist.strings in Resources */,
-				C3CE8F3A183280D0006B3E39 /* README.md in Resources */,
-				C3A0E53D181D0AD000A8AF9E /* README.md in Resources */,
 				C33FCC7A1819965300328F6D /* Main.storyboard in Resources */,
 				C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */,
 			);

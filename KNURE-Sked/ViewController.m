@@ -39,8 +39,6 @@
     [self initializeSlideMenu];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(update) userInfo:NULL repeats:YES];
-    //[button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    staticViewDefaultCenter = [mainSkedView center];
     
     //вызов скролл меню
         
@@ -68,21 +66,22 @@
     int lessonShift = 25;
     int scrollViewSize = 0;
     int countDuplitateDays = 0;
+    int maxContentSize = 55*7;
     
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSArray *sorted = [fullLessonsData objectForKey:curId];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
-    mainSkedView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, 600)];
+    mainSkedView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, self.view.frame.size.height-95)];
     mainSkedView.delegate = self;
     [mainSkedView setShowsHorizontalScrollIndicator:NO];
     [mainSkedView setShowsVerticalScrollIndicator:NO];
-    
+    [self mainScrollViewAddDOUBLETAPGestureRecognizer];
     for(int i=1; i<sorted.count; i++) {
+        [self skedCellAddLONGGestureRecognizer];
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
         UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, 5, 110, 20)];
-        UIView *skedGrid;
         dateGrid.backgroundColor = [UIColor clearColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
         UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 50)];
@@ -103,6 +102,7 @@
         
         if([[formatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
             mainSkedView.contentOffset = CGPointMake(dayShift, 0);
+            standartScrollPosition = dayShift;
         }
         
         if([[[sorted objectAtIndex:i] valueForKey:@"object"]  isEqual: @" "]) {
@@ -137,38 +137,38 @@
                                     lessonShift += 55*7;
                                 }
         if ([temp containsObject:@"Лк"]) {
-            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-            skedGrid.backgroundColor = [UIColor colorWithRed:0.996 green:0.996 blue:0.918 alpha:1.0];
+            skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+            skedCell.backgroundColor = [UIColor colorWithRed:0.996 green:0.996 blue:0.918 alpha:1.0];
         }
         else
             if ([temp containsObject:@"Пз"]) {
-                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                skedGrid.backgroundColor = [UIColor colorWithRed:0.855 green:0.914 blue:0.851 alpha:1.0];
+                skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                skedCell.backgroundColor = [UIColor colorWithRed:0.855 green:0.914 blue:0.851 alpha:1.0];
             }
             else
                 if ([temp containsObject:@"Лб"]) {
-                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                    skedGrid.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+                    skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                    skedCell.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
                 }
                 else
                     if ([temp containsObject:@"Конс"]) {
-                        skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                        skedGrid.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+                        skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                        skedCell.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
                     }
                     else
                         if ([temp containsObject:@"ЕкзУ"]) {
-                            skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                            skedGrid.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                            skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                            skedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
                         }
                         else
                             if ([temp containsObject:@"ЕкзП"]) {
-                                skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                                skedGrid.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                                skedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
                             }
                             else
                                 if ([temp containsObject:@"Зал"]) {
-                                    skedGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                                    skedGrid.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+                                    skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
+                                    skedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
                                 }
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
@@ -179,11 +179,11 @@
         sked.textAlignment = NSTextAlignmentCenter;
         lessonShift = 25;
         [mainSkedView addSubview:dateGrid];
-        [mainSkedView addSubview:skedGrid];
+        [mainSkedView addSubview:skedCell];
         [dateGrid addSubview:date];
-        [skedGrid addSubview:sked];
+        [skedCell addSubview:sked];
         }
-    mainSkedView.contentSize = CGSizeMake(scrollViewSize, mainSkedView.frame.size.height);
+    mainSkedView.contentSize = CGSizeMake(scrollViewSize, maxContentSize + 85);
     mainSkedView.backgroundColor = [UIColor clearColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:mainSkedView];
@@ -198,9 +198,9 @@
     CGRect contentOffset = [mainSkedView bounds];
     timeLineView = [[UIScrollView alloc] initWithFrame:CGRectMake(contentOffset.origin.x, contentOffset.origin.y+30+(content.y*(-1)), 50, 600)];
     for (int i=1; i<9; i++) {
-        UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(5, 0 + framecounter, 50, 50)];
+        UIView *timeGrid = [[UIView alloc]initWithFrame:CGRectMake(0, 0 + framecounter, 50, 50)];
         UILabel *timeStart = [[UILabel alloc]initWithFrame:CGRectMake(5, -10, 50, 50)];
-        UILabel *timeEnd = [[UILabel alloc]initWithFrame:CGRectMake(5, 15, 50, 50)];
+        UILabel *timeEnd = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, 50, 50)];
         switch (i) {
             case 1:
                 timeStart.text = @"7:45";
@@ -235,13 +235,14 @@
                 timeEnd.text = @"21:45";
                 break;
         }
-        [timeStart setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-        [timeEnd setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [timeStart setFont:[UIFont fontWithName: @"Trebuchet MS" size: 16.0f]];
+        [timeEnd setFont:[UIFont fontWithName: @"Trebuchet MS" size: 16.0f]];
         [timeGrid addSubview:timeStart];
         [timeGrid addSubview:timeEnd];
+        timeGrid.backgroundColor = [UIColor whiteColor];
         framecounter += 55;
         [timeLineView addSubview:timeGrid];
-        timeLineView.backgroundColor = [UIColor whiteColor];
+        timeLineView.backgroundColor = [UIColor clearColor];
         [mainSkedView addSubview:timeLineView];
     }
 }
@@ -252,13 +253,6 @@
     CGRect center = CGRectMake(contentOffset.origin.x, contentOffset.origin.y+30+(content.y*(-1)), 50, 600);
     [timeLineView setFrame:center];
 }
-/*
-
-- (void)mainSkedView:(UILongPressGestureRecognizer *)recogniser {
-    UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"лол" message:@"похоже что работает" delegate:self cancelButtonTitle:@"Круто" otherButtonTitles: nil];
-    [endGameMessage show];
-}
- */
 
 - (void)getLastUpdate {
     /*
@@ -297,7 +291,7 @@
     [fullLessonsData synchronize];
 }
 
--(void) initializeSlideMenu {
+- (void) initializeSlideMenu {
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -314,13 +308,33 @@
 
 - (void)update {
     NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"HH.mm.ss"];
-    [timer setFont:[UIFont fontWithName:@"HalfLife2" size:24]];
+    [dataformatter setDateFormat:@"HH:mm:ss"];
+    //[timer setFont:[UIFont fontWithName:@"HalfLife2" size:32]];
     timer.text = [dataformatter stringFromDate:[NSDate date]];
 }
 
 - (IBAction)revealMenu:(id)sender {
     [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (void) skedCellAddLONGGestureRecognizer {
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnSkedCellDetected:)];
+    [skedCell addGestureRecognizer:recognizer];
+}
+
+- (void) longPressOnSkedCellDetected:(UILongPressGestureRecognizer *)recogniser {
+    skedCell.backgroundColor = [UIColor blackColor];
+}
+
+- (void) mainScrollViewAddDOUBLETAPGestureRecognizer {
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapOnMainSkedView:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    doubleTapRecognizer.numberOfTouchesRequired = 1;
+    [mainSkedView addGestureRecognizer:doubleTapRecognizer];
+}
+
+- (void) doubleTapOnMainSkedView:(UITapGestureRecognizer *)recogniser {
+    mainSkedView.contentOffset = CGPointMake(standartScrollPosition, 0);
 }
 
 - (void)didReceiveMemoryWarning {

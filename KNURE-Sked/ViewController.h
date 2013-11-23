@@ -11,8 +11,9 @@
 @interface ViewController : UIViewController <UIScrollViewDelegate> {
     IBOutlet UILabel *timer;
     IBOutlet UIScrollView *mainSkedView;
+    IBOutlet UIView *skedCell;
     IBOutlet UIView *timeLineView;
-    CGPoint staticViewDefaultCenter;
+    int standartScrollPosition;
     NSMutableData *receivedData;
 }
 

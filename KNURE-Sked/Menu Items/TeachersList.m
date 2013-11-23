@@ -152,7 +152,7 @@
 - (void) getTeachersUpdate {
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_TEACHER_KAF_RASP?ATypeDoc=4&Aid_sotr=", curId, @"&Aid_kaf=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
-    NSLog(@"%@",curRequest);
+    //NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:curRequest]];
