@@ -14,6 +14,14 @@
     IBOutlet UIView *skedCell;
     IBOutlet UIView *timeLineView;
     int standartScrollPosition;
+    BOOL toLessonBool;
+    NSInteger hours;
+    NSInteger minutes;
+    NSInteger seconds;
+    NSInteger endHours;
+    NSInteger endMinutes;
+    NSInteger endSeconds;
+    NSInteger endInteger;
     NSMutableData *receivedData;
 }
 
