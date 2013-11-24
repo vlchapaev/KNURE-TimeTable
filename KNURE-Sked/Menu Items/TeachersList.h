@@ -12,6 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *teacherField;
 @property (strong, nonatomic) UIButton *menuBtn;
 - (IBAction)addTeacher:(id)sender;
-
+- (void) getTeacherId:(NSString *)tchrName;
 @end
 NSMutableArray *teachersList;

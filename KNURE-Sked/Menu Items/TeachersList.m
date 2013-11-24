@@ -81,8 +81,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self getTeacherId:cell.textLabel.text];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void) getTeacherId:(NSString *)tchrName {
     @try {
-        NSString *teacher = cell.textLabel.text;
         NSError *error = nil;
         NSArray *matches;
         NSString *htmlResponseString;
@@ -115,7 +119,7 @@
             if (i == 9) {kafedra = kafedra10;}
             if (j == [kafedra count]){i++; j = 0;}
             NSString *request = [NSString stringWithFormat:@"%@%@&p_id_kaf=%@", URL, [facults objectAtIndex:i], [kafedra objectAtIndex:j]];
-            NSString *expression = [NSString stringWithFormat:@"%@%@%@%@%@", @"\'", teacher,@"?[\\S]", @"\'", @"+[,]+(\\d*\\d)"];
+            NSString *expression = [NSString stringWithFormat:@"%@%@%@%@%@", @"\'", tchrName,@"?[\\S]", @"\'", @"+[,]+(\\d*\\d)"];
             NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:request]];
             htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
             NSRegularExpression *matchAll = [NSRegularExpression regularExpressionWithPattern:expression
@@ -139,14 +143,13 @@
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
         [fullData setValue:result forKey:@"ID"];
         [self getTeachersUpdate];
-        [fullData setValue:teacher forKey:@"curName"];
+        [fullData setValue:tchrName forKey:@"curName"];
         [fullData synchronize];
     }
     @catch (NSException * e) {
         UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное имя" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
         [endGameMessage show];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void) getTeachersUpdate {

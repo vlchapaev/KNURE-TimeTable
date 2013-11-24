@@ -91,63 +91,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    @try {
-        NSString *group = cell.textLabel.text;
-        NSError *error=nil;
-        int i=0;
-        NSArray *matches;
-        NSString *htmlResponseString;
-        NSArray *facults = [NSArray arrayWithObjects:@"95",
-                        @"114",
-                        @"56",
-                        @"152",
-                        @"192",
-                        @"287",
-                        @"237",
-                        @"2",
-                        @"672"
-                        @"6",
-                        @"2001",
-                        @"64",
-                        @"128", nil];
-        NSString* matchAllResult;
-        NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
-        do {
-            NSString *request = [NSString stringWithFormat:@"%@%@", URL, [facults objectAtIndex:i]];
-            NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", group, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
-            NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:request]];
-            htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
-            NSRegularExpression *matchAll = [NSRegularExpression regularExpressionWithPattern:expression
-                                                                                  options:NSRegularExpressionCaseInsensitive
-                                                                                    error:&error];
-            matches = [matchAll matchesInString:htmlResponseString
-                                    options:0
-                                      range:NSMakeRange(0, [htmlResponseString length])];
-            i++;
-        } while (matches.count == 0);
-    
-        matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
-    
-    
-        NSLog(@"%@",matchAllResult);
-        NSRegularExpression *finalMatch = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[0-9]+[0-9]"
-                                                                                options:NSRegularExpressionCaseInsensitive
-                                                                                  error:&error];
-        NSArray *finalMatchResult = [finalMatch matchesInString:matchAllResult
-                                                    options:0
-                                                      range:NSMakeRange(0, [matchAllResult length])];
-        NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
-        NSLog(@"%@",result);
-        NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
-        [fullData setValue:result forKey:@"ID"];
-        [self getGroupUpdate];
-        [fullData setValue:group forKey:@"curName"];
-        [fullData synchronize];
-    }
-    @catch (NSException * e) {
-        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное название группы" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
-        [endGameMessage show];
-    }
+    [self getGroupId:cell.textLabel.text];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -155,6 +99,65 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
+}
+
+- (void) getGroupId:(NSString *)grName {
+    @try {
+        NSError *error=nil;
+        int i=0;
+        NSArray *matches;
+        NSString *htmlResponseString;
+        NSArray *facults = [NSArray arrayWithObjects:@"95",
+                            @"114",
+                            @"56",
+                            @"152",
+                            @"192",
+                            @"287",
+                            @"237",
+                            @"2",
+                            @"672"
+                            @"6",
+                            @"2001",
+                            @"64",
+                            @"128", nil];
+        NSString* matchAllResult;
+        NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
+        do {
+            NSString *request = [NSString stringWithFormat:@"%@%@", URL, [facults objectAtIndex:i]];
+            NSString *expression = [NSString stringWithFormat:@"%@%@%@%@", @"\'", grName, @"\'", @"+[,]+[0-9]+[0-9]+[0-9]"];
+            NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:request]];
+            htmlResponseString = [[NSString alloc] initWithData:responseData encoding:NSWindowsCP1251StringEncoding];
+            NSRegularExpression *matchAll = [NSRegularExpression regularExpressionWithPattern:expression
+                                                                                      options:NSRegularExpressionCaseInsensitive
+                                                                                        error:&error];
+            matches = [matchAll matchesInString:htmlResponseString
+                                        options:0
+                                          range:NSMakeRange(0, [htmlResponseString length])];
+            i++;
+        } while (matches.count == 0);
+        
+        matchAllResult = [htmlResponseString substringWithRange:[matches[0] range]];
+        
+        
+        NSLog(@"%@",matchAllResult);
+        NSRegularExpression *finalMatch = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+[0-9]+[0-9]"
+                                                                                    options:NSRegularExpressionCaseInsensitive
+                                                                                      error:&error];
+        NSArray *finalMatchResult = [finalMatch matchesInString:matchAllResult
+                                                        options:0
+                                                          range:NSMakeRange(0, [matchAllResult length])];
+        NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
+        NSLog(@"%@",result);
+        NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
+        [fullData setValue:result forKey:@"ID"];
+        [self getGroupUpdate];
+        [fullData setValue:grName forKey:@"curName"];
+        [fullData synchronize];
+    }
+    @catch (NSException * e) {
+        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное название группы" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
+        [endGameMessage show];
+    }
 }
 
 - (void) getGroupUpdate {

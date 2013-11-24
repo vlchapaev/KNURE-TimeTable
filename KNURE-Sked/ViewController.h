@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "REMenu.h"
 
 @interface ViewController : UIViewController <UIScrollViewDelegate> {
     IBOutlet UILabel *timer;
@@ -24,7 +25,8 @@
     NSInteger endInteger;
     NSMutableData *receivedData;
 }
-
+@property (strong, readwrite, nonatomic) REMenu *menu;
+@property (strong, nonatomic) UIButton *toggleBtn;
 @property (strong, nonatomic) UIButton *menuBtn;
 - (void)getLastUpdate;
 

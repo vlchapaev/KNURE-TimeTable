@@ -8,11 +8,14 @@
 #import "ViewController.h"
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
+#import "GroupList.h"
+#import "TeachersList.h"
 #import "REMenu.h"
 
 @implementation ViewController
 
 @synthesize menuBtn;
+@synthesize toggleBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,10 +40,11 @@
             //[self getLastUpdate];
             [self createScrollMenu];
             [self createTimeMenu];
+            [self initToggleMenu];
         }
         @catch(NSException *e) {
-            UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня :С" delegate:self cancelButtonTitle:@"Окай" otherButtonTitles: nil];
-            [endGameMessage show];
+            /* UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня :С" delegate:self cancelButtonTitle:@"Окай" otherButtonTitles: nil];
+            [endGameMessage show]; */
         }
 }
 
@@ -369,6 +373,53 @@
     hours = [[dateFormatterHours stringFromDate:currentDateTime] integerValue];
     minutes = [[dateFormatterMinutes stringFromDate:currentDateTime] integerValue];
     seconds = [[dateFormatterSeconds stringFromDate:currentDateTime] integerValue];
+}
+
+- (void) initToggleMenu {
+    TeachersList *tl = [[TeachersList alloc] init];
+    HistoryList *hl = [[HistoryList alloc] init];
+    self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat centerX = screenSize.width/2.0;
+    toggleBtn.frame = CGRectMake(centerX-100, 30, 200, 24);;
+    [toggleBtn setTitle:[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"] forState:UIControlStateNormal];
+    [toggleBtn addTarget:self action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:toggleBtn];
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    NSArray *grHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedGroups"];
+    NSArray *tHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedTeachers"];
+    for (NSString *gr in grHistory) {
+        REMenuItem *groupItem = [[REMenuItem alloc] initWithTitle:gr
+                                image:[UIImage imageNamed:@"---"]
+                                highlightedImage:nil
+                                action:^(REMenuItem *item) {
+                                [hl getGroupId:gr];
+                                [mainSkedView removeFromSuperview];
+                                [toggleBtn removeFromSuperview];
+                                [self viewDidLoad];
+                                }];
+        [items addObject:groupItem];
+    }
+    for (NSString *tchr in tHistory) {
+        REMenuItem *teacherItem = [[REMenuItem alloc] initWithTitle:tchr
+                                    image:[UIImage imageNamed:@"---"]
+                                    highlightedImage:nil
+                                    action:^(REMenuItem *item) {
+                                    [tl getTeacherId:tchr];
+                                    [mainSkedView removeFromSuperview];
+                                    [toggleBtn removeFromSuperview];
+                                    [self viewDidLoad];
+                                    }];
+        [items addObject:teacherItem];
+    }
+    self.menu = [[REMenu alloc] initWithItems:items];
+    
+}
+
+- (void)toggleMenu {
+    if (self.menu.isOpen)
+        return [self.menu close];
+    [self.menu showInView:self.view];
 }
 
 //Find nearst lessons time
