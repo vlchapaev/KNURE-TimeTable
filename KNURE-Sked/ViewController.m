@@ -27,25 +27,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self update];
     [self aTimeUpdate];
-    //инициализация кнопки и выдвигающегося меню
     [self initializeSlideMenu];
-    
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTimeUpdate) userInfo:nil repeats:YES];
-    
-    //вызов скролл меню
+    @try {
+        //[self getLastUpdate];
+        [self createScrollMenu];
+        [self createTimeMenu];
+        [self initToggleMenu];
+    }
+    @catch(NSException *e) {
         
-        @try {
-            //[self getLastUpdate];
-            [self createScrollMenu];
-            [self createTimeMenu];
-            [self initToggleMenu];
-        }
-        @catch(NSException *e) {
-            /* UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ой" message:@"Кто-то сломал меня :С" delegate:self cancelButtonTitle:@"Окай" otherButtonTitles: nil];
-            [endGameMessage show]; */
-        }
+    }
 }
 
 - (void)createScrollMenu {
@@ -57,12 +50,13 @@
      * который располагается на scroll view.
      */
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
+    if(curId.length < 2)
+        return;
     int dayShift = 0;
     int lessonShift = 25;
     int scrollViewSize = 0;
     int countDuplitateDays = 0;
     int maxContentSize = 55*5;
-    
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSArray *sorted = [fullLessonsData objectForKey:curId];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -72,6 +66,7 @@
     [mainSkedView setShowsHorizontalScrollIndicator:NO];
     [mainSkedView setShowsVerticalScrollIndicator:NO];
     [self mainScrollViewAddDOUBLETAPGestureRecognizer];
+    [self mainScrollViewAddLONGGestureRecognizer];
     for(int i=1; i<sorted.count; i++) {
         [self skedCellAddLONGGestureRecognizer];
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
@@ -314,13 +309,27 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (void) mainScrollViewAddLONGGestureRecognizer {
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressOnMainSkedView:)];
+    [mainSkedView addGestureRecognizer:longPressRecognizer];
+}
+
+- (void) longPressOnMainSkedView:(UITapGestureRecognizer *)recogniser {
+    CGPoint point = [recogniser locationInView:recogniser.view];
+    UIView *newSkedCell = [[UIView alloc]initWithFrame:CGRectMake(point.x, point.y, 110, 50)];
+    newSkedCell.backgroundColor = [UIColor orangeColor];
+    [mainSkedView addSubview:newSkedCell];
+    [timeLineView removeFromSuperview];
+    [self createTimeMenu];
+}
+
 - (void) skedCellAddLONGGestureRecognizer {
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnSkedCellDetected:)];
     [skedCell addGestureRecognizer:recognizer];
 }
 
 - (void) longPressOnSkedCellDetected:(UILongPressGestureRecognizer *)recogniser {
-    skedCell.backgroundColor = [UIColor blackColor];
+    recogniser.view.self.hidden = YES;
 }
 
 - (void) mainScrollViewAddDOUBLETAPGestureRecognizer {
@@ -379,9 +388,10 @@
     TeachersList *tl = [[TeachersList alloc] init];
     HistoryList *hl = [[HistoryList alloc] init];
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    toggleBtn.tintColor = [UIColor blackColor];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat centerX = screenSize.width/2.0;
-    toggleBtn.frame = CGRectMake(centerX-100, 30, 200, 24);;
+    toggleBtn.frame = CGRectMake(centerX-100, 30, 200, 24);
     [toggleBtn setTitle:[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"] forState:UIControlStateNormal];
     [toggleBtn addTarget:self action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:toggleBtn];
@@ -413,7 +423,6 @@
         [items addObject:teacherItem];
     }
     self.menu = [[REMenu alloc] initWithItems:items];
-    
 }
 
 - (void)toggleMenu {
