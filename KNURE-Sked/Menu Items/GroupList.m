@@ -21,8 +21,7 @@
 @synthesize menuBtn;
 @synthesize historyTable;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -30,8 +29,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     historyList = [[NSMutableArray alloc] init];
@@ -54,8 +52,7 @@
     [self.view addSubview:self.menuBtn];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -65,14 +62,12 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [historyList count];
 }
@@ -120,7 +115,7 @@
                             @"2001",
                             @"64",
                             @"128", nil];
-        NSString* matchAllResult;
+        NSString *matchAllResult;
         NSString *URL = @"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_AJX_GROUPS?p_id_fac=";
         do {
             NSString *request = [NSString stringWithFormat:@"%@%@", URL, [facults objectAtIndex:i]];

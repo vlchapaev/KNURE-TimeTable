@@ -11,6 +11,7 @@
 #import "GroupList.h"
 #import "TeachersList.h"
 #import "REMenu.h"
+#import "Timer.h"
 
 @implementation ViewController
 
@@ -27,8 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self aTimeUpdate];
     [self initializeSlideMenu];
+    [self aTimeUpdate];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTimeUpdate) userInfo:nil repeats:YES];
     @try {
         //[self getLastUpdate];
@@ -50,7 +51,7 @@
      * который располагается на scroll view.
      */
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
-    if(curId.length < 2)
+    if(curId.length < 1)
         return;
     int dayShift = 0;
     int lessonShift = 25;
@@ -66,13 +67,13 @@
     [mainSkedView setShowsHorizontalScrollIndicator:NO];
     [mainSkedView setShowsVerticalScrollIndicator:NO];
     [self mainScrollViewAddDOUBLETAPGestureRecognizer];
-    [self mainScrollViewAddLONGGestureRecognizer];
+    [self mainScrollViewAddLONGPRESSGestureRecognizer];
     for(int i=1; i<sorted.count; i++) {
-        [self skedCellAddLONGGestureRecognizer];
+        [self skedCellAddLONGPRESSGestureRecognizer];
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
         UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, 5, 110, 20)];
-        dateGrid.backgroundColor = [UIColor clearColor];
+        dateGrid.backgroundColor = [UIColor whiteColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
         UILabel *sked = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 50)];
         NSString *prewDate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
@@ -96,7 +97,7 @@
         }
         
         if([[[sorted objectAtIndex:i] valueForKey:@"object"]  isEqual: @" "]) {
-            [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+            [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
             date.textAlignment = NSTextAlignmentCenter;
             [mainSkedView addSubview:dateGrid];
             [dateGrid addSubview:date];
@@ -165,9 +166,9 @@
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
-        [date setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
         date.textAlignment = NSTextAlignmentCenter;
-        [sked setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
+        [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
         lessonShift = 25;
         [mainSkedView addSubview:dateGrid];
@@ -227,8 +228,8 @@
                 timeEnd.text = @"21:45";
                 break;
         }
-        [timeStart setFont:[UIFont fontWithName: @"Trebuchet MS" size: 16.0f]];
-        [timeEnd setFont:[UIFont fontWithName: @"Trebuchet MS" size: 16.0f]];
+        [timeStart setFont:[UIFont fontWithName: @"Helvetica Neue" size: 16.0f]];
+        [timeEnd setFont:[UIFont fontWithName: @"Helvetica Neue" size: 16.0f]];
         [timeGrid addSubview:timeStart];
         [timeGrid addSubview:timeEnd];
         timeGrid.backgroundColor = [UIColor whiteColor];
@@ -298,18 +299,11 @@
     [self.view addSubview:self.menuBtn];
 }
 
-- (void)update {
-    NSDateFormatter *dataformatter = [[NSDateFormatter alloc]init];
-    [dataformatter setDateFormat:@"HH:mm:ss"];
-    //[timer setFont:[UIFont fontWithName:@"HalfLife2" size:32]];
-    timer.text = [dataformatter stringFromDate:[NSDate date]];
-}
-
 - (IBAction)revealMenu:(id)sender {
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
-- (void) mainScrollViewAddLONGGestureRecognizer {
+- (void) mainScrollViewAddLONGPRESSGestureRecognizer {
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressOnMainSkedView:)];
     [mainSkedView addGestureRecognizer:longPressRecognizer];
 }
@@ -323,7 +317,7 @@
     [self createTimeMenu];
 }
 
-- (void) skedCellAddLONGGestureRecognizer {
+- (void) skedCellAddLONGPRESSGestureRecognizer {
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnSkedCellDetected:)];
     [skedCell addGestureRecognizer:recognizer];
 }
@@ -341,47 +335,6 @@
 
 - (void) doubleTapOnMainSkedView:(UITapGestureRecognizer *)recogniser {
     mainSkedView.contentOffset = CGPointMake(standartScrollPosition, 0);
-}
-
-- (void) aTimeUpdate {
-    //Get current time
-    [self getCurrentTime];
-    //Get nearest lesson
-    [self comparisonOfTime];
-    
-    //Count time
-    [self minusTime];
-    
-    //Print time
-    timer.lineBreakMode = 2;
-    if (toLessonBool == NO) {
-        //NSLog(@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds);
-        timer.text = [[NSString alloc]initWithFormat:@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds];
-    }
-    else {
-        //NSLog(@"До начала пары: твоя мама %d:%d:%d", endHours, endMinutes, endSeconds);
-        timer.text = [[NSString alloc]initWithFormat:@"До начала пары: %d:%d:%d", endHours, endMinutes, endSeconds];
-    }
-    //Clean values
-    [self cleaner];
-}
-
--(void) getCurrentTime {
-    //Get data
-    NSDate *currentDateTime = [NSDate date];
-    
-    //Set format for data
-    NSDateFormatter *dateFormatterHours = [[NSDateFormatter alloc] init];
-    [dateFormatterHours setDateFormat:@"HH"];
-    NSDateFormatter *dateFormatterMinutes = [[NSDateFormatter alloc] init];
-    [dateFormatterMinutes setDateFormat:@"mm"];
-    NSDateFormatter *dateFormatterSeconds = [[NSDateFormatter alloc] init];
-    [dateFormatterSeconds setDateFormat:@"ss"];
-    
-    //Write formated data to NSInteger
-    hours = [[dateFormatterHours stringFromDate:currentDateTime] integerValue];
-    minutes = [[dateFormatterMinutes stringFromDate:currentDateTime] integerValue];
-    seconds = [[dateFormatterSeconds stringFromDate:currentDateTime] integerValue];
 }
 
 - (void) initToggleMenu {
@@ -431,187 +384,17 @@
     [self.menu showInView:self.view];
 }
 
-//Find nearst lessons time
--(void) comparisonOfTime {
-    endInteger = (hours) * 10000;
-    NSString *str = [NSString stringWithFormat:@"%d", minutes];
-    if (str.length <= 0)
-        endInteger *= 10;
-    endInteger += (minutes)*100;
-    str = [NSString stringWithFormat:@"%d", seconds];
-    if (str.length <= 0)
-        endInteger *= 10;
-    endInteger += seconds;
-    if (endInteger < 235959) {
-        endHours = 7;
-        endMinutes = 45;
-        endSeconds = 00;
-        toLessonBool = YES;
+- (void) aTimeUpdate {
+    [Timer getCurrentTime];
+    [Timer comparisonOfTime];
+    [Timer minusTime];
+    if (toLessonBool == NO) {
+        timer.text = [[NSString alloc]initWithFormat:@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds];
     }
-    if (endInteger < 214500) {
-        endHours = 21;
-        endMinutes = 45;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 201000) {
-        endHours = 20;
-        endMinutes = 10;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 200000) {
-        endHours = 20;
-        endMinutes = 00;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 182500) {
-        endHours = 18;
-        endMinutes = 25;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 181500) {
-        endHours = 18;
-        endMinutes = 15;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 164000) {
-        endHours = 16;
-        endMinutes = 40;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 163000) {
-        endHours = 16;
-        endMinutes = 30;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 145500) {
-        endHours = 14;
-        endMinutes = 55;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 144500) {
-        endHours = 14;
-        endMinutes = 45;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 131000)
-    {
-        endHours = 13;
-        endMinutes = 10;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 125000) {
-        endHours = 12;
-        endMinutes = 50;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 111500) {
-        endHours = 11;
-        endMinutes = 15;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    
-    if (endInteger < 110500) {
-        endHours = 11;
-        endMinutes = 05;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    
-    if (endInteger < 93000) {
-        endHours = 9;
-        endMinutes = 30;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-    if (endInteger < 92000) {
-        endHours = 9;
-        endMinutes = 20;
-        endSeconds = 00;
-        toLessonBool = NO;
-    }
-    if (endInteger < 74500) {
-        endHours = 7;
-        endMinutes = 45;
-        endSeconds = 00;
-        toLessonBool = YES;
-    }
-}
-
-//Counting time
--(void) minusTime {
-    //Cache for remainder
-    BOOL cacheInMinusTime = NO;
-    //Counting seconds
-    if (seconds == endSeconds)
-        endSeconds = 0;
     else {
-        if (seconds > endSeconds) {
-            cacheInMinusTime = YES;
-            seconds -= endSeconds;
-            endSeconds = 60 - seconds;
-        }
-        else {
-            endSeconds -= seconds;
-        }
-        if (cacheInMinusTime == YES) {
-            if (minutes == 60) {
-                hours++;
-                minutes = 0;
-            }
-            else
-                minutes++;
-            cacheInMinusTime = NO;
-        }
+        timer.text = [[NSString alloc]initWithFormat:@"До начала пары: %d:%d:%d", endHours, endMinutes, endSeconds];
     }
-    //Counting minutes
-    if (minutes == endMinutes)
-        endMinutes = 0;
-    else {
-        if (minutes > endMinutes) {
-            cacheInMinusTime = YES;
-            minutes -= endMinutes;
-            endMinutes = 60 - minutes;
-        }
-        else {
-            endMinutes -= minutes;
-        }
-        if (cacheInMinusTime == YES) {
-            hours++;
-            cacheInMinusTime = NO;
-        }
-    }
-    //Counting hours
-    if (hours == endHours)
-        endHours = 0;
-    else {
-        if (hours > endHours) {
-            hours -= endHours;
-            endHours = 24 - hours;
-        } else {
-            endHours -= hours;
-        }
-    }
-}
-
--(void) cleaner {
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-    endSeconds = 0;
-    endMinutes = 0;
-    endHours = 0;
+    [Timer cleaner];
 }
 
 - (void)didReceiveMemoryWarning {
