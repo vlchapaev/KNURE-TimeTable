@@ -156,8 +156,41 @@
 }
 
 - (void) getGroupUpdate {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    
+    //NSDate *startDate = [[NSDate alloc] init];
+    //NSDate *endDate = [[NSDate alloc] init];
+    NSDate *currentDateTime = [NSDate date];
+    
+    NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
+    [dateFormatterMonth setDateFormat:@"MM"];
+    NSDateFormatter *dateFormatterYear = [[NSDateFormatter alloc] init];
+    [dateFormatterYear setDateFormat:@"YYYY"];
+    NSDateFormatter *dateFormatterDate = [[NSDateFormatter alloc] init];
+    [dateFormatterDate setDateFormat:@"dd.MM.YYYY"];
+    
+    thisMonth = [[dateFormatterMonth stringFromDate:currentDateTime] integerValue];
+    thisYear = [[dateFormatterYear stringFromDate:currentDateTime] integerValue];
+    nextYear = thisYear+1;
+    
+    NSString *startDate;
+    NSString *endDate;
+    if ((thisMonth>=9 && thisMonth<=12) || (thisMonth>=1 && thisMonth<=2)) {
+        
+        startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
+        endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
+    } else {
+        startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
+        endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)thisYear];
+    }
+    NSMutableArray *dateList = [NSMutableArray array];
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
-    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
+    NSString *curRequest = [NSString stringWithFormat:@"%@%@%@%@%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=", startDate,  @"&ADateEnd=" ,endDate, @"&AMultiWorkSheet=0"];
     //NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
@@ -193,21 +226,15 @@
                                                    withTemplate:@""];
     //NSLog(@"%@%@",@"DELSPASE: ", delRest);
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd.MM.yyyy"];
-    
-    NSDate *startDate = [[NSDate alloc] init];
-    NSDate *endDate = [[NSDate alloc] init];
-    NSMutableArray *dateList = [NSMutableArray array];
-    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:1];
-    startDate = [formatter dateFromString:@"01.09.2013"];
-    endDate = [formatter dateFromString:@"02.02.2014"];
     [dateList addObject: startDate];
-    NSDate *currentDate = startDate;
+    NSDate *currentDate = [[NSDate alloc]init];
+    currentDate = [dateFormatterDate dateFromString:startDate];
+    
+    NSDate *endCurrentDate = [[NSDate alloc]init];
+    endCurrentDate = [dateFormatterDate dateFromString:endDate];
+    
     currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate  options:0];
-    while ( [endDate compare: currentDate] != NSOrderedAscending) {
+    while ( [endCurrentDate compare: currentDate] != NSOrderedAscending) {
         [dateList addObject: currentDate];
         currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate  options:0];
     }

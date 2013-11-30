@@ -15,3 +15,6 @@
 - (void) getGroupId:(NSString *)grName;
 @end
 NSMutableArray *historyList;
+NSInteger thisYear;
+NSInteger nextYear;
+NSInteger thisMonth;
