@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryList : UITableViewController
+@interface GroupList : UITableViewController
 @property (strong, nonatomic) UIButton *menuBtn;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 - (IBAction)addName:(id)sender;

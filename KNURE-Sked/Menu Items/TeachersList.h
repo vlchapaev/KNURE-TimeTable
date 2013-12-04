@@ -15,3 +15,6 @@
 - (void) getTeacherId:(NSString *)tchrName;
 @end
 NSMutableArray *teachersList;
+NSInteger thisYear;
+NSInteger nextYear;
+NSInteger thisMonth;

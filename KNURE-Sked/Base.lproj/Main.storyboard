@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4A2-Rc-Hmt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4A2-Rc-Hmt">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Init View Controller-->
         <scene sceneID="6ik-hp-m0J">
             <objects>
                 <viewController id="4A2-Rc-Hmt" customClass="InitViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R2O-VP-Bgu"/>
-                        <viewControllerLayoutGuide type="bottom" id="wST-aR-wy4"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sI0-jU-OEg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -23,96 +19,28 @@
             </objects>
             <point key="canvasLocation" x="-2212" y="-1884"/>
         </scene>
-        <!--New Sked Cell-->
-        <scene sceneID="jlk-de-E3Z">
-            <objects>
-                <viewController id="cCE-4q-xR9" customClass="NewSkedCell" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0EF-Q2-p9D"/>
-                        <viewControllerLayoutGuide type="bottom" id="2zC-bP-lXd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="o8i-en-5CI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Предмет:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tub-Ib-0FJ">
-                                <rect key="frame" x="20" y="83" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pep-7X-SBm">
-                                <rect key="frame" x="20" y="112" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Заметка:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah5-WR-icm">
-                                <rect key="frame" x="20" y="213" width="73" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVh-UM-tLb">
-                                <rect key="frame" x="20" y="242" width="291" height="306"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3mq-AW-nSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1762" y="-1909"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qRi-zi-Pql">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="30a-JF-hGW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xKl-IR-c9t">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hqM-yo-CiC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1345" y="-2130"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="Расписание" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2jE-St-NSg"/>
-                        <viewControllerLayoutGuide type="bottom" id="XLj-EQ-kaO"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" horizontalHuggingPriority="395" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Таймер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-5l-hz9">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Таймер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" id="nyP-5l-hz9">
                                 <rect key="frame" x="0.0" y="58" width="320" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.9260663777" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YId-XJ-7Ie">
+                            <view contentMode="scaleToFill" id="YId-XJ-7Ie">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.85287408759124084" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YId-XJ-7Ie" secondAttribute="trailing" id="95i-EU-6yn"/>
-                            <constraint firstItem="YId-XJ-7Ie" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZKj-vO-QAM"/>
-                            <constraint firstItem="nyP-5l-hz9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eN8-gB-yKP"/>
-                            <constraint firstAttribute="trailing" secondItem="nyP-5l-hz9" secondAttribute="trailing" id="qrE-jO-X3d"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="timer" destination="nyP-5l-hz9" id="kVP-FH-plo"/>
@@ -170,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="-1345" y="-1479"/>
         </scene>
-        <!--History List-->
+        <!--Group List-->
         <scene sceneID="qZc-1y-zBT">
             <objects>
-                <tableViewController storyboardIdentifier="Группы" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Kq-Xl-kDF" customClass="HistoryList" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Группы" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Kq-Xl-kDF" customClass="GroupList" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" id="oUY-3M-ucW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,36 +184,26 @@
         <scene sceneID="3xT-rX-luP">
             <objects>
                 <viewController storyboardIdentifier="Настройки" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ics-gY-tmN" customClass="Settings" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kbc-f9-Lea"/>
-                        <viewControllerLayoutGuide type="bottom" id="BD1-eH-olK"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8if-8r-tjt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Показывать пустые дни" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4at-es-sMW">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показывать пустые дни" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4at-es-sMW">
                                 <rect key="frame" x="20" y="67" width="223" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zum-7D-7WW">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Zum-7D-7WW">
                                 <rect key="frame" x="251" y="62" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="ydA-oM-nts"/>
                                 </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Zum-7D-7WW" firstAttribute="leading" secondItem="4at-es-sMW" secondAttribute="trailing" constant="8" id="C3m-sI-UOS"/>
-                            <constraint firstItem="Zum-7D-7WW" firstAttribute="leading" secondItem="4at-es-sMW" secondAttribute="trailing" constant="8" id="H0z-dE-BwM"/>
-                            <constraint firstItem="4at-es-sMW" firstAttribute="leading" secondItem="8if-8r-tjt" secondAttribute="leading" constant="20" id="L6y-5s-2jG"/>
-                            <constraint firstAttribute="trailing" secondItem="Zum-7D-7WW" secondAttribute="trailing" constant="20" id="zAz-Gg-5er"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="emptyDays" destination="Zum-7D-7WW" id="krb-T5-QIj"/>
@@ -299,15 +217,11 @@
         <scene sceneID="UCi-PN-lyO">
             <objects>
                 <viewController storyboardIdentifier="Сводка" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MSx-vF-GcX" customClass="Summary" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dfO-3R-HCq"/>
-                        <viewControllerLayoutGuide type="bottom" id="AI3-4L-MJI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Z9Z-ot-LPn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNM-kC-pnE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="BNM-kC-pnE">
                                 <rect key="frame" x="20" y="55" width="280" height="493"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

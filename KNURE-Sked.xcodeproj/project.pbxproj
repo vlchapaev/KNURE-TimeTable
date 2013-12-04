@@ -41,9 +41,10 @@
 		C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */; };
 		C3E030B0182524BE00B7AF70 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030AF182524BE00B7AF70 /* Settings.m */; };
 		C3E030B31825277800B7AF70 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E030B21825277800B7AF70 /* Summary.m */; };
-		C3E50688184A5492003FF9B5 /* NewSkedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E50687184A5492003FF9B5 /* NewSkedCell.m */; };
 		C3EA892318467F57009FFC3C /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA892218467F57009FFC3C /* Timer.m */; };
 		C3F6BA9B182FE5A60045C0C4 /* TeachersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */; };
+		C3FE99DB184F8061002D2F5F /* HiddenLessons.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FE99DA184F8061002D2F5F /* HiddenLessons.m */; };
+		C3FE99DE184F80D4002D2F5F /* NewSkedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FE99DD184F80D4002D2F5F /* NewSkedCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,12 +111,14 @@
 		C3E030AF182524BE00B7AF70 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		C3E030B11825277800B7AF70 /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
 		C3E030B21825277800B7AF70 /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
-		C3E50686184A5492003FF9B5 /* NewSkedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSkedCell.h; sourceTree = "<group>"; };
-		C3E50687184A5492003FF9B5 /* NewSkedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSkedCell.m; sourceTree = "<group>"; };
 		C3EA892118467F57009FFC3C /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		C3EA892218467F57009FFC3C /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		C3F6BA99182FE5A60045C0C4 /* TeachersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeachersList.h; sourceTree = "<group>"; };
 		C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeachersList.m; sourceTree = "<group>"; };
+		C3FE99D9184F8061002D2F5F /* HiddenLessons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiddenLessons.h; sourceTree = "<group>"; };
+		C3FE99DA184F8061002D2F5F /* HiddenLessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiddenLessons.m; sourceTree = "<group>"; };
+		C3FE99DC184F80D4002D2F5F /* NewSkedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSkedCell.h; sourceTree = "<group>"; };
+		C3FE99DD184F80D4002D2F5F /* NewSkedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSkedCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,12 +192,12 @@
 				C33FCC781819965300328F6D /* Main.storyboard */,
 				C33FCC751819965300328F6D /* AppDelegate.h */,
 				C33FCC761819965300328F6D /* AppDelegate.m */,
-				C3E50686184A5492003FF9B5 /* NewSkedCell.h */,
-				C3E50687184A5492003FF9B5 /* NewSkedCell.m */,
 				C33FCC7B1819965300328F6D /* ViewController.h */,
 				C33FCC7C1819965300328F6D /* ViewController.m */,
 				C3EA892118467F57009FFC3C /* Timer.h */,
 				C3EA892218467F57009FFC3C /* Timer.m */,
+				C3FE99DC184F80D4002D2F5F /* NewSkedCell.h */,
+				C3FE99DD184F80D4002D2F5F /* NewSkedCell.m */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
 				C3D6FE561823E60F00BB3B84 /* Menu Items */,
 				C3A0E535181D0AAE00A8AF9E /* HTML Parser */,
@@ -289,6 +292,8 @@
 				6928EA26182D94BE00070B44 /* GroupList.m */,
 				C3F6BA99182FE5A60045C0C4 /* TeachersList.h */,
 				C3F6BA9A182FE5A60045C0C4 /* TeachersList.m */,
+				C3FE99D9184F8061002D2F5F /* HiddenLessons.h */,
+				C3FE99DA184F8061002D2F5F /* HiddenLessons.m */,
 			);
 			path = "Menu Items";
 			sourceTree = "<group>";
@@ -404,7 +409,6 @@
 				C3E030B31825277800B7AF70 /* Summary.m in Sources */,
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C3E030B0182524BE00B7AF70 /* Settings.m in Sources */,
-				C3E50688184A5492003FF9B5 /* NewSkedCell.m in Sources */,
 				C3CE8F3F183280D0006B3E39 /* REMenuItemView.m in Sources */,
 				C33FCC7D1819965300328F6D /* ViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* GroupList.m in Sources */,
@@ -417,6 +421,8 @@
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,
 				C3D6FE541823E5BC00BB3B84 /* ECSlidingViewController.m in Sources */,
+				C3FE99DB184F8061002D2F5F /* HiddenLessons.m in Sources */,
+				C3FE99DE184F80D4002D2F5F /* NewSkedCell.m in Sources */,
 				C3D6FE551823E5BC00BB3B84 /* UIImage+ImageWithUIView.m in Sources */,
 				C3CE8F3B183280D0006B3E39 /* RECommonFunctions.m in Sources */,
 			);

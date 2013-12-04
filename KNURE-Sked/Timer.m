@@ -10,32 +10,6 @@
 #import "ViewController.h"
 
 @implementation Timer
-/*
-+ (NSString*) aTimeUpdate {
-    
-    //Get current time
-    [self getCurrentTime];
-    
-    //Get nearest lesson
-    [self comparisonOfTime];
-    
-    //Count time
-    [self minusTime];
-    
-    //Print time
-    //timer.lineBreakMode = 2;
-    if (toLessonBool == NO) {
-        //NSLog(@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds);
-        return [[NSString alloc]initWithFormat:@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds];
-    }
-    else {
-        //NSLog(@"До начала пары: твоя мама %d:%d:%d", endHours, endMinutes, endSeconds);
-        return [[NSString alloc]initWithFormat:@"До начала пары: %d:%d:%d", endHours, endMinutes, endSeconds];
-    }
-    
-    //Clean values
-    [self cleaner];
-}*/
 
 + (void) getCurrentTime {
     //Get data

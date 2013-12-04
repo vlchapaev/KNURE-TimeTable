@@ -1,5 +1,5 @@
 //
-//  NewSkedCell.h
+//  HiddenLessons.h
 //  KNURE-Sked
 //
 //  Created by Влад on 12/4/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewSkedCell : UIViewController
+@interface HiddenLessons : UITableViewController
 
 @end

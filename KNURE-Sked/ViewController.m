@@ -18,16 +18,40 @@
 @synthesize menuBtn;
 @synthesize toggleBtn;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+
+- (id)initWithCoder:(NSCoder*)aDecoder {
+    /*
+     Инициализирует объекты перед началом выполнения, в частности, здесь иницилизируется массив координат всех возможных мест положений skedView. Позднее он будет использоваться при отрисовке новых пар пользователем.
+     */
+    if(self = [super initWithCoder:aDecoder]) {
+        rects = [[NSMutableArray alloc]init];
+        float pointX1 = 55;
+        float pointY1 = 30;
+        float pointX2 = 110;
+        float pointY2 = 50;
+        int j = 0;
+        for(int i=0; i<500; i++) {
+            [rects addObject:[NSValue valueWithCGRect:CGRectMake(pointX1, pointY1, pointX2, pointY2)]];
+            pointX1 += 115;
+            if(i==499 && j<8) {
+                pointY1 += 55;
+                pointX1 = 55;
+                j++;
+                i = 0;
+            }
+        }
     }
     return self;
 }
 
+
 - (void)viewDidLoad {
+    /*
+     Выполняет все возможные команды при запуске вьюшки с расписанием.
+     Здесь выполняется: иницаилизация slide menu, таймера, какая-то штука, необходима, чтобы таймер тикал, отрисовка скроллвьюшки, шкалы времени и выпадающего меню.
+     */
     [super viewDidLoad];
+    
     [self initializeSlideMenu];
     [self aTimeUpdate];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTimeUpdate) userInfo:nil repeats:YES];
@@ -44,11 +68,9 @@
 
 - (void)createScrollMenu {
     /*
-     * Создаёт scroll menu, в котором располагаются uiview.
-     * Данные берутся из userdefaults, с ключем, который равен id группы или преподавателя.
-     * Полученные данные заносятся в NSArray после чего сортируются.
-     * После соритировки по дате внутри NSArray, данные заносятся в UILable, который располагается на UIView,
-     * который располагается на scroll view.
+     Создаёт scroll menu, в котором располагаются uiview.
+     Данные берутся из userdefaults, с ключем, который равен id группы или преподавателя.
+     полученные данные отрисовываются по очень большому и непродуманному алгоритму.
      */
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     if(curId.length < 1)
@@ -166,6 +188,7 @@
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
+        sked.backgroundColor = [UIColor clearColor];
         [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
         date.textAlignment = NSTextAlignmentCenter;
         [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
@@ -175,9 +198,24 @@
         [mainSkedView addSubview:skedCell];
         [dateGrid addSubview:date];
         [skedCell addSubview:sked];
+    }
+    userChanges = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    NSLog(@"%@", userChanges);
+    
+    NSMutableArray *userSked = [[NSUserDefaults standardUserDefaults] objectForKey:userChanges];
+    if(userSked.count > 0) {
+        CGRect skedRect;
+        for(int i=0;i<userSked.count;i++) {
+            skedRect = CGRectFromString([userSked objectAtIndex:i]);
+            newSkedCell = [[UIView alloc]initWithFrame:skedRect];
+            newSkedCell.backgroundColor = [UIColor orangeColor];
+            [mainSkedView addSubview:newSkedCell];
+            [self skedCellAddLONGPRESSGestureRecognizer];
         }
+    }
+    
     mainSkedView.contentSize = CGSizeMake(scrollViewSize, maxContentSize + 85);
-    mainSkedView.backgroundColor = [UIColor clearColor];
+    mainSkedView.backgroundColor = [UIColor whiteColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:mainSkedView];
 }
@@ -228,6 +266,8 @@
                 timeEnd.text = @"21:45";
                 break;
         }
+        timeStart.backgroundColor = [UIColor clearColor];
+        timeEnd.backgroundColor = [UIColor clearColor];
         [timeStart setFont:[UIFont fontWithName: @"Helvetica Neue" size: 16.0f]];
         [timeEnd setFont:[UIFont fontWithName: @"Helvetica Neue" size: 16.0f]];
         [timeGrid addSubview:timeStart];
@@ -235,7 +275,7 @@
         timeGrid.backgroundColor = [UIColor whiteColor];
         framecounter += 55;
         [timeLineView addSubview:timeGrid];
-        timeLineView.backgroundColor = [UIColor clearColor];
+        timeLineView.backgroundColor = [UIColor whiteColor];
         [mainSkedView addSubview:timeLineView];
     }
 }
@@ -248,7 +288,7 @@
 }
 
 - (void)getLastUpdate {
-    /*
+    /* ЭТА ФУНКЦИЯ ОТКЮЧЕНА.
      * Посылается запрос на cist, в ответ получаем .csv файл.
      * Из файла убираем лишние символы, такие как: ", время:время:время
      * Очищенные данные отправляем в NSUserDefaults с ключем, равный id группы или преподавателя.
@@ -285,6 +325,9 @@
 }
 
 - (void) initializeSlideMenu {
+    /*
+     Инициализирует slide menu.
+     */
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -300,33 +343,76 @@
 }
 
 - (IBAction)revealMenu:(id)sender {
+    //Событие срабатывает, если пользователь отпускает slide menu.
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 - (void) mainScrollViewAddLONGPRESSGestureRecognizer {
+    /*
+     Добавляет на mainScrollView распознаватель жеста "длительно нажатие"
+     */
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressOnMainSkedView:)];
     [mainSkedView addGestureRecognizer:longPressRecognizer];
 }
 
 - (void) longPressOnMainSkedView:(UITapGestureRecognizer *)recogniser {
-    CGPoint point = [recogniser locationInView:recogniser.view];
-    UIView *newSkedCell = [[UIView alloc]initWithFrame:CGRectMake(point.x, point.y, 110, 50)];
-    newSkedCell.backgroundColor = [UIColor orangeColor];
-    [mainSkedView addSubview:newSkedCell];
-    [timeLineView removeFromSuperview];
-    [self createTimeMenu];
+    /*
+     Обработчик события "длительное нажатие".
+     При длительном нажатии на пустом месте появляется пара на вьюшке.
+     */
+    CGRect skedRect;
+    CGPoint touchPoint = [recogniser locationInView:recogniser.view];
+    userChanges = [NSString stringWithFormat:@"%@%@",@"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    if(recogniser.state == UIGestureRecognizerStateBegan) {
+        NSUserDefaults *savedRectangles = [NSUserDefaults standardUserDefaults];
+        NSArray *temp = [savedRectangles objectForKey:userChanges];
+        NSMutableArray *userSkedRects =  nil;
+        if(temp) {
+            userSkedRects = [temp mutableCopy];
+        } else {
+            userSkedRects = [[NSMutableArray alloc]init];
+        }
+        for(int i=0; i<rects.count; i++) {
+            skedRect = [[rects objectAtIndex:i] CGRectValue];
+            if(CGRectContainsPoint(skedRect, touchPoint)==YES) {
+                newSkedCell = [[UIView alloc]initWithFrame:skedRect];
+                [userSkedRects addObject:NSStringFromCGRect(skedRect)];
+                [savedRectangles setObject:userSkedRects forKey:userChanges];
+                [savedRectangles synchronize];
+                [self skedCellAddLONGPRESSGestureRecognizer];
+                break;
+            }
+        }
+        newSkedCell.backgroundColor = [UIColor orangeColor];
+        [mainSkedView addSubview:newSkedCell];
+        [timeLineView removeFromSuperview];
+        [self createTimeMenu];
+    }
 }
 
 - (void) skedCellAddLONGPRESSGestureRecognizer {
+    /*
+     Добавляет этот же жест на каждую ячейку с в расписании.
+     */
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnSkedCellDetected:)];
     [skedCell addGestureRecognizer:recognizer];
+    [newSkedCell addGestureRecognizer:recognizer];
 }
 
 - (void) longPressOnSkedCellDetected:(UILongPressGestureRecognizer *)recogniser {
-    recogniser.view.self.hidden = YES;
+    /*
+     Обработчик события: при длительном нажатии на skedCell вызвать UIActionSheet.
+     В ДАННЫЙ МОМЕНТ ЭТО ПРОСТО СКРОЕТ ПРЕДМЕТ ИЗ ВЬЮШКИ.
+     */
+    if(recogniser.state == UIGestureRecognizerStateBegan) {
+        recogniser.view.self.hidden = YES;
+    }
 }
 
 - (void) mainScrollViewAddDOUBLETAPGestureRecognizer {
+    /*
+     Добавляет жест "двойной тап" на скролл вьюшку
+     */
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapOnMainSkedView:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
@@ -334,12 +420,14 @@
 }
 
 - (void) doubleTapOnMainSkedView:(UITapGestureRecognizer *)recogniser {
+    //Обработчик события "двойной тап". Возвращает стандартную позицию скроллера на текущий день.
     mainSkedView.contentOffset = CGPointMake(standartScrollPosition, 0);
 }
 
 - (void) initToggleMenu {
+    //Инициализирует выпадающее меню
     TeachersList *tl = [[TeachersList alloc] init];
-    HistoryList *hl = [[HistoryList alloc] init];
+    GroupList *hl = [[GroupList alloc] init];
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     toggleBtn.tintColor = [UIColor blackColor];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
@@ -353,53 +441,50 @@
     NSArray *tHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedTeachers"];
     for (NSString *gr in grHistory) {
         REMenuItem *groupItem = [[REMenuItem alloc] initWithTitle:gr
-                                image:[UIImage imageNamed:@"---"]
-                                highlightedImage:nil
-                                action:^(REMenuItem *item) {
-                                [hl getGroupId:gr];
-                                [mainSkedView removeFromSuperview];
-                                [toggleBtn removeFromSuperview];
-                                [self viewDidLoad];
-                                }];
+                                                            image:[UIImage imageNamed:@"---"]
+                                                 highlightedImage:nil
+                                                           action:^(REMenuItem *item) {
+                                                               [hl getGroupId:gr];
+                                                               [mainSkedView removeFromSuperview];
+                                                               [toggleBtn removeFromSuperview];
+                                                               [self viewDidLoad];
+                                                           }];
         [items addObject:groupItem];
     }
     for (NSString *tchr in tHistory) {
         REMenuItem *teacherItem = [[REMenuItem alloc] initWithTitle:tchr
-                                    image:[UIImage imageNamed:@"---"]
-                                    highlightedImage:nil
-                                    action:^(REMenuItem *item) {
-                                    [tl getTeacherId:tchr];
-                                    [mainSkedView removeFromSuperview];
-                                    [toggleBtn removeFromSuperview];
-                                    [self viewDidLoad];
-                                    }];
+                                                              image:[UIImage imageNamed:@"---"]
+                                                   highlightedImage:nil
+                                                             action:^(REMenuItem *item) {
+                                                                 [tl getTeacherId:tchr];
+                                                                 [mainSkedView removeFromSuperview];
+                                                                 [toggleBtn removeFromSuperview];
+                                                                 [self viewDidLoad];
+                                                             }];
         [items addObject:teacherItem];
     }
     self.menu = [[REMenu alloc] initWithItems:items];
 }
 
-- (void)toggleMenu {
+- (void) toggleMenu {
+    //Задаёт парамеры появленя выпадающего меню.
     if (self.menu.isOpen)
         return [self.menu close];
-    [self.menu showInView:self.view];
+    [self.menu showFromRect:CGRectMake(0, 62, self.view.frame.size.width, 300) inView:self.view];
 }
 
 - (void) aTimeUpdate {
+    //Инициализирует таймер]
     [Timer getCurrentTime];
     [Timer comparisonOfTime];
     [Timer minusTime];
     if (toLessonBool == NO) {
-        timer.text = [[NSString alloc]initWithFormat:@"До конца пары: %d:%d:%d", endHours, endMinutes, endSeconds];
+        timer.text = [[NSString alloc]initWithFormat:@"До конца пары: %.2d:%.2d:%.2d", endHours, endMinutes, endSeconds];
     }
     else {
-        timer.text = [[NSString alloc]initWithFormat:@"До начала пары: %d:%d:%d", endHours, endMinutes, endSeconds];
+        timer.text = [[NSString alloc]initWithFormat:@"До начала пары: %.2d:%.2d:%.2d", endHours, endMinutes, endSeconds];
     }
     [Timer cleaner];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

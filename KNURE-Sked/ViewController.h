@@ -13,8 +13,11 @@
     IBOutlet UILabel *timer;
     IBOutlet UIScrollView *mainSkedView;
     IBOutlet UIView *skedCell;
+    IBOutlet UIView *newSkedCell;
     IBOutlet UIView *timeLineView;
     int standartScrollPosition;
+    NSString *userChanges;
+    NSMutableArray *rects;
     NSMutableData *receivedData;
 }
 
@@ -23,6 +26,7 @@
 @property (strong, nonatomic) UIButton *menuBtn;
 
 - (void)getLastUpdate;
+- (id)initWithCoder:(NSCoder*)aDecoder;
 
 @end
 
