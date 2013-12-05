@@ -7,7 +7,9 @@
 //
 #import "ViewController.h"
 #import "ECSlidingViewController.h"
+#import "NewSkedCell.h"
 #import "TabsViewController.h"
+#import "InitViewController.h"
 #import "GroupList.h"
 #import "TeachersList.h"
 #import "REMenu.h"
@@ -56,6 +58,7 @@
     [self aTimeUpdate];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTimeUpdate) userInfo:nil repeats:YES];
     @try {
+        
         //[self getLastUpdate];
         [self createScrollMenu];
         [self createTimeMenu];
@@ -81,7 +84,7 @@
     int countDuplitateDays = 0;
     int maxContentSize = 55*5;
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
-    NSArray *sorted = [fullLessonsData objectForKey:curId];
+    sorted = [fullLessonsData objectForKey:curId];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
     mainSkedView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, self.view.frame.size.height-95)];
@@ -153,12 +156,12 @@
                                 }
         if ([temp containsObject:@"Лк"]) {
             skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-            skedCell.backgroundColor = [UIColor colorWithRed:0.996 green:0.996 blue:0.918 alpha:1.0];
+            skedCell.backgroundColor = [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
         }
         else
             if ([temp containsObject:@"Пз"]) {
                 skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
-                skedCell.backgroundColor = [UIColor colorWithRed:0.855 green:0.914 blue:0.851 alpha:1.0];
+                skedCell.backgroundColor = [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
             }
             else
                 if ([temp containsObject:@"Лб"]) {
@@ -185,6 +188,7 @@
                                     skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                     skedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
                                 }
+        skedCell.tag = i;
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
@@ -199,21 +203,7 @@
         [dateGrid addSubview:date];
         [skedCell addSubview:sked];
     }
-    userChanges = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
-    NSLog(@"%@", userChanges);
-    
-    NSMutableArray *userSked = [[NSUserDefaults standardUserDefaults] objectForKey:userChanges];
-    if(userSked.count > 0) {
-        CGRect skedRect;
-        for(int i=0;i<userSked.count;i++) {
-            skedRect = CGRectFromString([userSked objectAtIndex:i]);
-            newSkedCell = [[UIView alloc]initWithFrame:skedRect];
-            newSkedCell.backgroundColor = [UIColor orangeColor];
-            [mainSkedView addSubview:newSkedCell];
-            [self skedCellAddLONGPRESSGestureRecognizer];
-        }
-    }
-    
+    [self drawUserChanges];
     mainSkedView.contentSize = CGSizeMake(scrollViewSize, maxContentSize + 85);
     mainSkedView.backgroundColor = [UIColor whiteColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -361,32 +351,70 @@
      При длительном нажатии на пустом месте появляется пара на вьюшке.
      */
     CGRect skedRect;
+    UILabel *lessonText;
     CGPoint touchPoint = [recogniser locationInView:recogniser.view];
-    userChanges = [NSString stringWithFormat:@"%@%@",@"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     if(recogniser.state == UIGestureRecognizerStateBegan) {
+        [self goToNewCell:nil];
+        NSLog(@"WUT");
+       // [self dismissViewControllerAnimated:YES completion:nil];
         NSUserDefaults *savedRectangles = [NSUserDefaults standardUserDefaults];
-        NSArray *temp = [savedRectangles objectForKey:userChanges];
-        NSMutableArray *userSkedRects =  nil;
+        NSUserDefaults *savedText = [NSUserDefaults standardUserDefaults];
+        NSArray *temp = [savedRectangles objectForKey:userAddLesson];
+        NSArray *temp2 = [savedText objectForKey:userAddLessonText];
+        NSMutableArray *userSkedRects = nil;
+        NSMutableArray *userSkedText = nil;
+        
         if(temp) {
             userSkedRects = [temp mutableCopy];
         } else {
             userSkedRects = [[NSMutableArray alloc]init];
         }
+        
+        if(temp2) {
+            userSkedText = [temp2 mutableCopy];
+        } else {
+            userSkedText = [[NSMutableArray alloc]init];
+        }
+        
         for(int i=0; i<rects.count; i++) {
             skedRect = [[rects objectAtIndex:i] CGRectValue];
-            if(CGRectContainsPoint(skedRect, touchPoint)==YES) {
-                newSkedCell = [[UIView alloc]initWithFrame:skedRect];
-                [userSkedRects addObject:NSStringFromCGRect(skedRect)];
-                [savedRectangles setObject:userSkedRects forKey:userChanges];
-                [savedRectangles synchronize];
-                [self skedCellAddLONGPRESSGestureRecognizer];
+            if(CGRectContainsPoint(skedRect, touchPoint) == YES) {
+                
+                
+                if(lessonData.length > 2) {
+                    lessonText = [[UILabel alloc]initWithFrame:skedRect];
+                    lessonText.text = lessonData;
+                    lessonText.textAlignment = NSTextAlignmentCenter;
+                    newSkedCell = [[UIView alloc]initWithFrame:skedRect];
+                    newSkedCell.tag = i + 7000;
+                    [userSkedRects addObject:NSStringFromCGRect(skedRect)];
+                    [userSkedText addObject:lessonData];
+                    [savedRectangles setObject:userSkedRects forKey:userAddLesson];
+                    [savedText setObject:userSkedText forKey:userAddLessonText];
+                    [savedRectangles synchronize];
+                    [savedText synchronize];
+                    
+                    newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
+                    //lessonText.backgroundColor = [UIColor clearColor];
+                    [lessonText setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+                    lessonText.lineBreakMode = 5;
+                    lessonText.numberOfLines = 3;
+                    //lessonText.textColor = [UIColor blackColor];
+                
+                    [newSkedCell addSubview:lessonText];
+                
+                    [mainSkedView addSubview:newSkedCell];
+                
+                    [timeLineView removeFromSuperview];
+                    [self createTimeMenu];
+                    [self skedCellAddLONGPRESSGestureRecognizer];
+                   // lessonData = @"";
+                }
                 break;
             }
         }
-        newSkedCell.backgroundColor = [UIColor orangeColor];
-        [mainSkedView addSubview:newSkedCell];
-        [timeLineView removeFromSuperview];
-        [self createTimeMenu];
     }
 }
 
@@ -400,12 +428,62 @@
 }
 
 - (void) longPressOnSkedCellDetected:(UILongPressGestureRecognizer *)recogniser {
-    /*
-     Обработчик события: при длительном нажатии на skedCell вызвать UIActionSheet.
-     В ДАННЫЙ МОМЕНТ ЭТО ПРОСТО СКРОЕТ ПРЕДМЕТ ИЗ ВЬЮШКИ.
-     */
     if(recogniser.state == UIGestureRecognizerStateBegan) {
-        recogniser.view.self.hidden = YES;
+        skedCell = recogniser.view;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd.MM.yyyy"];
+        NSString *cellDate = [formatter stringFromDate:[[sorted objectAtIndex:skedCell.tag] valueForKey:@"date"]];
+        NSString *title = [[sorted objectAtIndex:skedCell.tag] valueForKey:@"object"];
+        NSString *cellNum = [title substringToIndex:2];
+        NSString *cellDT = @"";
+        if ([cellNum isEqualToString:@" 1"]) {
+            cellDT = [NSString stringWithFormat:@"%@ 7:45", cellDate];
+        } else
+            if ([cellNum isEqualToString:@" 2"]) {
+                cellDT = [NSString stringWithFormat:@"%@ 9:30", cellDate];
+            } else
+                if ([cellNum isEqualToString:@" 3"]) {
+                    cellDT = [NSString stringWithFormat:@"%@ 11:15", cellDate];
+                } else
+                    if ([cellNum isEqualToString:@" 4"]) {
+                        cellDT = [NSString stringWithFormat:@"%@ 13:10", cellDate];
+                    } else
+                        if ([cellNum isEqualToString:@" 5"]) {
+                            cellDT = [NSString stringWithFormat:@"%@ 14:55", cellDate];
+                        } else
+                            if ([cellNum isEqualToString:@" 6"]) {
+                                cellDT = [NSString stringWithFormat:@"%@ 16:40", cellDate];
+                            } else
+                                if ([cellNum isEqualToString:@" 7"]) {
+                                    cellDT = [NSString stringWithFormat:@"%@ 18:25",cellDate];
+                                } else
+                                    if ([cellNum isEqualToString:@" 8"]) {
+                                        cellDT = [NSString stringWithFormat:@"%@ 20:10",cellDate];
+                                    }
+        NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
+        [fullData setValue:cellDT forKey:@"CellDate"];
+        UIActionSheet *cellOptions = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:@"Убрать пару" otherButtonTitles:@"Добавить заметку", @"Напомнить",nil];
+        [cellOptions setActionSheetStyle:UIActionSheetStyleBlackOpaque];
+        [cellOptions showInView:self.view];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Убрать пару"]) {
+        userDeleteLesson = [NSString stringWithFormat:@"%@%@", @"userDeletedFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+        NSUserDefaults *deletedRectangles = [NSUserDefaults standardUserDefaults];
+        NSArray *temp = [deletedRectangles objectForKey:userDeleteLesson];
+        NSMutableArray *userSkedDeletedRects =  nil;
+        if(temp) {
+            userSkedDeletedRects = [temp mutableCopy];
+        } else {
+            userSkedDeletedRects = [[NSMutableArray alloc]init];
+        }
+        [userSkedDeletedRects addObject:[NSNumber numberWithInteger:skedCell.tag]];
+        [deletedRectangles setObject:userSkedDeletedRects forKey:userDeleteLesson];
+        [deletedRectangles synchronize];
+        NSLog(@"%ld", (long)skedCell.tag);
+        [skedCell removeFromSuperview];
     }
 }
 
@@ -429,12 +507,14 @@
     TeachersList *tl = [[TeachersList alloc] init];
     GroupList *hl = [[GroupList alloc] init];
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    toggleBtn.tintColor = [UIColor blackColor];
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat centerX = screenSize.width/2.0;
-    toggleBtn.frame = CGRectMake(centerX-100, 30, 200, 24);
-    [toggleBtn setTitle:[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"] forState:UIControlStateNormal];
+    [self.toggleBtn.titleLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 18.0f]];
+    self.toggleBtn.titleLabel.textColor = [UIColor blackColor];
+    toggleBtn.frame = CGRectMake(60, 30, 200, 24);
+    NSString *title = [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"],@" ▾"];
+    [toggleBtn setTitle:title forState:UIControlStateNormal];
     [toggleBtn addTarget:self action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
+    toggleBtn.titleLabel.textColor = [UIColor blackColor];
+    toggleBtn.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
     [self.view addSubview:toggleBtn];
     NSMutableArray *items = [[NSMutableArray alloc] init];
     NSArray *grHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedGroups"];
@@ -468,9 +548,18 @@
 
 - (void) toggleMenu {
     //Задаёт парамеры появленя выпадающего меню.
-    if (self.menu.isOpen)
+    if (self.menu.isOpen){
         return [self.menu close];
+    }
     [self.menu showFromRect:CGRectMake(0, 62, self.view.frame.size.width, 300) inView:self.view];
+}
+
+- (IBAction)goToNewCell:(id)sender {
+    InitViewController *ini;
+    ini = [self.storyboard instantiateViewControllerWithIdentifier:@"Init"];
+    ini.location = @"ДобавлениеПары";
+    NewSkedCell *second = [self.storyboard instantiateViewControllerWithIdentifier:@"ДобавлениеПары"];
+    [self presentViewController:second animated:YES completion:nil];
 }
 
 - (void) aTimeUpdate {
@@ -485,6 +574,46 @@
         timer.text = [[NSString alloc]initWithFormat:@"До начала пары: %.2d:%.2d:%.2d", endHours, endMinutes, endSeconds];
     }
     [Timer cleaner];
+}
+
+- (void) drawUserChanges {
+    // Вносит пользовательские изменения в расписании
+    // добавленные\удалённые предметы
+    userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    NSLog(@"%@", userAddLesson);
+    NSLog(@"%@", userAddLessonText);
+    NSMutableArray *userSked = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLesson];
+    NSMutableArray *userSkedText = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLessonText];
+    if(userSked.count > 0 && userSkedText > 0) {
+        CGRect skedRect;
+        for(int i=0;i<userSked.count;i++) {
+            NSLog(@"Adding sked whith coordinates %@", [userSked objectAtIndex:i]);
+            NSLog(@"Adding text to sked: %@", [userSkedText objectAtIndex:i]);
+            skedRect = CGRectFromString([userSked objectAtIndex:i]);
+            newSkedCell = [[UIView alloc]initWithFrame:skedRect];
+            UILabel *lesson = [[UILabel alloc]initWithFrame:skedRect];
+            NSString *temp = [userSkedText objectAtIndex:i];
+            lesson.text = temp;
+            lesson.lineBreakMode = 5;
+            lesson.numberOfLines = 3;
+            lesson.textColor = [UIColor blackColor];
+            newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
+            lesson.backgroundColor = [UIColor clearColor];
+            [mainSkedView addSubview:lesson];
+            [newSkedCell addSubview:lesson];
+            [self skedCellAddLONGPRESSGestureRecognizer];
+        }
+    }
+    userDeleteLesson = [NSString stringWithFormat:@"%@%@", @"userDeletedFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    NSLog(@"%@", userDeleteLesson);
+    NSMutableArray *deletedSked = [[NSUserDefaults standardUserDefaults]objectForKey:userDeleteLesson];
+    if(deletedSked.count>0) {
+        for (int i=0;i<deletedSked.count;i++) {
+            NSLog(@"cell at tag will be deleted %d", [[deletedSked objectAtIndex:i] integerValue]);
+            [[mainSkedView viewWithTag:[[deletedSked objectAtIndex:i] integerValue]] removeFromSuperview];
+        }
+    }
 }
 
 @end

@@ -13,6 +13,7 @@
 @end
 
 @implementation InitViewController
+@synthesize location;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,7 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Расписание"];
+    if([location length] == 0) {
+        location = @"Расписание";
+    }
+    self.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:location];
+    //self.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Расписание"];
 }
 
 - (void)didReceiveMemoryWarning {

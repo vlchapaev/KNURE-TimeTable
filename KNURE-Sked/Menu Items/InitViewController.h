@@ -9,5 +9,5 @@
 #import "ECSlidingViewController.h"
 
 @interface InitViewController : ECSlidingViewController
-
+@property (nonatomic, retain) NSString *location;
 @end

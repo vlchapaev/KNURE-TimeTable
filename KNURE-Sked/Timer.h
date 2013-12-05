@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Timer : NSObject
-//+ (NSString*) aTimeUpdate;
 + (void) getCurrentTime;
 + (void) comparisonOfTime;
 + (void) minusTime;

@@ -12,7 +12,7 @@
 @implementation Timer
 
 + (void) getCurrentTime {
-    //Get data
+    //Get date
     NSDate *currentDateTime = [NSDate date];
     
     //Set format for data

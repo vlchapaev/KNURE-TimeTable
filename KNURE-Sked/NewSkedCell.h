@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewSkedCell : UIViewController
 
+@interface NewSkedCell : UIViewController <UIAlertViewDelegate> {
+    IBOutlet UITextField *lesson;
+    IBOutlet UITextView *note;
+}
+- (IBAction)goBack:(id)sender;
+- (IBAction)done:(id)sender;
 @end
+NSString *lessonData;
+NSString *noteData;

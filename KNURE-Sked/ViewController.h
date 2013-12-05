@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "REMenu.h"
 
-@interface ViewController : UIViewController <UIScrollViewDelegate> {
+@interface ViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {
     IBOutlet UILabel *timer;
     IBOutlet UIScrollView *mainSkedView;
     IBOutlet UIView *skedCell;
     IBOutlet UIView *newSkedCell;
     IBOutlet UIView *timeLineView;
     int standartScrollPosition;
-    NSString *userChanges;
+    NSMutableArray *sorted;
+    NSString *userAddLesson;
+    NSString *userAddLessonText;
+    NSString *userDeleteLesson;
     NSMutableArray *rects;
     NSMutableData *receivedData;
 }
@@ -27,6 +30,7 @@
 
 - (void)getLastUpdate;
 - (id)initWithCoder:(NSCoder*)aDecoder;
+- (IBAction)goToNewCell:(id)sender;
 
 @end
 
