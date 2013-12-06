@@ -12,6 +12,7 @@
 #import "InitViewController.h"
 #import "GroupList.h"
 #import "TeachersList.h"
+#import "NoteForm.h"
 #import "REMenu.h"
 #import "Timer.h"
 
@@ -93,8 +94,9 @@
     [mainSkedView setShowsVerticalScrollIndicator:NO];
     [self mainScrollViewAddDOUBLETAPGestureRecognizer];
     [self mainScrollViewAddLONGPRESSGestureRecognizer];
+    NSString *notesXRequest = [NSString stringWithFormat:@"%@%@",@"usrNotesXFor",[fullLessonsData valueForKey:@"ID"]];
+    NSString *notesYRequest = [NSString stringWithFormat:@"%@%@",@"usrNotesYFor",[fullLessonsData valueForKey:@"ID"]];
     for(int i=1; i<sorted.count; i++) {
-        [self skedCellAddLONGPRESSGestureRecognizer];
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
         UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, 5, 110, 20)];
@@ -198,12 +200,26 @@
         [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
         lessonShift = 25;
+        skedCell.tag = i;
+        [self skedCellAddLONGPRESSGestureRecognizer];
         [mainSkedView addSubview:dateGrid];
         [mainSkedView addSubview:skedCell];
         [dateGrid addSubview:date];
         [skedCell addSubview:sked];
     }
     [self drawUserChanges];
+    @try {
+        NSMutableArray *notesX = [[fullLessonsData valueForKeyPath:notesXRequest] mutableCopy];
+        NSMutableArray *notesY = [[fullLessonsData valueForKeyPath:notesYRequest] mutableCopy];
+        UIImage *noteImg = [UIImage imageNamed:@"note.png"];
+        for (int i = 0;i < notesX.count;i++) {
+            UIImageView *noteImageView = [[UIImageView alloc] initWithImage:noteImg];
+            noteImageView.frame = (CGRect){.origin=CGPointMake([[notesX objectAtIndex:i] floatValue], [[notesY objectAtIndex:i] floatValue]), .size = noteImg.size};
+            [self->mainSkedView addSubview:noteImageView];
+        }
+    }
+    @catch (NSException *e) {
+    }
     mainSkedView.contentSize = CGSizeMake(scrollViewSize, maxContentSize + 85);
     mainSkedView.backgroundColor = [UIColor whiteColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -285,7 +301,6 @@
      */
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"curGroupId"];
     NSString *curRequest = [NSString stringWithFormat:@"%@%@%@",@"http://cist.kture.kharkov.ua/ias/app/tt/WEB_IAS_TT_GNR_RASP.GEN_GROUP_POTOK_RASP?ATypeDoc=4&Aid_group=", curId, @"&Aid_potok=0&ADateStart=01.09.2013&ADateEnd=31.01.2014&AMultiWorkSheet=0"];
-    NSLog(@"%@",curRequest);
     NSError *error = nil;
     NSUserDefaults* fullLessonsData = [NSUserDefaults standardUserDefaults];
     NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:curRequest]];
@@ -357,7 +372,7 @@
     userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     if(recogniser.state == UIGestureRecognizerStateBegan) {
         [self goToNewCell:nil];
-        NSLog(@"WUT");
+        //NSLog(@"WUT");
        // [self dismissViewControllerAnimated:YES completion:nil];
         NSUserDefaults *savedRectangles = [NSUserDefaults standardUserDefaults];
         NSUserDefaults *savedText = [NSUserDefaults standardUserDefaults];
@@ -420,7 +435,7 @@
 
 - (void) skedCellAddLONGPRESSGestureRecognizer {
     /*
-     Добавляет этот же жест на каждую ячейку с в расписании.
+     Добавляет этот же жест на каждую ячейку в расписании.
      */
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnSkedCellDetected:)];
     [skedCell addGestureRecognizer:recognizer];
@@ -460,8 +475,22 @@
                                     if ([cellNum isEqualToString:@" 8"]) {
                                         cellDT = [NSString stringWithFormat:@"%@ 20:10",cellDate];
                                     }
+        float noteX = skedCell.frame.origin.x + skedCell.frame.size.width - 15;
+        float noteY = skedCell.frame.origin.y - 5;
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
         [fullData setValue:cellDT forKey:@"CellDate"];
+        [fullData setValue:[NSString stringWithFormat:@"%f",noteX] forKey:@"cellX"];
+        [fullData setValue:[NSString stringWithFormat:@"%f",noteY] forKey:@"cellY"];
+        NSString *tempRequest = [NSString stringWithFormat:@"%@%@",@"usrNoteDatesFor",[fullData valueForKey:@"ID"]];
+        if ([fullData valueForKeyPath:tempRequest] != nil) {
+            NSMutableArray *noteDates = [fullData valueForKeyPath:tempRequest];
+            if ([noteDates containsObject:cellDT]) {
+                UIActionSheet *cellOptions = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:@"Убрать пару" otherButtonTitles:@"Редактировать заметку", @"Напомнить",nil];
+                [cellOptions setActionSheetStyle:UIActionSheetStyleBlackOpaque];
+                [cellOptions showInView:self.view];
+                return;
+            }
+        }
         UIActionSheet *cellOptions = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:@"Убрать пару" otherButtonTitles:@"Добавить заметку", @"Напомнить",nil];
         [cellOptions setActionSheetStyle:UIActionSheetStyleBlackOpaque];
         [cellOptions showInView:self.view];
@@ -482,8 +511,13 @@
         [userSkedDeletedRects addObject:[NSNumber numberWithInteger:skedCell.tag]];
         [deletedRectangles setObject:userSkedDeletedRects forKey:userDeleteLesson];
         [deletedRectangles synchronize];
-        NSLog(@"%ld", (long)skedCell.tag);
+        //NSLog(@"%ld", (long)skedCell.tag);
         [skedCell removeFromSuperview];
+    }
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Добавить заметку"]||[[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Редактировать заметку"]) {
+        UIViewController *topNoteForm = [self.storyboard instantiateViewControllerWithIdentifier:@"Заметка"];
+        self.slidingViewController.topViewController = topNoteForm;
+        [self.slidingViewController resetTopView];
     }
 }
 
@@ -581,15 +615,15 @@
     // добавленные\удалённые предметы
     userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
-    NSLog(@"%@", userAddLesson);
-    NSLog(@"%@", userAddLessonText);
+    //NSLog(@"%@", userAddLesson);
+    //NSLog(@"%@", userAddLessonText);
     NSMutableArray *userSked = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLesson];
     NSMutableArray *userSkedText = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLessonText];
     if(userSked.count > 0 && userSkedText > 0) {
         CGRect skedRect;
         for(int i=0;i<userSked.count;i++) {
-            NSLog(@"Adding sked whith coordinates %@", [userSked objectAtIndex:i]);
-            NSLog(@"Adding text to sked: %@", [userSkedText objectAtIndex:i]);
+            //NSLog(@"Adding sked whith coordinates %@", [userSked objectAtIndex:i]);
+            //NSLog(@"Adding text to sked: %@", [userSkedText objectAtIndex:i]);
             skedRect = CGRectFromString([userSked objectAtIndex:i]);
             newSkedCell = [[UIView alloc]initWithFrame:skedRect];
             UILabel *lesson = [[UILabel alloc]initWithFrame:skedRect];
@@ -606,11 +640,11 @@
         }
     }
     userDeleteLesson = [NSString stringWithFormat:@"%@%@", @"userDeletedFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
-    NSLog(@"%@", userDeleteLesson);
+    //NSLog(@"%@", userDeleteLesson);
     NSMutableArray *deletedSked = [[NSUserDefaults standardUserDefaults]objectForKey:userDeleteLesson];
     if(deletedSked.count>0) {
         for (int i=0;i<deletedSked.count;i++) {
-            NSLog(@"cell at tag will be deleted %d", [[deletedSked objectAtIndex:i] integerValue]);
+            //NSLog(@"cell at tag will be deleted %d", [[deletedSked objectAtIndex:i] integerValue]);
             [[mainSkedView viewWithTag:[[deletedSked objectAtIndex:i] integerValue]] removeFromSuperview];
         }
     }

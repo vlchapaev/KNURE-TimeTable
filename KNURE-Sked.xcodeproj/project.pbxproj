@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6928EA27182D94BE00070B44 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* GroupList.m */; };
+		694F39171851883F0034165F /* NoteTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F39161851883F0034165F /* NoteTable.m */; };
+		694F3919185188970034165F /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 694F3918185188970034165F /* note.png */; };
+		69DA97DA1851872C0059627B /* NoteForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DA97D91851872C0059627B /* NoteForm.m */; };
 		C33F1950181D4AA900DA4972 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F194F181D4AA900DA4972 /* CFNetwork.framework */; };
 		C33F1952181D4AC100DA4972 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */; };
 		C33F1954181D4ACF00DA4972 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */; };
@@ -60,6 +63,11 @@
 /* Begin PBXFileReference section */
 		6928EA25182D94BE00070B44 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; };
+		694F39151851883F0034165F /* NoteTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTable.h; sourceTree = "<group>"; };
+		694F39161851883F0034165F /* NoteTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTable.m; sourceTree = "<group>"; };
+		694F3918185188970034165F /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
+		69DA97D81851872C0059627B /* NoteForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteForm.h; sourceTree = "<group>"; };
+		69DA97D91851872C0059627B /* NoteForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteForm.m; sourceTree = "<group>"; };
 		C33F194F181D4AA900DA4972 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C33F1951181D4AC100DA4972 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C33F1953181D4ACF00DA4972 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -189,6 +197,8 @@
 		C33FCC6C1819965300328F6D /* KNURE-Sked */ = {
 			isa = PBXGroup;
 			children = (
+				69DA97D81851872C0059627B /* NoteForm.h */,
+				69DA97D91851872C0059627B /* NoteForm.m */,
 				C33FCC781819965300328F6D /* Main.storyboard */,
 				C33FCC751819965300328F6D /* AppDelegate.h */,
 				C33FCC761819965300328F6D /* AppDelegate.m */,
@@ -280,6 +290,8 @@
 		C3D6FE561823E60F00BB3B84 /* Menu Items */ = {
 			isa = PBXGroup;
 			children = (
+				694F39151851883F0034165F /* NoteTable.h */,
+				694F39161851883F0034165F /* NoteTable.m */,
 				C3D6FE631823F0C800BB3B84 /* InitViewController.h */,
 				C3D6FE641823F0C800BB3B84 /* InitViewController.m */,
 				C3D6FE571823E68F00BB3B84 /* TabsViewController.h */,
@@ -301,6 +313,7 @@
 		C3D6FE661823F24400BB3B84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				694F3918185188970034165F /* note.png */,
 				C3D6FE671823F26E00BB3B84 /* menuButton@2x.png */,
 			);
 			path = Resources;
@@ -383,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
+				694F3919185188970034165F /* note.png in Resources */,
 				C33FCC711819965300328F6D /* InfoPlist.strings in Resources */,
 				C33FCC7A1819965300328F6D /* Main.storyboard in Resources */,
 				C3D6FE681823F26E00BB3B84 /* menuButton@2x.png in Resources */,
@@ -407,6 +421,7 @@
 				C3D6FE591823E68F00BB3B84 /* TabsViewController.m in Sources */,
 				C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */,
 				C3E030B31825277800B7AF70 /* Summary.m in Sources */,
+				69DA97DA1851872C0059627B /* NoteForm.m in Sources */,
 				C3A0E53B181D0AD000A8AF9E /* HTMLNode.m in Sources */,
 				C3E030B0182524BE00B7AF70 /* Settings.m in Sources */,
 				C3CE8F3F183280D0006B3E39 /* REMenuItemView.m in Sources */,
@@ -417,6 +432,7 @@
 				C3EA892318467F57009FFC3C /* Timer.m in Sources */,
 				C3F6BA9B182FE5A60045C0C4 /* TeachersList.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
+				694F39171851883F0034165F /* NoteTable.m in Sources */,
 				C3CE8F3D183280D0006B3E39 /* REMenuContainerView.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				C3A0E53C181D0AD000A8AF9E /* HTMLParser.m in Sources */,

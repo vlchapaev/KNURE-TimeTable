@@ -40,7 +40,7 @@
 
 - (void)alertOKCancelAction {
     // open a alert with an OK and cancel button
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"UIAlertView" message:@"Вы уверены, что хотите покинуть меню?" delegate:self cancelButtonTitle:@"Да" otherButtonTitles:@"Нет", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Создание пары" message:@"Вы уверены, что хотите покинуть меню?" delegate:self cancelButtonTitle:@"Да" otherButtonTitles:@"Нет", nil];
     [alert show];
 }
 
