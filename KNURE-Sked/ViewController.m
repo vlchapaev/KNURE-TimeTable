@@ -21,7 +21,6 @@
 @synthesize menuBtn;
 @synthesize toggleBtn;
 
-
 - (id)initWithCoder:(NSCoder*)aDecoder {
     /*
      Инициализирует объекты перед началом выполнения, в частности, здесь иницилизируется массив координат всех возможных мест положений skedView. Позднее он будет использоваться при отрисовке новых пар пользователем.
@@ -36,7 +35,7 @@
         for(int i=0; i<500; i++) {
             [rects addObject:[NSValue valueWithCGRect:CGRectMake(pointX1, pointY1, pointX2, pointY2)]];
             pointX1 += 115;
-            if(i==499 && j<8) {
+            if(i == 499 && j < 8) {
                 pointY1 += 55;
                 pointX1 = 55;
                 j++;
@@ -58,15 +57,16 @@
     [self initializeSlideMenu];
     [self aTimeUpdate];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTimeUpdate) userInfo:nil repeats:YES];
-    @try {
+    if([self isNull]==false) {
+        @try {
+            //[self getLastUpdate];
+            [self createScrollMenu];
+            [self createTimeMenu];
+            [self initToggleMenu];
+        }
+        @catch(NSException *e) {
         
-        //[self getLastUpdate];
-        [self createScrollMenu];
-        [self createTimeMenu];
-        [self initToggleMenu];
-    }
-    @catch(NSException *e) {
-        
+        }
     }
 }
 
@@ -76,14 +76,12 @@
      Данные берутся из userdefaults, с ключем, который равен id группы или преподавателя.
      полученные данные отрисовываются по очень большому и непродуманному алгоритму.
      */
-    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
-    if(curId.length < 1)
-        return;
     int dayShift = 0;
     int lessonShift = 25;
     int scrollViewSize = 0;
     int countDuplitateDays = 0;
     int maxContentSize = 55*5;
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     NSUserDefaults *fullLessonsData = [NSUserDefaults standardUserDefaults];
     sorted = [fullLessonsData objectForKey:curId];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -116,15 +114,15 @@
             scrollViewSize += dateGrid.frame.size.width + 6;
         }
         
-        date.text = [formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]];
+        date.text = [self getWeekDay:[formatter stringFromDate:[[sorted objectAtIndex:i-1] valueForKey:@"date"]]];
         
         if([[formatter stringFromDate:[NSDate date]]isEqual:[formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]]]) {
             mainSkedView.contentOffset = CGPointMake(dayShift, 0);
             standartScrollPosition = dayShift;
         }
         
-        if([[[sorted objectAtIndex:i] valueForKey:@"object"]  isEqual: @" "]) {
-            [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
+        if([[[sorted objectAtIndex:i] valueForKey:@"object"] isEqual: @" "]) {
+            [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
             date.textAlignment = NSTextAlignmentCenter;
             [mainSkedView addSubview:dateGrid];
             [dateGrid addSubview:date];
@@ -159,45 +157,38 @@
         if ([temp containsObject:@"Лк"]) {
             skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
             skedCell.backgroundColor = [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
-        }
-        else
+        } else
             if ([temp containsObject:@"Пз"]) {
                 skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                 skedCell.backgroundColor = [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
-            }
-            else
+            } else
                 if ([temp containsObject:@"Лб"]) {
                     skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                     skedCell.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
-                }
-                else
+                } else
                     if ([temp containsObject:@"Конс"]) {
                         skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                         skedCell.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
-                    }
-                    else
+                    } else
                         if ([temp containsObject:@"ЕкзУ"]) {
                             skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                             skedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
-                        }
-                        else
+                        } else
                             if ([temp containsObject:@"ЕкзП"]) {
                                 skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                 skedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
-                            }
-                            else
+                            } else
                                 if ([temp containsObject:@"Зал"]) {
                                     skedCell = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, lessonShift + 5, 110, 50)];
                                     skedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
                                 }
-        skedCell.tag = i;
         sked.text = [tempDay stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
         sked.backgroundColor = [UIColor clearColor];
-        [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
+        [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
         date.textAlignment = NSTextAlignmentCenter;
-        [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+        [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
         lessonShift = 25;
         skedCell.tag = i;
@@ -221,7 +212,7 @@
     @catch (NSException *e) {
     }
     mainSkedView.contentSize = CGSizeMake(scrollViewSize, maxContentSize + 85);
-    mainSkedView.backgroundColor = [UIColor whiteColor];
+    mainSkedView.backgroundColor = [UIColor clearColor];
     mainSkedView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:mainSkedView];
 }
@@ -363,16 +354,17 @@
 - (void) longPressOnMainSkedView:(UITapGestureRecognizer *)recogniser {
     /*
      Обработчик события "длительное нажатие".
-     При длительном нажатии на пустом месте появляется пара на вьюшке.
+     Идёт переход на новую вьюшку, где нужно добавить название предмета илисобытия.
+     Затем появляется пара на вьюшке.
      */
+    /*
     CGRect skedRect;
-    UILabel *lessonText;
     CGPoint touchPoint = [recogniser locationInView:recogniser.view];
     userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     if(recogniser.state == UIGestureRecognizerStateBegan) {
-        [self goToNewCell:nil];
-        //NSLog(@"WUT");
+        //[self goToNewCell:nil];
+        NSLog(@"WUT");
        // [self dismissViewControllerAnimated:YES completion:nil];
         NSUserDefaults *savedRectangles = [NSUserDefaults standardUserDefaults];
         NSUserDefaults *savedText = [NSUserDefaults standardUserDefaults];
@@ -397,40 +389,84 @@
             skedRect = [[rects objectAtIndex:i] CGRectValue];
             if(CGRectContainsPoint(skedRect, touchPoint) == YES) {
                 
-                
+                lessonData = @"This is Лк test.";
                 if(lessonData.length > 2) {
-                    lessonText = [[UILabel alloc]initWithFrame:skedRect];
-                    lessonText.text = lessonData;
-                    lessonText.textAlignment = NSTextAlignmentCenter;
+                    
+                    
+                    UILabel *lesson = [[UILabel alloc]initWithFrame:skedRect];
+                    
+                    lesson.text = lessonData;
+                    lesson.textAlignment = NSTextAlignmentCenter;
+                    lesson.backgroundColor = [UIColor clearColor];
+                    [lesson setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+                    lesson.lineBreakMode = 5;
+                    lesson.numberOfLines = 3;
+                    
                     newSkedCell = [[UIView alloc]initWithFrame:skedRect];
-                    newSkedCell.tag = i + 7000;
+                    
+                    if(!([lessonData rangeOfString:@"Лк"].location == NSNotFound)) {
+                        newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
+                    } else
+                        if(!([lessonData rangeOfString:@"Пз"].location == NSNotFound)) {
+                            newSkedCell.backgroundColor = [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
+                        } else
+                            if(!([lessonData rangeOfString:@"Лб"].location == NSNotFound)) {
+                                newSkedCell.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+                            } else
+                                if(!([lessonData rangeOfString:@"Конс"].location == NSNotFound)) {
+                                    newSkedCell.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+                                } else
+                                    if(!([lessonData rangeOfString:@"Зал"].location == NSNotFound)) {
+                                        newSkedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+                                    } else
+                                        if(!([lessonData rangeOfString:@"зач"].location == NSNotFound)) {
+                                            newSkedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+                                        } else
+                                            if(!([lessonData rangeOfString:@"ЕкзП"].location == NSNotFound)) {
+                                                newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                            } else
+                                                if(!([lessonData rangeOfString:@"ЕкзУ"].location == NSNotFound)) {
+                                                    newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                                } else
+                                                    if(!([lessonData rangeOfString:@"Екз"].location == NSNotFound)) {
+                                                        newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                                    } else
+                                                        newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
+                    
+                    
+                    UILabel *spike=[[UILabel alloc]initWithFrame:skedRect];
+                    spike.text = @"your mom";
+                    
+                    [mainSkedView addSubview:newSkedCell];
+                    [newSkedCell addSubview:spike];
+                    [newSkedCell addSubview:lesson];
+                    
+                   // [mainSkedView addSubview:lesson];
+                   // [mainSkedView addSubview:spike];
+                    
+                    
+                    
+                    //newSkedCell.tag = i + 7000;
+                    
                     [userSkedRects addObject:NSStringFromCGRect(skedRect)];
                     [userSkedText addObject:lessonData];
                     [savedRectangles setObject:userSkedRects forKey:userAddLesson];
                     [savedText setObject:userSkedText forKey:userAddLessonText];
                     [savedRectangles synchronize];
                     [savedText synchronize];
+                
                     
-                    newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
-                    //lessonText.backgroundColor = [UIColor clearColor];
-                    [lessonText setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
-                    lessonText.lineBreakMode = 5;
-                    lessonText.numberOfLines = 3;
-                    //lessonText.textColor = [UIColor blackColor];
-                
-                    [newSkedCell addSubview:lessonText];
-                
-                    [mainSkedView addSubview:newSkedCell];
-                
+                    
+                    
                     [timeLineView removeFromSuperview];
                     [self createTimeMenu];
                     [self skedCellAddLONGPRESSGestureRecognizer];
-                   // lessonData = @"";
+                    break;
                 }
-                break;
             }
         }
     }
+        */
 }
 
 - (void) skedCellAddLONGPRESSGestureRecognizer {
@@ -615,15 +651,15 @@
     // добавленные\удалённые предметы
     userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
     userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
-    //NSLog(@"%@", userAddLesson);
-    //NSLog(@"%@", userAddLessonText);
+    NSLog(@"%@", userAddLesson);
+    NSLog(@"%@", userAddLessonText);
     NSMutableArray *userSked = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLesson];
     NSMutableArray *userSkedText = [[NSUserDefaults standardUserDefaults] objectForKey:userAddLessonText];
-    if(userSked.count > 0 && userSkedText > 0) {
+    if(userSked.count > 0 && userSkedText.count > 0) {
         CGRect skedRect;
         for(int i=0;i<userSked.count;i++) {
-            //NSLog(@"Adding sked whith coordinates %@", [userSked objectAtIndex:i]);
-            //NSLog(@"Adding text to sked: %@", [userSkedText objectAtIndex:i]);
+            NSLog(@"Adding sked whith coordinates %@", [userSked objectAtIndex:i]);
+            NSLog(@"Adding text to sked: %@", [userSkedText objectAtIndex:i]);
             skedRect = CGRectFromString([userSked objectAtIndex:i]);
             newSkedCell = [[UIView alloc]initWithFrame:skedRect];
             UILabel *lesson = [[UILabel alloc]initWithFrame:skedRect];
@@ -632,22 +668,78 @@
             lesson.lineBreakMode = 5;
             lesson.numberOfLines = 3;
             lesson.textColor = [UIColor blackColor];
-            newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
+            [lesson setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+            lesson.textAlignment = NSTextAlignmentCenter;
+            
+            if(!([temp rangeOfString:@"Лк"].location == NSNotFound)) {
+                newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
+            } else
+                if(!([temp rangeOfString:@"Пз"].location == NSNotFound)) {
+                    newSkedCell.backgroundColor = [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
+                } else
+                    if(!([temp rangeOfString:@"Лб"].location == NSNotFound)) {
+                        newSkedCell.backgroundColor = [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+                    } else
+                        if(!([temp rangeOfString:@"Конс"].location == NSNotFound)) {
+                            newSkedCell.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+                        } else
+                            if(!([temp rangeOfString:@"Зал"].location == NSNotFound)) {
+                                newSkedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+                            } else
+                                if(!([temp rangeOfString:@"зач"].location == NSNotFound)) {
+                                    newSkedCell.backgroundColor = [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+                                } else
+                                    if(!([temp rangeOfString:@"ЕкзП"].location == NSNotFound)) {
+                                        newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                    } else
+                                        if(!([temp rangeOfString:@"ЕкзУ"].location == NSNotFound)) {
+                                            newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                        } else
+                                            if(!([temp rangeOfString:@"Екз"].location == NSNotFound)) {
+                                                newSkedCell.backgroundColor = [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+                                            } else
+                                                newSkedCell.backgroundColor = [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
+            
             lesson.backgroundColor = [UIColor clearColor];
+            [mainSkedView addSubview:newSkedCell];
             [mainSkedView addSubview:lesson];
-            [newSkedCell addSubview:lesson];
             [self skedCellAddLONGPRESSGestureRecognizer];
         }
     }
+    
     userDeleteLesson = [NSString stringWithFormat:@"%@%@", @"userDeletedFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
-    //NSLog(@"%@", userDeleteLesson);
+    NSLog(@"%@", userDeleteLesson);
     NSMutableArray *deletedSked = [[NSUserDefaults standardUserDefaults]objectForKey:userDeleteLesson];
-    if(deletedSked.count>0) {
+    if(deletedSked.count > 0) {
         for (int i=0;i<deletedSked.count;i++) {
-            //NSLog(@"cell at tag will be deleted %d", [[deletedSked objectAtIndex:i] integerValue]);
+            NSLog(@"cell at tag will be deleted %d", [[deletedSked objectAtIndex:i] integerValue]);
             [[mainSkedView viewWithTag:[[deletedSked objectAtIndex:i] integerValue]] removeFromSuperview];
         }
     }
+}
+
+-(BOOL)isNull {
+    NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
+    if(curId.length < 1) {
+        UILabel *message = [[UILabel alloc]initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, 300)];
+        message.text = @"У вас ещё нет ни групп ни преподавателей, попробуйте их добавить.";
+        [message setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:32.0f]];
+        message.textAlignment = NSTextAlignmentCenter;
+        message.numberOfLines = 5;
+        [self.view addSubview:message];
+        return true;
+    } else
+        return false;
+}
+
+- (NSString *) getWeekDay:(NSString*)today {
+    NSDateFormatter* weekDayFormatter = [[NSDateFormatter alloc] init];
+    [weekDayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [weekDayFormatter setDateFormat:@"dd.MM EEEE"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    NSDate *day = [formatter dateFromString:today];
+    return [weekDayFormatter stringFromDate:day];
 }
 
 @end

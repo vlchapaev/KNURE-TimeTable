@@ -146,7 +146,7 @@
         [fullData synchronize];
     }
     @catch (NSException * e) {
-        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное имя" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
+        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой преподаватель не найден" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles: nil];
         [endGameMessage show];
     }
 }
@@ -172,8 +172,8 @@
         startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
         endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
     } else {
-        startDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)thisYear];
-        endDate = [NSString stringWithFormat:@"%@%ld", @"30.07.", (long)thisYear];
+        startDate = [NSString stringWithFormat:@"%@%ld", @"01.02.", (long)thisYear];
+        endDate = [NSString stringWithFormat:@"%@%ld", @"31.07.", (long)thisYear];
     }
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];

@@ -96,6 +96,7 @@
     return YES;
 }
 
+
 - (void) getGroupId:(NSString *)grName {
     @try {
         NSError *error=nil;
@@ -150,7 +151,7 @@
         [fullData synchronize];
     }
     @catch (NSException * e) {
-        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Введенно неверное название группы" delegate:self cancelButtonTitle:@"Далее" otherButtonTitles: nil];
+        UIAlertView *endGameMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такая группа не найдена" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles: nil];
         [endGameMessage show];
     }
 }
@@ -176,8 +177,8 @@
         startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
         endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
     } else {
-        startDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)thisYear];
-        endDate = [NSString stringWithFormat:@"%@%ld", @"30.07.", (long)thisYear];
+        startDate = [NSString stringWithFormat:@"%@%ld", @"01.02.", (long)thisYear];
+        endDate = [NSString stringWithFormat:@"%@%ld", @"31.07.", (long)thisYear];
     }
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
@@ -283,23 +284,21 @@
     }*/
 }
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-*/
 
-/*
+
+
 // Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -309,7 +308,7 @@
     // Pass the selected object to the new view controller.
 }
 
-*/
+
 
 - (IBAction)addName:(id)sender {
     [historyList addObject:self.nameField.text];
@@ -329,6 +328,10 @@
     NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
     [fullHistory setValue:historyList forKeyPath:@"SavedGroups"];
     [fullHistory synchronize];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 @end

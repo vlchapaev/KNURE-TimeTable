@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupList : UITableViewController
+@interface GroupList : UITableViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UIButton *menuBtn;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 - (IBAction)addName:(id)sender;
