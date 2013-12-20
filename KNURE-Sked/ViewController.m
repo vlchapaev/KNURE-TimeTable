@@ -122,7 +122,7 @@
         }
         
         if([[[sorted objectAtIndex:i] valueForKey:@"object"] isEqual: @" "]) {
-            [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+            [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
             date.textAlignment = NSTextAlignmentCenter;
             [mainSkedView addSubview:dateGrid];
             [dateGrid addSubview:date];
@@ -186,7 +186,7 @@
         sked.numberOfLines = 3;
         sked.lineBreakMode = 5;
         sked.backgroundColor = [UIColor clearColor];
-        [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
+        [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
         date.textAlignment = NSTextAlignmentCenter;
         [sked setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
         sked.textAlignment = NSTextAlignmentCenter;
@@ -574,8 +574,6 @@
 
 - (void) initToggleMenu {
     //Инициализирует выпадающее меню
-    TeachersList *tl = [[TeachersList alloc] init];
-    GroupList *hl = [[GroupList alloc] init];
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.toggleBtn.titleLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 18.0f]];
     self.toggleBtn.titleLabel.textColor = [UIColor blackColor];
@@ -594,7 +592,7 @@
                                                             image:[UIImage imageNamed:@"---"]
                                                  highlightedImage:nil
                                                            action:^(REMenuItem *item) {
-                                                               [hl getGroupId:gr];
+                                                               [self getIdByName:gr];
                                                                [mainSkedView removeFromSuperview];
                                                                [toggleBtn removeFromSuperview];
                                                                [self viewDidLoad];
@@ -606,7 +604,7 @@
                                                               image:[UIImage imageNamed:@"---"]
                                                    highlightedImage:nil
                                                              action:^(REMenuItem *item) {
-                                                                 [tl getTeacherId:tchr];
+                                                                 [self getIdByName:tchr];
                                                                  [mainSkedView removeFromSuperview];
                                                                  [toggleBtn removeFromSuperview];
                                                                  [self viewDidLoad];
@@ -735,11 +733,17 @@
 - (NSString *) getWeekDay:(NSString*)today {
     NSDateFormatter* weekDayFormatter = [[NSDateFormatter alloc] init];
     [weekDayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-    [weekDayFormatter setDateFormat:@"dd.MM EEEE"];
+    [weekDayFormatter setDateFormat:@"dd.MM, EE"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd.MM.yyyy"];
     NSDate *day = [formatter dateFromString:today];
     return [weekDayFormatter stringFromDate:day];
+}
+
+- (void) getIdByName:(NSString *)name {
+    NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
+    [fullData setValue:name forKey:@"curName"];
+    [fullData setValue:[[NSUserDefaults standardUserDefaults]valueForKey:name] forKey:@"ID"];
 }
 
 @end

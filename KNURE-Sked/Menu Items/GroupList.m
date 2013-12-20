@@ -144,7 +144,9 @@
                                                           range:NSMakeRange(0, [matchAllResult length])];
         NSString* result = [matchAllResult substringWithRange:[finalMatchResult[0] range]];
         NSLog(@"%@",result);
+        
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
+        [fullData setValue:result forKey:grName];
         [fullData setValue:result forKey:@"ID"];
         [self getGroupUpdate];
         [fullData setValue:grName forKey:@"curName"];
@@ -228,8 +230,6 @@
                                                           range:NSMakeRange(0, [delSpace length])
                                                    withTemplate:@""];
     //NSLog(@"%@%@",@"DELSPASE: ", delRest);
-    
-    
     NSDate *currentDate = [[NSDate alloc]init];
     currentDate = [formatter dateFromString:startDate];
     [dateList addObject: currentDate];

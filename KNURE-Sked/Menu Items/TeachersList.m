@@ -141,6 +141,7 @@
         NSLog(@"%@",result);
         NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
         [fullData setValue:result forKey:@"ID"];
+        [fullData setValue:result forKey:tchrName];
         [self getTeachersUpdate];
         [fullData setValue:tchrName forKey:@"curName"];
         [fullData synchronize];
