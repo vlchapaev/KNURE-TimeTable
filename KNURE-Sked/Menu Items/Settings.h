@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Settings : UIViewController {
-    IBOutlet UISwitch *emptyDays;
-    BOOL showDays;
+    IBOutlet UIScrollView *scrollView;
 }
-- (IBAction)showEmptyDays;
 @property (strong, nonatomic) UIButton *menuBtn;
 @end

@@ -575,13 +575,11 @@
 - (void) initToggleMenu {
     //Инициализирует выпадающее меню
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.toggleBtn.titleLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 18.0f]];
-    self.toggleBtn.titleLabel.textColor = [UIColor blackColor];
-    toggleBtn.frame = CGRectMake(60, 30, 200, 24);
-    NSString *title = [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"],@" ▾"];
+    [self.toggleBtn.titleLabel setFont:[UIFont fontWithName: @"HelveticaNeue-Light" size: 24.0f]];
+    toggleBtn.frame = CGRectMake(70, 30, 200, 24);
+    NSString *title = [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"],@" ▾"];//▴
     [toggleBtn setTitle:title forState:UIControlStateNormal];
     [toggleBtn addTarget:self action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
-    toggleBtn.titleLabel.textColor = [UIColor blackColor];
     toggleBtn.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
     [self.view addSubview:toggleBtn];
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -612,6 +610,17 @@
         [items addObject:teacherItem];
     }
     self.menu = [[REMenu alloc] initWithItems:items];
+    self.menu.liveBlur = YES;
+    self.menu.bounce = YES;
+    self.menu.borderColor = [UIColor clearColor];
+    self.menu.textShadowColor = [UIColor clearColor];
+    self.menu.textColor = [UIColor blackColor];
+    self.menu.highlightedTextShadowColor = [UIColor clearColor];
+    self.menu.highlightedTextColor = [UIColor blackColor];
+    self.menu.highlightedBackgroundColor = [UIColor orangeColor];
+    self.menu.separatorHeight = 0.5f;
+    self.menu.font = [UIFont fontWithName: @"HelveticaNeue-Light" size: 22.0f];
+    [toggleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
 - (void) toggleMenu {
@@ -619,7 +628,7 @@
     if (self.menu.isOpen){
         return [self.menu close];
     }
-    [self.menu showFromRect:CGRectMake(0, 62, self.view.frame.size.width, 300) inView:self.view];
+    [self.menu showFromRect:CGRectMake(0, 62, self.view.frame.size.width, 350) inView:self.view];
 }
 
 - (IBAction)goToNewCell:(id)sender {

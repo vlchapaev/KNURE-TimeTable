@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self initScrollView];
+    [self initState];
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -52,11 +54,12 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
-- (IBAction)showEmptyDays {
-    if(emptyDays.on)
-        showDays = YES;
-    else
-        showDays = NO;
+- (void) initScrollView {
+    scrollView.contentSize = CGSizeMake(0, 700);
+}
+
+- (void) initState {
+    
 }
 
 @end
