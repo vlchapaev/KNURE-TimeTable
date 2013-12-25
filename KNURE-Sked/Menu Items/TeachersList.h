@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TeachersList : UITableViewController
+@interface TeachersList : UITableViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *teacherField;
 @property (strong, nonatomic) UIButton *menuBtn;
 - (IBAction)addTeacher:(id)sender;

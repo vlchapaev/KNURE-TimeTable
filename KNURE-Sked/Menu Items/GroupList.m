@@ -10,6 +10,7 @@
 #import "ECSlidingViewController.h"
 #import "TabsViewController.h"
 #import "Settings.h"
+#import "InitViewController.h"
 
 @interface GroupList ()
 
@@ -31,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     historyList = [[NSMutableArray alloc] init];
     if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] != nil) {
     historyList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] mutableCopy];
@@ -44,6 +45,7 @@
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
         self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
+    self.slidingViewController.panGesture.delegate = self;
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(13, 30, 34, 24);
@@ -175,7 +177,7 @@
     
     NSString *startDate;
     NSString *endDate;
-    if ((thisMonth>=9 && thisMonth<=12) || (thisMonth>=1 && thisMonth<=2)) {
+    if ((thisMonth>=8 && thisMonth<=12) || (thisMonth==1)) {
         startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
         endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
     } else {
@@ -330,8 +332,9 @@
     [fullHistory synchronize];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+        return  YES;
 }
 
 @end

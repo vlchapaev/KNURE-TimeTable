@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Settings : UIViewController {
+@interface Settings : UIViewController <UIGestureRecognizerDelegate> {
     IBOutlet UIScrollView *scrollView;
 }
 @property (strong, nonatomic) UIButton *menuBtn;

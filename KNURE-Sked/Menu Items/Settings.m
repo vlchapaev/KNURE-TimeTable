@@ -37,6 +37,7 @@
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
+    self.slidingViewController.panGesture.delegate = self;
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(13, 30, 34, 24);
@@ -60,6 +61,11 @@
 
 - (void) initState {
     
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return  YES;
 }
 
 @end

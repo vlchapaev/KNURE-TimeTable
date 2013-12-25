@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteTable : UITableViewController
+@interface NoteTable : UITableViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UIButton *menuBtn;
 @end
 NSString *datesRequest;

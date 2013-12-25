@@ -18,8 +18,7 @@
 @synthesize menuBtn;
 @synthesize notesTable;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -27,8 +26,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
     datesRequest = [NSString stringWithFormat:@"%@%@",@"usrNoteDatesFor",[fullData valueForKey:@"ID"]];
@@ -49,6 +47,7 @@
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
         self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
+    self.slidingViewController.panGesture.delegate = self;
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(13, 30, 34, 24);
@@ -164,5 +163,9 @@
     [fullData synchronize];
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return  YES;
+}
 
 @end

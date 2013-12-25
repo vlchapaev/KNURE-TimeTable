@@ -41,6 +41,7 @@
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
         self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
+    self.slidingViewController.panGesture.delegate = self;
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(13, 30, 34, 24);
@@ -169,7 +170,7 @@
     
     NSString *startDate;
     NSString *endDate;
-    if ((thisMonth>=9 && thisMonth<=12) || (thisMonth>=1 && thisMonth<=2)) {
+    if ((thisMonth>=8 && thisMonth<=12) || (thisMonth==1)) {
         startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
         endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
     } else {
@@ -320,6 +321,11 @@
     NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
     [fullHistory setValue:teachersList forKeyPath:@"SavedTeachers"];
     [fullHistory synchronize];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return  YES;
 }
 
 @end

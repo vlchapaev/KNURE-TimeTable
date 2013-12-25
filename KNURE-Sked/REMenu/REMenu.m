@@ -49,8 +49,7 @@
 
 @implementation REMenu
 
-- (id)init
-{
+- (id)init {
     if ((self = [super init])) {
         self.imageAlignment = REMenuImageAlignmentLeft;
         self.closeOnSelection = YES;
@@ -95,16 +94,14 @@
     return self;
 }
 
-- (id)initWithItems:(NSArray *)items
-{
+- (id)initWithItems:(NSArray *)items {
     if ((self = [self init])) {
         self.items = items;
     }
     return self;
 }
 
-- (void)showFromRect:(CGRect)rect inView:(UIView *)view
-{
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view {
     self.isOpen = YES;
     
     // Create views
@@ -237,13 +234,11 @@
     } completion:nil];
 }
 
-- (void)showInView:(UIView *)view
-{
+- (void)showInView:(UIView *)view {
     [self showFromRect:view.bounds inView:view];
 }
 
-- (void)showFromNavigationController:(UINavigationController *)navigationController
-{
+- (void)showFromNavigationController:(UINavigationController *)navigationController {
     self.navigationBar = navigationController.navigationBar;
     [self showFromRect:CGRectMake(0, 0, navigationController.navigationBar.frame.size.width, navigationController.view.frame.size.height) inView:navigationController.view];
     self.containerView.appearsBehindNavigationBar = self.appearsBehindNavigationBar;
@@ -253,8 +248,7 @@
     }
 }
 
-- (void)closeWithCompletion:(void (^)(void))completion
-{
+- (void)closeWithCompletion:(void (^)(void))completion {
     CGFloat navigationBarOffset = self.appearsBehindNavigationBar && self.navigationBar ? 64 : 0;
     
     void (^closeMenu)(void) = ^{
@@ -292,18 +286,21 @@
     }
 }
 
-- (void)close
-{
+- (void)close {
     [self closeWithCompletion:nil];
 }
 
-- (CGFloat)combinedHeight
-{
+- (void)closeWithViews:(UIScrollView *)scroller view:(UIView *)view {
+    [view removeFromSuperview];
+    [scroller removeFromSuperview];
+    [self closeWithCompletion:nil];
+}
+
+- (CGFloat)combinedHeight {
     return self.items.count * self.itemHeight + self.items.count  * self.separatorHeight + 40.0 + self.cornerRadius;
 }
 
-- (void)setNeedsLayout
-{
+- (void)setNeedsLayout {
     [UIView animateWithDuration:0.35 animations:^{
         [self.containerView layoutSubviews];
     }];
@@ -312,8 +309,7 @@
 #pragma mark -
 #pragma mark Setting style
 
-- (UIImage *)separatorImage
-{
+- (UIImage *)separatorImage {
     UIGraphicsBeginImageContext(CGSizeMake(1, 4.0));
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIGraphicsPushContext(context);

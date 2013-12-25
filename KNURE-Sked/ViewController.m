@@ -21,6 +21,17 @@
 @synthesize menuBtn;
 @synthesize toggleBtn;
 
+int remenuSize;
+int standartScrollPosition;
+NSMutableArray *sorted;
+NSString *userAddLesson;
+NSString *userAddLessonText;
+NSString *userDeleteLesson;
+NSMutableArray *rects;
+NSMutableData *receivedData;
+UIScrollView *remenuScroller;
+UIView *remenuView;
+
 - (id)initWithCoder:(NSCoder*)aDecoder {
     /*
      Инициализирует объекты перед началом выполнения, в частности, здесь иницилизируется массив координат всех возможных мест положений skedView. Позднее он будет использоваться при отрисовке новых пар пользователем.
@@ -330,7 +341,8 @@
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    //self.slidingViewController.panGesture.delegate = self;
+    //[self.view addGestureRecognizer:self.slidingViewController.panGesture];
     self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     menuBtn.frame = CGRectMake(13, 30, 34, 24);
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
@@ -576,7 +588,7 @@
     //Инициализирует выпадающее меню
     self.toggleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.toggleBtn.titleLabel setFont:[UIFont fontWithName: @"HelveticaNeue-Light" size: 24.0f]];
-    toggleBtn.frame = CGRectMake(70, 30, 200, 24);
+    toggleBtn.frame = CGRectMake((self.view.frame.size.width/5), 30, (self.view.frame.size.width/1.5f), 24);
     NSString *title = [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"curName"],@" ▾"];//▴
     [toggleBtn setTitle:title forState:UIControlStateNormal];
     [toggleBtn addTarget:self action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];
@@ -585,6 +597,7 @@
     NSMutableArray *items = [[NSMutableArray alloc] init];
     NSArray *grHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedGroups"];
     NSArray *tHistory = [[NSUserDefaults standardUserDefaults] valueForKey:@"SavedTeachers"];
+    remenuSize = 0;
     for (NSString *gr in grHistory) {
         REMenuItem *groupItem = [[REMenuItem alloc] initWithTitle:gr
                                                             image:[UIImage imageNamed:@"---"]
@@ -596,6 +609,7 @@
                                                                [self viewDidLoad];
                                                            }];
         [items addObject:groupItem];
+        remenuSize += 50;
     }
     for (NSString *tchr in tHistory) {
         REMenuItem *teacherItem = [[REMenuItem alloc] initWithTitle:tchr
@@ -608,6 +622,7 @@
                                                                  [self viewDidLoad];
                                                              }];
         [items addObject:teacherItem];
+        remenuSize += 50;
     }
     self.menu = [[REMenu alloc] initWithItems:items];
     self.menu.liveBlur = YES;
@@ -625,10 +640,20 @@
 
 - (void) toggleMenu {
     //Задаёт парамеры появленя выпадающего меню.
-    if (self.menu.isOpen){
-        return [self.menu close];
+    remenuScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 62, self.view.frame.size.width, 320)];
+    remenuView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, remenuSize)];
+    remenuScroller.contentSize = CGSizeMake(0, remenuSize);
+    [remenuScroller setShowsVerticalScrollIndicator:NO];
+    
+    if (self.menu.isOpen) {
+        return [self.menu closeWithViews:remenuScroller view:remenuView];
     }
-    [self.menu showFromRect:CGRectMake(0, 62, self.view.frame.size.width, 350) inView:self.view];
+    
+    [remenuScroller addSubview:remenuView];
+    [self.view addSubview:remenuScroller];
+    
+    [self.menu showInView:remenuView];
+    
 }
 
 - (IBAction)goToNewCell:(id)sender {
@@ -640,7 +665,7 @@
 }
 
 - (void) aTimeUpdate {
-    //Инициализирует таймер]
+    //Инициализирует таймер
     [Timer getCurrentTime];
     [Timer comparisonOfTime];
     [Timer minusTime];
@@ -725,7 +750,7 @@
     }
 }
 
--(BOOL)isNull {
+-(BOOL) isNull {
     NSString *curId = [[NSUserDefaults standardUserDefaults] valueForKey:@"ID"];
     if(curId.length < 1) {
         UILabel *message = [[UILabel alloc]initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, 300)];
@@ -753,6 +778,11 @@
     NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
     [fullData setValue:name forKey:@"curName"];
     [fullData setValue:[[NSUserDefaults standardUserDefaults]valueForKey:name] forKey:@"ID"];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return  YES;
 }
 
 @end

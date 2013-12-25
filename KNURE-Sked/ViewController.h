@@ -9,19 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "REMenu.h"
 
-@interface ViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate> {
+@interface ViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate, UIGestureRecognizerDelegate> {
     IBOutlet UILabel *timer;
     IBOutlet UIScrollView *mainSkedView;
     IBOutlet UIView *skedCell;
     IBOutlet UIView *newSkedCell;
     IBOutlet UIView *timeLineView;
-    int standartScrollPosition;
-    NSMutableArray *sorted;
-    NSString *userAddLesson;
-    NSString *userAddLessonText;
-    NSString *userDeleteLesson;
-    NSMutableArray *rects;
-    NSMutableData *receivedData;
 }
 
 @property (strong, readwrite, nonatomic) REMenu *menu;
