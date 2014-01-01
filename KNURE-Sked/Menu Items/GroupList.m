@@ -174,16 +174,20 @@
     thisMonth = [[dateFormatterMonth stringFromDate:currentDateTime] integerValue];
     thisYear = [[dateFormatterYear stringFromDate:currentDateTime] integerValue];
     nextYear = thisYear + 1;
-    
+    previousYear = thisYear - 1;
     NSString *startDate;
     NSString *endDate;
-    if ((thisMonth>=8 && thisMonth<=12) || (thisMonth==1)) {
+    if (thisMonth>=8 && thisMonth<=12) {
         startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)thisYear];
         endDate = [NSString stringWithFormat:@"%@%ld", @"02.02.", (long)nextYear];
-    } else {
-        startDate = [NSString stringWithFormat:@"%@%ld", @"01.02.", (long)thisYear];
-        endDate = [NSString stringWithFormat:@"%@%ld", @"31.07.", (long)thisYear];
-    }
+    } else
+        if (thisMonth == 1) {
+            startDate = [NSString stringWithFormat:@"%@%ld", @"01.09.", (long)previousYear];
+            endDate = [NSString stringWithFormat:@"%@%ld", @"31.07.", (long)thisYear];
+        } else {
+            startDate = [NSString stringWithFormat:@"%@%ld", @"01.02.", (long)thisYear];
+            endDate = [NSString stringWithFormat:@"%@%ld", @"31.07.", (long)thisYear];
+        }
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
@@ -324,7 +328,7 @@
     [tv insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
     [self.tableView reloadData];
-    }
+}
 
 - (void) viewWillDisappear:(BOOL)animated {
     NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
@@ -332,9 +336,8 @@
     [fullHistory synchronize];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-        return  YES;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+        return YES;
 }
 
 @end

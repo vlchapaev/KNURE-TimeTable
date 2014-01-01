@@ -30,7 +30,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self initScrollView];
-    [self initState];
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -59,13 +58,19 @@
     scrollView.contentSize = CGSizeMake(0, 700);
 }
 
-- (void) initState {
-    
+-(IBAction)showEmptyDaysSwitch{
+    if(showEmptyDays.on){
+        showEmpty = YES;
+    }
+    else {
+        showEmpty = NO;
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return  YES;
 }
+
 
 @end

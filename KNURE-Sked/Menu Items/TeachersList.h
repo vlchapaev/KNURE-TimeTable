@@ -17,4 +17,5 @@
 NSMutableArray *teachersList;
 NSInteger thisYear;
 NSInteger nextYear;
+NSInteger previousYear;
 NSInteger thisMonth;

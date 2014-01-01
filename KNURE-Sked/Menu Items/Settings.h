@@ -10,6 +10,13 @@
 
 @interface Settings : UIViewController <UIGestureRecognizerDelegate> {
     IBOutlet UIScrollView *scrollView;
+    IBOutlet UISwitch *showEmptyDays;
 }
+
 @property (strong, nonatomic) UIButton *menuBtn;
+
+-(IBAction)showEmptyDaysSwitch;
+
 @end
+
+BOOL showEmpty;

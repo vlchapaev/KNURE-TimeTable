@@ -31,6 +31,35 @@
 -(IBAction) done:(id)sender {
     lessonData = lesson.text;
     noteData = note.text;
+    
+    NSString *userAddLesson = [NSString stringWithFormat:@"%@%@", @"userDataFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    NSString *userAddLessonText = [NSString stringWithFormat:@"%@%@", @"userDataTextFor-", [[NSUserDefaults standardUserDefaults]valueForKey:@"ID"]];
+    NSUserDefaults *savedRectangles = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *savedText = [NSUserDefaults standardUserDefaults];
+    NSArray *temp = [savedRectangles objectForKey:userAddLesson];
+    NSArray *temp2 = [savedText objectForKey:userAddLessonText];
+    NSMutableArray *userSkedRects = nil;
+    NSMutableArray *userSkedText = nil;
+    
+    if(temp) {
+        userSkedRects = [temp mutableCopy];
+    } else {
+        userSkedRects = [[NSMutableArray alloc]init];
+    }
+    
+    if(temp2) {
+        userSkedText = [temp2 mutableCopy];
+    } else {
+        userSkedText = [[NSMutableArray alloc]init];
+    }
+    
+    [userSkedRects addObject:NSStringFromCGRect(newRect)];
+    [userSkedText addObject:lessonData];
+    [savedRectangles setObject:userSkedRects forKey:userAddLesson];
+    [savedText setObject:userSkedText forKey:userAddLessonText];
+    [savedRectangles synchronize];
+    [savedText synchronize];
+    
     InitViewController *ini;
     ini = [self.storyboard instantiateViewControllerWithIdentifier:@"Init"];
     ini.location = @"Расписание";
@@ -60,6 +89,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [lesson becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
 
@@ -67,5 +97,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end

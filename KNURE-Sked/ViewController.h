@@ -23,7 +23,7 @@
 
 - (void)getLastUpdate;
 - (id)initWithCoder:(NSCoder*)aDecoder;
-- (IBAction)goToNewCell:(id)sender;
 
 @end
 
+CGRect newRect;
