@@ -5,6 +5,13 @@
 //  Created by Влад on 10/24/13.
 //  Copyright (c) 2013 Влад. All rights reserved.
 //
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 #import "ViewController.h"
 #import "ECSlidingViewController.h"
 #import "NewSkedCell.h"
@@ -58,7 +65,6 @@ UIView *remenuView;
     return self;
 }
 
-
 - (void)viewDidLoad {
     /*
      Выполняет все возможные команды при запуске вьюшки с расписанием.
@@ -107,8 +113,15 @@ UIView *remenuView;
     NSString *notesXRequest = [NSString stringWithFormat:@"%@%@",@"usrNotesXFor",[fullLessonsData valueForKey:@"ID"]];
     NSString *notesYRequest = [NSString stringWithFormat:@"%@%@",@"usrNotesYFor",[fullLessonsData valueForKey:@"ID"]];
     for(int i=1; i<sorted.count; i++) {
+        //Раскомментировать, чтобы увидеть что именно выводится.
         //NSString *mydate = [formatter stringFromDate:[[sorted objectAtIndex:i] valueForKey:@"date"]];
         //NSLog(@"%@%@", mydate, [[sorted objectAtIndex:i] valueForKey:@"object"]);
+        
+        if([[[sorted objectAtIndex:i] valueForKey:@"object"] isEqual: @" "] &&
+           [[NSUserDefaults standardUserDefaults] boolForKey:@"showEmptyDaysChanged"] == NO) {
+            continue;
+        }
+        
         UIView *dateGrid = [[UIView alloc]initWithFrame:CGRectMake(dayShift + 55, 5, 110, 20)];
         dateGrid.backgroundColor = [UIColor whiteColor];
         UILabel *date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 20)];
@@ -133,7 +146,7 @@ UIView *remenuView;
             standartScrollPosition = dayShift;
         }
         
-        if([[[sorted objectAtIndex:i] valueForKey:@"object"] isEqual: @" "]&&showEmpty == NO) {
+        if([[[sorted objectAtIndex:i] valueForKey:@"object"] isEqual: @" "]) {
             [date setFont:[UIFont fontWithName: @"Helvetica Neue" size: 14.0f]];
             date.textAlignment = NSTextAlignmentCenter;
             [mainSkedView addSubview:dateGrid];
@@ -650,23 +663,27 @@ UIView *remenuView;
     self.menu.highlightedBackgroundColor = [UIColor orangeColor];
     self.menu.separatorHeight = 0.5f;
     self.menu.font = [UIFont fontWithName: @"HelveticaNeue-Light" size: 22.0f];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.menu.backgroundColor = [UIColor whiteColor];
+    }
     [toggleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
 - (void) toggleMenu {
     //Задаёт парамеры появленя выпадающего меню.
-    remenuScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 62, self.view.frame.size.width, 320)];
-    remenuView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, remenuSize)];
-    remenuScroller.contentSize = CGSizeMake(0, remenuSize);
-    [remenuScroller setShowsVerticalScrollIndicator:NO];
-    [remenuScroller addSubview:remenuView];
-    [self.view addSubview:remenuScroller];
     if (self.menu.isOpen) {
         [remenuView removeFromSuperview];
         [remenuScroller removeFromSuperview];
         return [self.menu close];
+    } else {
+        remenuScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 62, self.view.frame.size.width, 320)];
+        remenuView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, remenuSize)];
+        remenuScroller.contentSize = CGSizeMake(0, remenuSize);
+        [remenuScroller setShowsVerticalScrollIndicator:NO];
+        [remenuScroller addSubview:remenuView];
+        [self.view addSubview:remenuScroller];
+        [self.menu showInView:remenuView];
     }
-    [self.menu showInView:remenuView];
 }
 
 - (void) aTimeUpdate {
@@ -783,6 +800,7 @@ UIView *remenuView;
     NSUserDefaults *fullData = [NSUserDefaults standardUserDefaults];
     [fullData setValue:name forKey:@"curName"];
     [fullData setValue:[[NSUserDefaults standardUserDefaults]valueForKey:name] forKey:@"ID"];
+    [fullData synchronize];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

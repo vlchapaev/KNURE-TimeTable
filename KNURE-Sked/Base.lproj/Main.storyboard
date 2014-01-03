@@ -281,7 +281,7 @@
                                         <rect key="frame" x="251" y="20" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="showEmptyDaysSwitch" destination="Ics-gY-tmN" eventType="valueChanged" id="o7J-ls-md0"/>
+                                            <action selector="showEmptyDaysChanged:" destination="Ics-gY-tmN" eventType="valueChanged" id="TOX-Iw-Ubl"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выводить день недели" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="foE-hd-6hm">
@@ -295,7 +295,7 @@
                                         <rect key="frame" x="251" y="98" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="kvA-y8-C2F"/>
+                                            <action selector="showWeekChanged:" destination="Ics-gY-tmN" eventType="valueChanged" id="D85-rq-k6q"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Авто обновление" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DgN-BM-w4n">
@@ -309,50 +309,19 @@
                                         <rect key="frame" x="251" y="137" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="GMh-iF-zKf"/>
+                                            <action selector="automaticUpdateChanged:" destination="Ics-gY-tmN" eventType="valueChanged" id="O05-YY-dkj"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Горизонтальная развёртка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jzx-iP-tbo">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тёмная цветовая схема" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kUs-Dj-TIg">
                                         <rect key="frame" x="20" y="181" width="230" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="eeC-hY-yTg">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="eqg-6o-SbK">
                                         <rect key="frame" x="251" y="176" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="7xG-kC-oLj"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показывать таймер" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iMu-Vn-ugm">
-                                        <rect key="frame" x="20" y="220" width="230" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="NUk-cs-A8M">
-                                        <rect key="frame" x="251" y="215" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="4aZ-Mu-V7g"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тёмная цветовая схема" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kUs-Dj-TIg">
-                                        <rect key="frame" x="20" y="259" width="230" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="eqg-6o-SbK">
-                                        <rect key="frame" x="251" y="254" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="vv9-Aa-7Ja"/>
-                                        </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показывать год" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YFR-Wc-YeW">
                                         <rect key="frame" x="20" y="64" width="223" height="22"/>
@@ -365,30 +334,38 @@
                                         <rect key="frame" x="251" y="59" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="showEmptyDays" destination="Ics-gY-tmN" eventType="valueChanged" id="qkD-n3-MyO"/>
+                                            <action selector="showYearChanged:" destination="Ics-gY-tmN" eventType="valueChanged" id="8Y0-Wv-1M1"/>
                                         </connections>
                                     </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zcX-OM-wKP">
-                                        <rect key="frame" x="20" y="410" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Посмотреть инструкцию">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aYW-Ch-mxJ">
-                                        <rect key="frame" x="20" y="448" width="285" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="От разработчиков">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размер шрифта" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VPD-8W-jVO">
+                                        <rect key="frame" x="20" y="218" width="173" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="14" minValue="10" maxValue="18" id="8BL-hu-mdk">
+                                        <rect key="frame" x="18" y="247" width="284" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="fontSizeChanged:" destination="Ics-gY-tmN" eventType="valueChanged" id="K5Y-Ge-jui"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rJc-Ag-8GF">
+                                        <rect key="frame" x="251" y="218" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.97661952554744536" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="fontLable" destination="rJc-Ag-8GF" id="fAJ-Yt-2A2"/>
                         <outlet property="scrollView" destination="F9N-XE-Oz1" id="1M4-Xh-S3T"/>
+                        <outlet property="showEmptyDaysSwith" destination="Zum-7D-7WW" id="lwJ-42-fX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmV-uG-9cY" userLabel="First Responder" sceneMemberID="firstResponder"/>

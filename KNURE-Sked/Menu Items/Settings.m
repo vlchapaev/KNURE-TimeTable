@@ -29,7 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
     [self initScrollView];
+    
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -43,6 +45,9 @@
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuBtn];
+    
+    BOOL changed = [[NSUserDefaults standardUserDefaults] boolForKey:@"showEmptyDaysChanged"];
+    [showEmptyDaysSwith setOn:changed];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,19 +63,26 @@
     scrollView.contentSize = CGSizeMake(0, 700);
 }
 
--(IBAction)showEmptyDaysSwitch{
-    if(showEmptyDays.on){
-        showEmpty = YES;
-    }
-    else {
-        showEmpty = NO;
-    }
-}
-
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return  YES;
 }
 
 
+- (IBAction)fontSizeChanged:(UISlider *)sender {
+}
+
+- (IBAction)showEmptyDaysChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:(sender.on?YES:NO) forKey:@"showEmptyDaysChanged"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)showYearChanged:(UISwitch *)sender {
+}
+
+- (IBAction)showWeekChanged:(UISwitch *)sender {
+}
+
+- (IBAction)automaticUpdateChanged:(UISwitch *)sender {
+}
 @end
