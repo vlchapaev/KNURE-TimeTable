@@ -45,9 +45,13 @@
     [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
     [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuBtn];
-    
-    BOOL changed = [[NSUserDefaults standardUserDefaults] boolForKey:@"showEmptyDaysChanged"];
-    [showEmptyDaysSwith setOn:changed];
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"changed"]){
+        [showEmptyDaysSwith setOn:YES];
+    } else {
+        BOOL changed = [[NSUserDefaults standardUserDefaults] boolForKey:@"showEmptyDaysChanged"];
+        [showEmptyDaysSwith setOn:changed];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,11 +72,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     return  YES;
 }
 
-
 - (IBAction)fontSizeChanged:(UISlider *)sender {
 }
 
 - (IBAction)showEmptyDaysChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"changed"];
     [[NSUserDefaults standardUserDefaults]setBool:(sender.on?YES:NO) forKey:@"showEmptyDaysChanged"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

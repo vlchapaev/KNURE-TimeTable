@@ -32,26 +32,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSMutableArray *selectedGroups = [[NSMutableArray alloc]init];
+    if([[NSUserDefaults standardUserDefaults]valueForKey:@"selectedGroups"] != nil) {
+        selectedGroups = [[[NSUserDefaults standardUserDefaults]valueForKey:@"selectedGroups"] mutableCopy];
+    }
     historyList = [[NSMutableArray alloc] init];
     if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] != nil) {
-    historyList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] mutableCopy];
+        historyList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] mutableCopy];
     }
-    historyTable = [[NSMutableArray alloc] initWithArray:historyList];
-    // Do any additional setup after loading the view.
-    self.view.layer.shadowOpacity = 0.75f;
-    self.view.layer.shadowRadius = 10.0f;
-    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
-        self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    fullList = [[NSMutableArray alloc] init];
+    fullList = [[historyList arrayByAddingObjectsFromArray:selectedGroups] mutableCopy];
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+    for (id key in dict) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedGroups"];
     }
-    self.slidingViewController.panGesture.delegate = self;
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(13, 30, 34, 24);
-    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
-    [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.menuBtn];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,26 +58,22 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [historyList count];
+    return fullList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // Configure the cell...
-    if(cell == nil) {
+    if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [historyList objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [fullList objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
 }
@@ -97,7 +89,6 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 - (void) getGroupId:(NSString *)grName {
     @try {
@@ -277,7 +268,7 @@
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [historyList removeObjectAtIndex:indexPath.row];
+    [fullList removeObjectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView beginUpdates];
@@ -304,17 +295,11 @@
     return YES;
 }
 
-
-#pragma mark - Navigation
-
 // In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
-
 
 - (IBAction)addName:(id)sender {
     [historyList addObject:self.nameField.text];
@@ -331,9 +316,8 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-    NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
-    [fullHistory setValue:historyList forKeyPath:@"SavedGroups"];
-    [fullHistory synchronize];
+    [[NSUserDefaults standardUserDefaults] setValue:fullList forKeyPath:@"SavedGroups"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {

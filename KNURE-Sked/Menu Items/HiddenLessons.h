@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HiddenLessons : UITableViewController
+@interface HiddenLessons : UITableViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) UIButton *menuBtn;
 
 @end

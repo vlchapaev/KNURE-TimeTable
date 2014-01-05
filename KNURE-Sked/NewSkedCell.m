@@ -7,7 +7,7 @@
 //
 
 #import "NewSkedCell.h"
-#import "ViewController.h"
+#import "MainIPhoneController.h"
 #import "InitViewController.h"
 
 @interface NewSkedCell ()

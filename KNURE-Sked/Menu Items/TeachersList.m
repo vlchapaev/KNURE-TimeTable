@@ -12,7 +12,6 @@
 
 @interface TeachersList ()
 @property (strong, nonatomic) NSMutableArray *teachersTable;
-
 @end
 
 @implementation TeachersList
@@ -29,25 +28,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSMutableArray *selectedTeachers = [[NSMutableArray alloc]init];
+    if([[NSUserDefaults standardUserDefaults]valueForKey:@"selectedTeachers"] != nil) {
+        selectedTeachers = [[[NSUserDefaults standardUserDefaults]valueForKey:@"selectedTeachers"] mutableCopy];
+    }
     teachersList = [[NSMutableArray alloc] init];
     if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedTeachers"] != nil) {
-    teachersList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedTeachers"] mutableCopy];
+        teachersList = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedTeachers"] mutableCopy];
     }
-    teachersTable = [[NSMutableArray alloc] initWithArray:teachersList];
-    self.view.layer.shadowOpacity = 0.75f;
-    self.view.layer.shadowRadius = 10.0f;
-    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[TabsViewController class]]) {
-        self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    fullList = [[NSMutableArray alloc] init];
+    fullList = [[teachersList arrayByAddingObjectsFromArray:selectedTeachers] mutableCopy];
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+    for (id key in dict) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedTeachers"];
     }
-    self.slidingViewController.panGesture.delegate = self;
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    self.menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(13, 30, 34, 24);
-    [menuBtn setBackgroundImage:[UIImage imageNamed:@"menuButton.png"] forState:UIControlStateNormal];
-    [menuBtn addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.menuBtn];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,26 +51,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [teachersList count];
+    return fullList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // Configure the cell...
-    if(cell == nil) {
+    if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [teachersList objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [fullList objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
 }
@@ -258,11 +250,9 @@
     return YES;
 }
 
-
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [teachersList removeObjectAtIndex:indexPath.row];
+    [fullList removeObjectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView beginUpdates];
@@ -324,7 +314,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     NSUserDefaults *fullHistory = [NSUserDefaults standardUserDefaults];
-    [fullHistory setValue:teachersList forKeyPath:@"SavedTeachers"];
+    [fullHistory setValue:fullList forKeyPath:@"SavedTeachers"];
     [fullHistory synchronize];
 }
 

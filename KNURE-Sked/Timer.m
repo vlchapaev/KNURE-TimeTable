@@ -7,7 +7,7 @@
 //
 
 #import "Timer.h"
-#import "ViewController.h"
+#import "MainIPhoneController.h"
 
 @implementation Timer
 
