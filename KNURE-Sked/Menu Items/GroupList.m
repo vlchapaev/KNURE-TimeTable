@@ -32,6 +32,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     NSMutableArray *selectedGroups = [[NSMutableArray alloc]init];
     if([[NSUserDefaults standardUserDefaults]valueForKey:@"selectedGroups"] != nil) {
         selectedGroups = [[[NSUserDefaults standardUserDefaults]valueForKey:@"selectedGroups"] mutableCopy];
@@ -48,6 +52,7 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedGroups"];
     }
     [[NSUserDefaults standardUserDefaults]synchronize];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

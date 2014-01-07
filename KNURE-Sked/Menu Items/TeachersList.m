@@ -28,6 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     NSMutableArray *selectedTeachers = [[NSMutableArray alloc]init];
     if([[NSUserDefaults standardUserDefaults]valueForKey:@"selectedTeachers"] != nil) {
         selectedTeachers = [[[NSUserDefaults standardUserDefaults]valueForKey:@"selectedTeachers"] mutableCopy];
@@ -44,6 +48,7 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedTeachers"];
     }
     [[NSUserDefaults standardUserDefaults]synchronize];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
