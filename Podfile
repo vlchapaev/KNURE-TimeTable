@@ -1,0 +1,5 @@
+platform :ios, '6.0'
+pod 'RNBlurModalView'
+pod 'REMenu'
+pod 'AMSlideMenu'
+pod 'MBProgressHUD'

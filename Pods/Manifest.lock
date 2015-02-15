@@ -1,0 +1,19 @@
+PODS:
+  - AMSlideMenu (1.5.3)
+  - MBProgressHUD (0.9)
+  - REMenu (1.10)
+  - RNBlurModalView (0.1.0)
+
+DEPENDENCIES:
+  - AMSlideMenu
+  - MBProgressHUD
+  - REMenu
+  - RNBlurModalView
+
+SPEC CHECKSUMS:
+  AMSlideMenu: ab0c9313c74eac61e360d2a714d2d8202f6de916
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  REMenu: e3988747d83f9e8f49f244bd3f1fb8b0900e8741
+  RNBlurModalView: 38380c10dcaf7804f7ba5e3516abcaf8bc8eddb3
+
+COCOAPODS: 0.34.1
