@@ -425,7 +425,7 @@
     double xPosition = standartScrollPosition;
     double animationDuration = [self getAnimationDuration];
     timeLineIndicator = [[UIView alloc]initWithFrame:CGRectMake(0, yPosition,  47, 2)];
-    skedLineIndicator = [[UIView alloc]initWithFrame:CGRectMake(xPosition + 50.0f, yPosition + 1, 115, 2)];
+    skedLineIndicator = [[UIView alloc]initWithFrame:CGRectMake(xPosition + 50.0f, yPosition+1, 115, 2)];
     timeLineIndicator.backgroundColor = [UIColor redColor];
     skedLineIndicator.backgroundColor = [UIColor redColor];
     [mainSkedView addSubview:skedLineIndicator];
