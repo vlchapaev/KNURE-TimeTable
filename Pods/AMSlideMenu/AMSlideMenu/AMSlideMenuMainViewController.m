@@ -283,14 +283,12 @@ static NSMutableArray *allInstances;
 // calls when pan gesture starting and direction is left
 - (void)rightMenuWillReveal
 {
-    directionIsLeft = YES;
     [self configureDarknessView];
 }
 
 // calls when pan gesture starting and direction is right
 - (void)leftMenuWillReveal
 {
-    directionIsLeft = NO;
     [self configureDarknessView];
 }
 
@@ -301,7 +299,6 @@ static NSMutableArray *allInstances;
     }
     return YES;
 }
-
 
 - (void)setup
 {

@@ -2,8 +2,8 @@
 //  InitViewController.m
 //  SlideMenu
 //
-//  Created by Kyle Begeman on 1/13/13.
-//  Copyright (c) 2013 Indee Box LLC. All rights reserved.
+//  Created by Vlad Chapaev on 07.09.14.
+//  Copyright (c) 2014 Shogunate. All rights reserved.
 //
 
 #import "InitViewController.h"
@@ -35,6 +35,10 @@
             break;
     }
     return identifier;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 - (void)configureLeftMenuButton:(UIButton *)button {

@@ -254,5 +254,3 @@ typedef enum {
  */
 - (void)openContentViewControllerForMenu:(AMSlideMenu)menu atIndexPath:(NSIndexPath *)indexPath;
 @end
-
-BOOL directionIsLeft;
