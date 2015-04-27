@@ -81,7 +81,7 @@
     [spinner startAnimating];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:
-                              [NSString stringWithFormat:@"http://cist.kture.kharkov.ua/ias/app/tt/P_API_EVEN_JSON?timetable_id=%@&type_id=2",
+                              [NSString stringWithFormat:@"http://cist.nure.ua/ias/app/tt/P_API_EVENT_JSON?timetable_id=%@&type_id=2",
                                [[teacherList objectAtIndex:indexPath.row]valueForKey:@"key"]]]];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]

@@ -54,7 +54,7 @@
 
 - (void)getTeacherList {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://cist.kture.kharkov.ua/ias/app/tt/P_API_PODR_JSON"]];
+                             [NSURL URLWithString:@"http://cist.nure.ua/ias/app/tt/P_API_PODR_JSON"]];
     [HUD show:YES];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
