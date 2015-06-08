@@ -2,7 +2,7 @@
 //  MainIPhoneController.m
 //  KNURE-Sked
 //
-//  Created by Vlad Chapaev on 10/24/13.
+//  Created by Vlad Chapaev on 24.10.2013.
 //  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
@@ -60,7 +60,9 @@
     shoudOffPanGesture = NO;
 }
 
-
+/**
+    Вызывает отрисовщик красных индикаторов на шкале времени и на view с расписанием
+ */
 - (void)drawLines {
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(deleteSkedLine)
@@ -77,6 +79,10 @@
     }
 }
 
+/**
+    Метод вызывается когда в выпадающем меню выбран другой объект
+    Этот метод перерисовывает главное view, переинициализирует таймер и переинициализирует выпадающее меню
+ */
 - (void)redraw {
     [toggleButton removeFromSuperview];
     [[mainSkedView subviews]makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -214,10 +220,22 @@
     CGPoint content = [mainSkedView contentOffset];
     CGRect contentOffset = [mainSkedView bounds];
     CGRect center = CGRectMake(contentOffset.origin.x, contentOffset.origin.y+1+(content.y*(-1)), 48, 600);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for(UIView *view in newTimeLine.subviews) {
+                view.layer.borderWidth = 1.0f;
+                view.layer.borderColor = [UIColor lightGrayColor].CGColor;
+            }
+        });
+    });
     [newTimeLine setFrame:center];
     [mainSkedView addSubview:newTimeLine];
 }
 
+/**
+    Позволяет получить массив дат, которые будут в текущем учебном семестре
+    @return список дат в формате NSDate
+*/
 - (NSArray *)getDateList {
     NSInteger thisYear = [[timer.dateFormatterYear stringFromDate:timer.today] integerValue];
     NSInteger thisMonth = [[timer.dateFormatterMonth stringFromDate:timer.today] integerValue];
@@ -381,6 +399,9 @@
     [toggleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 
+/**
+    Обрабатывает событие при нажатии на кнопку с выпадающим списком
+*/
 - (void)toggleMenu {
     if (self.menu.isOpen) {
         REMenuTitle = [NSString stringWithFormat:@"%@%@",
@@ -473,6 +494,10 @@
     return ((((seconds*100)/50400)*4.39)+27);
 }
 
+/**
+    Обновляет значение таймера на главной view
+    Этот метод вызывается каждую секунду
+ */
 - (void)timeUpdate {
     NSDate *time = [NSDate dateWithTimeIntervalSince1970:(timer.time - [timer getCurrentTimeInSeconds])];
     timerLabel.text = [timer.hourMinuteSecond stringFromDate:time];

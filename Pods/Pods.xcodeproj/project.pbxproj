@@ -7,436 +7,436 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02BA1A4486901FE894E7ADAA /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0336198EBE2D817B0132D4 /* UIViewController+AMSlideMenu.m */; };
-		0553D93751C7F621954755BA /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BC6BC34833761829D4F314 /* REMenuItem.m */; };
-		1424DF615215E554AD3B6E6C /* REMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 583D715F5D4E98B9B13D7D83 /* REMenu.h */; };
-		1512A53D015354E0F127E0EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA801DB994241CA7FC550691 /* QuartzCore.framework */; };
-		17135074047B01797D1C8948 /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37C4FEEE16994000FBF7FF8 /* AMSlideMenuRightTableViewController.m */; };
-		271844C4F727EAB60F592D7B /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85B9F2C0DEC2726F9EC236F /* AMSlideMenuMainViewController.m */; };
-		319E12BF8A45C7A3E8A2EE7A /* AMSlideMenuRightTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 582C013187812845DD3A148B /* AMSlideMenuRightTableViewController.h */; };
-		343583296FFAFF11EA0B9872 /* AMSlideMenuContentSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 03AA5C6FDFE29CCBFF7F893B /* AMSlideMenuContentSegue.h */; };
-		34466A18970E132AA916976F /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 58F2BBBB15412290E0E54412 /* RECommonFunctions.h */; };
-		382AFE4AFBA94207B5850EAD /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4AEAE7F713FE99CA1BF775 /* AMSlideMenuLeftMenuSegue.m */; };
-		44A61B5BC8A804222C3F8BEE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA801DB994241CA7FC550691 /* QuartzCore.framework */; };
-		4836F098000CBF3F17B0DF5F /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D61EA2645862166BDD7382 /* REMenu.m */; };
-		483E6ECF21D4F41E88046EDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66104E5A1C1147B7081E2FD /* Foundation.framework */; };
-		4D8D4E471142052AE2642B00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66104E5A1C1147B7081E2FD /* Foundation.framework */; };
-		5263B129FADB211E4DE1E10F /* REMenuItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 340EB3C788F572104C056A5C /* REMenuItemView.h */; };
-		5832F4E6E707BA969533C38A /* REMenuContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2117DBBF04C2504F8458B091 /* REMenuContainerView.h */; };
-		5A3B0AEB65E1A39C08598B62 /* Pods-REMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D3136A4656ABBB75AF165 /* Pods-REMenu-dummy.m */; };
-		64DB6FE30B5FCABC639B11CE /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7956A68C05C4F08A5C52402 /* AMSlideMenuLeftTableViewController.m */; };
-		6A374E1C91D7932E5E173827 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = AFE4CB057959066CDBFB560A /* MBProgressHUD.h */; };
-		7306814CE158FD09AC1E51E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66104E5A1C1147B7081E2FD /* Foundation.framework */; };
-		785360198FCDF638C6A7A267 /* UIViewController+AMSlideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FE0278C98528D0F1EA16439 /* UIViewController+AMSlideMenu.h */; };
-		78849E613B4E30F60D27E223 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D6BBF576D7CD9B5A454E74 /* Accelerate.framework */; };
-		7D64EDC2E35190E068305F29 /* Pods-MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B6BFC86141637B76C4AA6A /* Pods-MBProgressHUD-dummy.m */; };
-		7EDDF729735C29292D6691A2 /* Pods-AMSlideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 715F53C41ECF96ECBBE82D90 /* Pods-AMSlideMenu-dummy.m */; };
-		8857C72E68A4F9ED2CCEAE2E /* AMSlideMenuLeftMenuSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C8789FDDF0B064D0F706EE8 /* AMSlideMenuLeftMenuSegue.h */; };
-		8AE6B60C81D8307EF89F138A /* AMSlideMenuMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68193769CDA2B2AC346E9B5B /* AMSlideMenuMainViewController.h */; };
-		91D85EA60ABE2E7AA6B9B9D0 /* AMSlideMenuRightMenuSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EE4FCFD43F251969FC0DCCA /* AMSlideMenuRightMenuSegue.h */; };
-		93DEDDD13E42DA55C2B7D666 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B79855D5E8DB8C6F5639EE /* Pods-dummy.m */; };
-		9400A3B20F93706E97EF2A17 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D7439FB702C0F707A9112 /* AMSlideMenuContentSegue.m */; };
-		A7BDA5405573D8DE609C9999 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D296A30DC5C22E552998CE /* REMenuContainerView.m */; };
-		B0AB2DE621E7EF848DACB68F /* Pods-RNBlurModalView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A86381ECCD49561E0B886 /* Pods-RNBlurModalView-dummy.m */; };
-		B1B4DF017DF55F6594252301 /* REMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF75E97D662B051B93C54C2 /* REMenuItem.h */; };
-		B8658F132AE9FBFCCC3EFB97 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933EB7CFC9BE1A7B833613C /* AMSlideMenuRightMenuSegue.m */; };
-		B88AAE3B4C81973FDE160A51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66104E5A1C1147B7081E2FD /* Foundation.framework */; };
-		CCA1953BF04F6E4E20E48C59 /* RNBlurModalView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E56BA9AB3EDD1BAE8C64FE3 /* RNBlurModalView.h */; };
-		D0616D82FAA6FA1FE6B5292E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E7862A1A8E6E634E78D9BB /* CoreGraphics.framework */; };
-		D11CBAEFFBF4F511EFE38962 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD26EB84B10FDE21979457 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		DB1DD1212DE24BAA5A622716 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66104E5A1C1147B7081E2FD /* Foundation.framework */; };
-		DD26E74DE32913295270DD60 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D70ED1DF77E9AC706B0C6F /* RNBlurModalView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F40858CB39A076177FD15B16 /* AMSlideMenuLeftTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 292B064E5DE7A8037117C55E /* AMSlideMenuLeftTableViewController.h */; };
-		F6DA3C6B3EAC667D72CFFF36 /* AMSlideMenuProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 32E7074D9265D0F96AF08FCF /* AMSlideMenuProtocols.h */; };
-		F9AE3ABC19609F68CD454395 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128E8F9F815FD5954F2ACCAA /* REMenuItemView.m */; };
-		FE1A901E33A32BF278DDE142 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4E48C45F33322809ED5A7 /* RECommonFunctions.m */; };
+		013E3A812A16FEB76D0B5A3F /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = A840831E29A41590694E3191 /* MBProgressHUD.h */; };
+		0B51DFCF00E64651ADF5CBC2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CD8339811E9CD97A77965D /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0C59EF77E620DF3ADAAC3B3B /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 23144DD27DE69F6030092B02 /* REMenuItem.m */; };
+		0F686E522B421E0E44227056 /* AMSlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182429AEBEC8DD4B09B74F96 /* AMSlideMenuLeftMenuSegue.m */; };
+		15103F37D32E7F2064163CB5 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EA91BC6D2D96EE9FA5E1F /* REMenuContainerView.m */; };
+		2BEBAFAEB64B18A29BB94CD0 /* Pods-AMSlideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 376304B70A993ACFF5AA1C4F /* Pods-AMSlideMenu-dummy.m */; };
+		2C345716C72B87C9B2F4B816 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E54F410EB6D49F5B0319DD /* Accelerate.framework */; };
+		2E649D8C890BC027EC291A8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DC0D54E972A9B1DCDD63D /* Foundation.framework */; };
+		31A0640F772413C51D69BF93 /* AMSlideMenuRightMenuSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = C6C7676DE3F80AF0DD6BD62A /* AMSlideMenuRightMenuSegue.h */; };
+		3EAB5A3AC0736A51DDC1C20E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DC0D54E972A9B1DCDD63D /* Foundation.framework */; };
+		3FC4EBF0736763AF1562A9C0 /* REMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C75AF7BA229A577BE2B6CAB /* REMenuItem.h */; };
+		418C6E5D16884B729D29E933 /* Pods-RNBlurModalView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B55EF492F4EE2DC3263A400 /* Pods-RNBlurModalView-dummy.m */; };
+		46BED1FCCE09DEDBDBDF98EF /* AMSlideMenuContentSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CB529B362C2ECFADCE48B05 /* AMSlideMenuContentSegue.h */; };
+		57D239B6523F2573F0BA0750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77E824DA8AFD7851DA76458 /* QuartzCore.framework */; };
+		5EB54993ECD23452B6D0A4FC /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93F3324609E31F004C7D5C /* REMenuItemView.m */; };
+		65BE3603CF8392715C3DFB7A /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C8D326EBB310DD32557474 /* REMenu.m */; };
+		7B21B5CFFA8580F81C7CF248 /* AMSlideMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D325B6B415E6A963B53A98F /* AMSlideMenuMainViewController.m */; };
+		80E559A6111022A391F3FAF6 /* RNBlurModalView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A19468F24594A4E78E92767 /* RNBlurModalView.h */; };
+		8166E6878B637CD92A83929F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77E824DA8AFD7851DA76458 /* QuartzCore.framework */; };
+		8A58232DD116AF323B64755A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DC0D54E972A9B1DCDD63D /* Foundation.framework */; };
+		901463B93F9EDF1A95C47389 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6135AB21533ED371485A7E /* RNBlurModalView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		93725296ADA86FB478C9730C /* RECommonFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 85AF1F889FA1AE6D6221AD82 /* RECommonFunctions.h */; };
+		9412794E24668AEB7C7BE9F0 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AEC2F507877CF7DB666477 /* RECommonFunctions.m */; };
+		98A9161C2A64699B3DA5B172 /* REMenuItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B5A972199B38574588390BA /* REMenuItemView.h */; };
+		A1BE29FC3AA6793C0D2185A4 /* AMSlideMenuLeftTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2745FA65F15D3AFBB633E2 /* AMSlideMenuLeftTableViewController.h */; };
+		A23509F1409C8EA00E33CC43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DC0D54E972A9B1DCDD63D /* Foundation.framework */; };
+		A9A95FFADD5BED512F7D6632 /* Pods-MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D7822BBDA57BF864B2CA7A /* Pods-MBProgressHUD-dummy.m */; };
+		AC9FFBE36003CF34CC58690A /* AMSlideMenuLeftMenuSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D5D7A772FB6BC9D96DFA51F /* AMSlideMenuLeftMenuSegue.h */; };
+		BE8F724F551C93CC377CF8CD /* AMSlideMenuLeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97A61EE027878548B7C985D /* AMSlideMenuLeftTableViewController.m */; };
+		C7D4B28FB671637B44A3973B /* AMSlideMenuRightTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F1B3877DCAB472827C54F372 /* AMSlideMenuRightTableViewController.h */; };
+		D654D4A6AD51C12AF75EE72A /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198C1C2F7A8B2E5FEC78258 /* UIViewController+AMSlideMenu.m */; };
+		D8E3E5A6DA479C98764C4249 /* REMenuContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 396B13C5CFF63D8163571717 /* REMenuContainerView.h */; };
+		DC1FB0E0504C53E070057649 /* AMSlideMenuProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = BE5F12BD638FBA2022C130B9 /* AMSlideMenuProtocols.h */; };
+		DC436018E868C3FC570FC53F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753DC0D54E972A9B1DCDD63D /* Foundation.framework */; };
+		DEDA8D3A2217ECAB968BE245 /* REMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 32E3FD8E8B69DD87AAA291A3 /* REMenu.h */; };
+		E05B67EFDCA0B3FE337CF59D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845C6284F87A0D594178F919 /* CoreGraphics.framework */; };
+		E749C2A1C8711A3179E2D3B3 /* AMSlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C44AD94C65E46629C675A23 /* AMSlideMenuRightMenuSegue.m */; };
+		E940557F6CEC8A9A7AA391EE /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 857B063F055CD15E5AAB4B69 /* Pods-dummy.m */; };
+		EBCC12C53721C1812577F206 /* AMSlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 096991799101C4F8ED90C6E9 /* AMSlideMenuContentSegue.m */; };
+		EF2DEB302111921F814519D7 /* AMSlideMenuMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A0B0BBAF47895DB2636B52 /* AMSlideMenuMainViewController.h */; };
+		F1E0CC6C7FECB0D58B87085B /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8597E699B40FCBDF41FB0C /* AMSlideMenuRightTableViewController.m */; };
+		F74A4239808F7F35D8F584B1 /* Pods-REMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 297250D937C450656FC72AAF /* Pods-REMenu-dummy.m */; };
+		FA3E6FEC484A0F247E1A90BE /* UIViewController+AMSlideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DE1DFAE1AC7775FEA92353A5 /* UIViewController+AMSlideMenu.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0EEECD9FC113D4A5237A55F9 /* PBXContainerItemProxy */ = {
+		2DB8947FD91A7424A8A2A32A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 62E7DD1D8FE3D2204DBB21E1 /* Project object */;
+			containerPortal = 4B0554422AF372DD6564441A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BBCCCA45E52265866E399CEB;
-			remoteInfo = "Pods-REMenu";
+			remoteGlobalIDString = BA83587856A66058D883A281;
+			remoteInfo = "Pods-AMSlideMenu";
 		};
-		176E1E3E70598CD9A731DF35 /* PBXContainerItemProxy */ = {
+		45B40A2FF4E66677EC7B87B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 62E7DD1D8FE3D2204DBB21E1 /* Project object */;
+			containerPortal = 4B0554422AF372DD6564441A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F78A64C1735D244313813EAB;
-			remoteInfo = "Pods-MBProgressHUD";
-		};
-		95495DD0A2AF00F4F0209847 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62E7DD1D8FE3D2204DBB21E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 060A1A888CB1D31390D2F576;
+			remoteGlobalIDString = 2E95A35A1FD197B222330DDA;
 			remoteInfo = "Pods-RNBlurModalView";
 		};
-		C7AA5CB83F4FE23E346D47A0 /* PBXContainerItemProxy */ = {
+		60D005401212B6CD01D163F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 62E7DD1D8FE3D2204DBB21E1 /* Project object */;
+			containerPortal = 4B0554422AF372DD6564441A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 58FC93D2A5288221B3AAF903;
-			remoteInfo = "Pods-AMSlideMenu";
+			remoteGlobalIDString = 826ABD7CC6171A0C9F35127B;
+			remoteInfo = "Pods-REMenu";
+		};
+		E3876D2F66545A8362D68AAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B0554422AF372DD6564441A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5581252BF48FB66EE740E173;
+			remoteInfo = "Pods-MBProgressHUD";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00D5818C79ABF3228E68C12E /* Pods-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
-		02A331458910C97DEC9B09B7 /* Pods-RNBlurModalView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNBlurModalView-Private.xcconfig"; sourceTree = "<group>"; };
-		03AA5C6FDFE29CCBFF7F893B /* AMSlideMenuContentSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuContentSegue.h; path = AMSlideMenu/AMSlideMenuContentSegue.h; sourceTree = "<group>"; };
-		0EA65A9CD18072520A062A97 /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
-		128E8F9F815FD5954F2ACCAA /* REMenuItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuItemView.m; path = REMenu/REMenuItemView.m; sourceTree = "<group>"; };
-		1CF75E97D662B051B93C54C2 /* REMenuItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuItem.h; path = REMenu/REMenuItem.h; sourceTree = "<group>"; };
-		1DFA46D540FF55B3AF05E9EF /* Pods-AMSlideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMSlideMenu-prefix.pch"; sourceTree = "<group>"; };
-		2117DBBF04C2504F8458B091 /* REMenuContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuContainerView.h; path = REMenu/REMenuContainerView.h; sourceTree = "<group>"; };
-		243A4A5F5FEC80516A702DC8 /* Pods-AMSlideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMSlideMenu.xcconfig"; sourceTree = "<group>"; };
-		292B064E5DE7A8037117C55E /* AMSlideMenuLeftTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuLeftTableViewController.h; path = AMSlideMenu/AMSlideMenuLeftTableViewController.h; sourceTree = "<group>"; };
-		2C8789FDDF0B064D0F706EE8 /* AMSlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuLeftMenuSegue.h; path = AMSlideMenu/AMSlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
-		2E56BA9AB3EDD1BAE8C64FE3 /* RNBlurModalView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNBlurModalView.h; sourceTree = "<group>"; };
-		30BC6BC34833761829D4F314 /* REMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuItem.m; path = REMenu/REMenuItem.m; sourceTree = "<group>"; };
-		32E7074D9265D0F96AF08FCF /* AMSlideMenuProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuProtocols.h; path = AMSlideMenu/AMSlideMenuProtocols.h; sourceTree = "<group>"; };
-		3359DA771CE2BF7483C15B4A /* Pods-REMenu-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-REMenu-Private.xcconfig"; sourceTree = "<group>"; };
-		340EB3C788F572104C056A5C /* REMenuItemView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuItemView.h; path = REMenu/REMenuItemView.h; sourceTree = "<group>"; };
-		3933EB7CFC9BE1A7B833613C /* AMSlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuRightMenuSegue.m; path = AMSlideMenu/AMSlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
-		4275C7DAC9BC061F9CB2CF86 /* libPods-REMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-REMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C66FAC799A6D675DA786C0F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EE4FCFD43F251969FC0DCCA /* AMSlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuRightMenuSegue.h; path = AMSlideMenu/AMSlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
-		51B6BFC86141637B76C4AA6A /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		5589C7F56795FE1F350EAF16 /* Pods-REMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-REMenu-prefix.pch"; sourceTree = "<group>"; };
-		55FADFFD716633CE5E66DD86 /* libPods-AMSlideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMSlideMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		582C013187812845DD3A148B /* AMSlideMenuRightTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuRightTableViewController.h; path = AMSlideMenu/AMSlideMenuRightTableViewController.h; sourceTree = "<group>"; };
-		583D715F5D4E98B9B13D7D83 /* REMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenu.h; path = REMenu/REMenu.h; sourceTree = "<group>"; };
-		58F2BBBB15412290E0E54412 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = REMenu/RECommonFunctions.h; sourceTree = "<group>"; };
-		5FE0278C98528D0F1EA16439 /* UIViewController+AMSlideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AMSlideMenu.h"; path = "AMSlideMenu/UIViewController+AMSlideMenu.h"; sourceTree = "<group>"; };
-		644D3136A4656ABBB75AF165 /* Pods-REMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-REMenu-dummy.m"; sourceTree = "<group>"; };
-		68193769CDA2B2AC346E9B5B /* AMSlideMenuMainViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuMainViewController.h; path = AMSlideMenu/AMSlideMenuMainViewController.h; sourceTree = "<group>"; };
-		6CC09805A20FEF5A36A648A9 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MBProgressHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		715F53C41ECF96ECBBE82D90 /* Pods-AMSlideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMSlideMenu-dummy.m"; sourceTree = "<group>"; };
-		724A86381ECCD49561E0B886 /* Pods-RNBlurModalView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RNBlurModalView-dummy.m"; sourceTree = "<group>"; };
-		74D296A30DC5C22E552998CE /* REMenuContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuContainerView.m; path = REMenu/REMenuContainerView.m; sourceTree = "<group>"; };
-		751AEBD685B0A9FCD7603706 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		86E7862A1A8E6E634E78D9BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		8FBFBC365778C8DC55CE2599 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		95F1A6E28F86932BA44B1C0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		979E3453F7162847D36A5EAD /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9AA344395390673D5A1B6974 /* Pods-RNBlurModalView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RNBlurModalView-prefix.pch"; sourceTree = "<group>"; };
-		9EEA2115D786F0B0568C5BD9 /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		A66104E5A1C1147B7081E2FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A85B9F2C0DEC2726F9EC236F /* AMSlideMenuMainViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuMainViewController.m; path = AMSlideMenu/AMSlideMenuMainViewController.m; sourceTree = "<group>"; };
-		A8A83220352F2D2E38C18DC4 /* libPods-RNBlurModalView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBlurModalView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC0336198EBE2D817B0132D4 /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AMSlideMenu.m"; path = "AMSlideMenu/UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
-		ACF4E48C45F33322809ED5A7 /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = REMenu/RECommonFunctions.m; sourceTree = "<group>"; };
-		AFE4CB057959066CDBFB560A /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		B37C4FEEE16994000FBF7FF8 /* AMSlideMenuRightTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuRightTableViewController.m; path = AMSlideMenu/AMSlideMenuRightTableViewController.m; sourceTree = "<group>"; };
-		C0D70ED1DF77E9AC706B0C6F /* RNBlurModalView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNBlurModalView.m; sourceTree = "<group>"; };
-		C1D6BBF576D7CD9B5A454E74 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
-		C22C6581EA5BA2B299B83A93 /* Pods-RNBlurModalView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNBlurModalView.xcconfig"; sourceTree = "<group>"; };
-		C97DABA1142F864897019CDF /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CA801DB994241CA7FC550691 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		CD18804513E7BE25751A4917 /* Pods-REMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-REMenu.xcconfig"; sourceTree = "<group>"; };
-		CECD26EB84B10FDE21979457 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		D2510B4461F7A49074587508 /* Pods-AMSlideMenu-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMSlideMenu-Private.xcconfig"; sourceTree = "<group>"; };
-		D7FCCBF462CCB197B207AEB1 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		DE9D7439FB702C0F707A9112 /* AMSlideMenuContentSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuContentSegue.m; path = AMSlideMenu/AMSlideMenuContentSegue.m; sourceTree = "<group>"; };
-		E3D61EA2645862166BDD7382 /* REMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenu.m; path = REMenu/REMenu.m; sourceTree = "<group>"; };
-		EEB11A2062F41DD1501F5C02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		F7956A68C05C4F08A5C52402 /* AMSlideMenuLeftTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuLeftTableViewController.m; path = AMSlideMenu/AMSlideMenuLeftTableViewController.m; sourceTree = "<group>"; };
-		F9B79855D5E8DB8C6F5639EE /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		FA4AEAE7F713FE99CA1BF775 /* AMSlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuLeftMenuSegue.m; path = AMSlideMenu/AMSlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
+		009B64FF09211CCFF5261722 /* libPods-REMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-REMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		096991799101C4F8ED90C6E9 /* AMSlideMenuContentSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuContentSegue.m; path = AMSlideMenu/AMSlideMenuContentSegue.m; sourceTree = "<group>"; };
+		121EA91BC6D2D96EE9FA5E1F /* REMenuContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuContainerView.m; path = REMenu/REMenuContainerView.m; sourceTree = "<group>"; };
+		182429AEBEC8DD4B09B74F96 /* AMSlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuLeftMenuSegue.m; path = AMSlideMenu/AMSlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
+		1A19468F24594A4E78E92767 /* RNBlurModalView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNBlurModalView.h; sourceTree = "<group>"; };
+		1D5D7A772FB6BC9D96DFA51F /* AMSlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuLeftMenuSegue.h; path = AMSlideMenu/AMSlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
+		1FA81D88AF46C3C17BF76D84 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		23144DD27DE69F6030092B02 /* REMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuItem.m; path = REMenu/REMenuItem.m; sourceTree = "<group>"; };
+		274079B57DBD823F8F3ADFE3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		297250D937C450656FC72AAF /* Pods-REMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-REMenu-dummy.m"; sourceTree = "<group>"; };
+		2B93F3324609E31F004C7D5C /* REMenuItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenuItemView.m; path = REMenu/REMenuItemView.m; sourceTree = "<group>"; };
+		32E3FD8E8B69DD87AAA291A3 /* REMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenu.h; path = REMenu/REMenu.h; sourceTree = "<group>"; };
+		376304B70A993ACFF5AA1C4F /* Pods-AMSlideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AMSlideMenu-dummy.m"; sourceTree = "<group>"; };
+		396B13C5CFF63D8163571717 /* REMenuContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuContainerView.h; path = REMenu/REMenuContainerView.h; sourceTree = "<group>"; };
+		3B99F1BAA94125924B1D1DF0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		3C44AD94C65E46629C675A23 /* AMSlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuRightMenuSegue.m; path = AMSlideMenu/AMSlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
+		411480D4A8F3CB89AF951DCC /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		4198C1C2F7A8B2E5FEC78258 /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AMSlideMenu.m"; path = "AMSlideMenu/UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
+		45A81AAFF993BC1A9729355D /* Pods-RNBlurModalView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RNBlurModalView-prefix.pch"; sourceTree = "<group>"; };
+		4A2745FA65F15D3AFBB633E2 /* AMSlideMenuLeftTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuLeftTableViewController.h; path = AMSlideMenu/AMSlideMenuLeftTableViewController.h; sourceTree = "<group>"; };
+		4B5A972199B38574588390BA /* REMenuItemView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuItemView.h; path = REMenu/REMenuItemView.h; sourceTree = "<group>"; };
+		4C34ADC8E71925222D9B0D02 /* Pods-AMSlideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMSlideMenu.xcconfig"; sourceTree = "<group>"; };
+		4F434A6D0DBAE4CC3D72E2D3 /* Pods-AMSlideMenu-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AMSlideMenu-Private.xcconfig"; sourceTree = "<group>"; };
+		509800A742B9C64D49521C5A /* Pods-REMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-REMenu.xcconfig"; sourceTree = "<group>"; };
+		5CB529B362C2ECFADCE48B05 /* AMSlideMenuContentSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuContentSegue.h; path = AMSlideMenu/AMSlideMenuContentSegue.h; sourceTree = "<group>"; };
+		65AEC2F507877CF7DB666477 /* RECommonFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = REMenu/RECommonFunctions.m; sourceTree = "<group>"; };
+		6C75AF7BA229A577BE2B6CAB /* REMenuItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = REMenuItem.h; path = REMenu/REMenuItem.h; sourceTree = "<group>"; };
+		72A0B0BBAF47895DB2636B52 /* AMSlideMenuMainViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuMainViewController.h; path = AMSlideMenu/AMSlideMenuMainViewController.h; sourceTree = "<group>"; };
+		74CD8339811E9CD97A77965D /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		74D83495BEF2E5DFC1BCAE1C /* Pods-AMSlideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AMSlideMenu-prefix.pch"; sourceTree = "<group>"; };
+		753DC0D54E972A9B1DCDD63D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		75D7822BBDA57BF864B2CA7A /* Pods-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		760D28230101905E3F67A03B /* Pods-REMenu-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-REMenu-Private.xcconfig"; sourceTree = "<group>"; };
+		76E54F410EB6D49F5B0319DD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		7AEC31306D85237A64B879D5 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		81C8D326EBB310DD32557474 /* REMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = REMenu.m; path = REMenu/REMenu.m; sourceTree = "<group>"; };
+		845C6284F87A0D594178F919 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		857B063F055CD15E5AAB4B69 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		85AF1F889FA1AE6D6221AD82 /* RECommonFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = REMenu/RECommonFunctions.h; sourceTree = "<group>"; };
+		882247F9B680842ADDC60EE3 /* Pods-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		8E83E7484F54B6FF29FEDFBB /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		9B55EF492F4EE2DC3263A400 /* Pods-RNBlurModalView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RNBlurModalView-dummy.m"; sourceTree = "<group>"; };
+		9D325B6B415E6A963B53A98F /* AMSlideMenuMainViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuMainViewController.m; path = AMSlideMenu/AMSlideMenuMainViewController.m; sourceTree = "<group>"; };
+		9D6135AB21533ED371485A7E /* RNBlurModalView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNBlurModalView.m; sourceTree = "<group>"; };
+		9DB5A2828101789F63D9AE8A /* libPods-RNBlurModalView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBlurModalView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A437A258C20F04185584B055 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		A77E824DA8AFD7851DA76458 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		A840831E29A41590694E3191 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A97A61EE027878548B7C985D /* AMSlideMenuLeftTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuLeftTableViewController.m; path = AMSlideMenu/AMSlideMenuLeftTableViewController.m; sourceTree = "<group>"; };
+		AE5C43EF49A4E3B04F68D43B /* Pods-RNBlurModalView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNBlurModalView.xcconfig"; sourceTree = "<group>"; };
+		B9A1DB682B9BD0C62C588D7E /* Pods-REMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-REMenu-prefix.pch"; sourceTree = "<group>"; };
+		B9F32D67D010003E24557B2B /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		BA87BBBB5C7E3789C0092B6B /* Pods-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
+		BE5F12BD638FBA2022C130B9 /* AMSlideMenuProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuProtocols.h; path = AMSlideMenu/AMSlideMenuProtocols.h; sourceTree = "<group>"; };
+		C6A12E8A9AEC8127BF21E252 /* Pods-RNBlurModalView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNBlurModalView-Private.xcconfig"; sourceTree = "<group>"; };
+		C6C7676DE3F80AF0DD6BD62A /* AMSlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuRightMenuSegue.h; path = AMSlideMenu/AMSlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
+		D55FFF8F551D6116666B34BE /* Pods-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
+		DCBA4EA3AEC9EE11F489DB86 /* libPods-AMSlideMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMSlideMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1DFAE1AC7775FEA92353A5 /* UIViewController+AMSlideMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AMSlideMenu.h"; path = "AMSlideMenu/UIViewController+AMSlideMenu.h"; sourceTree = "<group>"; };
+		EB8597E699B40FCBDF41FB0C /* AMSlideMenuRightTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMSlideMenuRightTableViewController.m; path = AMSlideMenu/AMSlideMenuRightTableViewController.m; sourceTree = "<group>"; };
+		F1B3877DCAB472827C54F372 /* AMSlideMenuRightTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMSlideMenuRightTableViewController.h; path = AMSlideMenu/AMSlideMenuRightTableViewController.h; sourceTree = "<group>"; };
+		F8CD213319DD962D59226591 /* libPods-MBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MBProgressHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		00DA76B8874DB32402D217E2 /* Frameworks */ = {
+		8332FC5E06FA677D45FEE742 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB1DD1212DE24BAA5A622716 /* Foundation.framework in Frameworks */,
+				A23509F1409C8EA00E33CC43 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D8FE404AE690846CB49963D /* Frameworks */ = {
+		8AC86F81BC576F655A5B34C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78849E613B4E30F60D27E223 /* Accelerate.framework in Frameworks */,
-				483E6ECF21D4F41E88046EDA /* Foundation.framework in Frameworks */,
-				44A61B5BC8A804222C3F8BEE /* QuartzCore.framework in Frameworks */,
+				8A58232DD116AF323B64755A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9F7D6945FE6640933D73BE6 /* Frameworks */ = {
+		AF8C05EA3FF99AC224B8B017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0616D82FAA6FA1FE6B5292E /* CoreGraphics.framework in Frameworks */,
-				7306814CE158FD09AC1E51E7 /* Foundation.framework in Frameworks */,
+				2C345716C72B87C9B2F4B816 /* Accelerate.framework in Frameworks */,
+				DC436018E868C3FC570FC53F /* Foundation.framework in Frameworks */,
+				8166E6878B637CD92A83929F /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2DA6CE37A003361E5C80439 /* Frameworks */ = {
+		E4C99571B0D7E41D5A48B4C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8D4E471142052AE2642B00 /* Foundation.framework in Frameworks */,
+				2E649D8C890BC027EC291A8D /* Foundation.framework in Frameworks */,
+				57D239B6523F2573F0BA0750 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E547DD18E51960D0094A0179 /* Frameworks */ = {
+		ECF21CCEB0E3AE1A06E4E2DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B88AAE3B4C81973FDE160A51 /* Foundation.framework in Frameworks */,
-				1512A53D015354E0F127E0EB /* QuartzCore.framework in Frameworks */,
+				E05B67EFDCA0B3FE337CF59D /* CoreGraphics.framework in Frameworks */,
+				3EAB5A3AC0736A51DDC1C20E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0167EDCF58906397E9926BCE /* MBProgressHUD */ = {
+		02E9F1BD9CE7C2D96891472B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AFE4CB057959066CDBFB560A /* MBProgressHUD.h */,
-				CECD26EB84B10FDE21979457 /* MBProgressHUD.m */,
-				035A5217174CDB62071D8C29 /* Support Files */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		035A5217174CDB62071D8C29 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				00D5818C79ABF3228E68C12E /* Pods-MBProgressHUD.xcconfig */,
-				0EA65A9CD18072520A062A97 /* Pods-MBProgressHUD-Private.xcconfig */,
-				51B6BFC86141637B76C4AA6A /* Pods-MBProgressHUD-dummy.m */,
-				9EEA2115D786F0B0568C5BD9 /* Pods-MBProgressHUD-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-MBProgressHUD";
-			sourceTree = "<group>";
-		};
-		473B594871F1F8BF76F58653 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CA05D45E343902C2544B5E38 /* AMSlideMenu */,
-				0167EDCF58906397E9926BCE /* MBProgressHUD */,
-				A8A6F93FF3195E940F6350D2 /* REMenu */,
-				DC217F7542282DBAFEE9C611 /* RNBlurModalView */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		5A1C89F11692B6B80763E4AD /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C22C6581EA5BA2B299B83A93 /* Pods-RNBlurModalView.xcconfig */,
-				02A331458910C97DEC9B09B7 /* Pods-RNBlurModalView-Private.xcconfig */,
-				724A86381ECCD49561E0B886 /* Pods-RNBlurModalView-dummy.m */,
-				9AA344395390673D5A1B6974 /* Pods-RNBlurModalView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-RNBlurModalView";
-			sourceTree = "<group>";
-		};
-		8800E14FF07E74F40F98F764 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4C66FAC799A6D675DA786C0F /* libPods.a */,
-				55FADFFD716633CE5E66DD86 /* libPods-AMSlideMenu.a */,
-				6CC09805A20FEF5A36A648A9 /* libPods-MBProgressHUD.a */,
-				4275C7DAC9BC061F9CB2CF86 /* libPods-REMenu.a */,
-				A8A83220352F2D2E38C18DC4 /* libPods-RNBlurModalView.a */,
+				274079B57DBD823F8F3ADFE3 /* libPods.a */,
+				DCBA4EA3AEC9EE11F489DB86 /* libPods-AMSlideMenu.a */,
+				F8CD213319DD962D59226591 /* libPods-MBProgressHUD.a */,
+				009B64FF09211CCFF5261722 /* libPods-REMenu.a */,
+				9DB5A2828101789F63D9AE8A /* libPods-RNBlurModalView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8A738114BB85A9A9840FFBA3 /* Support Files */ = {
+		0B112306569AD865ECA67A82 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				243A4A5F5FEC80516A702DC8 /* Pods-AMSlideMenu.xcconfig */,
-				D2510B4461F7A49074587508 /* Pods-AMSlideMenu-Private.xcconfig */,
-				715F53C41ECF96ECBBE82D90 /* Pods-AMSlideMenu-dummy.m */,
-				1DFA46D540FF55B3AF05E9EF /* Pods-AMSlideMenu-prefix.pch */,
+				4C34ADC8E71925222D9B0D02 /* Pods-AMSlideMenu.xcconfig */,
+				4F434A6D0DBAE4CC3D72E2D3 /* Pods-AMSlideMenu-Private.xcconfig */,
+				376304B70A993ACFF5AA1C4F /* Pods-AMSlideMenu-dummy.m */,
+				74D83495BEF2E5DFC1BCAE1C /* Pods-AMSlideMenu-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-AMSlideMenu";
 			sourceTree = "<group>";
 		};
-		9EF0608CA35D2D8A8A4547A1 /* Pods */ = {
+		4763A86205DD5E23AC6FBBCF /* RNBlurModalView */ = {
 			isa = PBXGroup;
 			children = (
-				979E3453F7162847D36A5EAD /* Pods-acknowledgements.markdown */,
-				8FBFBC365778C8DC55CE2599 /* Pods-acknowledgements.plist */,
-				F9B79855D5E8DB8C6F5639EE /* Pods-dummy.m */,
-				D7FCCBF462CCB197B207AEB1 /* Pods-environment.h */,
-				751AEBD685B0A9FCD7603706 /* Pods-resources.sh */,
-				95F1A6E28F86932BA44B1C0F /* Pods.debug.xcconfig */,
-				EEB11A2062F41DD1501F5C02 /* Pods.release.xcconfig */,
+				1A19468F24594A4E78E92767 /* RNBlurModalView.h */,
+				9D6135AB21533ED371485A7E /* RNBlurModalView.m */,
+				ACE7905C2B958E8A77012A23 /* Support Files */,
+			);
+			path = RNBlurModalView;
+			sourceTree = "<group>";
+		};
+		50AF13E130205DDB40EA892B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				76E54F410EB6D49F5B0319DD /* Accelerate.framework */,
+				845C6284F87A0D594178F919 /* CoreGraphics.framework */,
+				753DC0D54E972A9B1DCDD63D /* Foundation.framework */,
+				A77E824DA8AFD7851DA76458 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		636486A2A1A5F40E839DF614 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A840831E29A41590694E3191 /* MBProgressHUD.h */,
+				74CD8339811E9CD97A77965D /* MBProgressHUD.m */,
+				9AAB460B8AC7E6B482445FB3 /* Support Files */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		7D8E9CC9C7E572563D9EFE23 = {
+			isa = PBXGroup;
+			children = (
+				1FA81D88AF46C3C17BF76D84 /* Podfile */,
+				9DCE368F4CF1590CDB70051C /* Frameworks */,
+				8E998561EC6FA91DBCB9B2D2 /* Pods */,
+				02E9F1BD9CE7C2D96891472B /* Products */,
+				F52CFDD1884421848144FE2B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8E998561EC6FA91DBCB9B2D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD10B66283C157FA25C394 /* AMSlideMenu */,
+				636486A2A1A5F40E839DF614 /* MBProgressHUD */,
+				EAAF37F30F43429740E49ED6 /* REMenu */,
+				4763A86205DD5E23AC6FBBCF /* RNBlurModalView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		97872874ACC1B14353868678 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7AEC31306D85237A64B879D5 /* Pods-acknowledgements.markdown */,
+				8E83E7484F54B6FF29FEDFBB /* Pods-acknowledgements.plist */,
+				857B063F055CD15E5AAB4B69 /* Pods-dummy.m */,
+				B9F32D67D010003E24557B2B /* Pods-environment.h */,
+				411480D4A8F3CB89AF951DCC /* Pods-resources.sh */,
+				A437A258C20F04185584B055 /* Pods.debug.xcconfig */,
+				3B99F1BAA94125924B1D1DF0 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
-		A8A6F93FF3195E940F6350D2 /* REMenu */ = {
+		9AAB460B8AC7E6B482445FB3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				58F2BBBB15412290E0E54412 /* RECommonFunctions.h */,
-				ACF4E48C45F33322809ED5A7 /* RECommonFunctions.m */,
-				583D715F5D4E98B9B13D7D83 /* REMenu.h */,
-				E3D61EA2645862166BDD7382 /* REMenu.m */,
-				2117DBBF04C2504F8458B091 /* REMenuContainerView.h */,
-				74D296A30DC5C22E552998CE /* REMenuContainerView.m */,
-				1CF75E97D662B051B93C54C2 /* REMenuItem.h */,
-				30BC6BC34833761829D4F314 /* REMenuItem.m */,
-				340EB3C788F572104C056A5C /* REMenuItemView.h */,
-				128E8F9F815FD5954F2ACCAA /* REMenuItemView.m */,
-				EF4B614F143D193FC543093D /* Support Files */,
+				BA87BBBB5C7E3789C0092B6B /* Pods-MBProgressHUD.xcconfig */,
+				D55FFF8F551D6116666B34BE /* Pods-MBProgressHUD-Private.xcconfig */,
+				75D7822BBDA57BF864B2CA7A /* Pods-MBProgressHUD-dummy.m */,
+				882247F9B680842ADDC60EE3 /* Pods-MBProgressHUD-prefix.pch */,
 			);
-			path = REMenu;
+			name = "Support Files";
+			path = "../Target Support Files/Pods-MBProgressHUD";
 			sourceTree = "<group>";
 		};
-		C38D0C3732F8DB47DFBE030D /* iOS */ = {
+		9DCE368F4CF1590CDB70051C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C1D6BBF576D7CD9B5A454E74 /* Accelerate.framework */,
-				86E7862A1A8E6E634E78D9BB /* CoreGraphics.framework */,
-				A66104E5A1C1147B7081E2FD /* Foundation.framework */,
-				CA801DB994241CA7FC550691 /* QuartzCore.framework */,
+				50AF13E130205DDB40EA892B /* iOS */,
 			);
-			name = iOS;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CA05D45E343902C2544B5E38 /* AMSlideMenu */ = {
+		ACE7905C2B958E8A77012A23 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				03AA5C6FDFE29CCBFF7F893B /* AMSlideMenuContentSegue.h */,
-				DE9D7439FB702C0F707A9112 /* AMSlideMenuContentSegue.m */,
-				2C8789FDDF0B064D0F706EE8 /* AMSlideMenuLeftMenuSegue.h */,
-				FA4AEAE7F713FE99CA1BF775 /* AMSlideMenuLeftMenuSegue.m */,
-				292B064E5DE7A8037117C55E /* AMSlideMenuLeftTableViewController.h */,
-				F7956A68C05C4F08A5C52402 /* AMSlideMenuLeftTableViewController.m */,
-				68193769CDA2B2AC346E9B5B /* AMSlideMenuMainViewController.h */,
-				A85B9F2C0DEC2726F9EC236F /* AMSlideMenuMainViewController.m */,
-				32E7074D9265D0F96AF08FCF /* AMSlideMenuProtocols.h */,
-				4EE4FCFD43F251969FC0DCCA /* AMSlideMenuRightMenuSegue.h */,
-				3933EB7CFC9BE1A7B833613C /* AMSlideMenuRightMenuSegue.m */,
-				582C013187812845DD3A148B /* AMSlideMenuRightTableViewController.h */,
-				B37C4FEEE16994000FBF7FF8 /* AMSlideMenuRightTableViewController.m */,
-				5FE0278C98528D0F1EA16439 /* UIViewController+AMSlideMenu.h */,
-				AC0336198EBE2D817B0132D4 /* UIViewController+AMSlideMenu.m */,
-				8A738114BB85A9A9840FFBA3 /* Support Files */,
+				AE5C43EF49A4E3B04F68D43B /* Pods-RNBlurModalView.xcconfig */,
+				C6A12E8A9AEC8127BF21E252 /* Pods-RNBlurModalView-Private.xcconfig */,
+				9B55EF492F4EE2DC3263A400 /* Pods-RNBlurModalView-dummy.m */,
+				45A81AAFF993BC1A9729355D /* Pods-RNBlurModalView-prefix.pch */,
 			);
-			path = AMSlideMenu;
+			name = "Support Files";
+			path = "../Target Support Files/Pods-RNBlurModalView";
 			sourceTree = "<group>";
 		};
-		DC217F7542282DBAFEE9C611 /* RNBlurModalView */ = {
+		C6E33FFCD4F33F177CD8086E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2E56BA9AB3EDD1BAE8C64FE3 /* RNBlurModalView.h */,
-				C0D70ED1DF77E9AC706B0C6F /* RNBlurModalView.m */,
-				5A1C89F11692B6B80763E4AD /* Support Files */,
-			);
-			path = RNBlurModalView;
-			sourceTree = "<group>";
-		};
-		E1BC21660D7D1ACAE89E4372 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9EF0608CA35D2D8A8A4547A1 /* Pods */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		EF4B614F143D193FC543093D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CD18804513E7BE25751A4917 /* Pods-REMenu.xcconfig */,
-				3359DA771CE2BF7483C15B4A /* Pods-REMenu-Private.xcconfig */,
-				644D3136A4656ABBB75AF165 /* Pods-REMenu-dummy.m */,
-				5589C7F56795FE1F350EAF16 /* Pods-REMenu-prefix.pch */,
+				509800A742B9C64D49521C5A /* Pods-REMenu.xcconfig */,
+				760D28230101905E3F67A03B /* Pods-REMenu-Private.xcconfig */,
+				297250D937C450656FC72AAF /* Pods-REMenu-dummy.m */,
+				B9A1DB682B9BD0C62C588D7E /* Pods-REMenu-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Pods-REMenu";
 			sourceTree = "<group>";
 		};
-		F4DC81AC49AA02AE649DFC93 = {
+		CEBD10B66283C157FA25C394 /* AMSlideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				C97DABA1142F864897019CDF /* Podfile */,
-				FABD8A56499E49C125A29453 /* Frameworks */,
-				473B594871F1F8BF76F58653 /* Pods */,
-				8800E14FF07E74F40F98F764 /* Products */,
-				E1BC21660D7D1ACAE89E4372 /* Targets Support Files */,
+				5CB529B362C2ECFADCE48B05 /* AMSlideMenuContentSegue.h */,
+				096991799101C4F8ED90C6E9 /* AMSlideMenuContentSegue.m */,
+				1D5D7A772FB6BC9D96DFA51F /* AMSlideMenuLeftMenuSegue.h */,
+				182429AEBEC8DD4B09B74F96 /* AMSlideMenuLeftMenuSegue.m */,
+				4A2745FA65F15D3AFBB633E2 /* AMSlideMenuLeftTableViewController.h */,
+				A97A61EE027878548B7C985D /* AMSlideMenuLeftTableViewController.m */,
+				72A0B0BBAF47895DB2636B52 /* AMSlideMenuMainViewController.h */,
+				9D325B6B415E6A963B53A98F /* AMSlideMenuMainViewController.m */,
+				BE5F12BD638FBA2022C130B9 /* AMSlideMenuProtocols.h */,
+				C6C7676DE3F80AF0DD6BD62A /* AMSlideMenuRightMenuSegue.h */,
+				3C44AD94C65E46629C675A23 /* AMSlideMenuRightMenuSegue.m */,
+				F1B3877DCAB472827C54F372 /* AMSlideMenuRightTableViewController.h */,
+				EB8597E699B40FCBDF41FB0C /* AMSlideMenuRightTableViewController.m */,
+				DE1DFAE1AC7775FEA92353A5 /* UIViewController+AMSlideMenu.h */,
+				4198C1C2F7A8B2E5FEC78258 /* UIViewController+AMSlideMenu.m */,
+				0B112306569AD865ECA67A82 /* Support Files */,
 			);
+			path = AMSlideMenu;
 			sourceTree = "<group>";
 		};
-		FABD8A56499E49C125A29453 /* Frameworks */ = {
+		EAAF37F30F43429740E49ED6 /* REMenu */ = {
 			isa = PBXGroup;
 			children = (
-				C38D0C3732F8DB47DFBE030D /* iOS */,
+				85AF1F889FA1AE6D6221AD82 /* RECommonFunctions.h */,
+				65AEC2F507877CF7DB666477 /* RECommonFunctions.m */,
+				32E3FD8E8B69DD87AAA291A3 /* REMenu.h */,
+				81C8D326EBB310DD32557474 /* REMenu.m */,
+				396B13C5CFF63D8163571717 /* REMenuContainerView.h */,
+				121EA91BC6D2D96EE9FA5E1F /* REMenuContainerView.m */,
+				6C75AF7BA229A577BE2B6CAB /* REMenuItem.h */,
+				23144DD27DE69F6030092B02 /* REMenuItem.m */,
+				4B5A972199B38574588390BA /* REMenuItemView.h */,
+				2B93F3324609E31F004C7D5C /* REMenuItemView.m */,
+				C6E33FFCD4F33F177CD8086E /* Support Files */,
 			);
-			name = Frameworks;
+			path = REMenu;
+			sourceTree = "<group>";
+		};
+		F52CFDD1884421848144FE2B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				97872874ACC1B14353868678 /* Pods */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0844F8D9EE976629D1F76C18 /* Headers */ = {
+		719D22D37E0AD9F34592256B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34466A18970E132AA916976F /* RECommonFunctions.h in Headers */,
-				1424DF615215E554AD3B6E6C /* REMenu.h in Headers */,
-				5832F4E6E707BA969533C38A /* REMenuContainerView.h in Headers */,
-				B1B4DF017DF55F6594252301 /* REMenuItem.h in Headers */,
-				5263B129FADB211E4DE1E10F /* REMenuItemView.h in Headers */,
+				93725296ADA86FB478C9730C /* RECommonFunctions.h in Headers */,
+				DEDA8D3A2217ECAB968BE245 /* REMenu.h in Headers */,
+				D8E3E5A6DA479C98764C4249 /* REMenuContainerView.h in Headers */,
+				3FC4EBF0736763AF1562A9C0 /* REMenuItem.h in Headers */,
+				98A9161C2A64699B3DA5B172 /* REMenuItemView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		479984ACE080871489E7A6C3 /* Headers */ = {
+		9DB9CD289B7B4B428F0D6FE9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A374E1C91D7932E5E173827 /* MBProgressHUD.h in Headers */,
+				46BED1FCCE09DEDBDBDF98EF /* AMSlideMenuContentSegue.h in Headers */,
+				AC9FFBE36003CF34CC58690A /* AMSlideMenuLeftMenuSegue.h in Headers */,
+				A1BE29FC3AA6793C0D2185A4 /* AMSlideMenuLeftTableViewController.h in Headers */,
+				EF2DEB302111921F814519D7 /* AMSlideMenuMainViewController.h in Headers */,
+				DC1FB0E0504C53E070057649 /* AMSlideMenuProtocols.h in Headers */,
+				31A0640F772413C51D69BF93 /* AMSlideMenuRightMenuSegue.h in Headers */,
+				C7D4B28FB671637B44A3973B /* AMSlideMenuRightTableViewController.h in Headers */,
+				FA3E6FEC484A0F247E1A90BE /* UIViewController+AMSlideMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6207400DD2E40ED738BB955A /* Headers */ = {
+		A88903BEE21897DB44E4CFCA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				343583296FFAFF11EA0B9872 /* AMSlideMenuContentSegue.h in Headers */,
-				8857C72E68A4F9ED2CCEAE2E /* AMSlideMenuLeftMenuSegue.h in Headers */,
-				F40858CB39A076177FD15B16 /* AMSlideMenuLeftTableViewController.h in Headers */,
-				8AE6B60C81D8307EF89F138A /* AMSlideMenuMainViewController.h in Headers */,
-				F6DA3C6B3EAC667D72CFFF36 /* AMSlideMenuProtocols.h in Headers */,
-				91D85EA60ABE2E7AA6B9B9D0 /* AMSlideMenuRightMenuSegue.h in Headers */,
-				319E12BF8A45C7A3E8A2EE7A /* AMSlideMenuRightTableViewController.h in Headers */,
-				785360198FCDF638C6A7A267 /* UIViewController+AMSlideMenu.h in Headers */,
+				80E559A6111022A391F3FAF6 /* RNBlurModalView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8FCFD3983B5FC27EE2F7B765 /* Headers */ = {
+		E750B26980C52B17F8C8542E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCA1953BF04F6E4E20E48C59 /* RNBlurModalView.h in Headers */,
+				013E3A812A16FEB76D0B5A3F /* MBProgressHUD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		060A1A888CB1D31390D2F576 /* Pods-RNBlurModalView */ = {
+		2E95A35A1FD197B222330DDA /* Pods-RNBlurModalView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCAA55879B4F93ABE4DC1E78 /* Build configuration list for PBXNativeTarget "Pods-RNBlurModalView" */;
+			buildConfigurationList = 193650E30F500932603E724A /* Build configuration list for PBXNativeTarget "Pods-RNBlurModalView" */;
 			buildPhases = (
-				17973F9BF6DB8FD537CF07CC /* Sources */,
-				0D8FE404AE690846CB49963D /* Frameworks */,
-				8FCFD3983B5FC27EE2F7B765 /* Headers */,
+				D978196B22497B92927D351F /* Sources */,
+				AF8C05EA3FF99AC224B8B017 /* Frameworks */,
+				A88903BEE21897DB44E4CFCA /* Headers */,
 			);
 			buildRules = (
 			);
@@ -444,70 +444,16 @@
 			);
 			name = "Pods-RNBlurModalView";
 			productName = "Pods-RNBlurModalView";
-			productReference = A8A83220352F2D2E38C18DC4 /* libPods-RNBlurModalView.a */;
+			productReference = 9DB5A2828101789F63D9AE8A /* libPods-RNBlurModalView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		58FC93D2A5288221B3AAF903 /* Pods-AMSlideMenu */ = {
+		5581252BF48FB66EE740E173 /* Pods-MBProgressHUD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E238CC2F395C3A35D82C9E9 /* Build configuration list for PBXNativeTarget "Pods-AMSlideMenu" */;
+			buildConfigurationList = 1A203F70E18D1505F1765886 /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */;
 			buildPhases = (
-				8A0AD7EC5FAC1F62D4AF0C54 /* Sources */,
-				D2DA6CE37A003361E5C80439 /* Frameworks */,
-				6207400DD2E40ED738BB955A /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-AMSlideMenu";
-			productName = "Pods-AMSlideMenu";
-			productReference = 55FADFFD716633CE5E66DD86 /* libPods-AMSlideMenu.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		95117D1541EEA48D5639C655 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 938E53E50AF6AC633077DC30 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				E7ED30F2109584E8032C4D81 /* Sources */,
-				00DA76B8874DB32402D217E2 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D9A748F9ADAE05C4FDFD006D /* PBXTargetDependency */,
-				8B9061D307203E14340CE6AB /* PBXTargetDependency */,
-				CC3EAC2DF017A4EE59AA2C66 /* PBXTargetDependency */,
-				9B035673EB6A63E3BB6EE45F /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = 4C66FAC799A6D675DA786C0F /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		BBCCCA45E52265866E399CEB /* Pods-REMenu */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3B553CB4BC76B91CF53A46AD /* Build configuration list for PBXNativeTarget "Pods-REMenu" */;
-			buildPhases = (
-				399B7A8FA6A3AE51E6D5EFAF /* Sources */,
-				E547DD18E51960D0094A0179 /* Frameworks */,
-				0844F8D9EE976629D1F76C18 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-REMenu";
-			productName = "Pods-REMenu";
-			productReference = 4275C7DAC9BC061F9CB2CF86 /* libPods-REMenu.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		F78A64C1735D244313813EAB /* Pods-MBProgressHUD */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 706B29FB96D6B7318861263B /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */;
-			buildPhases = (
-				919F7896790167234C1D9F85 /* Sources */,
-				B9F7D6945FE6640933D73BE6 /* Frameworks */,
-				479984ACE080871489E7A6C3 /* Headers */,
+				7039388D058C1B0D5FDA9F66 /* Sources */,
+				ECF21CCEB0E3AE1A06E4E2DF /* Frameworks */,
+				E750B26980C52B17F8C8542E /* Headers */,
 			);
 			buildRules = (
 			);
@@ -515,254 +461,178 @@
 			);
 			name = "Pods-MBProgressHUD";
 			productName = "Pods-MBProgressHUD";
-			productReference = 6CC09805A20FEF5A36A648A9 /* libPods-MBProgressHUD.a */;
+			productReference = F8CD213319DD962D59226591 /* libPods-MBProgressHUD.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5DFDF80B34C57D84AC11BF0F /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2A86D204B10C3819EC1BC24 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				C8FD0B85CE8C3BB5ACE8A879 /* Sources */,
+				8332FC5E06FA677D45FEE742 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D29ECDB73DCF8C2F4DAFBAC /* PBXTargetDependency */,
+				80DD18301A4D5C19590F0C13 /* PBXTargetDependency */,
+				44EA2EE36F9DE9F2741FB3A5 /* PBXTargetDependency */,
+				0CC4F1FF382C0150C9D8235F /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 274079B57DBD823F8F3ADFE3 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		826ABD7CC6171A0C9F35127B /* Pods-REMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 037483190D7736A8B0289D02 /* Build configuration list for PBXNativeTarget "Pods-REMenu" */;
+			buildPhases = (
+				754743DDA8B90418A6187681 /* Sources */,
+				E4C99571B0D7E41D5A48B4C4 /* Frameworks */,
+				719D22D37E0AD9F34592256B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-REMenu";
+			productName = "Pods-REMenu";
+			productReference = 009B64FF09211CCFF5261722 /* libPods-REMenu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BA83587856A66058D883A281 /* Pods-AMSlideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FE90C3D0F4EC3E6E24C8C82 /* Build configuration list for PBXNativeTarget "Pods-AMSlideMenu" */;
+			buildPhases = (
+				23F700DCFD5157E30B9BE54B /* Sources */,
+				8AC86F81BC576F655A5B34C7 /* Frameworks */,
+				9DB9CD289B7B4B428F0D6FE9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-AMSlideMenu";
+			productName = "Pods-AMSlideMenu";
+			productReference = DCBA4EA3AEC9EE11F489DB86 /* libPods-AMSlideMenu.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		62E7DD1D8FE3D2204DBB21E1 /* Project object */ = {
+		4B0554422AF372DD6564441A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = AE57DAB0F1D986E3DFA7F186 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 8E53BA9170DE0B4900E5EFC3 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = F4DC81AC49AA02AE649DFC93;
-			productRefGroup = 8800E14FF07E74F40F98F764 /* Products */;
+			mainGroup = 7D8E9CC9C7E572563D9EFE23;
+			productRefGroup = 02E9F1BD9CE7C2D96891472B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95117D1541EEA48D5639C655 /* Pods */,
-				58FC93D2A5288221B3AAF903 /* Pods-AMSlideMenu */,
-				F78A64C1735D244313813EAB /* Pods-MBProgressHUD */,
-				BBCCCA45E52265866E399CEB /* Pods-REMenu */,
-				060A1A888CB1D31390D2F576 /* Pods-RNBlurModalView */,
+				5DFDF80B34C57D84AC11BF0F /* Pods */,
+				BA83587856A66058D883A281 /* Pods-AMSlideMenu */,
+				5581252BF48FB66EE740E173 /* Pods-MBProgressHUD */,
+				826ABD7CC6171A0C9F35127B /* Pods-REMenu */,
+				2E95A35A1FD197B222330DDA /* Pods-RNBlurModalView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		17973F9BF6DB8FD537CF07CC /* Sources */ = {
+		23F700DCFD5157E30B9BE54B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0AB2DE621E7EF848DACB68F /* Pods-RNBlurModalView-dummy.m in Sources */,
-				DD26E74DE32913295270DD60 /* RNBlurModalView.m in Sources */,
+				EBCC12C53721C1812577F206 /* AMSlideMenuContentSegue.m in Sources */,
+				0F686E522B421E0E44227056 /* AMSlideMenuLeftMenuSegue.m in Sources */,
+				BE8F724F551C93CC377CF8CD /* AMSlideMenuLeftTableViewController.m in Sources */,
+				7B21B5CFFA8580F81C7CF248 /* AMSlideMenuMainViewController.m in Sources */,
+				E749C2A1C8711A3179E2D3B3 /* AMSlideMenuRightMenuSegue.m in Sources */,
+				F1E0CC6C7FECB0D58B87085B /* AMSlideMenuRightTableViewController.m in Sources */,
+				2BEBAFAEB64B18A29BB94CD0 /* Pods-AMSlideMenu-dummy.m in Sources */,
+				D654D4A6AD51C12AF75EE72A /* UIViewController+AMSlideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		399B7A8FA6A3AE51E6D5EFAF /* Sources */ = {
+		7039388D058C1B0D5FDA9F66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A3B0AEB65E1A39C08598B62 /* Pods-REMenu-dummy.m in Sources */,
-				FE1A901E33A32BF278DDE142 /* RECommonFunctions.m in Sources */,
-				4836F098000CBF3F17B0DF5F /* REMenu.m in Sources */,
-				A7BDA5405573D8DE609C9999 /* REMenuContainerView.m in Sources */,
-				0553D93751C7F621954755BA /* REMenuItem.m in Sources */,
-				F9AE3ABC19609F68CD454395 /* REMenuItemView.m in Sources */,
+				0B51DFCF00E64651ADF5CBC2 /* MBProgressHUD.m in Sources */,
+				A9A95FFADD5BED512F7D6632 /* Pods-MBProgressHUD-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A0AD7EC5FAC1F62D4AF0C54 /* Sources */ = {
+		754743DDA8B90418A6187681 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9400A3B20F93706E97EF2A17 /* AMSlideMenuContentSegue.m in Sources */,
-				382AFE4AFBA94207B5850EAD /* AMSlideMenuLeftMenuSegue.m in Sources */,
-				64DB6FE30B5FCABC639B11CE /* AMSlideMenuLeftTableViewController.m in Sources */,
-				271844C4F727EAB60F592D7B /* AMSlideMenuMainViewController.m in Sources */,
-				B8658F132AE9FBFCCC3EFB97 /* AMSlideMenuRightMenuSegue.m in Sources */,
-				17135074047B01797D1C8948 /* AMSlideMenuRightTableViewController.m in Sources */,
-				7EDDF729735C29292D6691A2 /* Pods-AMSlideMenu-dummy.m in Sources */,
-				02BA1A4486901FE894E7ADAA /* UIViewController+AMSlideMenu.m in Sources */,
+				F74A4239808F7F35D8F584B1 /* Pods-REMenu-dummy.m in Sources */,
+				9412794E24668AEB7C7BE9F0 /* RECommonFunctions.m in Sources */,
+				65BE3603CF8392715C3DFB7A /* REMenu.m in Sources */,
+				15103F37D32E7F2064163CB5 /* REMenuContainerView.m in Sources */,
+				0C59EF77E620DF3ADAAC3B3B /* REMenuItem.m in Sources */,
+				5EB54993ECD23452B6D0A4FC /* REMenuItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		919F7896790167234C1D9F85 /* Sources */ = {
+		C8FD0B85CE8C3BB5ACE8A879 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11CBAEFFBF4F511EFE38962 /* MBProgressHUD.m in Sources */,
-				7D64EDC2E35190E068305F29 /* Pods-MBProgressHUD-dummy.m in Sources */,
+				E940557F6CEC8A9A7AA391EE /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7ED30F2109584E8032C4D81 /* Sources */ = {
+		D978196B22497B92927D351F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93DEDDD13E42DA55C2B7D666 /* Pods-dummy.m in Sources */,
+				418C6E5D16884B729D29E933 /* Pods-RNBlurModalView-dummy.m in Sources */,
+				901463B93F9EDF1A95C47389 /* RNBlurModalView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8B9061D307203E14340CE6AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-MBProgressHUD";
-			target = F78A64C1735D244313813EAB /* Pods-MBProgressHUD */;
-			targetProxy = 176E1E3E70598CD9A731DF35 /* PBXContainerItemProxy */;
-		};
-		9B035673EB6A63E3BB6EE45F /* PBXTargetDependency */ = {
+		0CC4F1FF382C0150C9D8235F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-RNBlurModalView";
-			target = 060A1A888CB1D31390D2F576 /* Pods-RNBlurModalView */;
-			targetProxy = 95495DD0A2AF00F4F0209847 /* PBXContainerItemProxy */;
+			target = 2E95A35A1FD197B222330DDA /* Pods-RNBlurModalView */;
+			targetProxy = 45B40A2FF4E66677EC7B87B9 /* PBXContainerItemProxy */;
 		};
-		CC3EAC2DF017A4EE59AA2C66 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-REMenu";
-			target = BBCCCA45E52265866E399CEB /* Pods-REMenu */;
-			targetProxy = 0EEECD9FC113D4A5237A55F9 /* PBXContainerItemProxy */;
-		};
-		D9A748F9ADAE05C4FDFD006D /* PBXTargetDependency */ = {
+		2D29ECDB73DCF8C2F4DAFBAC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-AMSlideMenu";
-			target = 58FC93D2A5288221B3AAF903 /* Pods-AMSlideMenu */;
-			targetProxy = C7AA5CB83F4FE23E346D47A0 /* PBXContainerItemProxy */;
+			target = BA83587856A66058D883A281 /* Pods-AMSlideMenu */;
+			targetProxy = 2DB8947FD91A7424A8A2A32A /* PBXContainerItemProxy */;
+		};
+		44EA2EE36F9DE9F2741FB3A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-REMenu";
+			target = 826ABD7CC6171A0C9F35127B /* Pods-REMenu */;
+			targetProxy = 60D005401212B6CD01D163F5 /* PBXContainerItemProxy */;
+		};
+		80DD18301A4D5C19590F0C13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MBProgressHUD";
+			target = 5581252BF48FB66EE740E173 /* Pods-MBProgressHUD */;
+			targetProxy = E3876D2F66545A8362D68AAF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		068C5FC58202047713887BFF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2510B4461F7A49074587508 /* Pods-AMSlideMenu-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-AMSlideMenu/Pods-AMSlideMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		13528152061781165E3C88DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95F1A6E28F86932BA44B1C0F /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		440FA85363F8D7CFEE74D2F3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		666E145EE7761618DC094AE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02A331458910C97DEC9B09B7 /* Pods-RNBlurModalView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-RNBlurModalView/Pods-RNBlurModalView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		699C5DC9C73E9C4F3975A987 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EA65A9CD18072520A062A97 /* Pods-MBProgressHUD-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		8117FF52CEA8D6F5129008CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EA65A9CD18072520A062A97 /* Pods-MBProgressHUD-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		85EB306A15B538E669B3D13A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3359DA771CE2BF7483C15B4A /* Pods-REMenu-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-REMenu/Pods-REMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DA17D52AA34E61FEC5EBCF07 /* Debug */ = {
+		1092DE8B6B4A6B41D8FAE247 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -801,25 +671,25 @@
 			};
 			name = Debug;
 		};
-		DCC2AA12907F776E0ABE8C9C /* Release */ = {
+		256581363377130D91012E5B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEB11A2062F41DD1501F5C02 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 760D28230101905E3F67A03B /* Pods-REMenu-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-REMenu/Pods-REMenu-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		EED5B1065B7B0D58C62B8467 /* Release */ = {
+		28043D498E53E442E1B61895 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3359DA771CE2BF7483C15B4A /* Pods-REMenu-Private.xcconfig */;
+			baseConfigurationReference = 760D28230101905E3F67A03B /* Pods-REMenu-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-REMenu/Pods-REMenu-prefix.pch";
@@ -833,12 +703,46 @@
 			};
 			name = Release;
 		};
-		F7A7C36214CB28A879BCD38F /* Release */ = {
+		4742B817E1674505584D9AD9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2510B4461F7A49074587508 /* Pods-AMSlideMenu-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A9D1CBFE85B3B9D76ECD17B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6A12E8A9AEC8127BF21E252 /* Pods-RNBlurModalView-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-AMSlideMenu/Pods-AMSlideMenu-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-RNBlurModalView/Pods-RNBlurModalView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -849,9 +753,73 @@
 			};
 			name = Release;
 		};
-		FAC4DF3D35827C5A269FF16A /* Debug */ = {
+		9D63049BEED3B6FFFD20D137 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02A331458910C97DEC9B09B7 /* Pods-RNBlurModalView-Private.xcconfig */;
+			baseConfigurationReference = D55FFF8F551D6116666B34BE /* Pods-MBProgressHUD-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A5A7C95131F24CB0F2A8AEB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A437A258C20F04185584B055 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B35DE41D17F69359B7B90676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B99F1BAA94125924B1D1DF0 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B70A7917201A76D525110CAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D55FFF8F551D6116666B34BE /* Pods-MBProgressHUD-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MBProgressHUD/Pods-MBProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CC898F71A067603F84F1621E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6A12E8A9AEC8127BF21E252 /* Pods-RNBlurModalView-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-RNBlurModalView/Pods-RNBlurModalView-prefix.pch";
@@ -865,64 +833,96 @@
 			};
 			name = Debug;
 		};
+		EF3DC840273ED19A56C39591 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F434A6D0DBAE4CC3D72E2D3 /* Pods-AMSlideMenu-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AMSlideMenu/Pods-AMSlideMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F479B999ABF9DD49C6CE6CE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F434A6D0DBAE4CC3D72E2D3 /* Pods-AMSlideMenu-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AMSlideMenu/Pods-AMSlideMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B553CB4BC76B91CF53A46AD /* Build configuration list for PBXNativeTarget "Pods-REMenu" */ = {
+		037483190D7736A8B0289D02 /* Build configuration list for PBXNativeTarget "Pods-REMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				85EB306A15B538E669B3D13A /* Debug */,
-				EED5B1065B7B0D58C62B8467 /* Release */,
+				256581363377130D91012E5B /* Debug */,
+				28043D498E53E442E1B61895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E238CC2F395C3A35D82C9E9 /* Build configuration list for PBXNativeTarget "Pods-AMSlideMenu" */ = {
+		193650E30F500932603E724A /* Build configuration list for PBXNativeTarget "Pods-RNBlurModalView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				068C5FC58202047713887BFF /* Debug */,
-				F7A7C36214CB28A879BCD38F /* Release */,
+				CC898F71A067603F84F1621E /* Debug */,
+				5A9D1CBFE85B3B9D76ECD17B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		706B29FB96D6B7318861263B /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */ = {
+		1A203F70E18D1505F1765886 /* Build configuration list for PBXNativeTarget "Pods-MBProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				699C5DC9C73E9C4F3975A987 /* Debug */,
-				8117FF52CEA8D6F5129008CD /* Release */,
+				B70A7917201A76D525110CAA /* Debug */,
+				9D63049BEED3B6FFFD20D137 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		938E53E50AF6AC633077DC30 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		5FE90C3D0F4EC3E6E24C8C82 /* Build configuration list for PBXNativeTarget "Pods-AMSlideMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13528152061781165E3C88DF /* Debug */,
-				DCC2AA12907F776E0ABE8C9C /* Release */,
+				EF3DC840273ED19A56C39591 /* Debug */,
+				F479B999ABF9DD49C6CE6CE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE57DAB0F1D986E3DFA7F186 /* Build configuration list for PBXProject "Pods" */ = {
+		8E53BA9170DE0B4900E5EFC3 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA17D52AA34E61FEC5EBCF07 /* Debug */,
-				440FA85363F8D7CFEE74D2F3 /* Release */,
+				1092DE8B6B4A6B41D8FAE247 /* Debug */,
+				4742B817E1674505584D9AD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCAA55879B4F93ABE4DC1E78 /* Build configuration list for PBXNativeTarget "Pods-RNBlurModalView" */ = {
+		C2A86D204B10C3819EC1BC24 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FAC4DF3D35827C5A269FF16A /* Debug */,
-				666E145EE7761618DC094AE0 /* Release */,
+				A5A7C95131F24CB0F2A8AEB5 /* Debug */,
+				B35DE41D17F69359B7B90676 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 62E7DD1D8FE3D2204DBB21E1 /* Project object */;
+	rootObject = 4B0554422AF372DD6564441A /* Project object */;
 }

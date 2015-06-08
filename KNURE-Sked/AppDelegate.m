@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  KNURE-Sked
 //
-//  Created by Влад on 10/24/13.
-//  Copyright (c) 2013 Влад. All rights reserved.
+//  Created by Vlad Chapaev on 24.10.2013.
+//  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
 #import "AppDelegate.h"

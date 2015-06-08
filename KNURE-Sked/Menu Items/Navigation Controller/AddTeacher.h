@@ -2,8 +2,8 @@
 //  TeacherListAddTeacher.h
 //  KNURE-Sked
 //
-//  Created by Влад on 1/5/14.
-//  Copyright (c) 2014 Влад. All rights reserved.
+//  Created by Vlad Chapaev on 01.05.2014.
+//  Copyright (c) 2014 Shogunate. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

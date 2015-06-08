@@ -2,8 +2,8 @@
 //  Timer.h
 //  KNURE-Sked
 //
-//  Created by Влад on 11/27/13.
-//  Copyright (c) 2013 Влад. All rights reserved.
+//  Created by Vlad Chapaev on 27.11.2013.
+//  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -27,6 +27,10 @@
 @property int currentTimeInSeconds;
 //@property int currentTimeInUnixEpoh;
 
+/**
+    Загружает в память различные форматировщики дат
+    Ими приходится пользоваться во многих частях приложения
+ */
 - (id)initDateFormatter;
 - (void)initTimerWithEvent:(NSArray *)event;
 - (int)getCurrentTimeInSeconds;

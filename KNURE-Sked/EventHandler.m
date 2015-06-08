@@ -3,7 +3,7 @@
 //  KNURE-Sked
 //
 //  Created by Vlad Chapaev on 08.11.14.
-//  Copyright (c) 2014 Влад. All rights reserved.
+//  Copyright (c) 2014 Shogunate. All rights reserved.
 //
 
 #import "EventHandler.h"

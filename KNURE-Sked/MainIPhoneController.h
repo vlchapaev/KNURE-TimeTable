@@ -2,11 +2,12 @@
 //  MainIPhoneController.h
 //  KNURE-Sked
 //
-//  Created by Vlad Chapaev on 10/24/13.
+//  Created by Vlad Chapaev on 24.10.2013.
 //  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "RNBlurModalView.h"
 #import "ModalViewController.h"
 #import "InitViewController.h"
@@ -41,8 +42,24 @@
 
 - (void)drawMainView;
 - (void)initToggleMenu;
+
+/**
+ Инициализирует красный индикатор на шкале времени
+ и на view с расписанием
+ */
 - (void)initAnimation;
+
+/**
+ Возвращает время, которое необходимо до завершения анимации
+ @return время в секундах
+ */
 - (double)getAnimationDuration;
+
+/**
+ Позволяет получить значение высоты шкалы времени относительнго текущего времени
+ Принцип работы описан внутри
+ @return позиция Y для шкалы времени
+ */
 - (double)getYPosition;
 
 @end

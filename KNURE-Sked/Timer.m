@@ -2,8 +2,8 @@
 //  Timer.m
 //  KNURE-Sked
 //
-//  Created by Влад on 11/27/13.
-//  Copyright (c) 2013 Влад. All rights reserved.
+//  Created by Vlad Chapaev on 27.11.2013.
+//  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
 #import "Timer.h"
