@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E95A35A1FD197B222330DDA"
+               BlueprintIdentifier = "724A33EF292F03CF1B620B81"
                BuildableName = "libPods-RNBlurModalView.a"
                BlueprintName = "Pods-RNBlurModalView"
                ReferencedContainer = "container:Pods.xcodeproj">

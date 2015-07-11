@@ -52,11 +52,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     isTablet = YES;
     shoudOffPanGesture = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:YES];
     shoudOffPanGesture = NO;
 }
 
@@ -447,7 +449,7 @@
 }
 
 - (double)getAnimationDuration {
-    return 78300 - timer.currentTimeInSeconds;
+    return 78300 - [timer getCurrentTimeInSeconds];
 }
 
 - (double)getYPosition {
@@ -463,7 +465,7 @@
      865 -> 100%, 8.65 -> 1%
      30 получается сдвиг
      */
-    int seconds = timer.currentTimeInSeconds - 27900;
+    int seconds = [timer getCurrentTimeInSeconds] - 27900;
     return ((((seconds*100)/50400)*8.65)+30);
 }
 

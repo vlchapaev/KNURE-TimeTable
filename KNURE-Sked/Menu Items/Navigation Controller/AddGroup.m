@@ -159,6 +159,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.text = (isFiltred)?[searchResults objectAtIndex:indexPath.row]:[[allResults objectAtIndex:indexPath.row]valueForKey:@"title"];
     cell.detailTextLabel.text = ([[selectedGroups valueForKey:@"title"] containsObject:cell.textLabel.text])? @"добавлено" : @"";
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     return cell;
 }
 

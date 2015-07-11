@@ -53,10 +53,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     shoudOffPanGesture = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:YES];
     shoudOffPanGesture = NO;
 }
 

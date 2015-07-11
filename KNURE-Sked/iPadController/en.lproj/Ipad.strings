@@ -1,0 +1,93 @@
+
+/* Class = "UILabel"; text = "Группы"; ObjectID = "4uT-SL-uRc"; */
+"4uT-SL-uRc.text" = "Groups";
+
+/* Class = "UILabel"; text = "18:15"; ObjectID = "7Ny-cx-PF7"; */
+"7Ny-cx-PF7.text" = "18:15";
+
+/* Class = "UILabel"; text = "11:15"; ObjectID = "9Bs-0V-yaI"; */
+"9Bs-0V-yaI.text" = "11:15";
+
+/* Class = "UILabel"; text = "20:00"; ObjectID = "9P8-Hz-5vh"; */
+"9P8-Hz-5vh.text" = "20:00";
+
+/* Class = "UINavigationItem"; title = "Добавление преподавателей"; ObjectID = "CRr-U4-YTh"; */
+"CRr-U4-YTh.title" = "Adding teachers";
+
+/* Class = "UILabel"; text = "Аудитории"; ObjectID = "DnD-ex-g3j"; */
+"DnD-ex-g3j.text" = "Auditories";
+
+/* Class = "UILabel"; text = "9:30"; ObjectID = "E38-bF-y3e"; */
+"E38-bF-y3e.text" = "9:30";
+
+/* Class = "UILabel"; text = "20:10"; ObjectID = "HzV-56-NK9"; */
+"HzV-56-NK9.text" = "20:10";
+
+/* Class = "UIBarButtonItem"; title = "Добавить"; ObjectID = "LEz-BN-Yig"; */
+"LEz-BN-Yig.title" = "Add";
+
+/* Class = "UILabel"; text = "16:40"; ObjectID = "LeM-Bf-fFD"; */
+"LeM-Bf-fFD.text" = "16:40";
+
+/* Class = "UILabel"; text = "9:20"; ObjectID = "OD2-QT-ISS"; */
+"OD2-QT-ISS.text" = "9:20";
+
+/* Class = "UILabel"; text = "13:10"; ObjectID = "OOh-Qn-DEw"; */
+"OOh-Qn-DEw.text" = "13:10";
+
+/* Class = "UILabel"; text = "12:50"; ObjectID = "OYE-PF-sYI"; */
+"OYE-PF-sYI.text" = "12:50";
+
+/* Class = "UILabel"; text = "14:55"; ObjectID = "WMH-wK-tZi"; */
+"WMH-wK-tZi.text" = "14:55";
+
+/* Class = "UINavigationItem"; title = "Добавление аудиторий"; ObjectID = "arQ-Wn-bhc"; */
+"arQ-Wn-bhc.title" = "Adding auditories";
+
+/* Class = "UILabel"; text = "18:25"; ObjectID = "b4q-0h-5O0"; */
+"b4q-0h-5O0.text" = "18:25";
+
+/* Class = "UILabel"; text = "Расписание"; ObjectID = "bsp-ah-2fM"; */
+"bsp-ah-2fM.text" = "Schedule";
+
+/* Class = "UILabel"; text = "Преподаватели"; ObjectID = "dBQ-qC-jwu"; */
+"dBQ-qC-jwu.text" = "Teachers";
+
+/* Class = "UINavigationItem"; title = "Преподаватели"; ObjectID = "dNY-kz-q60"; */
+"dNY-kz-q60.title" = "Teachers";
+
+/* Class = "UILabel"; text = "7:45"; ObjectID = "dSS-1r-9MQ"; */
+"dSS-1r-9MQ.text" = "7:45";
+
+/* Class = "UILabel"; text = "14:45"; ObjectID = "eUx-ai-ZeD"; */
+"eUx-ai-ZeD.text" = "14:45";
+
+/* Class = "UINavigationItem"; title = "Аудитории"; ObjectID = "hdR-pl-L3x"; */
+"hdR-pl-L3x.title" = "Auditories";
+
+/* Class = "UILabel"; text = "Таймер"; ObjectID = "l7S-vn-gFG"; */
+"l7S-vn-gFG.text" = "Timer";
+
+/* Class = "UILabel"; text = "11:05"; ObjectID = "n3l-m0-4Qp"; */
+"n3l-m0-4Qp.text" = "11:05";
+
+/* Class = "UILabel"; text = "16:30"; ObjectID = "qcN-KA-7NJ"; */
+"qcN-KA-7NJ.text" = "16:30";
+
+/* Class = "UIBarButtonItem"; title = "Добавить"; ObjectID = "r5S-h2-W6g"; */
+"r5S-h2-W6g.title" = "Add";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rwb-ym-gxs"; */
+"rwb-ym-gxs.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "21:45"; ObjectID = "s3U-dR-pKI"; */
+"s3U-dR-pKI.text" = "21:45";
+
+/* Class = "UIBarButtonItem"; title = "Добавить"; ObjectID = "u6A-t5-qeB"; */
+"u6A-t5-qeB.title" = "Add";
+
+/* Class = "UINavigationItem"; title = "Добавление групп"; ObjectID = "zAk-DX-HAx"; */
+"zAk-DX-HAx.title" = "Adding groups";
+
+/* Class = "UINavigationItem"; title = "Группы"; ObjectID = "zz0-Ry-rIc"; */
+"zz0-Ry-rIc.title" = "Groups";

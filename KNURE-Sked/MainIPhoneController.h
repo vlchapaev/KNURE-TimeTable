@@ -40,6 +40,8 @@
 @property (nonatomic) UILabel *sked;
 @property (nonatomic, copy) UIView *skedCell;
 
+@property (nonatomic) NSUInteger colorIndex;
+
 - (void)drawMainView;
 - (void)initToggleMenu;
 

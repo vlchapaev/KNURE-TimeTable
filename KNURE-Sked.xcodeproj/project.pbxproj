@@ -9,18 +9,20 @@
 /* Begin PBXBuildFile section */
 		6928EA27182D94BE00070B44 /* GroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* GroupList.m */; };
 		771166BF19E09191005FE37E /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778B6A8C19E0774600DF98F8 /* TodayViewController.m */; };
+		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
+		7720254F1B5108A90082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025511B5108A90082929F /* InfoPlist.strings */; };
 		778B6A8719E0774600DF98F8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		778B6A8D19E0774600DF98F8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778B6A8C19E0774600DF98F8 /* TodayViewController.m */; };
 		778B6A9219E0774600DF98F8 /* SkedEx.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 778B6A8619E0774500DF98F8 /* SkedEx.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7792607219EACE5600E77AF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7792607119EACE5500E77AF9 /* Main.storyboard */; };
+		778C30A91B4FE59100E9A462 /* Ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778C30AB1B4FE59100E9A462 /* Ipad.storyboard */; };
 		7792607419EACE9E00E77AF9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7792607319EACE9E00E77AF9 /* MainInterface.storyboard */; };
 		7792607619EACEA300E77AF9 /* SkedEx.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7792607519EACEA300E77AF9 /* SkedEx.entitlements */; };
-		7792607A19EACF2C00E77AF9 /* KNURE-Sked-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7792607919EACF2C00E77AF9 /* KNURE-Sked-Info.plist */; };
 		779264B11A0E752000FBC4A2 /* EventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 779264B01A0E752000FBC4A2 /* EventHandler.m */; };
 		77C1951B19BC4046000C5CEA /* MainIPadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C1951A19BC4046000C5CEA /* MainIPadController.m */; };
 		77C80B591A72DE23007E7304 /* AuditoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C80B581A72DE23007E7304 /* AuditoryList.m */; };
 		77C80B5C1A72DE5B007E7304 /* AddAuditory.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C80B5B1A72DE5B007E7304 /* AddAuditory.m */; };
-		77DA513419975DAE008C9C8E /* Ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77DA513319975DAE008C9C8E /* Ipad.storyboard */; };
+		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
+		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
 		77FD810619E5B633001AC5B5 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FD810519E5B633001AC5B5 /* ModalViewController.m */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC681819965300328F6D /* CoreGraphics.framework */; };
@@ -30,7 +32,6 @@
 		C33FCC7D1819965300328F6D /* MainIPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC7C1819965300328F6D /* MainIPhoneController.m */; };
 		C33FCC7F1819965300328F6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC7E1819965300328F6D /* Images.xcassets */; };
 		C3C6B97B1879F1C400DB4D33 /* AddTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C6B97A1879F1C400DB4D33 /* AddTeacher.m */; };
-		C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE641823F0C800BB3B84 /* InitViewController.m */; };
 		C3E9AC1A1878BF3900E84287 /* AddGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AC191878BF3900E84287 /* AddGroup.m */; };
 		C3EA892318467F57009FFC3C /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA892218467F57009FFC3C /* Timer.m */; };
 		C3F6BA9B182FE5A60045C0C4 /* TeacherList.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6BA9A182FE5A60045C0C4 /* TeacherList.m */; };
@@ -73,15 +74,26 @@
 		6928EA25182D94BE00070B44 /* GroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupList.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* GroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupList.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		771166C319E09750005FE37E /* KNURE-Sked.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "KNURE-Sked.entitlements"; sourceTree = "<group>"; };
+		772025481B51075D0082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7720254A1B5107650082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7720254B1B5107680082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7720254C1B5107690082929F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		772025501B5108A90082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		772025521B5108AB0082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		772025531B5108AC0082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		772025541B5108AD0082929F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		778B6A8619E0774500DF98F8 /* SkedEx.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkedEx.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		778B6A8B19E0774600DF98F8 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		778B6A8C19E0774600DF98F8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		7792607119EACE5500E77AF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		778C30AA1B4FE59100E9A462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Ipad.storyboard; sourceTree = "<group>"; };
+		778C30AD1B4FE59400E9A462 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Ipad.strings; sourceTree = "<group>"; };
+		778C30AF1B4FE59600E9A462 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Ipad.strings; sourceTree = "<group>"; };
+		778C30B11B4FE59A00E9A462 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Ipad.strings; sourceTree = "<group>"; };
+		778C30B31B4FE88C00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778C30B61B4FE8FD00E9A462 /* KNURE-Sked-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KNURE-Sked-Info.plist"; sourceTree = "<group>"; };
 		7792607319EACE9E00E77AF9 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		7792607519EACEA300E77AF9 /* SkedEx.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SkedEx.entitlements; sourceTree = "<group>"; };
-		7792607719EACEAC00E77AF9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7792607919EACF2C00E77AF9 /* KNURE-Sked-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KNURE-Sked-Info.plist"; sourceTree = "<group>"; };
 		779264AF1A0E752000FBC4A2 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		779264B01A0E752000FBC4A2 /* EventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHandler.m; sourceTree = "<group>"; };
 		77C1951919BC4046000C5CEA /* MainIPadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainIPadController.h; path = iPadController/MainIPadController.h; sourceTree = "<group>"; };
@@ -90,7 +102,12 @@
 		77C80B581A72DE23007E7304 /* AuditoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuditoryList.m; path = "Menu Items/AuditoryList.m"; sourceTree = "<group>"; };
 		77C80B5A1A72DE5B007E7304 /* AddAuditory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAuditory.h; path = "Menu Items/Navigation Controller/AddAuditory.h"; sourceTree = "<group>"; };
 		77C80B5B1A72DE5B007E7304 /* AddAuditory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAuditory.m; path = "Menu Items/Navigation Controller/AddAuditory.m"; sourceTree = "<group>"; };
-		77DA513319975DAE008C9C8E /* Ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Ipad.storyboard; path = iPadController/Ipad.storyboard; sourceTree = "<group>"; };
+		77C8DF9E1B384688001FB152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		77C8DFA01B3846A1001FB152 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		77C8DFA11B3846A7001FB152 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		77C8DFA21B3846B5001FB152 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
+		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
 		77FD810419E5B633001AC5B5 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		77FD810519E5B633001AC5B5 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		8DB9F61E12E51E620ADB7A34 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,8 +124,6 @@
 		C33FCC7E1819965300328F6D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3C6B9791879F1C400DB4D33 /* AddTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTeacher.h; path = "Navigation Controller/AddTeacher.h"; sourceTree = "<group>"; };
 		C3C6B97A1879F1C400DB4D33 /* AddTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTeacher.m; path = "Navigation Controller/AddTeacher.m"; sourceTree = "<group>"; };
-		C3D6FE631823F0C800BB3B84 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitViewController.h; path = "Menu Items/InitViewController.h"; sourceTree = "<group>"; };
-		C3D6FE641823F0C800BB3B84 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitViewController.m; path = "Menu Items/InitViewController.m"; sourceTree = "<group>"; };
 		C3E9AC181878BF3900E84287 /* AddGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddGroup.h; path = "Navigation Controller/AddGroup.h"; sourceTree = "<group>"; };
 		C3E9AC191878BF3900E84287 /* AddGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddGroup.m; path = "Navigation Controller/AddGroup.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C3EA892118467F57009FFC3C /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -141,6 +156,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772025441B51071A0082929F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				772025491B51075D0082929F /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		773B23351B4EBB1C0022AD10 /* Modal View */ = {
+			isa = PBXGroup;
+			children = (
+				77FD810419E5B633001AC5B5 /* ModalViewController.h */,
+				77FD810519E5B633001AC5B5 /* ModalViewController.m */,
+			);
+			name = "Modal View";
+			sourceTree = "<group>";
+		};
 		778B6A8819E0774600DF98F8 /* SkedEx */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +188,8 @@
 		778B6A8919E0774600DF98F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7792607719EACEAC00E77AF9 /* Info.plist */,
+				778C30B31B4FE88C00E9A462 /* Info.plist */,
+				772025511B5108A90082929F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,7 +197,7 @@
 		779264B21A0EA23800FBC4A2 /* iPhone controller */ = {
 			isa = PBXGroup;
 			children = (
-				7792607119EACE5500E77AF9 /* Main.storyboard */,
+				77C8DF9F1B384688001FB152 /* Main.storyboard */,
 				C33FCC7B1819965300328F6D /* MainIPhoneController.h */,
 				C33FCC7C1819965300328F6D /* MainIPhoneController.m */,
 			);
@@ -174,8 +207,8 @@
 		779264B31A0EA27600FBC4A2 /* Slide menu */ = {
 			isa = PBXGroup;
 			children = (
-				C3D6FE631823F0C800BB3B84 /* InitViewController.h */,
-				C3D6FE641823F0C800BB3B84 /* InitViewController.m */,
+				77C8DFA81B3857F5001FB152 /* InitViewController.h */,
+				77C8DFA91B3857F5001FB152 /* InitViewController.m */,
 			);
 			name = "Slide menu";
 			sourceTree = "<group>";
@@ -211,8 +244,6 @@
 				779264B01A0E752000FBC4A2 /* EventHandler.m */,
 				C3EA892118467F57009FFC3C /* Timer.h */,
 				C3EA892218467F57009FFC3C /* Timer.m */,
-				77FD810419E5B633001AC5B5 /* ModalViewController.h */,
-				77FD810519E5B633001AC5B5 /* ModalViewController.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -231,7 +262,7 @@
 		77DA513519975EA4008C9C8E /* iPad controller */ = {
 			isa = PBXGroup;
 			children = (
-				77DA513319975DAE008C9C8E /* Ipad.storyboard */,
+				778C30AB1B4FE59100E9A462 /* Ipad.storyboard */,
 				77C1951919BC4046000C5CEA /* MainIPadController.h */,
 				77C1951A19BC4046000C5CEA /* MainIPadController.m */,
 			);
@@ -283,17 +314,19 @@
 		C33FCC6C1819965300328F6D /* KNURE-Sked */ = {
 			isa = PBXGroup;
 			children = (
+				772025441B51071A0082929F /* Resources */,
 				C33FCC7E1819965300328F6D /* Images.xcassets */,
 				771166C319E09750005FE37E /* KNURE-Sked.entitlements */,
 				77DA513519975EA4008C9C8E /* iPad controller */,
 				779264B21A0EA23800FBC4A2 /* iPhone controller */,
+				773B23351B4EBB1C0022AD10 /* Modal View */,
 				77975A201A81593F002C4F6A /* Logic */,
-				C33FCC751819965300328F6D /* AppDelegate.h */,
-				C33FCC761819965300328F6D /* AppDelegate.m */,
 				779264B41A0EA2A700FBC4A2 /* Group List */,
 				779264B51A0EA2D000FBC4A2 /* Teacher List */,
 				77C80B561A72DD98007E7304 /* Auditory List */,
 				779264B31A0EA27600FBC4A2 /* Slide menu */,
+				C33FCC751819965300328F6D /* AppDelegate.h */,
+				C33FCC761819965300328F6D /* AppDelegate.m */,
 			);
 			path = "KNURE-Sked";
 			sourceTree = "<group>";
@@ -301,7 +334,7 @@
 		C33FCC6D1819965300328F6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7792607919EACF2C00E77AF9 /* KNURE-Sked-Info.plist */,
+				778C30B61B4FE8FD00E9A462 /* KNURE-Sked-Info.plist */,
 				C33FCC721819965300328F6D /* main.m */,
 				C33FCC741819965300328F6D /* KNURE-Sked-Prefix.pch */,
 			);
@@ -357,8 +390,8 @@
 		C33FCC5B1819965300328F6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Влад";
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Shogunate;
 				TargetAttributes = {
 					778B6A8519E0774500DF98F8 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -384,8 +417,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
+				en,
+				uk,
 			);
 			mainGroup = C33FCC5A1819965300328F6D;
 			productRefGroup = C33FCC641819965300328F6D /* Products */;
@@ -404,8 +439,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7792607619EACEA300E77AF9 /* SkedEx.entitlements in Resources */,
+				7720254F1B5108A90082929F /* InfoPlist.strings in Resources */,
 				7792607419EACE9E00E77AF9 /* MainInterface.storyboard in Resources */,
-				7792607A19EACF2C00E77AF9 /* KNURE-Sked-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,9 +448,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7792607219EACE5600E77AF9 /* Main.storyboard in Resources */,
-				77DA513419975DAE008C9C8E /* Ipad.storyboard in Resources */,
+				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
+				778C30A91B4FE59100E9A462 /* Ipad.storyboard in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
+				772025471B51075D0082929F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,8 +504,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				771166BF19E09191005FE37E /* TodayViewController.m in Sources */,
-				C3D6FE651823F0C800BB3B84 /* InitViewController.m in Sources */,
 				C33FCC7D1819965300328F6D /* MainIPhoneController.m in Sources */,
+				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* GroupList.m in Sources */,
 				77C1951B19BC4046000C5CEA /* MainIPadController.m in Sources */,
 				C3EA892318467F57009FFC3C /* Timer.m in Sources */,
@@ -499,6 +535,55 @@
 			targetProxy = 778B6A9319E0774600DF98F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		772025491B51075D0082929F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				772025481B51075D0082929F /* Base */,
+				7720254A1B5107650082929F /* ru */,
+				7720254B1B5107680082929F /* en */,
+				7720254C1B5107690082929F /* uk */,
+			);
+			name = InfoPlist.strings;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		772025511B5108A90082929F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				772025501B5108A90082929F /* Base */,
+				772025521B5108AB0082929F /* ru */,
+				772025531B5108AC0082929F /* en */,
+				772025541B5108AD0082929F /* uk */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		778C30AB1B4FE59100E9A462 /* Ipad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				778C30AA1B4FE59100E9A462 /* Base */,
+				778C30AD1B4FE59400E9A462 /* ru */,
+				778C30AF1B4FE59600E9A462 /* en */,
+				778C30B11B4FE59A00E9A462 /* uk */,
+			);
+			name = Ipad.storyboard;
+			path = iPadController;
+			sourceTree = "<group>";
+		};
+		77C8DF9F1B384688001FB152 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77C8DF9E1B384688001FB152 /* Base */,
+				77C8DFA01B3846A1001FB152 /* ru */,
+				77C8DFA11B3846A7001FB152 /* en */,
+				77C8DFA21B3846B5001FB152 /* uk */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		778B6A9519E0774600DF98F8 /* Debug */ = {
@@ -648,7 +733,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KNURE-Sked/KNURE-Sked-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -673,7 +757,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KNURE-Sked/KNURE-Sked-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
