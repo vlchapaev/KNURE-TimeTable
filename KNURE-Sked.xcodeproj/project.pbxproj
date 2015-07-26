@@ -18,6 +18,7 @@
 		7792607419EACE9E00E77AF9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7792607319EACE9E00E77AF9 /* MainInterface.storyboard */; };
 		7792607619EACEA300E77AF9 /* SkedEx.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7792607519EACEA300E77AF9 /* SkedEx.entitlements */; };
 		779264B11A0E752000FBC4A2 /* EventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 779264B01A0E752000FBC4A2 /* EventHandler.m */; };
+		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C1951B19BC4046000C5CEA /* MainIPadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C1951A19BC4046000C5CEA /* MainIPadController.m */; };
 		77C80B591A72DE23007E7304 /* AuditoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C80B581A72DE23007E7304 /* AuditoryList.m */; };
 		77C80B5C1A72DE5B007E7304 /* AddAuditory.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C80B5B1A72DE5B007E7304 /* AddAuditory.m */; };
@@ -96,6 +97,10 @@
 		7792607519EACEA300E77AF9 /* SkedEx.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SkedEx.entitlements; sourceTree = "<group>"; };
 		779264AF1A0E752000FBC4A2 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		779264B01A0E752000FBC4A2 /* EventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHandler.m; sourceTree = "<group>"; };
+		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77B0E0F51B656A5100D4506E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77C1951919BC4046000C5CEA /* MainIPadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainIPadController.h; path = iPadController/MainIPadController.h; sourceTree = "<group>"; };
 		77C1951A19BC4046000C5CEA /* MainIPadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainIPadController.m; path = iPadController/MainIPadController.m; sourceTree = "<group>"; };
 		77C80B571A72DE23007E7304 /* AuditoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuditoryList.h; path = "Menu Items/AuditoryList.h"; sourceTree = "<group>"; };
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				772025491B51075D0082929F /* InfoPlist.strings */,
+				77B0E0F21B656A4F00D4506E /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */,
 				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
 				778C30A91B4FE59100E9A462 /* Ipad.storyboard in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
@@ -570,6 +577,18 @@
 			);
 			name = Ipad.storyboard;
 			path = iPadController;
+			sourceTree = "<group>";
+		};
+		77B0E0F21B656A4F00D4506E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77B0E0F11B656A4F00D4506E /* Base */,
+				77B0E0F31B656A5000D4506E /* ru */,
+				77B0E0F41B656A5100D4506E /* en */,
+				77B0E0F51B656A5100D4506E /* uk */,
+			);
+			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		77C8DF9F1B384688001FB152 /* Main.storyboard */ = {

@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  KNURE-Sked
+
+  Created by Vlad Chapaev on 26.07.15.
+  Copyright (c) 2015 Shogunate. All rights reserved.
+*/
+
+Type = "Тип";
+Auditory = "Аудиторія";
+Teacher = "Викладач";
+Groups = "Групи";

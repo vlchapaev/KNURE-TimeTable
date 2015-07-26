@@ -44,10 +44,10 @@
     UILabel *teacher = [[UILabel alloc]init];
     UILabel *group = [[UILabel alloc]init];
     
-    typeLabel.text =               @"Тип:";
-    auditoryLabel.text =     @"Аудитория:";
-    teacherLabel.text =  @"Преподаватель:";
-    groupLabel.text =           @"Группы:";
+    typeLabel.text =              NSLocalizedString(@"Type", nil);
+    auditoryLabel.text =     NSLocalizedString(@"Auditory", nil);
+    teacherLabel.text =  NSLocalizedString(@"Teacher", nil);
+    groupLabel.text =           NSLocalizedString(@"Groups",nil);
     
     name.text = [eventHandler getBriefByID:[[[eventHandler.events objectAtIndex:index]valueForKey:@"subject_id"]integerValue] from:eventHandler.subjects shortName:NO];
     type.text = [eventHandler getTypeNameByID:[[[eventHandler.events objectAtIndex:index]valueForKey:@"type"]integerValue] from:eventHandler.types shortName:NO];
