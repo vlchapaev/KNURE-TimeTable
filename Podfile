@@ -4,5 +4,6 @@ pod "RNBlurModalView"
 pod "REMenu"
 pod "AMSlideMenu"
 pod "MBProgressHUD"
+pod "JSONModel"
 
 inhibit_all_warnings!

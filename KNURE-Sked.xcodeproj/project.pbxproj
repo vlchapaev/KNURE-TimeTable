@@ -24,6 +24,8 @@
 		77C80B5C1A72DE5B007E7304 /* AddAuditory.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C80B5B1A72DE5B007E7304 /* AddAuditory.m */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
+		77E839211C2C6BDC000A165B /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E839201C2C6BDC000A165B /* Lesson.m */; };
+		77E839241C2C70BC000A165B /* TimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E839231C2C70BC000A165B /* TimeTable.m */; };
 		77FD810619E5B633001AC5B5 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FD810519E5B633001AC5B5 /* ModalViewController.m */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC681819965300328F6D /* CoreGraphics.framework */; };
@@ -113,6 +115,10 @@
 		77C8DFA21B3846B5001FB152 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
 		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
+		77E8391F1C2C6BDC000A165B /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lesson.h; sourceTree = "<group>"; };
+		77E839201C2C6BDC000A165B /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lesson.m; sourceTree = "<group>"; };
+		77E839221C2C70BC000A165B /* TimeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTable.h; sourceTree = "<group>"; };
+		77E839231C2C70BC000A165B /* TimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTable.m; sourceTree = "<group>"; };
 		77FD810419E5B633001AC5B5 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		77FD810519E5B633001AC5B5 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		8DB9F61E12E51E620ADB7A34 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,6 +256,10 @@
 				779264B01A0E752000FBC4A2 /* EventHandler.m */,
 				C3EA892118467F57009FFC3C /* Timer.h */,
 				C3EA892218467F57009FFC3C /* Timer.m */,
+				77E8391F1C2C6BDC000A165B /* Lesson.h */,
+				77E839201C2C6BDC000A165B /* Lesson.m */,
+				77E839221C2C70BC000A165B /* TimeTable.h */,
+				77E839231C2C70BC000A165B /* TimeTable.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -517,6 +527,8 @@
 				77C1951B19BC4046000C5CEA /* MainIPadController.m in Sources */,
 				C3EA892318467F57009FFC3C /* Timer.m in Sources */,
 				C3E9AC1A1878BF3900E84287 /* AddGroup.m in Sources */,
+				77E839211C2C6BDC000A165B /* Lesson.m in Sources */,
+				77E839241C2C70BC000A165B /* TimeTable.m in Sources */,
 				C3C6B97B1879F1C400DB4D33 /* AddTeacher.m in Sources */,
 				C3F6BA9B182FE5A60045C0C4 /* TeacherList.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
