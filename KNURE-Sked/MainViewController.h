@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "RNBlurModalView.h"
-#import "ModalViewController.h"
 #import "InitViewController.h"
 #import "REMenu.h"
 #import "Timer.h"
 #import "EventHandler.h"
 
-@interface MainIPhoneController : UIViewController <UIScrollViewDelegate> {
+@interface MainViewController : UIViewController <UIScrollViewDelegate> {
     IBOutlet UILabel *timerLabel;
     IBOutlet UIButton *toggleButton;
     IBOutlet UIScrollView *mainSkedView;

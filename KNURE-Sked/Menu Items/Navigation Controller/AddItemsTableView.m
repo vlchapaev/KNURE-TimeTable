@@ -1,16 +1,29 @@
 //
-//  AddAuditory.m
+//  GroupListAddGroup.m
 //  KNURE-Sked
 //
-//  Created by Vlad Chapaev on 23.01.15.
-//  Copyright (c) 2015 Shogunate. All rights reserved.
+//  Created by Vlad Chapaev on 01.05.2014.
+//  Copyright (c) 2014 Shogunate. All rights reserved.
 //
 
-#import "AddAuditory.h"
-#import "AuditoryList.h"
+#import "AddItemsTableView.h"
+#import "ItemsTableView.h"
 #import "EventHandler.h"
 
-@implementation AddAuditory
+@interface AddItemsTableView () {
+    NSMutableData *responseData;
+    MBProgressHUD *HUD;
+    NSMutableArray *allResults;
+    NSMutableArray *searchResults;
+    NSMutableArray *selectedGroups;
+    BOOL isFiltred;
+}
+
+@end
+
+@implementation AddItemsTableView
+
+@synthesize groupSearchBar, tableViewGroups;
 
 #pragma mark - view
 
@@ -21,33 +34,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSUserDefaults standardUserDefaults] setValue:auditoryList forKeyPath:@"SavedAuditories"];
+    [[NSUserDefaults standardUserDefaults] setValue:groupList forKeyPath:@"SavedGroups"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     allResults = [[NSMutableArray alloc]init];
-    selectedAuditory = [[NSMutableArray alloc]init];
-    if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedAuditories"] != nil) {
-        selectedAuditory = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedAuditories"] mutableCopy];
+    selectedGroups = [[NSMutableArray alloc]init];
+    if ([[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] != nil) {
+        selectedGroups = [[[NSUserDefaults standardUserDefaults] valueForKeyPath:@"SavedGroups"] mutableCopy];
     }
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
-    HUD.labelText = @"Загружаю список...";
-    [self getAuditoryList];
+    HUD.labelText = NSLocalizedString(@"Interface_DowloadingList", @"");
+    [self getGroupsList];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:YES];
     shoudOffPanGesture = NO;
-    [[NSUserDefaults standardUserDefaults] setValue:selectedAuditory forKey:@"SavedAuditories"];
+    [[NSUserDefaults standardUserDefaults] setValue:selectedGroups forKey:@"SavedGroups"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - logic
 
-- (void)getAuditoryList {
+- (void)getGroupsList {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://cist.nure.ua/ias/app/tt/P_API_AUDITORIES_JSON"]];
+                             [NSURL URLWithString:@"http://cist.nure.ua/ias/app/tt/P_API_GROUP_JSON"]];
     [HUD show:YES];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -63,10 +76,11 @@
                                    [alertView show];
                                    return;
                                }
+
                                NSData *encData = [[EventHandler alloc]alignEncoding:data];
                                NSDictionary *parsedData = [NSJSONSerialization JSONObjectWithData:encData options:0 error:&error];
                                allResults = [self getKeysAndTitles:parsedData];
-                               [self.tableViewAuditories reloadData];
+                               [self.tableViewGroups reloadData];
                                [HUD hide:YES];
                            }
      ];
@@ -75,18 +89,28 @@
 - (NSMutableArray *)getKeysAndTitles:(NSDictionary *)source {
     NSMutableArray *groupsAndKeys = [[NSMutableArray alloc] init];
     NSString *updated = @"Не обновлено";
-    NSArray *buildings = [[source valueForKey:@"university"] valueForKey:@"buildings"];
-    for(NSDictionary *building in buildings) {
-        for (NSDictionary *auditory in [building valueForKey:@"auditories"]) {
-            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [auditory valueForKey:@"short_name"], @"title",
-                                        [auditory valueForKey:@"id"], @"key",
-                                        updated, @"updated", nil];
-            [groupsAndKeys addObject:dictionary];
+    NSArray *facultList = [[source valueForKey:@"university"] valueForKey:@"faculties"];
+    for(NSDictionary *facult in facultList) {
+        for(NSDictionary *direction in [facult valueForKey:@"directions"]) {
+            for(NSDictionary *group in [direction valueForKey:@"groups"]) {
+                NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                [group valueForKey:@"name"], @"title",
+                                                [[group valueForKey:@"id"] stringValue], @"key",
+                                                updated, @"updated", nil];
+                [groupsAndKeys addObject:dictionary];
+            }
             
+            for(NSDictionary *speciality in [direction valueForKey:@"specialities"]) {
+                for(NSDictionary *group in [speciality valueForKey:@"groups"]) {
+                    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                    [group valueForKey:@"name"], @"title",
+                                                    [[group valueForKey:@"id"] stringValue], @"key",
+                                                    updated, @"updated", nil];
+                    [groupsAndKeys addObject:dictionary];
+                }
+            }
         }
     }
-    
     return groupsAndKeys;
 }
 
@@ -99,6 +123,28 @@
     return 0;
 }
 
+#pragma mark - NSURLConnection delegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    responseData = [[NSMutableData alloc]init];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Interface_Error", @"")
+                                                   message:[error localizedDescription]
+                                                  delegate:self
+                                         cancelButtonTitle:NSLocalizedString(@"Interface_Ok", @"")
+                                         otherButtonTitles:nil];
+    [alert show];
+}
+
 #pragma mark - search bar delegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -107,32 +153,29 @@
     } else {
         isFiltred = YES;
         searchResults = [[NSMutableArray alloc]init];
-        for(NSString *auditory in [allResults valueForKey:@"title"]) {
-            NSRange auditoryNameRange = [auditory rangeOfString:searchText options:NSCaseInsensitiveSearch];
-            if(auditoryNameRange.location != NSNotFound) {
-                [searchResults addObject:auditory];
+        for(NSString *group in [allResults valueForKey:@"title"]) {
+            NSString *groupCorrect = [searchText stringByReplacingOccurrencesOfString:@"и" withString:@"і"];
+            NSRange groupNameRange = [group rangeOfString:groupCorrect options:NSCaseInsensitiveSearch];
+            if(groupNameRange.location != NSNotFound) {
+                [searchResults addObject:group];
             }
         }
     }
-    [self.tableViewAuditories reloadData];
+    [self.tableViewGroups reloadData];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
 
 #pragma mark - table view delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (isFiltred)?searchResults.count:allResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+    NSString *CellIdentifier = @"Item";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -140,7 +183,7 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [allResults objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.text = (isFiltred)?[searchResults objectAtIndex:indexPath.row]:[[allResults objectAtIndex:indexPath.row]valueForKey:@"title"];
-    cell.detailTextLabel.text = ([[selectedAuditory valueForKey:@"title"] containsObject:cell.textLabel.text])? @"добавлено" : @"";
+    cell.detailTextLabel.text = ([[selectedGroups valueForKey:@"title"] containsObject:cell.textLabel.text])? @"добавлено" : @"";
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     return cell;
@@ -148,8 +191,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (![[selectedAuditory valueForKey:@"title"] containsObject:cell.textLabel.text]) {
-        [selectedAuditory addObject:[allResults objectAtIndex:[self getIndexOfString:cell.textLabel.text inArray:allResults]]];
+    if (![[selectedGroups valueForKey:@"title"] containsObject:cell.textLabel.text]) {
+        [selectedGroups addObject:[allResults objectAtIndex:[self getIndexOfString:cell.textLabel.text inArray:allResults]]];
     }
     cell.detailTextLabel.text = @"добавлено";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

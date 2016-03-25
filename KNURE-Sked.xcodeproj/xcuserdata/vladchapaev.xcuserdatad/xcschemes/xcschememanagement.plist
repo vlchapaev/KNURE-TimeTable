@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Logic.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>SkedEx.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>77039BAC196D8D8800122076</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7713D57F1CA5748600FCDA9B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

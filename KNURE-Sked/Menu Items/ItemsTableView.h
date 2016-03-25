@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupList : UITableViewController {
-    
-    NSMutableData *mutableResponse;
+@interface ItemsTableView : UITableViewController <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
+    NSMutableData *responseData;
 }
 
 @property (strong, nonatomic) UIButton *menuButton;
 
 @end
-
-NSMutableArray *groupList;

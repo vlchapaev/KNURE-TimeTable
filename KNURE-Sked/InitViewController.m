@@ -53,8 +53,4 @@
     return (shoudOffPanGesture)?NO:YES;
 }
 
--(CGFloat)leftMenuWidth {
-    return (isTablet)?300:200;
-}
-
 @end

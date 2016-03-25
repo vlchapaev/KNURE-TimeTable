@@ -1,9 +1,12 @@
 platform :ios, '7.0'
 
-pod "RNBlurModalView"
+# interface
 pod "REMenu"
 pod "AMSlideMenu"
 pod "MBProgressHUD"
-pod "JSONModel"
+
+# logic
+pod "NSDate+TimeAgo"
+pod "ZLSwipeableView"
 
 inhibit_all_warnings!

@@ -6,7 +6,15 @@
   Copyright (c) 2015 Shogunate. All rights reserved.
 */
 
-Type = "Type:";
-Auditory = "Auditory:";
-Teacher = "Teacher:";
-Groups = "Groups:";
+Interface_Error = "Error";
+Interface_Loading = "Downloading list";
+Interface_Ok = "Ok";
+
+ModalView_Type = "Type:";
+ModalView_Auditory = "Auditory:";
+ModalView_Teacher = "Teacher:";
+ModalView_Groups = "Groups:";
+
+ItemList_Groups = "Groups";
+ItemList_Teachers = "Teachers";
+ItemList_Auditories = "Auditories";

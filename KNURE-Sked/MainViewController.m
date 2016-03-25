@@ -8,25 +8,14 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
-#import "MainIPhoneController.h"
+#import "MainViewController.h"
 
-@implementation MainIPhoneController
+@implementation MainViewController
 
 @synthesize menuButton, sked, date, skedCell;
 
--(void)cleanOldCache {
-    if(![[NSUserDefaults standardUserDefaults]boolForKey:@"CacheCleaned"]){
-        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"SavedGroups"];
-        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"SavedTeachers"];
-        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"ID"];
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"CacheCleaned"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self cleanOldCache];
     
     timer = [[Timer alloc]initDateFormatter];
     

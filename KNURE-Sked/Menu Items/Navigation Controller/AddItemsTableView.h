@@ -9,13 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface AddGroup : UIViewController <UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource, MBProgressHUDDelegate> {
-    MBProgressHUD *HUD;
-    NSMutableArray *allResults;
-    NSMutableArray *searchResults;
-    NSMutableArray *selectedGroups;
-    BOOL isFiltred;
-}
+@interface AddItemsTableView : UITableViewController <UISearchBarDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate, MBProgressHUDDelegate> 
 
 @property (weak, nonatomic) IBOutlet UISearchBar *groupSearchBar;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewGroups;

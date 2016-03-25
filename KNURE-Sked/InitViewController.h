@@ -7,11 +7,8 @@
 //
 
 #import "AMSlideMenuMainViewController.h"
-#import "AddGroup.h"
-#import "AddTeacher.h"
-#import "AddAuditory.h"
-#import "MainIPhoneController.h"
-#import "MainIPadController.h"
+#import "AddItemsTableView.h"
+#import "MainViewController.h"
 
 @interface InitViewController : AMSlideMenuMainViewController <UIGestureRecognizerDelegate>
 

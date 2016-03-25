@@ -6,13 +6,19 @@
 //  Copyright (c) 2013 Shogunate. All rights reserved.
 //
 
-#import "GroupList.h"
+#import "ItemsTableView.h"
 #import "InitViewController.h"
 #import "EventHandler.h"
+#import "ItemTableViewCell.h"
 
-@implementation GroupList
+@implementation ItemsTableView
 
-@synthesize menuButton;
+#pragma mark - ViewController lificycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ItemsCell" bundle:nil] forCellReuseIdentifier:@"SelectedItems"];
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -26,11 +32,29 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-#pragma mark - методы table view
+#pragma mark - NSURLConnection delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
 }
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    responseData = [[NSMutableData alloc]init];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Interface_Error", @"")
+                                                   message:[error localizedDescription]
+                                                  delegate:self
+                                         cancelButtonTitle:@"Ok"
+                                         otherButtonTitles:nil];
+    [alert show];
+}
+
+#pragma mark - UITableView delegate and datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return groupList.count;
@@ -42,7 +66,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [groupList removeObjectAtIndex:indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [tableView endUpdates];
@@ -55,7 +78,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"Cell";
+    NSString *CellIdentifier = @"SelectedItems";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];

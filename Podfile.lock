@@ -1,19 +1,22 @@
 PODS:
   - AMSlideMenu (1.5.3)
   - MBProgressHUD (0.9)
+  - NSDate+TimeAgo (1.0.6)
   - REMenu (1.10)
-  - RNBlurModalView (0.1.0)
+  - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
   - AMSlideMenu
   - MBProgressHUD
+  - NSDate+TimeAgo
   - REMenu
-  - RNBlurModalView
+  - ZLSwipeableView
 
 SPEC CHECKSUMS:
   AMSlideMenu: d041b0d6f2a50c00b3cf1886a3a80c96a099d673
   MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
+  NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
   REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
-  RNBlurModalView: 0f3fc721d4d1cdb79b39760bc74eb148cf5f5e52
+  ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.39.0
