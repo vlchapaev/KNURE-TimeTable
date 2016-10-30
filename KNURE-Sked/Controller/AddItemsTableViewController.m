@@ -9,7 +9,6 @@
 #import "AddItemsTableViewController.h"
 #import "ItemsTableViewController.h"
 #import "MBProgressHUD.h"
-#import "AFNetworking.h"
 #import "AppDelegate.h"
 #import "Item.h"
 

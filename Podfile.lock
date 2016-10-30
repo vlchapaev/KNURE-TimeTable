@@ -1,19 +1,4 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
   - AMSlideMenu (1.5.4)
   - DateTools (1.7.0)
   - MBProgressHUD (1.0.0)
@@ -21,7 +6,6 @@ PODS:
   - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
-  - AFNetworking
   - AMSlideMenu
   - DateTools
   - MBProgressHUD
@@ -29,13 +13,12 @@ DEPENDENCIES:
   - ZLSwipeableView
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MSCollectionViewCalendarLayout: 9c52894930d6b712951f18873618fc32c00cd4fa
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 0aa022826daf7944715eeb0a90ffea3dc922aa66
+PODFILE CHECKSUM: 7c5bb1a1c0d2c60edc61973b9bbbcdbd145b9b16
 
 COCOAPODS: 1.1.1

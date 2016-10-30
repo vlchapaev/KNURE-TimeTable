@@ -4,48 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>KNURE-Sked.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>Logic 2.xcscheme</key>
+		<key>Logic.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
-		</dict>
-		<key>Logic.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>SkedEx.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>TimeTable Logic.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>TimeTable iOS .xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>11</integer>
-		</dict>
-		<key>TimeTable iOS Today Extension.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

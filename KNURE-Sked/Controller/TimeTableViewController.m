@@ -6,9 +6,8 @@
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "TimeTableViewController.h"
 #import "MSCollectionViewCalendarLayout.h"
-#import "AFNetworking.h"
 
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate>
 
@@ -18,7 +17,7 @@
 
 @end
 
-@implementation MainViewController
+@implementation TimeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

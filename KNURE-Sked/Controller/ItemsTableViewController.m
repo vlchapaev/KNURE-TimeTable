@@ -9,7 +9,6 @@
 #import "ItemsTableViewController.h"
 #import "InitViewController.h"
 #import "ItemTableViewCell.h"
-#import "AFNetworking.h"
 #import "AppDelegate.h"
 #import "Item.h"
 

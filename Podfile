@@ -9,13 +9,8 @@ target 'TimeTable iOS' do
     
     # logic
     pod "MSCollectionViewCalendarLayout"
-    pod "AFNetworking"
     pod "DateTools"
 
-end
-
-target 'TimeTable iOS Today Extension' do
-    pod "MSCollectionViewCalendarLayout"
 end
 
 inhibit_all_warnings!
