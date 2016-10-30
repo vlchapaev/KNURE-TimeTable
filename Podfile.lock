@@ -1,22 +1,41 @@
 PODS:
-  - AMSlideMenu (1.5.3)
-  - MBProgressHUD (0.9)
-  - NSDate+TimeAgo (1.0.6)
-  - REMenu (1.10)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AMSlideMenu (1.5.4)
+  - DateTools (1.7.0)
+  - MBProgressHUD (1.0.0)
+  - MSCollectionViewCalendarLayout (0.1.5)
   - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
+  - AFNetworking
   - AMSlideMenu
+  - DateTools
   - MBProgressHUD
-  - NSDate+TimeAgo
-  - REMenu
+  - MSCollectionViewCalendarLayout
   - ZLSwipeableView
 
 SPEC CHECKSUMS:
-  AMSlideMenu: d041b0d6f2a50c00b3cf1886a3a80c96a099d673
-  MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
-  NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
-  REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MSCollectionViewCalendarLayout: 9c52894930d6b712951f18873618fc32c00cd4fa
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 0aa022826daf7944715eeb0a90ffea3dc922aa66
+
+COCOAPODS: 1.1.1

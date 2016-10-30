@@ -1,12 +1,21 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 
-# interface
-pod "REMenu"
-pod "AMSlideMenu"
-pod "MBProgressHUD"
+target 'TimeTable iOS' do
+    
+    # interface
+    pod "AMSlideMenu"
+    pod "MBProgressHUD"
+    pod "ZLSwipeableView"
+    
+    # logic
+    pod "MSCollectionViewCalendarLayout"
+    pod "AFNetworking"
+    pod "DateTools"
 
-# logic
-pod "NSDate+TimeAgo"
-pod "ZLSwipeableView"
+end
+
+target 'TimeTable iOS Today Extension' do
+    pod "MSCollectionViewCalendarLayout"
+end
 
 inhibit_all_warnings!

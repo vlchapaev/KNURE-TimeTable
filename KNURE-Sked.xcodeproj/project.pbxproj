@@ -7,44 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6928EA27182D94BE00070B44 /* ItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableView.m */; };
+		6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableViewController.m */; };
 		7713D5831CA5748600FCDA9B /* Logic.h in Headers */ = {isa = PBXBuildFile; fileRef = 7713D5821CA5748600FCDA9B /* Logic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7713D5871CA5748600FCDA9B /* Logic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7713D5801CA5748600FCDA9B /* Logic.framework */; };
 		7713D5881CA5748600FCDA9B /* Logic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7713D5801CA5748600FCDA9B /* Logic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7713D5911CA574C500FCDA9B /* Logic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7713D5801CA5748600FCDA9B /* Logic.framework */; };
 		7713D5991CA5790000FCDA9B /* ItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D5981CA5790000FCDA9B /* ItemsCell.xib */; };
 		7713D59C1CA5799400FCDA9B /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D59B1CA5799400FCDA9B /* ItemTableViewCell.m */; };
 		7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalView.xib */; };
 		7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A01CA57A4F00FCDA9B /* ModalView.m */; };
-		7713D5A41CA5804A00FCDA9B /* Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 7713D5A21CA5804A00FCDA9B /* Request.h */; };
+		7713D5A41CA5804A00FCDA9B /* Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 7713D5A21CA5804A00FCDA9B /* Request.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7713D5A51CA5804A00FCDA9B /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A31CA5804A00FCDA9B /* Request.m */; };
-		7713D5A61CA5855000FCDA9B /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = C3EA892118467F57009FFC3C /* Timer.h */; };
-		7713D5A71CA5855200FCDA9B /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA892218467F57009FFC3C /* Timer.m */; };
-		7713D5AE1CA585C900FCDA9B /* TimetableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5AB1CA585C900FCDA9B /* TimetableView.m */; };
-		7713D5AF1CA585C900FCDA9B /* TimetableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5AD1CA585C900FCDA9B /* TimetableViewCell.m */; };
-		7713D5B11CA58C1500FCDA9B /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D5B01CA58C1500FCDA9B /* Timeline.xib */; };
 		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
-		7720254F1B5108A90082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025511B5108A90082929F /* InfoPlist.strings */; };
-		778B6A8719E0774600DF98F8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
-		778B6A8D19E0774600DF98F8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778B6A8C19E0774600DF98F8 /* TodayViewController.m */; };
-		778B6A9219E0774600DF98F8 /* SkedEx.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 778B6A8619E0774500DF98F8 /* SkedEx.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7792607419EACE9E00E77AF9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7792607319EACE9E00E77AF9 /* MainInterface.storyboard */; };
-		7792607619EACEA300E77AF9 /* SkedEx.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 7792607519EACEA300E77AF9 /* SkedEx.entitlements */; };
-		779264B11A0E752000FBC4A2 /* EventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 779264B01A0E752000FBC4A2 /* EventHandler.m */; };
+		7770517D1DAC038A009CC199 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770517C1DAC038A009CC199 /* Subject.m */; };
+		777051801DAC03C0009CC199 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770517F1DAC03C0009CC199 /* Item.m */; };
+		777051831DAC03D5009CC199 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 777051821DAC03D5009CC199 /* Lesson.m */; };
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
-		77E839211C2C6BDC000A165B /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E839201C2C6BDC000A165B /* Lesson.m */; };
-		77E839241C2C70BC000A165B /* TimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E839231C2C70BC000A165B /* TimeTable.m */; };
+		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
+		77DDAFE71D92C2AA007EA4DA /* EventParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 779264AF1A0E752000FBC4A2 /* EventParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77DDAFE81D92C2AA007EA4DA /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 779264B01A0E752000FBC4A2 /* EventParser.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
-		C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC681819965300328F6D /* CoreGraphics.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC731819965300328F6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC721819965300328F6D /* main.m */; };
 		C33FCC771819965300328F6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC761819965300328F6D /* AppDelegate.m */; };
-		C33FCC7D1819965300328F6D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC7C1819965300328F6D /* MainViewController.m */; };
+		C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC7C1819965300328F6D /* TimeTableViewController.m */; };
 		C33FCC7F1819965300328F6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC7E1819965300328F6D /* Images.xcassets */; };
-		C3E9AC1A1878BF3900E84287 /* AddItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AC191878BF3900E84287 /* AddItemsTableView.m */; };
-		CE6B87843551677FF9EF1CC0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F45E2F26851BC7ED619C8135 /* libPods.a */; };
+		C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */; };
+		D49EA6DE74F57AD1A55FC4A2 /* libPods-TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,20 +45,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7713D57F1CA5748600FCDA9B;
 			remoteInfo = Logic;
-		};
-		778B6A9019E0774600DF98F8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C33FCC5B1819965300328F6D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 778B6A8519E0774500DF98F8;
-			remoteInfo = SkedEx;
-		};
-		778B6A9319E0774600DF98F8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C33FCC5B1819965300328F6D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 778B6A8519E0774500DF98F8;
-			remoteInfo = SkedEx;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -89,7 +66,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				778B6A9219E0774600DF98F8 /* SkedEx.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,71 +73,65 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		60AD61CF9B577BEF9E8F50E1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		6928EA25182D94BE00070B44 /* ItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableView.h; path = "Menu Items/ItemsTableView.h"; sourceTree = "<group>"; };
-		6928EA26182D94BE00070B44 /* ItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableView.m; path = "Menu Items/ItemsTableView.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		0DF4AFB61ACC968E685451D1 /* Pods-KNURE-Sked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE-Sked.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE-Sked/Pods-KNURE-Sked.debug.xcconfig"; sourceTree = "<group>"; };
+		1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkedEx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		216310072AA8556C3DA7C68B /* Pods-SkedEx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkedEx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SkedEx/Pods-SkedEx.debug.xcconfig"; sourceTree = "<group>"; };
+		37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
+		3F4803B4ECCBF9BE3407D2DB /* libPods-KNURE-Sked.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE-Sked.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F515A819B95FB1F7DB316C5 /* Pods-TimeTable iOS Today Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS Today Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS Today Extension/Pods-TimeTable iOS Today Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS Today Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6928EA25182D94BE00070B44 /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewController.h; path = "Menu Items/ItemsTableViewController.h"; sourceTree = "<group>"; };
+		6928EA26182D94BE00070B44 /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewController.m; path = "Menu Items/ItemsTableViewController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		771166C319E09750005FE37E /* KNURE-Sked.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "KNURE-Sked.entitlements"; sourceTree = "<group>"; };
 		7713D5801CA5748600FCDA9B /* Logic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7713D5821CA5748600FCDA9B /* Logic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
-		7713D5841CA5748600FCDA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7713D5821CA5748600FCDA9B /* Logic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logic.h; path = ../Logic/Logic.h; sourceTree = "<group>"; };
+		7713D5841CA5748600FCDA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Logic/Info.plist; sourceTree = "<group>"; };
 		7713D5981CA5790000FCDA9B /* ItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemsCell.xib; path = "View/Items Cell/ItemsCell.xib"; sourceTree = "<group>"; };
 		7713D59A1CA5799400FCDA9B /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemTableViewCell.h; path = "View/Items Cell/ItemTableViewCell.h"; sourceTree = "<group>"; };
 		7713D59B1CA5799400FCDA9B /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemTableViewCell.m; path = "View/Items Cell/ItemTableViewCell.m"; sourceTree = "<group>"; };
 		7713D59D1CA57A0B00FCDA9B /* ModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalView.xib; path = "View/Modal View/ModalView.xib"; sourceTree = "<group>"; };
 		7713D59F1CA57A4F00FCDA9B /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = "View/Modal View/ModalView.h"; sourceTree = "<group>"; };
 		7713D5A01CA57A4F00FCDA9B /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = "View/Modal View/ModalView.m"; sourceTree = "<group>"; };
-		7713D5A21CA5804A00FCDA9B /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		7713D5A31CA5804A00FCDA9B /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
-		7713D5AA1CA585C900FCDA9B /* TimetableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableView.h; sourceTree = "<group>"; };
-		7713D5AB1CA585C900FCDA9B /* TimetableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableView.m; sourceTree = "<group>"; };
-		7713D5AC1CA585C900FCDA9B /* TimetableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableViewCell.h; sourceTree = "<group>"; };
-		7713D5AD1CA585C900FCDA9B /* TimetableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableViewCell.m; sourceTree = "<group>"; };
-		7713D5B01CA58C1500FCDA9B /* Timeline.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Timeline.xib; path = View/Timeline/Timeline.xib; sourceTree = "<group>"; };
+		7713D5A21CA5804A00FCDA9B /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Request.h; path = ../../Logic/Request.h; sourceTree = "<group>"; };
+		7713D5A31CA5804A00FCDA9B /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Request.m; path = ../../Logic/Request.m; sourceTree = "<group>"; };
 		772025481B51075D0082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254A1B5107650082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254B1B5107680082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		772025501B5108A90082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		772025521B5108AB0082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		772025531B5108AC0082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		778B6A8619E0774500DF98F8 /* SkedEx.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkedEx.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		778B6A8B19E0774600DF98F8 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		778B6A8C19E0774600DF98F8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		778C30B31B4FE88C00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		778C30B61B4FE8FD00E9A462 /* KNURE-Sked-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KNURE-Sked-Info.plist"; sourceTree = "<group>"; };
-		7792607319EACE9E00E77AF9 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		7792607519EACEA300E77AF9 /* SkedEx.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SkedEx.entitlements; sourceTree = "<group>"; };
-		779264AF1A0E752000FBC4A2 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
-		779264B01A0E752000FBC4A2 /* EventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHandler.m; sourceTree = "<group>"; };
+		7770517B1DAC038A009CC199 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subject.h; path = Subject/Subject.h; sourceTree = "<group>"; };
+		7770517C1DAC038A009CC199 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subject.m; path = Subject/Subject.m; sourceTree = "<group>"; };
+		7770517E1DAC03C0009CC199 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Item/Item.h; sourceTree = "<group>"; };
+		7770517F1DAC03C0009CC199 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Item/Item.m; sourceTree = "<group>"; };
+		777051811DAC03D5009CC199 /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lesson.h; path = Lesson/Lesson.h; sourceTree = "<group>"; };
+		777051821DAC03D5009CC199 /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lesson.m; path = Lesson/Lesson.m; sourceTree = "<group>"; };
+		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		779264AF1A0E752000FBC4A2 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		779264B01A0E752000FBC4A2 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77C8DF9E1B384688001FB152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		77C8DFA01B3846A1001FB152 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		77C8DFA11B3846A7001FB152 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
 		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
-		77E8391F1C2C6BDC000A165B /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lesson.h; sourceTree = "<group>"; };
-		77E839201C2C6BDC000A165B /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lesson.m; sourceTree = "<group>"; };
-		77E839221C2C70BC000A165B /* TimeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTable.h; sourceTree = "<group>"; };
-		77E839231C2C70BC000A165B /* TimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTable.m; sourceTree = "<group>"; };
-		8DB9F61E12E51E620ADB7A34 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C33FCC631819965300328F6D /* KNURE-Sked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE-Sked.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = View/LaunchScreen.xib; sourceTree = "<group>"; };
+		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
+		7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84766B3F2F8EE48B11E73351 /* Pods-KNURE-Sked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE-Sked.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE-Sked/Pods-KNURE-Sked.release.xcconfig"; sourceTree = "<group>"; };
+		B6F57A10755551053CC51EC2 /* Pods-SkedEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkedEx.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkedEx/Pods-SkedEx.release.xcconfig"; sourceTree = "<group>"; };
+		C33FCC631819965300328F6D /* TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C33FCC6A1819965300328F6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C33FCC721819965300328F6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C33FCC741819965300328F6D /* KNURE-Sked-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KNURE-Sked-Prefix.pch"; sourceTree = "<group>"; };
 		C33FCC751819965300328F6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C33FCC761819965300328F6D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C33FCC7B1819965300328F6D /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C33FCC7C1819965300328F6D /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C33FCC7B1819965300328F6D /* TimeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeTableViewController.h; sourceTree = "<group>"; };
+		C33FCC7C1819965300328F6D /* TimeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C33FCC7E1819965300328F6D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C3E9AC181878BF3900E84287 /* AddItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemsTableView.h; path = "Menu Items/Navigation Controller/AddItemsTableView.h"; sourceTree = "<group>"; };
-		C3E9AC191878BF3900E84287 /* AddItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemsTableView.m; path = "Menu Items/Navigation Controller/AddItemsTableView.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C3EA892118467F57009FFC3C /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = Logic/Timer.h; sourceTree = SOURCE_ROOT; };
-		C3EA892218467F57009FFC3C /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timer.m; path = Logic/Timer.m; sourceTree = SOURCE_ROOT; };
-		F45E2F26851BC7ED619C8135 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemsTableViewController.h; path = "Menu Items/Navigation Controller/AddItemsTableViewController.h"; sourceTree = "<group>"; };
+		C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemsTableViewController.m; path = "Menu Items/Navigation Controller/AddItemsTableViewController.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CC8170698E79408171343645 /* Pods-TimeTable iOS Today Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS Today Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS Today Extension/Pods-TimeTable iOS Today Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,50 +142,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		778B6A8319E0774500DF98F8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7713D5911CA574C500FCDA9B /* Logic.framework in Frameworks */,
-				778B6A8719E0774600DF98F8 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C33FCC601819965300328F6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33FCC691819965300328F6D /* CoreGraphics.framework in Frameworks */,
 				7713D5871CA5748600FCDA9B /* Logic.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
-				CE6B87843551677FF9EF1CC0 /* libPods.a in Frameworks */,
+				D49EA6DE74F57AD1A55FC4A2 /* libPods-TimeTable iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7713D5811CA5748600FCDA9B /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				7713D5821CA5748600FCDA9B /* Logic.h */,
-				7713D5841CA5748600FCDA9B /* Info.plist */,
-				C3EA892118467F57009FFC3C /* Timer.h */,
-				C3EA892218467F57009FFC3C /* Timer.m */,
-				7713D5A21CA5804A00FCDA9B /* Request.h */,
-				7713D5A31CA5804A00FCDA9B /* Request.m */,
-			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
 		7713D5941CA5767A00FCDA9B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
-				7713D5971CA577BE00FCDA9B /* Timeline */,
 				7713D5961CA576A100FCDA9B /* Modal View */,
 				7713D5951CA5768700FCDA9B /* Items Cell */,
+				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -240,21 +187,10 @@
 			name = "Modal View";
 			sourceTree = "<group>";
 		};
-		7713D5971CA577BE00FCDA9B /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				7713D5B01CA58C1500FCDA9B /* Timeline.xib */,
-			);
-			name = Timeline;
-			sourceTree = "<group>";
-		};
 		7713D5A91CA585C900FCDA9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7713D5AA1CA585C900FCDA9B /* TimetableView.h */,
-				7713D5AB1CA585C900FCDA9B /* TimetableView.m */,
-				7713D5AC1CA585C900FCDA9B /* TimetableViewCell.h */,
-				7713D5AD1CA585C900FCDA9B /* TimetableViewCell.m */,
+				77F4568D1D9293DD0078BDAD /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,68 +205,93 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		778B6A8819E0774600DF98F8 /* KNURE-Sked-Extension */ = {
+		774027921CB5903200C37B60 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				7792607519EACEA300E77AF9 /* SkedEx.entitlements */,
-				7792607319EACE9E00E77AF9 /* MainInterface.storyboard */,
-				778B6A8B19E0774600DF98F8 /* TodayViewController.h */,
-				778B6A8C19E0774600DF98F8 /* TodayViewController.m */,
-				778B6A8919E0774600DF98F8 /* Supporting Files */,
+				7713D5A21CA5804A00FCDA9B /* Request.h */,
+				7713D5A31CA5804A00FCDA9B /* Request.m */,
 			);
-			name = "KNURE-Sked-Extension";
-			path = SkedEx;
+			name = Request;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		778B6A8919E0774600DF98F8 /* Supporting Files */ = {
+		777051741DAC032B009CC199 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				778C30B31B4FE88C00E9A462 /* Info.plist */,
-				772025511B5108A90082929F /* InfoPlist.strings */,
+				7770517E1DAC03C0009CC199 /* Item.h */,
+				7770517F1DAC03C0009CC199 /* Item.m */,
 			);
-			name = "Supporting Files";
+			name = Item;
+			sourceTree = "<group>";
+		};
+		777051751DAC0342009CC199 /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				777051811DAC03D5009CC199 /* Lesson.h */,
+				777051821DAC03D5009CC199 /* Lesson.m */,
+			);
+			name = Lesson;
+			sourceTree = "<group>";
+		};
+		777051761DAC0348009CC199 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				7770517B1DAC038A009CC199 /* Subject.h */,
+				7770517C1DAC038A009CC199 /* Subject.m */,
+			);
+			name = Subject;
 			sourceTree = "<group>";
 		};
 		779264B21A0EA23800FBC4A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C33FCC7B1819965300328F6D /* MainViewController.h */,
-				C33FCC7C1819965300328F6D /* MainViewController.m */,
-				6928EA25182D94BE00070B44 /* ItemsTableView.h */,
-				6928EA26182D94BE00070B44 /* ItemsTableView.m */,
-				C3E9AC181878BF3900E84287 /* AddItemsTableView.h */,
-				C3E9AC191878BF3900E84287 /* AddItemsTableView.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		779264B31A0EA27600FBC4A2 /* Slide menu */ = {
-			isa = PBXGroup;
-			children = (
 				77C8DFA81B3857F5001FB152 /* InitViewController.h */,
 				77C8DFA91B3857F5001FB152 /* InitViewController.m */,
+				C33FCC7B1819965300328F6D /* TimeTableViewController.h */,
+				C33FCC7C1819965300328F6D /* TimeTableViewController.m */,
+				6928EA25182D94BE00070B44 /* ItemsTableViewController.h */,
+				6928EA26182D94BE00070B44 /* ItemsTableViewController.m */,
+				C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */,
+				C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */,
 			);
-			name = "Slide menu";
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		77975A201A81593F002C4F6A /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				779264AF1A0E752000FBC4A2 /* EventHandler.h */,
-				779264B01A0E752000FBC4A2 /* EventHandler.m */,
-				77E8391F1C2C6BDC000A165B /* Lesson.h */,
-				77E839201C2C6BDC000A165B /* Lesson.m */,
-				77E839221C2C70BC000A165B /* TimeTable.h */,
-				77E839231C2C70BC000A165B /* TimeTable.m */,
+				774027921CB5903200C37B60 /* Request */,
+				779264AF1A0E752000FBC4A2 /* EventParser.h */,
+				779264B01A0E752000FBC4A2 /* EventParser.m */,
+				7713D5821CA5748600FCDA9B /* Logic.h */,
+				7713D5841CA5748600FCDA9B /* Info.plist */,
 			);
 			name = Logic;
+			path = "KNURE-Sked";
 			sourceTree = "<group>";
 		};
-		ADB3E53C8D1986E0F135A9BD /* Pods */ = {
+		77F4568D1D9293DD0078BDAD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8DB9F61E12E51E620ADB7A34 /* Pods.debug.xcconfig */,
-				60AD61CF9B577BEF9E8F50E1 /* Pods.release.xcconfig */,
+				777051761DAC0348009CC199 /* Subject */,
+				777051751DAC0342009CC199 /* Lesson */,
+				777051741DAC032B009CC199 /* Item */,
+				77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		9591FB9BF91BE088FE60962A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DF4AFB61ACC968E685451D1 /* Pods-KNURE-Sked.debug.xcconfig */,
+				84766B3F2F8EE48B11E73351 /* Pods-KNURE-Sked.release.xcconfig */,
+				216310072AA8556C3DA7C68B /* Pods-SkedEx.debug.xcconfig */,
+				B6F57A10755551053CC51EC2 /* Pods-SkedEx.release.xcconfig */,
+				64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */,
+				37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */,
+				3F515A819B95FB1F7DB316C5 /* Pods-TimeTable iOS Today Extension.debug.xcconfig */,
+				CC8170698E79408171343645 /* Pods-TimeTable iOS Today Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -339,20 +300,17 @@
 			isa = PBXGroup;
 			children = (
 				C33FCC6C1819965300328F6D /* KNURE-Sked */,
-				778B6A8819E0774600DF98F8 /* KNURE-Sked-Extension */,
-				C33FCC6D1819965300328F6D /* Supporting Files */,
-				7713D5811CA5748600FCDA9B /* Logic */,
+				77975A201A81593F002C4F6A /* Logic */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
-				ADB3E53C8D1986E0F135A9BD /* Pods */,
+				9591FB9BF91BE088FE60962A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		C33FCC641819965300328F6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C33FCC631819965300328F6D /* KNURE-Sked.app */,
-				778B6A8619E0774500DF98F8 /* SkedEx.appex */,
+				C33FCC631819965300328F6D /* TimeTable iOS.app */,
 				7713D5801CA5748600FCDA9B /* Logic.framework */,
 			);
 			name = Products;
@@ -365,7 +323,10 @@
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
 				C33FCC6A1819965300328F6D /* UIKit.framework */,
 				773F6445196939220081165C /* NotificationCenter.framework */,
-				F45E2F26851BC7ED619C8135 /* libPods.a */,
+				3F4803B4ECCBF9BE3407D2DB /* libPods-KNURE-Sked.a */,
+				1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */,
+				7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */,
+				4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,13 +334,12 @@
 		C33FCC6C1819965300328F6D /* KNURE-Sked */ = {
 			isa = PBXGroup;
 			children = (
+				771166C319E09750005FE37E /* KNURE-Sked.entitlements */,
 				7713D5A91CA585C900FCDA9B /* Model */,
 				7713D5941CA5767A00FCDA9B /* View */,
 				779264B21A0EA23800FBC4A2 /* Controller */,
 				772025441B51071A0082929F /* Resources */,
-				77975A201A81593F002C4F6A /* Logic */,
-				779264B31A0EA27600FBC4A2 /* Slide menu */,
-				771166C319E09750005FE37E /* KNURE-Sked.entitlements */,
+				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE-Sked";
 			sourceTree = "<group>";
@@ -389,12 +349,10 @@
 			children = (
 				C33FCC751819965300328F6D /* AppDelegate.h */,
 				C33FCC761819965300328F6D /* AppDelegate.m */,
-				778C30B61B4FE8FD00E9A462 /* KNURE-Sked-Info.plist */,
+				778C30B61B4FE8FD00E9A462 /* Info.plist */,
 				C33FCC721819965300328F6D /* main.m */,
-				C33FCC741819965300328F6D /* KNURE-Sked-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			path = "KNURE-Sked";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,8 +362,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7713D5A61CA5855000FCDA9B /* Timer.h in Headers */,
 				7713D5A41CA5804A00FCDA9B /* Request.h in Headers */,
+				77DDAFE71D92C2AA007EA4DA /* EventParser.h in Headers */,
 				7713D5831CA5748600FCDA9B /* Logic.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,46 +389,27 @@
 			productReference = 7713D5801CA5748600FCDA9B /* Logic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		778B6A8519E0774500DF98F8 /* SkedEx */ = {
+		C33FCC621819965300328F6D /* TimeTable iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 778B6A9719E0774600DF98F8 /* Build configuration list for PBXNativeTarget "SkedEx" */;
+			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "TimeTable iOS" */;
 			buildPhases = (
-				778B6A8219E0774500DF98F8 /* Sources */,
-				778B6A8319E0774500DF98F8 /* Frameworks */,
-				778B6A8419E0774500DF98F8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SkedEx;
-			productName = SkedEx;
-			productReference = 778B6A8619E0774500DF98F8 /* SkedEx.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		C33FCC621819965300328F6D /* KNURE-Sked */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE-Sked" */;
-			buildPhases = (
-				72D06C5F425F38B6C504715E /* Check Pods Manifest.lock */,
+				39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */,
 				C33FCC5F1819965300328F6D /* Sources */,
 				C33FCC601819965300328F6D /* Frameworks */,
 				C33FCC611819965300328F6D /* Resources */,
 				773F6456196939220081165C /* Embed App Extensions */,
-				66838ABA010C2C62C40D0478 /* Copy Pods Resources */,
-				58D4E718FC3F888E6EA8EB7F /* Embed Pods Frameworks */,
 				7713D58C1CA5748600FCDA9B /* Embed Frameworks */,
+				9A7D5350389B0438B63769F0 /* [CP] Embed Pods Frameworks */,
+				01683DD0EEB66A63AC15E0F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				778B6A9119E0774600DF98F8 /* PBXTargetDependency */,
-				778B6A9419E0774600DF98F8 /* PBXTargetDependency */,
 				7713D5861CA5748600FCDA9B /* PBXTargetDependency */,
 			);
-			name = "KNURE-Sked";
+			name = "TimeTable iOS";
 			productName = "KNURE-Sked";
-			productReference = C33FCC631819965300328F6D /* KNURE-Sked.app */;
+			productReference = C33FCC631819965300328F6D /* TimeTable iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -479,21 +418,12 @@
 		C33FCC5B1819965300328F6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = Shogunate;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Vlad Chapaev";
 				TargetAttributes = {
 					7713D57F1CA5748600FCDA9B = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GJ8GF93D7L;
-					};
-					778B6A8519E0774500DF98F8 = {
-						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = GJ8GF93D7L;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
 					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
@@ -513,15 +443,13 @@
 				Base,
 				ru,
 				en,
-				uk,
 			);
 			mainGroup = C33FCC5A1819965300328F6D;
 			productRefGroup = C33FCC641819965300328F6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C33FCC621819965300328F6D /* KNURE-Sked */,
-				778B6A8519E0774500DF98F8 /* SkedEx */,
+				C33FCC621819965300328F6D /* TimeTable iOS */,
 				7713D57F1CA5748600FCDA9B /* Logic */,
 			);
 		};
@@ -535,16 +463,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		778B6A8419E0774500DF98F8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7792607619EACEA300E77AF9 /* SkedEx.entitlements in Resources */,
-				7720254F1B5108A90082929F /* InfoPlist.strings in Resources */,
-				7792607419EACE9E00E77AF9 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C33FCC611819965300328F6D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -552,7 +470,7 @@
 				77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */,
 				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
 				7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */,
-				7713D5B11CA58C1500FCDA9B /* Timeline.xib in Resources */,
+				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				7713D5991CA5790000FCDA9B /* ItemsCell.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				772025471B51075D0082929F /* InfoPlist.strings in Resources */,
@@ -562,49 +480,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58D4E718FC3F888E6EA8EB7F /* Embed Pods Frameworks */ = {
+		01683DD0EEB66A63AC15E0F4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66838ABA010C2C62C40D0478 /* Copy Pods Resources */ = {
+		39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		72D06C5F425F38B6C504715E /* Check Pods Manifest.lock */ = {
+		9A7D5350389B0438B63769F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -615,15 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7713D5A51CA5804A00FCDA9B /* Request.m in Sources */,
-				7713D5A71CA5855200FCDA9B /* Timer.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		778B6A8219E0774500DF98F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				778B6A8D19E0774600DF98F8 /* TodayViewController.m in Sources */,
+				77DDAFE81D92C2AA007EA4DA /* EventParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,19 +541,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33FCC7D1819965300328F6D /* MainViewController.m in Sources */,
-				7713D5AE1CA585C900FCDA9B /* TimetableView.m in Sources */,
+				C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */,
 				7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
-				6928EA27182D94BE00070B44 /* ItemsTableView.m in Sources */,
-				C3E9AC1A1878BF3900E84287 /* AddItemsTableView.m in Sources */,
-				7713D5AF1CA585C900FCDA9B /* TimetableViewCell.m in Sources */,
-				77E839211C2C6BDC000A165B /* Lesson.m in Sources */,
-				77E839241C2C70BC000A165B /* TimeTable.m in Sources */,
+				777051831DAC03D5009CC199 /* Lesson.m in Sources */,
+				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,
+				C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */,
+				77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
+				777051801DAC03C0009CC199 /* Item.m in Sources */,
+				7770517D1DAC038A009CC199 /* Subject.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				7713D59C1CA5799400FCDA9B /* ItemTableViewCell.m in Sources */,
-				779264B11A0E752000FBC4A2 /* EventHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,16 +563,6 @@
 			isa = PBXTargetDependency;
 			target = 7713D57F1CA5748600FCDA9B /* Logic */;
 			targetProxy = 7713D5851CA5748600FCDA9B /* PBXContainerItemProxy */;
-		};
-		778B6A9119E0774600DF98F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 778B6A8519E0774500DF98F8 /* SkedEx */;
-			targetProxy = 778B6A9019E0774600DF98F8 /* PBXContainerItemProxy */;
-		};
-		778B6A9419E0774600DF98F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 778B6A8519E0774500DF98F8 /* SkedEx */;
-			targetProxy = 778B6A9319E0774600DF98F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -677,16 +576,6 @@
 			);
 			name = InfoPlist.strings;
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		772025511B5108A90082929F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				772025501B5108A90082929F /* Base */,
-				772025521B5108AB0082929F /* ru */,
-				772025531B5108AC0082929F /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		77B0E0F21B656A4F00D4506E /* Localizable.strings */ = {
@@ -704,8 +593,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				77C8DF9E1B384688001FB152 /* Base */,
-				77C8DFA01B3846A1001FB152 /* ru */,
-				77C8DFA11B3846A7001FB152 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -719,7 +606,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -732,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Logic/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Shogunate.Logic;
@@ -750,7 +637,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -763,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Logic/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Shogunate.Logic;
@@ -775,60 +662,11 @@
 			};
 			name = Release;
 		};
-		778B6A9519E0774600DF98F8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_ENTITLEMENTS = SkedEx/SkedEx.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SkedEx/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
-			};
-			name = Debug;
-		};
-		778B6A9619E0774600DF98F8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_ENTITLEMENTS = SkedEx/SkedEx.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SkedEx/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
-			};
-			name = Release;
-		};
 		C33FCC931819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -838,14 +676,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -863,7 +706,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -873,6 +716,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -882,13 +726,18 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -900,7 +749,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -908,20 +757,18 @@
 		};
 		C33FCC961819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DB9F61E12E51E620ADB7A34 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KNURE-Sked/KNURE-Sked.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KNURE-Sked/KNURE-Sked-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
-				INFOPLIST_FILE = "KNURE-Sked/KNURE-Sked-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = "KNURE-Sked/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -934,19 +781,17 @@
 		};
 		C33FCC971819965300328F6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60AD61CF9B577BEF9E8F50E1 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KNURE-Sked/KNURE-Sked.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KNURE-Sked/KNURE-Sked-Prefix.pch";
-				INFOPLIST_FILE = "KNURE-Sked/KNURE-Sked-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = "KNURE-Sked/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -966,14 +811,6 @@
 				7713D58B1CA5748600FCDA9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		778B6A9719E0774600DF98F8 /* Build configuration list for PBXNativeTarget "SkedEx" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				778B6A9519E0774600DF98F8 /* Debug */,
-				778B6A9619E0774600DF98F8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		C33FCC5E1819965300328F6D /* Build configuration list for PBXProject "KNURE-Sked" */ = {
@@ -985,7 +822,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE-Sked" */ = {
+		C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "TimeTable iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C33FCC961819965300328F6D /* Debug */,
@@ -995,6 +832,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */,
+			);
+			currentVersion = 77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */;
+			path = DataStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C33FCC5B1819965300328F6D /* Project object */;
 }

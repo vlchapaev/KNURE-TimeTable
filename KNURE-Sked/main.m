@@ -2,8 +2,8 @@
 //  main.m
 //  KNURE-Sked
 //
-//  Created by Влад on 10/24/13.
-//  Copyright (c) 2013 Влад. All rights reserved.
+//  Created by Vlad Chapaev on 24.10.13.
+//  Copyright (c) 2013 Vlad Chapaev. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -3,14 +3,10 @@
 //  SlideMenu
 //
 //  Created by Vlad Chapaev on 07.09.14.
-//  Copyright (c) 2014 Shogunate. All rights reserved.
+//  Copyright (c) 2014 Vlad Chapaev. All rights reserved.
 //
 
 #import "InitViewController.h"
-
-@interface InitViewController ()
-
-@end
 
 @implementation InitViewController
 
@@ -33,6 +29,7 @@
         case 3:
             identifier = @"AuditorySegue";
             break;
+        default: identifier = @"GroupSegue"; break;
     }
     return identifier;
 }
@@ -47,10 +44,6 @@
     frame.size = (CGSize){40,40};
     button.frame = frame;
     [button setImage:[UIImage imageNamed:@"MenuButton"] forState:UIControlStateNormal];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return (shoudOffPanGesture)?NO:YES;
 }
 
 @end

@@ -3,7 +3,7 @@
 //  KNURE-Sked
 //
 //  Created by Vlad Chapaev on 25.03.16.
-//  Copyright © 2016 Shogunate. All rights reserved.
+//  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
 #import "Request.h"
@@ -16,28 +16,28 @@ const NSString *baseURL = @"http://cist.nure.ua/ias/app/tt/";
     NSString *method = @"P_API_GROUP_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
     NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    return [[NSURLRequest alloc]initWithURL:url];
 }
 
 + (NSURLRequest *)getTeacherList {
     NSString *method = @"P_API_PODR_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
     NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    return [[NSURLRequest alloc]initWithURL:url];
 }
 
 + (NSURLRequest *)getAuditoryList {
     NSString *method = @"P_API_AUDITORIES_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
     NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    return [[NSURLRequest alloc]initWithURL:url];
 }
 
-+ (NSURLRequest *)getTimetableFor:(NSString *)ID {
++ (NSURLRequest *)getTimetable:(NSString *)ID {
     NSString *method = @"P_API_EVENT_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@?timetable_id=%@", baseURL, method, ID];
     NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    return [[NSURLRequest alloc]initWithURL:url];
 }
 
 @end

@@ -3,7 +3,7 @@
 //  KNURE-Sked
 //
 //  Created by Vlad Chapaev on 25.03.16.
-//  Copyright © 2016 Shogunate. All rights reserved.
+//  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *itemName;
 @property (strong, nonatomic) IBOutlet UILabel *lastUpdate;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
