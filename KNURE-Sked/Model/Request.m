@@ -33,7 +33,7 @@ const NSString *baseURL = @"http://cist.nure.ua/ias/app/tt/";
     return [[NSURLRequest alloc]initWithURL:url];
 }
 
-+ (NSURLRequest *)getTimetable:(NSString *)ID {
++ (NSURLRequest *)getTimetable:(NSNumber *)ID {
     NSString *method = @"P_API_EVENT_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@?timetable_id=%@", baseURL, method, ID];
     NSURL *url = [[NSURL alloc]initWithString:address];

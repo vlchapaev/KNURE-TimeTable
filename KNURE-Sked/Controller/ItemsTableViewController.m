@@ -10,11 +10,12 @@
 #import "InitViewController.h"
 #import "ItemTableViewCell.h"
 #import "AppDelegate.h"
-#import "Item.h"
+#import "Item+CoreDataProperties.h"
+#import "Request.h"
 
-@interface ItemsTableViewController() 
+@interface ItemsTableViewController() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
-@property (strong, nonatomic) NSArray<Item *>* datasource;
+@property (strong, nonatomic) NSMutableArray <Item *>* datasource;
 
 @end
 
@@ -26,17 +27,16 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ItemsCell" bundle:nil] forCellReuseIdentifier:@"Item"];
-    
-    AppDelegate *appDelegate = [[AppDelegate alloc]init];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *managedObjectContext = appDelegate.persistentContainer.viewContext;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
     NSError *error = nil;
     self.datasource = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
-    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Pull to refresh" attributes:nil];
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refreshControl];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Logic
@@ -56,7 +56,6 @@
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
     Item *item = self.datasource[indexPath.row];
     cell.itemName.text = item.title;
-    //cell.lastUpdate.text = [item.last_update timeAgo];
     return cell;
 }
 
@@ -75,6 +74,28 @@
     ItemTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     Item *item = self.datasource[indexPath.row];
     [cell.activityIndicator startAnimating];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[Request getTimetable:item.id]
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (data) {
+                                                        [[EventParser sharedInstance]parseTimeTable:data callBack:^{
+                                                            [cell.activityIndicator stopAnimating];
+                                                        }];
+                                                    } else {
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            [cell.activityIndicator stopAnimating];
+                                                        });
+                                                    }
+                                                }];
+    [dataTask resume];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

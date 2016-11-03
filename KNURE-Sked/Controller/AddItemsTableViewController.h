@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Logic/Logic.h>
+#import "EventParser.h"
 
 @interface AddItemsTableViewController : UITableViewController
 

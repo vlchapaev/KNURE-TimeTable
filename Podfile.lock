@@ -1,6 +1,7 @@
 PODS:
   - AMSlideMenu (1.5.4)
   - DateTools (1.7.0)
+  - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MSCollectionViewCalendarLayout (0.1.5)
   - ZLSwipeableView (0.0.8)
@@ -8,6 +9,7 @@ PODS:
 DEPENDENCIES:
   - AMSlideMenu
   - DateTools
+  - Masonry
   - MBProgressHUD
   - MSCollectionViewCalendarLayout
   - ZLSwipeableView
@@ -15,10 +17,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MSCollectionViewCalendarLayout: 9c52894930d6b712951f18873618fc32c00cd4fa
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 7c5bb1a1c0d2c60edc61973b9bbbcdbd145b9b16
+PODFILE CHECKSUM: 6dfe46a229a9c760528d5b19415c621437d1ce78
 
 COCOAPODS: 1.1.1

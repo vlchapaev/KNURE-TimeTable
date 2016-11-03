@@ -7,6 +7,8 @@
 //
 
 #import "EventParser.h"
+#import "AppDelegate.h"
+#import "Lesson+CoreDataClass.h"
 
 @implementation EventParser
 
@@ -51,6 +53,46 @@
     }];
 }
 
+- (void)parseTimeTable:(NSData *)data callBack:(void (^)(void))callbackBlock {
+    NSData *utfEncodingData = [self alignEncoding:data];
+    id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    id events = [parsed valueForKey:@"events"];
+    //id groups = [parsed valueForKey:@"groups"];
+    //id subjects = [parsed valueForKey:@"subjects"];
+    //id teachers = [parsed valueForKey:@"teachers"];
+    //id types = [parsed valueForKey:@"types"];
+    
+    
+    NSLog(@"%@", parsed);
+    
+    for (id event in events) {
+        Lesson *lesson = [[Lesson alloc]initWithContext:appDelegate.persistentContainer.viewContext];
+        lesson.auditory = [event valueForKey:@"auditory"];
+        lesson.number = [event valueForKey:@"number_pair"];
+        lesson.start_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];
+        lesson.end_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"end_time"] integerValue]];
+        lesson.title = @"lollolollolo";
+    }
+    
+    
+    
+    [appDelegate saveContext];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        callbackBlock();
+    });
+    
+}
+
+- (NSData *)alignEncoding:(NSData *)data {
+    NSString *tempData = [[NSString alloc]initWithData:data encoding:NSWindowsCP1251StringEncoding];
+    NSData *encResponce = [tempData dataUsingEncoding:NSUTF8StringEncoding];
+    return [encResponce subdataWithRange:NSMakeRange(0, [encResponce length] - 1)];
+}
+
 - (NSString *)getFullNameByID:(NSInteger)ID from:(NSArray *)list {
     for(NSArray *record in list) {
         if([[record valueForKey:@"id"]integerValue] == ID) {
@@ -72,7 +114,7 @@
 - (NSString *)getTypeNameByID:(NSInteger)typeID from:(NSArray *)typeList shortName:(BOOL)isShort {
     for(NSArray *record in typeList) {
         if([[record valueForKey:@"id"]integerValue] == typeID) {
-            return (isShort)? [record valueForKey:@"short_name"]:[record valueForKey:@"full_name"];
+            return (isShort) ? [record valueForKey:@"short_name"]:[record valueForKey:@"full_name"];
         }
     }
     return nil;

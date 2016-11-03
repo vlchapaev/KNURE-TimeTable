@@ -14,6 +14,6 @@
 + (NSURLRequest *)getTeacherList;
 + (NSURLRequest *)getAuditoryList;
 
-+ (NSURLRequest *)getTimetable:(NSString *)ID;
++ (NSURLRequest *)getTimetable:(NSNumber *)ID;
 
 @end

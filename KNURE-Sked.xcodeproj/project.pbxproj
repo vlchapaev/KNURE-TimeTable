@@ -7,26 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23C6CF077F03195CD6EB462F /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */; };
 		6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableViewController.m */; };
-		7713D5831CA5748600FCDA9B /* Logic.h in Headers */ = {isa = PBXBuildFile; fileRef = 7713D5821CA5748600FCDA9B /* Logic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7713D5871CA5748600FCDA9B /* Logic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7713D5801CA5748600FCDA9B /* Logic.framework */; };
-		7713D5881CA5748600FCDA9B /* Logic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7713D5801CA5748600FCDA9B /* Logic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7713D5991CA5790000FCDA9B /* ItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D5981CA5790000FCDA9B /* ItemsCell.xib */; };
 		7713D59C1CA5799400FCDA9B /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D59B1CA5799400FCDA9B /* ItemTableViewCell.m */; };
 		7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalView.xib */; };
 		7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A01CA57A4F00FCDA9B /* ModalView.m */; };
-		7713D5A41CA5804A00FCDA9B /* Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 7713D5A21CA5804A00FCDA9B /* Request.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7713D5A51CA5804A00FCDA9B /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A31CA5804A00FCDA9B /* Request.m */; };
 		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
-		7770517D1DAC038A009CC199 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770517C1DAC038A009CC199 /* Subject.m */; };
-		777051801DAC03C0009CC199 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770517F1DAC03C0009CC199 /* Item.m */; };
-		777051831DAC03D5009CC199 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 777051821DAC03D5009CC199 /* Lesson.m */; };
+		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
+		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
+		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
+		778E3AB81DCB86190083A658 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */; };
+		778E3AB91DCB86190083A658 /* Lesson+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AB01DCB86190083A658 /* Lesson+CoreDataClass.m */; };
+		778E3ABA1DCB86190083A658 /* Lesson+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AB21DCB86190083A658 /* Lesson+CoreDataProperties.m */; };
+		778E3ABB1DCB86190083A658 /* Subject+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AB41DCB86190083A658 /* Subject+CoreDataClass.m */; };
+		778E3ABC1DCB86190083A658 /* Subject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AB61DCB86190083A658 /* Subject+CoreDataProperties.m */; };
+		778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */; };
+		778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */; };
+		778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */; };
+		778E3AD41DCB99A90083A658 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */; };
+		778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACC1DCB99A90083A658 /* MSGridline.m */; };
+		778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */; };
+		778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
+		778E3ADB1DCB9F8D0083A658 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */; };
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
-		77DDAFE71D92C2AA007EA4DA /* EventParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 779264AF1A0E752000FBC4A2 /* EventParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		77DDAFE81D92C2AA007EA4DA /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 779264B01A0E752000FBC4A2 /* EventParser.m */; settings = {ATTRIBUTES = (Public, ); }; };
 		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -35,18 +42,7 @@
 		C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC7C1819965300328F6D /* TimeTableViewController.m */; };
 		C33FCC7F1819965300328F6D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33FCC7E1819965300328F6D /* Images.xcassets */; };
 		C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */; };
-		D49EA6DE74F57AD1A55FC4A2 /* libPods-TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7713D5851CA5748600FCDA9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C33FCC5B1819965300328F6D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7713D57F1CA5748600FCDA9B;
-			remoteInfo = Logic;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7713D58C1CA5748600FCDA9B /* Embed Frameworks */ = {
@@ -55,7 +51,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7713D5881CA5748600FCDA9B /* Logic.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,41 +68,59 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0DF4AFB61ACC968E685451D1 /* Pods-KNURE-Sked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE-Sked.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE-Sked/Pods-KNURE-Sked.debug.xcconfig"; sourceTree = "<group>"; };
+		0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkedEx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		216310072AA8556C3DA7C68B /* Pods-SkedEx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkedEx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SkedEx/Pods-SkedEx.debug.xcconfig"; sourceTree = "<group>"; };
+		339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
 		37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
 		3F4803B4ECCBF9BE3407D2DB /* libPods-KNURE-Sked.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE-Sked.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F515A819B95FB1F7DB316C5 /* Pods-TimeTable iOS Today Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS Today Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS Today Extension/Pods-TimeTable iOS Today Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS Today Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6928EA25182D94BE00070B44 /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewController.h; path = Controller/ItemsTableViewController.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewController.m; path = Controller/ItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		771166C319E09750005FE37E /* KNURE-Sked.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "KNURE-Sked.entitlements"; sourceTree = "<group>"; };
-		7713D5801CA5748600FCDA9B /* Logic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7713D5821CA5748600FCDA9B /* Logic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logic.h; path = ../Logic/Logic.h; sourceTree = "<group>"; };
-		7713D5841CA5748600FCDA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Logic/Info.plist; sourceTree = "<group>"; };
 		7713D5981CA5790000FCDA9B /* ItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemsCell.xib; path = "View/Items Cell/ItemsCell.xib"; sourceTree = "<group>"; };
 		7713D59A1CA5799400FCDA9B /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemTableViewCell.h; path = "View/Items Cell/ItemTableViewCell.h"; sourceTree = "<group>"; };
 		7713D59B1CA5799400FCDA9B /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemTableViewCell.m; path = "View/Items Cell/ItemTableViewCell.m"; sourceTree = "<group>"; };
 		7713D59D1CA57A0B00FCDA9B /* ModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalView.xib; path = "View/Modal View/ModalView.xib"; sourceTree = "<group>"; };
 		7713D59F1CA57A4F00FCDA9B /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = "View/Modal View/ModalView.h"; sourceTree = "<group>"; };
 		7713D5A01CA57A4F00FCDA9B /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = "View/Modal View/ModalView.m"; sourceTree = "<group>"; };
-		7713D5A21CA5804A00FCDA9B /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Request.h; path = ../../Logic/Request.h; sourceTree = "<group>"; };
-		7713D5A31CA5804A00FCDA9B /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Request.m; path = ../../Logic/Request.m; sourceTree = "<group>"; };
 		772025481B51075D0082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254A1B5107650082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254B1B5107680082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		7770517B1DAC038A009CC199 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subject.h; path = Subject/Subject.h; sourceTree = "<group>"; };
-		7770517C1DAC038A009CC199 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subject.m; path = Subject/Subject.m; sourceTree = "<group>"; };
-		7770517E1DAC03C0009CC199 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Item/Item.h; sourceTree = "<group>"; };
-		7770517F1DAC03C0009CC199 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Item/Item.m; sourceTree = "<group>"; };
-		777051811DAC03D5009CC199 /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lesson.h; path = Lesson/Lesson.h; sourceTree = "<group>"; };
-		777051821DAC03D5009CC199 /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lesson.m; path = Lesson/Lesson.m; sourceTree = "<group>"; };
+		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
+		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		7777778C1DC90B8700F557B0 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		779264AF1A0E752000FBC4A2 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventParser.h; path = ../Logic/EventParser.h; sourceTree = "<group>"; };
-		779264B01A0E752000FBC4A2 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventParser.m; path = ../Logic/EventParser.m; sourceTree = "<group>"; };
+		778E3AAB1DCB86190083A658 /* Item+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataClass.h"; sourceTree = "<group>"; };
+		778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataClass.m"; sourceTree = "<group>"; };
+		778E3AAD1DCB86190083A658 /* Item+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataProperties.h"; sourceTree = "<group>"; };
+		778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataProperties.m"; sourceTree = "<group>"; };
+		778E3AAF1DCB86190083A658 /* Lesson+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lesson+CoreDataClass.h"; sourceTree = "<group>"; };
+		778E3AB01DCB86190083A658 /* Lesson+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lesson+CoreDataClass.m"; sourceTree = "<group>"; };
+		778E3AB11DCB86190083A658 /* Lesson+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lesson+CoreDataProperties.h"; sourceTree = "<group>"; };
+		778E3AB21DCB86190083A658 /* Lesson+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lesson+CoreDataProperties.m"; sourceTree = "<group>"; };
+		778E3AB31DCB86190083A658 /* Subject+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Subject+CoreDataClass.h"; sourceTree = "<group>"; };
+		778E3AB41DCB86190083A658 /* Subject+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Subject+CoreDataClass.m"; sourceTree = "<group>"; };
+		778E3AB51DCB86190083A658 /* Subject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Subject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		778E3AB61DCB86190083A658 /* Subject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Subject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		778E3AC11DCB99A90083A658 /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
+		778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
+		778E3AC31DCB99A90083A658 /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
+		778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
+		778E3AC51DCB99A90083A658 /* MSDayColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeader.h; sourceTree = "<group>"; };
+		778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeader.m; sourceTree = "<group>"; };
+		778E3AC71DCB99A90083A658 /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
+		778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
+		778E3ACB1DCB99A90083A658 /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
+		778E3ACC1DCB99A90083A658 /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
+		778E3ACD1DCB99A90083A658 /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
+		778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
+		778E3ACF1DCB99A90083A658 /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
+		778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
+		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
+		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
 		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -117,9 +130,7 @@
 		77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = View/LaunchScreen.xib; sourceTree = "<group>"; };
 		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
 		7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		84766B3F2F8EE48B11E73351 /* Pods-KNURE-Sked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE-Sked.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE-Sked/Pods-KNURE-Sked.release.xcconfig"; sourceTree = "<group>"; };
-		B6F57A10755551053CC51EC2 /* Pods-SkedEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkedEx.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkedEx/Pods-SkedEx.release.xcconfig"; sourceTree = "<group>"; };
-		C33FCC631819965300328F6D /* TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C33FCC6A1819965300328F6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -131,25 +142,17 @@
 		C33FCC7E1819965300328F6D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemsTableViewController.h; path = Controller/AddItemsTableViewController.h; sourceTree = "<group>"; };
 		C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemsTableViewController.m; path = Controller/AddItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		CC8170698E79408171343645 /* Pods-TimeTable iOS Today Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS Today Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS Today Extension/Pods-TimeTable iOS Today Extension.release.xcconfig"; sourceTree = "<group>"; };
+		D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7713D57C1CA5748600FCDA9B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C33FCC601819965300328F6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7713D5871CA5748600FCDA9B /* Logic.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
-				D49EA6DE74F57AD1A55FC4A2 /* libPods-TimeTable iOS.a in Frameworks */,
+				23C6CF077F03195CD6EB462F /* libPods-KNURE TimeTable iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,9 +163,11 @@
 			isa = PBXGroup;
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
+				778E3AC01DCB99A90083A658 /* CollectionView elements */,
 				7713D5961CA576A100FCDA9B /* Modal View */,
 				7713D5951CA5768700FCDA9B /* Items Cell */,
 				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
+				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -190,6 +195,10 @@
 		7713D5A91CA585C900FCDA9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				777777891DC90B8700F557B0 /* EventParser.h */,
+				7777778A1DC90B8700F557B0 /* EventParser.m */,
+				7777778B1DC90B8700F557B0 /* Request.h */,
+				7777778C1DC90B8700F557B0 /* Request.m */,
 				77F4568D1D9293DD0078BDAD /* CoreData */,
 			);
 			path = Model;
@@ -205,41 +214,67 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		774027921CB5903200C37B60 /* Request */ = {
+		778E3ABD1DCB86270083A658 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				7713D5A21CA5804A00FCDA9B /* Request.h */,
-				7713D5A31CA5804A00FCDA9B /* Request.m */,
-			);
-			name = Request;
-			path = Model;
-			sourceTree = "<group>";
-		};
-		777051741DAC032B009CC199 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				7770517E1DAC03C0009CC199 /* Item.h */,
-				7770517F1DAC03C0009CC199 /* Item.m */,
+				778E3AAB1DCB86190083A658 /* Item+CoreDataClass.h */,
+				778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */,
+				778E3AAD1DCB86190083A658 /* Item+CoreDataProperties.h */,
+				778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */,
 			);
 			name = Item;
 			sourceTree = "<group>";
 		};
-		777051751DAC0342009CC199 /* Lesson */ = {
+		778E3ABE1DCB86300083A658 /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
-				777051811DAC03D5009CC199 /* Lesson.h */,
-				777051821DAC03D5009CC199 /* Lesson.m */,
+				778E3AAF1DCB86190083A658 /* Lesson+CoreDataClass.h */,
+				778E3AB01DCB86190083A658 /* Lesson+CoreDataClass.m */,
+				778E3AB11DCB86190083A658 /* Lesson+CoreDataProperties.h */,
+				778E3AB21DCB86190083A658 /* Lesson+CoreDataProperties.m */,
 			);
 			name = Lesson;
 			sourceTree = "<group>";
 		};
-		777051761DAC0348009CC199 /* Subject */ = {
+		778E3ABF1DCB86390083A658 /* Subject */ = {
 			isa = PBXGroup;
 			children = (
-				7770517B1DAC038A009CC199 /* Subject.h */,
-				7770517C1DAC038A009CC199 /* Subject.m */,
+				778E3AB31DCB86190083A658 /* Subject+CoreDataClass.h */,
+				778E3AB41DCB86190083A658 /* Subject+CoreDataClass.m */,
+				778E3AB51DCB86190083A658 /* Subject+CoreDataProperties.h */,
+				778E3AB61DCB86190083A658 /* Subject+CoreDataProperties.m */,
 			);
 			name = Subject;
+			sourceTree = "<group>";
+		};
+		778E3AC01DCB99A90083A658 /* CollectionView elements */ = {
+			isa = PBXGroup;
+			children = (
+				778E3AC11DCB99A90083A658 /* MSCurrentTimeGridline.h */,
+				778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */,
+				778E3AC31DCB99A90083A658 /* MSCurrentTimeIndicator.h */,
+				778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */,
+				778E3AC51DCB99A90083A658 /* MSDayColumnHeader.h */,
+				778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */,
+				778E3AC71DCB99A90083A658 /* MSDayColumnHeaderBackground.h */,
+				778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */,
+				778E3ACB1DCB99A90083A658 /* MSGridline.h */,
+				778E3ACC1DCB99A90083A658 /* MSGridline.m */,
+				778E3ACD1DCB99A90083A658 /* MSTimeRowHeader.h */,
+				778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */,
+				778E3ACF1DCB99A90083A658 /* MSTimeRowHeaderBackground.h */,
+				778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */,
+			);
+			path = "CollectionView elements";
+			sourceTree = "<group>";
+		};
+		778E3ADC1DCB9F930083A658 /* Lesson Cell */ = {
+			isa = PBXGroup;
+			children = (
+				778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */,
+				778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */,
+			);
+			name = "Lesson Cell";
 			sourceTree = "<group>";
 		};
 		779264B21A0EA23800FBC4A2 /* Controller */ = {
@@ -257,25 +292,12 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		77975A201A81593F002C4F6A /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				774027921CB5903200C37B60 /* Request */,
-				779264AF1A0E752000FBC4A2 /* EventParser.h */,
-				779264B01A0E752000FBC4A2 /* EventParser.m */,
-				7713D5821CA5748600FCDA9B /* Logic.h */,
-				7713D5841CA5748600FCDA9B /* Info.plist */,
-			);
-			name = Logic;
-			path = "KNURE-Sked";
-			sourceTree = "<group>";
-		};
 		77F4568D1D9293DD0078BDAD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				777051761DAC0348009CC199 /* Subject */,
-				777051751DAC0342009CC199 /* Lesson */,
-				777051741DAC032B009CC199 /* Item */,
+				778E3ABD1DCB86270083A658 /* Item */,
+				778E3ABE1DCB86300083A658 /* Lesson */,
+				778E3ABF1DCB86390083A658 /* Subject */,
 				77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -284,14 +306,10 @@
 		9591FB9BF91BE088FE60962A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0DF4AFB61ACC968E685451D1 /* Pods-KNURE-Sked.debug.xcconfig */,
-				84766B3F2F8EE48B11E73351 /* Pods-KNURE-Sked.release.xcconfig */,
-				216310072AA8556C3DA7C68B /* Pods-SkedEx.debug.xcconfig */,
-				B6F57A10755551053CC51EC2 /* Pods-SkedEx.release.xcconfig */,
 				64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */,
 				37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */,
-				3F515A819B95FB1F7DB316C5 /* Pods-TimeTable iOS Today Extension.debug.xcconfig */,
-				CC8170698E79408171343645 /* Pods-TimeTable iOS Today Extension.release.xcconfig */,
+				D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */,
+				339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -300,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				C33FCC6C1819965300328F6D /* KNURE-Sked */,
-				77975A201A81593F002C4F6A /* Logic */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
 				9591FB9BF91BE088FE60962A /* Pods */,
@@ -310,8 +327,7 @@
 		C33FCC641819965300328F6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C33FCC631819965300328F6D /* TimeTable iOS.app */,
-				7713D5801CA5748600FCDA9B /* Logic.framework */,
+				C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +343,7 @@
 				1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */,
 				7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */,
 				4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */,
+				0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,41 +374,10 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		7713D57D1CA5748600FCDA9B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7713D5A41CA5804A00FCDA9B /* Request.h in Headers */,
-				77DDAFE71D92C2AA007EA4DA /* EventParser.h in Headers */,
-				7713D5831CA5748600FCDA9B /* Logic.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		7713D57F1CA5748600FCDA9B /* Logic */ = {
+		C33FCC621819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7713D5891CA5748600FCDA9B /* Build configuration list for PBXNativeTarget "Logic" */;
-			buildPhases = (
-				7713D57B1CA5748600FCDA9B /* Sources */,
-				7713D57C1CA5748600FCDA9B /* Frameworks */,
-				7713D57D1CA5748600FCDA9B /* Headers */,
-				7713D57E1CA5748600FCDA9B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Logic;
-			productName = Logic;
-			productReference = 7713D5801CA5748600FCDA9B /* Logic.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C33FCC621819965300328F6D /* TimeTable iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "TimeTable iOS" */;
+			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS" */;
 			buildPhases = (
 				39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */,
 				C33FCC5F1819965300328F6D /* Sources */,
@@ -405,11 +391,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				7713D5861CA5748600FCDA9B /* PBXTargetDependency */,
 			);
-			name = "TimeTable iOS";
+			name = "KNURE TimeTable iOS";
 			productName = "KNURE-Sked";
-			productReference = C33FCC631819965300328F6D /* TimeTable iOS.app */;
+			productReference = C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -421,10 +406,6 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Vlad Chapaev";
 				TargetAttributes = {
-					7713D57F1CA5748600FCDA9B = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = GJ8GF93D7L;
-					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
 						SystemCapabilities = {
@@ -449,20 +430,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C33FCC621819965300328F6D /* TimeTable iOS */,
-				7713D57F1CA5748600FCDA9B /* Logic */,
+				C33FCC621819965300328F6D /* KNURE TimeTable iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7713D57E1CA5748600FCDA9B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C33FCC611819965300328F6D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,7 +465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */ = {
@@ -522,49 +495,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7713D57B1CA5748600FCDA9B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7713D5A51CA5804A00FCDA9B /* Request.m in Sources */,
-				77DDAFE81D92C2AA007EA4DA /* EventParser.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C33FCC5F1819965300328F6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */,
 				7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */,
+				778E3ABA1DCB86190083A658 /* Lesson+CoreDataProperties.m in Sources */,
+				778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
-				777051831DAC03D5009CC199 /* Lesson.m in Sources */,
 				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,
 				C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */,
+				778E3ABB1DCB86190083A658 /* Subject+CoreDataClass.m in Sources */,
+				778E3AD41DCB99A90083A658 /* MSDayColumnHeaderBackground.m in Sources */,
 				77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */,
+				778E3ADB1DCB9F8D0083A658 /* LessonCollectionViewCell.m in Sources */,
+				778E3AB81DCB86190083A658 /* Item+CoreDataProperties.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
-				777051801DAC03C0009CC199 /* Item.m in Sources */,
-				7770517D1DAC038A009CC199 /* Subject.m in Sources */,
+				778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */,
+				778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
+				778E3AB91DCB86190083A658 /* Lesson+CoreDataClass.m in Sources */,
+				7777778D1DC90B8700F557B0 /* EventParser.m in Sources */,
 				7713D59C1CA5799400FCDA9B /* ItemTableViewCell.m in Sources */,
+				778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */,
+				778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */,
+				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
+				778E3ABC1DCB86190083A658 /* Subject+CoreDataProperties.m in Sources */,
+				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
+				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7713D5861CA5748600FCDA9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7713D57F1CA5748600FCDA9B /* Logic */;
-			targetProxy = 7713D5851CA5748600FCDA9B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		772025491B51075D0082929F /* InfoPlist.strings */ = {
@@ -600,68 +569,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7713D58A1CA5748600FCDA9B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Logic/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = Shogunate.Logic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7713D58B1CA5748600FCDA9B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Logic/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = Shogunate.Logic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		C33FCC931819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -757,7 +664,7 @@
 		};
 		C33FCC961819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */;
+			baseConfigurationReference = D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -781,7 +688,7 @@
 		};
 		C33FCC971819965300328F6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */;
+			baseConfigurationReference = 339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -804,15 +711,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7713D5891CA5748600FCDA9B /* Build configuration list for PBXNativeTarget "Logic" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7713D58A1CA5748600FCDA9B /* Debug */,
-				7713D58B1CA5748600FCDA9B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C33FCC5E1819965300328F6D /* Build configuration list for PBXProject "KNURE-Sked" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -822,7 +720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "TimeTable iOS" */ = {
+		C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C33FCC961819965300328F6D /* Debug */,

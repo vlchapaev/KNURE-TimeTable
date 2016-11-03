@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Logic/Logic.h>
 
 @interface ItemsTableViewController : UITableViewController 
 

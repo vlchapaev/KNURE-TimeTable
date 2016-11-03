@@ -10,7 +10,10 @@
 #import "ItemsTableViewController.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-#import "Item.h"
+
+#import "Request.h"
+#import "Item+CoreDataProperties.h"
+#import "Item+CoreDataClass.h"
 
 @interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
@@ -43,15 +46,9 @@
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Item"];
-    /*
-    AppDelegate *appDelegate = [[AppDelegate alloc]init];
-    NSManagedObjectContext *managedObjectContext = appDelegate.persistentContainer.viewContext;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+    self.selectedItems = [[NSMutableArray alloc]init];
     
-    NSError *error = nil;
-    self.selectedItems = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    */
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Item"];
     
     [self getItemList];
 }
@@ -78,10 +75,10 @@
 #pragma mark - Events
 
 - (IBAction)doneButtonTap {
-    AppDelegate *appDelegate = [[AppDelegate alloc]init];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     for(NSDictionary *record in self.selectedItems) {
         Item *item = [[Item alloc]initWithContext:appDelegate.persistentContainer.viewContext];
-        item.id = [record[@"id"] integerValue];
+        item.id = record[@"id"];
         item.title = record[@"title"];
         
         if (item.managedObjectContext.hasChanges) {
@@ -168,7 +165,7 @@
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     
-    cell.accessoryType = ([self.selectedItems containsObject:record]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    //cell.accessoryType = ([self.selectedItems containsObject:record]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;
 }

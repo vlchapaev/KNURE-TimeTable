@@ -1,6 +1,6 @@
 platform :ios, '8.0'
 
-target 'TimeTable iOS' do
+target 'KNURE TimeTable iOS' do
     
     # interface
     pod "AMSlideMenu"
@@ -8,6 +8,8 @@ target 'TimeTable iOS' do
     pod "ZLSwipeableView"
     
     # logic
+    #pod "RestKit"
+    pod "Masonry"
     pod "MSCollectionViewCalendarLayout"
     pod "DateTools"
 
