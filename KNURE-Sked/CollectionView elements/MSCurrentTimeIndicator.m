@@ -25,8 +25,8 @@
         self.backgroundColor = [UIColor whiteColor];
         
         self.time = [UILabel new];
-        self.time.font = [UIFont boldSystemFontOfSize:10.0];
-        self.time.textColor = [UIColor blackColor];
+        self.time.font = [UIFont boldSystemFontOfSize:12.0];
+        self.time.textColor = [UIColor redColor];
         [self addSubview:self.time];
         
         [self.time makeConstraints:^(MASConstraintMaker *make) {
@@ -55,7 +55,7 @@
 
 - (void)updateTime {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"h:mm aa"];
+    [dateFormatter setDateFormat:@"HH:mm"];
     self.time.text = [dateFormatter stringFromDate:[NSDate date]];
     [self.time sizeToFit];
 }

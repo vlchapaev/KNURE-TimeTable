@@ -13,6 +13,7 @@
 #import "Lesson+CoreDataProperties.h"
 #import "AppDelegate.h"
 #import "ZLSwipeableView.h"
+#import "EventParser.h"
 
 // Collection View Reusable Views
 #import "MSGridline.h"
@@ -30,8 +31,8 @@ CGFloat const sectonWidth = 110;
 
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
-@property (nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) ZLSwipeableView *swipeableView;
 
 @end
@@ -73,18 +74,16 @@ CGFloat const sectonWidth = 110;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+    self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 64)/15;
     
-    //self.collectionView.contentSize = CGSizeMake(1337, self.view.frame.size.height);
     
-    // These are optional. If you don't want any of the decoration views, just don't register a class for them.
-    /*
-    [self.collectionViewLayout registerClass:[MSCurrentTimeIndicator class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
     [self.collectionViewLayout registerClass:[MSCurrentTimeGridline class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
     [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
     [self.collectionViewLayout registerClass:[MSTimeRowHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewLayout registerClass:[MSDayColumnHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
-    */
+    [self.collectionViewLayout registerClass:[MSCurrentTimeIndicator class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
+    
 }
 
 - (void)setupFetchRequest {
@@ -142,7 +141,13 @@ CGFloat const sectonWidth = 110;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[LessonCollectionViewCell alloc] init];
+    }
+    cell.mainColor = [UIColor whiteColor];
     cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.mainColor = [EventParser getCellColorBy:[cell.event.type integerValue]];
+    cell.backgroundColor = nil;
     return cell;
 }
 
@@ -159,23 +164,25 @@ CGFloat const sectonWidth = 110;
         dayColumnHeader.day = day;
         dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
         
-        view = dayColumnHeader;
+        return dayColumnHeader;
+        
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
-        view = timeRowHeader;
+        return timeRowHeader;
+        
     }
     return view;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
+    return [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(sectonWidth, 30.0f);
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout

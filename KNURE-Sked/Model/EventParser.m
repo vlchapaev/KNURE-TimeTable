@@ -144,7 +144,7 @@
     return result;
 }
 
-- (UIColor *)getCellColorBy:(NSInteger)type {
++ (UIColor *)getCellColorBy:(NSInteger)type {
     switch (type) {
         case 0:
             return [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];

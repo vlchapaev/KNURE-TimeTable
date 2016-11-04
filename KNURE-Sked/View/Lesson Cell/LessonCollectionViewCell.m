@@ -90,11 +90,10 @@
 
 #pragma mark - LessonCollectionViewCell
 
-- (void)setEvent:(Lesson *)event
-{
+- (void)setEvent:(Lesson *)event {
     _event = event;
     self.title.attributedText = [[NSAttributedString alloc] initWithString:event.title attributes:[self titleAttributesHighlighted:self.selected]];
-    self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];;
+    self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];
 }
 
 - (void)updateColors {
@@ -129,11 +128,11 @@
 }
 
 - (UIColor *)backgroundColorHighlighted:(BOOL)selected {
-    return selected ? [UIColor orangeColor] : [[UIColor greenColor] colorWithAlphaComponent:0.2];
+    return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:0.2];
 }
 
 - (UIColor *)textColorHighlighted:(BOOL)selected {
-    return selected ? [UIColor whiteColor] : [UIColor grayColor];
+    return selected ? [UIColor whiteColor] : [UIColor darkGrayColor];
 }
 
 - (UIColor *)borderColor {

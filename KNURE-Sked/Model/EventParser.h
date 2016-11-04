@@ -36,6 +36,8 @@ typedef enum {
 
 + (void)removeDublicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
++ (UIColor *)getCellColorBy:(NSInteger)type;
+
 + (instancetype)sharedInstance;
 
 @end

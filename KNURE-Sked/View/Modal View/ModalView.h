@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ModalViewdelegate <NSObject>
+
+- (void)didSelectItem:(NSString *)itemID;
+
+@end
+
 @interface ModalView : UIView
+
+@property (weak, nonatomic) id <ModalViewdelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UILabel *lesson;
 @property (strong, nonatomic) IBOutlet UILabel *type;

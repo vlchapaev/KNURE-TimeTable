@@ -17,7 +17,7 @@
 @property (nonatomic, weak) Lesson *event;
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *location;
-
+@property (nonatomic, copy) UIColor *mainColor;
 
 @property (nonatomic, strong) UIView *borderView;
 
