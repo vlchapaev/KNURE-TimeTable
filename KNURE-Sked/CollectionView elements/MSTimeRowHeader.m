@@ -15,7 +15,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont systemFontOfSize:12.0];
@@ -37,7 +37,7 @@
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"h a";
+        dateFormatter.dateFormat = @"HH:mm";
     }
     self.title.text = [dateFormatter stringFromDate:time];
     [self setNeedsLayout];

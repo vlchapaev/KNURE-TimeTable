@@ -10,6 +10,7 @@ target 'KNURE TimeTable iOS' do
     # logic
     #pod "RestKit"
     pod "Masonry"
+    pod "AFNetworking"
     pod "MSCollectionViewCalendarLayout"
     pod "DateTools"
 

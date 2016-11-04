@@ -60,13 +60,13 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
     id events = [parsed valueForKey:@"events"];
-    //id groups = [parsed valueForKey:@"groups"];
-    //id subjects = [parsed valueForKey:@"subjects"];
-    //id teachers = [parsed valueForKey:@"teachers"];
-    //id types = [parsed valueForKey:@"types"];
+    id groups = [parsed valueForKey:@"groups"];
+    id subjects = [parsed valueForKey:@"subjects"];
+    id teachers = [parsed valueForKey:@"teachers"];
+    id types = [parsed valueForKey:@"types"];
     
     
-    NSLog(@"%@", parsed);
+    //NSLog(@"%@", parsed);
     
     for (id event in events) {
         Lesson *lesson = [[Lesson alloc]initWithContext:appDelegate.persistentContainer.viewContext];
@@ -74,7 +74,8 @@
         lesson.number = [event valueForKey:@"number_pair"];
         lesson.start_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];
         lesson.end_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"end_time"] integerValue]];
-        lesson.title = @"lollolollolo";
+        lesson.title = [self getBriefByID:[event valueForKey:@"subject_id"] from:subjects];
+        lesson.type = [event valueForKey:@"type"];
     }
     
     
@@ -102,10 +103,10 @@
     return nil;
 }
 
-- (NSString *)getBriefByID:(NSInteger)ID from:(NSArray *)subjectsList shortName:(BOOL)isShort {
-    for(NSArray *record in subjectsList) {
-        if([[record valueForKey:@"id"]integerValue] == ID) {
-            return (isShort)?[record valueForKey:@"brief"]:[record valueForKey:@"title"];
+- (NSString *)getBriefByID:(NSNumber *)ID from:(id)subjectsList {
+    for(NSDictionary *record in subjectsList) {
+        if([record valueForKey:@"id"] == ID) {
+            return [record valueForKey:@"brief"];
         }
     }
     return nil;

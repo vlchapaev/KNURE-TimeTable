@@ -11,8 +11,8 @@
 #import "LessonCollectionViewCell.h"
 #import "Lesson+CoreDataClass.h"
 #import "Lesson+CoreDataProperties.h"
-
 #import "AppDelegate.h"
+#import "ZLSwipeableView.h"
 
 // Collection View Reusable Views
 #import "MSGridline.h"
@@ -23,23 +23,26 @@
 #import "MSCurrentTimeIndicator.h"
 #import "MSCurrentTimeGridline.h"
 
-NSString * const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
-NSString * const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
-NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
+NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
+NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
+NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
+CGFloat const sectonWidth = 110;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
-@property (strong, nonatomic) NSArray *datasource;
 @property (nonatomic, strong) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) ZLSwipeableView *swipeableView;
 
 @end
 
 @implementation TimeTableViewController
 
-- (id)init {
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
     self.collectionViewCalendarLayout.delegate = self;
+    self.swipeableView.dataSource = self;
+    self.swipeableView.delegate = self;
     self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     return self;
 }
@@ -49,22 +52,39 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
     
     [self setupCollectionView];
     [self setupFetchRequest];
+    [self addDoubleTapGesture];
 }
 
-//Setup
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
+}
+
+#pragma mark - Setup
 
 - (void)setupCollectionView {
-    [self.collectionView registerClass:[LessonCollectionViewCell class] forCellWithReuseIdentifier:@"Item"];
+    [self.collectionView registerClass:LessonCollectionViewCell.class forCellWithReuseIdentifier:MSEventCellReuseIdentifier];
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];
     
+    self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+    
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+    
+    //self.collectionView.contentSize = CGSizeMake(1337, self.view.frame.size.height);
+    
     // These are optional. If you don't want any of the decoration views, just don't register a class for them.
-    [self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
-    [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
-    [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
-    [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
-    [self.collectionViewLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
-    [self.collectionViewLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
+    /*
+    [self.collectionViewLayout registerClass:[MSCurrentTimeIndicator class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
+    [self.collectionViewLayout registerClass:[MSCurrentTimeGridline class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
+    [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
+    [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
+    [self.collectionViewLayout registerClass:[MSTimeRowHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
+    [self.collectionViewLayout registerClass:[MSDayColumnHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
+    */
 }
 
 - (void)setupFetchRequest {
@@ -76,20 +96,30 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
     
     //fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(dateToBeDecided == NO) AND (timeToBeDecided == NO)"];
     // Divide into sections by the "day" key path
-    
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:appDelegate.persistentContainer.viewContext sectionNameKeyPath:@"day" cacheName:nil];
+    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
     
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:nil];
 }
 
-#pragma mark - Setters
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    // Ensure that collection view properly rotates between layouts
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self.collectionView reloadData];
+    }];
+}
 
 - (void)addDoubleTapGesture {
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     [self.collectionView addGestureRecognizer:doubleTapRecognizer];
-    
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -111,13 +141,12 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Item" forIndexPath:indexPath];
+    LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
     cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *view;
     if (kind == MSCollectionElementKindDayColumnHeader) {
         MSDayColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
@@ -139,15 +168,14 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
     return view;
 }
 
-
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(sectonWidth, 30.0f);
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
@@ -172,6 +200,12 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
     return event.day;
 }
 
+#pragma mark - ZLSwipeableViewDataSource
+
+- (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
+    return [[UIView alloc] init];
+}
+
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
@@ -183,7 +217,7 @@ NSString * const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifi
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {
-    
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
 }
 
 @end

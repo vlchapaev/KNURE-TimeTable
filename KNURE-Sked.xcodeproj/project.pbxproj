@@ -163,11 +163,11 @@
 			isa = PBXGroup;
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
+				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 				778E3AC01DCB99A90083A658 /* CollectionView elements */,
 				7713D5961CA576A100FCDA9B /* Modal View */,
 				7713D5951CA5768700FCDA9B /* Items Cell */,
 				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
-				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
