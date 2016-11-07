@@ -1,6 +1,6 @@
 //
 //  EventHandler.h
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 08.11.14.
 //  Copyright (c) 2014 Vlad Chapaev. All rights reserved.

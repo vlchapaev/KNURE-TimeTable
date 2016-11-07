@@ -35,6 +35,7 @@
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
 		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
+		77F5D3B11DD0886E00C78760 /* ItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F5D3B01DD0886E00C78760 /* ItemObject.m */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC731819965300328F6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC721819965300328F6D /* main.m */; };
@@ -129,6 +130,8 @@
 		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitViewController.m; path = Controller/InitViewController.m; sourceTree = "<group>"; };
 		77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = View/LaunchScreen.xib; sourceTree = "<group>"; };
 		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
+		77F5D3AF1DD0886E00C78760 /* ItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemObject.h; sourceTree = "<group>"; };
+		77F5D3B01DD0886E00C78760 /* ItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemObject.m; sourceTree = "<group>"; };
 		7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -221,6 +224,8 @@
 				778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */,
 				778E3AAD1DCB86190083A658 /* Item+CoreDataProperties.h */,
 				778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */,
+				77F5D3AF1DD0886E00C78760 /* ItemObject.h */,
+				77F5D3B01DD0886E00C78760 /* ItemObject.m */,
 			);
 			name = Item;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */,
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3ABC1DCB86190083A658 /* Subject+CoreDataProperties.m in Sources */,
+				77F5D3B11DD0886E00C78760 /* ItemObject.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);

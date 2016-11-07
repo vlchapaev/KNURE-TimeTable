@@ -17,18 +17,7 @@
 - (NSString *)segueIdentifierForIndexPathInLeftMenu:(NSIndexPath *)indexPath {
     NSString *identifier;
     switch (indexPath.row) {
-        case 0:
-            identifier = @"SkedSegue";
-            break;
-        case 1:
-            identifier = @"GroupSegue";
-            break;
-        case 2:
-            identifier = @"TeacherSegue";
-            break;
-        case 3:
-            identifier = @"AuditorySegue";
-            break;
+        case 0: identifier = @"SkedSegue"; break;
         default: identifier = @"GroupSegue"; break;
     }
     return identifier;
@@ -41,7 +30,7 @@
 - (void)configureLeftMenuButton:(UIButton *)button {
     CGRect frame = button.frame;
     frame.origin = (CGPoint){0, 0};
-    frame.size = (CGSize){40,40};
+    frame.size = (CGSize){44, 44};
     button.frame = frame;
     [button setImage:[UIImage imageNamed:@"MenuButton"] forState:UIControlStateNormal];
 }

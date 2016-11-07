@@ -1,6 +1,6 @@
 //
 //  Subject+CoreDataClass.h
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 03.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.

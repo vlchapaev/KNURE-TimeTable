@@ -1,27 +1,19 @@
 //
-//  Item+CoreDataProperties.h
-//  KNURE TimeTable iOS
+//  ItemObject.h
+//  KNURE-Sked
 //
-//  Created by Vlad Chapaev on 03.11.16.
+//  Created by Vlad Chapaev on 07.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import "Item+CoreDataClass.h"
+#import <Foundation/Foundation.h>
 
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface Item (CoreDataProperties)
-
-+ (NSFetchRequest<Item *> *)fetchRequest;
+@interface ItemObject : NSObject
 
 @property (nullable, nonatomic, copy) NSString *full_name;
 @property (nullable, nonatomic, copy) NSNumber *id;
 @property (nullable, nonatomic, copy) NSDate *last_update;
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nonatomic) int16_t type;
-@property (nullable, nonatomic, retain) Lesson *relationship;
 
 @end
-
-NS_ASSUME_NONNULL_END

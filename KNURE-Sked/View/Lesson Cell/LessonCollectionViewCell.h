@@ -1,6 +1,6 @@
 //
 //  LessonCollectionViewCell.h
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 03.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
@@ -15,10 +15,11 @@
 @interface LessonCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) Lesson *event;
+
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UILabel *location;
-@property (nonatomic, copy) UIColor *mainColor;
 
+@property (nonatomic, strong) UIColor *mainColor;
 @property (nonatomic, strong) UIView *borderView;
 
 @end

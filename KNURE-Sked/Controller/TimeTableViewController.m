@@ -1,6 +1,6 @@
 //
 //  MainViewController.m
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 24.10.2013.
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
@@ -13,7 +13,6 @@
 #import "Lesson+CoreDataProperties.h"
 #import "AppDelegate.h"
 #import "ZLSwipeableView.h"
-#import "EventParser.h"
 
 // Collection View Reusable Views
 #import "MSGridline.h"
@@ -40,11 +39,14 @@ CGFloat const sectonWidth = 110;
 @implementation TimeTableViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
-    self.collectionViewCalendarLayout.delegate = self;
-    self.swipeableView.dataSource = self;
-    self.swipeableView.delegate = self;
-    self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
+        self.collectionViewCalendarLayout.delegate = self;
+        self.swipeableView.dataSource = self;
+        self.swipeableView.delegate = self;
+        self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
+    }
     return self;
 }
 
@@ -74,7 +76,7 @@ CGFloat const sectonWidth = 110;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
-    self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 64)/15;
+    self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 120)/15;
     
     
     [self.collectionViewLayout registerClass:[MSCurrentTimeGridline class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
@@ -141,13 +143,8 @@ CGFloat const sectonWidth = 110;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[LessonCollectionViewCell alloc] init];
-    }
-    cell.mainColor = [UIColor whiteColor];
+    //cell.mainColor = [UIColor clearColor];
     cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.mainColor = [EventParser getCellColorBy:[cell.event.type integerValue]];
-    cell.backgroundColor = nil;
     return cell;
 }
 

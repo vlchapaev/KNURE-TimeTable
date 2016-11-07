@@ -1,6 +1,6 @@
 //
 //  AddItemViewController.h
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 01.05.2014.
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.

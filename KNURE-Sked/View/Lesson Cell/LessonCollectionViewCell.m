@@ -1,12 +1,13 @@
 //
 //  LessonCollectionViewCell.m
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 03.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
 #import "LessonCollectionViewCell.h"
+#import "EventParser.h"
 #import <Masonry/Masonry.h>
 
 @implementation LessonCollectionViewCell
@@ -90,13 +91,18 @@
 
 #pragma mark - LessonCollectionViewCell
 
+
 - (void)setEvent:(Lesson *)event {
     _event = event;
     self.title.attributedText = [[NSAttributedString alloc] initWithString:event.title attributes:[self titleAttributesHighlighted:self.selected]];
     self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];
+    self.mainColor = [EventParser getCellColorBy:[event.type integerValue]];
+    self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
+    self.borderView.backgroundColor = [self borderColor];
 }
 
 - (void)updateColors {
+    self.mainColor = [self backgroundColorHighlighted:self.selected];
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
     self.title.textColor = [self textColorHighlighted:self.selected];

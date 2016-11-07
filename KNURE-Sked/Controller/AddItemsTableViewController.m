@@ -1,6 +1,6 @@
 //
 //  AddItemViewController.m
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 01.05.2014.
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
@@ -14,6 +14,7 @@
 #import "Request.h"
 #import "Item+CoreDataProperties.h"
 #import "Item+CoreDataClass.h"
+#import "ItemObject.h"
 
 @interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 

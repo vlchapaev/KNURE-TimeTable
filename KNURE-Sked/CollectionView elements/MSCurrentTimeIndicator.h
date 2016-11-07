@@ -1,6 +1,6 @@
 //
 //  MSCurrentTimeIndicator.h
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 2/27/13.
 //  Copyright (c) 2015 Vlad Chapaev. All rights reserved.

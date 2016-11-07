@@ -1,6 +1,6 @@
 //
 //  main.m
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 24.10.13.
 //  Copyright (c) 2013 Vlad Chapaev. All rights reserved.

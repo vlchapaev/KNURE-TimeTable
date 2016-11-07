@@ -1,6 +1,6 @@
 //
 //  EventHandler.m
-//  KNURE-Sked
+//  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 08.11.14.
 //  Copyright (c) 2014 Vlad Chapaev. All rights reserved.
@@ -146,50 +146,50 @@
 
 + (UIColor *)getCellColorBy:(NSInteger)type {
     switch (type) {
-        case 0:
-            return [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
+        case 0: //255, 245, 212
+            return [UIColor yellowColor];
             break;
         case 1:
-            return [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
+            return [UIColor yellowColor];
             break;
         case 2:
-            return [UIColor colorWithRed:1 green:0.961 blue:0.835 alpha:1.0];
+            return [UIColor yellowColor];
             break;
-        case 10:
-            return [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
+        case 10: //198, 235, 196
+            return [UIColor greenColor];
             break;
         case 11:
-            return [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
+            return [UIColor greenColor];
             break;
         case 12:
-            return [UIColor colorWithRed:0.78 green:0.922 blue:0.769 alpha:1.0];
+            return [UIColor greenColor];
             break;
-        case 20:
-            return [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+        case 20: //205, 204, 255
+            return [UIColor magentaColor];
             break;
         case 21:
-            return [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+            return [UIColor magentaColor];
             break;
         case 22:
-            return [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+            return [UIColor magentaColor];
             break;
         case 23:
-            return [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+            return [UIColor magentaColor];
             break;
         case 24:
-            return [UIColor colorWithRed:0.804 green:0.8 blue:1 alpha:1.0];
+            return [UIColor magentaColor];
             break;
-        case 30:
-            return [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+        case 30://237, 237, 237
+            return [UIColor lightGrayColor];
             break;
         case 31:
-            return [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+            return [UIColor lightGrayColor];
             break;
         case 40:
-            return [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+            return [UIColor lightGrayColor];
             break;
         case 41:
-            return [UIColor colorWithRed:0.761 green:0.627 blue:0.722 alpha:1.0];
+            return [UIColor lightGrayColor];
             break;
         case 50:
             return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
