@@ -6,13 +6,14 @@ target 'KNURE TimeTable iOS' do
     pod "AMSlideMenu"
     pod "MBProgressHUD"
     pod "ZLSwipeableView"
+    pod "DZNEmptyDataSet"
     
     # logic
     #pod "RestKit"
+    pod "MagicalRecord"
     pod "Masonry"
-    pod "AFNetworking"
+    #pod "AFNetworking"
     pod "MSCollectionViewCalendarLayout"
-    pod "DateTools"
 
 end
 

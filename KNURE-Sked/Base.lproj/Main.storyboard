@@ -206,7 +206,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7T8-jA-TCL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="KPH-Yx-TS8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="KPH-Yx-TS8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -243,7 +243,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4b-zl-8Mt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RLK-j9-De2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RLK-j9-De2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -261,7 +261,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IcR-uj-dHw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WrO-x1-4hR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WrO-x1-4hR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -305,9 +305,20 @@
                             <rect key="frame" x="83" y="7" width="154" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="groupButtonTap" destination="Xqv-JN-Ap7" eventType="touchUpInside" id="6fJ-sg-jLr"/>
+                            </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="txh-JZ-qgy"/>
+                        <barButtonItem key="rightBarButtonItem" image="Restart" id="txh-JZ-qgy">
+                            <connections>
+                                <action selector="refreshCurrentTimeTable" destination="Xqv-JN-Ap7" id="5c2-5t-oTL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="groupButton" destination="A4D-eW-pvU" id="H7Y-NP-bor"/>
+                        <outlet property="refreshButton" destination="txh-JZ-qgy" id="oRp-ZW-bXe"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGU-Iw-s7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,6 +344,9 @@
             <point key="canvasLocation" x="-2396" y="-444"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Restart" width="24" height="24"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

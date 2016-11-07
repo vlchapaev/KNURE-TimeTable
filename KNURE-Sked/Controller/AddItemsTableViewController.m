@@ -54,6 +54,10 @@
     [self getItemList];
 }
 
+- (void)dealloc {
+    [self.searchController.view removeFromSuperview];
+}
+
 #pragma mark - Logic
 
 - (void)getItemList {
@@ -81,6 +85,7 @@
         Item *item = [[Item alloc]initWithContext:appDelegate.persistentContainer.viewContext];
         item.id = record[@"id"];
         item.title = record[@"title"];
+        item.last_update = nil;
         
         if (item.managedObjectContext.hasChanges) {
             NSError *error;

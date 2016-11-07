@@ -15,7 +15,7 @@
 }
 
 - (NSString *)segueIdentifierForIndexPathInLeftMenu:(NSIndexPath *)indexPath {
-    NSString *identifier;
+    NSString *identifier = @"SkedSegue";
     switch (indexPath.row) {
         case 0: identifier = @"SkedSegue"; break;
         default: identifier = @"GroupSegue"; break;

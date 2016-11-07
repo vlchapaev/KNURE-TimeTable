@@ -78,8 +78,6 @@
         lesson.type = [event valueForKey:@"type"];
     }
     
-    
-    
     [appDelegate saveContext];
     
     dispatch_async(dispatch_get_main_queue(), ^{

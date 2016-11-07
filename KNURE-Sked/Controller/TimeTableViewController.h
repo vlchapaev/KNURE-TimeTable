@@ -12,8 +12,7 @@
 @interface TimeTableViewController : UICollectionViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *groupButton;
-
-@property (strong, nonatomic) UIButton *menuButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 - (IBAction)refreshCurrentTimeTable;
 - (IBAction)groupButtonTap;

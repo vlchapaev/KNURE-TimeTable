@@ -12,10 +12,12 @@
 #import "AppDelegate.h"
 #import "Item+CoreDataProperties.h"
 #import "Request.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface ItemsTableViewController() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface ItemsTableViewController() <DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) NSMutableArray <Item *>* datasource;
+@property (strong, nonatomic) NSDateFormatter *formatter;
 
 @end
 
@@ -25,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.emptyDataSetSource = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ItemsCell" bundle:nil] forCellReuseIdentifier:@"Item"];
 }
@@ -56,6 +60,7 @@
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
     Item *item = self.datasource[indexPath.row];
     cell.itemName.text = item.title;
+    cell.lastUpdate.text = (item.last_update) ? [self.formatter stringFromDate:item.last_update] : @"Not updated";
     return cell;
 }
 
@@ -91,11 +96,29 @@
     [dataTask resume];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
+#pragma mark - DZNEmptyDataSetSource
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Нет групп";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Добавьте группы, чтобы вывести их расписание";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 @end

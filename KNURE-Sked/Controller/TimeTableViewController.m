@@ -13,6 +13,7 @@
 #import "Lesson+CoreDataProperties.h"
 #import "AppDelegate.h"
 #import "ZLSwipeableView.h"
+#import "UIScrollView+EmptyDataSet.h"
 
 // Collection View Reusable Views
 #import "MSGridline.h"
@@ -28,7 +29,7 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 CGFloat const sectonWidth = 110;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -66,18 +67,19 @@ CGFloat const sectonWidth = 110;
 #pragma mark - Setup
 
 - (void)setupCollectionView {
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    
     [self.collectionView registerClass:LessonCollectionViewCell.class forCellWithReuseIdentifier:MSEventCellReuseIdentifier];
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];
     
     self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-    
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.showsVerticalScrollIndicator = NO;
-    self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
     self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 120)/15;
-    
     
     [self.collectionViewLayout registerClass:[MSCurrentTimeGridline class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
@@ -103,6 +105,14 @@ CGFloat const sectonWidth = 110;
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:nil];
 }
+    
+- (void)addDoubleTapGesture {
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    [self.collectionView addGestureRecognizer:doubleTapRecognizer];
+}
+    
+#pragma mark - UIContentContainer
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     // Ensure that collection view properly rotates between layouts
@@ -115,12 +125,6 @@ CGFloat const sectonWidth = 110;
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self.collectionView reloadData];
     }];
-}
-
-- (void)addDoubleTapGesture {
-    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
-    doubleTapRecognizer.numberOfTapsRequired = 2;
-    [self.collectionView addGestureRecognizer:doubleTapRecognizer];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -141,9 +145,7 @@ CGFloat const sectonWidth = 110;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
-    //cell.mainColor = [UIColor clearColor];
     cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     return cell;
 }
@@ -222,6 +224,31 @@ CGFloat const sectonWidth = 110;
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {
     [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
+}
+
+#pragma mark - DZNEmptyDataSetSource
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Нет групп";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Добавьте группы, чтобы вывести их расписание";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 @end
