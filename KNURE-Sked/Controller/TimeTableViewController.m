@@ -29,7 +29,7 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 CGFloat const sectonWidth = 110;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate, DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -44,8 +44,6 @@ CGFloat const sectonWidth = 110;
     if (self) {
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;
-        self.swipeableView.dataSource = self;
-        self.swipeableView.delegate = self;
         self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     }
     return self;
@@ -56,6 +54,7 @@ CGFloat const sectonWidth = 110;
     
     [self setupCollectionView];
     [self setupFetchRequest];
+    [self setupModalView];
     [self addDoubleTapGesture];
 }
 
@@ -68,7 +67,6 @@ CGFloat const sectonWidth = 110;
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
-    self.collectionView.emptyDataSetDelegate = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
@@ -79,7 +77,7 @@ CGFloat const sectonWidth = 110;
     
     self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
-    self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 120)/15;
+    self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height)/15;
     
     [self.collectionViewLayout registerClass:[MSCurrentTimeGridline class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:[MSGridline class] forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
@@ -87,7 +85,13 @@ CGFloat const sectonWidth = 110;
     [self.collectionViewLayout registerClass:[MSTimeRowHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewLayout registerClass:[MSDayColumnHeaderBackground class] forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     [self.collectionViewLayout registerClass:[MSCurrentTimeIndicator class] forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
-    
+}
+
+- (void)setupModalView {
+    self.swipeableView = [[ZLSwipeableView alloc]initWithFrame:self.view.bounds];
+    self.swipeableView.dataSource = self;
+    self.swipeableView.delegate = self;
+    self.swipeableView.numberOfActiveViews = 1;
 }
 
 - (void)setupFetchRequest {
@@ -182,6 +186,8 @@ CGFloat const sectonWidth = 110;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    [self.view addSubview:self.swipeableView];
+    [self.swipeableView loadViewsIfNeeded];
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
@@ -209,7 +215,18 @@ CGFloat const sectonWidth = 110;
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-    return [[UIView alloc] init];
+    UIView *view = [[UIView alloc] initWithFrame:swipeableView.bounds];
+    UIView *contentView = [[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil][0];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    contentView.center = self.navigationController.view.center;
+    [view addSubview:contentView];
+    return view;
+}
+
+#pragma mark - ZLSWipeableViewDelegate
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView didEndSwipingView:(UIView *)view atLocation:(CGPoint)location {
+    //[self.swipeableView removeFromSuperview];
 }
 
 #pragma mark - Events

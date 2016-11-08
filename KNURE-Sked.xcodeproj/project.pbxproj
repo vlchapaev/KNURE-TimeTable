@@ -14,6 +14,7 @@
 		7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalView.xib */; };
 		7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A01CA57A4F00FCDA9B /* ModalView.m */; };
 		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
+		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
@@ -88,6 +89,8 @@
 		772025481B51075D0082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254A1B5107650082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254B1B5107680082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controller/SettingsViewController.h; sourceTree = "<group>"; };
+		773302901DD1D6F400F9D3F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controller/SettingsViewController.m; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				6928EA26182D94BE00070B44 /* ItemsTableViewController.m */,
 				C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */,
 				C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */,
+				7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */,
+				773302901DD1D6F400F9D3F1 /* SettingsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */,
 				7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */,
 				778E3ABA1DCB86190083A658 /* Lesson+CoreDataProperties.m in Sources */,
+				773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */,
 				778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,

@@ -102,7 +102,6 @@
 }
 
 - (void)updateColors {
-    self.mainColor = [self backgroundColorHighlighted:self.selected];
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
     self.title.textColor = [self textColorHighlighted:self.selected];

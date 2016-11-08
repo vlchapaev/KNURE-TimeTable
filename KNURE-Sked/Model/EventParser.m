@@ -9,6 +9,7 @@
 #import "EventParser.h"
 #import "AppDelegate.h"
 #import "Lesson+CoreDataClass.h"
+#import "ItemObject.h"
 
 @implementation EventParser
 

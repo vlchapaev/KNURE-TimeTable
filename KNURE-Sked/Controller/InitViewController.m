@@ -18,6 +18,7 @@
     NSString *identifier = @"SkedSegue";
     switch (indexPath.row) {
         case 0: identifier = @"SkedSegue"; break;
+        case 4: identifier = @"InfoSegue"; break;
         default: identifier = @"GroupSegue"; break;
     }
     return identifier;
