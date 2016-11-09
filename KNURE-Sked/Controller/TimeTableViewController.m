@@ -11,7 +11,6 @@
 #import "LessonCollectionViewCell.h"
 #import "Lesson+CoreDataClass.h"
 #import "Lesson+CoreDataProperties.h"
-#import "AppDelegate.h"
 #import "ZLSwipeableView.h"
 #import "UIScrollView+EmptyDataSet.h"
 
@@ -92,18 +91,19 @@ CGFloat const sectonWidth = 110;
     self.swipeableView.dataSource = self;
     self.swipeableView.delegate = self;
     self.swipeableView.numberOfActiveViews = 1;
+    self.swipeableView.numberOfHistoryItem = 0;
 }
 
 - (void)setupFetchRequest {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_date" ascending:YES]];
     // No events with undecided times or dates
     
     //fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(dateToBeDecided == NO) AND (timeToBeDecided == NO)"];
     // Divide into sections by the "day" key path
-    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+    NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
     
     self.fetchedResultsController.delegate = self;

@@ -9,7 +9,7 @@
 #import "AddItemsTableViewController.h"
 #import "ItemsTableViewController.h"
 #import "MBProgressHUD.h"
-#import "AppDelegate.h"
+#import "EventParser.h"
 
 #import "Request.h"
 #import "Item+CoreDataProperties.h"
@@ -62,6 +62,8 @@
 
 - (void)getItemList {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [NSURLConnection connectionWithRequest:[Request getGroupList] delegate:self];
+    /*
     switch (_itemType) {
         case ItemTypeGroup:
             [NSURLConnection connectionWithRequest:[Request getGroupList] delegate:self];
@@ -75,14 +77,14 @@
             [NSURLConnection connectionWithRequest:[Request getAuditoryList] delegate:self];
             break;
     }
+     */
 }
 
 #pragma mark - Events
 
 - (IBAction)doneButtonTap {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     for(NSDictionary *record in self.selectedItems) {
-        Item *item = [[Item alloc]initWithContext:appDelegate.persistentContainer.viewContext];
+        Item *item = [[Item alloc]initWithContext:[NSManagedObjectContext MR_defaultContext]];
         item.id = record[@"id"];
         item.title = record[@"title"];
         item.last_update = nil;
@@ -130,7 +132,7 @@
         if (data) {
             self.allResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             [[EventParser sharedInstance] setDelegate:self];
-            [[EventParser sharedInstance] parseItemList:self.allResults ofType:self.itemType];
+            [[EventParser sharedInstance] parseItemList:self.allResults ofType:ItemTypeGroup];
         } else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:@"Failed to parse timetable" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];

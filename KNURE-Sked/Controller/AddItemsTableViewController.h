@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EventParser.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface AddItemsTableViewController : UITableViewController
-
-@property (assign, nonatomic) ItemType itemType;
 
 @end

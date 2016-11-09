@@ -70,7 +70,7 @@
     //NSLog(@"%@", parsed);
     
     for (id event in events) {
-        Lesson *lesson = [[Lesson alloc]initWithContext:appDelegate.persistentContainer.viewContext];
+        Lesson *lesson = [[Lesson alloc]initWithContext:[NSManagedObjectContext MR_defaultContext]];
         lesson.auditory = [event valueForKey:@"auditory"];
         lesson.number = [event valueForKey:@"number_pair"];
         lesson.start_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];

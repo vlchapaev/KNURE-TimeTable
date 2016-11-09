@@ -9,9 +9,9 @@
 #import "ItemsTableViewController.h"
 #import "InitViewController.h"
 #import "ItemTableViewCell.h"
-#import "AppDelegate.h"
 #import "Item+CoreDataProperties.h"
 #import "Request.h"
+#import "EventParser.h"
 #import "UIScrollView+EmptyDataSet.h"
 
 @interface ItemsTableViewController() <DZNEmptyDataSetSource>
@@ -35,8 +35,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSManagedObjectContext *managedObjectContext = appDelegate.persistentContainer.viewContext;
+    NSManagedObjectContext *managedObjectContext = [NSManagedObjectContext MR_defaultContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
     NSError *error = nil;
     self.datasource = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
