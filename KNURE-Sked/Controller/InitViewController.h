@@ -7,8 +7,6 @@
 //
 
 #import "AMSlideMenuMainViewController.h"
-#import "AddItemsTableViewController.h"
-#import "TimeTableViewController.h"
 
 @interface InitViewController : AMSlideMenuMainViewController
 

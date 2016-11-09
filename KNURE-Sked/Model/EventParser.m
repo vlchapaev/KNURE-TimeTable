@@ -7,7 +7,6 @@
 //
 
 #import "EventParser.h"
-#import "AppDelegate.h"
 #import "Lesson+CoreDataClass.h"
 #import "ItemObject.h"
 
@@ -58,8 +57,6 @@
     NSData *utfEncodingData = [self alignEncoding:data];
     id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    
     id events = [parsed valueForKey:@"events"];
     id groups = [parsed valueForKey:@"groups"];
     id subjects = [parsed valueForKey:@"subjects"];
@@ -79,7 +76,14 @@
         lesson.type = [event valueForKey:@"type"];
     }
     
-    [appDelegate saveContext];
+    NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+    NSError *error = nil;
+    if ([context hasChanges] && ![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+        abort();
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         callbackBlock();

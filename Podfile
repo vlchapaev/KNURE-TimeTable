@@ -9,12 +9,17 @@ target 'KNURE TimeTable iOS' do
     pod "DZNEmptyDataSet"
     
     # logic
-    #pod "RestKit"
     pod "MagicalRecord"
     pod "Masonry"
     #pod "AFNetworking"
     pod "MSCollectionViewCalendarLayout"
 
+end
+
+target 'KNURE TimeTable iOS TodayExtension' do
+    pod "MSCollectionViewCalendarLayout"
+    pod "DZNEmptyDataSet"
+    pod "MagicalRecord"
 end
 
 inhibit_all_warnings!
