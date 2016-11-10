@@ -1,5 +1,5 @@
 //
-//  EventHandler.m
+//  EventParser.m
 //  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 08.11.14.
@@ -58,36 +58,29 @@
     id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
     
     id events = [parsed valueForKey:@"events"];
-    id groups = [parsed valueForKey:@"groups"];
+    //id groups = [parsed valueForKey:@"groups"];
     id subjects = [parsed valueForKey:@"subjects"];
-    id teachers = [parsed valueForKey:@"teachers"];
-    id types = [parsed valueForKey:@"types"];
-    
+    //id teachers = [parsed valueForKey:@"teachers"];
+    //id types = [parsed valueForKey:@"types"];
     
     //NSLog(@"%@", parsed);
-    
-    for (id event in events) {
-        Lesson *lesson = [[Lesson alloc]initWithContext:[NSManagedObjectContext MR_defaultContext]];
-        lesson.auditory = [event valueForKey:@"auditory"];
-        lesson.number = [event valueForKey:@"number_pair"];
-        lesson.start_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];
-        lesson.end_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"end_time"] integerValue]];
-        lesson.title = [self getBriefByID:[event valueForKey:@"subject_id"] from:subjects];
-        lesson.type = [event valueForKey:@"type"];
-    }
-    
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
-    NSError *error = nil;
-    if ([context hasChanges] && ![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        callbackBlock();
-    });
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+        for (id event in events) {
+            Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
+            lesson.auditory = [event valueForKey:@"auditory"];
+            lesson.number = [event valueForKey:@"number_pair"];
+            lesson.start_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];
+            lesson.end_date = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"end_time"] integerValue]];
+            lesson.title = [self getBriefByID:[event valueForKey:@"subject_id"] from:subjects];
+            lesson.full_title = [self getFullNameByID:[event valueForKey:@"subject_id"] from:subjects];
+            lesson.type = [event valueForKey:@"type"];
+        }
+        [localContext MR_saveToPersistentStoreAndWait];
+    } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callbackBlock();
+        });
+    }];
     
 }
 
@@ -97,9 +90,9 @@
     return [encResponce subdataWithRange:NSMakeRange(0, [encResponce length] - 1)];
 }
 
-- (NSString *)getFullNameByID:(NSInteger)ID from:(NSArray *)list {
+- (NSString *)getFullNameByID:(NSNumber *)ID from:(id)list {
     for(NSArray *record in list) {
-        if([[record valueForKey:@"id"]integerValue] == ID) {
+        if([record valueForKey:@"id"] == ID) {
             return [record valueForKey:@"full_name"];
         }
     }
@@ -194,26 +187,26 @@
         case 41:
             return [UIColor lightGrayColor];
             break;
-        case 50:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+        case 50:// 143, 210, 251
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 51:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 52:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 53:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 54:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 55:
-            return [UIColor colorWithRed:0.561 green:0.827 blue:0.988 alpha:1.0];
+            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 60:
-            return [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+            return [UIColor lightGrayColor];
             break;
         default:
             return [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];

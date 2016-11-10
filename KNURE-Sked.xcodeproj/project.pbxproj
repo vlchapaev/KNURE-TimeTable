@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23C6CF077F03195CD6EB462F /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */; };
-		2A180C46E59D64CFB1DF696B /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BA01E932A28B27B3917DA0 /* libPods-KNURE TimeTable iOS TodayExtension.a */; };
+		62AE905289259F6089AB3830 /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B859CEED7FA30B40A8A620D /* libPods-KNURE TimeTable iOS TodayExtension.a */; };
 		6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableViewController.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -99,12 +99,8 @@
 
 /* Begin PBXFileReference section */
 		0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkedEx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
-		37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
-		3F4803B4ECCBF9BE3407D2DB /* libPods-KNURE-Sked.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE-Sked.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS Today Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeTable iOS/Pods-TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		4B859CEED7FA30B40A8A620D /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6928EA25182D94BE00070B44 /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewController.h; path = Controller/ItemsTableViewController.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewController.m; path = Controller/ItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,8 +165,6 @@
 		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
 		77F5D3AF1DD0886E00C78760 /* ItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemObject.h; sourceTree = "<group>"; };
 		77F5D3B01DD0886E00C78760 /* ItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemObject.m; sourceTree = "<group>"; };
-		7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		88BA01E932A28B27B3917DA0 /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,7 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */,
-				2A180C46E59D64CFB1DF696B /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */,
+				62AE905289259F6089AB3830 /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,8 +366,6 @@
 		9591FB9BF91BE088FE60962A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64253D5DD8B58D82D2BCE818 /* Pods-TimeTable iOS.debug.xcconfig */,
-				37C6E7334C0B97A1B49753DD /* Pods-TimeTable iOS.release.xcconfig */,
 				D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */,
 				339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */,
 				6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */,
@@ -409,12 +401,8 @@
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
 				C33FCC6A1819965300328F6D /* UIKit.framework */,
 				773F6445196939220081165C /* NotificationCenter.framework */,
-				3F4803B4ECCBF9BE3407D2DB /* libPods-KNURE-Sked.a */,
-				1F34C35362F89B572DCB9F38 /* libPods-SkedEx.a */,
-				7E9B589943BC9B51D9865F54 /* libPods-TimeTable iOS.a */,
-				4EA2537E5C991D91E13CA9FF /* libPods-TimeTable iOS Today Extension.a */,
 				0136D0D6A8E4255EACE21AE1 /* libPods-KNURE TimeTable iOS.a */,
-				88BA01E932A28B27B3917DA0 /* libPods-KNURE TimeTable iOS TodayExtension.a */,
+				4B859CEED7FA30B40A8A620D /* libPods-KNURE TimeTable iOS TodayExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

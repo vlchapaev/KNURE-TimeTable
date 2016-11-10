@@ -10,11 +10,16 @@ Interface_Error = "Ошибка";
 Interface_Loading = "Загружаю список";
 Interface_Ok = "Понятно";
 
-ModalView_Type = "Тип:";
-ModalView_Auditory = "Аудитория:";
-ModalView_Teacher = "Преподаватель:";
-ModalView_Groups = "Группы:";
+TimeTable_NoItems = "";
+TimeTable_NoItemsMessage = "";
+
+ModalView_Type = "Тип";
+ModalView_Auditory = "Аудитория";
+ModalView_Teacher = "Преподаватель";
+ModalView_Groups = "Группы";
 
 ItemList_Groups = "Группы";
 ItemList_Teachers = "Преподаватели";
 ItemList_Auditories = "Аудитории";
+ItemList_Not_Updated = "Не обновлено";
+ItemList_Updated = "Обновлено";

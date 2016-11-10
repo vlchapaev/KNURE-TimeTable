@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int64_t subject_id;
 @property (nullable, nonatomic, retain) NSObject *teachers;
 @property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, copy) NSString *full_title;
 @property (nullable, nonatomic, copy) NSNumber *type;
 @property (nullable, nonatomic, retain) Subject *newRelationship;
 @property (nullable, nonatomic, retain) Item *relationship;

@@ -1,5 +1,5 @@
 //
-//  GroupList.m
+//  ItemsTableViewController.m
 //  KNURE TimeTable iOS
 //
 //  Created by Oksana Kubiria on 08.11.13.
@@ -28,18 +28,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.emptyDataSetSource = self;
+    self.formatter = [[NSDateFormatter alloc]init];
+    [self.formatter setTimeStyle:NSDateFormatterMediumStyle];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"ItemsCell" bundle:nil] forCellReuseIdentifier:@"Item"];
+    self.tableView.emptyDataSetSource = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSManagedObjectContext *managedObjectContext = [NSManagedObjectContext MR_defaultContext];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
-    NSError *error = nil;
-    self.datasource = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    self.datasource = [[Item MR_findAll] mutableCopy];
     [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+        [localContext MR_saveToPersistentStoreAndWait];
+    }];
 }
 
 #pragma mark - Logic
@@ -56,14 +61,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Item"];
+    }
     Item *item = self.datasource[indexPath.row];
-    cell.itemName.text = item.title;
-    cell.lastUpdate.text = (item.last_update) ? [self.formatter stringFromDate:item.last_update] : @"Not updated";
+    cell.textLabel.text = item.title;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    cell.detailTextLabel.text = (item.last_update) ? [self.formatter stringFromDate:item.last_update] : @"Not updated";
+    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -73,22 +83,37 @@
     return YES;
 }
 
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ItemTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicator.frame = CGRectMake(0, 0, 30, 30);
+    cell.accessoryView = indicator;
     Item *item = self.datasource[indexPath.row];
-    [cell.activityIndicator startAnimating];
+    [indicator startAnimating];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[Request getTimetable:item.id]
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (data) {
                                                         [[EventParser sharedInstance]parseTimeTable:data callBack:^{
-                                                            [cell.activityIndicator stopAnimating];
+                                                            [indicator stopAnimating];
+                                                            cell.detailTextLabel.text = [self.formatter stringFromDate:[NSDate date]];
+                                                            self.datasource[indexPath.row].last_update = [NSDate date];
                                                         }];
                                                     } else {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                            [cell.activityIndicator stopAnimating];
+                                                            [indicator stopAnimating];
                                                         });
                                                     }
                                                 }];
@@ -107,7 +132,7 @@
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Добавьте группы, чтобы вывести их расписание";
+    NSString *text = @"Нажмите значок + чтобы добавить группы, преподавателей или аудитории, расписание которых необходимо отобразить.";
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;

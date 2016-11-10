@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.m
+//  AddItemsTableViewController.m
 //  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 01.05.2014.
@@ -49,8 +49,6 @@
     
     self.selectedItems = [[NSMutableArray alloc]init];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Item"];
-    
     [self getItemList];
 }
 
@@ -83,19 +81,16 @@
 #pragma mark - Events
 
 - (IBAction)doneButtonTap {
-    for(NSDictionary *record in self.selectedItems) {
-        Item *item = [[Item alloc]initWithContext:[NSManagedObjectContext MR_defaultContext]];
-        item.id = record[@"id"];
-        item.title = record[@"title"];
-        item.last_update = nil;
-        
-        if (item.managedObjectContext.hasChanges) {
-            NSError *error;
-            if (![item.managedObjectContext save:&error]) {
-                NSLog(@"Problem saving changes: %@", error);
-            }
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+        for(NSDictionary *record in self.selectedItems) {
+            Item *item = [Item MR_createEntityInContext:localContext];
+            item.id = record[@"id"];
+            item.title = record[@"title"];
+            item.last_update = nil;
         }
-    }
+        [localContext MR_saveToPersistentStoreAndWait];
+    }];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -166,12 +161,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Item"];
+    }
     
     NSDictionary *record = (self.isFiltred) ? self.searchResults[indexPath.row] : self.datasource[indexPath.row];
     
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    cell.textLabel.numberOfLines = 0;
     
     cell.accessoryType = ([self.selectedItems containsObject:record]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     

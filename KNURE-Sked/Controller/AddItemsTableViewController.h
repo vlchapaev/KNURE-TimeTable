@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.h
+//  AddItemsTableViewController.h
 //  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 01.05.2014.

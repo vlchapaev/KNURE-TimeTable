@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,10 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ewf-N0-aHU" id="RcT-6T-YGz">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyi-wT-Q1j">
+                        <rect key="frame" x="8" y="29" width="277" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14.5" id="rP7-U2-Vc7"/>
                         </constraints>
@@ -24,14 +28,8 @@
                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nqy-jL-hTw">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="MiW-yy-0f9"/>
-                            <constraint firstAttribute="width" constant="20" id="xGj-QO-cFq"/>
-                        </constraints>
-                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </activityIndicatorView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3u-Em-CFD">
+                        <rect key="frame" x="8" y="11" width="277" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="fbX-h9-Ghi"/>
                         </constraints>
@@ -39,16 +37,24 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nqy-jL-hTw">
+                        <rect key="frame" x="293" y="12" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="muz-NS-tR2"/>
+                            <constraint firstAttribute="height" constant="20" id="naC-jp-MCM"/>
+                        </constraints>
+                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Lyi-wT-Q1j" secondAttribute="bottom" id="4na-AF-Onb"/>
-                    <constraint firstAttribute="trailing" secondItem="Nqy-jL-hTw" secondAttribute="trailing" constant="7" id="Bc8-mW-1gd"/>
                     <constraint firstItem="l3u-Em-CFD" firstAttribute="leading" secondItem="RcT-6T-YGz" secondAttribute="leading" constant="8" id="BrJ-ez-7UK"/>
                     <constraint firstAttribute="trailingMargin" secondItem="l3u-Em-CFD" secondAttribute="trailing" constant="27" id="Iz4-yS-Gsp"/>
                     <constraint firstAttribute="trailing" secondItem="Lyi-wT-Q1j" secondAttribute="trailing" constant="35" id="SXx-Jj-Ggo"/>
                     <constraint firstItem="l3u-Em-CFD" firstAttribute="top" secondItem="RcT-6T-YGz" secondAttribute="top" constant="11" id="Ssd-1E-sFq"/>
+                    <constraint firstAttribute="trailing" secondItem="Nqy-jL-hTw" secondAttribute="trailing" constant="7" id="WKA-Nw-PrR"/>
+                    <constraint firstItem="Nqy-jL-hTw" firstAttribute="centerY" secondItem="RcT-6T-YGz" secondAttribute="centerY" id="XC7-kG-8bx"/>
                     <constraint firstItem="Lyi-wT-Q1j" firstAttribute="top" secondItem="l3u-Em-CFD" secondAttribute="bottom" constant="-3" id="hyJ-zE-eXW"/>
-                    <constraint firstItem="Nqy-jL-hTw" firstAttribute="top" secondItem="RcT-6T-YGz" secondAttribute="top" constant="11" id="mmv-4A-zOH"/>
                     <constraint firstItem="Lyi-wT-Q1j" firstAttribute="leading" secondItem="RcT-6T-YGz" secondAttribute="leading" constant="8" id="vKC-JR-qMf"/>
                 </constraints>
             </tableViewCellContentView>

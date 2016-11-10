@@ -23,6 +23,7 @@
 @dynamic subject_id;
 @dynamic teachers;
 @dynamic title;
+@dynamic full_title;
 @dynamic type;
 @dynamic newRelationship;
 @dynamic relationship;

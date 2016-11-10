@@ -1,5 +1,5 @@
 //
-//  EventHandler.h
+//  EventParser.h
 //  KNURE TimeTable iOS
 //
 //  Created by Vlad Chapaev on 08.11.14.

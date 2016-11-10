@@ -11,6 +11,7 @@
     <entity name="Lesson" representedClassName="Lesson" syncable="YES">
         <attribute name="auditory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="full_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groups" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="item_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="number" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -29,8 +30,8 @@
         <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="newRelationship" inverseEntity="Lesson" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="54" positionY="162" width="126" height="133"/>
-        <element name="Subject" positionX="63" positionY="360" width="128" height="103"/>
-        <element name="Lesson" positionX="277" positionY="198" width="128" height="223"/>
+        <element name="Item" positionX="54" positionY="162" width="126" height="135"/>
+        <element name="Lesson" positionX="277" positionY="198" width="128" height="240"/>
+        <element name="Subject" positionX="63" positionY="360" width="128" height="105"/>
     </elements>
 </model>
