@@ -19,6 +19,5 @@
 @dynamic last_update;
 @dynamic title;
 @dynamic type;
-@dynamic relationship;
 
 @end

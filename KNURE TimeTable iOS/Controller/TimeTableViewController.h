@@ -10,6 +10,11 @@
 #import <CoreData/CoreData.h>
 #import <MagicalRecord/MagicalRecord.h>
 
+extern NSString *const TimetableSelectedItem;
+extern NSString *const TimetableHorizontalMode;
+extern NSString *const TimetableIsDarkMode;
+extern NSString *const TimetableDrawEmptyDays;
+
 @interface TimeTableViewController : UICollectionViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *groupButton;

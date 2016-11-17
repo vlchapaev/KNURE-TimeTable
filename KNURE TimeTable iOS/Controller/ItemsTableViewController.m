@@ -7,11 +7,13 @@
 //
 
 #import "ItemsTableViewController.h"
+#import "TimeTableViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
 #import "Item+CoreDataProperties.h"
+#import "Lesson+CoreDataClass.h"
 #import "Request.h"
 #import "EventParser.h"
-#import "UIScrollView+EmptyDataSet.h"
 
 @interface ItemsTableViewController() <DZNEmptyDataSetSource>
 
@@ -39,13 +41,6 @@
     [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-        [localContext MR_saveToPersistentStoreAndWait];
-    }];
-}
-
 #pragma mark - Logic
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -68,7 +63,7 @@
     cell.textLabel.text = item.title;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    cell.detailTextLabel.text = (item.last_update) ? [self.formatter stringFromDate:item.last_update] : @"Not updated";
+    cell.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:item.last_update]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     
     return cell;
@@ -76,6 +71,19 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+        Item *item = self.datasource[indexPath.row];
+        NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
+        NSArray <Lesson *>*lessons = [Lesson MR_findAllWithPredicate:filter];
+        for(Lesson *lesson in lessons) {
+            [lesson MR_deleteEntityInContext:localContext];
+        }
+        [item MR_deleteEntityInContext:localContext];
+        [localContext MR_saveToPersistentStoreAndWait];
+    }];
+    
+    [self.datasource removeObjectAtIndex:indexPath.row];
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,7 +97,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return tableView.rowHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,7 +106,7 @@
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     indicator.frame = CGRectMake(0, 0, 30, 30);
     cell.accessoryView = indicator;
-    Item *item = self.datasource[indexPath.row];
+    Item * item = self.datasource[indexPath.row];
     [indicator startAnimating];
     
     NSURLSession *session = [NSURLSession sharedSession];
@@ -106,12 +114,28 @@
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (data) {
                                                         [[EventParser sharedInstance]parseTimeTable:data itemID:item.id callBack:^{
+                                                            
+                                                            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:[NSDate date]]];
+                                                            
+                                                            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title} forKey:TimetableSelectedItem];
+                                                            [[NSUserDefaults standardUserDefaults]synchronize];
+                                                            
+                                                            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+                                                                Item *newItem = [Item MR_createEntityInContext:localContext];
+                                                                newItem.id = item.id;
+                                                                newItem.title = item.title;
+                                                                newItem.full_name = item.full_name;
+                                                                newItem.last_update = [NSDate date];
+                                                                [item MR_deleteEntityInContext:localContext];
+                                                                [self.datasource replaceObjectAtIndex:indexPath.row withObject:newItem];
+                                                                [localContext MR_saveToPersistentStoreAndWait];
+                                                            }];
+                                                            
                                                             [indicator stopAnimating];
-                                                            cell.detailTextLabel.text = [self.formatter stringFromDate:[NSDate date]];
-                                                            self.datasource[indexPath.row].last_update = [NSDate date];
                                                         }];
                                                     } else {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                            cell.detailTextLabel.text = @"Не удалось обновить расписание";
                                                             [indicator stopAnimating];
                                                         });
                                                     }
@@ -137,9 +161,9 @@
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
     paragraph.alignment = NSTextAlignmentCenter;
     
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName:[UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName:paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }

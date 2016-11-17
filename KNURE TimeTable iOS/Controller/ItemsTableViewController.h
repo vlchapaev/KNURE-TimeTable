@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MagicalRecord/MagicalRecord.h>
 
 @interface ItemsTableViewController : UITableViewController 
 

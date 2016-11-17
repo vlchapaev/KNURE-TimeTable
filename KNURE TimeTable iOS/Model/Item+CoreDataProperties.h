@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *last_update;
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nonatomic) int16_t type;
-@property (nullable, nonatomic, retain) Lesson *relationship;
 
 @end
 
