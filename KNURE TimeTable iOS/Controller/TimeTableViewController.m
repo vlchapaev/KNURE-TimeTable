@@ -1,16 +1,17 @@
 //
-//  TodayViewController.m
-//  KNURE TimeTable iOS TodayExtension
+//  TimeTableViewController.m
+//  KNURE TimeTable iOS
 //
-//  Created by Vlad Chapaev on 09.11.16.
-//  Copyright © 2016 Vlad Chapaev. All rights reserved.
+//  Created by Vlad Chapaev on 24.10.2013.
+//  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import "TodayViewController.h"
+#import "TimeTableViewController.h"
 #import "MSCollectionViewCalendarLayout.h"
-#import "UIScrollView+EmptyDataSet.h"
 #import "LessonCollectionViewCell.h"
 #import "Lesson+CoreDataClass.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "ModalView.h"
 
 // Collection View Reusable Views
 #import "MSGridline.h"
@@ -24,16 +25,23 @@
 NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
-CGFloat const hourHeight = 44;
 
-@interface TodayViewController () <NCWidgetProviding, MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
+NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
+NSString *const TimetableHorizontalMode = @"TimetableHorizontalMode";
+NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
+NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
+
+CGFloat const sectonWidth = 110;
+
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) ModalView *modalView;
 
 @end
 
-@implementation TodayViewController
+@implementation TimeTableViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -50,6 +58,13 @@ CGFloat const hourHeight = 44;
     
     [self setupCollectionView];
     [self setupFetchRequest];
+    [self setupModalView];
+    [self addDoubleTapGesture];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
 }
 
 #pragma mark - Setup
@@ -64,8 +79,9 @@ CGFloat const hourHeight = 44;
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];
     
-    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
-    self.collectionViewCalendarLayout.hourHeight = hourHeight;
+    self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+    self.collectionViewCalendarLayout.hourHeight = 30;
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
@@ -75,13 +91,18 @@ CGFloat const hourHeight = 44;
     [self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
 }
 
+- (void)setupModalView {
+    self.modalView = [[ModalView alloc]init];
+    self.modalView.delegate = self;
+}
+
 - (void)setupFetchRequest {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
     
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_date" ascending:YES]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     // No events with undecided times or dates
-    
-    //fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(dateToBeDecided == NO) AND (timeToBeDecided == NO)"];
+    //NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationSelectedItem];
+    //fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
     // Divide into sections by the "day" key path
     NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
@@ -89,15 +110,25 @@ CGFloat const hourHeight = 44;
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:nil];
 }
-
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
-    // Perform any setup necessary in order to update the view.
     
-    // If an error is encountered, use NCUpdateResultFailed
-    // If there's no update required, use NCUpdateResultNoData
-    // If there's an update, use NCUpdateResultNewData
+- (void)addDoubleTapGesture {
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    [self.collectionView addGestureRecognizer:doubleTapRecognizer];
+}
+    
+#pragma mark - UIContentContainer
 
-    completionHandler(NCUpdateResultNewData);
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self.collectionView reloadData];
+    }];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -151,6 +182,12 @@ CGFloat const hourHeight = 44;
     return [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - MSCollectionViewDelegateCalendarLayout
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout {
@@ -173,10 +210,30 @@ CGFloat const hourHeight = 44;
     return event.day;
 }
 
+#pragma mark - ModalViewDelegate
+
+- (void)didSelectItem:(NSString *)itemID {
+    
+}
+
+#pragma mark - Events
+
+- (IBAction)refreshCurrentTimeTable {
+    
+}
+
+- (IBAction)groupButtonTap {
+    
+}
+
+- (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
+}
+
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Нет данных";
+    NSString *text = @"Нет групп";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
