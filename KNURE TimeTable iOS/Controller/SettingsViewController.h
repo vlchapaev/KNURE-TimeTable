@@ -10,7 +10,8 @@
 
 @interface SettingsViewController : UITableViewController
 
-@property (strong, nonatomic) IBOutlet UISwitch *horizontalScrollSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *verticalScrollSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *darkModeSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *removeEmptyDaysSwitch;
 
 @end

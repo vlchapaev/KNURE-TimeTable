@@ -11,7 +11,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 
 extern NSString *const TimetableSelectedItem;
-extern NSString *const TimetableHorizontalMode;
+extern NSString *const TimetableVerticalMode;
 extern NSString *const TimetableIsDarkMode;
 extern NSString *const TimetableDrawEmptyDays;
 

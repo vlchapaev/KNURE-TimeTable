@@ -27,7 +27,7 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
-NSString *const TimetableHorizontalMode = @"TimetableHorizontalMode";
+NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
 NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
 
@@ -38,6 +38,8 @@ CGFloat const sectonWidth = 110;
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) ModalView *modalView;
+
+@property (assign, nonatomic) BOOL isVerticalMode;
 
 @end
 
@@ -55,10 +57,11 @@ CGFloat const sectonWidth = 110;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setupProperties];
     [self setupCollectionView];
     [self setupFetchRequest];
     [self setupModalView];
+    [self setupPopupView];
     [self addDoubleTapGesture];
 }
 
@@ -79,9 +82,14 @@ CGFloat const sectonWidth = 110;
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];
     
-    self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-    self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
-    self.collectionViewCalendarLayout.hourHeight = 30;
+    if (self.isVerticalMode) {
+        self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
+        self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - 70;
+    } else {
+        self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+        self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+        self.collectionViewCalendarLayout.hourHeight = 30;
+    }
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
@@ -96,14 +104,24 @@ CGFloat const sectonWidth = 110;
     self.modalView.delegate = self;
 }
 
+- (void)setupPopupView {
+    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    [self.groupButton setTitle:[selectedItem valueForKey:@"title"] forState:UIControlStateNormal];
+}
+
+- (void)setupProperties {
+    self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
+}
+
 - (void)setupFetchRequest {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-    // No events with undecided times or dates
-    //NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationSelectedItem];
-    //fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
-    // Divide into sections by the "day" key path
+    
+    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
+    
     NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
     

@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "TimeTableViewController.h"
 
 @interface SettingsViewController ()
 
@@ -16,6 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupValues];
+}
+
+#pragma mark - Setups
+
+- (void)setupValues {
+    self.verticalScrollSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
 }
 
 #pragma mark - UITableViewDelegate
@@ -47,10 +55,15 @@
     [[UIApplication sharedApplication]openURL:url];
 }
 
-- (IBAction)horizontalScrollSwitchValueChanged:(UISwitch *)sender {
+- (IBAction)verticalScrollSwitchValueChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableVerticalMode];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 - (IBAction)darkModeSwitchValueChanged:(UISwitch *)sender {
+}
+
+- (IBAction)removeEmptyDaysSwitchValueChanged:(UISwitch *)sender {
 }
 
 @end
