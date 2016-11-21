@@ -113,24 +113,18 @@
     [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [[EventParser sharedInstance]parseTimeTable:responseObject itemID:item.id callBack:^{
             
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:[NSDate date]]];
+            NSDate *lastUpdate = [NSDate date];
+            
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:lastUpdate]];
             
             [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title} forKey:TimetableSelectedItem];
             [[NSUserDefaults standardUserDefaults]synchronize];
             
-            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-                Item *newItem = [Item MR_createEntityInContext:localContext];
-                newItem.id = item.id;
-                newItem.title = item.title;
-                newItem.full_name = item.full_name;
-                newItem.type = item.type;
-                newItem.last_update = [NSDate date];
-                [item MR_deleteEntityInContext:localContext];
-                [self.datasource replaceObjectAtIndex:indexPath.row withObject:newItem];
-                [localContext MR_saveToPersistentStoreAndWait];
-            }];
+            item.last_update = lastUpdate;
+            [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
             
             [indicator stopAnimating];
+            
         }];
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {

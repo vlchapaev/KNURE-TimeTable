@@ -47,19 +47,13 @@
     for(NSDictionary *facult in facultList) {
         for(NSDictionary *direction in [facult valueForKey:@"directions"]) {
             for(NSDictionary *group in [direction valueForKey:@"groups"]) {
-                NSDictionary *dictionary = @{
-                                             @"title" : [group valueForKey:@"name"],
-                                             @"id" : [group valueForKey:@"id"]
-                                             };
+                NSDictionary *dictionary = @{@"title" : [group valueForKey:@"name"], @"id": [group valueForKey:@"id"]};
                 [items addObject:dictionary];
             }
             
             for(NSDictionary *speciality in [direction valueForKey:@"specialities"]) {
                 for(NSDictionary *group in [speciality valueForKey:@"groups"]) {
-                    NSDictionary *dictionary = @{
-                                                 @"title" : [group valueForKey:@"name"],
-                                                 @"id" : [group valueForKey:@"id"]
-                                                 };
+                    NSDictionary *dictionary = @{@"title": [group valueForKey:@"name"], @"id": [group valueForKey:@"id"]};
                     [items addObject:dictionary];
                 }
             }
@@ -74,11 +68,7 @@
     for(NSDictionary *department in facultList) {
         for(NSArray *teachers in [[department valueForKey:@"departments"] valueForKey:@"teachers"]) {
             for (NSDictionary *teacher in teachers) {
-                NSDictionary *dictionary = @{
-                                             @"title" : [teacher valueForKey:@"short_name"],
-                                             @"full_name" : [teacher valueForKey:@"full_name"],
-                                             @"id" : [teacher valueForKey:@"id"]
-                                             };
+                NSDictionary *dictionary = @{@"title": [teacher valueForKey:@"short_name"], @"full_name": [teacher valueForKey:@"full_name"], @"id": [teacher valueForKey:@"id"]};
                 [items addObject:dictionary];
             }
         }
@@ -91,10 +81,7 @@
     NSArray *buildings = [[itemList valueForKey:@"university"] valueForKey:@"buildings"];
     for(NSDictionary *building in buildings) {
         for (NSDictionary *auditory in [building valueForKey:@"auditories"]) {
-            NSDictionary *dictionary = @{
-                                         @"title" : [auditory valueForKey:@"short_name"],
-                                         @"id" : [auditory valueForKey:@"id"]
-                                         };
+            NSDictionary *dictionary = @{@"title": [auditory valueForKey:@"short_name"], @"id": [auditory valueForKey:@"id"]};
             [items addObject:dictionary];
             
         }
@@ -107,12 +94,15 @@
     id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
     
     id events = [parsed valueForKey:@"events"];
-    id groups = [parsed valueForKey:@"groups"];
+    //id groups = [parsed valueForKey:@"groups"];
     id subjects = [parsed valueForKey:@"subjects"];
-    id teachers = [parsed valueForKey:@"teachers"];
+    //id teachers = [parsed valueForKey:@"teachers"];
     id types = [parsed valueForKey:@"types"];
     
     //NSLog(@"%@", parsed);
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", itemID];
+    [Lesson MR_deleteAllMatchingPredicate:filter];
+    
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
         for (id event in events) {
             Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
@@ -131,7 +121,7 @@
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
         callbackBlock();
     }];
-    
+
 }
 
 - (NSData *)alignEncoding:(NSData *)data {
