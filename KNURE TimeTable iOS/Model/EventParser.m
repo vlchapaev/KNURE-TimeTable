@@ -1,6 +1,6 @@
 //
 //  EventParser.m
-//  KNURE TimeTable iOS
+//  KNURE TimeTable
 //
 //  Created by Vlad Chapaev on 08.11.14.
 //  Copyright (c) 2014 Vlad Chapaev. All rights reserved.
@@ -107,9 +107,9 @@
     id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
     
     id events = [parsed valueForKey:@"events"];
-    //id groups = [parsed valueForKey:@"groups"];
+    id groups = [parsed valueForKey:@"groups"];
     id subjects = [parsed valueForKey:@"subjects"];
-    //id teachers = [parsed valueForKey:@"teachers"];
+    id teachers = [parsed valueForKey:@"teachers"];
     id types = [parsed valueForKey:@"types"];
     
     //NSLog(@"%@", parsed);

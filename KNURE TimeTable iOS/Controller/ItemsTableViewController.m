@@ -1,6 +1,6 @@
 //
 //  ItemsTableViewController.m
-//  KNURE TimeTable iOS
+//  KNURE TimeTable
 //
 //  Created by Oksana Kubiria on 08.11.13.
 //  Copyright (c) 2013 Vlad Chapaev. All rights reserved.
@@ -10,6 +10,7 @@
 #import "AddItemsTableViewController.h"
 #import "TimeTableViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "AFNetworking.h"
 #import "InitViewController.h"
 #import "Item+CoreDataProperties.h"
 #import "Lesson+CoreDataClass.h"
@@ -105,39 +106,41 @@
     Item *item = self.datasource[indexPath.row];
     [indicator startAnimating];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[Request getTimetable:item.id ofType:self.itemType]
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (data) {
-                                                        [[EventParser sharedInstance]parseTimeTable:data itemID:item.id callBack:^{
-                                                            
-                                                            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:[NSDate date]]];
-                                                            
-                                                            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title} forKey:TimetableSelectedItem];
-                                                            [[NSUserDefaults standardUserDefaults]synchronize];
-                                                            
-                                                            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-                                                                Item *newItem = [Item MR_createEntityInContext:localContext];
-                                                                newItem.id = item.id;
-                                                                newItem.title = item.title;
-                                                                newItem.full_name = item.full_name;
-                                                                newItem.type = item.type;
-                                                                newItem.last_update = [NSDate date];
-                                                                [item MR_deleteEntityInContext:localContext];
-                                                                [self.datasource replaceObjectAtIndex:indexPath.row withObject:newItem];
-                                                                [localContext MR_saveToPersistentStoreAndWait];
-                                                            }];
-                                                            
-                                                            [indicator stopAnimating];
-                                                        }];
-                                                    } else {
-                                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                                            cell.detailTextLabel.text = @"Не удалось обновить расписание";
-                                                            [indicator stopAnimating];
-                                                        });
-                                                    }
-                                                }];
-    [dataTask resume];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSURLRequest *request = [Request getTimetable:item.id ofType:self.itemType];
+    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:item.id callBack:^{
+            
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:[NSDate date]]];
+            
+            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title} forKey:TimetableSelectedItem];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+                Item *newItem = [Item MR_createEntityInContext:localContext];
+                newItem.id = item.id;
+                newItem.title = item.title;
+                newItem.full_name = item.full_name;
+                newItem.type = item.type;
+                newItem.last_update = [NSDate date];
+                [item MR_deleteEntityInContext:localContext];
+                [self.datasource replaceObjectAtIndex:indexPath.row withObject:newItem];
+                [localContext MR_saveToPersistentStoreAndWait];
+            }];
+            
+            [indicator stopAnimating];
+        }];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        cell.detailTextLabel.text = @"Не удалось обновить расписание";
+        [indicator stopAnimating];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 #pragma mark - DZNEmptyDataSetSource

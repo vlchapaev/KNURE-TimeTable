@@ -1,6 +1,6 @@
 //
 //  ItemsTableViewController.h
-//  KNURE TimeTable iOS
+//  KNURE TimeTable
 //
 //  Created by Oksana Kubiria on 08.11.13.
 //  Copyright (c) 2013 Vlad Chapaev. All rights reserved.

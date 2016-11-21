@@ -1,6 +1,6 @@
 //
 //  Item+CoreDataProperties.m
-//  KNURE TimeTable iOS
+//  KNURE TimeTable
 //
 //  Created by Vlad Chapaev on 03.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.

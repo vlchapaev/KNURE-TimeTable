@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.m
-//  KNURE-Sked
+//  KNURE TimeTable
 //
 //  Created by Vlad Chapaev on 08.11.16.
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
