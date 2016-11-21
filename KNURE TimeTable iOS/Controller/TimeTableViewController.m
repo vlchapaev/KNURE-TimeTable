@@ -12,8 +12,8 @@
 #import "Lesson+CoreDataClass.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "ModalView.h"
-
-// Collection View Reusable Views
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
 #import "MSDayColumnHeaderBackground.h"
@@ -88,7 +88,7 @@ CGFloat const sectonWidth = 110;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = 30;
+        self.collectionViewCalendarLayout.hourHeight = 50;
     }
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];

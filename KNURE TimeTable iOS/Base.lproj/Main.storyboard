@@ -50,7 +50,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="qui-zf-dDm"/>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="hf2-BH-oLL">
                             <connections>
-                                <segue destination="Olf-mH-U1p" kind="push" id="FKU-mf-mnD"/>
+                                <segue destination="Olf-mH-U1p" kind="push" identifier="AddItems" id="FKU-mf-mnD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="-1477" y="-1225"/>
         </scene>
-        <!--Slide Menu Left Table View Controller-->
+        <!--Menu Table View Controller-->
         <scene sceneID="VMm-Op-tVt">
             <objects>
-                <tableViewController id="R2Q-2V-M08" customClass="AMSlideMenuLeftTableViewController" sceneMemberID="viewController">
+                <tableViewController id="R2Q-2V-M08" customClass="MenuTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ycv-fX-BHk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,9 +192,9 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="IcR-uj-dHw" kind="custom" identifier="SkedSegue" customClass="AMSlideMenuContentSegue" id="6KX-OO-wpG"/>
-                        <segue destination="7T8-jA-TCL" kind="custom" identifier="GroupSegue" customClass="AMSlideMenuContentSegue" id="oIN-HL-qv9"/>
-                        <segue destination="QYX-GD-IEA" kind="custom" identifier="InfoSegue" customClass="AMSlideMenuContentSegue" id="5H0-du-1zk"/>
+                        <segue destination="IcR-uj-dHw" kind="custom" identifier="Timetable" customClass="AMSlideMenuContentSegue" id="6KX-OO-wpG"/>
+                        <segue destination="7T8-jA-TCL" kind="custom" identifier="ItemList" customClass="AMSlideMenuContentSegue" id="oIN-HL-qv9"/>
+                        <segue destination="QYX-GD-IEA" kind="custom" identifier="Information" customClass="AMSlideMenuContentSegue" id="5H0-du-1zk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYk-bi-pmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +289,7 @@
                                 <action selector="groupButtonTap" destination="Xqv-JN-Ap7" eventType="touchUpInside" id="6fJ-sg-jLr"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" image="Restart" id="txh-JZ-qgy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="txh-JZ-qgy">
                             <connections>
                                 <action selector="refreshCurrentTimeTable" destination="Xqv-JN-Ap7" id="5c2-5t-oTL"/>
                             </connections>
@@ -394,7 +394,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iyj-Zd-rXu">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iyj-Zd-rXu">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="darkModeSwitchValueChanged:" destination="aDQ-XS-aQK" eventType="valueChanged" id="yOo-ms-ZTS"/>
@@ -425,7 +425,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eTw-sY-kaS">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eTw-sY-kaS">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="removeEmptyDaysSwitchValueChanged:" destination="aDQ-XS-aQK" eventType="valueChanged" id="YtN-32-GgJ"/>
@@ -456,7 +456,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-G9-hIp">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-G9-hIp">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export to calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQV-Aj-s0Y">
@@ -527,7 +527,6 @@
     </scenes>
     <resources>
         <image name="GitHub" width="72" height="72"/>
-        <image name="Restart" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -21,9 +21,29 @@
 }
 
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType {
+    NSMutableArray *items = [[NSMutableArray alloc]init];
+    NSMutableArray *sections = nil;
+    switch (itemType) {
+        case ItemTypeGroup:
+            items = [self parseGroupList:itemList];
+            break;
+            
+        case ItemTypeTeacher:
+            items = [self parseTeacherList:itemList];
+            break;
+            
+        case ItemtypeAuditory:
+            items = [self parseAuditoryList:itemList];
+            break;
+    }
+    [EventParser removeDublicate:items callBack:^(id response) {
+        [self.delegate didParseItemListWithResponse:response sections:sections];
+    }];
+}
+
+- (id)parseGroupList:(id)itemList {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     NSArray *facultList = [[itemList valueForKey:@"university"] valueForKey:@"faculties"];
-    NSMutableArray *sections = nil;
     for(NSDictionary *facult in facultList) {
         for(NSDictionary *direction in [facult valueForKey:@"directions"]) {
             for(NSDictionary *group in [direction valueForKey:@"groups"]) {
@@ -45,9 +65,41 @@
             }
         }
     }
-    [EventParser removeDublicate:items callBack:^(id response) {
-        [self.delegate didParseItemListWithResponse:response sections:sections];
-    }];
+    return items;
+}
+
+- (id)parseTeacherList:(id)itemList {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    NSArray *facultList = [[itemList valueForKey:@"university"] valueForKey:@"faculties"];
+    for(NSDictionary *department in facultList) {
+        for(NSArray *teachers in [[department valueForKey:@"departments"] valueForKey:@"teachers"]) {
+            for (NSDictionary *teacher in teachers) {
+                NSDictionary *dictionary = @{
+                                             @"title" : [teacher valueForKey:@"short_name"],
+                                             @"full_name" : [teacher valueForKey:@"full_name"],
+                                             @"id" : [teacher valueForKey:@"id"]
+                                             };
+                [items addObject:dictionary];
+            }
+        }
+    }
+    return items;
+}
+
+- (id)parseAuditoryList:(id)itemList {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    NSArray *buildings = [[itemList valueForKey:@"university"] valueForKey:@"buildings"];
+    for(NSDictionary *building in buildings) {
+        for (NSDictionary *auditory in [building valueForKey:@"auditories"]) {
+            NSDictionary *dictionary = @{
+                                         @"title" : [auditory valueForKey:@"short_name"],
+                                         @"id" : [auditory valueForKey:@"id"]
+                                         };
+            [items addObject:dictionary];
+            
+        }
+    }
+    return items;
 }
 
 - (void)parseTimeTable:(NSData *)data itemID:(NSNumber *)itemID callBack:(void (^)(void))callbackBlock {

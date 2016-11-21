@@ -7,6 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EventParser.h"
+
+extern NSString *const RequestAddressGroupList;
+extern NSString *const RequestAddressTeacherList;
+extern NSString *const RequestAddressAuditoryList;
+extern NSString *const RequestAddressTimetable;
 
 @interface Request : NSObject
 
@@ -14,6 +20,6 @@
 + (NSURLRequest *)getTeacherList;
 + (NSURLRequest *)getAuditoryList;
 
-+ (NSURLRequest *)getTimetable:(NSNumber *)ID;
++ (NSURLRequest *)getTimetable:(NSNumber *)ID ofType:(ItemType)itemType;
 
 @end

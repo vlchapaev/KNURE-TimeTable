@@ -26,6 +26,7 @@
 		770D05FC1DD3AF3B008D89E1 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalView.xib */; };
 		7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A01CA57A4F00FCDA9B /* ModalView.m */; };
+		771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771623731DE339EF00B9C928 /* MenuTableViewController.m */; };
 		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
 		772963381DDB14660069EBCC /* Lesson+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963351DDB14660069EBCC /* Lesson+CoreDataClass.m */; };
 		772963391DDB14660069EBCC /* Lesson+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson+CoreDataProperties.m */; };
@@ -107,6 +108,10 @@
 		7713D59D1CA57A0B00FCDA9B /* ModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalView.xib; path = "View/Modal View/ModalView.xib"; sourceTree = "<group>"; };
 		7713D59F1CA57A4F00FCDA9B /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = "View/Modal View/ModalView.h"; sourceTree = "<group>"; };
 		7713D5A01CA57A4F00FCDA9B /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = "View/Modal View/ModalView.m"; sourceTree = "<group>"; };
+		771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
+		771623711DE32B5A00B9C928 /* KNURE TimeTable iOS TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TodayExtension.entitlements"; sourceTree = "<group>"; };
+		771623721DE339EF00B9C928 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTableViewController.h; path = Controller/MenuTableViewController.h; sourceTree = "<group>"; };
+		771623731DE339EF00B9C928 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTableViewController.m; path = Controller/MenuTableViewController.m; sourceTree = "<group>"; };
 		772025481B51075D0082929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254A1B5107650082929F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7720254B1B5107680082929F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		770D05E31DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */ = {
 			isa = PBXGroup;
 			children = (
+				771623711DE32B5A00B9C928 /* KNURE TimeTable iOS TodayExtension.entitlements */,
 				770D05E41DD3A767008D89E1 /* TodayViewController.h */,
 				770D05E51DD3A767008D89E1 /* TodayViewController.m */,
 				770D05E71DD3A767008D89E1 /* MainInterface.storyboard */,
@@ -302,6 +308,8 @@
 			children = (
 				77C8DFA81B3857F5001FB152 /* InitViewController.h */,
 				77C8DFA91B3857F5001FB152 /* InitViewController.m */,
+				771623721DE339EF00B9C928 /* MenuTableViewController.h */,
+				771623731DE339EF00B9C928 /* MenuTableViewController.m */,
 				C33FCC7B1819965300328F6D /* TimeTableViewController.h */,
 				C33FCC7C1819965300328F6D /* TimeTableViewController.m */,
 				6928EA25182D94BE00070B44 /* ItemsTableViewController.h */,
@@ -371,6 +379,7 @@
 		C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXGroup;
 			children = (
+				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
 				7713D5A91CA585C900FCDA9B /* Model */,
 				7713D5941CA5767A00FCDA9B /* View */,
 				779264B21A0EA23800FBC4A2 /* Controller */,
@@ -449,12 +458,17 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = GJ8GF93D7L;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -623,6 +637,7 @@
 				778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */,
 				778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
+				771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */,
 				7777778D1DC90B8700F557B0 /* EventParser.m in Sources */,
 				772963381DDB14660069EBCC /* Lesson+CoreDataClass.m in Sources */,
 				778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */,
@@ -692,6 +707,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS TodayExtension/KNURE TimeTable iOS TodayExtension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
@@ -715,6 +731,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS TodayExtension/KNURE TimeTable iOS TodayExtension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
@@ -830,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS/KNURE TimeTable iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
@@ -853,6 +871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS/KNURE TimeTable iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";

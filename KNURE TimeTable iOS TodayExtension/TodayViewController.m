@@ -48,6 +48,9 @@ CGFloat const hourHeight = 44;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.Shogunate.Defaults"];
+    //groupLabel.text = [sharedDefaults objectForKey:@"SkedEx_Name"];
+    //self.preferredContentSize = CGSizeMake(self.view.frame.size.width, 390);
     [self setupCollectionView];
     [self setupFetchRequest];
 }
@@ -106,7 +109,11 @@ CGFloat const hourHeight = 44;
     [self.collectionViewCalendarLayout invalidateLayoutCache];
     [self.collectionView reloadData];
 }
-
+/*
+- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
+    return UIEdgeInsetsZero;
+}
+*/
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

@@ -7,13 +7,13 @@
 //
 
 #import "ItemsTableViewController.h"
+#import "AddItemsTableViewController.h"
 #import "TimeTableViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
 #import "Item+CoreDataProperties.h"
 #import "Lesson+CoreDataClass.h"
 #import "Request.h"
-#import "EventParser.h"
 
 @interface ItemsTableViewController() <DZNEmptyDataSetSource>
 
@@ -29,23 +29,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = self.headerTitle;
+    
     self.formatter = [[NSDateFormatter alloc]init];
-    [self.formatter setTimeStyle:NSDateFormatterMediumStyle];
+    [self.formatter setTimeStyle:NSDateFormatterLongStyle];
     
     self.tableView.emptyDataSetSource = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.datasource = [[Item MR_findAll] mutableCopy];
-    [self.tableView reloadData];
-}
-
-#pragma mark - Logic
-
-- (void)refresh:(UIRefreshControl *)refreshControl {
-    NSLog(@"refresh");
-    [refreshControl endRefreshing];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %i", self.itemType];
+    self.datasource = [[Item MR_findAllWithPredicate:filter] mutableCopy];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITableViewDataSource
@@ -104,13 +100,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    indicator.frame = CGRectMake(0, 0, 30, 30);
+    
     cell.accessoryView = indicator;
-    Item * item = self.datasource[indexPath.row];
+    Item *item = self.datasource[indexPath.row];
     [indicator startAnimating];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[Request getTimetable:item.id]
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[Request getTimetable:item.id ofType:self.itemType]
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (data) {
                                                         [[EventParser sharedInstance]parseTimeTable:data itemID:item.id callBack:^{
@@ -125,6 +121,7 @@
                                                                 newItem.id = item.id;
                                                                 newItem.title = item.title;
                                                                 newItem.full_name = item.full_name;
+                                                                newItem.type = item.type;
                                                                 newItem.last_update = [NSDate date];
                                                                 [item MR_deleteEntityInContext:localContext];
                                                                 [self.datasource replaceObjectAtIndex:indexPath.row withObject:newItem];
@@ -166,6 +163,15 @@
                                  NSParagraphStyleAttributeName:paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddItems"]) {
+        AddItemsTableViewController *controller = [segue destinationViewController];
+        controller.itemType = self.itemType;
+    }
 }
 
 @end

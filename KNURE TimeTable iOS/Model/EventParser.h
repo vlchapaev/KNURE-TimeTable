@@ -11,9 +11,9 @@
 #import <MagicalRecord/MagicalRecord.h>
 
 typedef enum {
-    ItemTypeGroup,
-    ItemTypeTeacher,
-    ItemtypeAuditory
+    ItemTypeGroup = 1,
+    ItemTypeTeacher = 2,
+    ItemtypeAuditory = 3
 } ItemType;
 
 @protocol EventParserDelegate <NSObject>

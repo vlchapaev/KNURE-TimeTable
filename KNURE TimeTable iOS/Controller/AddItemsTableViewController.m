@@ -7,21 +7,18 @@
 //
 
 #import "AddItemsTableViewController.h"
-#import "ItemsTableViewController.h"
 #import "MBProgressHUD.h"
-#import "EventParser.h"
-
+#import "AFNetworking.h"
 #import "Request.h"
 #import "Item+CoreDataClass.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
-@property (strong, nonatomic) NSMutableData *responseData;
+@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) NSMutableArray *selectedItems;
 @property (strong, nonatomic) NSMutableArray <NSIndexPath *>*selectedPaths;
 
-@property (strong, nonatomic) NSArray *allResults;
+@property (strong, nonatomic) NSString *requestAddress;
 @property (strong, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) NSArray *datasource;
 @property (assign, nonatomic) BOOL isFiltred;
@@ -32,7 +29,7 @@
 
 @implementation AddItemsTableViewController
 
-#pragma mark - UIViewController Lifecycle
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +44,7 @@
     
     self.selectedItems = [[NSMutableArray alloc]init];
     
+    [self setRequestAddress];
     [self getItemList];
 }
 
@@ -54,26 +52,57 @@
     [self.searchController.view removeFromSuperview];
 }
 
+#pragma mark - Setups
+
+- (void)setRequestAddress {
+    switch (self.itemType) {
+        case ItemTypeGroup:
+            self.requestAddress = RequestAddressGroupList;
+            break;
+        case ItemTypeTeacher:
+            self.requestAddress = RequestAddressTeacherList;
+            break;
+        case ItemtypeAuditory:
+            self.requestAddress = RequestAddressAuditoryList;
+            break;
+    }
+}
+
 #pragma mark - Logic
 
 - (void)getItemList {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [NSURLConnection connectionWithRequest:[Request getGroupList] delegate:self];
-    /*
-    switch (_itemType) {
-        case ItemTypeGroup:
-            [NSURLConnection connectionWithRequest:[Request getGroupList] delegate:self];
-            break;
-            
-        case ItemTypeTeacher:
-            [NSURLConnection connectionWithRequest:[Request getTeacherList] delegate:self];
-            break;
-            
-        case ItemtypeAuditory:
-            [NSURLConnection connectionWithRequest:[Request getAuditoryList] delegate:self];
-            break;
-    }
-     */
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:self.requestAddress parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [EventParser alignEncoding:responseObject callBack:^(NSData *data) {
+            if (data) {
+                id itemList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                [[EventParser sharedInstance] setDelegate:self];
+                [[EventParser sharedInstance] parseItemList:itemList ofType:self.itemType];
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:NSLocalizedString(@"ItemList_FailedToParseList", @"") preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancel];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
+}
+
+#pragma mark - DZNEmptyDataSetSource
+
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView {
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [activityView startAnimating];
+    return activityView;
 }
 
 #pragma mark - Events
@@ -82,9 +111,13 @@
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
         for(NSDictionary *record in self.selectedItems) {
             Item *item = [Item MR_createEntityInContext:localContext];
-            item.id = record[@"id"];
+            item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
             item.title = record[@"title"];
             item.last_update = nil;
+            item.type = self.itemType;
+            if ([[record allKeys] containsObject:@"full_name"]) {
+                item.full_name = record[@"full_name"];
+            }
         }
         [localContext MR_saveToPersistentStoreAndWait];
     }];
@@ -110,45 +143,13 @@
     self.searchResults = [self.datasource filteredArrayUsingPredicate:predicate];
 }
 
-#pragma mark - NSURLConnectionDelegate
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    self.responseData = [[NSMutableData alloc]init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.responseData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [EventParser alignEncoding:self.responseData callBack:^(NSData *data) {
-        if (data) {
-            self.allResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            [[EventParser sharedInstance] setDelegate:self];
-            [[EventParser sharedInstance] parseItemList:self.allResults ofType:ItemTypeGroup];
-        } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:@"Failed to parse timetable" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-    }];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 #pragma mark - EventParserDelegate
 
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     self.datasource = response;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
 }
 

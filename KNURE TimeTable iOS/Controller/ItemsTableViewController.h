@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemsTableViewController : UITableViewController 
+#import "EventParser.h"
+
+@interface ItemsTableViewController : UITableViewController
+
+@property (assign, nonatomic) ItemType itemType;
+@property (strong, nonatomic) NSString *headerTitle;
 
 @end
