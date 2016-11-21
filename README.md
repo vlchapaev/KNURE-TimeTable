@@ -17,8 +17,9 @@
 
 # Контакты
 - email: chapaev.vlad@gmail.com
-- vkontakte: https://vk.com/id40842906
-- facebook: https://www.facebook.com/100010449976092
+- telegram: telegram.me/ShogunPsyched
+- vkontakte: vk.com/id40842906
+- facebook: facebook.com/100010449976092
 
 # Лицензия
 
