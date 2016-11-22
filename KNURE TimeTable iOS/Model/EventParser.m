@@ -94,12 +94,12 @@
     id parsed = [NSJSONSerialization JSONObjectWithData:utfEncodingData options:0 error:nil];
     
     id events = [parsed valueForKey:@"events"];
-    //id groups = [parsed valueForKey:@"groups"];
+    id groups = [parsed valueForKey:@"groups"];
     id subjects = [parsed valueForKey:@"subjects"];
-    //id teachers = [parsed valueForKey:@"teachers"];
+    id teachers = [parsed valueForKey:@"teachers"];
     id types = [parsed valueForKey:@"types"];
     
-    //NSLog(@"%@", parsed);
+    NSLog(@"%@", parsed);
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", itemID];
     [Lesson MR_deleteAllMatchingPredicate:filter];
     
@@ -116,6 +116,9 @@
             lesson.type = [event valueForKey:@"type"];
             lesson.type_brief = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:YES];
             lesson.type_title = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:NO];
+            
+            lesson.teachers = [self getItems:teachers withIDs:[event valueForKey:@"teachers"]];
+            lesson.groups = [self getItems:groups withIDs:[event valueForKey:@"groups"]];
         }
         [localContext MR_saveToPersistentStoreAndWait];
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
@@ -148,27 +151,16 @@
     return nil;
 }
 
-- (NSString *)getGroupNameByID:(NSInteger)ID from:(NSArray *)groupList {
-    for(NSArray *record in groupList) {
-        if([[record valueForKey:@"id"]integerValue] == ID) {
-            return [record valueForKey:@"name"];
-        }
-    }
-    return nil;
-}
-
-- (NSString *)getNameFromEvent:(NSArray *)array inArray:(NSArray *)list isTeacher:(BOOL)isTeacher {
-    NSString *result;
-    NSString *key = (isTeacher)?@"full_name":@"name";
-    for (NSString *record in array) {
-        for (NSArray *subrecord in list) {
-            if([[subrecord valueForKey:@"id"] integerValue] == [record integerValue]) {
-                result = (result)?[NSString stringWithFormat:@"%@\n%@", result, [subrecord valueForKey:key]]:
-                [NSString stringWithFormat:@"%@", [subrecord valueForKey:key]];
+- (id)getItems:(id)items withIDs:(id)itemIDs {
+    NSMutableArray *itemList = [[NSMutableArray alloc]init];
+    for (NSNumber *itemID in itemIDs) {
+        for (NSDictionary *record in items) {
+            if ([record valueForKey:@"id"] == itemID) {
+                [itemList addObject:record];
             }
         }
     }
-    return result;
+    return itemList;
 }
 
 + (UIColor *)getCellColorBy:(NSInteger)type {

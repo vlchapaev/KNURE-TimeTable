@@ -12,7 +12,6 @@
 extern NSString *const RequestAddressGroupList;
 extern NSString *const RequestAddressTeacherList;
 extern NSString *const RequestAddressAuditoryList;
-extern NSString *const RequestAddressTimetable;
 
 @interface Request : NSObject
 

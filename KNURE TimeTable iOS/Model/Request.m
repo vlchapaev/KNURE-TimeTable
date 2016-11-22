@@ -13,7 +13,6 @@ const NSString *baseURL = @"http://cist.nure.ua/ias/app/tt/";
 NSString *const RequestAddressGroupList = @"http://cist.nure.ua/ias/app/tt/P_API_GROUP_JSON";
 NSString *const RequestAddressTeacherList = @"http://cist.nure.ua/ias/app/tt/P_API_PODR_JSON";
 NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_API_AUDITORIES_JSON";
-NSString *const RequestAddressTimetable = @"http://cist.nure.ua/ias/app/tt/P_API_EVENT_JSON?timetable_id=";
 
 @implementation Request
 

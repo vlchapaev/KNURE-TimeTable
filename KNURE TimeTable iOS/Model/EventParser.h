@@ -27,6 +27,8 @@ typedef enum {
 
 @property (weak, nonatomic) id <EventParserDelegate> delegate;
 
++ (instancetype)sharedInstance;
+
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType;
 
 - (void)parseTimeTable:(NSData *)data itemID:(NSNumber *)itemID callBack:(void (^)(void))callbackBlock;
@@ -38,7 +40,5 @@ typedef enum {
 + (void)removeDublicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
 + (UIColor *)getCellColorBy:(NSInteger)type;
-
-+ (instancetype)sharedInstance;
 
 @end

@@ -10,7 +10,9 @@
 #import "MSCollectionViewCalendarLayout.h"
 #import "LessonCollectionViewCell.h"
 #import "Lesson+CoreDataClass.h"
+#import "Item+CoreDataProperties.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "PFNavigationDropdownMenu.h"
 #import "ModalView.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
@@ -25,6 +27,8 @@
 NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
+
+NSString *const TimeTableCatchName = @"TimeTableCatchName";
 
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
@@ -57,9 +61,14 @@ CGFloat const sectonWidth = 110;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setupProperties];
     [self setupCollectionView];
-    [self setupFetchRequest];
+    
+    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    [self setupFetchRequestWithItem:selectedItem];
+    [self setupDropDownControllerWithItem:selectedItem];
+    
     [self setupModalView];
     [self setupPopupView];
     [self addDoubleTapGesture];
@@ -113,28 +122,46 @@ CGFloat const sectonWidth = 110;
     self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
 }
 
-- (void)setupFetchRequest {
+- (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-    
-    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
-    
     NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
-    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCatchName];
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:nil];
 }
+
+- (void)setupDropDownControllerWithItem:(NSDictionary *)item {
+    NSArray <Item *>*items = [Item MR_findAllSortedBy:@"last_update" ascending:YES];
+    NSMutableArray *itemTitles = [[NSMutableArray alloc]init];
+    for (Item *item in items) {
+        [itemTitles addObject:item.title];
+    }
+    PFNavigationDropdownMenu *dropDownMenu =  [[PFNavigationDropdownMenu alloc]initWithFrame:CGRectMake(0, 0, 300, 44)
+                                                                                       title:[item valueForKey:@"title"]
+                                                                                       items:itemTitles
+                                                                               containerView:self.view];
     
+    dropDownMenu.didSelectItemAtIndexHandler = ^(NSUInteger indexPath) {
+        Item *item = items[indexPath];
+        NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title};
+        [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [NSFetchedResultsController deleteCacheWithName:TimeTableCatchName];
+        [self setupFetchRequestWithItem:selectedItem];
+        //TODO: Handle chash
+    };
+    
+    self.navigationItem.titleView = dropDownMenu;
+}
+
 - (void)addDoubleTapGesture {
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     [self.collectionView addGestureRecognizer:doubleTapRecognizer];
 }
-    
+
 #pragma mark - UIContentContainer
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
