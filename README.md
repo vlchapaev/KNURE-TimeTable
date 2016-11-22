@@ -9,6 +9,11 @@
 
 Приложение использует открытое API [cist.nure.ua](http://cist.nure.ua/ias/app/tt/f?p=778:900:2711409463572850::NO).
 
+# Скачать
+
+![QR](https://raw.githubusercontent.com/ShogunPhyched/KNURE-TimeTable/411335f3e6a6e6459f7e3606bb8d14cb49f9bbe8/KNURE%20TimeTable%20iOS/Images.xcassets/qr-code.imageset/qr-code.png)
+
+[![App Store](https://pp.vk.me/c637119/v637119906/1f37f/roEWg3ZGNoU.jpg)](https://itunes.apple.com/us/app/knure-sked/id797074875?l=ru&ls=1&mt=8)
 # Сборка проекта
 
 1. Клонировать репозиторий
