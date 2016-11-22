@@ -14,12 +14,12 @@
 #import "InitViewController.h"
 #import "Item+CoreDataProperties.h"
 #import "Lesson+CoreDataClass.h"
+#import "NSDate+DateTools.h"
 #import "Request.h"
 
 @interface ItemsTableViewController() <DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) NSMutableArray <Item *>* datasource;
-@property (strong, nonatomic) NSDateFormatter *formatter;
 
 @end
 
@@ -31,9 +31,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = self.headerTitle;
-    
-    self.formatter = [[NSDateFormatter alloc]init];
-    [self.formatter setTimeStyle:NSDateFormatterLongStyle];
     
     self.tableView.emptyDataSetSource = self;
 }
@@ -60,7 +57,7 @@
     cell.textLabel.text = item.title;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    cell.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:item.last_update]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
+    cell.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [item.last_update timeAgoSinceNow]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     
     return cell;
@@ -115,9 +112,9 @@
             
             NSDate *lastUpdate = [NSDate date];
             
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [self.formatter stringFromDate:lastUpdate]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [lastUpdate timeAgoSinceNow]];
             
-            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title} forKey:TimetableSelectedItem];
+            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:self.itemType]} forKey:TimetableSelectedItem];
             [[NSUserDefaults standardUserDefaults]synchronize];
             
             item.last_update = lastUpdate;

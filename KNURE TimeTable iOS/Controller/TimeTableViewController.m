@@ -13,9 +13,12 @@
 #import "Item+CoreDataProperties.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "PFNavigationDropdownMenu.h"
+#import "YSLDraggableCardContainer.h"
 #import "ModalView.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
+#import "Request.h"
+#import "EventParser.h"
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
 #import "MSDayColumnHeaderBackground.h"
@@ -37,10 +40,11 @@ NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
 
 CGFloat const sectonWidth = 110;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate, YSLDraggableCardContainerDelegate, YSLDraggableCardContainerDataSource>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) YSLDraggableCardContainer *container;
 @property (strong, nonatomic) ModalView *modalView;
 
 @property (assign, nonatomic) BOOL isVerticalMode;
@@ -70,7 +74,6 @@ CGFloat const sectonWidth = 110;
     [self setupDropDownControllerWithItem:selectedItem];
     
     [self setupModalView];
-    [self setupPopupView];
     [self addDoubleTapGesture];
 }
 
@@ -111,11 +114,13 @@ CGFloat const sectonWidth = 110;
 - (void)setupModalView {
     self.modalView = [[ModalView alloc]init];
     self.modalView.delegate = self;
-}
-
-- (void)setupPopupView {
-    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [self.groupButton setTitle:[selectedItem valueForKey:@"title"] forState:UIControlStateNormal];
+    
+    self.container = [[YSLDraggableCardContainer alloc]init];
+    self.container.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.container.backgroundColor = [UIColor clearColor];
+    self.container.dataSource = self;
+    self.container.delegate = self;
+    self.container.canDraggableDirection = YSLDraggableDirectionLeft | YSLDraggableDirectionRight | YSLDraggableDirectionUp;
 }
 
 - (void)setupProperties {
@@ -124,11 +129,17 @@ CGFloat const sectonWidth = 110;
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCatchName];
-    self.fetchedResultsController.delegate = self;
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
+    
+    if (!self.fetchedResultsController) {
+        NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCatchName];
+        self.fetchedResultsController.delegate = self;
+    }
+    
+    [[self.fetchedResultsController fetchRequest] setPredicate:filter];
+    
     [self.fetchedResultsController performFetch:nil];
 }
 
@@ -150,7 +161,9 @@ CGFloat const sectonWidth = 110;
         [[NSUserDefaults standardUserDefaults]synchronize];
         [NSFetchedResultsController deleteCacheWithName:TimeTableCatchName];
         [self setupFetchRequestWithItem:selectedItem];
-        //TODO: Handle chash
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        [self.collectionViewCalendarLayout invalidateLayoutCache];
+        [self.collectionView reloadData];
     };
     
     self.navigationItem.titleView = dropDownMenu;
@@ -231,6 +244,12 @@ CGFloat const sectonWidth = 110;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    self.modalView = [[[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil] objectAtIndex:0];
+    self.modalView.center = self.view.center;
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.modalView.lesson.text = lesson.title;
+    [self.view addSubview:self.container];
+    [self.container reloadCardContainer];
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
@@ -257,18 +276,100 @@ CGFloat const sectonWidth = 110;
 
 #pragma mark - ModalViewDelegate
 
-- (void)didSelectItem:(NSString *)itemID {
+- (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType {
+    //TODO: implementation
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSURLRequest *request = [Request getTimetable:itemID ofType:itemType];
+    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:itemID callBack:^{
+            
+            //NSDate *lastUpdate = [NSDate date];
+            
+            //item.last_update = lastUpdate;
+            //[[item managedObjectContext] MR_saveToPersistentStoreAndWait];
+            
+            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]} forKey:TimetableSelectedItem];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            
+        }];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
+}
+
+#pragma mark - YSLDraggableCardContainerDataSource
+
+- (UIView *)cardContainerViewNextViewWithIndex:(NSInteger)index {
+    return self.modalView;
+}
+
+- (NSInteger)cardContainerViewNumberOfViewInIndex:(NSInteger)index {
+    return 1;
+}
+
+#pragma mark - YSLDraggableCardContainerDelegate
+
+- (void)cardContainerView:(YSLDraggableCardContainer *)cardContainerView didEndDraggingAtIndex:(NSInteger)index draggableView:(UIView *)draggableView draggableDirection:(YSLDraggableDirection)draggableDirection {
+    if (draggableDirection == YSLDraggableDirectionLeft) {
+        [cardContainerView movePositionWithDirection:draggableDirection
+                                         isAutomatic:NO];
+    }
     
+    if (draggableDirection == YSLDraggableDirectionRight) {
+        [cardContainerView movePositionWithDirection:draggableDirection
+                                         isAutomatic:NO];
+    }
+    
+    if (draggableDirection == YSLDraggableDirectionUp) {
+        [cardContainerView movePositionWithDirection:draggableDirection
+                                         isAutomatic:NO];
+    }
+}
+
+- (void)cardContainerViewDidCompleteAll:(YSLDraggableCardContainer *)container; {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [container removeFromSuperview];
+    });
 }
 
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
-    
-}
-
-- (IBAction)groupButtonTap {
-    
+    //TODO: implementation
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSURLRequest *request = [Request getTimetable:@2 ofType:1];
+    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:@2 callBack:^{
+            
+            //NSDate *lastUpdate = [NSDate date];
+            
+            //item.last_update = lastUpdate;
+            //[[item managedObjectContext] MR_saveToPersistentStoreAndWait];
+            
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            
+        }];
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {

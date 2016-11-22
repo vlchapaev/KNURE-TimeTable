@@ -33,6 +33,7 @@
 		7729633A1DDB14E40069EBCC /* Lesson+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963351DDB14660069EBCC /* Lesson+CoreDataClass.m */; };
 		7729633B1DDB14E40069EBCC /* Lesson+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson+CoreDataProperties.m */; };
 		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
+		7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742200C1DE4D97800CED910 /* YSLDraggableCardContainer.m */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
@@ -122,6 +123,8 @@
 		7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controller/SettingsViewController.h; sourceTree = "<group>"; };
 		773302901DD1D6F400F9D3F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controller/SettingsViewController.m; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7742200B1DE4D97800CED910 /* YSLDraggableCardContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLDraggableCardContainer.h; sourceTree = "<group>"; };
+		7742200C1DE4D97800CED910 /* YSLDraggableCardContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLDraggableCardContainer.m; sourceTree = "<group>"; };
 		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				7713D59D1CA57A0B00FCDA9B /* ModalView.xib */,
 				7713D59F1CA57A4F00FCDA9B /* ModalView.h */,
 				7713D5A01CA57A4F00FCDA9B /* ModalView.m */,
+				7742200B1DE4D97800CED910 /* YSLDraggableCardContainer.h */,
+				7742200C1DE4D97800CED910 /* YSLDraggableCardContainer.m */,
 			);
 			name = "Modal View";
 			sourceTree = "<group>";
@@ -644,6 +649,7 @@
 				778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */,
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
+				7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

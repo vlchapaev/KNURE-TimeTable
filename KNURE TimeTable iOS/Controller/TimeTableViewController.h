@@ -17,10 +17,8 @@ extern NSString *const TimetableDrawEmptyDays;
 
 @interface TimeTableViewController : UICollectionViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *groupButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 - (IBAction)refreshCurrentTimeTable;
-- (IBAction)groupButtonTap;
 
 @end

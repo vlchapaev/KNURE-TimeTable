@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventParser.h"
 
 @protocol ModalViewDelegate <NSObject>
 
-- (void)didSelectItem:(NSString *)itemID;
+- (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType;
 
 @end
 
 @interface ModalView : UIView
 
 @property (weak, nonatomic) id <ModalViewDelegate> delegate;
+
+@property (strong, nonatomic) NSString *lessonTitle;
+@property (strong, nonatomic) NSString *lessonType;
 
 @property (strong, nonatomic) IBOutlet UILabel *lesson;
 @property (strong, nonatomic) IBOutlet UILabel *type;

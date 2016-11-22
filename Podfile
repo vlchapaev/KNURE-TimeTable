@@ -12,6 +12,7 @@ target 'KNURE TimeTable iOS' do
     pod "MagicalRecord"
     pod "Masonry"
     pod "AFNetworking"
+    pod "DateTools"
     pod "MSCollectionViewCalendarLayout"
 
 end

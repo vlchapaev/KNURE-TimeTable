@@ -35,16 +35,13 @@
 }
 
 - (void)setup {
-    // Shadow
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.layer.shadowOpacity = 0.33;
-    self.layer.shadowOffset = CGSizeMake(0, 1.5);
-    self.layer.shadowRadius = 4.0;
-    self.layer.shouldRasterize = YES;
-    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    
-    // Corner Radius
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    self.layer.shadowRadius = 0.5;
     self.layer.cornerRadius = 10.0;
+    self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
 @end
