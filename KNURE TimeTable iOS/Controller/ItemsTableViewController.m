@@ -38,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %i", self.itemType];
-    self.datasource = [[Item MR_findAllSortedBy:@"last_update" ascending:YES withPredicate:filter] mutableCopy];
+    self.datasource = [[Item MR_findAllSortedBy:@"last_update" ascending:NO withPredicate:filter] mutableCopy];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

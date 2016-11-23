@@ -18,7 +18,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-wz-4tz">
                     <rect key="frame" x="8" y="8" width="234" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.70373610046012269" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="0.69802051380368102" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -84,11 +84,11 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="auditory" destination="xq9-2E-sj8" id="MN4-Wh-axQ"/>
-                <outlet property="groups" destination="WNF-cG-oNf" id="Rmj-Cp-oLr"/>
-                <outlet property="lesson" destination="yFS-wz-4tz" id="wAT-Sb-mOM"/>
-                <outlet property="teacher" destination="GRX-oB-Cdk" id="f0t-WA-28h"/>
-                <outlet property="type" destination="Ek6-Xl-9fl" id="2q2-yj-SlM"/>
+                <outlet property="auditory" destination="xq9-2E-sj8" id="5eZ-eQ-idA"/>
+                <outlet property="groups" destination="WNF-cG-oNf" id="R93-l4-foK"/>
+                <outlet property="lesson" destination="yFS-wz-4tz" id="s6N-NI-mNa"/>
+                <outlet property="teacher" destination="GRX-oB-Cdk" id="g2z-qB-e75"/>
+                <outlet property="type" destination="Ek6-Xl-9fl" id="3Jq-jT-B0s"/>
             </connections>
         </view>
     </objects>

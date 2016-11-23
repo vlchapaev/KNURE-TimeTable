@@ -19,9 +19,6 @@
 
 @property (weak, nonatomic) id <ModalViewDelegate> delegate;
 
-@property (strong, nonatomic) NSString *lessonTitle;
-@property (strong, nonatomic) NSString *lessonType;
-
 @property (strong, nonatomic) IBOutlet UILabel *lesson;
 @property (strong, nonatomic) IBOutlet UILabel *type;
 @property (strong, nonatomic) IBOutlet UILabel *auditory;

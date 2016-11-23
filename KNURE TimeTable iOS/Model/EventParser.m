@@ -136,7 +136,7 @@
 - (NSString *)getLessonNameWithID:(NSNumber *)ID from:(id)list shortName:(BOOL)isShort {
     for(NSArray *record in list) {
         if([record valueForKey:@"id"] == ID) {
-            return (isShort) ? [record valueForKey:@"brief"] : [record valueForKey:@"full_name"];
+            return (isShort) ? [record valueForKey:@"brief"] : [record valueForKey:@"title"];
         }
     }
     return nil;

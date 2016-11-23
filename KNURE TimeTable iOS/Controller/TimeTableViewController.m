@@ -63,6 +63,16 @@ CGFloat const sectonWidth = 110;
     return self;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
+        self.collectionViewCalendarLayout.delegate = self;
+        self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,8 +80,10 @@ CGFloat const sectonWidth = 110;
     [self setupCollectionView];
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [self setupFetchRequestWithItem:selectedItem];
-    [self setupDropDownControllerWithItem:selectedItem];
+    if (selectedItem) {
+        [self setupFetchRequestWithItem:selectedItem];
+        [self setupDropDownControllerWithItem:selectedItem];
+    }
     
     [self setupModalView];
     [self addDoubleTapGesture];
@@ -144,7 +156,7 @@ CGFloat const sectonWidth = 110;
 }
 
 - (void)setupDropDownControllerWithItem:(NSDictionary *)item {
-    NSArray <Item *>*items = [Item MR_findAllSortedBy:@"last_update" ascending:YES];
+    NSArray <Item *>*items = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     NSMutableArray *itemTitles = [[NSMutableArray alloc]init];
     for (Item *item in items) {
         [itemTitles addObject:item.title];
@@ -154,9 +166,19 @@ CGFloat const sectonWidth = 110;
                                                                                        items:itemTitles
                                                                                containerView:self.view];
     
+    dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    dropDownMenu.cellTextLabelColor = [UIColor blackColor];
+    dropDownMenu.arrowImage = [UIImage imageNamed:@"arrow_down_icon"];
+    dropDownMenu.checkMarkImage = [UIImage imageNamed:@"checkmark_icon"];
+    for (short index = 0; index < items.count; index++) {
+        if ([item valueForKey:@"id"] == [items[index] valueForKey:@"id"]) {
+            dropDownMenu.tableView.selectedIndexPath = index;
+            break;
+        }
+    }
     dropDownMenu.didSelectItemAtIndexHandler = ^(NSUInteger indexPath) {
         Item *item = items[indexPath];
-        NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title};
+        NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
         [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
         [[NSUserDefaults standardUserDefaults]synchronize];
         [NSFetchedResultsController deleteCacheWithName:TimeTableCatchName];
@@ -245,9 +267,11 @@ CGFloat const sectonWidth = 110;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     self.modalView = [[[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil] objectAtIndex:0];
-    self.modalView.center = self.view.center;
+    self.modalView.center = self.navigationController.view.center;
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
     self.modalView.lesson.text = lesson.title;
+    self.modalView.type.text = lesson.type_title;
+    self.modalView.auditory.text = lesson.auditory;
     [self.view addSubview:self.container];
     [self.container reloadCardContainer];
 }

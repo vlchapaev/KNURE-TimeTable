@@ -36,6 +36,7 @@
 		7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742200C1DE4D97800CED910 /* YSLDraggableCardContainer.m */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
+		777AE73D1DE63A5000DCE754 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
 		778E3AB81DCB86190083A658 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */; };
 		778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */; };
@@ -120,6 +121,7 @@
 		772963351DDB14660069EBCC /* Lesson+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lesson+CoreDataClass.m"; sourceTree = "<group>"; };
 		772963361DDB14660069EBCC /* Lesson+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lesson+CoreDataProperties.h"; sourceTree = "<group>"; };
 		772963371DDB14660069EBCC /* Lesson+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lesson+CoreDataProperties.m"; sourceTree = "<group>"; };
+		772A180B1DE5B69C00BF0947 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controller/SettingsViewController.h; sourceTree = "<group>"; };
 		773302901DD1D6F400F9D3F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controller/SettingsViewController.m; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,8 @@
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		7777778C1DC90B8700F557B0 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		777AE73B1DE63A5000DCE754 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
+		777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
 		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		778E3AAB1DCB86190083A658 /* Item+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataClass.h"; sourceTree = "<group>"; };
 		778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */,
 				7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */,
 				773302901DD1D6F400F9D3F1 /* SettingsViewController.m */,
+				777AE73B1DE63A5000DCE754 /* TabletTimeTableViewController.h */,
+				777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				772A180B1DE5B69C00BF0947 /* CoreImage.framework */,
 				C33FCC661819965300328F6D /* Foundation.framework */,
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
 				C33FCC6A1819965300328F6D /* UIKit.framework */,
@@ -650,6 +657,7 @@
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
 				7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */,
+				777AE73D1DE63A5000DCE754 /* TabletTimeTableViewController.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

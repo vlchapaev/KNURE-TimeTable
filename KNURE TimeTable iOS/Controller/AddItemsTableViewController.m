@@ -48,6 +48,23 @@
     [self getItemList];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+        for(NSDictionary *record in self.selectedItems) {
+            Item *item = [Item MR_createEntityInContext:localContext];
+            item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
+            item.title = record[@"title"];
+            item.last_update = nil;
+            item.type = self.itemType;
+            if ([[record allKeys] containsObject:@"full_name"]) {
+                item.full_name = record[@"full_name"];
+            }
+        }
+        [localContext MR_saveToPersistentStoreAndWait];
+    }];
+}
+
 - (void)dealloc {
     [self.searchController.view removeFromSuperview];
 }
@@ -108,20 +125,6 @@
 #pragma mark - Events
 
 - (IBAction)doneButtonTap {
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-        for(NSDictionary *record in self.selectedItems) {
-            Item *item = [Item MR_createEntityInContext:localContext];
-            item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
-            item.title = record[@"title"];
-            item.last_update = nil;
-            item.type = self.itemType;
-            if ([[record allKeys] containsObject:@"full_name"]) {
-                item.full_name = record[@"full_name"];
-            }
-        }
-        [localContext MR_saveToPersistentStoreAndWait];
-    }];
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
