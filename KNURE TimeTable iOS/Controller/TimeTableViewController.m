@@ -31,7 +31,7 @@ NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
-NSString *const TimeTableCatchName = @"TimeTableCatchName";
+NSString *const TimeTableCacheName = @"TimeTableCacheName";
 
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
@@ -39,6 +39,8 @@ NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
 NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
 
 CGFloat const sectonWidth = 110;
+CGFloat const timeRowHeaderWidth = 44;
+CGFloat const dayColumnHeaderHeight = 40;
 
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate, YSLDraggableCardContainerDelegate, YSLDraggableCardContainerDataSource>
 
@@ -47,7 +49,11 @@ CGFloat const sectonWidth = 110;
 @property (strong, nonatomic) YSLDraggableCardContainer *container;
 @property (strong, nonatomic) ModalView *modalView;
 
+@property (assign, nonatomic) short maxPairNumber;
+@property (assign, nonatomic) short minPairNumber;
+
 @property (assign, nonatomic) BOOL isVerticalMode;
+@property (assign, nonatomic) BOOL isDarkMode;
 
 @end
 
@@ -76,15 +82,13 @@ CGFloat const sectonWidth = 110;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupProperties];
-    [self setupCollectionView];
-    
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
         [self setupFetchRequestWithItem:selectedItem];
         [self setupDropDownControllerWithItem:selectedItem];
     }
-    
+    [self setupProperties];
+    [self setupCollectionView];
     [self setupModalView];
     [self addDoubleTapGesture];
 }
@@ -106,13 +110,16 @@ CGFloat const sectonWidth = 110;
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];
     
+    self.collectionViewCalendarLayout.timeRowHeaderWidth = timeRowHeaderWidth;
+    self.collectionViewCalendarLayout.dayColumnHeaderHeight = dayColumnHeaderHeight;
+    
     if (self.isVerticalMode) {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
-        self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - 70;
+        self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 10;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = 50;
+        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 64 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2.1);
     }
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
@@ -132,11 +139,15 @@ CGFloat const sectonWidth = 110;
     self.container.backgroundColor = [UIColor clearColor];
     self.container.dataSource = self;
     self.container.delegate = self;
-    self.container.canDraggableDirection = YSLDraggableDirectionLeft | YSLDraggableDirectionRight | YSLDraggableDirectionUp;
+    self.container.canDraggableDirection = YSLDraggableDirectionLeft | YSLDraggableDirectionRight | YSLDraggableDirectionUp | YSLDraggableDirectionDown;
 }
 
 - (void)setupProperties {
     self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
+    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
+    self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
+    self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;
 }
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
@@ -146,7 +157,7 @@ CGFloat const sectonWidth = 110;
     if (!self.fetchedResultsController) {
         NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
         fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCatchName];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCacheName];
         self.fetchedResultsController.delegate = self;
     }
     
@@ -181,7 +192,7 @@ CGFloat const sectonWidth = 110;
         NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
         [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
         [[NSUserDefaults standardUserDefaults]synchronize];
-        [NSFetchedResultsController deleteCacheWithName:TimeTableCatchName];
+        [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
         [self setupFetchRequestWithItem:selectedItem];
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionViewCalendarLayout invalidateLayoutCache];
@@ -267,13 +278,23 @@ CGFloat const sectonWidth = 110;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     self.modalView = [[[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil] objectAtIndex:0];
-    self.modalView.center = self.navigationController.view.center;
+    [self.modalView setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)];
+    
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
     self.modalView.lesson.text = lesson.title;
     self.modalView.type.text = lesson.type_title;
     self.modalView.auditory.text = lesson.auditory;
+    
     [self.view addSubview:self.container];
     [self.container reloadCardContainer];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
+    if (!self.isVerticalMode) {
+        [aScrollView setContentOffset: CGPointMake(aScrollView.contentOffset.x, 0)];
+    }
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
@@ -283,19 +304,19 @@ CGFloat const sectonWidth = 110;
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Lesson *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    return event.start_time;
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return lesson.start_time;
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Lesson *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    return event.end_time;
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return lesson.end_time;
 }
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout dayForSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
-    Lesson *event = [sectionInfo.objects firstObject];
-    return event.day;
+    Lesson *lesson = [sectionInfo.objects firstObject];
+    return lesson.day;
 }
 
 #pragma mark - ModalViewDelegate

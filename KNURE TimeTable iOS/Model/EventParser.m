@@ -99,7 +99,6 @@
     id teachers = [parsed valueForKey:@"teachers"];
     id types = [parsed valueForKey:@"types"];
     
-    NSLog(@"%@", parsed);
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", itemID];
     [Lesson MR_deleteAllMatchingPredicate:filter];
     
@@ -116,7 +115,6 @@
             lesson.type = [event valueForKey:@"type"];
             lesson.type_brief = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:YES];
             lesson.type_title = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:NO];
-            
             lesson.teachers = [self getItems:teachers withIDs:[event valueForKey:@"teachers"]];
             lesson.groups = [self getItems:groups withIDs:[event valueForKey:@"groups"]];
         }
