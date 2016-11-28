@@ -105,16 +105,16 @@
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
         for (id event in events) {
             Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
-            lesson.item_id = itemID.integerValue;
+            lesson.item_id = [itemID integerValue];
             lesson.auditory = [event valueForKey:@"auditory"];
             lesson.number_pair = [event valueForKey:@"number_pair"];
             lesson.start_time = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"start_time"] integerValue]];
             lesson.end_time = [NSDate dateWithTimeIntervalSince1970:[[event valueForKey:@"end_time"] integerValue]];
-            lesson.brief = [self getLessonNameWithID:[event valueForKey:@"subject_id"] from:subjects shortName:YES];
-            lesson.title = [self getLessonNameWithID:[event valueForKey:@"subject_id"] from:subjects shortName:NO];
+            lesson.brief = [self getLessonNameWithID:[[event valueForKey:@"subject_id"] longValue] from:subjects shortName:YES];
+            lesson.title = [self getLessonNameWithID:[[event valueForKey:@"subject_id"] longValue] from:subjects shortName:NO];
             lesson.type = [event valueForKey:@"type"];
-            lesson.type_brief = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:YES];
-            lesson.type_title = [self getTypeNameByID:[event valueForKey:@"type"] from:types shortName:NO];
+            lesson.type_brief = [self getTypeNameByID:[[event valueForKey:@"type"] longValue] from:types shortName:YES];
+            lesson.type_title = [self getTypeNameByID:[[event valueForKey:@"type"] longValue] from:types shortName:NO];
             lesson.teachers = [self getItems:teachers withIDs:[event valueForKey:@"teachers"]];
             lesson.groups = [self getItems:groups withIDs:[event valueForKey:@"groups"]];
         }
@@ -131,18 +131,18 @@
     return [encResponce subdataWithRange:NSMakeRange(0, [encResponce length] - 1)];
 }
 
-- (NSString *)getLessonNameWithID:(NSNumber *)ID from:(id)list shortName:(BOOL)isShort {
+- (NSString *)getLessonNameWithID:(long)ID from:(id)list shortName:(BOOL)isShort {
     for(NSArray *record in list) {
-        if([record valueForKey:@"id"] == ID) {
+        if([[record valueForKey:@"id"] longValue] == ID) {
             return (isShort) ? [record valueForKey:@"brief"] : [record valueForKey:@"title"];
         }
     }
     return nil;
 }
 
-- (NSString *)getTypeNameByID:(NSNumber *)typeID from:(id)typeList shortName:(BOOL)isShort {
+- (NSString *)getTypeNameByID:(long)typeID from:(id)typeList shortName:(BOOL)isShort {
     for(NSArray *record in typeList) {
-        if([record valueForKey:@"id"] == typeID) {
+        if([[record valueForKey:@"id"] longValue] == typeID) {
             return (isShort) ? [record valueForKey:@"short_name"]:[record valueForKey:@"full_name"];
         }
     }

@@ -59,18 +59,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @implementation TimeTableViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
-        self.collectionViewCalendarLayout.delegate = self;
-        self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
-    }
-    return self;
-}
-
-- (instancetype)init {
-    self = [super init];
     if (self) {
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;

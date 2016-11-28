@@ -10,6 +10,4 @@
 
 @interface TabletTimeTableViewController : TimeTableViewController
 
-- (instancetype)init;
-
 @end

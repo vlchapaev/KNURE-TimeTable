@@ -36,7 +36,6 @@
 		7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742200C1DE4D97800CED910 /* YSLDraggableCardContainer.m */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
-		777AE73D1DE63A5000DCE754 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
 		778E3AB81DCB86190083A658 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAE1DCB86190083A658 /* Item+CoreDataProperties.m */; };
 		778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */; };
@@ -47,6 +46,10 @@
 		778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */; };
 		778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
 		778E3ADB1DCB9F8D0083A658 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */; };
+		779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */; };
+		779CF1FA1DE9EC7F002C9CA5 /* MainIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */; };
+		779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */; };
+		779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */; };
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
@@ -131,8 +134,6 @@
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		7777778C1DC90B8700F557B0 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
-		777AE73B1DE63A5000DCE754 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
-		777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
 		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		778E3AAB1DCB86190083A658 /* Item+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+CoreDataClass.h"; sourceTree = "<group>"; };
 		778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -154,6 +155,13 @@
 		778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
 		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
 		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
+		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletTimeTableViewController.h; sourceTree = "<group>"; };
+		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabletTimeTableViewController.m; sourceTree = "<group>"; };
+		779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainIpad.storyboard; sourceTree = "<group>"; };
+		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
+		779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverMenuViewController.m; path = Controller/PopoverMenuViewController.m; sourceTree = "<group>"; };
+		779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverComboBoxViewController.h; path = Controller/PopoverComboBoxViewController.h; sourceTree = "<group>"; };
+		779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverComboBoxViewController.m; path = Controller/PopoverComboBoxViewController.m; sourceTree = "<group>"; };
 		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
+				779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */,
 				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 				778E3AC01DCB99A90083A658 /* CollectionView elements */,
 				7713D5961CA576A100FCDA9B /* Modal View */,
@@ -327,10 +336,22 @@
 				C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */,
 				7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */,
 				773302901DD1D6F400F9D3F1 /* SettingsViewController.m */,
-				777AE73B1DE63A5000DCE754 /* TabletTimeTableViewController.h */,
-				777AE73C1DE63A5000DCE754 /* TabletTimeTableViewController.m */,
+				779CF1FB1DE9EF34002C9CA5 /* iPad */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		779CF1FB1DE9EF34002C9CA5 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */,
+				779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */,
+				779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */,
+				779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */,
+				779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */,
+				779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		77F4568D1D9293DD0078BDAD /* CoreData */ = {
@@ -524,6 +545,7 @@
 				7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */,
 				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
+				779CF1FA1DE9EC7F002C9CA5 /* MainIpad.storyboard in Resources */,
 				772025471B51075D0082929F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,6 +660,7 @@
 				772963391DDB14660069EBCC /* Lesson+CoreDataProperties.m in Sources */,
 				773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */,
 				778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */,
+				779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,
 				C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */,
@@ -652,12 +675,13 @@
 				771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */,
 				7777778D1DC90B8700F557B0 /* EventParser.m in Sources */,
 				772963381DDB14660069EBCC /* Lesson+CoreDataClass.m in Sources */,
+				779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */,
 				778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */,
 				778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */,
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
 				7742200D1DE4D97800CED910 /* YSLDraggableCardContainer.m in Sources */,
-				777AE73D1DE63A5000DCE754 /* TabletTimeTableViewController.m in Sources */,
+				779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
