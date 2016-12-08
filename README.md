@@ -5,6 +5,7 @@
 ![XCode](https://img.shields.io/badge/XCode-8.1-brightgreen.svg)
 ![cocoapods](https://img.shields.io/badge/cocoapods-1.1.1-orange.svg)
 ![language](https://img.shields.io/badge/language-Objective--C-blue.svg)
+![localization](https://img.shields.io/badge/localization-RU%2FENG-yellow.svg)
 ![лицензия](https://img.shields.io/badge/license-GPL-blue.svg)
 
 ![](https://pp.vk.me/c637421/v637421906/22936/Dh76dygoebI.jpg)
