@@ -7,6 +7,8 @@
 ![language](https://img.shields.io/badge/language-Objective--C-blue.svg)
 ![лицензия](https://img.shields.io/badge/license-GPL-blue.svg)
 
+![](https://pp.vk.me/c637421/v637421906/22936/Dh76dygoebI.jpg)
+
 Приложение позволяет просматривать расписание Харьковского Национального Университета Радиоэлектроники.
 
 Поддерживается три основных типа расписания:
