@@ -1,5 +1,15 @@
 # Расписание ХНУРЭ для iOS
 
+![status](https://img.shields.io/badge/status-beta-orange.svg)
+![platform](https://img.shields.io/badge/platform-iOS%208%2B-brightgreen.svg)
+![XCode](https://img.shields.io/badge/XCode-8.1-brightgreen.svg)
+![cocoapods](https://img.shields.io/badge/cocoapods-1.1.1-orange.svg)
+![language](https://img.shields.io/badge/language-Objective--C-blue.svg)
+![localization](https://img.shields.io/badge/localization-RU%2FENG-yellow.svg)
+![лицензия](https://img.shields.io/badge/license-GPL-blue.svg)
+
+![](https://pp.vk.me/c637421/v637421906/22936/Dh76dygoebI.jpg)
+
 Приложение позволяет просматривать расписание Харьковского Национального Университета Радиоэлектроники.
 
 Поддерживается три основных типа расписания:
