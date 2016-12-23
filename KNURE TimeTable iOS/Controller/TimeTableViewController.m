@@ -13,7 +13,6 @@
 #import "Item+CoreDataProperties.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "PFNavigationDropdownMenu.h"
-#import "YSLDraggableCardContainer.h"
 #import "ModalView.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
@@ -32,7 +31,6 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
 NSString *const TimeTableCacheName = @"TimeTableCacheName";
-
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
@@ -42,13 +40,13 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate, YSLDraggableCardContainerDelegate, YSLDraggableCardContainerDataSource>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) YSLDraggableCardContainer *container;
 @property (strong, nonatomic) ModalView *modalView;
 
+@property (strong, nonatomic) NSArray <NSDate *>*pairTimes;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
 
@@ -106,10 +104,12 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (self.isVerticalMode) {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
         self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 10;
+        self.collectionViewCalendarLayout.hourHeight = 30;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 64 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2.1);
+        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+        self.collectionViewCalendarLayout.cellMargin = UIEdgeInsetsMake(-64, 0, 64, 0);
     }
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
@@ -123,13 +123,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)setupModalView {
     self.modalView = [[ModalView alloc]init];
     self.modalView.delegate = self;
-    
-    self.container = [[YSLDraggableCardContainer alloc]init];
-    self.container.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.container.backgroundColor = [UIColor clearColor];
-    self.container.dataSource = self;
-    self.container.delegate = self;
-    self.container.canDraggableDirection = YSLDraggableDirectionLeft | YSLDraggableDirectionRight | YSLDraggableDirectionUp | YSLDraggableDirectionDown;
 }
 
 - (void)setupProperties {
@@ -138,6 +131,17 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
     self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;
+    NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
+    NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
+    NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
+    NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
+    for (NSDate *date in newArray) {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
+        [dates addObject:[calendar dateFromComponents:component]];
+    }
+    self.pairTimes = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
+    
 }
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
@@ -152,7 +156,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
     
     [[self.fetchedResultsController fetchRequest] setPredicate:filter];
-    
     [self.fetchedResultsController performFetch:nil];
 }
 
@@ -184,6 +187,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         [[NSUserDefaults standardUserDefaults]synchronize];
         [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
         [self setupFetchRequestWithItem:selectedItem];
+        [self setupProperties];
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionViewCalendarLayout invalidateLayoutCache];
         [self.collectionView reloadData];
@@ -252,7 +256,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
-        timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
+        timeRowHeader.time = self.pairTimes[indexPath.row];
         return timeRowHeader;
         
     }
@@ -275,8 +279,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.modalView.type.text = lesson.type_title;
     self.modalView.auditory.text = lesson.auditory;
     
-    [self.view addSubview:self.container];
-    [self.container reloadCardContainer];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -350,31 +352,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (NSInteger)cardContainerViewNumberOfViewInIndex:(NSInteger)index {
     return 1;
-}
-
-#pragma mark - YSLDraggableCardContainerDelegate
-
-- (void)cardContainerView:(YSLDraggableCardContainer *)cardContainerView didEndDraggingAtIndex:(NSInteger)index draggableView:(UIView *)draggableView draggableDirection:(YSLDraggableDirection)draggableDirection {
-    if (draggableDirection == YSLDraggableDirectionLeft) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-    
-    if (draggableDirection == YSLDraggableDirectionRight) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-    
-    if (draggableDirection == YSLDraggableDirectionUp) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-}
-
-- (void)cardContainerViewDidCompleteAll:(YSLDraggableCardContainer *)container; {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [container removeFromSuperview];
-    });
 }
 
 #pragma mark - Events

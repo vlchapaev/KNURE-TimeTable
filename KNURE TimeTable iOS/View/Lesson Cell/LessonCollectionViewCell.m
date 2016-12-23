@@ -8,7 +8,6 @@
 
 #import "LessonCollectionViewCell.h"
 #import "EventParser.h"
-#import <Masonry/Masonry.h>
 
 @implementation LessonCollectionViewCell
 

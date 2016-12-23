@@ -8,11 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "TimeTableViewController.h"
-#import "YSLDraggableCardContainer.h"
 
-@interface SettingsViewController () <YSLDraggableCardContainerDelegate, YSLDraggableCardContainerDataSource>
-
-@property (strong, nonatomic) YSLDraggableCardContainer *container;
+@interface SettingsViewController ()
 
 @end
 
@@ -31,12 +28,6 @@
 }
 
 - (void)setupModalView {
-    self.container = [[YSLDraggableCardContainer alloc]init];
-    self.container.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.container.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    self.container.dataSource = self;
-    self.container.delegate = self;
-    self.container.canDraggableDirection = YSLDraggableDirectionLeft | YSLDraggableDirectionRight | YSLDraggableDirectionUp;
 }
 
 #pragma mark - UITableViewDelegate
@@ -78,36 +69,9 @@
     return 1;
 }
 
-#pragma mark - YSLDraggableCardContainerDelegate
-
-- (void)cardContainerView:(YSLDraggableCardContainer *)cardContainerView didEndDraggingAtIndex:(NSInteger)index draggableView:(UIView *)draggableView draggableDirection:(YSLDraggableDirection)draggableDirection {
-    if (draggableDirection == YSLDraggableDirectionLeft) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-    
-    if (draggableDirection == YSLDraggableDirectionRight) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-    
-    if (draggableDirection == YSLDraggableDirectionUp) {
-        [cardContainerView movePositionWithDirection:draggableDirection
-                                         isAutomatic:NO];
-    }
-}
-
-- (void)cardContainerViewDidCompleteAll:(YSLDraggableCardContainer *)container; {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [container removeFromSuperview];
-    });
-}
-
 #pragma mark - Events
 
 - (void)showQRCode {
-    [self.view addSubview:self.container];
-    [self.container reloadCardContainer];
 }
 
 - (IBAction)openGithub {

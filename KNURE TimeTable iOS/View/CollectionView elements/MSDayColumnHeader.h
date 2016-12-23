@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define MAS_SHORTHAND
-
 @interface MSDayColumnHeader : UICollectionReusableView
 
 @property (nonatomic, strong) NSDate *day;

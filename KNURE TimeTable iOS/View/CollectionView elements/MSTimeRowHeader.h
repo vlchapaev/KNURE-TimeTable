@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#define MAS_SHORTHAND
 
 @interface MSTimeRowHeader : UICollectionReusableView
 

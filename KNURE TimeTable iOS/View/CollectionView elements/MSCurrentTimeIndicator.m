@@ -7,7 +7,6 @@
 //
 
 #import "MSCurrentTimeIndicator.h"
-#import <Masonry/Masonry.h>
 
 @interface MSCurrentTimeIndicator ()
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define MAS_SHORTHAND
+
 @interface MSCurrentTimeIndicator : UICollectionReusableView
 
 @end

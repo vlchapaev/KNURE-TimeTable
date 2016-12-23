@@ -7,7 +7,6 @@
 //
 
 #import "MSDayColumnHeader.h"
-#import <Masonry/Masonry.h>
 
 @interface MSDayColumnHeader ()
 

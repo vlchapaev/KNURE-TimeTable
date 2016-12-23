@@ -7,7 +7,6 @@
 //
 
 #import "MSTimeRowHeader.h"
-#import "Masonry.h"
 
 @implementation MSTimeRowHeader
 
@@ -18,6 +17,7 @@
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont systemFontOfSize:12.0];
+        self.title.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.title];
         
         [self.title makeConstraints:^(MASConstraintMaker *make) {

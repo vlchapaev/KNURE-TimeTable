@@ -6,9 +6,6 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-
-#define MAS_SHORTHAND
-
 #import <UIKit/UIKit.h>
 #import "Lesson+CoreDataProperties.h"
 
