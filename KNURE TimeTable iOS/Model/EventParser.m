@@ -163,40 +163,40 @@
 
 + (UIColor *)getCellColorBy:(NSInteger)type {
     switch (type) {
-        case 0: //255, 245, 212
-            return [UIColor yellowColor];
+        case 0:
+            return [UIColor flatYellowColor];
             break;
         case 1:
-            return [UIColor yellowColor];
+            return [UIColor flatYellowColor];
             break;
         case 2:
-            return [UIColor yellowColor];
+            return [UIColor flatYellowColor];
             break;
-        case 10: //198, 235, 196
-            return [UIColor greenColor];
+        case 10:
+            return [UIColor flatGreenColor];
             break;
         case 11:
-            return [UIColor greenColor];
+            return [UIColor flatGreenColor];
             break;
         case 12:
-            return [UIColor greenColor];
+            return [UIColor flatGreenColor];
             break;
-        case 20: //205, 204, 255
-            return [UIColor magentaColor];
+        case 20:
+            return [UIColor flatPurpleColor];
             break;
         case 21:
-            return [UIColor magentaColor];
+            return [UIColor flatPurpleColor];
             break;
         case 22:
-            return [UIColor magentaColor];
+            return [UIColor flatPurpleColor];
             break;
         case 23:
-            return [UIColor magentaColor];
+            return [UIColor flatPurpleColor];
             break;
         case 24:
-            return [UIColor magentaColor];
+            return [UIColor flatPurpleColor];
             break;
-        case 30://237, 237, 237
+        case 30:
             return [UIColor lightGrayColor];
             break;
         case 31:
@@ -208,7 +208,7 @@
         case 41:
             return [UIColor lightGrayColor];
             break;
-        case 50:// 143, 210, 251
+        case 50:
             return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
             break;
         case 51:

@@ -44,12 +44,7 @@
 - (void)setDay:(NSDate *)day {
     _day = day;
     
-    static NSDateFormatter *dateFormatter;
-    if (!dateFormatter) {
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"dd.MM, EE";
-    }
-    self.title.text = [dateFormatter stringFromDate:day];
+    self.title.text = [self.formatter stringFromDate:day];
     [self setNeedsLayout];
 }
 
@@ -57,12 +52,12 @@
     _currentDay = currentDay;
     
     if (currentDay) {
-        self.title.textColor = [UIColor whiteColor];
+        self.title.textColor = [UIColor flatWhiteColor];
         self.title.font = [UIFont boldSystemFontOfSize:16.0];
-        self.titleBackground.backgroundColor = [UIColor redColor];
+        self.titleBackground.backgroundColor = [UIColor flatRedColor];
     } else {
         self.title.font = [UIFont systemFontOfSize:16.0];
-        self.title.textColor = [UIColor blackColor];
+        self.title.textColor = [UIColor flatBlackColor];
         self.titleBackground.backgroundColor = [UIColor clearColor];
     }
 }

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <MagicalRecord/MagicalRecord.h>
+#import <ChameleonFramework/Chameleon.h>
 
 typedef enum {
     ItemTypeGroup = 1,

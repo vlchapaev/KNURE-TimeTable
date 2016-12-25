@@ -7,18 +7,17 @@ target 'KNURE TimeTable iOS' do
     pod "MBProgressHUD"
     pod "DZNEmptyDataSet"
     pod "PFNavigationDropdownMenu"
+    pod "ChameleonFramework"
     
     # logic
     pod "MagicalRecord"
     pod "Masonry"
     pod "AFNetworking"
     pod "DateTools"
-    pod "MSCollectionViewCalendarLayout"
 
 end
 
 target 'KNURE TimeTable iOS TodayExtension' do
-    pod "MSCollectionViewCalendarLayout"
     pod "DZNEmptyDataSet"
     pod "MagicalRecord"
 end

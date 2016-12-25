@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ChameleonFramework/Chameleon.h>
 
 @interface MSCurrentTimeIndicator : UICollectionReusableView
 

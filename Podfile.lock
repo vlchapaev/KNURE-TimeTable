@@ -15,6 +15,9 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AMSlideMenu (1.5.4)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - DateTools (1.7.0)
   - DZNEmptyDataSet (1.8.1)
   - MagicalRecord (2.3.2):
@@ -22,31 +25,30 @@ PODS:
   - MagicalRecord/Core (2.3.2)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
-  - MSCollectionViewCalendarLayout (0.1.5)
   - PFNavigationDropdownMenu (0.1.1)
 
 DEPENDENCIES:
   - AFNetworking
   - AMSlideMenu
+  - ChameleonFramework
   - DateTools
   - DZNEmptyDataSet
   - MagicalRecord
   - Masonry
   - MBProgressHUD
-  - MSCollectionViewCalendarLayout
   - PFNavigationDropdownMenu
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MSCollectionViewCalendarLayout: 9c52894930d6b712951f18873618fc32c00cd4fa
   PFNavigationDropdownMenu: 135e0f460958407661cc95e201223c1fad79f543
 
-PODFILE CHECKSUM: 941d4a4a845b9b6080b14ce9a8abfe5694998692
+PODFILE CHECKSUM: 4960af1281f1033a1727a01301c45ad55b9bae0f
 
 COCOAPODS: 1.1.1

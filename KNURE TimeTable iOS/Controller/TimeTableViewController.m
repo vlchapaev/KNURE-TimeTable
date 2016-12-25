@@ -47,6 +47,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) ModalView *modalView;
 
 @property (strong, nonatomic) NSArray <NSDate *>*pairTimes;
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
 
@@ -131,6 +132,14 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
     self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;
+    
+    self.formatter = [[NSDateFormatter alloc]init];
+    if (self.isVerticalMode) {
+        [self.formatter setDateFormat:@"EEEE, dd MMMM"];
+    } else {
+        [self.formatter setDateFormat:@"dd.MM, EE"];
+    }
+    
     NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
     NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
     NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
@@ -251,6 +260,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         
         dayColumnHeader.day = day;
         dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
+        dayColumnHeader.formatter = self.formatter;
         
         return dayColumnHeader;
         

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ChameleonFramework/Chameleon.h>
 
 @interface MSDayColumnHeader : UICollectionReusableView
 
-@property (nonatomic, strong) NSDate *day;
-@property (nonatomic, assign) BOOL currentDay;
+@property (strong, nonatomic) NSDate *day;
+@property (assign, nonatomic) BOOL currentDay;
+@property (strong, nonatomic) NSDateFormatter *formatter;
 
 @end
