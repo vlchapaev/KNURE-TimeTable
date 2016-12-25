@@ -8,12 +8,11 @@
 
 #import "AddItemsTableViewController.h"
 #import "MBProgressHUD.h"
-#import "AFNetworking.h"
 #import "Request.h"
 #import "Item+CoreDataClass.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, DZNEmptyDataSetSource>
+@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, DZNEmptyDataSetSource, URLRequestDelegate>
 
 @property (strong, nonatomic) NSMutableArray *selectedItems;
 @property (strong, nonatomic) NSMutableArray <NSIndexPath *>*selectedPaths;
@@ -44,7 +43,6 @@
     
     self.selectedItems = [[NSMutableArray alloc]init];
     
-    [self setRequestAddress];
     [self getItemList];
 }
 
@@ -69,49 +67,39 @@
     [self.searchController.view removeFromSuperview];
 }
 
-#pragma mark - Setups
-
-- (void)setRequestAddress {
-    switch (self.itemType) {
-        case ItemTypeGroup:
-            self.requestAddress = RequestAddressGroupList;
-            break;
-        case ItemTypeTeacher:
-            self.requestAddress = RequestAddressTeacherList;
-            break;
-        case ItemtypeAuditory:
-            self.requestAddress = RequestAddressAuditoryList;
-            break;
-    }
-}
-
 #pragma mark - Logic
 
 - (void)getItemList {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:self.requestAddress parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [EventParser alignEncoding:responseObject callBack:^(NSData *data) {
-            if (data) {
-                id itemList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                [[EventParser sharedInstance] setDelegate:self];
-                [[EventParser sharedInstance] parseItemList:itemList ofType:self.itemType];
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:NSLocalizedString(@"ItemList_FailedToParseList", @"") preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                [alert addAction:cancel];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-        }];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
+    [Request loadItemListOfType:self.itemType delegate:self];
+}
+
+#pragma mark - URLRequestDelegate
+
+- (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType {
+    [EventParser alignEncoding:data callBack:^(NSData *data) {
+        if (data) {
+            id itemList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            [[EventParser sharedInstance] setDelegate:self];
+            [[EventParser sharedInstance] parseItemList:itemList ofType:self.itemType];
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:NSLocalizedString(@"ItemList_FailedToParseList", @"") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }];
+}
+
+- (void)requestDidFailWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)requestDidFinishLoading {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - DZNEmptyDataSetSource

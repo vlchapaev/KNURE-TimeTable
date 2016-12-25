@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		684B43A39AB4DE8ABF5B058D /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 665B65C552FB907FE22F3D05 /* libPods-KNURE TimeTable iOS.a */; };
 		6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableViewController.m */; };
+		7701FB301E1059EA000D6768 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7701FB2F1E1059EA000D6768 /* ModalViewController.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
@@ -23,8 +24,7 @@
 		770D05F81DD3ABF3008D89E1 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
 		770D05FB1DD3AF0B008D89E1 /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
 		770D05FC1DD3AF3B008D89E1 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
-		7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalView.xib */; };
-		7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7713D5A01CA57A4F00FCDA9B /* ModalView.m */; };
+		7713D59E1CA57A0B00FCDA9B /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7713D59D1CA57A0B00FCDA9B /* ModalViewController.xib */; };
 		771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771623731DE339EF00B9C928 /* MenuTableViewController.m */; };
 		772025471B51075D0082929F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772025491B51075D0082929F /* InfoPlist.strings */; };
 		772548E41E10259B00399B67 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 772548E31E10259B00399B67 /* MSCollectionViewCalendarLayout.m */; };
@@ -105,14 +105,14 @@
 		6928EA25182D94BE00070B44 /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewController.h; path = Controller/ItemsTableViewController.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewController.m; path = Controller/ItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		7701FB2E1E1059EA000D6768 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = Controller/ModalViewController.h; sourceTree = "<group>"; };
+		7701FB2F1E1059EA000D6768 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = Controller/ModalViewController.m; sourceTree = "<group>"; };
 		770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TodayExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770D05E41DD3A767008D89E1 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		770D05E51DD3A767008D89E1 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		770D05E81DD3A767008D89E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		770D05EA1DD3A767008D89E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7713D59D1CA57A0B00FCDA9B /* ModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalView.xib; path = "View/Modal View/ModalView.xib"; sourceTree = "<group>"; };
-		7713D59F1CA57A4F00FCDA9B /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = "View/Modal View/ModalView.h"; sourceTree = "<group>"; };
-		7713D5A01CA57A4F00FCDA9B /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = "View/Modal View/ModalView.m"; sourceTree = "<group>"; };
+		7713D59D1CA57A0B00FCDA9B /* ModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModalViewController.xib; path = "View/Modal View/ModalViewController.xib"; sourceTree = "<group>"; };
 		771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		771623711DE32B5A00B9C928 /* KNURE TimeTable iOS TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TodayExtension.entitlements"; sourceTree = "<group>"; };
 		771623721DE339EF00B9C928 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTableViewController.h; path = Controller/MenuTableViewController.h; sourceTree = "<group>"; };
@@ -228,22 +228,12 @@
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
 				779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */,
+				7713D59D1CA57A0B00FCDA9B /* ModalViewController.xib */,
 				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 				778E3AC01DCB99A90083A658 /* CollectionView elements */,
-				7713D5961CA576A100FCDA9B /* Modal View */,
 				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		7713D5961CA576A100FCDA9B /* Modal View */ = {
-			isa = PBXGroup;
-			children = (
-				7713D59D1CA57A0B00FCDA9B /* ModalView.xib */,
-				7713D59F1CA57A4F00FCDA9B /* ModalView.h */,
-				7713D5A01CA57A4F00FCDA9B /* ModalView.m */,
-			);
-			name = "Modal View";
 			sourceTree = "<group>";
 		};
 		7713D5A91CA585C900FCDA9B /* Model */ = {
@@ -340,6 +330,8 @@
 				771623731DE339EF00B9C928 /* MenuTableViewController.m */,
 				C33FCC7B1819965300328F6D /* TimeTableViewController.h */,
 				C33FCC7C1819965300328F6D /* TimeTableViewController.m */,
+				7701FB2E1E1059EA000D6768 /* ModalViewController.h */,
+				7701FB2F1E1059EA000D6768 /* ModalViewController.m */,
 				6928EA25182D94BE00070B44 /* ItemsTableViewController.h */,
 				6928EA26182D94BE00070B44 /* ItemsTableViewController.m */,
 				C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */,
@@ -553,7 +545,7 @@
 			files = (
 				77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */,
 				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
-				7713D59E1CA57A0B00FCDA9B /* ModalView.xib in Resources */,
+				7713D59E1CA57A0B00FCDA9B /* ModalViewController.xib in Resources */,
 				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				779CF1FA1DE9EC7F002C9CA5 /* MainIpad.storyboard in Resources */,
@@ -668,7 +660,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */,
-				7713D5A11CA57A4F00FCDA9B /* ModalView.m in Sources */,
 				772963391DDB14660069EBCC /* Lesson+CoreDataProperties.m in Sources */,
 				773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */,
 				778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */,
@@ -694,6 +685,7 @@
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
 				779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */,
+				7701FB301E1059EA000D6768 /* ModalViewController.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

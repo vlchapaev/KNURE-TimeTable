@@ -10,14 +10,13 @@
 #import "AddItemsTableViewController.h"
 #import "TimeTableViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "AFNetworking.h"
 #import "InitViewController.h"
 #import "Item+CoreDataProperties.h"
 #import "Lesson+CoreDataClass.h"
 #import "NSDate+DateTools.h"
 #import "Request.h"
 
-@interface ItemsTableViewController() <DZNEmptyDataSetSource>
+@interface ItemsTableViewController() <DZNEmptyDataSetSource, URLRequestDelegate>
 
 @property (strong, nonatomic) NSMutableArray <Item *>* datasource;
 
@@ -25,7 +24,7 @@
 
 @implementation ItemsTableViewController
 
-#pragma mark - UIViewController Lifecycle
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,6 +95,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //TODO: refactor
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
@@ -132,6 +133,19 @@
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     }];
+}
+
+#pragma mark - URLRequestDelegate
+
+- (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType {
+
+}
+
+- (void)requestDidFailWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - DZNEmptyDataSetSource

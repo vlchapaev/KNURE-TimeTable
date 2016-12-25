@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "EventParser.h"
 
 @interface ItemsTableViewController : UITableViewController

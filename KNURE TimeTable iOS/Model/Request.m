@@ -16,6 +16,50 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
 
 @implementation Request
 
++ (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate {
+    NSString *address = [[NSString alloc]init];
+    switch (itemType) {
+        case ItemTypeGroup:
+            address = RequestAddressGroupList;
+            break;
+            
+        case ItemTypeTeacher:
+            address = RequestAddressTeacherList;
+            break;
+            
+        case ItemtypeAuditory:
+            address = RequestAddressAuditoryList;
+            break;
+    }
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [delegate requestDidLoadItemList:responseObject ofType:itemType];
+        [delegate requestDidFinishLoading];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [delegate requestDidFailWithError:error];
+        [delegate requestDidFinishLoading];
+    }];
+    
+}
+
++ (void)loadTimeTableOfType:(ItemType)itemType itemID:(NSNumber *)itemID delegate:(id)delegate {
+    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%i&timetable_id=%@", baseURL, itemType, itemID];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [delegate requestDidLoadTimeTable:responseObject ofType:itemType];
+        [delegate requestDidFinishLoading];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [delegate requestDidFailWithError:error];
+        [delegate requestDidFinishLoading];
+    }];
+}
+
 + (NSURLRequest *)getGroupList {
     NSString *method = @"P_API_GROUP_JSON";
     NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];

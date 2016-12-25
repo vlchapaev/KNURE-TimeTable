@@ -7,18 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 #import "EventParser.h"
 
 extern NSString *const RequestAddressGroupList;
 extern NSString *const RequestAddressTeacherList;
 extern NSString *const RequestAddressAuditoryList;
 
+@protocol URLRequestDelegate <NSObject>
+
+@optional
+- (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType;
+- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType;
+- (void)requestDidFailWithError:(NSError *)error;
+- (void)requestDidFinishLoading;
+
+@end
+
 @interface Request : NSObject
+
+//@property (weak, nonatomic) id <URLRequestDelegate> delegate;
+
++ (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate;
++ (void)loadTimeTableOfType:(ItemType)itemType itemID:(NSNumber *)itemID delegate:(id)delegate;
 
 + (NSURLRequest *)getGroupList;
 + (NSURLRequest *)getTeacherList;
 + (NSURLRequest *)getAuditoryList;
-
 + (NSURLRequest *)getTimetable:(NSNumber *)ID ofType:(ItemType)itemType;
 
 @end

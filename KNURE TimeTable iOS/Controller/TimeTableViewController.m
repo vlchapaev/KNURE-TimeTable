@@ -13,11 +13,11 @@
 #import "Item+CoreDataProperties.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "PFNavigationDropdownMenu.h"
-#import "ModalView.h"
+#import "ModalViewController.h"
 #import "MBProgressHUD.h"
-#import "AFNetworking.h"
 #import "Request.h"
 #import "EventParser.h"
+
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
 #import "MSDayColumnHeaderBackground.h"
@@ -40,11 +40,10 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewControllerDelegate, URLRequestDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) ModalView *modalView;
 
 @property (strong, nonatomic) NSArray <NSDate *>*pairTimes;
 @property (strong, nonatomic) NSDateFormatter *formatter;
@@ -78,7 +77,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
     [self setupProperties];
     [self setupCollectionView];
-    [self setupModalView];
     [self addDoubleTapGesture];
 }
 
@@ -121,11 +119,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
 }
 
-- (void)setupModalView {
-    self.modalView = [[ModalView alloc]init];
-    self.modalView.delegate = self;
-}
-
 - (void)setupProperties {
     self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
     self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
@@ -160,7 +153,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (!self.fetchedResultsController) {
         NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
         fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:TimeTableCacheName];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
         self.fetchedResultsController.delegate = self;
     }
     
@@ -266,7 +259,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
-        timeRowHeader.time = self.pairTimes[indexPath.row];
+        //timeRowHeader.time = self.pairTimes[indexPath.row];
+        timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
         return timeRowHeader;
         
     }
@@ -281,14 +275,10 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    self.modalView = [[[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil] objectAtIndex:0];
-    [self.modalView setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)];
     
-    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.modalView.lesson.text = lesson.title;
-    self.modalView.type.text = lesson.type_title;
-    self.modalView.auditory.text = lesson.auditory;
-    
+    //Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    //ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
+    //[self presentViewController:modalViewController animated:YES completion:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -325,73 +315,26 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType {
     //TODO: implementation
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSURLRequest *request = [Request getTimetable:itemID ofType:itemType];
-    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:itemID callBack:^{
-            
-            //NSDate *lastUpdate = [NSDate date];
-            
-            //item.last_update = lastUpdate;
-            //[[item managedObjectContext] MR_saveToPersistentStoreAndWait];
-            
-            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]} forKey:TimetableSelectedItem];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            
-            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-            
-        }];
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
 }
 
-#pragma mark - YSLDraggableCardContainerDataSource
+#pragma mark - URLRequestDelegate
 
-- (UIView *)cardContainerViewNextViewWithIndex:(NSInteger)index {
-    return self.modalView;
+- (void)requestDidFailWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (NSInteger)cardContainerViewNumberOfViewInIndex:(NSInteger)index {
-    return 1;
+- (void)requestDidFinishLoading {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
     //TODO: implementation
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSURLRequest *request = [Request getTimetable:@2 ofType:1];
-    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:@2 callBack:^{
-            
-            //NSDate *lastUpdate = [NSDate date];
-            
-            //item.last_update = lastUpdate;
-            //[[item managedObjectContext] MR_saveToPersistentStoreAndWait];
-            
-            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-            
-        }];
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
+    
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {
