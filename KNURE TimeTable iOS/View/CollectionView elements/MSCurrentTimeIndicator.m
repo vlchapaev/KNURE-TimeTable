@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor flatWhiteColor];
+        self.backgroundColor = [UIColor whiteColor];
         
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:12.0];

@@ -45,7 +45,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-@property (strong, nonatomic) NSArray <NSDate *>*pairTimes;
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
@@ -132,18 +131,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else {
         [self.formatter setDateFormat:@"dd.MM, EE"];
     }
-    
-    NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
-    NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
-    NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
-    NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
-    for (NSDate *date in newArray) {
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-        NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
-        [dates addObject:[calendar dateFromComponents:component]];
-    }
-    self.pairTimes = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
-    
 }
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
@@ -190,9 +177,13 @@ CGFloat const dayColumnHeaderHeight = 40;
         [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
         [self setupFetchRequestWithItem:selectedItem];
         [self setupProperties];
+        if (!self.isVerticalMode) {
+            self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+        }
+        [self.collectionView reloadData];
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionViewCalendarLayout invalidateLayoutCache];
-        [self.collectionView reloadData];
+        
     };
     
     self.navigationItem.titleView = dropDownMenu;
@@ -259,10 +250,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
-        //timeRowHeader.time = self.pairTimes[indexPath.row];
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
         return timeRowHeader;
-        
     }
     return view;
 }
@@ -290,6 +279,19 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout
+
+- (NSArray <NSDate *>*)timeListForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout {
+    NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
+    NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
+    NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
+    NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
+    for (NSDate *date in newArray) {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
+        [dates addObject:[calendar dateFromComponents:component]];
+    }
+    return [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
+}
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout {
     return [NSDate date];
@@ -344,7 +346,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Нет групп";
+    NSString *text = @"Нет расписания";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};

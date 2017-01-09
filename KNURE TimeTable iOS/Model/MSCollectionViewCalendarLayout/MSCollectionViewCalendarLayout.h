@@ -81,6 +81,9 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 
 @protocol MSCollectionViewDelegateCalendarLayout <UICollectionViewDelegate>
 
+@optional
+- (NSArray <NSDate *>*)timeListForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout;
+
 @required
 
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout dayForSection:(NSInteger)section;

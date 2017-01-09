@@ -38,6 +38,7 @@
     [super viewDidAppear:animated];
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %i", self.itemType];
     self.datasource = [[Item MR_findAllSortedBy:@"last_update" ascending:NO withPredicate:filter] mutableCopy];
+    [self.tableView reloadEmptyDataSet];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -77,6 +78,7 @@
     
     [self.datasource removeObjectAtIndex:indexPath.row];
     [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadEmptyDataSet];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
