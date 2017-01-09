@@ -46,6 +46,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (strong, nonatomic) NSDateFormatter *formatter;
+@property (strong, nonatomic) NSArray <NSDate *>* pairDates;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
 
@@ -131,21 +132,33 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else {
         [self.formatter setDateFormat:@"dd.MM, EE"];
     }
+    
+    NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
+    NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
+    NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
+    NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
+    for (NSDate *date in newArray) {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
+        [dates addObject:[calendar dateFromComponents:component]];
+    }
+    self.pairDates = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
 }
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
     
-    if (!self.fetchedResultsController) {
-        NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
-        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:@"day" cacheName:nil];
-        self.fetchedResultsController.delegate = self;
-    }
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
+    self.fetchedResultsController.delegate = self;
     
     [[self.fetchedResultsController fetchRequest] setPredicate:filter];
-    [self.fetchedResultsController performFetch:nil];
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 - (void)setupDropDownControllerWithItem:(NSDictionary *)item {
@@ -178,12 +191,10 @@ CGFloat const dayColumnHeaderHeight = 40;
         [self setupFetchRequestWithItem:selectedItem];
         [self setupProperties];
         if (!self.isVerticalMode) {
-            self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+            self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
         }
-        [self.collectionView reloadData];
-        [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionViewCalendarLayout invalidateLayoutCache];
-        
+        [self.collectionView reloadData];
     };
     
     self.navigationItem.titleView = dropDownMenu;
@@ -281,16 +292,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - MSCollectionViewDelegateCalendarLayout
 
 - (NSArray <NSDate *>*)timeListForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout {
-    NSArray <NSDate *>*startTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"start_time"];
-    NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
-    NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
-    NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
-    for (NSDate *date in newArray) {
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-        NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
-        [dates addObject:[calendar dateFromComponents:component]];
-    }
-    return [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
+    return self.pairDates;
 }
 
 - (NSDate *)currentTimeComponentsForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewCalendarLayout {
@@ -329,14 +331,18 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (void)requestDidFinishLoading {
+    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    [self setupFetchRequestWithItem:selectedItem];
+    [self.collectionView reloadData];
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
-    //TODO: implementation
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    [Request loadTimeTableOfType:[selectedItem[@"type"] intValue] itemID:selectedItem[@"id"] delegate:self];
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {

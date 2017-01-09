@@ -34,6 +34,12 @@
 		7729633A1DDB14E40069EBCC /* Lesson+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963351DDB14660069EBCC /* Lesson+CoreDataClass.m */; };
 		7729633B1DDB14E40069EBCC /* Lesson+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson+CoreDataProperties.m */; };
 		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
+		776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */; };
+		776A1B6A1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */; };
+		776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */; };
+		776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */; };
+		776A1B6D1E242EC90055DCB4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B651E242EC90055DCB4 /* PFTableView.m */; };
+		776A1B6E1E242EC90055DCB4 /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B671E242EC90055DCB4 /* PFTableViewCell.m */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
@@ -130,6 +136,17 @@
 		7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controller/SettingsViewController.h; sourceTree = "<group>"; };
 		773302901DD1D6F400F9D3F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controller/SettingsViewController.m; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
+		776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
+		776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PFNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
+		776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
+		776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableCellContentView.h; sourceTree = "<group>"; };
+		776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableCellContentView.m; sourceTree = "<group>"; };
+		776A1B641E242EC90055DCB4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
+		776A1B651E242EC90055DCB4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
+		776A1B661E242EC90055DCB4 /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
+		776A1B671E242EC90055DCB4 /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
 		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
@@ -243,6 +260,7 @@
 				7777778A1DC90B8700F557B0 /* EventParser.m */,
 				7777778B1DC90B8700F557B0 /* Request.h */,
 				7777778C1DC90B8700F557B0 /* Request.m */,
+				776A1B5B1E242EC90055DCB4 /* PFNavigationDropdownMenu */,
 				772548E11E10259B00399B67 /* MSCollectionViewCalendarLayout */,
 				77F4568D1D9293DD0078BDAD /* CoreData */,
 			);
@@ -266,6 +284,24 @@
 				772548E31E10259B00399B67 /* MSCollectionViewCalendarLayout.m */,
 			);
 			path = MSCollectionViewCalendarLayout;
+			sourceTree = "<group>";
+		};
+		776A1B5B1E242EC90055DCB4 /* PFNavigationDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */,
+				776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */,
+				776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */,
+				776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */,
+				776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */,
+				776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */,
+				776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */,
+				776A1B641E242EC90055DCB4 /* PFTableView.h */,
+				776A1B651E242EC90055DCB4 /* PFTableView.m */,
+				776A1B661E242EC90055DCB4 /* PFTableViewCell.h */,
+				776A1B671E242EC90055DCB4 /* PFTableViewCell.m */,
+			);
+			path = PFNavigationDropdownMenu;
 			sourceTree = "<group>";
 		};
 		778E3ABD1DCB86270083A658 /* Item */ = {
@@ -545,6 +581,7 @@
 			files = (
 				77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */,
 				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
+				776A1B6A1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle in Resources */,
 				7713D59E1CA57A0B00FCDA9B /* ModalViewController.xib in Resources */,
 				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
@@ -660,12 +697,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC7D1819965300328F6D /* TimeTableViewController.m in Sources */,
+				776A1B6D1E242EC90055DCB4 /* PFTableView.m in Sources */,
 				772963391DDB14660069EBCC /* Lesson+CoreDataProperties.m in Sources */,
+				776A1B6E1E242EC90055DCB4 /* PFTableViewCell.m in Sources */,
 				773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */,
 				778E3AD31DCB99A90083A658 /* MSDayColumnHeader.m in Sources */,
 				779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,
+				776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */,
 				C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */,
 				778E3AD41DCB99A90083A658 /* MSDayColumnHeaderBackground.m in Sources */,
 				77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */,
@@ -678,6 +718,8 @@
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */,
 				7777778D1DC90B8700F557B0 /* EventParser.m in Sources */,
+				776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */,
+				776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */,
 				772963381DDB14660069EBCC /* Lesson+CoreDataClass.m in Sources */,
 				779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */,
 				778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */,

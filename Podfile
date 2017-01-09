@@ -6,7 +6,6 @@ target 'KNURE TimeTable iOS' do
     pod "AMSlideMenu"
     pod "MBProgressHUD"
     pod "DZNEmptyDataSet"
-    pod "PFNavigationDropdownMenu"
     pod "ChameleonFramework"
     
     # logic

@@ -25,7 +25,6 @@ PODS:
   - MagicalRecord/Core (2.3.2)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
-  - PFNavigationDropdownMenu (0.1.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -36,7 +35,6 @@ DEPENDENCIES:
   - MagicalRecord
   - Masonry
   - MBProgressHUD
-  - PFNavigationDropdownMenu
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -47,8 +45,7 @@ SPEC CHECKSUMS:
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  PFNavigationDropdownMenu: 135e0f460958407661cc95e201223c1fad79f543
 
-PODFILE CHECKSUM: 4960af1281f1033a1727a01301c45ad55b9bae0f
+PODFILE CHECKSUM: 9acc85274b6c5c588200f5dcafc4a47e51d9f2a3
 
 COCOAPODS: 1.1.1
