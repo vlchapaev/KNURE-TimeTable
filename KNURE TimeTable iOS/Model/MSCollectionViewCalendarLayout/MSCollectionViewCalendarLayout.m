@@ -474,16 +474,28 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
         }
         
         // Time Row Headers
-        NSUInteger timeRowHeaderIndex = 0;
-        for (NSInteger hour = earliestHour; hour <= latestHour; hour++) {
-            // Time Row Header
-            NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:timeRowHeaderIndex inSection:section];
+        for (NSInteger index = 0; index < [self.collectionView numberOfItemsInSection:section] * 2; index++) {
+            NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:index inSection:section];
             UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
-            // Frame
-            CGFloat titleRowHeaderMinY = (calendarGridMinY + (self.hourHeight * (hour - earliestHour)) - nearbyintf(self.hourHeight / 2.0));
-            timeRowHeaderAttributes.frame = CGRectMake(0.0, titleRowHeaderMinY, self.timeRowHeaderWidth, self.hourHeight);
-            timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader];
-            timeRowHeaderIndex++;
+            
+            NSDate *time = nil;
+            if (index % 2 == 0) {
+                time = [self.delegate collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
+            } else {
+                time = [self.delegate collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
+            }
+            
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:time];
+            
+            CGFloat timeY = (calendarGridMinY + nearbyintf(((components.hour - earliestHour) * self.hourHeight) + (components.minute * self.minuteHeight)));
+            
+            if (index % 2 == 0) {
+                timeRowHeaderAttributes.frame = CGRectMake(0, timeY, self.timeRowHeaderWidth, self.hourHeight);
+            } else {
+                timeRowHeaderAttributes.frame = CGRectMake(0, timeY-15, self.timeRowHeaderWidth, self.hourHeight);
+            }
+            
+            timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:NO];
         }
         
         if (needsToPopulateItemAttributes) {
@@ -831,29 +843,14 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
             return [[self.delegate timeListForCollectionView:self.collectionView layout:self] objectAtIndex:indexPath.item];
             break;
         case MSSectionLayoutTypeVerticalTile:
+            if (indexPath.row % 2 == 0) {
+                return [self.delegate collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row/2 inSection:indexPath.section]];
+            } else {
+                return [self.delegate collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row/2 inSection:indexPath.section]];
+            }
             
             break;
     }
-    NSInteger earliestHour = [self earliestHourForSection:indexPath.section];
-    NSDateComponents *dateComponents = [self dayForSection:indexPath.section];
-    dateComponents.hour = (earliestHour + indexPath.item);
-    return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
-    
-    
-    /*
-    NSInteger earliestHour;
-    switch (self.sectionLayoutType) {
-        case MSSectionLayoutTypeHorizontalTile:
-            earliestHour = [self earliestHour];
-            break;
-        case MSSectionLayoutTypeVerticalTile:
-            earliestHour = [self earliestHourForSection:indexPath.section];
-            break;
-    }
-    NSDateComponents *dateComponents = [self dayForSection:indexPath.section];
-    dateComponents.hour = (earliestHour + indexPath.item);
-    return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
-     */
 }
 
 - (NSDate *)dateForDayColumnHeaderAtIndexPath:(NSIndexPath *)indexPath {
