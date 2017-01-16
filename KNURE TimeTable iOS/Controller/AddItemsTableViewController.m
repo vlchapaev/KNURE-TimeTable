@@ -10,9 +10,8 @@
 #import "MBProgressHUD.h"
 #import "Request.h"
 #import "Item+CoreDataClass.h"
-#import "UIScrollView+EmptyDataSet.h"
 
-@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, DZNEmptyDataSetSource, URLRequestDelegate>
+@interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, URLRequestDelegate>
 
 @property (strong, nonatomic) NSMutableArray *selectedItems;
 @property (strong, nonatomic) NSMutableArray <NSIndexPath *>*selectedPaths;
@@ -33,9 +32,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     self.searchController.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = NO;
@@ -102,14 +103,6 @@
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
-#pragma mark - DZNEmptyDataSetSource
-
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView {
-    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [activityView startAnimating];
-    return activityView;
-}
-
 #pragma mark - Events
 
 - (IBAction)doneButtonTap {
@@ -130,7 +123,10 @@
 
 - (void)searchForText:(NSString *)searchText scope:(NSString *)scope {
     self.isFiltred = (searchText.length > 0) ? YES : NO;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title CONTAINS[c] %@", searchText];
+    NSString *mutatedString = [searchText stringByReplacingOccurrencesOfString:@"и" withString:@"і" options:NSCaseInsensitiveSearch range:NSMakeRange(0, searchText.length)];
+    mutatedString = [mutatedString stringByReplacingOccurrencesOfString:@"е" withString:@"є" options:NSCaseInsensitiveSearch range:NSMakeRange(0, searchText.length)];
+    mutatedString = [mutatedString stringByReplacingOccurrencesOfString:@"э" withString:@"е" options:NSCaseInsensitiveSearch range:NSMakeRange(0, searchText.length)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@) OR (title CONTAINS[cd] %@)", searchText, mutatedString];
     self.searchResults = [self.datasource filteredArrayUsingPredicate:predicate];
 }
 
