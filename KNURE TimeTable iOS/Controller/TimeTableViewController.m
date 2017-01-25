@@ -73,7 +73,9 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
         [self setupFetchRequestWithItem:selectedItem];
-        [self setupDropDownControllerWithItem:selectedItem];
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+            [self setupDropDownControllerWithItem:selectedItem];
+        }
     }
     [self setupProperties];
     [self setupCollectionView];
@@ -276,9 +278,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    //Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    //ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
-    //[self presentViewController:modalViewController animated:YES completion:nil];
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
+    [self presentViewController:modalViewController animated:YES completion:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
