@@ -7,6 +7,7 @@
 //
 
 #import "PopoverMenuViewController.h"
+#import "ItemsTableViewController.h"
 
 @interface PopoverMenuViewController ()
 
@@ -16,12 +17,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Navigation
+
+
+
+#pragma mark - UITableViewDelegate 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ItemsTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ItemsViewController"];
+    controller.itemType = (ItemType)indexPath.row + 1;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

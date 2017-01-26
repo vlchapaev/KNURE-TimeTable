@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventParser.h"
+#import "Lesson+CoreDataClass.h"
 
 @interface PopoverComboBoxViewController : UITableViewController
 
