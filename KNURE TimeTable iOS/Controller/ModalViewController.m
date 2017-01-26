@@ -30,9 +30,14 @@
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        self.view.backgroundColor = [UIColor clearColor];
         
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(30, 70, self.view.frame.size.width - 60, self.view.frame.size.height - 140) style:UITableViewStyleGrouped];
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+        [blurEffectView setFrame:self.view.frame];
+        [self.view insertSubview:blurEffectView atIndex:0];
+        
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(30, 70, self.view.frame.size.width - 60, self.view.frame.size.height - 140) style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         self.tableView.separatorColor = [UIColor clearColor];
         self.tableView.delegate = self;
@@ -40,7 +45,6 @@
         self.tableView.layer.cornerRadius = 10;
         self.tableView.autoresizesSubviews = YES;
         self.tableView.showsVerticalScrollIndicator = NO;
-        //self.tableView.scrollEnabled = NO;
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
         
@@ -67,12 +71,6 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-}
-
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -91,6 +89,11 @@
     newFrame.size.height = newFrame.size.height + self.titleLabel.frame.size.height;
     self.headerView.frame = newFrame;
     [self.tableView setTableHeaderView:self.headerView];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -158,11 +161,12 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     [header.textLabel setTextColor:[UIColor whiteColor]];
+    [header.textLabel setFont:[UIFont systemFontOfSize:17 weight:UIFontWeightRegular]];
+    [header setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
