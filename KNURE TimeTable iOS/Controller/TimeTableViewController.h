@@ -19,6 +19,11 @@ extern NSString *const TimetableDrawEmptyDays;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
+/**
+ Используется для перерисовки интерфейса при повороте экрана
+*/
+- (void)resizeHeightForSize:(CGSize)size;
+
 - (IBAction)refreshCurrentTimeTable;
 
 @end

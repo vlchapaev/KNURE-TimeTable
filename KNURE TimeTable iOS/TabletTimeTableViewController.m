@@ -7,11 +7,6 @@
 //
 
 #import "TabletTimeTableViewController.h"
-#import "MenuTableViewController.h"
-
-@interface TabletTimeTableViewController () <UIPopoverPresentationControllerDelegate>
-
-@end
 
 @implementation TabletTimeTableViewController
 
@@ -22,21 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupProperties];
 }
 
-#pragma mark - Setups
+#pragma mark - UIContentContainer
 
-
-
-- (void)setupProperties {
-    
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    CGSize newSize = CGSizeMake(size.width, size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+    [super resizeHeightForSize:newSize];
 }
 
 #pragma mark - Events
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
     return UIModalPresentationNone;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 @end

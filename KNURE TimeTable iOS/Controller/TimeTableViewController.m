@@ -192,10 +192,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
         [self setupFetchRequestWithItem:selectedItem];
         [self setupProperties];
-        if (!self.isVerticalMode) {
-            self.collectionViewCalendarLayout.hourHeight = (self.view.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
-        }
-        [self.collectionViewCalendarLayout invalidateLayoutCache];
+        CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+        [self resizeHeightForSize:size];
         [self.collectionView reloadData];
     };
     
@@ -206,6 +204,14 @@ CGFloat const dayColumnHeaderHeight = 40;
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     [self.collectionView addGestureRecognizer:doubleTapRecognizer];
+}
+
+- (void)resizeHeightForSize:(CGSize)size {
+    if (!self.isVerticalMode) {
+        [self.collectionViewCalendarLayout invalidateLayoutCache];
+        [self.collectionViewCalendarLayout invalidateLayout];
+        self.collectionViewCalendarLayout.hourHeight = (size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+    }
 }
 
 #pragma mark - UIContentContainer
