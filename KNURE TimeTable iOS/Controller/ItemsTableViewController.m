@@ -117,11 +117,16 @@
             
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [lastUpdate timeAgoSinceNow]];
             
-            [[NSUserDefaults standardUserDefaults]setObject:@{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:self.itemType]} forKey:TimetableSelectedItem];
+            NSDictionary *selecterItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:self.itemType]};
+            [[NSUserDefaults standardUserDefaults]setObject:selecterItem forKey:TimetableSelectedItem];
             [[NSUserDefaults standardUserDefaults]synchronize];
             
             item.last_update = lastUpdate;
             [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
+            
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selecterItem];
+            }
             
             [indicator stopAnimating];
             

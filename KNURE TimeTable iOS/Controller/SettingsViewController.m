@@ -25,6 +25,7 @@
 
 - (void)setupValues {
     self.verticalScrollSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
+    self.bouncingCellsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
 }
 
 - (void)setupModalView {
@@ -88,6 +89,11 @@
 }
 
 - (IBAction)removeEmptyDaysSwitchValueChanged:(UISwitch *)sender {
+}
+
+- (IBAction)bouncingCellsSwitchValueChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableBouncingCells];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 @end

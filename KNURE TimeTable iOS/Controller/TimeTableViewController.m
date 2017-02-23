@@ -35,6 +35,9 @@ NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
 NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
+NSString *const TimetableBouncingCells = @"TimetableBouncingCells";
+
+NSString *const TimetableDidUpdateDataNotification = @"TimetableDidUpdateDataNotification";
 
 CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
@@ -80,6 +83,10 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self setupProperties];
     [self setupCollectionView];
     [self addDoubleTapGesture];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -109,7 +116,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
         self.collectionViewCalendarLayout.cellMargin = UIEdgeInsetsMake(-64, 0, 64, 0);
     }
     
@@ -321,6 +328,17 @@ CGFloat const dayColumnHeaderHeight = 40;
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
     Lesson *lesson = [sectionInfo.objects firstObject];
     return lesson.day;
+}
+
+#pragma mark - Notification Center
+
+- (void)didReceiveNotification:(NSNotification *)notification {
+    [self setupFetchRequestWithItem:notification.object];
+    [self setupProperties];
+    CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+    [self resizeHeightForSize:size];
+    [self.collectionView reloadEmptyDataSet];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - ModalViewDelegate

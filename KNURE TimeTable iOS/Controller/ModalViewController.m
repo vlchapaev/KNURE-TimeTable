@@ -162,11 +162,13 @@
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     [header.textLabel setTextColor:[UIColor whiteColor]];
     [header.textLabel setFont:[UIFont systemFontOfSize:17 weight:UIFontWeightRegular]];
-    [header setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate didSelectItem:[NSNumber numberWithInteger:indexPath.row] title:@"" ofType:ItemTypeGroup];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

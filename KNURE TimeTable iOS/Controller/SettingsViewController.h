@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UISwitch *verticalScrollSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *darkModeSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *removeEmptyDaysSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *bouncingCellsSwitch;
 
 @end

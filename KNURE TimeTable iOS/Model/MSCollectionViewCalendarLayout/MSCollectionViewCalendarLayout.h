@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @class MSCollectionViewCalendarLayout;
 @protocol MSCollectionViewDelegateCalendarLayout;
 
-@interface MSCollectionViewCalendarLayout : UICollectionViewLayout
+@interface MSCollectionViewCalendarLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, weak) id <MSCollectionViewDelegateCalendarLayout> delegate;
 
@@ -68,6 +68,9 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @property (nonatomic) MSSectionLayoutType sectionLayoutType;
 @property (nonatomic) MSHeaderLayoutType headerLayoutType;
 @property (nonatomic) BOOL displayHeaderBackgroundAtOrigin;
+
+/// The scrolling resistance factor determines how much bounce / resistance the collection has. A higher number is less bouncy, a lower number is more bouncy. The default is 900.0f.
+@property (nonatomic, assign) CGFloat scrollResistanceFactor;
 
 - (NSDate *)dateForTimeRowHeaderAtIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)dateForDayColumnHeaderAtIndexPath:(NSIndexPath *)indexPath;

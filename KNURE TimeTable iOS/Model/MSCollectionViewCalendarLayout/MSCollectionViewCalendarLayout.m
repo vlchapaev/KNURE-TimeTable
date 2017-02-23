@@ -40,7 +40,7 @@ NSString * const MSCollectionElementKindHorizontalGridline = @"MSCollectionEleme
 NSUInteger const MSCollectionMinOverlayZ = 1000.0; // Allows for 900 items in a section without z overlap issues
 NSUInteger const MSCollectionMinCellZ = 100.0;  // Allows for 100 items in a section's background
 NSUInteger const MSCollectionMinBackgroundZ = 0.0;
-
+CGFloat const kScrollResistanceFactorDefault = 800.0f;
 
 @interface MSTimerWeakTarget : NSObject
 @property (nonatomic, weak) id target;
@@ -106,6 +106,17 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
 @property (nonatomic, strong) NSMutableDictionary *verticalGridlineAttributes;
 @property (nonatomic, strong) NSMutableDictionary *currentTimeIndicatorAttributes;
 @property (nonatomic, strong) NSMutableDictionary *currentTimeHorizontalGridlineAttributes;
+
+/// The dynamic animator used to animate the collection's bounce
+@property (nonatomic, strong, readwrite) UIDynamicAnimator *dynamicAnimator;
+
+// Needed for tiling
+@property (nonatomic, strong) NSMutableSet *visibleIndexPathsSet;
+@property (nonatomic, strong) NSMutableSet *visibleHeaderAndFooterSet;
+@property (nonatomic, assign) CGFloat latestDelta;
+@property (nonatomic, assign) UIInterfaceOrientation interfaceOrientation;
+
+@property (nonatomic, assign) BOOL shouldMakeBouncingCells;
 
 - (void)initialize;
 // Minute Updates
@@ -173,6 +184,25 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
     [self prepareLayout];
     
     [super prepareForCollectionViewUpdates:updateItems];
+    
+    [updateItems enumerateObjectsUsingBlock:^(UICollectionViewUpdateItem *updateItem, NSUInteger idx, BOOL *stop) {
+        if (updateItem.updateAction == UICollectionUpdateActionInsert) {
+            if([self.dynamicAnimator layoutAttributesForCellAtIndexPath:updateItem.indexPathAfterUpdate]) {
+                return;
+            }
+            
+            UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:updateItem.indexPathAfterUpdate];
+            
+            //attributes.frame = CGRectMake(10, updateItem.indexPathAfterUpdate.item * 310, 300, 44); // or some other initial frame
+            
+            UIAttachmentBehavior *springBehaviour = [[UIAttachmentBehavior alloc] initWithItem:attributes attachedToAnchor:attributes.center];
+            
+            springBehaviour.length = 1.0f;
+            springBehaviour.damping = 0.8f;
+            springBehaviour.frequency = 1.0f;
+            [self.dynamicAnimator addBehavior:springBehaviour];
+        }
+    }];
 }
 
 - (void)finalizeCollectionViewUpdates {
@@ -210,9 +240,12 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
         [self.allAttributes addObjectsFromArray:[self.timeRowHeaderBackgroundAttributes allValues]];
         [self.allAttributes addObjectsFromArray:[self.verticalGridlineAttributes allValues]];
         [self.allAttributes addObjectsFromArray:[self.horizontalGridlineAttributes allValues]];
-        [self.allAttributes addObjectsFromArray:[self.itemAttributes allValues]];
         [self.allAttributes addObjectsFromArray:[self.currentTimeIndicatorAttributes allValues]];
         [self.allAttributes addObjectsFromArray:[self.currentTimeHorizontalGridlineAttributes allValues]];
+        
+        if (!self.shouldMakeBouncingCells) {
+            [self.allAttributes addObjectsFromArray:[self.itemAttributes allValues]];
+        }
     }
 }
 
@@ -224,6 +257,39 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
         case MSSectionLayoutTypeVerticalTile:
             [self prepareVerticalTileSectionLayoutForSections:sectionIndexes];
             break;
+    }
+}
+
+- (void)addDynamicBehaviourForItem:(UICollectionViewLayoutAttributes *)itemAttributes {
+    CGPoint touchLocation = [self.collectionView.panGestureRecognizer locationInView:self.collectionView];
+    CGPoint center = itemAttributes.center;
+    UIAttachmentBehavior *springBehaviour = [[UIAttachmentBehavior alloc] initWithItem:itemAttributes attachedToAnchor:center];
+    
+    springBehaviour.length = 1.0f;
+    springBehaviour.damping = 0.8f;
+    springBehaviour.frequency = 1.0f;
+    
+    // If our touchLocation is not (0,0), we'll need to adjust our item's center "in flight"
+    
+    if (!CGPointEqualToPoint(CGPointZero, touchLocation)) {
+        if (self.sectionLayoutType == MSSectionLayoutTypeVerticalTile) {
+            CGFloat distanceFromTouch = fabs(touchLocation.y - springBehaviour.anchorPoint.y);
+            CGFloat scrollResistance = (self.scrollResistanceFactor) ? distanceFromTouch / self.scrollResistanceFactor : distanceFromTouch / kScrollResistanceFactorDefault;
+            center.y += (self.latestDelta < 0) ? MAX(self.latestDelta, self.latestDelta*scrollResistance) : MIN(self.latestDelta, self.latestDelta * scrollResistance);
+            itemAttributes.center = center;
+        } else {
+            CGFloat distanceFromTouch = fabs(touchLocation.x - springBehaviour.anchorPoint.x);
+            CGFloat scrollResistance = (self.scrollResistanceFactor) ? scrollResistance = distanceFromTouch / self.scrollResistanceFactor : distanceFromTouch / kScrollResistanceFactorDefault;
+            center.x += (self.latestDelta < 0) ? MAX(self.latestDelta, self.latestDelta * scrollResistance) : MIN(self.latestDelta, self.latestDelta * scrollResistance);
+            itemAttributes.center = center;
+        }
+    }
+    
+    [self.dynamicAnimator addBehavior:springBehaviour];
+    if(itemAttributes.representedElementCategory == UICollectionElementCategoryCell) {
+        [self.visibleIndexPathsSet addObject:itemAttributes.indexPath];
+    } else {
+        [self.visibleHeaderAndFooterSet addObject:itemAttributes.indexPath];
     }
 }
 
@@ -383,6 +449,11 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
                 itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
                 
                 itemAttributes.zIndex = [self zIndexForElementKind:nil];
+                
+                if (self.shouldMakeBouncingCells) {
+                    [self addDynamicBehaviourForItem:itemAttributes];
+                }
+                
             }
             [self adjustItemsForOverlap:sectionItemAttributes inSection:section sectionMinX:sectionMinX];
         }
@@ -529,6 +600,10 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
                 itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
                 
                 itemAttributes.zIndex = [self zIndexForElementKind:nil];
+                
+                if (self.shouldMakeBouncingCells) {
+                    [self addDynamicBehaviourForItem:itemAttributes];
+                }
             }
             [self adjustItemsForOverlap:sectionItemAttributes inSection:section sectionMinX:sectionMinX];
         }
@@ -657,14 +732,15 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return self.itemAttributes[indexPath];
+    UICollectionViewLayoutAttributes *dynamicLayoutAttributes = [self.dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
+    // Check if dynamic animator has layout attributes for a layout, otherwise use the flow layouts properties. This will prevent crashing when you add items later in a performBatchUpdates block (e.g. triggered by NSFetchedResultsController update)
+    return (dynamicLayoutAttributes) ? dynamicLayoutAttributes : self.itemAttributes[indexPath];
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == MSCollectionElementKindDayColumnHeader) {
         return self.dayColumnHeaderAttributes[indexPath];
-    }
-    else if (kind == MSCollectionElementKindTimeRowHeader) {
+    } else if (kind == MSCollectionElementKindTimeRowHeader) {
         return self.timeRowHeaderAttributes[indexPath];
     }
     return nil;
@@ -704,13 +780,68 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
     // Update layout for only the visible sections
     [self prepareSectionLayoutForSections:visibleSections];
     
-    // Return the visible attributes (rect intersection)
-    return [self.allAttributes filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *layoutAttributes, NSDictionary *bindings) {
-        return CGRectIntersectsRect(rect, layoutAttributes.frame);
-    }]];
+    if (self.shouldMakeBouncingCells) {
+        NSMutableArray *array = [[self.dynamicAnimator itemsInRect:rect] mutableCopy];
+        [array addObjectsFromArray:self.allAttributes];
+        
+        // Return the visible attributes (rect intersection)
+        return [array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *layoutAttributes, NSDictionary *bindings) {
+            return CGRectIntersectsRect(rect, layoutAttributes.frame);
+        }]];
+    } else {
+        // Return the visible attributes (rect intersection)
+        return [self.allAttributes filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *layoutAttributes, NSDictionary *bindings) {
+            return CGRectIntersectsRect(rect, layoutAttributes.frame);
+        }]];
+    }
+    
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    UIScrollView *scrollView = self.collectionView;
+    
+    CGFloat delta;
+    if (self.sectionLayoutType == MSSectionLayoutTypeVerticalTile) delta = newBounds.origin.y - scrollView.bounds.origin.y;
+    else delta = newBounds.origin.x - scrollView.bounds.origin.x;
+    
+    self.latestDelta = delta;
+    
+    CGPoint touchLocation = [self.collectionView.panGestureRecognizer locationInView:self.collectionView];
+    
+    [self.dynamicAnimator.behaviors enumerateObjectsUsingBlock:^(UIAttachmentBehavior *springBehaviour, NSUInteger idx, BOOL *stop) {
+        if (self.sectionLayoutType== MSSectionLayoutTypeVerticalTile) {
+            CGFloat distanceFromTouch = fabs(touchLocation.y - springBehaviour.anchorPoint.y);
+            
+            CGFloat scrollResistance;
+            if (self.scrollResistanceFactor) scrollResistance = distanceFromTouch / self.scrollResistanceFactor;
+            else scrollResistance = distanceFromTouch / kScrollResistanceFactorDefault;
+            
+            UICollectionViewLayoutAttributes *item = (UICollectionViewLayoutAttributes *)[springBehaviour.items firstObject];
+            CGPoint center = item.center;
+            if (delta < 0) center.y += MAX(delta, delta*scrollResistance);
+            else center.y += MIN(delta, delta*scrollResistance);
+            
+            item.center = center;
+            
+            [self.dynamicAnimator updateItemUsingCurrentState:item];
+        } else {
+            CGFloat distanceFromTouch = fabs(touchLocation.x - springBehaviour.anchorPoint.x);
+            
+            CGFloat scrollResistance;
+            if (self.scrollResistanceFactor) scrollResistance = distanceFromTouch / self.scrollResistanceFactor;
+            else scrollResistance = distanceFromTouch / kScrollResistanceFactorDefault;
+            
+            UICollectionViewLayoutAttributes *item = (UICollectionViewLayoutAttributes *)[springBehaviour.items firstObject];
+            CGPoint center = item.center;
+            if (delta < 0) center.x += MAX(delta, delta*scrollResistance);
+            else center.x += MIN(delta, delta*scrollResistance);
+            
+            item.center = center;
+            
+            [self.dynamicAnimator updateItemUsingCurrentState:item];
+        }
+    }];
+    
     // Required for sticky headers
     return YES;
 }
@@ -758,6 +889,12 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
     self.displayHeaderBackgroundAtOrigin = YES;
     self.sectionLayoutType = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? MSSectionLayoutTypeHorizontalTile : MSSectionLayoutTypeVerticalTile);
     self.headerLayoutType = MSHeaderLayoutTypeDayColumnAboveTimeRow;
+    
+    self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
+    self.visibleIndexPathsSet = [NSMutableSet set];
+    self.visibleHeaderAndFooterSet = [[NSMutableSet alloc] init];
+    
+    self.shouldMakeBouncingCells = [[NSUserDefaults standardUserDefaults]boolForKey:@"TimetableBouncingCells"];
     
     // Invalidate layout on minute ticks (to update the position of the current time indicator)
     NSDate *oneMinuteInFuture = [[NSDate date] dateByAddingTimeInterval:60];
@@ -833,6 +970,8 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
     [self.timeRowHeaderAttributes removeAllObjects];
     [self.timeRowHeaderBackgroundAttributes removeAllObjects];
     [self.allAttributes removeAllObjects];
+    
+    [self.dynamicAnimator removeAllBehaviors];
 }
 
 #pragma mark Dates
