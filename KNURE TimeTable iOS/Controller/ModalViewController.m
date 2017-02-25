@@ -29,16 +29,10 @@
         
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         self.view.backgroundColor = [UIColor clearColor];
         
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
-        [blurEffectView setFrame:self.view.frame];
-        [self.view insertSubview:blurEffectView atIndex:0];
-        
         self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(30, 70, self.view.frame.size.width - 60, self.view.frame.size.height - 140) style:UITableViewStylePlain];
-        self.tableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.separatorColor = [UIColor clearColor];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -47,6 +41,11 @@
         self.tableView.showsVerticalScrollIndicator = NO;
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
+        
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+        [blurEffectView setFrame:self.view.frame];
+        self.tableView.backgroundView = blurEffectView;
         
         self.titleLabel = [UILabel new];
         self.titleLabel.textColor = [UIColor whiteColor];
@@ -71,6 +70,18 @@
 
 #pragma mark - UIViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:1
+                          delay:0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+                     } completion:nil];
+    
+}
+
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -89,10 +100,14 @@
     newFrame.size.height = newFrame.size.height + self.titleLabel.frame.size.height;
     self.headerView.frame = newFrame;
     [self.tableView setTableHeaderView:self.headerView];
+    
+    if (self.tableView.contentSize.height < self.view.frame.size.height) {
+        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.contentSize.width, self.tableView.contentSize.height)];
+        self.tableView.center = self.view.center;
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -119,18 +134,25 @@
         cell.detailTextLabel.text = self.type;
         cell.textLabel.text = @"Type";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
         
     } else if (indexPath.section == 1) {
         cell.detailTextLabel.text = self.auditory;
         cell.textLabel.text = @"Auditory";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     } else if (indexPath.section == 2) {
-        cell.textLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
+        cell.detailTextLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
+        cell.tag = [[self.teachers[indexPath.row] valueForKey:@"id"] integerValue];
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Teachers";
+        }
         
     } else if (indexPath.section == 3) {
-        cell.textLabel.text = [self.groups[indexPath.row] valueForKey:@"name"];
-        
+        cell.detailTextLabel.text = [self.groups[indexPath.row] valueForKey:@"name"];
+        cell.tag = [[self.groups[indexPath.row] valueForKey:@"id"] integerValue];
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Groups";
+        }
     }
     
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -146,40 +168,38 @@
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return nil; break;
-        case 1: return nil; break;
-        case 2: return @"Teachers"; break;
-        case 3: return @"Groups"; break;
-        default: return 0; break;
-    }
-}
-
 #pragma mark - UITablViewDelegate
-
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor whiteColor]];
-    [header.textLabel setFont:[UIFont systemFontOfSize:17 weight:UIFontWeightRegular]];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate didSelectItem:[NSNumber numberWithInteger:indexPath.row] title:@"" ofType:ItemTypeGroup];
+    
+    ItemType itemType;
+    NSString *title;
+    NSNumber *itemID;
+    if (indexPath.section == 1) {
+        itemType = ItemtypeAuditory;
+        title = self.auditory;
+        //TODO: auditory id
+    } else if (indexPath.section == 2) {
+        itemType = ItemTypeTeacher;
+        title = [self.teachers[indexPath.row] valueForKey:@"short_name"];
+        itemID = [self.teachers[indexPath.row] valueForKey:@"id"];
+    } else {
+        itemType = ItemTypeGroup;
+        title = [self.groups[indexPath.row] valueForKey:@"name"];
+        itemID = [self.groups[indexPath.row] valueForKey:@"id"];
+    }
+    
+    [self.delegate didSelectItem:itemID title:title ofType:itemType];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 2) {
-        return UITableViewAutomaticDimension;
-    }
-    return 20;
+    return UITableViewAutomaticDimension;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 20;
+    return 44;
 }
 
 @end
