@@ -70,6 +70,10 @@
             [strongSelf layoutSubviews];
         };
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognized:)];
+        tapGesture.cancelsTouchesInView = NO;
+        [self.tableView addGestureRecognizer:tapGesture];
+        
     }
     return self;
 }
@@ -190,6 +194,15 @@
         [self showMenu];
     } else {
         [self hideMenu];
+    }
+}
+
+- (void)tapGestureRecognized:(UIGestureRecognizer*)sender {
+    CGPoint tapLocation = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
+    if (!indexPath && self.isShown) {
+        [self hideMenu];
+        self.isShown = NO;
     }
 }
 
