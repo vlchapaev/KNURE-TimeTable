@@ -344,29 +344,64 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - ModalViewDelegate
 
 - (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType {
-    //TODO: implementation
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [Request loadTimeTableOfType:itemType itemID:itemID delegate:self];
 }
 
 #pragma mark - URLRequestDelegate
 
 - (void)requestDidFailWithError:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)requestDidFinishLoading {
-    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [self setupFetchRequestWithItem:selectedItem];
-    [self.collectionView reloadData];
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType withID:(NSNumber *)itemID {
+    [[EventParser sharedInstance]parseTimeTable:data itemID:itemID callBack:^{
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", itemID];
+        Item *item = [Item MR_findFirstWithPredicate:predicate];
+        
+        NSDate *lastUpdate = [NSDate date];
+        
+        if (item) {
+            
+            NSDictionary *selecterItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:itemType]};
+            [[NSUserDefaults standardUserDefaults]setObject:selecterItem forKey:TimetableSelectedItem];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            item.last_update = lastUpdate;
+            [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
+            
+            [self setupFetchRequestWithItem:selecterItem];
+            [self.collectionView reloadData];
+        } else {
+            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+                Item *item = [Item MR_createEntityInContext:localContext];
+                item.id = itemID;
+                item.title = @"title";
+                item.last_update = lastUpdate;
+                item.type = itemType;
+                //if ([[record allKeys] containsObject:@"full_name"]) {
+                //    item.full_name = record[@"full_name"];
+                //}
+                [localContext MR_saveToPersistentStoreAndWait];
+            }];
+            
+            //TODO: обработка ситуации, если объекта не существует
+        }
+        
+        
+    }];
 }
 
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     [Request loadTimeTableOfType:[selectedItem[@"type"] intValue] itemID:selectedItem[@"id"] delegate:self];
 }

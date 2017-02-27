@@ -37,10 +37,8 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [delegate requestDidLoadItemList:responseObject ofType:itemType];
-        [delegate requestDidFinishLoading];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         [delegate requestDidFailWithError:error];
-        [delegate requestDidFinishLoading];
     }];
     
 }
@@ -52,11 +50,9 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [delegate requestDidLoadTimeTable:responseObject ofType:itemType];
-        [delegate requestDidFinishLoading];
+        [delegate requestDidLoadTimeTable:responseObject ofType:itemType withID:itemID];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         [delegate requestDidFailWithError:error];
-        [delegate requestDidFinishLoading];
     }];
 }
 

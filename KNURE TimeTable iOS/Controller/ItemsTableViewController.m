@@ -98,7 +98,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //TODO: refactor
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
@@ -140,19 +139,6 @@
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     }];
-}
-
-#pragma mark - URLRequestDelegate
-
-- (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType {
-
-}
-
-- (void)requestDidFailWithError:(NSError *)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - DZNEmptyDataSetSource

@@ -89,18 +89,16 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
         }
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }];
 }
 
 - (void)requestDidFailWithError:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)requestDidFinishLoading {
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - Events

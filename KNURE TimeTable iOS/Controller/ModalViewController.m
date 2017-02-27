@@ -139,6 +139,8 @@
     } else if (indexPath.section == 1) {
         cell.detailTextLabel.text = self.auditory;
         cell.textLabel.text = @"Auditory";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
         
     } else if (indexPath.section == 2) {
         cell.detailTextLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
@@ -177,11 +179,7 @@
     ItemType itemType;
     NSString *title;
     NSNumber *itemID;
-    if (indexPath.section == 1) {
-        itemType = ItemtypeAuditory;
-        title = self.auditory;
-        //TODO: auditory id
-    } else if (indexPath.section == 2) {
+    if (indexPath.section == 2) {
         itemType = ItemTypeTeacher;
         title = [self.teachers[indexPath.row] valueForKey:@"short_name"];
         itemID = [self.teachers[indexPath.row] valueForKey:@"id"];

@@ -18,15 +18,13 @@ extern NSString *const RequestAddressAuditoryList;
 
 @optional
 - (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType;
-- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType;
+- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType withID:(NSNumber *)itemID;
 - (void)requestDidFailWithError:(NSError *)error;
 - (void)requestDidFinishLoading;
 
 @end
 
 @interface Request : NSObject
-
-//@property (weak, nonatomic) id <URLRequestDelegate> delegate;
 
 + (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate;
 + (void)loadTimeTableOfType:(ItemType)itemType itemID:(NSNumber *)itemID delegate:(id)delegate;
