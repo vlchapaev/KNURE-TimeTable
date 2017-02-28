@@ -16,7 +16,7 @@
 #import "NSDate+DateTools.h"
 #import "Request.h"
 
-@interface ItemsTableViewController() <DZNEmptyDataSetSource, URLRequestDelegate>
+@interface ItemsTableViewController() <DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) NSMutableArray <Item *>* datasource;
 

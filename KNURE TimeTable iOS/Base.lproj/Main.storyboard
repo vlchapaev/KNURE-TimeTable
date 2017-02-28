@@ -73,13 +73,7 @@
                             <outlet property="delegate" destination="Olf-mH-U1p" id="c6W-BH-tyN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="Cf9-AI-VvO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tFn-0T-2Qy">
-                            <connections>
-                                <action selector="doneButtonTap" destination="Olf-mH-U1p" id="20f-o5-dg1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="Cf9-AI-VvO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbM-9x-IQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

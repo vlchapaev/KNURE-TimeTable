@@ -43,14 +43,14 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     
 }
 
-+ (void)loadTimeTableOfType:(ItemType)itemType itemID:(NSNumber *)itemID delegate:(id)delegate {
-    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%i&timetable_id=%@", baseURL, itemType, itemID];
++ (void)loadTimeTableWithParameters:(NSDictionary *)parameters delegate:(id)delegate {
+    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%@&timetable_id=%@", baseURL, parameters[@"type"], parameters[@"id"]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [delegate requestDidLoadTimeTable:responseObject ofType:itemType withID:itemID];
+        [delegate requestDidLoadTimeTable:responseObject info:parameters];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         [delegate requestDidFailWithError:error];
     }];

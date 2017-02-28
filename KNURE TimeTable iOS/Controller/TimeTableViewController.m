@@ -282,10 +282,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     return view;
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
-    return [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
-}
-
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -343,9 +339,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 #pragma mark - ModalViewDelegate
 
-- (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType {
+- (void)didSelectItemWithParameters:(NSDictionary *)parameters {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [Request loadTimeTableOfType:itemType itemID:itemID delegate:self];
+    [Request loadTimeTableWithParameters:parameters delegate:self];
 }
 
 #pragma mark - URLRequestDelegate
@@ -358,43 +354,43 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType withID:(NSNumber *)itemID {
-    [[EventParser sharedInstance]parseTimeTable:data itemID:itemID callBack:^{
+- (void)requestDidLoadTimeTable:(id)data info:(NSDictionary *)selectedItem {
+    [[EventParser sharedInstance]parseTimeTable:data itemID:selectedItem[@"id"] callBack:^{
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", itemID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
         Item *item = [Item MR_findFirstWithPredicate:predicate];
         
         NSDate *lastUpdate = [NSDate date];
         
         if (item) {
-            
-            NSDictionary *selecterItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:itemType]};
-            [[NSUserDefaults standardUserDefaults]setObject:selecterItem forKey:TimetableSelectedItem];
+            [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
             [[NSUserDefaults standardUserDefaults]synchronize];
-            
             item.last_update = lastUpdate;
             [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
-            
-            [self setupFetchRequestWithItem:selecterItem];
+            [self setupFetchRequestWithItem:selectedItem];
+            [self setupProperties];
+            CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+            [self resizeHeightForSize:size];
+            [self setupDropDownControllerWithItem:selectedItem];
             [self.collectionView reloadData];
         } else {
-            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
                 Item *item = [Item MR_createEntityInContext:localContext];
-                item.id = itemID;
-                item.title = @"title";
+                item.id = selectedItem[@"id"];
+                item.title = selectedItem[@"title"];
                 item.last_update = lastUpdate;
-                item.type = itemType;
-                //if ([[record allKeys] containsObject:@"full_name"]) {
-                //    item.full_name = record[@"full_name"];
-                //}
+                item.type = [selectedItem[@"type"]integerValue];
                 [localContext MR_saveToPersistentStoreAndWait];
+            } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+                [self setupFetchRequestWithItem:selectedItem];
+                [self setupProperties];
+                CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+                [self resizeHeightForSize:size];
+                [self setupDropDownControllerWithItem:selectedItem];
+                [self.collectionView reloadData];
             }];
-            
-            //TODO: обработка ситуации, если объекта не существует
         }
-        
-        
     }];
 }
 
@@ -403,7 +399,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (IBAction)refreshCurrentTimeTable {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [Request loadTimeTableOfType:[selectedItem[@"type"] intValue] itemID:selectedItem[@"id"] delegate:self];
+    [Request loadTimeTableWithParameters:selectedItem delegate:self];
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {

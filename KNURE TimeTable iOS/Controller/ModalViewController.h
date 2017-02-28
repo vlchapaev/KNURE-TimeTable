@@ -13,7 +13,7 @@
 
 @protocol ModalViewControllerDelegate <NSObject>
 
-- (void)didSelectItem:(NSNumber *)itemID title:(NSString *)title ofType:(ItemType)itemType;
+- (void)didSelectItemWithParameters:(NSDictionary *)parameters;
 
 @end
 

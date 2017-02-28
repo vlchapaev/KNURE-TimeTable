@@ -38,7 +38,7 @@
     self.searchController.hidesNavigationBarDuringPresentation = NO;
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     self.searchController.searchBar.delegate = self;
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.navigationItem.titleView = self.searchController.searchBar;
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
     
@@ -71,7 +71,7 @@
 #pragma mark - Logic
 
 - (void)getItemList {
-    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     [Request loadItemListOfType:self.itemType delegate:self];
 }
 
@@ -89,12 +89,12 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
         }
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
     }];
 }
 
 - (void)requestDidFailWithError:(NSError *)error {
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.tableView animated:YES];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
@@ -112,7 +112,7 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = searchController.searchBar.text;
     [self searchForText:searchString scope:[[self.searchController.searchBar scopeButtonTitles] objectAtIndex:[self.searchController.searchBar selectedScopeButtonIndex]]];
-    [self.tableView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
@@ -182,6 +182,8 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    [self doneButtonTap];
 }
 
 @end

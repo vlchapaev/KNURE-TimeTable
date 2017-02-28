@@ -18,7 +18,7 @@ extern NSString *const RequestAddressAuditoryList;
 
 @optional
 - (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType;
-- (void)requestDidLoadTimeTable:(id)data ofType:(ItemType)itemType withID:(NSNumber *)itemID;
+- (void)requestDidLoadTimeTable:(id)data info:(NSDictionary *)selectedItem;
 - (void)requestDidFailWithError:(NSError *)error;
 - (void)requestDidFinishLoading;
 
@@ -27,7 +27,7 @@ extern NSString *const RequestAddressAuditoryList;
 @interface Request : NSObject
 
 + (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate;
-+ (void)loadTimeTableOfType:(ItemType)itemType itemID:(NSNumber *)itemID delegate:(id)delegate;
++ (void)loadTimeTableWithParameters:(NSDictionary *)parameters delegate:(id)delegate;
 
 + (NSURLRequest *)getGroupList;
 + (NSURLRequest *)getTeacherList;

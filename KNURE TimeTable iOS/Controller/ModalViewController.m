@@ -70,18 +70,6 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [UIView animateWithDuration:1
-                          delay:0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-                     } completion:nil];
-    
-}
-
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
@@ -188,8 +176,8 @@
         title = [self.groups[indexPath.row] valueForKey:@"name"];
         itemID = [self.groups[indexPath.row] valueForKey:@"id"];
     }
-    
-    [self.delegate didSelectItem:itemID title:title ofType:itemType];
+    NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
+    [self.delegate didSelectItemWithParameters:parameters];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
