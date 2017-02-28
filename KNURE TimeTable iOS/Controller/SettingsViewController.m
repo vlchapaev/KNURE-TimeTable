@@ -73,6 +73,19 @@
 #pragma mark - Events
 
 - (void)showQRCode {
+    UIViewController *controller = [[UIViewController alloc]init];
+    controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    controller.view.backgroundColor = [UIColor clearColor];
+    
+    UIImage *qrCode = [UIImage imageNamed:@"qr-code"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height)];
+    imageView.image = qrCode;
+    imageView.clipsToBounds = YES;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [controller.view addSubview:imageView];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)openGithub {
@@ -86,6 +99,8 @@
 }
 
 - (IBAction)darkModeSwitchValueChanged:(UISwitch *)sender {
+    [UITableView appearance].backgroundColor = [UIColor flatBlackColor];
+    [UITableViewCell appearance].backgroundColor = [UIColor flatBlackColor];
 }
 
 - (IBAction)removeEmptyDaysSwitchValueChanged:(UISwitch *)sender {

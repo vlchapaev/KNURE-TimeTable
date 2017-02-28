@@ -214,9 +214,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (void)resizeHeightForSize:(CGSize)size {
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    [self.collectionViewCalendarLayout invalidateLayout];
     if (!self.isVerticalMode) {
-        [self.collectionViewCalendarLayout invalidateLayoutCache];
-        [self.collectionViewCalendarLayout invalidateLayout];
         self.collectionViewCalendarLayout.hourHeight = (size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
     }
 }

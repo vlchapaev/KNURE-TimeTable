@@ -32,11 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorColor = [UIColor clearColor];
     self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
-    self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchController.searchBar.delegate = self;
     self.navigationItem.titleView = self.searchController.searchBar;
     self.definesPresentationContext = NO;
@@ -45,23 +46,6 @@
     self.selectedItems = [[NSMutableArray alloc]init];
     
     [self getItemList];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-        for(NSDictionary *record in self.selectedItems) {
-            Item *item = [Item MR_createEntityInContext:localContext];
-            item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
-            item.title = record[@"title"];
-            item.last_update = nil;
-            item.type = self.itemType;
-            if ([[record allKeys] containsObject:@"full_name"]) {
-                item.full_name = record[@"full_name"];
-            }
-        }
-        [localContext MR_saveToPersistentStoreAndWait];
-    }];
 }
 
 - (void)dealloc {
@@ -101,12 +85,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark - Events
-
-- (IBAction)doneButtonTap {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - UISearchBarDelegate
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -133,6 +111,7 @@
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     self.datasource = response;
+    self.tableView.separatorColor = [UIColor flatGrayColor];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
@@ -183,7 +162,19 @@
     
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    [self doneButtonTap];
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+        Item *item = [Item MR_createEntityInContext:localContext];
+        item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
+        item.title = record[@"title"];
+        item.last_update = nil;
+        item.type = self.itemType;
+        if ([[record allKeys] containsObject:@"full_name"]) {
+            item.full_name = record[@"full_name"];
+        }
+        [localContext MR_saveToPersistentStoreAndWait];
+    } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 @end
