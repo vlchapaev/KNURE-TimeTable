@@ -268,9 +268,9 @@ CGFloat const dayColumnHeaderHeight = 40;
         NSDate *startOfDay = [[NSCalendar currentCalendar] startOfDayForDate:day];
         NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
         
+        dayColumnHeader.formatter = self.formatter;
         dayColumnHeader.day = day;
         dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
-        dayColumnHeader.formatter = self.formatter;
         
         return dayColumnHeader;
         
