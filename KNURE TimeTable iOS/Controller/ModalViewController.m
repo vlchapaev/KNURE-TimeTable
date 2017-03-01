@@ -31,9 +31,9 @@
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         self.view.backgroundColor = [UIColor clearColor];
         
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(30, 70, self.view.frame.size.width - 60, self.view.frame.size.height - 140) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(30, 70, self.view.frame.size.width - 60, self.view.frame.size.height - 140) style:UITableViewStyleGrouped];
         self.tableView.backgroundColor = [UIColor clearColor];
-        self.tableView.separatorColor = [UIColor clearColor];
+        self.tableView.separatorColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.3];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.layer.cornerRadius = 10;
@@ -102,60 +102,79 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0: return 1; break;
-        case 1: return 1; break;
-        case 2: return self.teachers.count; break;
-        case 3: return self.groups.count; break;
+        case 0: return 2; break;
+        case 1: return self.teachers.count; break;
+        case 2: return self.groups.count; break;
         default: return 0; break;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
-    
+    UITableViewCell *cell;
     if (indexPath.section == 0) {
-        cell.detailTextLabel.text = self.type;
-        cell.textLabel.text = @"Type";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.userInteractionEnabled = NO;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1"];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2"];
+    }
+    
+    if (!cell) {
+        if (indexPath.section == 0) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell1"];
+        } else {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell2"];
+        }
+    }
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.detailTextLabel.text = self.type;
+            cell.textLabel.text = NSLocalizedString(@"ModalView_Type", nil);
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+        } else if (indexPath.row == 1) {
+            cell.detailTextLabel.text = self.auditory;
+            cell.textLabel.text = NSLocalizedString(@"ModalView_Auditory", nil);
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+        }
         
-    } else if (indexPath.section == 1) {
-        cell.detailTextLabel.text = self.auditory;
-        cell.textLabel.text = @"Auditory";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.userInteractionEnabled = NO;
+    }  else if (indexPath.section == 1) {
+        cell.textLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
+        cell.tag = [[self.teachers[indexPath.row] valueForKey:@"id"] integerValue];
         
     } else if (indexPath.section == 2) {
-        cell.detailTextLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
-        cell.tag = [[self.teachers[indexPath.row] valueForKey:@"id"] integerValue];
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Teachers";
-        }
-        
-    } else if (indexPath.section == 3) {
-        cell.detailTextLabel.text = [self.groups[indexPath.row] valueForKey:@"name"];
+        cell.textLabel.text = [self.groups[indexPath.row] valueForKey:@"name"];
         cell.tag = [[self.groups[indexPath.row] valueForKey:@"id"] integerValue];
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Groups";
-        }
     }
     
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
     
     cell.detailTextLabel.textColor = [UIColor whiteColor];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.detailTextLabel.numberOfLines = 0;
     
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return NSLocalizedString(@"ModalView_Teacher", nil);
+    } else if (section == 2) {
+        return NSLocalizedString(@"ModalView_Groups", nil);
+    }
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView *)view;
+    headerView.textLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
+    headerView.textLabel.textColor = [UIColor whiteColor];
 }
 
 #pragma mark - UITablViewDelegate
@@ -167,7 +186,7 @@
     ItemType itemType;
     NSString *title;
     NSNumber *itemID;
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
         itemType = ItemTypeTeacher;
         title = [self.teachers[indexPath.row] valueForKey:@"short_name"];
         itemID = [self.teachers[indexPath.row] valueForKey:@"id"];
@@ -181,6 +200,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        return 25;
+    }
     return UITableViewAutomaticDimension;
 }
 
