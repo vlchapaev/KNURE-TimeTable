@@ -17,7 +17,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
 @implementation Request
 
 + (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate {
-    NSString *address = [[NSString alloc]init];
+    NSString *address = nil;
     switch (itemType) {
         case ItemTypeGroup:
             address = RequestAddressGroupList;

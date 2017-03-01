@@ -15,7 +15,7 @@
 }
 
 - (NSString *)segueIdentifierForIndexPathInLeftMenu:(NSIndexPath *)indexPath {
-    NSString *identifier = [[NSString alloc]init];
+    NSString *identifier = nil;
     switch (indexPath.row) {
         case 0: identifier = @"Timetable"; break;
         case 4: identifier = @"Information"; break;

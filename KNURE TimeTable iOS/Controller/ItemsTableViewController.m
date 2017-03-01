@@ -132,10 +132,10 @@
         }];
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        cell.detailTextLabel.text = @"Не удалось обновить расписание";
+        cell.detailTextLabel.text = NSLocalizedString(@"ItemList_FailedToUpdate", nil);
         [indicator stopAnimating];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     }];

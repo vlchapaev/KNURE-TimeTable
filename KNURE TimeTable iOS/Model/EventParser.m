@@ -21,7 +21,7 @@
 }
 
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType {
-    NSMutableArray *items = [[NSMutableArray alloc]init];
+    NSMutableArray *items = nil;
     NSMutableArray *sections = nil;
     switch (itemType) {
         case ItemTypeGroup:

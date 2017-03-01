@@ -38,11 +38,11 @@
     
     if (indexPath.section == 1) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Share" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *qrCode = [UIAlertAction actionWithTitle:@"QR Code" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self showQRCode];
         }];
-        UIAlertAction *other = [UIAlertAction actionWithTitle:@"Other" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *other = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Other", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSString *text = @"KNURE Timetable for iOS";
             NSURL *url = [[NSURL alloc]initWithString:@"https://itunes.apple.com/us/app/knure-sked/id797074875"];
             UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:@[text, url] applicationActivities:nil];
