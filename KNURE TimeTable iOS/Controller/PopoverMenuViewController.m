@@ -15,18 +15,12 @@
 
 @implementation PopoverMenuViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    self.preferredContentSize = CGSizeMake(320, 230);
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Navigation
-
-
 
 #pragma mark - UITableViewDelegate 
 

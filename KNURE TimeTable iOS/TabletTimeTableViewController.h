@@ -10,4 +10,6 @@
 
 @interface TabletTimeTableViewController : TimeTableViewController
 
+@property (strong, nonatomic) IBOutlet UIButton *groupButton;
+
 @end

@@ -34,12 +34,23 @@
     self.tableView.emptyDataSetSource = self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %i", self.itemType];
     self.datasource = [[Item MR_findAllSortedBy:@"last_update" ascending:NO withPredicate:filter] mutableCopy];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     [self.tableView reloadEmptyDataSet];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (CGSize)preferredContentSize {
+    return CGSizeMake(400, 500);
 }
 
 #pragma mark - UITableViewDataSource

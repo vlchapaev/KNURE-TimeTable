@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Teachers"; ObjectID = "5Jn-kn-2BX"; */
+"5Jn-kn-2BX.text" = "Преподаватели";
+
+/* Class = "UILabel"; text = "Auditories"; ObjectID = "WXK-VC-6N2"; */
+"WXK-VC-6N2.text" = "Аудитории";
+
+/* Class = "UIButton"; normalTitle = "Group"; ObjectID = "gHC-6k-oak"; */
+"gHC-6k-oak.normalTitle" = "Group";
+
+/* Class = "UILabel"; text = "Groups"; ObjectID = "q3E-tf-ULB"; */
+"q3E-tf-ULB.text" = "Группы";

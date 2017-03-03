@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  KNURE TimeTable
+
+  Created by Vlad Chapaev on 26.07.15.
+  Copyright (c) 2015 Vlad Chapaev. All rights reserved.
+*/
+
+Interface_Error = "Error";
+Interface_Loading = "Downloading list";
+Interface_Ok = "Ok";
+Interface_Cancel = "Cancel";
+Interface_Other = "Other";
+
+TimeTable_NoItems = "";
+TimeTable_NoItemsMessage = "";
+
+ModalView_Type = "Type";
+ModalView_Auditory = "Auditory";
+ModalView_Teacher = "Teacher";
+ModalView_Groups = "Groups";
+
+ItemList_Groups = "Groups";
+ItemList_Teachers = "Teachers";
+ItemList_Auditories = "Auditories";
+ItemList_Not_Updated = "Not updated";
+ItemList_Updated = "Updated";
+
+ItemList_FailedToParseList = "Failed to process response";
+ItemList_FailedToUpdate = "Failed to update timetable";

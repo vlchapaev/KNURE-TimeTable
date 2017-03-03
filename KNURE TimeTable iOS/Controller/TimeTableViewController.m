@@ -46,12 +46,13 @@ CGFloat const dayColumnHeaderHeight = 40;
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewControllerDelegate, URLRequestDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray <NSDate *>* pairDates;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
+
+@property (assign, nonatomic) BOOL isRunningInFullScreen;
 
 @property (assign, nonatomic) BOOL isVerticalMode;
 @property (assign, nonatomic) BOOL isDarkMode;
@@ -65,6 +66,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (self) {
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;
+        //TODO: Fix
+        self.isRunningInFullScreen = CGRectEqualToRect([UIApplication sharedApplication].delegate.window.frame, [UIApplication sharedApplication].delegate.window.screen.bounds);
         self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     }
     return self;
@@ -83,10 +86,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self setupProperties];
     [self setupCollectionView];
     [self addDoubleTapGesture];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -130,6 +129,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupProperties {
     self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
+    if (!self.isRunningInFullScreen) {
+        self.isVerticalMode = YES;
+    }
     self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
@@ -325,17 +327,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     return lesson.day;
 }
 
-#pragma mark - Notification Center
-
-- (void)didReceiveNotification:(NSNotification *)notification {
-    [self setupFetchRequestWithItem:notification.object];
-    [self setupProperties];
-    CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
-    [self resizeHeightForSize:size];
-    [self.collectionView reloadEmptyDataSet];
-    [self.collectionView reloadData];
-}
-
 #pragma mark - ModalViewDelegate
 
 - (void)didSelectItemWithParameters:(NSDictionary *)parameters {
@@ -371,7 +362,9 @@ CGFloat const dayColumnHeaderHeight = 40;
             [self setupProperties];
             CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
             [self resizeHeightForSize:size];
-            [self setupDropDownControllerWithItem:selectedItem];
+            if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+                [self setupDropDownControllerWithItem:selectedItem];
+            }
             [self.collectionView reloadData];
         } else {
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
@@ -386,7 +379,9 @@ CGFloat const dayColumnHeaderHeight = 40;
                 [self setupProperties];
                 CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
                 [self resizeHeightForSize:size];
-                [self setupDropDownControllerWithItem:selectedItem];
+                if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+                    [self setupDropDownControllerWithItem:selectedItem];
+                }
                 [self.collectionView reloadData];
             }];
         }

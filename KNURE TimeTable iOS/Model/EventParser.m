@@ -149,11 +149,11 @@
     return nil;
 }
 
-- (id)getItems:(id)items withIDs:(id)itemIDs {
+- (id)getItems:(id)items withIDs:(NSArray *)itemIDs {
     NSMutableArray *itemList = [[NSMutableArray alloc]init];
     for (NSNumber *itemID in itemIDs) {
         for (NSDictionary *record in items) {
-            if ([record valueForKey:@"id"] == itemID) {
+            if ([[record valueForKey:@"id"] integerValue] == [itemID integerValue]) {
                 [itemList addObject:record];
             }
         }

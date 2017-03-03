@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  KNURE TimeTable
+
+  Created by Vlad Chapaev on 26.07.15.
+  Copyright (c) 2015 Vlad Chapaev. All rights reserved.
+*/
+
+Interface_Error = "Ошибка";
+Interface_Loading = "Загружаю список";
+Interface_Ok = "Хорошо";
+Interface_Cancel = "Отмена";
+Interface_Other = "Другое";
+
+TimeTable_NoItems = "";
+TimeTable_NoItemsMessage = "";
+
+ModalView_Type = "Тип";
+ModalView_Auditory = "Аудитория";
+ModalView_Teacher = "Преподаватель";
+ModalView_Groups = "Группы";
+
+ItemList_Groups = "Группы";
+ItemList_Teachers = "Преподаватели";
+ItemList_Auditories = "Аудитории";
+ItemList_Not_Updated = "Не обновлено";
+ItemList_Updated = "Обновлено";
+
+ItemList_FailedToParseList = "Не удалось обработать ответ от сервера";
+ItemList_FailedToUpdate = "Не удалось обновить расписание";

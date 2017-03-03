@@ -1,0 +1,191 @@
+//
+//  PopoverModalViewController.m
+//  KNURE TimeTable
+//
+//  Created by Vlad Chapaev on 01.03.17.
+//  Copyright © 2017 Vlad Chapaev. All rights reserved.
+//
+
+#import "PopoverModalViewController.h"
+
+@interface PopoverModalViewController ()
+
+@property (strong, nonatomic) UIView *headerView;
+@property (strong, nonatomic) UILabel *titleLabel;
+
+@property (strong, nonatomic) NSString *auditory;
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSArray *teachers;
+@property (strong, nonatomic) NSArray *groups;
+
+@end
+
+@implementation PopoverModalViewController
+
+- (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        self.delegate = delegate;
+        
+        self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
+        self.tableView.tableHeaderView = self.headerView;
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.showsVerticalScrollIndicator = NO;
+        
+        self.titleLabel = [UILabel new];
+        self.titleLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.numberOfLines = 0;
+        self.titleLabel.text = lesson.title;
+        self.titleLabel.font = [UIFont systemFontOfSize:20 weight:UIFontWeightRegular];
+        self.titleLabel.backgroundColor = [UIColor clearColor];
+        self.titleLabel.clipsToBounds = YES;
+        self.titleLabel.layer.cornerRadius = 10;
+        
+        self.type = lesson.type_title;
+        self.auditory = lesson.auditory;
+        self.groups = (NSArray *)lesson.groups;
+        self.teachers = (NSArray *)lesson.teachers;
+        
+        [self.headerView addSubview:self.titleLabel];
+        
+        [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.headerView.right).offset(-8);
+            make.left.equalTo(self.headerView.left).offset(8);
+            make.top.equalTo(self.headerView.top).offset(8);
+            make.bottom.equalTo(self.headerView.bottom).offset(-8);
+        }];
+    }
+    return self;
+}
+
+#pragma mark - UIViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.titleLabel sizeToFit];
+    
+    CGFloat headerHeight = self.titleLabel.frame.size.height + 40;
+    [self.headerView setFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
+    
+    self.tableView.tableHeaderView = self.headerView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.preferredContentSize = CGSizeMake(400, self.tableView.contentSize.height);
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0: return 2; break;
+        case 1: return self.teachers.count; break;
+        case 2: return self.groups.count; break;
+        default: return 0; break;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1"];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2"];
+    }
+    
+    if (!cell) {
+        if (indexPath.section == 0) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell1"];
+        } else {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell2"];
+        }
+    }
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.detailTextLabel.text = self.type;
+            cell.textLabel.text = NSLocalizedString(@"ModalView_Type", nil);
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+        } else if (indexPath.row == 1) {
+            cell.detailTextLabel.text = self.auditory;
+            cell.textLabel.text = NSLocalizedString(@"ModalView_Auditory", nil);
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+        }
+        
+    }  else if (indexPath.section == 1) {
+        cell.textLabel.text = [self.teachers[indexPath.row] valueForKey:@"full_name"];
+        cell.tag = [[self.teachers[indexPath.row] valueForKey:@"id"] integerValue];
+        
+    } else if (indexPath.section == 2) {
+        cell.textLabel.text = [self.groups[indexPath.row] valueForKey:@"name"];
+        cell.tag = [[self.groups[indexPath.row] valueForKey:@"id"] integerValue];
+    }
+    
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.numberOfLines = 0;
+    
+    cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.numberOfLines = 0;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return NSLocalizedString(@"ModalView_Teacher", nil);
+    } else if (section == 2) {
+        return NSLocalizedString(@"ModalView_Groups", nil);
+    }
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView *)view;
+    headerView.textLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
+    headerView.textLabel.textColor = [UIColor blackColor];
+}
+
+#pragma mark - UITablViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    ItemType itemType;
+    NSString *title;
+    NSNumber *itemID;
+    if (indexPath.section == 1) {
+        itemType = ItemTypeTeacher;
+        title = [self.teachers[indexPath.row] valueForKey:@"short_name"];
+        itemID = [self.teachers[indexPath.row] valueForKey:@"id"];
+    } else {
+        itemType = ItemTypeGroup;
+        title = [self.groups[indexPath.row] valueForKey:@"name"];
+        itemID = [self.groups[indexPath.row] valueForKey:@"id"];
+    }
+    NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
+    [self.delegate didSelectItemWithParameters:parameters];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        return 25;
+    }
+    return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+@end

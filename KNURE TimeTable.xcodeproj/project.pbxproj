@@ -39,6 +39,7 @@
 		776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */; };
 		776A1B6D1E242EC90055DCB4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B651E242EC90055DCB4 /* PFTableView.m */; };
 		776A1B6E1E242EC90055DCB4 /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B671E242EC90055DCB4 /* PFTableViewCell.m */; };
+		7773AA111E69699A00DDBDF9 /* MainIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
 		778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item+CoreDataClass.m */; };
@@ -52,9 +53,9 @@
 		778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
 		778E3ADB1DCB9F8D0083A658 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */; };
 		779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */; };
-		779CF1FA1DE9EC7F002C9CA5 /* MainIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */; };
 		779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */; };
 		779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */; };
+		77B056361E6720C000351AF7 /* PopoverModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B056351E6720C000351AF7 /* PopoverModalViewController.m */; };
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
@@ -146,6 +147,8 @@
 		776A1B651E242EC90055DCB4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
 		776A1B661E242EC90055DCB4 /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
 		776A1B671E242EC90055DCB4 /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
+		7773AA121E69699A00DDBDF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIpad.storyboard; sourceTree = "<group>"; };
+		7773AA151E69699E00DDBDF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainIpad.strings; sourceTree = "<group>"; };
 		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
 		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
@@ -173,12 +176,13 @@
 		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
 		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletTimeTableViewController.h; sourceTree = "<group>"; };
 		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabletTimeTableViewController.m; sourceTree = "<group>"; };
-		779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainIpad.storyboard; sourceTree = "<group>"; };
 		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
 		779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverMenuViewController.m; path = Controller/PopoverMenuViewController.m; sourceTree = "<group>"; };
 		779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverComboBoxViewController.h; path = Controller/PopoverComboBoxViewController.h; sourceTree = "<group>"; };
 		779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverComboBoxViewController.m; path = Controller/PopoverComboBoxViewController.m; sourceTree = "<group>"; };
 		77B056331E67116200351AF7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		77B056341E6720C000351AF7 /* PopoverModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverModalViewController.h; path = Controller/PopoverModalViewController.h; sourceTree = "<group>"; };
+		77B056351E6720C000351AF7 /* PopoverModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverModalViewController.m; path = Controller/PopoverModalViewController.m; sourceTree = "<group>"; };
 		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -248,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
-				779CF1F91DE9EC7F002C9CA5 /* MainIpad.storyboard */,
+				7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */,
 				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 				778E3AC01DCB99A90083A658 /* CollectionView elements */,
 				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
@@ -391,6 +395,8 @@
 				779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */,
 				779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */,
 				779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */,
+				77B056341E6720C000351AF7 /* PopoverModalViewController.h */,
+				77B056351E6720C000351AF7 /* PopoverModalViewController.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -588,7 +594,7 @@
 				776A1B6A1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle in Resources */,
 				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
-				779CF1FA1DE9EC7F002C9CA5 /* MainIpad.storyboard in Resources */,
+				7773AA111E69699A00DDBDF9 /* MainIpad.storyboard in Resources */,
 				772025471B51075D0082929F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,6 +723,7 @@
 				778E3AB81DCB86190083A658 /* Item+CoreDataProperties.m in Sources */,
 				C33FCC771819965300328F6D /* AppDelegate.m in Sources */,
 				778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */,
+				77B056361E6720C000351AF7 /* PopoverModalViewController.m in Sources */,
 				778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */,
@@ -763,6 +770,15 @@
 			);
 			name = InfoPlist.strings;
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7773AA121E69699A00DDBDF9 /* Base */,
+				7773AA151E69699E00DDBDF9 /* ru */,
+			);
+			name = MainIpad.storyboard;
 			sourceTree = "<group>";
 		};
 		77B0E0F21B656A4F00D4506E /* Localizable.strings */ = {

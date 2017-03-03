@@ -21,10 +21,16 @@ extern NSString *const TimetableDidUpdateDataNotification;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 /**
  Используется для перерисовки интерфейса при повороте экрана
 */
 - (void)resizeHeightForSize:(CGSize)size;
+
+- (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem;
+- (void)setupProperties;
+- (void)didSelectItemWithParameters:(NSDictionary *)parameters;
 
 - (IBAction)refreshCurrentTimeTable;
 
