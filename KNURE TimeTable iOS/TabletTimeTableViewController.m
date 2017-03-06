@@ -32,7 +32,6 @@
 #pragma mark - Setup
 
 - (void)setupGroupButtonWithItem:(NSDictionary *)item {
-    
     [self.groupButton setTitle:item[@"title"] forState:UIControlStateNormal];
 }
 
@@ -94,7 +93,6 @@
 
 - (void)didSelectItemWithParameters:(NSDictionary *)parameters {
     [super didSelectItemWithParameters:parameters];
-    //TODO: group button re setup
 }
 
 #pragma mark - PopoverComboBoxViewControllerDelegate 

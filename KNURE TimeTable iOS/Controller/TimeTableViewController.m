@@ -364,6 +364,8 @@ CGFloat const dayColumnHeaderHeight = 40;
             [self resizeHeightForSize:size];
             if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
                 [self setupDropDownControllerWithItem:selectedItem];
+            } else {
+                [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selectedItem];
             }
             [self.collectionView reloadData];
         } else {
@@ -381,6 +383,8 @@ CGFloat const dayColumnHeaderHeight = 40;
                 [self resizeHeightForSize:size];
                 if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
                     [self setupDropDownControllerWithItem:selectedItem];
+                } else {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selectedItem];
                 }
                 [self.collectionView reloadData];
             }];
