@@ -12,8 +12,8 @@ Interface_Ok = "Хорошо";
 Interface_Cancel = "Отмена";
 Interface_Other = "Другое";
 
-TimeTable_NoItems = "";
-TimeTable_NoItemsMessage = "";
+TimeTable_NoItems = "Нет расписания";
+TimeTable_NoItemsMessage = "Добавьте группы, преподавателей или аудитории, чтобы вывести их расписание";
 
 ModalView_Type = "Тип";
 ModalView_Auditory = "Аудитория";
@@ -25,6 +25,11 @@ ItemList_Teachers = "Преподаватели";
 ItemList_Auditories = "Аудитории";
 ItemList_Not_Updated = "Не обновлено";
 ItemList_Updated = "Обновлено";
-
+ItemList_NoGroups = "Список групп пуст";
+ItemList_NoTeachers = "Список преподавателей пуст";
+ItemList_NoClassrooms = "Список аудиторий пуст";
+ItemList_AddGroupsHint = "Нажмите значок + чтобы добавить группы, расписание которых необходимо отобразить";
+ItemList_AddTeachersHint = "Нажмите значок + чтобы добавить преподавателей, расписание которых необходимо отобразить";
+ItemList_AddClassroomsHint = "Нажмите значок + чтобы добавить аудитории, расписание которых необходимо отобразить";
 ItemList_FailedToParseList = "Не удалось обработать ответ от сервера";
 ItemList_FailedToUpdate = "Не удалось обновить расписание";

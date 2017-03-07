@@ -407,7 +407,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Нет расписания";
+    NSString *text = NSLocalizedString(@"TimeTable_NoItems", nil);
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
@@ -416,7 +416,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Добавьте группы, чтобы вывести их расписание";
+    NSString *text = NSLocalizedString(@"TimeTable_NoItemsMessage", nil);
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;

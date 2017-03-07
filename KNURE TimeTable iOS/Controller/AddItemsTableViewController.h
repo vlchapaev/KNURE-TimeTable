@@ -11,8 +11,17 @@
 
 #import "EventParser.h"
 
+@protocol AddItemsTableViewControllerDelegate <NSObject>
+
+@required
+- (void)didSelectItem:(NSDictionary *)record ofType:(ItemType)type;
+
+@end
+
 @interface AddItemsTableViewController : UITableViewController
 
 @property (assign, nonatomic) ItemType itemType;
+
+@property (weak, nonatomic) id <AddItemsTableViewControllerDelegate> delegate;
 
 @end

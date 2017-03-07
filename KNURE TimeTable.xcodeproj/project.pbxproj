@@ -34,7 +34,6 @@
 		7729633B1DDB14E40069EBCC /* Lesson+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson+CoreDataProperties.m */; };
 		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
 		776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */; };
-		776A1B6A1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */; };
 		776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */; };
 		776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */; };
 		776A1B6D1E242EC90055DCB4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B651E242EC90055DCB4 /* PFTableView.m */; };
@@ -138,7 +137,6 @@
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
 		776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
-		776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PFNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
 		776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
 		776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
 		776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableCellContentView.h; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 			children = (
 				776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */,
 				776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */,
-				776A1B5F1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle */,
 				776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */,
 				776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */,
 				776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */,
@@ -591,7 +588,6 @@
 			files = (
 				77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */,
 				77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */,
-				776A1B6A1E242EC90055DCB4 /* PFNavigationDropdownMenu.bundle in Resources */,
 				77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */,
 				C33FCC7F1819965300328F6D /* Images.xcassets in Resources */,
 				7773AA111E69699A00DDBDF9 /* MainIpad.storyboard in Resources */,

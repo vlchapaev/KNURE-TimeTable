@@ -16,9 +16,9 @@
 #import "NSDate+DateTools.h"
 #import "Request.h"
 
-@interface ItemsTableViewController() <DZNEmptyDataSetSource>
+@interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate>
 
-@property (strong, nonatomic) NSMutableArray <Item *>* datasource;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -32,31 +32,44 @@
     self.navigationItem.title = self.headerTitle;
     
     self.tableView.emptyDataSetSource = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
-    self.navigationController.navigationBarHidden = NO;
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %i", self.itemType];
-    self.datasource = [[Item MR_findAllSortedBy:@"last_update" ascending:NO withPredicate:filter] mutableCopy];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self.tableView reloadEmptyDataSet];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self setupFetchRequest];
 }
 
 - (CGSize)preferredContentSize {
     return CGSizeMake(400, 500);
 }
 
+#pragma mark - Setups
+
+- (void)setupFetchRequest {
+    NSFetchRequest *fetchRequest = [Item fetchRequest];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"type == %li", self.itemType];
+    
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"last_update" ascending:NO]];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:nil cacheName:nil];
+    
+    self.fetchedResultsController.delegate = self;
+    
+    [[self.fetchedResultsController fetchRequest] setPredicate:filter];
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadEmptyDataSet];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.datasource.count;
+    return [self.fetchedResultsController.sections.firstObject numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,7 +77,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Item"];
     }
-    Item *item = self.datasource[indexPath.row];
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = item.title;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
@@ -77,7 +90,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-        Item *item = self.datasource[indexPath.row];
+        Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
         NSArray <Lesson *>*lessons = [Lesson MR_findAllWithPredicate:filter];
         for(Lesson *lesson in lessons) {
@@ -86,10 +99,6 @@
         [item MR_deleteEntityInContext:localContext];
         [localContext MR_saveToPersistentStoreAndWait];
     }];
-    
-    [self.datasource removeObjectAtIndex:indexPath.row];
-    [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView reloadEmptyDataSet];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,7 +122,7 @@
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     cell.accessoryView = indicator;
-    Item *item = self.datasource[indexPath.row];
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [indicator startAnimating];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -155,7 +164,21 @@
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Нет групп";
+    NSString *text = nil;
+    
+    switch (self.itemType) {
+        case ItemTypeGroup:
+            text = NSLocalizedString(@"ItemList_NoGroups", nil);
+            break;
+            
+        case ItemTypeTeacher:
+            text = NSLocalizedString(@"ItemList_NoTeachers", nil);
+            break;
+            
+        case ItemtypeAuditory:
+            text = NSLocalizedString(@"ItemList_NoClassrooms", nil);
+            break;
+    }
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
@@ -164,7 +187,21 @@
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Нажмите значок + чтобы добавить группы, преподавателей или аудитории, расписание которых необходимо отобразить.";
+    NSString *text = nil;
+    
+    switch (self.itemType) {
+        case ItemTypeGroup:
+            text = NSLocalizedString(@"ItemList_AddGroupsHint", nil);
+            break;
+            
+        case ItemTypeTeacher:
+            text = NSLocalizedString(@"ItemList_AddTeachersHint", nil);
+            break;
+            
+        case ItemtypeAuditory:
+            text = NSLocalizedString(@"ItemList_AddClassroomsHint", nil);
+            break;
+    }
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -183,7 +220,24 @@
     if ([segue.identifier isEqualToString:@"AddItems"]) {
         AddItemsTableViewController *controller = [segue destinationViewController];
         controller.itemType = self.itemType;
+        controller.delegate = self;
     }
+}
+
+#pragma mark - AddItemsTableViewControllerDelegate
+
+- (void)didSelectItem:(NSDictionary *)record ofType:(ItemType)type {
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+        Item *item = [Item MR_createEntityInContext:localContext];
+        item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
+        item.title = record[@"title"];
+        item.last_update = nil;
+        item.type = type;
+        if ([[record allKeys] containsObject:@"full_name"]) {
+            item.full_name = record[@"full_name"];
+        }
+        [localContext MR_saveToPersistentStoreAndWait];
+    }];
 }
 
 @end

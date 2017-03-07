@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import <MagicalRecord/MagicalRecord.h>
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TodayViewController : UICollectionViewController

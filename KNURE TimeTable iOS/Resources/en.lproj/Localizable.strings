@@ -12,8 +12,8 @@ Interface_Ok = "Ok";
 Interface_Cancel = "Cancel";
 Interface_Other = "Other";
 
-TimeTable_NoItems = "";
-TimeTable_NoItemsMessage = "";
+TimeTable_NoItems = "No timetable";
+TimeTable_NoItemsMessage = "Add groups, teachers or classrooms to view their timetable";
 
 ModalView_Type = "Type";
 ModalView_Auditory = "Auditory";
@@ -25,6 +25,11 @@ ItemList_Teachers = "Teachers";
 ItemList_Auditories = "Auditories";
 ItemList_Not_Updated = "Not updated";
 ItemList_Updated = "Updated";
-
+ItemList_NoGroups = "Group list is empty";
+ItemList_NoTeachers = "Teacher list is empty";
+ItemList_NoClassrooms = "Classroom list is empty";
+ItemList_AddGroupsHint = "Tap + to add groups";
+ItemList_AddTeachersHint = "Tap + to add teachers";
+ItemList_AddClassroomsHint = "Tap + to add classrooms";
 ItemList_FailedToParseList = "Failed to process response";
 ItemList_FailedToUpdate = "Failed to update timetable";

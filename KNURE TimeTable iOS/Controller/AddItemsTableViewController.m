@@ -9,14 +9,9 @@
 #import "AddItemsTableViewController.h"
 #import "MBProgressHUD.h"
 #import "Request.h"
-#import "Item+CoreDataClass.h"
 
 @interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, URLRequestDelegate>
 
-@property (strong, nonatomic) NSMutableArray *selectedItems;
-@property (strong, nonatomic) NSMutableArray <NSIndexPath *>*selectedPaths;
-
-@property (strong, nonatomic) NSString *requestAddress;
 @property (strong, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) NSArray *datasource;
 @property (assign, nonatomic) BOOL isFiltred;
@@ -42,8 +37,6 @@
     self.navigationItem.titleView = self.searchController.searchBar;
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
-    
-    self.selectedItems = [[NSMutableArray alloc]init];
     
     [self getItemList];
 }
@@ -135,8 +128,6 @@
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
     
-    cell.accessoryType = ([self.selectedItems containsObject:record]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    
     return cell;
 }
 
@@ -156,25 +147,10 @@
     
     NSDictionary *record = (self.isFiltred) ? self.searchResults[indexPath.row] : self.datasource[indexPath.row];
     
-    if (![self.selectedItems containsObject:record]) {
-        [self.selectedItems addObject:record];
-    }
-    
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-        Item *item = [Item MR_createEntityInContext:localContext];
-        item.id = [NSNumber numberWithInteger:[record[@"id"] integerValue]];
-        item.title = record[@"title"];
-        item.last_update = nil;
-        item.type = self.itemType;
-        if ([[record allKeys] containsObject:@"full_name"]) {
-            item.full_name = record[@"full_name"];
-        }
-        [localContext MR_saveToPersistentStoreAndWait];
-    } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+    [self.delegate didSelectItem:record ofType:self.itemType];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
