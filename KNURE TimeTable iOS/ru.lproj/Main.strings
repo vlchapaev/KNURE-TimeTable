@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Remove empty days"; ObjectID = "3Ja-Kr-Gmn"; */
-"3Ja-Kr-Gmn.text" = "Удалить пустые дни";
+"3Ja-Kr-Gmn.text" = "Показывать пустые дни";
 
 /* Class = "UILabel"; text = "Classrooms"; ObjectID = "A5C-8R-erx"; */
 "A5C-8R-erx.text" = "Аудитории";

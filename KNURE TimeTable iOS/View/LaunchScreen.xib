@@ -15,7 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-yi-wPq">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-yi-wPq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nure_icon" translatesAutoresizingMaskIntoConstraints="NO" id="LKn-Nq-ASG">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
             </subviews>
@@ -23,13 +26,19 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="N8o-yi-wPq" secondAttribute="trailing" id="2sb-RJ-Whe"/>
                 <constraint firstAttribute="bottom" secondItem="N8o-yi-wPq" secondAttribute="bottom" id="80S-SA-YAZ"/>
+                <constraint firstItem="LKn-Nq-ASG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EBP-Aa-RNj"/>
+                <constraint firstAttribute="trailing" secondItem="LKn-Nq-ASG" secondAttribute="trailing" id="End-Es-D20"/>
                 <constraint firstItem="N8o-yi-wPq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gg9-O5-y0l"/>
                 <constraint firstItem="N8o-yi-wPq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WlS-bX-ybb"/>
+                <constraint firstAttribute="bottom" secondItem="LKn-Nq-ASG" secondAttribute="bottom" id="bYc-6s-rgc"/>
+                <constraint firstItem="LKn-Nq-ASG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="d9r-P1-chI"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
     <resources>
-        <image name="LaunchImage" width="1080" height="1920"/>
+        <image name="background" width="1024" height="1024"/>
+        <image name="nure_icon" width="1024" height="1024"/>
     </resources>
 </document>

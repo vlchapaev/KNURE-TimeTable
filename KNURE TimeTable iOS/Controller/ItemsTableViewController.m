@@ -36,10 +36,12 @@
     [self setupFetchRequest];
 }
 
-- (CGSize)preferredContentSize {
-    return CGSizeMake(400, 500);
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.preferredContentSize = CGSizeMake(400, 500);
 }
-
 #pragma mark - Setups
 
 - (void)setupFetchRequest {

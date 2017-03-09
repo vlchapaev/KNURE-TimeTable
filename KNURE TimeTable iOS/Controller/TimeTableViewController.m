@@ -34,7 +34,7 @@ NSString *const TimeTableCacheName = @"TimeTableCacheName";
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
-NSString *const TimetableDrawEmptyDays = @"TimetableDrawEmptyDays";
+NSString *const TimetableShowEmptyDays = @"TimetableShowEmptyDays";
 NSString *const TimetableBouncingCells = @"TimetableBouncingCells";
 
 NSString *const TimetableDidUpdateDataNotification = @"TimetableDidUpdateDataNotification";
@@ -57,6 +57,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @property (assign, nonatomic) BOOL isVerticalMode;
 @property (assign, nonatomic) BOOL isDarkMode;
+@property (assign, nonatomic) BOOL showEmptyDays;
 
 @end
 
@@ -134,6 +135,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         self.isVerticalMode = YES;
     }
     self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    self.showEmptyDays = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
+    
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
     self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;

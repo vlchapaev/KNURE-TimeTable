@@ -13,7 +13,7 @@
 extern NSString *const TimetableSelectedItem;
 extern NSString *const TimetableVerticalMode;
 extern NSString *const TimetableIsDarkMode;
-extern NSString *const TimetableDrawEmptyDays;
+extern NSString *const TimetableShowEmptyDays;
 extern NSString *const TimetableBouncingCells;
 extern NSString *const TimetableDidUpdateDataNotification;
 
