@@ -46,6 +46,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewControllerDelegate, URLRequestDelegate>
 
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
+@property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray <NSDate *>* pairDates;
@@ -178,35 +179,37 @@ CGFloat const dayColumnHeaderHeight = 40;
     for (Item *item in items) {
         [itemTitles addObject:item.title];
     }
-    PFNavigationDropdownMenu *dropDownMenu =  [[PFNavigationDropdownMenu alloc]initWithFrame:CGRectMake(0, 0, 300, 44)
+    self.dropDownMenu =  [[PFNavigationDropdownMenu alloc]initWithFrame:CGRectMake(0, 0, 300, 44)
                                                                                        title:[item valueForKey:@"title"]
                                                                                        items:itemTitles
                                                                                containerView:self.view];
     
-    dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    dropDownMenu.cellTextLabelColor = [UIColor blackColor];
-    dropDownMenu.arrowImage = [UIImage imageNamed:@"arrow_down_icon"];
-    dropDownMenu.checkMarkImage = [UIImage imageNamed:@"checkmark_icon"];
+    self.dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    self.dropDownMenu.cellTextLabelColor = [UIColor blackColor];
+    self.dropDownMenu.arrowImage = [UIImage imageNamed:@"arrow_down_icon"];
+    self.dropDownMenu.checkMarkImage = [UIImage imageNamed:@"checkmark_icon"];
     for (short index = 0; index < items.count; index++) {
         if ([item valueForKey:@"id"] == [items[index] valueForKey:@"id"]) {
-            dropDownMenu.tableView.selectedIndexPath = index;
+            self.dropDownMenu.tableView.selectedIndexPath = index;
             break;
         }
     }
-    dropDownMenu.didSelectItemAtIndexHandler = ^(NSUInteger indexPath) {
+    
+    __weak __typeof__(self) weakSelf = self;
+    self.dropDownMenu.didSelectItemAtIndexHandler = ^(NSUInteger indexPath) {
         Item *item = items[indexPath];
         NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
         [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
         [[NSUserDefaults standardUserDefaults]synchronize];
         [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
-        [self setupFetchRequestWithItem:selectedItem];
-        [self setupProperties];
-        CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
-        [self resizeHeightForSize:size];
-        [self.collectionView reloadData];
+        [weakSelf setupFetchRequestWithItem:selectedItem];
+        [weakSelf setupProperties];
+        CGSize size = CGSizeMake(weakSelf.view.frame.size.width, weakSelf.view.frame.size.height + weakSelf.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+        [weakSelf resizeHeightForSize:size];
+        [weakSelf.collectionView reloadData];
     };
     
-    self.navigationItem.titleView = dropDownMenu;
+    self.navigationItem.titleView = self.dropDownMenu;
 }
 
 - (void)addDoubleTapGesture {
@@ -234,7 +237,20 @@ CGFloat const dayColumnHeaderHeight = 40;
         
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self.collectionView reloadData];
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+            NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+            if (selectedItem) {
+                self.navigationItem.titleView = nil;
+                [self setupDropDownControllerWithItem:selectedItem];
+            }
+        }
     }];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    CGSize newSize = CGSizeMake(size.width, size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+    [self.dropDownMenu hideMenu];
+    [self resizeHeightForSize:newSize];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -297,7 +313,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     if (!self.isVerticalMode) {
-        [aScrollView setContentOffset: CGPointMake(aScrollView.contentOffset.x, 0)];
+        [aScrollView setContentOffset:CGPointMake(aScrollView.contentOffset.x, 0)];
     }
 }
 

@@ -133,8 +133,9 @@
                      completion:nil];
 }
 
-- (void)hideMenu
-{
+- (void)hideMenu {
+    
+    self.isShown = NO;
     // Rotate arrow
     [self rotateArrow];
     

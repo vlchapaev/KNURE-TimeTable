@@ -28,4 +28,7 @@
                         title:(NSString *)title
                         items:(NSArray *)items
                 containerView:(UIView *)containerView;
+
+- (void)hideMenu;
+
 @end
