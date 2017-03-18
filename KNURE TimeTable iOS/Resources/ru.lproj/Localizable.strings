@@ -20,6 +20,7 @@ ModalView_Auditory = "Аудитория";
 ModalView_Teacher = "Преподаватель";
 ModalView_Groups = "Группы";
 
+ItemList_Update = "Обновить";
 ItemList_Groups = "Группы";
 ItemList_Teachers = "Преподаватели";
 ItemList_Auditories = "Аудитории";

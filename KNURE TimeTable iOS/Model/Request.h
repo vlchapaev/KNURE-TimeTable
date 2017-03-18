@@ -20,7 +20,6 @@ extern NSString *const RequestAddressAuditoryList;
 - (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType;
 - (void)requestDidLoadTimeTable:(id)data info:(NSDictionary *)selectedItem;
 - (void)requestDidFailWithError:(NSError *)error;
-- (void)requestDidFinishLoading;
 
 @end
 

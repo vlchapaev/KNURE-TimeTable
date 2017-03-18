@@ -20,6 +20,7 @@ ModalView_Auditory = "Auditory";
 ModalView_Teacher = "Teacher";
 ModalView_Groups = "Groups";
 
+ItemList_Update = "Update";
 ItemList_Groups = "Groups";
 ItemList_Teachers = "Teachers";
 ItemList_Auditories = "Auditories";

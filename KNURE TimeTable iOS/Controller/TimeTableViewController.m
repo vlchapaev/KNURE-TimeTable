@@ -30,7 +30,7 @@ NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
-NSString *const TimeTableCacheName = @"TimeTableCacheName";
+NSString *const TimetableCacheName = @"TimetableCacheName";
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
@@ -204,7 +204,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
         [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
         [[NSUserDefaults standardUserDefaults]synchronize];
-        [NSFetchedResultsController deleteCacheWithName:TimeTableCacheName];
+        [NSFetchedResultsController deleteCacheWithName:TimetableCacheName];
         [weakSelf setupFetchRequestWithItem:selectedItem];
         [weakSelf setupProperties];
         CGSize size = CGSizeMake(weakSelf.view.frame.size.width, weakSelf.view.frame.size.height + weakSelf.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);

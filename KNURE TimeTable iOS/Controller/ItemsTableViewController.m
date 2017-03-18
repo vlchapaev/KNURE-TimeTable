@@ -11,12 +11,13 @@
 #import "TimeTableViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
+#import "ItemsTableViewCell.h"
 #import "Item+CoreDataProperties.h"
 #import "Lesson+CoreDataClass.h"
 #import "NSDate+DateTools.h"
 #import "Request.h"
 
-@interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate>
+@interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate, ItemsTableViewCellDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -33,6 +34,8 @@
     
     self.tableView.emptyDataSetSource = self;
     
+    [self.tableView registerClass:ItemsTableViewCell.class forCellReuseIdentifier:@"Item"];
+    
     [self setupFetchRequest];
 }
 
@@ -42,6 +45,7 @@
     self.navigationController.navigationBarHidden = NO;
     self.preferredContentSize = CGSizeMake(400, 500);
 }
+
 #pragma mark - Setups
 
 - (void)setupFetchRequest {
@@ -75,17 +79,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Item"];
-    }
-    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = item.title;
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    cell.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [item.last_update timeAgoSinceNow]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
-    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
-    
+    ItemsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
+    cell.item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.delegate = self;
     return cell;
 }
 
@@ -119,48 +115,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    cell.accessoryView = indicator;
+    ItemsTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [indicator startAnimating];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSURLRequest *request = [Request getTimetable:item.id ofType:self.itemType];
-    [manager GET:request.URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [[EventParser sharedInstance]parseTimeTable:responseObject itemID:item.id callBack:^{
-            
-            NSDate *lastUpdate = [NSDate date];
-            
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [lastUpdate timeAgoSinceNow]];
-            
-            NSDictionary *selecterItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:self.itemType]};
-            [[NSUserDefaults standardUserDefaults]setObject:selecterItem forKey:TimetableSelectedItem];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            
-            item.last_update = lastUpdate;
-            [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
-            
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selecterItem];
-            }
-            
-            [indicator stopAnimating];
-            
-        }];
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        cell.detailTextLabel.text = NSLocalizedString(@"ItemList_FailedToUpdate", nil);
-        [indicator stopAnimating];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
+    [cell updateItem:item];
+}
+
+#pragma mark - ItemsTableViewCellDelegate
+
+- (void)didFinishDownloadWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - DZNEmptyDataSetSource

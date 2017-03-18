@@ -54,10 +54,12 @@
 		779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */; };
 		779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */; };
 		779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */; };
+		77A4300A1E74491B0031B2B9 /* ItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A430091E74491B0031B2B9 /* ItemsTableViewCell.m */; };
 		77B056361E6720C000351AF7 /* PopoverModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B056351E6720C000351AF7 /* PopoverModalViewController.m */; };
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
+		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
 		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
@@ -178,6 +180,8 @@
 		779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverMenuViewController.m; path = Controller/PopoverMenuViewController.m; sourceTree = "<group>"; };
 		779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverComboBoxViewController.h; path = Controller/PopoverComboBoxViewController.h; sourceTree = "<group>"; };
 		779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverComboBoxViewController.m; path = Controller/PopoverComboBoxViewController.m; sourceTree = "<group>"; };
+		77A430081E74491B0031B2B9 /* ItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewCell.h; path = "View/Items cell/ItemsTableViewCell.h"; sourceTree = "<group>"; };
+		77A430091E74491B0031B2B9 /* ItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewCell.m; path = "View/Items cell/ItemsTableViewCell.m"; sourceTree = "<group>"; };
 		77B056331E67116200351AF7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		77B056341E6720C000351AF7 /* PopoverModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverModalViewController.h; path = Controller/PopoverModalViewController.h; sourceTree = "<group>"; };
 		77B056351E6720C000351AF7 /* PopoverModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverModalViewController.m; path = Controller/PopoverModalViewController.m; sourceTree = "<group>"; };
@@ -188,6 +192,9 @@
 		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitViewController.h; path = Controller/InitViewController.h; sourceTree = "<group>"; };
 		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitViewController.m; path = Controller/InitViewController.m; sourceTree = "<group>"; };
 		77CA97851E0D5B6A0087BF1B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -242,6 +249,7 @@
 				770D05E71DD3A767008D89E1 /* MainInterface.storyboard */,
 				770D05EA1DD3A767008D89E1 /* Info.plist */,
 				77CD00161E47B84A00F63874 /* InfoPlist.strings */,
+				77CBC0611E71C05100B8FD25 /* Localizable.strings */,
 			);
 			path = "KNURE TimeTable iOS TodayExtension";
 			sourceTree = "<group>";
@@ -249,6 +257,7 @@
 		7713D5941CA5767A00FCDA9B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				77A430071E7448E90031B2B9 /* Items cell */,
 				77C8DF9F1B384688001FB152 /* Main.storyboard */,
 				7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */,
 				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
@@ -396,6 +405,15 @@
 				77B056351E6720C000351AF7 /* PopoverModalViewController.m */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		77A430071E7448E90031B2B9 /* Items cell */ = {
+			isa = PBXGroup;
+			children = (
+				77A430081E74491B0031B2B9 /* ItemsTableViewCell.h */,
+				77A430091E74491B0031B2B9 /* ItemsTableViewCell.m */,
+			);
+			name = "Items cell";
 			sourceTree = "<group>";
 		};
 		77F4568D1D9293DD0078BDAD /* CoreData */ = {
@@ -578,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */,
+				77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */,
 				77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +746,7 @@
 				776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */,
 				776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */,
 				772963381DDB14660069EBCC /* Lesson+CoreDataClass.m in Sources */,
+				77A4300A1E74491B0031B2B9 /* ItemsTableViewCell.m in Sources */,
 				779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */,
 				778E3AD61DCB99AA0083A658 /* MSGridline.m in Sources */,
 				778E3AB71DCB86190083A658 /* Item+CoreDataClass.m in Sources */,
@@ -795,6 +815,16 @@
 				77B056331E67116200351AF7 /* ru */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		77CBC0611E71C05100B8FD25 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77CBC0601E71C05100B8FD25 /* Base */,
+				77CBC0621E71C05200B8FD25 /* ru */,
+				77CBC0631E71C05300B8FD25 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		77CD00161E47B84A00F63874 /* InfoPlist.strings */ = {

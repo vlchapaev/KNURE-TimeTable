@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  KNURE TimeTable
+
+  Created by Vlad Chapaev on 09.03.17.
+  Copyright © 2017 Vlad Chapaev. All rights reserved.
+*/
+
+TimeTable_NoItems = "Нет расписания";
+TimeTable_NoItemsMessage = "Добавьте группы, преподавателей или аудитории, распиcание которых необходимо отобразить";
