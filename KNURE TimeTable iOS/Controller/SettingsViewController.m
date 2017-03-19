@@ -7,7 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-#import "TimeTableViewController.h"
+#import "Configuration.h"
 
 @interface SettingsViewController ()
 
@@ -18,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupValues];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.preferredContentSize = CGSizeMake(400, 600);
 }
 
 #pragma mark - Setups

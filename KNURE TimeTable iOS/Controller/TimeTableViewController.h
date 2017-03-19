@@ -6,16 +6,8 @@
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
-#import <MagicalRecord/MagicalRecord.h>
-
-extern NSString *const TimetableSelectedItem;
-extern NSString *const TimetableVerticalMode;
-extern NSString *const TimetableIsDarkMode;
-extern NSString *const TimetableShowEmptyDays;
-extern NSString *const TimetableBouncingCells;
-extern NSString *const TimetableDidUpdateDataNotification;
+@import UIKit;
+@import CoreData;
 
 @interface TimeTableViewController : UICollectionViewController
 
@@ -24,9 +16,13 @@ extern NSString *const TimetableDidUpdateDataNotification;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 /**
- Используется для перерисовки интерфейса при повороте экрана
+ Used to redraw collection view after device rotation
 */
 - (void)resizeHeightForSize:(CGSize)size;
+
+/**
+ Called when application open in split mode on iPad
+ */
 - (void)traitCollectionDidChange;
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem;

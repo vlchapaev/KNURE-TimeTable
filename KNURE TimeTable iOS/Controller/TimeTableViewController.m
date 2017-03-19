@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "Request.h"
 #import "EventParser.h"
+#import "Configuration.h"
 
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -29,15 +30,6 @@
 NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
-
-NSString *const TimetableCacheName = @"TimetableCacheName";
-NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
-NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
-NSString *const TimetableIsDarkMode = @"TimetableIsDarkMode";
-NSString *const TimetableShowEmptyDays = @"TimetableShowEmptyDays";
-NSString *const TimetableBouncingCells = @"TimetableBouncingCells";
-
-NSString *const TimetableDidUpdateDataNotification = @"TimetableDidUpdateDataNotification";
 
 CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;

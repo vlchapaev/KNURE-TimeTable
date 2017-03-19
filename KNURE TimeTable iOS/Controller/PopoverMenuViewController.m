@@ -19,18 +19,19 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-    self.preferredContentSize = CGSizeMake(320, 230);
+    self.preferredContentSize = CGSizeMake(400, 230);
 }
 
 #pragma mark - UITableViewDelegate 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ItemsTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ItemsViewController"];
-    controller.itemType = (ItemType)indexPath.row + 1;
-    [self.navigationController pushViewController:controller animated:YES];
+    if (indexPath.row != 3) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ItemsTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ItemsViewController"];
+        controller.itemType = (ItemType)indexPath.row + 1;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 @end

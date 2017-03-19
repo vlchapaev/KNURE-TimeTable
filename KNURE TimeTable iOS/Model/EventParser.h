@@ -29,17 +29,39 @@ typedef enum {
 
 + (instancetype)sharedInstance;
 
+/**
+ Shared storage used to store core data across the project targets
+ This method should be called at each target you created to read shared core data
+ */
 + (void)initializeSharedStorage;
 
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType;
 
 - (void)parseTimeTable:(NSData *)data itemID:(NSNumber *)itemID callBack:(void (^)(void))callbackBlock;
 
+/**
+ Used to synchronously transform the encoding of a text to utf-8
+
+ @param data raw cist server response
+ @return utf-8 encoded data
+ */
 - (NSData *)alignEncoding:(NSData *)data;
 
+/**
+ Used to asynchronously transform the encoding of a text to utf-8
+
+ @param data raw cist server response
+ @param callbackBlock utf-8 encoded data
+ */
 + (void)alignEncoding:(NSData *)data callBack:(void (^)(NSData *data))callbackBlock;
 
-+ (void)removeDublicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
+/**
+ Used to asynchronously remove duplicate items in server response
+
+ @param datasource json server response
+ @param callbackBlock duplicate free response
+ */
++ (void)removeDuplicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
 + (UIColor *)getCellColorByType:(NSInteger)type;
 

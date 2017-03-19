@@ -31,4 +31,5 @@
     self.maskBackgroundColor = [UIColor blackColor];
     self.maskBackgroundOpacity = 0.3;
 }
+
 @end

@@ -41,10 +41,6 @@
     [self getItemList];
 }
 
-- (void)dealloc {
-    [self.searchController.view removeFromSuperview];
-}
-
 #pragma mark - Logic
 
 - (void)getItemList {
@@ -61,7 +57,7 @@
             [[EventParser sharedInstance] setDelegate:self];
             [[EventParser sharedInstance] parseItemList:itemList ofType:self.itemType];
         } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:NSLocalizedString(@"ItemList_FailedToParseList", @"") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:NSLocalizedString(@"ItemList_FailedToParseList", nil) preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
@@ -72,7 +68,7 @@
 
 - (void)requestDidFailWithError:(NSError *)error {
     [MBProgressHUD hideHUDForView:self.tableView animated:YES];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", @"") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];

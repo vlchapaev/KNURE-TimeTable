@@ -9,6 +9,7 @@
 #import "TabletTimeTableViewController.h"
 #import "PopoverModalViewController.h"
 #import "PopoverComboBoxViewController.h"
+#import "Configuration.h"
 
 @interface TabletTimeTableViewController() <UIPopoverControllerDelegate, PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate>
 

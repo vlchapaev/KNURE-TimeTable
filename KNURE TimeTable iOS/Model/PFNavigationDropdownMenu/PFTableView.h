@@ -10,9 +10,11 @@
 #import "PFConfiguration.h"
 
 @interface PFTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+
 @property (nonatomic, strong) PFConfiguration *configuration;
 @property (nonatomic, copy) void(^selectRowAtIndexPathHandler)(NSUInteger indexPath);
 @property (nonatomic, assign) NSUInteger selectedIndexPath;
 
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items configuration:(PFConfiguration *)configuration;
+
 @end

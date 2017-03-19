@@ -10,6 +10,7 @@
 #import "PFTableView.h"
 
 @interface PFNavigationDropdownMenu : UIView
+
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, strong) UIColor *cellBackgroundColor;
 @property (nonatomic, strong) UIColor *cellTextLabelColor;
@@ -24,10 +25,7 @@
 @property (nonatomic, strong) PFTableView *tableView;
 @property (nonatomic, copy) void(^didSelectItemAtIndexHandler)(NSUInteger indexPath);
 
-- (instancetype)initWithFrame:(CGRect)frame
-                        title:(NSString *)title
-                        items:(NSArray *)items
-                containerView:(UIView *)containerView;
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title items:(NSArray *)items containerView:(UIView *)containerView;
 
 - (void)hideMenu;
 

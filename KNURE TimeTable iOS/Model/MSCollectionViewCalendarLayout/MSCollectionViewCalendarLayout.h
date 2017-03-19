@@ -54,7 +54,14 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 
 @property (nonatomic, weak) id <MSCollectionViewDelegateCalendarLayout> delegate;
 
+/**
+ Width of cell
+ */
 @property (nonatomic) CGFloat sectionWidth;
+
+/**
+ Height of cell
+ */
 @property (nonatomic) CGFloat hourHeight;
 @property (nonatomic) CGFloat dayColumnHeaderHeight;
 @property (nonatomic) CGFloat timeRowHeaderWidth;
@@ -69,15 +76,25 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @property (nonatomic) MSHeaderLayoutType headerLayoutType;
 @property (nonatomic) BOOL displayHeaderBackgroundAtOrigin;
 
-/// The scrolling resistance factor determines how much bounce / resistance the collection has. A higher number is less bouncy, a lower number is more bouncy. The default is 900.0f.
+/**
+ The scrolling resistance factor determines how much bounce / resistance the collection has. A higher number is less bouncy, a lower number is more bouncy. The default is 900.0f.
+ */
 @property (nonatomic, assign) CGFloat scrollResistanceFactor;
 
 - (NSDate *)dateForTimeRowHeaderAtIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)dateForDayColumnHeaderAtIndexPath:(NSIndexPath *)indexPath;
 
+
+/**
+ Automatically scrolls collectionView to current date
+
+ @param animated defines if scrolling should be animated
+ */
 - (void)scrollCollectionViewToClosetSectionToCurrentTimeAnimated:(BOOL)animated;
 
-// Since a "reloadData" on the UICollectionView doesn't call "prepareForCollectionViewUpdates:", this method must be called first to flush the internal caches
+/**
+ Since a "reloadData" on the UICollectionView doesn't call "prepareForCollectionViewUpdates:", this method must be called first to flush the internal caches
+ */
 - (void)invalidateLayoutCache;
 
 @end
@@ -85,6 +102,14 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @protocol MSCollectionViewDelegateCalendarLayout <UICollectionViewDelegate>
 
 @optional
+
+/**
+ Array of dates provide to draw custom time on time row header
+
+ @param collectionView collectionView description
+ @param collectionViewLayout collectionViewLayout description
+ @return array of NSDates to draw
+ */
 - (NSArray <NSDate *>*)timeListForCollectionView:(UICollectionView *)collectionView layout:(MSCollectionViewCalendarLayout *)collectionViewLayout;
 
 @required

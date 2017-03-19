@@ -10,12 +10,12 @@
 #import "PFConfiguration.h"
 
 @interface PFTableViewCell : UITableViewCell
+
 @property (nonatomic, strong) UIImageView *checkmarkIcon;
 @property (nonatomic, assign) CGRect cellContentFrame;
 @property (nonatomic, strong) PFConfiguration *configuration;
 @property (nonatomic, assign) NSUInteger selectedIndexPath;
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style
-              reuseIdentifier:(NSString *)reuseIdentifier
-                configuration:(PFConfiguration *)configuration;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier configuration:(PFConfiguration *)configuration;
+
 @end

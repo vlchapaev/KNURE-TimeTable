@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Lesson (CoreDataProperties)
 
 + (NSFetchRequest<Lesson *> *)fetchRequest;
+
+/**
+ Used by fetch request controller to split fetch result in sections by date
+
+ @return day
+ */
 - (NSDate *)day;
 
 @property (nullable, nonatomic, copy) NSString *auditory;

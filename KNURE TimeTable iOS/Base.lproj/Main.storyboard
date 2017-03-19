@@ -481,18 +481,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="drM-w8-58l">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="drM-w8-58l">
                                         <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="drM-w8-58l" id="PCL-gZ-vwv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-G9-hIp">
-                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
-                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export to calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQV-Aj-s0Y">
-                                                    <rect key="frame" x="8" y="0.0" width="247" height="43"/>
+                                                    <rect key="frame" x="8" y="0.0" width="140.5" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -503,12 +500,11 @@
                                                 <constraint firstItem="cQV-Aj-s0Y" firstAttribute="top" secondItem="PCL-gZ-vwv" secondAttribute="top" id="2p2-Y4-LUG"/>
                                                 <constraint firstAttribute="bottom" secondItem="cQV-Aj-s0Y" secondAttribute="bottom" id="A2t-8E-UZV"/>
                                                 <constraint firstItem="cQV-Aj-s0Y" firstAttribute="leading" secondItem="PCL-gZ-vwv" secondAttribute="leading" constant="8" id="By1-AP-F6c"/>
-                                                <constraint firstItem="KhT-G9-hIp" firstAttribute="top" secondItem="PCL-gZ-vwv" secondAttribute="top" constant="6" id="QpO-Nt-a1D"/>
-                                                <constraint firstItem="KhT-G9-hIp" firstAttribute="leading" secondItem="cQV-Aj-s0Y" secondAttribute="trailing" constant="8" id="c2N-IX-Sn3"/>
-                                                <constraint firstAttribute="trailing" secondItem="KhT-G9-hIp" secondAttribute="trailing" constant="8" id="h7n-9y-KUj"/>
-                                                <constraint firstAttribute="bottom" secondItem="KhT-G9-hIp" secondAttribute="bottom" constant="6" id="urN-F5-MeP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="asj-4b-Bak" kind="push" id="8BE-mG-YgZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -557,6 +553,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3n-SL-Qbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1942" y="-378"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ABY-bE-KTk">
+            <objects>
+                <tableViewController id="asj-4b-Bak" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YJ8-yx-zIn">
+                        <rect key="frame" x="0.0" y="64" width="320" height="836"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="asj-4b-Bak" id="kTv-EP-BsT"/>
+                            <outlet property="delegate" destination="asj-4b-Bak" id="fOh-EE-ugg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YAO-L5-mai"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPe-v8-k5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1477" y="-378"/>
         </scene>
     </scenes>
     <resources>

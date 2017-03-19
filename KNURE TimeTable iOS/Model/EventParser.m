@@ -48,7 +48,7 @@
             items = [self parseAuditoryList:itemList];
             break;
     }
-    [EventParser removeDublicate:items callBack:^(id response) {
+    [EventParser removeDuplicate:items callBack:^(id response) {
         [self.delegate didParseItemListWithResponse:response sections:sections];
     }];
 }
@@ -290,7 +290,7 @@
     callbackBlock([encResponce subdataWithRange:NSMakeRange(0, [encResponce length] - 1)]);
 }
 
-+ (void)removeDublicate:(id)datasource callBack:(void (^)(id response))callbackBlock {
++ (void)removeDuplicate:(id)datasource callBack:(void (^)(id response))callbackBlock {
     NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:datasource];
     callbackBlock([orderedSet array]);
 }

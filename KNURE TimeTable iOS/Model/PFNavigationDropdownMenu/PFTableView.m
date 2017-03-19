@@ -10,6 +10,7 @@
 #import "PFTableViewCell.h"
 
 @interface PFTableView ()
+
 @property (nonatomic, strong) NSArray *items;
 
 @end

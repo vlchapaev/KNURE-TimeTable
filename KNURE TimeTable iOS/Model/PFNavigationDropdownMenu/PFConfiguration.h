@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PFConfiguration : NSObject
+
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, strong) UIColor *cellBackgroundColor;
 @property (nonatomic, strong) UIColor *cellTextLabelColor;
@@ -20,4 +21,5 @@
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 @property (nonatomic, strong) UIColor *maskBackgroundColor;
 @property (nonatomic, assign) CGFloat maskBackgroundOpacity;
+
 @end

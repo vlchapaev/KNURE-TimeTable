@@ -8,7 +8,7 @@
 
 #import "ItemsTableViewController.h"
 #import "AddItemsTableViewController.h"
-#import "TimeTableViewController.h"
+#import "configuration.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
 #import "ItemsTableViewCell.h"
