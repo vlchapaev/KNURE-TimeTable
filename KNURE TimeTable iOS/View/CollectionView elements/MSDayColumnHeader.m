@@ -52,12 +52,12 @@
     _currentDay = currentDay;
     
     if (currentDay) {
-        self.title.textColor = [UIColor flatWhiteColor];
+        self.title.textColor = [UIColor whiteColor];
         self.title.font = [UIFont boldSystemFontOfSize:16.0];
-        self.titleBackground.backgroundColor = [UIColor flatRedColor];
+        self.titleBackground.backgroundColor = [UIColor colorWithRed:0.91 green:0.31 blue:0.24 alpha:1.00];
     } else {
         self.title.font = [UIFont systemFontOfSize:16.0];
-        self.title.textColor = [UIColor flatBlackColor];
+        self.title.textColor = [UIColor blackColor];
         self.titleBackground.backgroundColor = [UIColor clearColor];
     }
 }

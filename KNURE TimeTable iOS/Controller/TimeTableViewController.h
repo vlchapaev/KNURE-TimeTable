@@ -27,6 +27,7 @@ extern NSString *const TimetableDidUpdateDataNotification;
  Используется для перерисовки интерфейса при повороте экрана
 */
 - (void)resizeHeightForSize:(CGSize)size;
+- (void)traitCollectionDidChange;
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem;
 - (void)setupProperties;

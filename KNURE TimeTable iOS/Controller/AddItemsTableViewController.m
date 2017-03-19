@@ -104,7 +104,7 @@
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     self.datasource = response;
-    self.tableView.separatorColor = [UIColor flatGrayColor];
+    self.tableView.separatorColor = [UIColor colorWithRed:0.58 green:0.65 blue:0.65 alpha:1.00];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });

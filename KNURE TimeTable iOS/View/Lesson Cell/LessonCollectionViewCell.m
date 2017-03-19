@@ -95,7 +95,7 @@
     _event = event;
     self.title.attributedText = [[NSAttributedString alloc] initWithString:event.brief attributes:[self titleAttributesHighlighted:self.selected]];
     self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];
-    self.mainColor = [EventParser getCellColorBy:[event.type integerValue]];
+    self.mainColor = [EventParser getCellColorByType:[event.type integerValue]];
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
 }

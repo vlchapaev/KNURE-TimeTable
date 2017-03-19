@@ -25,7 +25,7 @@
         
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:12.0];
-        self.time.textColor = [UIColor flatRedColor];
+        self.time.textColor = [UIColor colorWithRed:0.91 green:0.31 blue:0.24 alpha:1.00];
         [self addSubview:self.time];
         
         [self.time makeConstraints:^(MASConstraintMaker *make) {

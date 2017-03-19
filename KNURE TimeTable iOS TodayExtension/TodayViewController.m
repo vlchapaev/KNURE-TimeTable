@@ -11,6 +11,7 @@
 #import "LessonCollectionViewCell.h"
 #import "Lesson+CoreDataClass.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "EventParser.h"
 
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -57,15 +58,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;
         
-        NSManagedObjectModel *model = [NSManagedObjectModel MR_defaultManagedObjectModel];
-        NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-        
-        NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.Shogunate.KNURE-Sked"];
-        storeURL = [storeURL URLByAppendingPathComponent:@"DataStorage.sqlite"];
-        
-        [persistentStoreCoordinator MR_addSqliteStoreNamed:storeURL withOptions:nil];
-        [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:persistentStoreCoordinator];
-        [NSManagedObjectContext MR_initializeDefaultContextWithCoordinator:persistentStoreCoordinator];
+        [EventParser initializeSharedStorage];
         
         self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     }
@@ -81,6 +74,18 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
     [self setupProperties];
     [self setupCollectionView];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
+        self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+    } else {
+        self.preferredContentSize = CGSizeMake(320, 260);
+    }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
@@ -111,7 +116,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.collectionViewCalendarLayout.dayColumnHeaderHeight = dayColumnHeaderHeight;
     
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
-    self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 10;
+    self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 20;
     self.collectionViewCalendarLayout.hourHeight = 30;
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];

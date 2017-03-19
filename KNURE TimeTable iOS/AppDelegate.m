@@ -7,11 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "EventParser.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"DataStorage"];
+    [EventParser initializeSharedStorage];
     return YES;
 }
 

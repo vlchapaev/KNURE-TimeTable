@@ -20,6 +20,18 @@
     return sharedInstance;
 }
 
++ (void)initializeSharedStorage {
+    NSManagedObjectModel *model = [NSManagedObjectModel MR_defaultManagedObjectModel];
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    
+    NSURL *storeURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.Shogunate.KNURE-Sked"];
+    storeURL = [storeURL URLByAppendingPathComponent:@"DataStorage.sqlite"];
+    
+    [persistentStoreCoordinator MR_addSqliteStoreNamed:storeURL withOptions:nil];
+    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:persistentStoreCoordinator];
+    [NSManagedObjectContext MR_initializeDefaultContextWithCoordinator:persistentStoreCoordinator];
+}
+
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType {
     NSMutableArray *items = nil;
     NSMutableArray *sections = nil;
@@ -198,40 +210,40 @@
     return itemList;
 }
 
-+ (UIColor *)getCellColorBy:(NSInteger)type {
++ (UIColor *)getCellColorByType:(NSInteger)type {
     switch (type) {
         case 0:
-            return [UIColor flatYellowColor];
+            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
             break;
         case 1:
-            return [UIColor flatYellowColor];
+            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
             break;
         case 2:
-            return [UIColor flatYellowColor];
+            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
             break;
         case 10:
-            return [UIColor flatGreenColor];
+            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
             break;
         case 11:
-            return [UIColor flatGreenColor];
+            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
             break;
         case 12:
-            return [UIColor flatGreenColor];
+            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
             break;
         case 20:
-            return [UIColor flatPurpleColor];
+            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
             break;
         case 21:
-            return [UIColor flatPurpleColor];
+            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
             break;
         case 22:
-            return [UIColor flatPurpleColor];
+            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
             break;
         case 23:
-            return [UIColor flatPurpleColor];
+            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
             break;
         case 24:
-            return [UIColor flatPurpleColor];
+            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
             break;
         case 30:
             return [UIColor lightGrayColor];

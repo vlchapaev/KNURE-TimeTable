@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ChameleonFramework/Chameleon.h>
 #import "EventParser.h"
 #import "Lesson+CoreDataClass.h"
 

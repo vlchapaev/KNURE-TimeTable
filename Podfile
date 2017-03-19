@@ -6,7 +6,6 @@ target 'KNURE TimeTable iOS' do
     pod "AMSlideMenu"
     pod "MBProgressHUD"
     pod "DZNEmptyDataSet"
-    pod "ChameleonFramework"
     
     # logic
     pod "MagicalRecord"
@@ -19,6 +18,8 @@ end
 target 'KNURE TimeTable iOS TodayExtension' do
     pod "DZNEmptyDataSet"
     pod "MagicalRecord"
+    pod "DateTools"
+    pod "Masonry"
 end
 
 inhibit_all_warnings!

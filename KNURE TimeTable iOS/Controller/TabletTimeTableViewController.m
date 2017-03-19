@@ -53,6 +53,11 @@
     [super resizeHeightForSize:newSize];
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    
+    [super traitCollectionDidChange];
+}
+
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {

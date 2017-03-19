@@ -15,11 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AMSlideMenu (1.5.4)
-  - ChameleonFramework (2.1.0):
-    - ChameleonFramework/Default (= 2.1.0)
-  - ChameleonFramework/Default (2.1.0)
   - DateTools (2.0.0)
-  - DownloadButton (0.1.0)
   - DZNEmptyDataSet (1.8.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
@@ -30,9 +26,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - AMSlideMenu
-  - ChameleonFramework
   - DateTools
-  - DownloadButton
   - DZNEmptyDataSet
   - MagicalRecord
   - Masonry
@@ -41,14 +35,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
-  DownloadButton: 49a21a89e0d7d1b42d9134f79aaa40e727cd57c3
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: d34a413bb6c64538cf57b0ff3d50eee625f8afb2
+PODFILE CHECKSUM: 5923096e9adf09d911083a1c6f0c2461506393e1
 
 COCOAPODS: 1.2.0

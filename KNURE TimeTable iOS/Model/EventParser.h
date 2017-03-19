@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <MagicalRecord/MagicalRecord.h>
-#import <ChameleonFramework/Chameleon.h>
 
 typedef enum {
     ItemTypeGroup = 1,
@@ -30,6 +29,8 @@ typedef enum {
 
 + (instancetype)sharedInstance;
 
++ (void)initializeSharedStorage;
+
 - (void)parseItemList:(id)itemList ofType:(ItemType)itemType;
 
 - (void)parseTimeTable:(NSData *)data itemID:(NSNumber *)itemID callBack:(void (^)(void))callbackBlock;
@@ -40,6 +41,6 @@ typedef enum {
 
 + (void)removeDublicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
-+ (UIColor *)getCellColorBy:(NSInteger)type;
++ (UIColor *)getCellColorByType:(NSInteger)type;
 
 @end

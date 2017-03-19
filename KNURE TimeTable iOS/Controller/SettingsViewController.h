@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ChameleonFramework/Chameleon.h>
 
 @interface SettingsViewController : UITableViewController
 

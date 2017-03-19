@@ -68,8 +68,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (self) {
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;
-        //TODO: Fix
-        self.isRunningInFullScreen = CGRectEqualToRect([UIApplication sharedApplication].delegate.window.frame, [UIApplication sharedApplication].delegate.window.screen.bounds);
         self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     }
     return self;
@@ -131,6 +129,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupProperties {
     self.isVerticalMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
+    self.isRunningInFullScreen = CGRectEqualToRect([UIApplication sharedApplication].delegate.window.frame, [UIApplication sharedApplication].delegate.window.screen.bounds);
     if (!self.isRunningInFullScreen) {
         self.isVerticalMode = YES;
     }
@@ -139,7 +138,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
-    self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;
+    self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue]-1;
     
     self.formatter = [[NSDateFormatter alloc]init];
     if (self.isVerticalMode) {
@@ -227,6 +226,24 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (!self.isVerticalMode) {
         self.collectionViewCalendarLayout.hourHeight = (size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
     }
+}
+
+- (void)traitCollectionDidChange {
+    [self setupProperties];
+    
+    if (self.isVerticalMode) {
+        self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
+        self.collectionViewCalendarLayout.sectionWidth = [UIApplication sharedApplication].delegate.window.frame.size.width - timeRowHeaderWidth - 10;
+        self.collectionViewCalendarLayout.hourHeight = 30;
+    } else {
+        self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
+        self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
+        self.collectionViewCalendarLayout.cellMargin = UIEdgeInsetsMake(-64, 0, 64, 0);
+    }
+    
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    [self.collectionViewCalendarLayout invalidateLayout];
 }
 
 #pragma mark - UIContentContainer
@@ -317,6 +334,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     if (!self.isVerticalMode) {
         [aScrollView setContentOffset:CGPointMake(aScrollView.contentOffset.x, 0)];
+    } else {
+        [aScrollView setContentOffset:CGPointMake(0, aScrollView.contentOffset.y)];
     }
 }
 
