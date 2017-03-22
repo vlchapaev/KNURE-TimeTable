@@ -284,29 +284,127 @@
 }
 
 - (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range {
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
-    Lesson *lesson = [Lesson MR_findFirstWithPredicate:filter];
-    
-    EKEventStore *store = [EKEventStore new];
+    EKEventStore *store = [[EKEventStore alloc] init];
     [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (!granted) {
             [self.delegate exportToCalendaerFailedWithError:error];
             return;
         }
+    }];
+    
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+    
+    NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
+    endDateComponents.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+    
+    NSDate *startDate;
+    NSDate *endDate;
+    NSPredicate *predicate;
+    switch (range) {
+        case CalendarExportRangeToday:
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.day = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeTomorrow:
+            startDateComponent.day += 1;
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.day = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeThisWeek:
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.weekday = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeNextWeek:
+            startDateComponent.weekday += 1;
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.weekday = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeThisMonth:
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.month = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeNextMonth:
+            startDateComponent.month += 1;
+            startDate = [calendar dateFromComponents:startDateComponent];
+            endDateComponents.month = 1;
+            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
+            break;
+            
+        case CalendarExportRangeFull:
+            predicate = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
+            break;
+    }
+    
+    NSArray <Lesson *>*lessons = [Lesson MR_findAllWithPredicate:predicate];
+    EKCalendar *eventCalendar;
+    if (![self checkCalendarWithName:item.title inEventStore:store]) {
+        eventCalendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:store];
+        eventCalendar.title = item.title;
+        eventCalendar.source = store.defaultCalendarForNewEvents.source;
+        NSError *err = nil;
+        if (![store saveCalendar:eventCalendar commit:YES error:&err]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate exportToCalendaerFailedWithError:err];
+            });
+            return;
+        }
+    } else {
+        NSArray *calendarArray = [store calendarsForEntityType:EKEntityTypeEvent];
+        for (EKCalendar *calendar in calendarArray) {
+            if ([calendar.title isEqualToString:item.title]) {
+                eventCalendar = calendar;
+            }
+        }
+    }
+    
+    for (Lesson *lesson in lessons) {
+        
         EKEvent *event = [EKEvent eventWithEventStore:store];
-        event.title = lesson.title;
+        event.title = [NSString stringWithFormat:@"%@ %@", lesson.brief, lesson.type_brief];
         event.location = lesson.auditory;
         event.startDate = lesson.start_time;
         event.endDate = lesson.end_time;
-        event.calendar = [store defaultCalendarForNewEvents];
+        event.notes = [NSString stringWithFormat:@"%@\n%@", lesson.title, lesson.type_title];
+        event.calendar = eventCalendar;
         NSError *err = nil;
         if (![store saveEvent:event span:EKSpanThisEvent commit:YES error:&err]) {
-            [self.delegate exportToCalendaerFailedWithError:err];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate exportToCalendaerFailedWithError:err];
+            });
             return;
         }
-    }];
+    }
     
     [self.delegate didFinishExportToCalendar];
+    
+}
+
+- (BOOL)checkCalendarWithName:(NSString *)name inEventStore:(EKEventStore *)store {
+    NSArray *calendarArray = [store calendarsForEntityType:EKEntityTypeEvent];
+    for (EKCalendar *calendar in calendarArray) {
+        if ([calendar.title isEqualToString:name]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 + (void)alignEncoding:(NSData *)data callBack:(void (^)(NSData *data))callbackBlock {

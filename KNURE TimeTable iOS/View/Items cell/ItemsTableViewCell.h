@@ -13,7 +13,8 @@
 
 @protocol ItemsTableViewCellDelegate <NSObject>
 
-@required
+@optional
+- (void)calendarExportDidFinishWithError:(NSError *)error;
 - (void)didFinishDownloadWithError:(NSError *)error;
 
 @end

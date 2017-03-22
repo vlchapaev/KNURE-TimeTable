@@ -90,6 +90,7 @@
 
 - (void)exportToCalendaerFailedWithError:(NSError *)error {
     [self.indicator stopAnimating];
+    [self.delegate calendarExportDidFinishWithError:error];
 }
 
 @end

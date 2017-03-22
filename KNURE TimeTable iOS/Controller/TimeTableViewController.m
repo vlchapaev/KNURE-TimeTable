@@ -70,12 +70,12 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        Item *item = [selectedItem transformToNSManagedObject];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
+        Item *item = [Item MR_findFirstWithPredicate:predicate];
         [self setupFetchRequestWithItem:item];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
             [self setupDropDownControllerWithItem:item];
         }
-        [item MR_deleteEntity];
     }
     [self setupProperties];
     [self setupCollectionView];

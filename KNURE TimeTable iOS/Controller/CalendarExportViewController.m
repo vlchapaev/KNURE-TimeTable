@@ -11,7 +11,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Item+CoreDataProperties.h"
 
-@interface CalendarExportViewController () <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
+@interface CalendarExportViewController () <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ItemsTableViewCellDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -54,6 +54,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ItemsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
     cell.item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.delegate = self;
     return cell;
 }
 
@@ -104,6 +105,15 @@
     [alertController addAction:cancel];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - ItemsTableViewCellDelegate
+
+- (void)calendarExportDidFinishWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - DZNEmptyDataSetSource

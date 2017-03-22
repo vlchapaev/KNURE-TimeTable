@@ -27,9 +27,9 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    Item *item = [selectedItem transformToNSManagedObject];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
+    Item *item = [Item MR_findFirstWithPredicate:predicate];
     [self setupGroupButtonWithItem:item];
-    [item MR_deleteEntity];
 }
 
 #pragma mark - Setup

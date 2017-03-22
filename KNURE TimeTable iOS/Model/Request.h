@@ -36,9 +36,4 @@ extern NSString *const RequestAddressAuditoryList;
 + (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate;
 + (void)loadTimeTableForItem:(Item *)item delegate:(id)delegate;
 
-+ (NSURLRequest *)getGroupList __deprecated_msg("use loadItemListOfType:delegate: instead.");
-+ (NSURLRequest *)getTeacherList __deprecated_msg("use loadItemListOfType:delegate: instead.");;
-+ (NSURLRequest *)getAuditoryList __deprecated_msg("use loadItemListOfType:delegate: instead.");
-+ (NSURLRequest *)getTimetable:(NSNumber *)ID ofType:(ItemType)itemType __deprecated_msg("use loadTimeTableForItem:delegate: instead.");
-
 @end

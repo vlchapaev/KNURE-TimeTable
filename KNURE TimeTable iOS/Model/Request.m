@@ -56,32 +56,4 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     }];
 }
 
-+ (NSURLRequest *)getGroupList {
-    NSString *method = @"P_API_GROUP_JSON";
-    NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
-    NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url];
-}
-
-+ (NSURLRequest *)getTeacherList {
-    NSString *method = @"P_API_PODR_JSON";
-    NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
-    NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url];
-}
-
-+ (NSURLRequest *)getAuditoryList {
-    NSString *method = @"P_API_AUDITORIES_JSON";
-    NSString *address = [NSString stringWithFormat:@"%@%@", baseURL, method];
-    NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url];
-}
-
-+ (NSURLRequest *)getTimetable:(NSNumber *)ID ofType:(ItemType)itemType {
-    NSString *method = @"P_API_EVENT_JSON";
-    NSString *address = [NSString stringWithFormat:@"%@%@?type_id=%i&timetable_id=%@", baseURL, method, itemType, ID];
-    NSURL *url = [[NSURL alloc]initWithString:address];
-    return [[NSURLRequest alloc]initWithURL:url];
-}
-
 @end
