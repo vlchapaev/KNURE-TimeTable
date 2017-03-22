@@ -6,8 +6,10 @@
 //  Copyright © 2017 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "Item+CoreDataProperties.h"
+#import "EventParser.h"
 
 @protocol ItemsTableViewCellDelegate <NSObject>
 
@@ -22,6 +24,19 @@
 
 @property (weak, nonatomic) id <ItemsTableViewCellDelegate> delegate;
 
+/**
+ Update the timetable of selected item
+
+ @param item
+ */
 - (void)updateItem:(Item *)item;
+
+/**
+ Events that belong to listed item will be export to iOS calendar
+ 
+ @param item listed item
+ @param range range of date to export
+ */
+- (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range;
 
 @end

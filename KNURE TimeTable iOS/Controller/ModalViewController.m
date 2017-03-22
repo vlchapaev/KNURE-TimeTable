@@ -195,8 +195,15 @@
         title = [self.groups[indexPath.row] valueForKey:@"name"];
         itemID = [self.groups[indexPath.row] valueForKey:@"id"];
     }
-    NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
-    [self.delegate didSelectItemWithParameters:parameters];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", itemID];
+    Item *item = [Item MR_findFirstWithPredicate:predicate];
+    if (item) {
+        [self.delegate didSelectItem:item];
+    } else {
+        NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
+        [self.delegate didSelectItem:[parameters transformToNSManagedObject]];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

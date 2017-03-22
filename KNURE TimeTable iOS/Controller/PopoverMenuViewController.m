@@ -9,10 +9,6 @@
 #import "PopoverMenuViewController.h"
 #import "ItemsTableViewController.h"
 
-@interface PopoverMenuViewController ()
-
-@end
-
 @implementation PopoverMenuViewController
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -29,7 +25,18 @@
     if (indexPath.row != 3) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ItemsTableViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ItemsViewController"];
-        controller.itemType = (ItemType)indexPath.row + 1;
+        if (indexPath.row == 0) {
+            controller.itemType = ItemTypeGroup;
+            controller.headerTitle = NSLocalizedString(@"ItemList_Groups", nil);
+            
+        } else if (indexPath.row == 1) {
+            controller.itemType = ItemTypeTeacher;
+            controller.headerTitle = NSLocalizedString(@"ItemList_Teachers", nil);
+            
+        } else if (indexPath.row == 2) {
+            controller.itemType = ItemtypeAuditory;
+            controller.headerTitle = NSLocalizedString(@"ItemList_Auditories", nil);
+        }
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

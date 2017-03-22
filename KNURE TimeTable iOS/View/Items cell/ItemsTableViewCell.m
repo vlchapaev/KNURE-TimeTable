@@ -9,9 +9,9 @@
 #import "ItemsTableViewCell.h"
 #import "NSDate+DateTools.h"
 #import "Request.h"
-#import "EventParser.h"
+#import "Configuration.h"
 
-@interface ItemsTableViewCell () <URLRequestDelegate>
+@interface ItemsTableViewCell () <URLRequestDelegate, EventParserDelegate>
 
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
@@ -44,34 +44,33 @@
 
 - (void)updateItem:(Item *)item {
     [self.indicator startAnimating];
-    NSDictionary *parameters = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
-    [Request loadTimeTableWithParameters:parameters delegate:self];
+    [Request loadTimeTableForItem:item delegate:self];
+}
+
+- (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range {
+    [self.indicator startAnimating];
+    [[EventParser sharedInstance]setDelegate:self];
+    [[EventParser sharedInstance]exportToCalendar:item inRange:range];
 }
 
 #pragma mark - URLRequestDelegate
 
-- (void)requestDidLoadTimeTable:(id)data info:(NSDictionary *)selectedItem {
-    [[EventParser sharedInstance]parseTimeTable:data itemID:selectedItem[@"id"] callBack:^{
+- (void)requestDidLoadTimeTable:(id)data forItem:(Item *)item {
+    [[EventParser sharedInstance]parseTimeTable:data itemID:item.id callBack:^{
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", item.id];
         Item *item = [Item MR_findFirstWithPredicate:predicate];
         
         NSDate *lastUpdate = [NSDate date];
         
         self.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [lastUpdate timeAgoSinceNow]];
         
-        [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:@"TimetableSelectedItem"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.Shogunate.KNURE-Sked"];
-        [sharedDefaults setObject:selectedItem forKey:@"TimetableSelectedItem"];
-        [sharedDefaults synchronize];
-        
         item.last_update = lastUpdate;
+        [item saveAsSelectedItem];
         [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"TimetableDidUpdateDataNotification" object:selectedItem];
+            [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:item];
         }
         
         [self.indicator stopAnimating];
@@ -81,6 +80,16 @@
 - (void)requestDidFailWithError:(NSError *)error {
     [self.indicator stopAnimating];
     [self.delegate didFinishDownloadWithError:error];
+}
+
+#pragma mark - EventParserDelegate
+
+- (void)didFinishExportToCalendar {
+    [self.indicator stopAnimating];
+}
+
+- (void)exportToCalendaerFailedWithError:(NSError *)error {
+    [self.indicator stopAnimating];
 }
 
 @end

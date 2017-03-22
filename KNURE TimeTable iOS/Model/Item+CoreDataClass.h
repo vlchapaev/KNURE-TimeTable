@@ -6,14 +6,29 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+@import Foundation;
+@import CoreData;
+
+#import <MagicalRecord/MagicalRecord.h>
 
 @class Lesson;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Item : NSManagedObject
+
+- (NSDictionary *)transformToDictionary;
+
+/**
+ Saving NSManagedObject in NSUserDefaults and shared defaults by transforming into NSDictionary
+ */
+- (void)saveAsSelectedItem;
+
+@end
+
+@interface NSDictionary(Transformation)
+
+- (Item *)transformToNSManagedObject;
 
 @end
 

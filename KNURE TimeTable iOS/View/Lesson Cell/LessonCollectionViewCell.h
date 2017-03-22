@@ -6,7 +6,8 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "Lesson+CoreDataProperties.h"
 
 @interface LessonCollectionViewCell : UICollectionViewCell

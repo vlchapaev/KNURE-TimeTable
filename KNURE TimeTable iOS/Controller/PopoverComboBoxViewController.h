@@ -6,14 +6,15 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import <MagicalRecord/MagicalRecord.h>
 #import "EventParser.h"
 #import "Item+CoreDataClass.h"
 
 @protocol PopoverComboBoxViewControllerDelegate <NSObject>
 
-- (void)didSelectComboboxItemWithParameters:(NSDictionary *)item;
+- (void)didSelectComboboxItem:(Item *)item;
 
 @end
 

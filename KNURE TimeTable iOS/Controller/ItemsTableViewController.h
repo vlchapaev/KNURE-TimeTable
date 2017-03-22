@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "EventParser.h"
 
 @interface ItemsTableViewController : UITableViewController

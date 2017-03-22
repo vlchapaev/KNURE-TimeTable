@@ -6,13 +6,21 @@
 //  Copyright © 2017 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "EventParser.h"
 #import "Lesson+CoreDataClass.h"
 
 @protocol PopoverModalViewControllerDelegate <NSObject>
 
-- (void)didSelectItemWithParameters:(NSDictionary *)parameters;
+- (void)didSelectItem:(Item *)item;
+
+/**
+ Triggered by viewWillDisappear function, use body do deselect cell at given index path
+
+ @param indexPath cell that must be deselected
+ */
+- (void)didDismissViewControllerWithSelectedIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -20,6 +28,11 @@
 
 @property (weak, nonatomic) id <PopoverModalViewControllerDelegate> delegate;
 
-- (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson;
+/**
+ Index path of selected cell used to fire deselect function on collection view after view disappear
+ */
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
+- (instancetype)initWithLesson:(Lesson *)lesson;
 
 @end

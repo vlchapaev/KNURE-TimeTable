@@ -6,9 +6,10 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
-#import <NotificationCenter/NotificationCenter.h>
+@import UIKit;
+@import CoreData;
+@import NotificationCenter;
+
 #import <MagicalRecord/MagicalRecord.h>
 
 @interface TodayViewController : UICollectionViewController

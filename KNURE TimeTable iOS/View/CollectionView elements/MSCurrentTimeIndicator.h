@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface MSCurrentTimeIndicator : UICollectionReusableView
 

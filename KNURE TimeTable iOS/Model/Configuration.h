@@ -7,9 +7,13 @@
 //
 
 #define TimetableSelectedItem @"TimetableSelectedItem"
+#define TimetableSelectedItemGroup @"group.Shogunate.KNURE-Sked"
 #define TimetableVerticalMode @"TimetableVerticalMode"
 #define TimetableIsDarkMode @"TimetableIsDarkMode"
 #define TimetableShowEmptyDays @"TimetableShowEmptyDays"
 #define TimetableBouncingCells @"TimetableBouncingCells"
 #define TimetableDidUpdateDataNotification @"TimetableDidUpdateDataNotification"
 #define TimetableCacheName @"TimetableCacheName"
+
+#define TimetableAppStoreLink @""
+#define TimetableGithubLink @"https://github.com/ShogunPhyched/KNURE-TimeTable"

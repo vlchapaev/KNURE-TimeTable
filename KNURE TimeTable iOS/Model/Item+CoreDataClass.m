@@ -7,7 +7,30 @@
 //
 
 #import "Item+CoreDataClass.h"
+#import "Configuration.h"
 
 @implementation Item
+
+- (NSDictionary *)transformToDictionary {
+    return @{@"id": self.id, @"title": self.title, @"type": [NSNumber numberWithInt:self.type]};
+}
+
+- (void)saveAsSelectedItem {
+    NSDictionary *selectedItem = [self transformToDictionary];
+    [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:TimetableSelectedItemGroup];
+    [sharedDefaults setObject:selectedItem forKey:TimetableSelectedItem];
+    [sharedDefaults synchronize];
+}
+
+@end
+
+@implementation NSDictionary (Transformation)
+
+- (Item *)transformToNSManagedObject {
+    return [Item MR_importFromObject:self];
+}
 
 @end

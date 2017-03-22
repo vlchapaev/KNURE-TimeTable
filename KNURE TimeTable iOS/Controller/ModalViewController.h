@@ -6,13 +6,15 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "EventParser.h"
 #import "Lesson+CoreDataClass.h"
+#import "Item+CoreDataClass.h"
 
 @protocol ModalViewControllerDelegate <NSObject>
 
-- (void)didSelectItemWithParameters:(NSDictionary *)parameters;
+- (void)didSelectItem:(Item *)item;
 
 @end
 

@@ -27,13 +27,15 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [self setupGroupButtonWithItem:selectedItem];
+    Item *item = [selectedItem transformToNSManagedObject];
+    [self setupGroupButtonWithItem:item];
+    [item MR_deleteEntity];
 }
 
 #pragma mark - Setup
 
-- (void)setupGroupButtonWithItem:(NSDictionary *)item {
-    [self.groupButton setTitle:item[@"title"] forState:UIControlStateNormal];
+- (void)setupGroupButtonWithItem:(Item *)item {
+    [self.groupButton setTitle:item.title forState:UIControlStateNormal];
 }
 
 #pragma mark - Notification Center
@@ -55,7 +57,6 @@
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    
     [super traitCollectionDidChange];
 }
 
@@ -81,14 +82,15 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     Lesson *lesson = [super.fetchedResultsController objectAtIndexPath:indexPath];
     
     CGRect displayFrame = CGRectMake(cell.frame.origin.x - collectionView.contentOffset.x, cell.frame.origin.y - collectionView.contentOffset.y, cell.frame.size.width, cell.frame.size.height);
     
-    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithDelegate:self andLesson:lesson];
+    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
+    modalViewController.delegate = self;
+    modalViewController.indexPath = indexPath;
     UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];
     popoverViewController.delegate = self;
     
@@ -97,21 +99,24 @@
 
 #pragma mark - PopoverModalViewControllerDelegate
 
-- (void)didSelectItemWithParameters:(NSDictionary *)parameters {
-    [super didSelectItemWithParameters:parameters];
+- (void)didSelectItem:(Item *)item {
+    [super didSelectItem:item];
+}
+
+- (void)didDismissViewControllerWithSelectedIndexPath:(NSIndexPath *)indexPath {
+    [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - PopoverComboBoxViewControllerDelegate 
 
-- (void)didSelectComboboxItemWithParameters:(NSDictionary *)item {
+- (void)didSelectComboboxItem:(Item *)item {
     [self setupGroupButtonWithItem:item];
     [self setupFetchRequestWithItem:item];
     [self setupProperties];
     CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
     [self resizeHeightForSize:size];
     [self.collectionView reloadData];
-    [[NSUserDefaults standardUserDefaults]setObject:item forKey:TimetableSelectedItem];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+    [item saveAsSelectedItem];
 }
 
 @end

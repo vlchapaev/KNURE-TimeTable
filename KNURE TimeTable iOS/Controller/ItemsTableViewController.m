@@ -12,9 +12,8 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
 #import "ItemsTableViewCell.h"
-#import "Item+CoreDataProperties.h"
+#import "Item+CoreDataClass.h"
 #import "Lesson+CoreDataClass.h"
-#import "NSDate+DateTools.h"
 #import "Request.h"
 
 @interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate, ItemsTableViewCellDelegate>
@@ -31,6 +30,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = self.headerTitle;
+    self.title = self.headerTitle;
     
     self.tableView.emptyDataSetSource = self;
     

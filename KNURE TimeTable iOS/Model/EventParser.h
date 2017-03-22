@@ -6,9 +6,14 @@
 //  Copyright (c) 2014 Vlad Chapaev. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
+@import EventKit;
+
 #import <MagicalRecord/MagicalRecord.h>
+
+#import "Item+CoreDataClass.h"
+#import "Lesson+CoreDataClass.h"
 
 typedef enum {
     ItemTypeGroup = 1,
@@ -16,10 +21,22 @@ typedef enum {
     ItemtypeAuditory = 3
 } ItemType;
 
+typedef enum {
+    CalendarExportRangeToday = 1,
+    CalendarExportRangeTomorrow,
+    CalendarExportRangeThisWeek,
+    CalendarExportRangeNextWeek,
+    CalendarExportRangeThisMonth,
+    CalendarExportRangeNextMonth,
+    CalendarExportRangeFull
+} CalendarExportRange;
+
 @protocol EventParserDelegate <NSObject>
 
 @optional
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections;
+- (void)didFinishExportToCalendar;
+- (void)exportToCalendaerFailedWithError:(NSError *)error;
 
 @end
 
@@ -64,5 +81,13 @@ typedef enum {
 + (void)removeDuplicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
 + (UIColor *)getCellColorByType:(NSInteger)type;
+
+/**
+ Events that belong to listed item will be export to iOS calendar
+
+ @param item listed item
+ @param range range of date to export
+ */
+- (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range;
 
 @end

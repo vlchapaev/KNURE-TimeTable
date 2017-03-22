@@ -9,6 +9,8 @@
 @import UIKit;
 @import CoreData;
 
+#import "Item+CoreDataClass.h"
+
 @interface TimeTableViewController : UICollectionViewController
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
@@ -25,9 +27,9 @@
  */
 - (void)traitCollectionDidChange;
 
-- (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem;
+- (void)setupFetchRequestWithItem:(Item *)selectedItem;
 - (void)setupProperties;
-- (void)didSelectItemWithParameters:(NSDictionary *)parameters;
+- (void)didSelectItem:(Item *)item;
 
 - (IBAction)refreshCurrentTimeTable;
 

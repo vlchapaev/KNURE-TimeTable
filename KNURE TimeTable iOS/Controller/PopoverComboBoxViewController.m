@@ -56,8 +56,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Item *item = self.datasource[indexPath.row];
-    NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
-    [self.delegate didSelectComboboxItemWithParameters:selectedItem];
+    [self.delegate didSelectComboboxItem:item];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

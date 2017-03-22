@@ -7,7 +7,6 @@
 //
 
 #import "EventParser.h"
-#import "Lesson+CoreDataClass.h"
 
 @implementation EventParser
 
@@ -282,6 +281,32 @@
             return [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
             break;
     }
+}
+
+- (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range {
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
+    Lesson *lesson = [Lesson MR_findFirstWithPredicate:filter];
+    
+    EKEventStore *store = [EKEventStore new];
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (!granted) {
+            [self.delegate exportToCalendaerFailedWithError:error];
+            return;
+        }
+        EKEvent *event = [EKEvent eventWithEventStore:store];
+        event.title = lesson.title;
+        event.location = lesson.auditory;
+        event.startDate = lesson.start_time;
+        event.endDate = lesson.end_time;
+        event.calendar = [store defaultCalendarForNewEvents];
+        NSError *err = nil;
+        if (![store saveEvent:event span:EKSpanThisEvent commit:YES error:&err]) {
+            [self.delegate exportToCalendaerFailedWithError:err];
+            return;
+        }
+    }];
+    
+    [self.delegate didFinishExportToCalendar];
 }
 
 + (void)alignEncoding:(NSData *)data callBack:(void (^)(NSData *data))callbackBlock {

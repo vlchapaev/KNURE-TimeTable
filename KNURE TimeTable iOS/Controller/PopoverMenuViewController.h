@@ -6,7 +6,7 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface PopoverMenuViewController : UITableViewController
 

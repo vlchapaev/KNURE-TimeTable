@@ -34,3 +34,16 @@ ItemList_AddTeachersHint = "Tap + to add teachers";
 ItemList_AddClassroomsHint = "Tap + to add classrooms";
 ItemList_FailedToParseList = "Failed to process response";
 ItemList_FailedToUpdate = "Failed to update timetable";
+
+Settings_Promote = "KNURE Timetable for iOS: https://appsto.re/i67M8zB";
+Settings_CalendarExport_NoItems = "Нет доступных элементов";
+Settings_CalendarExport_NoItemsMessage = "Здесь вы можете экспортировать расписание любой группы, преподавателя или аудитории в стандартное приложение Календарь для iOS";
+Settings_CalendarExport_SheetTitle = "Экспорт в календарь";
+Settings_CalendarExport_SheetMessage = "Выберите промежуток дат для экспорта в календарь";
+Settings_CalendarExport_Today = "Сегодняшний день";
+Settings_CalendarExport_Tomorrow = "Завтравший день";
+Settings_CalendarExport_ThisWeek = "Эта неделя";
+Settings_CalendarExport_NextWeek = "Следующая неделя";
+Settings_CalendarExport_ThisMonth = "Этот месяц";
+Settings_CalendarExport_NextMonth = "Следующий месяц";
+Settings_CalendarExport_Full = "Весь семестр";

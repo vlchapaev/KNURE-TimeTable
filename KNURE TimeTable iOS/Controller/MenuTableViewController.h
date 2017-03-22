@@ -6,7 +6,8 @@
 //  Copyright © 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "AMSlideMenuMainViewController.h"
 
 @interface MenuTableViewController : AMSlideMenuLeftTableViewController

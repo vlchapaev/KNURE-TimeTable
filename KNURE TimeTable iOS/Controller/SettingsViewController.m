@@ -46,7 +46,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        NSString *text = @"KNURE Timetable for iOS: https://appsto.re/i67M8zB";
+        NSString *text = NSLocalizedString(@"Settings_Promote", nil);
         NSURL *url = [[NSURL alloc]initWithString:@"https://itunes.apple.com/us/app/knure-sked/id797074875"];
         UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:@[text, url] applicationActivities:nil];
         [self presentViewController:controller animated:YES completion:nil];
@@ -56,7 +56,7 @@
 #pragma mark - Events
 
 - (IBAction)openGithub {
-    NSURL *url = [[NSURL alloc]initWithString:@"https://github.com/ShogunPhyched/KNURE-TimeTable"];
+    NSURL *url = [[NSURL alloc]initWithString:TimetableGithubLink];
     [[UIApplication sharedApplication]openURL:url];
 }
 

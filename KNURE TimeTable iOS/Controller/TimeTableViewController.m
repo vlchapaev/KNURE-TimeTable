@@ -70,10 +70,12 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        [self setupFetchRequestWithItem:selectedItem];
+        Item *item = [selectedItem transformToNSManagedObject];
+        [self setupFetchRequestWithItem:item];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-            [self setupDropDownControllerWithItem:selectedItem];
+            [self setupDropDownControllerWithItem:item];
         }
+        [item MR_deleteEntity];
     }
     [self setupProperties];
     [self setupCollectionView];
@@ -146,14 +148,15 @@ CGFloat const dayColumnHeaderHeight = 40;
     for (NSDate *date in newArray) {
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
+        component.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
         [dates addObject:[calendar dateFromComponents:component]];
     }
     self.pairDates = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
 }
 
-- (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
+- (void)setupFetchRequestWithItem:(Item *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", selectedItem.id];
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
@@ -167,14 +170,14 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
 }
 
-- (void)setupDropDownControllerWithItem:(NSDictionary *)item {
+- (void)setupDropDownControllerWithItem:(Item *)selectedItem {
     NSArray <Item *>*items = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     NSMutableArray *itemTitles = [[NSMutableArray alloc]init];
     for (Item *item in items) {
         [itemTitles addObject:item.title];
     }
     self.dropDownMenu =  [[PFNavigationDropdownMenu alloc]initWithFrame:CGRectMake(0, 0, 300, 44)
-                                                                                       title:[item valueForKey:@"title"]
+                                                                                       title:selectedItem.title
                                                                                        items:itemTitles
                                                                                containerView:self.view];
     
@@ -183,7 +186,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.dropDownMenu.arrowImage = [UIImage imageNamed:@"arrow_down_icon"];
     self.dropDownMenu.checkMarkImage = [UIImage imageNamed:@"checkmark_icon"];
     for (short index = 0; index < items.count; index++) {
-        if ([item valueForKey:@"id"] == [items[index] valueForKey:@"id"]) {
+        if (selectedItem.id == items[index].id) {
             self.dropDownMenu.tableView.selectedIndexPath = index;
             break;
         }
@@ -192,11 +195,9 @@ CGFloat const dayColumnHeaderHeight = 40;
     __weak __typeof__(self) weakSelf = self;
     self.dropDownMenu.didSelectItemAtIndexHandler = ^(NSUInteger indexPath) {
         Item *item = items[indexPath];
-        NSDictionary *selectedItem = @{@"id": item.id, @"title": item.title, @"type": [NSNumber numberWithInt:item.type]};
-        [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [item saveAsSelectedItem];
         [NSFetchedResultsController deleteCacheWithName:TimetableCacheName];
-        [weakSelf setupFetchRequestWithItem:selectedItem];
+        [weakSelf setupFetchRequestWithItem:item];
         [weakSelf setupProperties];
         CGSize size = CGSizeMake(weakSelf.view.frame.size.width, weakSelf.view.frame.size.height + weakSelf.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
         [weakSelf resizeHeightForSize:size];
@@ -253,7 +254,7 @@ CGFloat const dayColumnHeaderHeight = 40;
             NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
             if (selectedItem) {
                 self.navigationItem.titleView = nil;
-                [self setupDropDownControllerWithItem:selectedItem];
+                [self setupDropDownControllerWithItem:[selectedItem transformToNSManagedObject]];
             }
         }
     }];
@@ -359,9 +360,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 #pragma mark - ModalViewDelegate
 
-- (void)didSelectItemWithParameters:(NSDictionary *)parameters {
+- (void)didSelectItem:(Item *)item {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [Request loadTimeTableWithParameters:parameters delegate:self];
+    [Request loadTimeTableForItem:item delegate:self];
 }
 
 #pragma mark - URLRequestDelegate
@@ -374,51 +375,23 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)requestDidLoadTimeTable:(id)data info:(NSDictionary *)selectedItem {
-    [[EventParser sharedInstance]parseTimeTable:data itemID:selectedItem[@"id"] callBack:^{
+- (void)requestDidLoadTimeTable:(id)data forItem:(Item *)item {
+    [[EventParser sharedInstance]parseTimeTable:data itemID:item.id callBack:^{
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
-        Item *item = [Item MR_findFirstWithPredicate:predicate];
-        
-        NSDate *lastUpdate = [NSDate date];
-        
-        if (item) {
-            [[NSUserDefaults standardUserDefaults]setObject:selectedItem forKey:TimetableSelectedItem];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            item.last_update = lastUpdate;
-            [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
-            [self setupFetchRequestWithItem:selectedItem];
-            [self setupProperties];
-            CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
-            [self resizeHeightForSize:size];
-            if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-                [self setupDropDownControllerWithItem:selectedItem];
-            } else {
-                [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selectedItem];
-            }
-            [self.collectionView reloadData];
+        item.last_update = [NSDate date];
+        [item saveAsSelectedItem];
+        [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
+        [self setupFetchRequestWithItem:item];
+        [self setupProperties];
+        CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
+        [self resizeHeightForSize:size];
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+            [self setupDropDownControllerWithItem:item];
         } else {
-            [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-                Item *item = [Item MR_createEntityInContext:localContext];
-                item.id = selectedItem[@"id"];
-                item.title = selectedItem[@"title"];
-                item.last_update = lastUpdate;
-                item.type = [selectedItem[@"type"]integerValue];
-                [localContext MR_saveToPersistentStoreAndWait];
-            } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-                [self setupFetchRequestWithItem:selectedItem];
-                [self setupProperties];
-                CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
-                [self resizeHeightForSize:size];
-                if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-                    [self setupDropDownControllerWithItem:selectedItem];
-                } else {
-                    [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:selectedItem];
-                }
-                [self.collectionView reloadData];
-            }];
+            [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:item];
         }
+        [self.collectionView reloadData];
     }];
 }
 
@@ -427,7 +400,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (IBAction)refreshCurrentTimeTable {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    [Request loadTimeTableWithParameters:selectedItem delegate:self];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
+    Item *item = [Item MR_findFirstWithPredicate:predicate];
+    [Request loadTimeTableForItem:item delegate:self];
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {

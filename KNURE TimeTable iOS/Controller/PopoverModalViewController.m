@@ -22,11 +22,9 @@
 
 @implementation PopoverModalViewController
 
-- (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
+- (instancetype)initWithLesson:(Lesson *)lesson {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.delegate = delegate;
-        
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
         self.tableView.backgroundColor = [UIColor clearColor];
@@ -70,6 +68,11 @@
     [self.headerView setFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
     
     self.tableView.tableHeaderView = self.headerView;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.delegate didDismissViewControllerWithSelectedIndexPath:self.indexPath];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -173,8 +176,15 @@
         title = [self.groups[indexPath.row] valueForKey:@"name"];
         itemID = [self.groups[indexPath.row] valueForKey:@"id"];
     }
-    NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
-    [self.delegate didSelectItemWithParameters:parameters];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", itemID];
+    Item *item = [Item MR_findFirstWithPredicate:predicate];
+    if (item) {
+        [self.delegate didSelectItem:item];
+    } else {
+        NSDictionary *parameters = @{@"id": itemID, @"title": title, @"type": [NSNumber numberWithInt:itemType]};
+        [self.delegate didSelectItem:[parameters transformToNSManagedObject]];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

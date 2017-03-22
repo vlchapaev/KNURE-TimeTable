@@ -62,6 +62,7 @@
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
+		77EA48711E7FE34B00DBBBC7 /* CalendarExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EA48701E7FE34B00DBBBC7 /* CalendarExportViewController.m */; };
 		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -200,6 +201,8 @@
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = View/LaunchScreen.xib; sourceTree = "<group>"; };
+		77EA486F1E7FE34B00DBBBC7 /* CalendarExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarExportViewController.h; path = Controller/CalendarExportViewController.h; sourceTree = "<group>"; };
+		77EA48701E7FE34B00DBBBC7 /* CalendarExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarExportViewController.m; path = Controller/CalendarExportViewController.m; sourceTree = "<group>"; };
 		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
 		90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +392,8 @@
 				C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */,
 				7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */,
 				773302901DD1D6F400F9D3F1 /* SettingsViewController.m */,
+				77EA486F1E7FE34B00DBBBC7 /* CalendarExportViewController.h */,
+				77EA48701E7FE34B00DBBBC7 /* CalendarExportViewController.m */,
 				779CF1FB1DE9EF34002C9CA5 /* iPad */,
 			);
 			name = Controller;
@@ -742,6 +747,7 @@
 				778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */,
 				77B056361E6720C000351AF7 /* PopoverModalViewController.m in Sources */,
 				778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */,
+				77EA48711E7FE34B00DBBBC7 /* CalendarExportViewController.m in Sources */,
 				C33FCC731819965300328F6D /* main.m in Sources */,
 				771623741DE339EF00B9C928 /* MenuTableViewController.m in Sources */,
 				7777778D1DC90B8700F557B0 /* EventParser.m in Sources */,

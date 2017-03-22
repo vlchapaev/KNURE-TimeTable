@@ -6,7 +6,8 @@
 //  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import <MagicalRecord/MagicalRecord.h>
 
 #import "EventParser.h"
