@@ -29,7 +29,6 @@ NSString *const TimeTableCacheName = @"TimeTableCacheName";
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 
-CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
@@ -72,20 +71,20 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (selectedItem) {
         [self setupFetchRequestWithItem:selectedItem];
     }
+    
     [self setupProperties];
     [self setupCollectionView];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
-        self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
-    } else {
-        self.preferredContentSize = CGSizeMake(320, 260);
-    }
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
+        self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+    } else {
+        self.preferredContentSize = self.collectionView.contentSize;
+    }
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
@@ -94,7 +93,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
-        self.preferredContentSize = CGSizeMake(0.0, 260.0);
+        self.preferredContentSize = self.collectionView.contentSize;
     } else if (activeDisplayMode == NCWidgetDisplayModeCompact) {
         self.preferredContentSize = maxSize;
     }
@@ -104,7 +103,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
-    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
@@ -116,6 +115,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.collectionViewCalendarLayout.dayColumnHeaderHeight = dayColumnHeaderHeight;
     
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
+    //TODO: autosize width
     self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 20;
     self.collectionViewCalendarLayout.hourHeight = 30;
     
@@ -149,7 +149,16 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@", [selectedItem valueForKey:@"id"]];
+    NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+    
+    NSDate *startDate = [calendar dateFromComponents:startDateComponent];
+    endDateComponents.day = 1;
+    NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", selectedItem[@"id"], startDate, endDate];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
@@ -189,15 +198,10 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == MSCollectionElementKindDayColumnHeader) {
         MSDayColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
-        NSDate *day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
-        NSDate *currentDay = [self currentTimeComponentsForCollectionView:self.collectionView layout:self.collectionViewCalendarLayout];
-        
-        NSDate *startOfDay = [[NSCalendar currentCalendar] startOfDayForDate:day];
-        NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
         
         dayColumnHeader.formatter = self.formatter;
-        dayColumnHeader.day = day;
-        dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
+        dayColumnHeader.day = [NSDate date];
+        dayColumnHeader.currentDay = YES;
         
         return dayColumnHeader;
         
@@ -207,6 +211,19 @@ CGFloat const dayColumnHeaderHeight = 40;
         return timeRowHeader;
     }
     return [[UICollectionReusableView alloc]init];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Events
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSURL *pjURL = [NSURL URLWithString:@"hostingapp://home"];
+    [self.extensionContext openURL:pjURL completionHandler:nil];
 }
 
 #pragma mark - MSCollectionViewDelegateCalendarLayout

@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+@import EventKit;
 
 #import <MagicalRecord/MagicalRecord.h>
 

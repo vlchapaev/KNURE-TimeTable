@@ -285,12 +285,6 @@
 
 - (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range {
     EKEventStore *store = [[EKEventStore alloc] init];
-    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-        if (!granted) {
-            [self.delegate exportToCalendaerFailedWithError:error];
-            return;
-        }
-    }];
     
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay) fromDate:[NSDate date]];

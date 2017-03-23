@@ -27,6 +27,14 @@
     [self.tableView registerClass:ItemsTableViewCell.class forCellReuseIdentifier:@"Item"];
     
     [self setupFetchRequest];
+    
+    EKEventStore *store = [[EKEventStore alloc] init];
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (!granted) {
+            [self calendarExportDidFinishWithError:error];
+        }
+    }];
+    
 }
 
 #pragma mark - Setups
