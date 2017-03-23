@@ -293,7 +293,7 @@
     }];
     
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
     startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
     
     NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
@@ -319,33 +319,29 @@
             break;
             
         case CalendarExportRangeThisWeek:
-            startDate = [calendar dateFromComponents:startDateComponent];
-            endDateComponents.weekday = 1;
+            [calendar rangeOfUnit:NSCalendarUnitWeekOfMonth startDate:&startDate interval:nil forDate:[NSDate date]];
+            endDateComponents.day = 1;
+            startDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            endDateComponents.day = 0;
+            endDateComponents.weekOfMonth = 1;
             endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
             predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
             break;
             
         case CalendarExportRangeNextWeek:
-            startDateComponent.weekday += 1;
-            startDate = [calendar dateFromComponents:startDateComponent];
-            endDateComponents.weekday = 1;
+            [calendar rangeOfUnit:NSCalendarUnitWeekOfMonth startDate:&startDate interval:nil forDate:[NSDate date]];
+            endDateComponents.day = 1;
+            endDateComponents.weekOfMonth = 1;
+            startDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+            endDateComponents.day = 0;
             endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
             predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
             break;
             
         case CalendarExportRangeThisMonth:
-            startDate = [calendar dateFromComponents:startDateComponent];
-            endDateComponents.month = 1;
-            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
-            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
             break;
             
         case CalendarExportRangeNextMonth:
-            startDateComponent.month += 1;
-            startDate = [calendar dateFromComponents:startDateComponent];
-            endDateComponents.month = 1;
-            endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
-            predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", item.id, startDate, endDate];
             break;
             
         case CalendarExportRangeFull:
