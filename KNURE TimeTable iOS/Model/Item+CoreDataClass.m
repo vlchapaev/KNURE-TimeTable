@@ -30,7 +30,8 @@
 @implementation NSDictionary (Transformation)
 
 - (Item *)transformToNSManagedObject {
-    return [Item MR_importFromObject:self];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", self[@"id"]];
+    return [Item MR_findFirstWithPredicate:predicate];
 }
 
 @end

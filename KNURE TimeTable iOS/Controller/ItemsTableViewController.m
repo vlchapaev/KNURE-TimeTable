@@ -19,6 +19,7 @@
 @interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate, ItemsTableViewCellDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (assign, nonatomic) BOOL hideHint;
 
 @end
 
@@ -61,13 +62,17 @@
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    }
+    
+    if ([self.fetchedResultsController.sections.firstObject numberOfObjects] < 1) {
+        self.hideHint = YES;
     }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.hideHint = ([controller.sections.firstObject numberOfObjects] < 1) ? YES : NO;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView reloadEmptyDataSet];
 }
@@ -101,6 +106,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return (!self.hideHint) ? NSLocalizedString(@"ItemList_Hint1", nil) : nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return (!self.hideHint) ? NSLocalizedString(@"ItemList_Hint2", nil) : nil;
 }
 
 #pragma mark - UITableViewDelegate

@@ -27,9 +27,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
-    Item *item = [Item MR_findFirstWithPredicate:predicate];
-    [self setupGroupButtonWithItem:item];
+    [self setupGroupButtonWithItem:[selectedItem transformToNSManagedObject]];
 }
 
 #pragma mark - Setup
@@ -57,6 +55,14 @@
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    BOOL isRunningInFullScreen = CGRectEqualToRect([UIApplication sharedApplication].delegate.window.frame, [UIApplication sharedApplication].delegate.window.screen.bounds);
+    if (!isRunningInFullScreen) {
+        self.menuButton.enabled = NO;
+        self.menuButton.tintColor = [UIColor clearColor];
+    } else {
+        self.menuButton.enabled = YES;
+        self.menuButton.tintColor = nil;
+    }
     [super traitCollectionDidChange];
 }
 

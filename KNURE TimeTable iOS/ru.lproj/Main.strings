@@ -21,7 +21,7 @@
 "MiB-eL-T99.text" = "Расписание";
 
 /* Class = "UILabel"; text = "Export to calendar"; ObjectID = "cQV-Aj-s0Y"; */
-"cQV-Aj-s0Y.text" = "Экспортировать в календарь";
+"cQV-Aj-s0Y.text" = "Экспорт в календарь";
 
 /* Class = "UILabel"; text = "Groups"; ObjectID = "gUp-un-Gn5"; */
 "gUp-un-Gn5.text" = "Группы";
@@ -40,3 +40,5 @@
 
 /* Class = "UILabel"; text = "Bouncing cells"; ObjectID = "ped-Op-FPM"; */
 "ped-Op-FPM.text" = "Bouncing cells";
+
+"YAO-L5-mai.headerTitle" = "Экспорт в календарь";

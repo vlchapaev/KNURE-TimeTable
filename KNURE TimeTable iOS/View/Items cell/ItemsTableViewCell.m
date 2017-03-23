@@ -86,6 +86,8 @@
 
 - (void)didFinishExportToCalendar {
     [self.indicator stopAnimating];
+    self.accessoryView = nil;
+    self.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 - (void)exportToCalendaerFailedWithError:(NSError *)error {

@@ -47,7 +47,7 @@
     
     if (indexPath.section == 1) {
         NSString *text = NSLocalizedString(@"Settings_Promote", nil);
-        NSURL *url = [[NSURL alloc]initWithString:@"https://itunes.apple.com/us/app/knure-sked/id797074875"];
+        NSURL *url = [[NSURL alloc]initWithString:TimetableAppStoreLinkFull];
         UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:@[text, url] applicationActivities:nil];
         [self presentViewController:controller animated:YES completion:nil];
     }

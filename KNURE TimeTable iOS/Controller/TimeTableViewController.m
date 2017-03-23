@@ -70,11 +70,9 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
-        Item *item = [Item MR_findFirstWithPredicate:predicate];
-        [self setupFetchRequestWithItem:item];
+        [self setupFetchRequestWithItem:[selectedItem transformToNSManagedObject]];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-            [self setupDropDownControllerWithItem:item];
+            [self setupDropDownControllerWithItem:[selectedItem transformToNSManagedObject]];
         }
     }
     [self setupProperties];
@@ -254,7 +252,9 @@ CGFloat const dayColumnHeaderHeight = 40;
             NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
             if (selectedItem) {
                 self.navigationItem.titleView = nil;
-                [self setupDropDownControllerWithItem:[selectedItem transformToNSManagedObject]];
+                if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+                    [self setupDropDownControllerWithItem:[selectedItem transformToNSManagedObject]];
+                }
             }
         }
     }];

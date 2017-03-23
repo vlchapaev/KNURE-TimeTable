@@ -34,6 +34,8 @@ ItemList_AddTeachersHint = "Tap + to add teachers";
 ItemList_AddClassroomsHint = "Tap + to add classrooms";
 ItemList_FailedToParseList = "Failed to process response";
 ItemList_FailedToUpdate = "Failed to update timetable";
+ItemList_Hint1 = "Tap on item to update it's timetable";
+ItemList_Hint2 = "Swipe left on item to remove it.\n\nAll items are sorted automatically by last update. All items are available in group list button at the top of main screen";
 
 Settings_Promote = "KNURE Timetable for iOS: https://appsto.re/i67M8zB";
 Settings_CalendarExport_NoItems = "No Items";
@@ -47,3 +49,5 @@ Settings_CalendarExport_NextWeek = "Next week";
 Settings_CalendarExport_ThisMonth = "This month";
 Settings_CalendarExport_NextMonth = "Next month";
 Settings_CalendarExport_Full = "Full semester";
+Settings_CalendarHint1 = "Select item you wish to export into your Calendar App";
+Settings_CalendarHint2 = "A new calendar with selected item name will be created in your Calendar App";

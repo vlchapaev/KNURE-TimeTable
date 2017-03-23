@@ -120,7 +120,7 @@
             <objects>
                 <tableViewController title="Settings" id="g53-w8-yoU" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fSU-8D-Dkf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="NGg-CO-T7i">
@@ -161,17 +161,22 @@
                                         <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ujb-6T-qa4" id="6WW-Qp-52T">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Export to calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-DA-qip">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export to calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-DA-qip">
                                                     <rect key="frame" x="8" y="0.0" width="279" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="L3p-DA-qip" firstAttribute="top" secondItem="6WW-Qp-52T" secondAttribute="top" id="77c-sz-vLt"/>
+                                                <constraint firstAttribute="trailing" secondItem="L3p-DA-qip" secondAttribute="trailing" id="DxO-Pd-FOn"/>
+                                                <constraint firstItem="L3p-DA-qip" firstAttribute="leading" secondItem="6WW-Qp-52T" secondAttribute="leading" constant="8" id="VS1-9A-C8I"/>
+                                                <constraint firstAttribute="bottom" secondItem="L3p-DA-qip" secondAttribute="bottom" id="fZl-iU-dT1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="dhM-eY-H0o" kind="show" id="jDt-E2-KwM"/>
@@ -212,7 +217,7 @@
                         </connections>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="600"/>
+                    <size key="freeformSize" width="320" height="700"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOy-dx-Flo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,6 +289,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="groupButton" destination="gHC-6k-oak" id="4fq-MR-rmO"/>
+                        <outlet property="menuButton" destination="zD2-tO-oEo" id="KzF-aG-Qzy"/>
                         <outlet property="refreshButton" destination="06E-ok-xpp" id="yJ2-h6-zHb"/>
                     </connections>
                 </collectionViewController>

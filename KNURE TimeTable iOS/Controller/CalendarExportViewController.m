@@ -14,6 +14,7 @@
 @interface CalendarExportViewController () <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ItemsTableViewCellDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (assign, nonatomic) BOOL hideHint;
 
 @end
 
@@ -49,7 +50,10 @@
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    }
+    
+    if ([self.fetchedResultsController.sections.firstObject numberOfObjects] < 1) {
+        self.hideHint = YES;
     }
 }
 
@@ -65,6 +69,15 @@
     cell.delegate = self;
     return cell;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return (!self.hideHint) ? NSLocalizedString(@"Settings_CalendarHint1", nil) : nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return (!self.hideHint) ? NSLocalizedString(@"Settings_CalendarHint2", nil) : nil;
+}
+
 
 #pragma mark - UITableViewDelegate
 

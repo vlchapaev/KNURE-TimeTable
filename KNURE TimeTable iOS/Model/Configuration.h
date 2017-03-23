@@ -14,6 +14,8 @@
 #define TimetableBouncingCells @"TimetableBouncingCells"
 #define TimetableDidUpdateDataNotification @"TimetableDidUpdateDataNotification"
 #define TimetableCacheName @"TimetableCacheName"
+#define TimetableHideHint @"TimetableHideHint"
 
-#define TimetableAppStoreLink @""
+#define TimetableAppStoreLinkShort @"https://appsto.re/i67M8zB"
+#define TimetableAppStoreLinkFull @"https://itunes.apple.com/us/app/knure-sked/id797074875"
 #define TimetableGithubLink @"https://github.com/ShogunPhyched/KNURE-TimeTable"
