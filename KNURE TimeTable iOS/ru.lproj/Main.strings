@@ -41,4 +41,5 @@
 /* Class = "UILabel"; text = "Bouncing cells"; ObjectID = "ped-Op-FPM"; */
 "ped-Op-FPM.text" = "Bouncing cells";
 
-"YAO-L5-mai.headerTitle" = "Экспорт в календарь";
+"YAO-L5-mai.title" = "Экспорт в календарь";
+
