@@ -2,8 +2,8 @@
 
 ![status](https://img.shields.io/badge/status-beta-orange.svg)
 ![platform](https://img.shields.io/badge/platform-iOS%208%2B-brightgreen.svg)
-![XCode](https://img.shields.io/badge/XCode-8.1-brightgreen.svg)
-![cocoapods](https://img.shields.io/badge/cocoapods-1.1.1-orange.svg)
+![XCode](https://img.shields.io/badge/XCode-8.2.1-brightgreen.svg)
+![cocoapods](https://img.shields.io/badge/cocoapods-1.2.0-red.svg)
 ![language](https://img.shields.io/badge/language-Objective--C-blue.svg)
 ![localization](https://img.shields.io/badge/localization-RU%2FENG-yellow.svg)
 ![лицензия](https://img.shields.io/badge/license-GPL-blue.svg)
@@ -28,13 +28,13 @@
 
 1. Клонировать репозиторий
 2. Установить зависимые библиотеки через [cocoapods](https://cocoapods.org/).  В терминале `pod install`
-3. Открыть файл с расширение .xcworkspace
+3. Открыть файл с расширением .xcworkspace
 
 # Контакты
 - email: chapaev.vlad@gmail.com
-- telegram: https://telegram.me/ShogunPsyched
+- telegram: https://t.me/chapaev_vlad
 - vkontakte: https://vk.com/id40842906
-- facebook: https://facebook.com/100010449976092
+- messanger: https://m.me/chapaev.vlad
 
 # Лицензия
 
