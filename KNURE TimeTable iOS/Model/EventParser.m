@@ -48,7 +48,10 @@
             break;
     }
     [EventParser removeDuplicate:items callBack:^(id response) {
-        [self.delegate didParseItemListWithResponse:response sections:sections];
+        NSSortDescriptor *brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
+        id sortedArray = [response sortedArrayUsingDescriptors:sortDescriptors];
+        [self.delegate didParseItemListWithResponse:sortedArray sections:sections];
     }];
 }
 
