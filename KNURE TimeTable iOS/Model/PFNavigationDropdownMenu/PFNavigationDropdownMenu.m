@@ -60,14 +60,16 @@
                                                                        self.mainScreenBounds.size.height + 300 - 64)
                                                       items:items
                                               configuration:self.configuration];
+        
         __weak typeof(self) weakSelf = self;
-        self.tableView.selectRowAtIndexPathHandler = ^(NSUInteger indexPath){
+        self.tableView.selectRowAtIndexPathHandler = ^(NSUInteger indexPath) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            strongSelf.didSelectItemAtIndexHandler(indexPath);
+            //strongSelf.didSelectItemAtIndexHandler(indexPath);
             [strongSelf setMenuTitleText:items[indexPath]];
             [strongSelf hideMenu];
             strongSelf.isShown = NO;
             [strongSelf layoutSubviews];
+            [weakSelf.delegate didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath inSection:0]];
         };
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognized:)];

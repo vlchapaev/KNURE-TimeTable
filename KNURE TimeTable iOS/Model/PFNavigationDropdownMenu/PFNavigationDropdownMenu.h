@@ -9,7 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "PFTableView.h"
 
+@protocol PFNavigationDropdownMenuDelegate <NSObject>
+
+@required
+- (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface PFNavigationDropdownMenu : UIView
+
+@property (weak, nonatomic) id <PFNavigationDropdownMenuDelegate> delegate;
 
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, strong) UIColor *cellBackgroundColor;
