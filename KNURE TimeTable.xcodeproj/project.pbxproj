@@ -51,6 +51,7 @@
 		778E3AD71DCB99AA0083A658 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */; };
 		778E3AD81DCB99AA0083A658 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
 		778E3ADB1DCB9F8D0083A658 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */; };
+		779652D21E8663AF0045848B /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
 		779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */; };
 		779CF1FE1DE9EF6E002C9CA5 /* PopoverMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */; };
 		779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */; };
@@ -175,6 +176,7 @@
 		778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
 		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
 		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
+		779652D11E8663AF0045848B /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
 		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
 		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				77C857E51E7F1D6200990C82 /* Configuration.h */,
+				779652D11E8663AF0045848B /* Configuration.m */,
 				777777891DC90B8700F557B0 /* EventParser.h */,
 				7777778A1DC90B8700F557B0 /* EventParser.m */,
 				7777778B1DC90B8700F557B0 /* Request.h */,
@@ -736,6 +739,7 @@
 				779CF2011DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m in Sources */,
 				77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */,
 				6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */,
+				779652D21E8663AF0045848B /* Configuration.m in Sources */,
 				776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */,
 				C3E9AC1A1878BF3900E84287 /* AddItemsTableViewController.m in Sources */,
 				778E3AD41DCB99A90083A658 /* MSDayColumnHeaderBackground.m in Sources */,

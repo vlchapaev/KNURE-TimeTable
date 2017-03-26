@@ -66,8 +66,16 @@
 }
 
 - (IBAction)darkModeSwitchValueChanged:(UISwitch *)sender {
+    if (sender.on) {
+        [[Configuration sharedInstance]setDarkTheme];
+    } else {
+        [[Configuration sharedInstance]setDefaultTheme];
+    }
+    
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableIsDarkMode];
     [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    [[Configuration sharedInstance]applyTheme];
 }
 
 - (IBAction)showEmptyDaysSwitchValueChanged:(UISwitch *)sender {
@@ -77,6 +85,11 @@
 
 - (IBAction)bouncingCellsSwitchValueChanged:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableBouncingCells];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+- (IBAction)hintsSwitchValueChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableHideHint];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 

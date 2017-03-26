@@ -8,11 +8,13 @@
 
 #import "AppDelegate.h"
 #import "EventParser.h"
+#import "Configuration.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [EventParser initializeSharedStorage];
+    [[Configuration sharedInstance]setupTheme];
     return YES;
 }
 

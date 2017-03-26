@@ -19,3 +19,16 @@
 #define TimetableAppStoreLinkShort @"https://appsto.re/i67M8zB"
 #define TimetableAppStoreLinkFull @"https://itunes.apple.com/us/app/knure-sked/id797074875"
 #define TimetableGithubLink @"https://github.com/ShogunPhyched/KNURE-TimeTable"
+
+@import Foundation;
+
+@interface Configuration : NSObject
+
++ (instancetype)sharedInstance;
+
+- (void)setupTheme;
+- (void)setDarkTheme;
+- (void)setDefaultTheme;
+- (void)applyTheme;
+
+@end

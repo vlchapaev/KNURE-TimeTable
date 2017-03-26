@@ -14,9 +14,6 @@
 /* Class = "UILabel"; text = "Teachers"; ObjectID = "Fif-uv-P6n"; */
 "Fif-uv-P6n.text" = "Преподаватели";
 
-/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "LLk-an-ahB"; */
-"LLk-an-ahB.headerTitle" = "Настройки";
-
 /* Class = "UILabel"; text = "Timetable"; ObjectID = "MiB-eL-T99"; */
 "MiB-eL-T99.text" = "Расписание";
 
@@ -27,7 +24,7 @@
 "gUp-un-Gn5.text" = "Группы";
 
 /* Class = "UILabel"; text = "Dark theme"; ObjectID = "iao-Jq-4nt"; */
-"iao-Jq-4nt.text" = "Тёмная тема";
+"39J-7I-Dg1.text" = "Тёмная тема";
 
 /* Class = "UILabel"; text = "Settings"; ObjectID = "nx6-AI-j8l"; */
 "nx6-AI-j8l.text" = "Настройки";
@@ -42,4 +39,6 @@
 "ped-Op-FPM.text" = "Bouncing cells";
 
 "YAO-L5-mai.title" = "Экспорт в календарь";
+
+"d4Z-Kt-0wI.text" = "Убрать подсказки";
 

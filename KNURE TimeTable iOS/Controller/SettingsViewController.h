@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UISwitch *darkModeSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *showEmptyDaysSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *bouncingCellsSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *hintsSwitch;
 
 @end

@@ -9,12 +9,14 @@
 #import "AddItemsTableViewController.h"
 #import "MBProgressHUD.h"
 #import "Request.h"
+#import "Configuration.h"
 
 @interface AddItemsTableViewController () <EventParserDelegate, UISearchBarDelegate, UISearchResultsUpdating, URLRequestDelegate>
 
 @property (strong, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) NSArray *datasource;
 @property (assign, nonatomic) BOOL isFiltred;
+@property (assign, nonatomic) BOOL isDarkMode;
 
 @property (strong, nonnull) IBOutlet UISearchController *searchController;
 
@@ -37,6 +39,8 @@
     self.navigationItem.titleView = self.searchController.searchBar;
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
+    
+    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
     
     [self getItemList];
 }
@@ -123,6 +127,7 @@
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
+    cell.textLabel.textColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
     
     return cell;
 }

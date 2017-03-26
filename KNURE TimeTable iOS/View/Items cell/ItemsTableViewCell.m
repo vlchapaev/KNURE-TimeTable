@@ -14,6 +14,7 @@
 @interface ItemsTableViewCell () <URLRequestDelegate, EventParserDelegate>
 
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -24,6 +25,7 @@
     if (self) {
         self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.accessoryView = self.indicator;
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
     }
     return self;
 }
@@ -34,7 +36,7 @@
     self.textLabel.text = item.title;
     self.textLabel.numberOfLines = 0;
     self.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    self.textLabel.textColor = [UIColor blackColor];
+    self.textLabel.textColor = (self.isDarkTheme) ? [UIColor whiteColor] : [UIColor blackColor];
     
     self.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [item.last_update timeAgoSinceNow]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
     self.detailTextLabel.textColor = [UIColor lightGrayColor];
