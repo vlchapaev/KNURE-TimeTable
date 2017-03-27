@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary(Transformation)
 
+/**
+ Make a search request for for object with id, if not found returnt new object
+
+ @return NSManagedObject
+ */
 - (Item *)transformToNSManagedObject;
 
 @end
