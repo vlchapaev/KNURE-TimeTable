@@ -70,18 +70,15 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupProperties];
-    
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
         self.selectedItem = [selectedItem transformToNSManagedObject];
         [self setupFetchRequestWithItem:self.selectedItem];
+        [self setupProperties];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
             [self setupDropDownController];
         }
     }
-    
     
     [self setupCollectionView];
     [self addDoubleTapGesture];
@@ -96,7 +93,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
@@ -176,14 +172,15 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (void)setupDropDownController {
+    self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     self.dropDownMenu = [[PFNavigationDropdownMenu alloc]initWithFrame:CGRectMake(0, 0, 300, 44) title:self.selectedItem.title items:[self.allItems valueForKey:@"title"] containerView:self.view];
     self.dropDownMenu.delegate = self;
     
     self.dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     self.dropDownMenu.cellTextLabelColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
-    self.dropDownMenu.cellBackgroundColor = (self.isDarkMode) ? [UIColor grayColor] : [UIColor whiteColor];
-    self.dropDownMenu.arrowImage = [UIImage imageNamed:@"arrow_down_icon"];
-    self.dropDownMenu.checkMarkImage = [UIImage imageNamed:@"checkmark_icon"];
+    self.dropDownMenu.cellBackgroundColor = (self.isDarkMode) ? [UIColor darkGrayColor] : [UIColor whiteColor];
+    self.dropDownMenu.arrowImage = (self.isDarkMode) ? [UIImage imageNamed:@"arrow_down_icon-1"] : [UIImage imageNamed:@"arrow_down_icon"];
+    self.dropDownMenu.checkMarkImage = (self.isDarkMode) ? [UIImage imageNamed:@"checkmark_icon-1"] : [UIImage imageNamed:@"checkmark_icon"];
     
     for (short index = 0; index < self.allItems.count; index++) {
         if (self.selectedItem.id == self.allItems[index].id) {
@@ -311,6 +308,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
+        timeRowHeader.title.textColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
         return timeRowHeader;
     }
     return [[UICollectionReusableView alloc]init];

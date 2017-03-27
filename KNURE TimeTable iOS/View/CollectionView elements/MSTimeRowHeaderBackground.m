@@ -7,13 +7,15 @@
 //
 
 #import "MSTimeRowHeaderBackground.h"
+#import "Configuration.h"
 
 @implementation MSTimeRowHeaderBackground
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.backgroundColor = (isDarkTheme) ? ApplicationThemeBackgroundColorDark : [UIColor whiteColor];
     }
     return self;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "MSDayColumnHeaderBackground.h"
+#import "Configuration.h"
 
 @implementation MSDayColumnHeaderBackground
 
@@ -14,7 +15,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.00];
+        BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.backgroundColor = (isDarkTheme) ? [UIColor darkGrayColor] : [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.00];
     }
     return self;
 }

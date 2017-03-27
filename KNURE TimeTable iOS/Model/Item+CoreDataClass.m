@@ -31,7 +31,8 @@
 
 - (Item *)transformToNSManagedObject {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", self[@"id"]];
-    return [Item MR_findFirstWithPredicate:predicate];
+    Item *item = [Item MR_findFirstWithPredicate:predicate];
+    return (item) ? item : [Item MR_importFromObject:self];
 }
 
 @end

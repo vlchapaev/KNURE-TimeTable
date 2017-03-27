@@ -18,6 +18,8 @@
 @property (assign, nonatomic) BOOL isFiltred;
 @property (assign, nonatomic) BOOL isDarkMode;
 
+@property (strong, nonatomic) NSArray <Item *>*allItems;
+
 @property (strong, nonnull) IBOutlet UISearchController *searchController;
 
 @end
@@ -41,6 +43,7 @@
     [self.searchController.searchBar sizeToFit];
     
     self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     
     [self getItemList];
 }
@@ -123,6 +126,11 @@
     }
     
     NSDictionary *record = (self.isFiltred) ? self.searchResults[indexPath.row] : self.datasource[indexPath.row];
+    
+    if ([[self.allItems valueForKey:@"id"]containsObject:[record valueForKey:@"id"]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.userInteractionEnabled = NO;
+    }
     
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];

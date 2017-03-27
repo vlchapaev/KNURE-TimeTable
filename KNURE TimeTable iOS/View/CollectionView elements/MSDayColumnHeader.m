@@ -7,11 +7,13 @@
 //
 
 #import "MSDayColumnHeader.h"
+#import "Configuration.h"
 
 @interface MSDayColumnHeader ()
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIView *titleBackground;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -29,6 +31,8 @@
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         [self addSubview:self.title];
+        
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
         
         [self.titleBackground makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.title).with.insets(UIEdgeInsetsMake(-6.0, -12.0, -4.0, -12.0));
@@ -57,7 +61,7 @@
         self.titleBackground.backgroundColor = [UIColor colorWithRed:0.91 green:0.31 blue:0.24 alpha:1.00];
     } else {
         self.title.font = [UIFont systemFontOfSize:16.0];
-        self.title.textColor = [UIColor blackColor];
+        self.title.textColor = (self.isDarkTheme) ? [UIColor whiteColor] : [UIColor blackColor];
         self.titleBackground.backgroundColor = [UIColor clearColor];
     }
 }

@@ -8,6 +8,13 @@
 
 #import "LessonCollectionViewCell.h"
 #import "EventParser.h"
+#import "Configuration.h"
+
+@interface LessonCollectionViewCell()
+
+@property (assign, nonatomic) BOOL isDarkTheme;
+
+@end
 
 @implementation LessonCollectionViewCell
 
@@ -16,6 +23,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
         
         self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         self.layer.shouldRasterize = YES;
@@ -132,11 +140,13 @@
 }
 
 - (UIColor *)backgroundColorHighlighted:(BOOL)selected {
-    return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:0.2];
+    CGFloat opacity = (self.isDarkTheme) ? 0.55 : 0.2;
+    return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:opacity];
 }
 
 - (UIColor *)textColorHighlighted:(BOOL)selected {
-    return selected ? [UIColor whiteColor] : [UIColor darkGrayColor];
+    UIColor *color = (selected) ? [UIColor whiteColor] : [UIColor darkGrayColor];
+    return (self.isDarkTheme) ? [UIColor whiteColor] : color;
 }
 
 - (UIColor *)borderColor {

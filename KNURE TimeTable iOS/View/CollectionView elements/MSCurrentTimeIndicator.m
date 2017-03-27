@@ -7,6 +7,7 @@
 //
 
 #import "MSCurrentTimeIndicator.h"
+#import "Configuration.h"
 
 @interface MSCurrentTimeIndicator ()
 
@@ -20,8 +21,8 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.backgroundColor = [UIColor whiteColor];
+        BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.backgroundColor = (isDarkTheme) ? ApplicationThemeBackgroundColorDark : [UIColor whiteColor];
         
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:12.0];

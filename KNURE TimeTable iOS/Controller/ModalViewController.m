@@ -7,6 +7,7 @@
 //
 
 #import "ModalViewController.h"
+#import "Configuration.h"
 
 @interface ModalViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,6 +20,8 @@
 @property (strong, nonatomic) NSArray *teachers;
 @property (strong, nonatomic) NSArray *groups;
 
+@property (assign, nonatomic) BOOL isDarkMode;
+
 @end
 
 @implementation ModalViewController
@@ -26,6 +29,7 @@
 - (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
     self = [super init];
     if (self) {
+        self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
         
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;

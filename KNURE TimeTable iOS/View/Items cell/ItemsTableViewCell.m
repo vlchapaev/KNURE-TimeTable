@@ -23,9 +23,10 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        self.accessoryView = self.indicator;
         self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        UIActivityIndicatorViewStyle indicatorStyle = (self.isDarkTheme) ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray;
+        self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:indicatorStyle];
+        self.accessoryView = self.indicator;
     }
     return self;
 }

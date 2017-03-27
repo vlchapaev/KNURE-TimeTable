@@ -32,17 +32,19 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    [UINavigationBar appearance].backgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00];
+    [UINavigationBar appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00];
+    [UINavigationBar appearance].barTintColor = ApplicationThemeBackgroundColorDark;
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
-    [UITableView appearance].backgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00];
-    [UITableViewCell appearance].backgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00];
-    [UITableViewCell appearance].contentView.backgroundColor = [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00];
+    [UITableView appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
+    [UITableViewCell appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
+    [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeBackgroundColorDark;
     [UITableViewCell appearance].textLabel.textColor = [UIColor whiteColor];
     
-    [UILabel appearance].textColor = [UIColor whiteColor];
+    [UICollectionView appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
+    
+    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = [UIColor whiteColor];
     
     [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDark;
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -61,7 +63,9 @@
     [UITableViewCell appearance].backgroundColor = [UIColor whiteColor];
     [UITableViewCell appearance].contentView.backgroundColor = nil;
     
-    [UILabel appearance].textColor = nil;
+    [UICollectionView appearance].backgroundColor = [UIColor whiteColor];
+    
+    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = [UIColor blackColor];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 }
 

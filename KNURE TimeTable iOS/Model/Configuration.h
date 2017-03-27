@@ -20,6 +20,8 @@
 #define TimetableAppStoreLinkFull @"https://itunes.apple.com/us/app/knure-sked/id797074875"
 #define TimetableGithubLink @"https://github.com/ShogunPhyched/KNURE-TimeTable"
 
+#define ApplicationThemeBackgroundColorDark [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00]
+
 @import Foundation;
 
 @interface Configuration : NSObject
