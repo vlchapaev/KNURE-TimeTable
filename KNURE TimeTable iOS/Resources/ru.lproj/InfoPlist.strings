@@ -7,3 +7,5 @@
 */
 
 CFBundleDisplayName = "Расписание";
+NSCameraUsageDescription = "Это приложение вообще не использует вашу камеру";
+NSCalendarsUsageDescription = "Приложению необходим доступ к календарю для экспорта расписания";

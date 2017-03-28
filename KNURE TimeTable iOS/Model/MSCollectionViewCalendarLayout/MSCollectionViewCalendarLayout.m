@@ -970,6 +970,8 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
     [self.dayColumnHeaderBackgroundAttributes removeAllObjects];
     [self.timeRowHeaderAttributes removeAllObjects];
     [self.timeRowHeaderBackgroundAttributes removeAllObjects];
+    [self.currentTimeIndicatorAttributes removeAllObjects];
+    [self.currentTimeHorizontalGridlineAttributes removeAllObjects];
     [self.allAttributes removeAllObjects];
     
     [self.dynamicAnimator removeAllBehaviors];

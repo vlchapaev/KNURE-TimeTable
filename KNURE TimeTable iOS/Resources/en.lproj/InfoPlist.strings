@@ -7,3 +7,5 @@
 */
 
 CFBundleDisplayName = "Schedule";
+NSCameraUsageDescription = "This application does not use your camera at all";
+NSCalendarsUsageDescription = "Application should have access to calendar in order to perform export of your timetable";

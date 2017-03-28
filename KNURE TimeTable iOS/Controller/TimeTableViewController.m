@@ -37,6 +37,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate>
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 @property (strong, nonatomic) NSArray <Item *>*allItems;
@@ -392,6 +394,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         } else {
             [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidUpdateDataNotification object:item];
         }
+        [self.collectionViewCalendarLayout invalidateLayoutCache];
+        [self.collectionViewCalendarLayout invalidateLayout];
         [self.collectionView reloadData];
     }];
 }

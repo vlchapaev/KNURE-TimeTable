@@ -10,6 +10,7 @@
 #import "PopoverModalViewController.h"
 #import "PopoverComboBoxViewController.h"
 #import "Configuration.h"
+#import "LessonCollectionViewCell.h"
 
 @interface TabletTimeTableViewController() <UIPopoverControllerDelegate, PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate>
 
@@ -88,13 +89,11 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
-    Lesson *lesson = [super.fetchedResultsController objectAtIndexPath:indexPath];
+    LessonCollectionViewCell *cell = (LessonCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
     CGRect displayFrame = CGRectMake(cell.frame.origin.x - collectionView.contentOffset.x, cell.frame.origin.y - collectionView.contentOffset.y, cell.frame.size.width, cell.frame.size.height);
     
-    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
+    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:cell.event];
     modalViewController.delegate = self;
     modalViewController.indexPath = indexPath;
     UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];

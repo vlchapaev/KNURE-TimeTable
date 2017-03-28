@@ -15,8 +15,6 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 /**
  Used to redraw collection view after device rotation
 */
