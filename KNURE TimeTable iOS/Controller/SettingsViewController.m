@@ -34,6 +34,7 @@
     self.bouncingCellsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
     self.showEmptyDaysSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
     self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.verticalScrollSwitch.enabled = NO;

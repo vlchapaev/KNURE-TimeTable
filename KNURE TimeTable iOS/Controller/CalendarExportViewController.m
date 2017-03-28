@@ -10,6 +10,7 @@
 #import "ItemsTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Item+CoreDataProperties.h"
+#import "Configuration.h"
 
 @interface CalendarExportViewController () <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ItemsTableViewCellDelegate>
 
@@ -26,6 +27,8 @@
     self.tableView.emptyDataSetSource = self;
     
     [self.tableView registerClass:ItemsTableViewCell.class forCellReuseIdentifier:@"Item"];
+    
+    self.hideHint = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint];
     
     [self setupFetchRequest];
     
