@@ -1029,19 +1029,10 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
             }
             contentOffset = CGPointMake(0.0, yOffset);
         }
-        // Prevent the content offset from forcing the scroll view content off its bounds
-        if (contentOffset.y > (self.collectionView.contentSize.height - self.collectionView.frame.size.height)) {
-            contentOffset.y = (self.collectionView.contentSize.height - self.collectionView.frame.size.height);
-        }
-        if (contentOffset.y < 0.0) {
-            contentOffset.y = 0.0;
-        }
-        if (contentOffset.x > (self.collectionView.contentSize.width - self.collectionView.frame.size.width)) {
-            contentOffset.x = (self.collectionView.contentSize.width - self.collectionView.frame.size.width);
-        }
-        if (contentOffset.x < 0.0) {
-            contentOffset.x = 0.0;
-        }
+       
+        if (contentOffset.y < 0.0) { contentOffset.y = 0.0; }
+        if (contentOffset.x < 0.0) { contentOffset.x = 0.0; }
+        
         [self.collectionView setContentOffset:contentOffset animated:animated];
     }
 }
