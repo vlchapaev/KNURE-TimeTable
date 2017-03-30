@@ -28,7 +28,7 @@
     
     [self.tableView registerClass:ItemsTableViewCell.class forCellReuseIdentifier:@"Item"];
     
-    self.hideHint = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint];
+    self.hideHint = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
     
     [self setupFetchRequest];
     

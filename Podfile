@@ -6,6 +6,7 @@ target 'KNURE TimeTable iOS' do
     pod "AMSlideMenu"
     pod "MBProgressHUD"
     pod "DZNEmptyDataSet"
+    pod "EAIntroView"
     
     # logic
     pod "MagicalRecord"

@@ -14,6 +14,7 @@ Interface_Other = "Другое";
 
 TimeTable_NoItems = "Нет расписания";
 TimeTable_NoItemsMessage = "Добавьте группы, преподавателей или аудитории, чтобы вывести их расписание";
+TimeTable_Tutorial = "Инструкция к приложению";
 
 ModalView_Type = "Тип";
 ModalView_Auditory = "Аудитория";

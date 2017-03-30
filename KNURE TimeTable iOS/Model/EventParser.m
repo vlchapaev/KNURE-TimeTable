@@ -8,6 +8,22 @@
 
 #import "EventParser.h"
 
+#define LessonTypeLightColorLection [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00]
+#define LessonTypeLightColorPractice [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00]
+#define LessonTypeLightColorLaboratiry [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00]
+#define LessonTypeLightColorConsultation [UIColor lightGrayColor]
+#define LessonTypeLightColorExam [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00]
+#define LessonTypeLightColorСredit [UIColor magentaColor]
+#define LessonTypeLightColorUnknown [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0]
+
+#define LessonTypeDarkColorLection [UIColor colorWithRed:1.00 green:0.66 blue:0.00 alpha:1.00]
+#define LessonTypeDarkColorPractice [UIColor colorWithRed:0.16 green:0.68 blue:0.38 alpha:1.00]
+#define LessonTypeDarkColorLaboratiry [UIColor colorWithRed:0.36 green:0.28 blue:0.63 alpha:1.00]
+#define LessonTypeDarkColorConsultation [UIColor lightGrayColor]
+#define LessonTypeDarkColorExam [UIColor colorWithRed:0.16 green:0.50 blue:0.73 alpha:1.00]
+#define LessonTypeDarkColorСredit [UIColor magentaColor]
+#define LessonTypeDarkColorUnknown [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0]
+
 @implementation EventParser
 
 + (instancetype)sharedInstance {
@@ -212,78 +228,32 @@
     return itemList;
 }
 
-+ (UIColor *)getCellColorByType:(NSInteger)type {
-    switch (type) {
-        case 0:
-            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
-            break;
-        case 1:
-            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
-            break;
-        case 2:
-            return [UIColor colorWithRed:1.00 green:0.81 blue:0.02 alpha:1.00];
-            break;
-        case 10:
-            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
-            break;
-        case 11:
-            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
-            break;
-        case 12:
-            return [UIColor colorWithRed:0.19 green:0.80 blue:0.44 alpha:1.00];
-            break;
-        case 20:
-            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
-            break;
-        case 21:
-            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
-            break;
-        case 22:
-            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
-            break;
-        case 23:
-            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
-            break;
-        case 24:
-            return [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00];
-            break;
-        case 30:
-            return [UIColor lightGrayColor];
-            break;
-        case 31:
-            return [UIColor lightGrayColor];
-            break;
-        case 40:
-            return [UIColor lightGrayColor];
-            break;
-        case 41:
-            return [UIColor lightGrayColor];
-            break;
-        case 50:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 51:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 52:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 53:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 54:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 55:
-            return [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00];
-            break;
-        case 60:
-            return [UIColor lightGrayColor];
-            break;
-        default:
-            return [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0];
-            break;
++ (UIColor *)getCellColorByType:(NSInteger)type isDarkTheme:(BOOL)isDark {
+    if (type == 1 || type == 2 || type == 0) {
+        return isDark ? LessonTypeDarkColorLection : LessonTypeLightColorLection;
+        
+    } else if (type == 10 || type == 11 || type == 12) {
+        return isDark ? LessonTypeDarkColorPractice : LessonTypeLightColorPractice;
+        
+    } else if (type == 20 || type == 21 || type == 22 || type == 23 || type ==24) {
+        return isDark ? LessonTypeDarkColorLaboratiry : LessonTypeLightColorLaboratiry;
+        
+    } else if (type == 30 || type == 31) {
+        return isDark ? LessonTypeDarkColorConsultation : LessonTypeLightColorConsultation;
+        
+    } else if (type == 40 || type == 41) {
+        return isDark ? LessonTypeDarkColorConsultation : LessonTypeLightColorConsultation;
+        
+    } else if (type == 50 || type == 51 || type == 52 || type == 53 || type == 54 || type == 55) {
+        return isDark ? LessonTypeDarkColorExam : LessonTypeLightColorExam;
+        
+    } else if (type == 60) {
+        return isDark ? LessonTypeDarkColorСredit : LessonTypeLightColorСredit;
+        
+    } else {
+        return isDark ? LessonTypeDarkColorСredit : LessonTypeLightColorСredit;
     }
+    
 }
 
 - (void)exportToCalendar:(Item *)item inRange:(CalendarExportRange)range {

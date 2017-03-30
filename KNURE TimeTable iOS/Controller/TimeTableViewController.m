@@ -18,6 +18,7 @@
 #import "Request.h"
 #import "EventParser.h"
 #import "Configuration.h"
+#import "EAIntroView.h"
 
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -35,7 +36,7 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, ModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate, EAIntroDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -88,13 +89,15 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
+    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
+    //[SKStoreReviewController requestReview];
 }
 
 #pragma mark - Setup
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
@@ -129,7 +132,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (!self.isRunningInFullScreen) {
         self.isVerticalMode = YES;
     }
-    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     self.showEmptyDays = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
     
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
@@ -178,8 +181,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.dropDownMenu.delegate = self;
     
     self.dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    self.dropDownMenu.cellTextLabelColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
-    self.dropDownMenu.cellBackgroundColor = (self.isDarkMode) ? [UIColor darkGrayColor] : [UIColor whiteColor];
+    self.dropDownMenu.cellTextLabelColor = (self.isDarkMode) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+    self.dropDownMenu.cellBackgroundColor = (self.isDarkMode) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     self.dropDownMenu.arrowImage = (self.isDarkMode) ? [UIImage imageNamed:@"arrow_down_icon-1"] : [UIImage imageNamed:@"arrow_down_icon"];
     self.dropDownMenu.checkMarkImage = (self.isDarkMode) ? [UIImage imageNamed:@"checkmark_icon-1"] : [UIImage imageNamed:@"checkmark_icon"];
     
@@ -190,6 +193,16 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
     
     self.navigationItem.titleView = self.dropDownMenu;
+}
+
+- (EAIntroView *)setupIntro {
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.bgImage = [UIImage imageNamed:@"intro-1"];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.bgImage = [UIImage imageNamed:@"intro-2"];
+    
+    return [[EAIntroView alloc] initWithFrame:self.navigationController.view.bounds andPages:@[page1, page2]];
 }
 
 - (void)addDoubleTapGesture {
@@ -266,7 +279,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedItem = self.allItems[indexPath.row];
     [self.selectedItem saveAsSelectedItem];
-    [NSFetchedResultsController deleteCacheWithName:TimetableCacheName];
+    [NSFetchedResultsController deleteCacheWithName:ApplicationCacheName];
     [self setupFetchRequestWithItem:self.selectedItem];
     [self setupProperties];
     CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
@@ -308,7 +321,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
-        timeRowHeader.title.textColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
         return timeRowHeader;
     }
     return [[UICollectionReusableView alloc]init];
@@ -437,6 +449,29 @@ CGFloat const dayColumnHeaderHeight = 40;
                                  NSParagraphStyleAttributeName: paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    UIFont *font = [UIFont systemFontOfSize:16.0];
+    UIColor *textColor = (state == UIControlStateNormal) ? ApplicationThemeLightTintColor : [UIColor colorWithRed:0.78 green:0.87 blue:0.98 alpha:1.00];
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    [attributes setObject:font forKey:NSFontAttributeName];
+    [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
+    
+    return [[NSAttributedString alloc] initWithString:NSLocalizedString(@"TimeTable_Tutorial", nil) attributes:attributes];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+    EAIntroView *introView = [self setupIntro];
+    introView.delegate = self;
+    introView.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    introView.pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
+    [introView.skipButton setTitleColor:[UIColor colorWithRed:0.00 green:0.48 blue:1.00 alpha:1.00] forState:UIControlStateNormal];
+    [introView.skipButton setTitleColor:[UIColor colorWithRed:0.78 green:0.87 blue:0.98 alpha:1.00] forState:UIControlStateHighlighted];
+    [introView showInView:self.navigationController.view animateDuration:0.3];
 }
 
 @end

@@ -32,7 +32,7 @@
     
     self.navigationItem.title = self.headerTitle;
     self.title = self.headerTitle;
-    self.hideHint = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint];
+    self.hideHint = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
     
     self.tableView.emptyDataSetSource = self;
     
@@ -45,7 +45,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    self.preferredContentSize = CGSizeMake(400, 500);
+    self.preferredContentSize = ApplicationPopoverSize;
 }
 
 #pragma mark - Setups
@@ -73,7 +73,7 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (![[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint]) {
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint]) {
         self.hideHint = ([controller.sections.firstObject numberOfObjects] < 1) ? YES : NO;
     }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];

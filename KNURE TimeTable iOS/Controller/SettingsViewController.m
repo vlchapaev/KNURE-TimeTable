@@ -24,7 +24,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    self.preferredContentSize = CGSizeMake(400, 600);
+    self.preferredContentSize = ApplicationPopoverSize;
 }
 
 #pragma mark - Setups
@@ -33,31 +33,52 @@
     self.verticalScrollSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
     self.bouncingCellsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
     self.showEmptyDaysSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
-    self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
-    self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHideHint];
+    self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.verticalScrollSwitch.enabled = NO;
     }
+    
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == 1) {
-        NSString *text = NSLocalizedString(@"Settings_Promote", nil);
-        NSURL *url = [[NSURL alloc]initWithString:TimetableAppStoreLinkFull];
-        UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:@[text, url] applicationActivities:nil];
-        [self presentViewController:controller animated:YES completion:nil];
-    }
 }
 
 #pragma mark - Events
 
+- (IBAction)rateButtonTap {
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationAppStoreLinkFull];
+    [[UIApplication sharedApplication]openURL:url];
+}
+
+- (IBAction)shareButtonTap {
+    NSString *text = NSLocalizedString(@"Settings_Promote", nil);
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationAppStoreLinkShort];
+    UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:@[text, url] applicationActivities:nil];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 - (IBAction)openGithub {
-    NSURL *url = [[NSURL alloc]initWithString:TimetableGithubLink];
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationSupportGithubLink];
+    [[UIApplication sharedApplication]openURL:url];
+}
+
+- (IBAction)openMessanger {
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationSupportMessengerLink];
+    [[UIApplication sharedApplication]openURL:url];
+}
+
+- (IBAction)openTelegram {
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationSupportTelegramLink];
+    [[UIApplication sharedApplication]openURL:url];
+}
+
+- (IBAction)openVkontakte {
+    NSURL *url = [[NSURL alloc]initWithString:ApplicationSupportVkontakteLink];
     [[UIApplication sharedApplication]openURL:url];
 }
 
@@ -70,10 +91,10 @@
     if (sender.on) {
         [[Configuration sharedInstance]setDarkTheme];
     } else {
-        [[Configuration sharedInstance]setDefaultTheme];
+        [[Configuration sharedInstance]setLightTheme];
     }
     
-    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableIsDarkMode];
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:ApplicationIsDarkTheme];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
     [[Configuration sharedInstance]applyTheme];
@@ -90,7 +111,7 @@
 }
 
 - (IBAction)hintsSwitchValueChanged:(UISwitch *)sender {
-    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableHideHint];
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:ApplicationHideHint];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 

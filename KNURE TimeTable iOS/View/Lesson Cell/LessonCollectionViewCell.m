@@ -23,7 +23,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
         
         self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         self.layer.shouldRasterize = YES;
@@ -103,7 +103,7 @@
     _event = event;
     self.title.attributedText = [[NSAttributedString alloc] initWithString:event.brief attributes:[self titleAttributesHighlighted:self.selected]];
     self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];
-    self.mainColor = [EventParser getCellColorByType:[event.type integerValue]];
+    self.mainColor = [EventParser getCellColorByType:[event.type integerValue] isDarkTheme:self.isDarkTheme];
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
 }
@@ -145,8 +145,8 @@
 }
 
 - (UIColor *)textColorHighlighted:(BOOL)selected {
-    UIColor *color = (selected) ? [UIColor whiteColor] : [UIColor darkGrayColor];
-    return (self.isDarkTheme) ? [UIColor whiteColor] : color;
+    UIColor *color = (selected) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontSecondnaryColor;
+    return (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : color;
 }
 
 - (UIColor *)borderColor {

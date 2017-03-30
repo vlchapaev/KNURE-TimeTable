@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import CoreData;
+@import StoreKit;
 
 #import "Item+CoreDataClass.h"
 

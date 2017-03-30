@@ -29,7 +29,7 @@
 - (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
     self = [super init];
     if (self) {
-        self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
         
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;

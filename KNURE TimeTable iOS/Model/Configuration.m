@@ -8,6 +8,11 @@
 
 #import "Configuration.h"
 
+#import "MSDayColumnHeaderBackground.h"
+#import "MSTimeRowHeaderBackground.h"
+#import "MSGridline.h"
+#import "MSCurrentTimeGridline.h"
+
 @implementation Configuration
 
 + (instancetype)sharedInstance {
@@ -20,53 +25,66 @@
 }
 
 - (void)setupTheme {
-    BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     if (isDarkTheme) {
         [self setDarkTheme];
     } else {
-        [self setDefaultTheme];
+        [self setLightTheme];
     }
 }
 
 - (void)setDarkTheme {
+    [UIView appearance].tintColor = ApplicationThemeDarkTintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    [UINavigationBar appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
-    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].barTintColor = ApplicationThemeBackgroundColorDark;
-    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    [UINavigationBar appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [UINavigationBar appearance].tintColor = ApplicationThemeDarkTintColor;
+    [UINavigationBar appearance].barTintColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : ApplicationThemeDarkFontPrimaryColor};
     
-    [UITableView appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
-    [UITableViewCell appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
-    [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeBackgroundColorDark;
-    [UITableViewCell appearance].textLabel.textColor = [UIColor whiteColor];
+    [UITableView appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [UITableViewCell appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [UITableViewCell appearance].textLabel.textColor = ApplicationThemeDarkFontPrimaryColor;
     
-    [UICollectionView appearance].backgroundColor = ApplicationThemeBackgroundColorDark;
+    [UICollectionView appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundSecondnaryColor;
+    [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    [MSGridline appearance].backgroundColor = [ApplicationThemeDarkFontSecondnaryColor colorWithAlphaComponent:0.2];
+    [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeDarkCurrentTimeIndicator;
     
-    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = [UIColor whiteColor];
+    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeDarkFontPrimaryColor;
     
     [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDark;
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeDarkFontPrimaryColor}];
 }
 
-- (void)setDefaultTheme {
+- (void)setLightTheme {
+    [UIView appearance].tintColor = ApplicationThemeLightTintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    [UINavigationBar appearance].backgroundColor = [UIColor whiteColor];
-    [UINavigationBar appearance].tintColor = nil;
-    [UINavigationBar appearance].barTintColor = nil;
-    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+    [UINavigationBar appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [UINavigationBar appearance].tintColor = ApplicationThemeLightTintColor;
+    [UINavigationBar appearance].barTintColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : ApplicationThemeLightFontPrimaryColor};
     
-    [UITableView appearance].backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1.00];
-    [UITableViewCell appearance].backgroundColor = [UIColor whiteColor];
-    [UITableViewCell appearance].contentView.backgroundColor = nil;
+    [UITableView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [UITableViewCell appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     
-    [UICollectionView appearance].backgroundColor = [UIColor whiteColor];
+    [UICollectionView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundSecondnaryColor;
+    [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [MSGridline appearance].backgroundColor = [ApplicationThemeLightFontSecondnaryColor colorWithAlphaComponent:0.2];
+    [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
     
-    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = [UIColor blackColor];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeLightFontPrimaryColor;
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeLightFontPrimaryColor}];
 }
 
 - (void)applyTheme {

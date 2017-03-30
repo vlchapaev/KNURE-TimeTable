@@ -23,7 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
         UIActivityIndicatorViewStyle indicatorStyle = (self.isDarkTheme) ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray;
         self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:indicatorStyle];
         self.accessoryView = self.indicator;
@@ -37,7 +37,7 @@
     self.textLabel.text = item.title;
     self.textLabel.numberOfLines = 0;
     self.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    self.textLabel.textColor = (self.isDarkTheme) ? [UIColor whiteColor] : [UIColor blackColor];
+    self.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
     
     self.detailTextLabel.text = (item.last_update) ? [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ItemList_Updated", nil), [item.last_update timeAgoSinceNow]] : NSLocalizedString(@"ItemList_Not_Updated", nil);
     self.detailTextLabel.textColor = [UIColor lightGrayColor];

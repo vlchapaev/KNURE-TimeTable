@@ -14,6 +14,7 @@ Interface_Other = "Other";
 
 TimeTable_NoItems = "No timetable";
 TimeTable_NoItemsMessage = "Add groups, teachers or classrooms to view their timetable";
+TimeTable_Tutorial = "Show me tutorial";
 
 ModalView_Type = "Type";
 ModalView_Auditory = "Auditory";

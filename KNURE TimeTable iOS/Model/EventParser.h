@@ -80,7 +80,7 @@ typedef enum {
  */
 + (void)removeDuplicate:(id)datasource callBack:(void (^)(id response))callbackBlock;
 
-+ (UIColor *)getCellColorByType:(NSInteger)type;
++ (UIColor *)getCellColorByType:(NSInteger)type isDarkTheme:(BOOL)isDarkTheme;
 
 /**
  Events that belong to listed item will be export to iOS calendar

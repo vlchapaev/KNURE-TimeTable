@@ -25,7 +25,7 @@ NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
-NSString *const TimeTableCacheName = @"TimeTableCacheName";
+NSString *const ApplicationCacheName = @"ApplicationCacheName";
 NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
 NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
 

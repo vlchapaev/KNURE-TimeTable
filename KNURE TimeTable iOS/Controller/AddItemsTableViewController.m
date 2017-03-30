@@ -42,7 +42,7 @@
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
     
-    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableIsDarkMode];
+    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     
     [self getItemList];
@@ -135,7 +135,7 @@
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.textColor = (self.isDarkMode) ? [UIColor whiteColor] : [UIColor blackColor];
+    cell.textLabel.textColor = (self.isDarkMode) ? ApplicationThemeDarkBackgroundSecondnaryColor : [UIColor blackColor];
     
     return cell;
 }
