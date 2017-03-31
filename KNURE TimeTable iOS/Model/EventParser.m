@@ -131,11 +131,11 @@
     
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", itemID];
     [Lesson MR_deleteAllMatchingPredicate:filter];
-    /*
+    
     NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:[[[events firstObject] valueForKey:@"start_time"] integerValue]];
     NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:[[[events lastObject] valueForKey:@"end_time"] integerValue]];
     
-    NSMutableArray *semesterDates = [[NSMutableArray alloc]init];
+    NSMutableArray <NSDate *>*semesterDates = [[NSMutableArray alloc]init];
     [semesterDates addObject:startDate];
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -144,15 +144,13 @@
     for (int i = 1; i < components.day; ++i) {
         NSDateComponents *newComponents = [NSDateComponents new];
         newComponents.day = i;
-        //newComponents.hour = 7;
-        //newComponents.minute = 45;
         
         NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents toDate:startDate options:0];
         [semesterDates addObject:date];
     }
     
     [semesterDates addObject:endDate];
-    */
+    
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
         for (id event in events) {
             Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
@@ -169,22 +167,23 @@
             lesson.teachers = [self getItems:teachers withIDs:[event valueForKey:@"teachers"]];
             lesson.groups = [self getItems:groups withIDs:[event valueForKey:@"groups"]];
             lesson.subject_id = [[event valueForKeyPath:@"subject_id"] integerValue];
+            lesson.isDummy = NO;
         }
-        /*
+        
         for (NSDate *date in semesterDates) {
             
             Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
             lesson.item_id = [itemID integerValue];
             lesson.start_time = date;
             lesson.end_time = date;
-            lesson.number_pair = @1;
+            lesson.isDummy = YES;
             
             lesson.brief = @"";
             lesson.title = @"";
             lesson.auditory = @"";
             lesson.type = @1;
         }
-        */
+        
         [localContext MR_saveToPersistentStoreAndWait];
     } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
         callbackBlock();

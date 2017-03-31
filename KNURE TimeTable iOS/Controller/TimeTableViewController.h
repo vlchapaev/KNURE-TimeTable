@@ -10,7 +10,7 @@
 @import CoreData;
 @import StoreKit;
 
-#import "Item+CoreDataClass.h"
+#import "Item.h"
 
 @interface TimeTableViewController : UICollectionViewController
 

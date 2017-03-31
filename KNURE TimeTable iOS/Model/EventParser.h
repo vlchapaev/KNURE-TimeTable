@@ -12,8 +12,8 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 
-#import "Item+CoreDataClass.h"
-#import "Lesson+CoreDataClass.h"
+#import "Item.h"
+#import "Lesson.h"
 
 typedef enum {
     ItemTypeGroup = 1,

@@ -9,8 +9,8 @@
 #import "TimeTableViewController.h"
 #import "MSCollectionViewCalendarLayout.h"
 #import "LessonCollectionViewCell.h"
-#import "Lesson+CoreDataClass.h"
-#import "Item+CoreDataProperties.h"
+#import "Lesson.h"
+#import "Item.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "PFNavigationDropdownMenu.h"
 #import "ModalViewController.h"
@@ -54,7 +54,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @property (assign, nonatomic) BOOL isVerticalMode;
 @property (assign, nonatomic) BOOL isDarkMode;
-@property (assign, nonatomic) BOOL showEmptyDays;
+@property (assign, nonatomic) BOOL removeEmptyDays;
 
 @end
 
@@ -73,24 +73,27 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    if (selectedItem) {
-        self.selectedItem = [selectedItem transformToNSManagedObject];
-        [self setupFetchRequestWithItem:self.selectedItem];
+    Item *item = [Item getSelectedItem];
+    if (item) {
+        self.selectedItem = item;
+        [self setupFetchRequestWithItem:item];
         [self setupProperties];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
             [self setupDropDownController];
         }
+    } else {
+        self.refreshButton.enabled = NO;
     }
     
     [self setupCollectionView];
     [self addDoubleTapGesture];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
-    //[SKStoreReviewController requestReview];
+    /*
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        sleep(0.5);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
+        });
+    });*/
 }
 
 #pragma mark - Setup
@@ -133,11 +136,11 @@ CGFloat const dayColumnHeaderHeight = 40;
         self.isVerticalMode = YES;
     }
     self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
-    self.showEmptyDays = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
     
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
     self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue]-1;
+    if (self.minPairNumber < 0) { self.minPairNumber = 0; }
     
     self.formatter = [[NSDateFormatter alloc]init];
     if (self.isVerticalMode) {
@@ -161,7 +164,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupFetchRequestWithItem:(Item *)selectedItem {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", selectedItem.id];
+    self.removeEmptyDays = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableRemoveEmptyDays];
+    NSPredicate *filter = (self.removeEmptyDays) ? [NSPredicate predicateWithFormat:@"item_id == %@ AND isDummy == NO", selectedItem.id] : [NSPredicate predicateWithFormat:@"item_id == %@", selectedItem.id];
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
@@ -294,6 +298,14 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    /*
+    Lesson *lesson = [[self.fetchedResultsController.sections[section] objects] firstObject];
+    
+    if ([lesson.number_pair isEqual:@20]) {
+        NSLog(@"%@", [self.fetchedResultsController.sections[section] objects]);
+        return 0;
+    }
+    */
     return [(id <NSFetchedResultsSectionInfo>)self.fetchedResultsController.sections[section] numberOfObjects];
 }
 

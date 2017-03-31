@@ -447,7 +447,11 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                 CGFloat itemMinX = nearbyintf(sectionMinX + self.cellMargin.left);
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - (self.cellMargin.left + self.cellMargin.right)));
                 
-                itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
+                if ((itemMaxY - itemMinY) > 0) {
+                    itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
+                } else {
+                    continue;
+                }
                 
                 itemAttributes.zIndex = [self zIndexForElementKind:nil];
                 
