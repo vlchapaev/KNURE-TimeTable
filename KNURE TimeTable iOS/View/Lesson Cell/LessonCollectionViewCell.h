@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-#import "Lesson+CoreDataProperties.h"
+#import "Lesson.h"
 
 @interface LessonCollectionViewCell : UICollectionViewCell
 

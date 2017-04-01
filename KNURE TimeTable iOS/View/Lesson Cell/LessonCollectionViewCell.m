@@ -62,15 +62,16 @@
         [self.title makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.top).offset(contentPadding.top);
             make.left.equalTo(self.left).offset(contentPadding.left);
-            make.right.equalTo(self.right).offset(-contentPadding.right);
+            //make.right.equalTo(self.right).offset(-contentPadding.right);
         }];
         
         [self.location makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.title.bottom).offset(contentMargin);
             make.left.equalTo(self.left).offset(contentPadding.left);
-            make.right.equalTo(self.right).offset(-contentPadding.right);
+            //make.right.equalTo(self.right).offset(-contentPadding.right);
             make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
         }];
+        
     }
     return self;
 }
