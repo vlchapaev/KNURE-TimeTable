@@ -107,7 +107,7 @@
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     self.datasource = response;
-    self.tableView.separatorColor = [UIColor colorWithRed:0.58 green:0.65 blue:0.65 alpha:1.00];
+    self.tableView.separatorColor = (self.isDarkMode) ? ApplicationThemeDarkSeparatorColor : ApplicationThemeLightSeparatorColor;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
@@ -135,7 +135,7 @@
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.textColor = (self.isDarkMode) ? ApplicationThemeDarkBackgroundSecondnaryColor : [UIColor blackColor];
+    cell.textLabel.textColor = (self.isDarkMode) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
     
     return cell;
 }

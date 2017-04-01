@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-#import "Item+CoreDataProperties.h"
+#import "Item.h"
 #import "EventParser.h"
 
 @protocol ItemsTableViewCellDelegate <NSObject>

@@ -12,8 +12,8 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "InitViewController.h"
 #import "ItemsTableViewCell.h"
-#import "Item+CoreDataClass.h"
-#import "Lesson+CoreDataClass.h"
+#import "Item.h"
+#import "Lesson.h"
 #import "Request.h"
 
 @interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate, ItemsTableViewCellDelegate>
@@ -94,7 +94,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
         Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"item_id == %@", item.id];
@@ -102,6 +101,7 @@
         for(Lesson *lesson in lessons) {
             [lesson MR_deleteEntityInContext:localContext];
         }
+        [item removeItemIfSelected];
         [item MR_deleteEntityInContext:localContext];
         [localContext MR_saveToPersistentStoreAndWait];
     }];

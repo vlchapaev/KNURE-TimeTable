@@ -69,7 +69,7 @@
             make.top.equalTo(self.title.bottom).offset(contentMargin);
             make.left.equalTo(self.left).offset(contentPadding.left);
             //make.right.equalTo(self.right).offset(-contentPadding.right);
-            make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
+            //make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
         }];
         
     }

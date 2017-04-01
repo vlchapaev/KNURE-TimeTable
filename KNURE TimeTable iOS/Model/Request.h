@@ -10,7 +10,7 @@
 
 #import "AFNetworking.h"
 #import "EventParser.h"
-#import "Item+CoreDataClass.h"
+#import "Item.h"
 
 extern NSString *const RequestAddressGroupList;
 extern NSString *const RequestAddressTeacherList;

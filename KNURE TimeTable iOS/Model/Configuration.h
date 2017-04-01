@@ -10,9 +10,10 @@
 #define TimetableSelectedItemGroup @"group.Shogunate.KNURE-Sked"
 #define TimetableVerticalMode @"TimetableVerticalMode"
 #define TimetableDidUpdateDataNotification @"TimetableDidUpdateDataNotification"
+#define TimetableRemoveEmptyDays @"TimetableRemoveEmptyDays"
+#define TimetableHourlyGridLayout @"TimetableHourlyGridLayout"
 
 //Not in production
-#define TimetableShowEmptyDays @"TimetableShowEmptyDays"
 #define TimetableBouncingCells @"TimetableBouncingCells"
 
 #define ApplicationIsDarkTheme @"ApplicationIsDarkTheme"
@@ -34,6 +35,7 @@
 #define ApplicationThemeLightFontPrimaryColor [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.00]
 #define ApplicationThemeLightFontSecondnaryColor [UIColor darkGrayColor]
 #define ApplicationThemeLightCurrentTimeIndicator [UIColor colorWithRed:0.91 green:0.30 blue:0.24 alpha:1.00]
+#define ApplicationThemeLightSeparatorColor [[UIColor darkGrayColor] colorWithAlphaComponent:0.2]
 
 #define ApplicationThemeDarkTintColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkBackgroundPrimaryColor [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1.00]
@@ -41,6 +43,7 @@
 #define ApplicationThemeDarkFontPrimaryColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkFontSecondnaryColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkCurrentTimeIndicator [UIColor colorWithRed:0.75 green:0.23 blue:0.17 alpha:1.00]
+#define ApplicationThemeDarkSeparatorColor [[UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00] colorWithAlphaComponent:0.2]
 
 @import Foundation;
 

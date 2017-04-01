@@ -87,13 +87,13 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     [self setupCollectionView];
     [self addDoubleTapGesture];
-    /*
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         sleep(0.5);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
         });
-    });*/
+    });
 }
 
 #pragma mark - Setup
@@ -202,9 +202,11 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (EAIntroView *)setupIntro {
     EAIntroPage *page1 = [EAIntroPage page];
     page1.bgImage = [UIImage imageNamed:@"intro-1"];
+    page1.title = @"оловылфволыфо лволфы олво фылдов лоыфдлво лдфыовлд оыфлдводлыфовдлоыфлд овлд оыфдвд оыфдо вдфыд овдофдлы ово фдыовд офыдво ыфдло вдоыфо воф двод фыов дыфо";
     
     EAIntroPage *page2 = [EAIntroPage page];
     page2.bgImage = [UIImage imageNamed:@"intro-2"];
+    page2.title = @"ваивышоавт атвышщ тащшвты шщатвы шщташщты шщватщшы втщаштвшщы тащштыв щшташщвы тщшат щывта щтвыщш тащвшыт шатвышщ ташщывт шатщ ывшта щшы";
     
     return [[EAIntroView alloc] initWithFrame:self.navigationController.view.bounds andPages:@[page1, page2]];
 }
@@ -298,14 +300,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    /*
-    Lesson *lesson = [[self.fetchedResultsController.sections[section] objects] firstObject];
-    
-    if ([lesson.number_pair isEqual:@20]) {
-        NSLog(@"%@", [self.fetchedResultsController.sections[section] objects]);
-        return 0;
-    }
-    */
     return [(id <NSFetchedResultsSectionInfo>)self.fetchedResultsController.sections[section] numberOfObjects];
 }
 

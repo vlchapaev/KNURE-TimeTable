@@ -32,9 +32,10 @@
 - (void)setupValues {
     self.verticalScrollSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
     self.bouncingCellsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
-    self.showEmptyDaysSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableShowEmptyDays];
+    self.removeEmptyDaysSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableRemoveEmptyDays];
     self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
+    self.hourlyGridSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.verticalScrollSwitch.enabled = NO;
@@ -100,8 +101,8 @@
     [[Configuration sharedInstance]applyTheme];
 }
 
-- (IBAction)showEmptyDaysSwitchValueChanged:(UISwitch *)sender {
-    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableShowEmptyDays];
+- (IBAction)removeEmptyDaysSwitchValueChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableRemoveEmptyDays];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
@@ -112,6 +113,11 @@
 
 - (IBAction)hintsSwitchValueChanged:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:ApplicationHideHint];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+- (IBAction)hourlyGridSwitchValueChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableHourlyGridLayout];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 

@@ -9,7 +9,7 @@
 #import "CalendarExportViewController.h"
 #import "ItemsTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "Item+CoreDataProperties.h"
+#import "Item.h"
 #import "Configuration.h"
 
 @interface CalendarExportViewController () <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, ItemsTableViewCellDelegate>
@@ -35,7 +35,9 @@
     EKEventStore *store = [[EKEventStore alloc] init];
     [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (!granted) {
-            [self calendarExportDidFinishWithError:error];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self calendarExportDidFinishWithError:error];
+            });
         }
     }];
     
@@ -134,7 +136,8 @@
 #pragma mark - ItemsTableViewCellDelegate
 
 - (void)calendarExportDidFinishWithError:(NSError *)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+    NSString *text = (error) ? error.localizedDescription : NSLocalizedString(@"Settings_CalendarExport_AccessForbidden", nil);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:text preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];

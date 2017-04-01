@@ -9,8 +9,8 @@
 @import UIKit;
 
 #import "EventParser.h"
-#import "Lesson+CoreDataClass.h"
-#import "Item+CoreDataClass.h"
+#import "Lesson.h"
+#import "Item.h"
 
 @protocol ModalViewControllerDelegate <NSObject>
 

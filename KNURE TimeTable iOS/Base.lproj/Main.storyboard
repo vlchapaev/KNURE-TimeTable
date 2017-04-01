@@ -320,7 +320,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="6b9-Kb-zak">
-                            <rect key="frame" x="0.0" y="453" width="320" height="449"/>
+                            <rect key="frame" x="0.0" y="497" width="320" height="449"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code" translatesAutoresizingMaskIntoConstraints="NO" id="sHu-Ik-e25">
@@ -525,12 +525,43 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Slf-0Y-cHu">
+                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Slf-0Y-cHu" id="mP3-P5-0lO">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly grid layout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-r8-kMJ">
+                                                    <rect key="frame" x="8" y="0.0" width="247" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GsS-8U-241">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="hourlyGridSwitchValueChanged:" destination="aDQ-XS-aQK" eventType="valueChanged" id="eQe-sP-xtn"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vCw-r8-kMJ" firstAttribute="top" secondItem="mP3-P5-0lO" secondAttribute="top" id="77o-kp-6lx"/>
+                                                <constraint firstAttribute="bottom" secondItem="GsS-8U-241" secondAttribute="bottom" constant="6.5" id="JFw-qH-Jb6"/>
+                                                <constraint firstAttribute="trailing" secondItem="GsS-8U-241" secondAttribute="trailing" constant="8" id="Syh-rI-Hix"/>
+                                                <constraint firstItem="GsS-8U-241" firstAttribute="leading" secondItem="vCw-r8-kMJ" secondAttribute="trailing" constant="8" id="Xuh-fP-WPh"/>
+                                                <constraint firstItem="vCw-r8-kMJ" firstAttribute="leading" secondItem="mP3-P5-0lO" secondAttribute="leading" constant="8" id="hAq-L5-oef"/>
+                                                <constraint firstItem="GsS-8U-241" firstAttribute="top" secondItem="mP3-P5-0lO" secondAttribute="top" constant="6" id="nVS-nS-UHN"/>
+                                                <constraint firstAttribute="bottom" secondItem="vCw-r8-kMJ" secondAttribute="bottom" constant="-0.5" id="sUg-Jn-R7I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="XEP-ee-Fvb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="drM-w8-58l">
-                                        <rect key="frame" x="0.0" y="247" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="291" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="drM-w8-58l" id="PCL-gZ-vwv">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -560,7 +591,7 @@
                             <tableViewSection headerTitle="Feedback" id="5zN-Is-Oxo">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nDO-ew-ro0">
-                                        <rect key="frame" x="0.0" y="347" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="391" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nDO-ew-ro0" id="Nhw-W4-Fcq">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -585,7 +616,7 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XhT-nz-dlt">
-                                        <rect key="frame" x="0.0" y="391" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="435" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XhT-nz-dlt" id="njz-R8-Si7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -625,6 +656,7 @@
                     <connections>
                         <outlet property="darkModeSwitch" destination="GdF-db-tsN" id="cvl-Rn-Tly"/>
                         <outlet property="hintsSwitch" destination="ckz-Be-JTU" id="S0N-5R-Jzz"/>
+                        <outlet property="hourlyGridSwitch" destination="GsS-8U-241" id="kKF-8Q-J2h"/>
                         <outlet property="removeEmptyDaysSwitch" destination="gHD-Ah-Owz" id="lsp-4l-sEN"/>
                         <outlet property="verticalScrollSwitch" destination="h4Z-rM-8Hr" id="nwk-0V-qYm"/>
                     </connections>

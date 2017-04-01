@@ -54,7 +54,7 @@
     [UICollectionView appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundSecondnaryColor;
     [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
-    [MSGridline appearance].backgroundColor = [ApplicationThemeDarkFontSecondnaryColor colorWithAlphaComponent:0.2];
+    [MSGridline appearance].backgroundColor = ApplicationThemeDarkSeparatorColor;
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeDarkCurrentTimeIndicator;
     
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeDarkFontPrimaryColor;
@@ -80,9 +80,10 @@
     [UICollectionView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundSecondnaryColor;
     [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
-    [MSGridline appearance].backgroundColor = [ApplicationThemeLightFontSecondnaryColor colorWithAlphaComponent:0.2];
+    [MSGridline appearance].backgroundColor = ApplicationThemeLightSeparatorColor;
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
     
+    [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceLight;
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeLightFontPrimaryColor;
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeLightFontPrimaryColor}];
 }
