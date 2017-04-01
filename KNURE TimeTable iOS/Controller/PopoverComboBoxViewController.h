@@ -10,7 +10,7 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 #import "EventParser.h"
-#import "Item+CoreDataClass.h"
+#import "Item.h"
 
 @protocol PopoverComboBoxViewControllerDelegate <NSObject>
 

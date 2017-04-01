@@ -20,6 +20,7 @@ ModalView_Type = "Type";
 ModalView_Auditory = "Auditory";
 ModalView_Teacher = "Teacher";
 ModalView_Groups = "Groups";
+ModalView_Hint = "Select item to view it's timetable";
 
 ItemList_Update = "Update";
 ItemList_Groups = "Groups";
@@ -50,5 +51,6 @@ Settings_CalendarExport_NextWeek = "Next week";
 Settings_CalendarExport_ThisMonth = "This month";
 Settings_CalendarExport_NextMonth = "Next month";
 Settings_CalendarExport_Full = "Full semester";
+Settings_CalendarExport_AccessForbidden = "Access to calendar is forbidden";
 Settings_CalendarHint1 = "Select item you wish to export into your Calendar App";
 Settings_CalendarHint2 = "A new calendar with selected item name will be created in your Calendar App";

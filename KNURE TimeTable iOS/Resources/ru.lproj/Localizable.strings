@@ -20,6 +20,7 @@ ModalView_Type = "Тип";
 ModalView_Auditory = "Аудитория";
 ModalView_Teacher = "Преподаватель";
 ModalView_Groups = "Группы";
+ModalView_Hint = "Выберите элемент, чтобы просмотреть его расписание";
 
 ItemList_Update = "Обновить";
 ItemList_Groups = "Группы";
@@ -50,5 +51,6 @@ Settings_CalendarExport_NextWeek = "Следующая неделя";
 Settings_CalendarExport_ThisMonth = "Этот месяц";
 Settings_CalendarExport_NextMonth = "Следующий месяц";
 Settings_CalendarExport_Full = "Весь семестр";
+Settings_CalendarExport_AccessForbidden = "Доступ к календарю запрещен пользователем";
 Settings_CalendarHint1 = "Выберите элемент, который необходимо экспортировать в Календарь";
 Settings_CalendarHint2 = "В приложении Календарь будет создан новый календарь с названием выбранного элемента";

@@ -152,6 +152,13 @@
     return nil;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 1 || section == 2) {
+        return NSLocalizedString(@"ModalView_Hint", nil);
+    }
+    return nil;
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView *)view;
     headerView.textLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];

@@ -9,7 +9,7 @@
 @import UIKit;
 
 #import "EventParser.h"
-#import "Lesson+CoreDataClass.h"
+#import "Lesson.h"
 
 @protocol PopoverModalViewControllerDelegate <NSObject>
 
