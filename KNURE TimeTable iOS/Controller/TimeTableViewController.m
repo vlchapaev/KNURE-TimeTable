@@ -276,6 +276,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self setupProperties];
+    self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
     [self.collectionViewCalendarLayout invalidateLayoutCache];
     [self.collectionView reloadData];
 }
@@ -422,10 +424,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (IBAction)refreshCurrentTimeTable {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", selectedItem[@"id"]];
-    Item *item = [Item MR_findFirstWithPredicate:predicate];
-    [Request loadTimeTableForItem:item delegate:self];
+    [Request loadTimeTableForItem:self.selectedItem delegate:self];
 }
 
 - (void)doubleTapGestureRecognized:(UIGestureRecognizer *)recognizer {
@@ -471,6 +470,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - DZNEmptyDataSetDelegate
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+    /*
     EAIntroView *introView = [self setupIntro];
     introView.delegate = self;
     introView.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -478,6 +478,12 @@ CGFloat const dayColumnHeaderHeight = 40;
     [introView.skipButton setTitleColor:[UIColor colorWithRed:0.00 green:0.48 blue:1.00 alpha:1.00] forState:UIControlStateNormal];
     [introView.skipButton setTitleColor:[UIColor colorWithRed:0.78 green:0.87 blue:0.98 alpha:1.00] forState:UIControlStateHighlighted];
     [introView showInView:self.navigationController.view animateDuration:0.3];
+     */
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"ЭЩУТКА" message:@"Инструкция будет в следующей бете 😜" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
