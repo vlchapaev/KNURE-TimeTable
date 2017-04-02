@@ -29,9 +29,6 @@
 /* Class = "UILabel"; text = "Settings"; ObjectID = "nx6-AI-j8l"; */
 "nx6-AI-j8l.text" = "Настройки";
 
-/* Class = "UILabel"; text = "Share this app"; ObjectID = "oIn-bL-wQC"; */
-"oIn-bL-wQC.text" = "Поделиться приложением";
-
 /* Class = "UILabel"; text = "Vertical scroll"; ObjectID = "oTj-En-qtk"; */
 "oTj-En-qtk.text" = "Вертикальная прокрутка";
 
@@ -44,3 +41,8 @@
 
 "vCw-r8-kMJ.text" = "Почасовая разметка";
 
+"5zN-Is-Oxo.headerTitle" = "Обратная связь";
+
+"WMk-hq-hbX.normalTitle" = "Оценить в App Store";
+
+"Omu-WX-fxB.normalTitle" = "Поделиться приложением";

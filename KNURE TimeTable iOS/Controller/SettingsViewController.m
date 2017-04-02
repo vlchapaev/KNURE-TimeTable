@@ -9,10 +9,6 @@
 #import "SettingsViewController.h"
 #import "Configuration.h"
 
-@interface SettingsViewController ()
-
-@end
-
 @implementation SettingsViewController
 
 - (void)viewDidLoad {

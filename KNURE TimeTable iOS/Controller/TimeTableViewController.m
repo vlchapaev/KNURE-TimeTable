@@ -437,7 +437,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSString *text = NSLocalizedString(@"TimeTable_NoItems", nil);
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+                                 NSForegroundColorAttributeName: [UIColor grayColor]};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }

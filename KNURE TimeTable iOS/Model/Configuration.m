@@ -12,6 +12,7 @@
 #import "MSTimeRowHeaderBackground.h"
 #import "MSGridline.h"
 #import "MSCurrentTimeGridline.h"
+#import "SettingsViewController.h"
 
 @implementation Configuration
 
@@ -41,6 +42,9 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [UIApplication sharedApplication].statusBarHidden = NO;
     
+    [UIImageView appearance].tintColor = ApplicationThemeDarkTintColor;
+    [UIImageView appearanceWhenContainedIn:SettingsViewController.class, nil].tintColor = [UIColor whiteColor];
+    
     [UINavigationBar appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UINavigationBar appearance].tintColor = ApplicationThemeDarkTintColor;
     [UINavigationBar appearance].barTintColor = ApplicationThemeDarkBackgroundPrimaryColor;
@@ -67,6 +71,9 @@
     [UIView appearance].tintColor = ApplicationThemeLightTintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    [UIImageView appearance].tintColor = ApplicationThemeLightTintColor;
+    [UIImageView appearanceWhenContainedIn:SettingsViewController.class, nil].tintColor = [UIColor blackColor];
     
     [UINavigationBar appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UINavigationBar appearance].tintColor = ApplicationThemeLightTintColor;
