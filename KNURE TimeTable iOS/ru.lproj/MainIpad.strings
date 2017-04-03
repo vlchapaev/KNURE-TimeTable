@@ -5,21 +5,25 @@
 /* Class = "UILabel"; text = "Auditories"; ObjectID = "WXK-VC-6N2"; */
 "WXK-VC-6N2.text" = "Аудитории";
 
-/* Class = "UIButton"; normalTitle = "Group"; ObjectID = "gHC-6k-oak"; */
-"gHC-6k-oak.normalTitle" = "Group";
-
 /* Class = "UILabel"; text = "Groups"; ObjectID = "q3E-tf-ULB"; */
 "q3E-tf-ULB.text" = "Группы";
 
 "mwJ-99-mf1.text" = "Настройки";
 
-"L3p-DA-qip.text" = "Экспорт в календарь";
-
-"BIN-Qg-1BV.text" = "Поделиться приложением";
-
 "g53-w8-yoU.title" = "Настройки";
 
-"dhM-eY-H0o.title" = "Экспорт в календарь";
+"fTu-Nh-EIg.text" = "Экспорт в календарь";
 
-"9kd-Km-0Ix.text" = "Тёмная тема";
+"a0B-av-nwk.text" = "Тёмная тема";
 
+"nov-gM-tX5.text" = "Убрать пустые дни";
+
+"u4W-jj-cfH.text" = "Убрать подсказки";
+
+"GQh-1q-Uog.text" = "Почасовая разметка";
+
+"Vks-nB-dii.headerTitle" = "Обратная связь";
+
+"XuA-m3-7Pt.normalTitle" = "Оценить в App Store";
+
+"2Cz-Ve-2at.normalTitle" = "Поделиться приложением";

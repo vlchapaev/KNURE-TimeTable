@@ -139,6 +139,7 @@
     NSString *text = (error) ? error.localizedDescription : NSLocalizedString(@"Settings_CalendarExport_AccessForbidden", nil);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:text preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
+    
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
 }

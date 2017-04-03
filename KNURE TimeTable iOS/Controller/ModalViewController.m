@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSArray *teachers;
 @property (strong, nonatomic) NSArray *groups;
 
-@property (assign, nonatomic) BOOL isDarkMode;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -29,7 +29,7 @@
 - (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
     self = [super init];
     if (self) {
-        self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
         
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;

@@ -19,6 +19,7 @@
 #import "EventParser.h"
 #import "Configuration.h"
 #import "EAIntroView.h"
+#import "PopoverModalViewController.h"
 
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -36,7 +37,7 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, ModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate, EAIntroDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate, EAIntroDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -53,7 +54,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (assign, nonatomic) BOOL isRunningInFullScreen;
 
 @property (assign, nonatomic) BOOL isVerticalMode;
-@property (assign, nonatomic) BOOL isDarkMode;
+@property (assign, nonatomic) BOOL isDarkTheme;
 @property (assign, nonatomic) BOOL removeEmptyDays;
 
 @end
@@ -135,7 +136,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (!self.isRunningInFullScreen) {
         self.isVerticalMode = YES;
     }
-    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
@@ -185,10 +186,10 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.dropDownMenu.delegate = self;
     
     self.dropDownMenu.cellTextLabelFont = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    self.dropDownMenu.cellTextLabelColor = (self.isDarkMode) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
-    self.dropDownMenu.cellBackgroundColor = (self.isDarkMode) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
-    self.dropDownMenu.arrowImage = (self.isDarkMode) ? [UIImage imageNamed:@"arrow_down_icon-1"] : [UIImage imageNamed:@"arrow_down_icon"];
-    self.dropDownMenu.checkMarkImage = (self.isDarkMode) ? [UIImage imageNamed:@"checkmark_icon-1"] : [UIImage imageNamed:@"checkmark_icon"];
+    self.dropDownMenu.cellTextLabelColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+    self.dropDownMenu.cellBackgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
+    self.dropDownMenu.arrowImage = (self.isDarkTheme) ? [UIImage imageNamed:@"arrow_down_icon-1"] : [UIImage imageNamed:@"arrow_down_icon"];
+    self.dropDownMenu.checkMarkImage = (self.isDarkTheme) ? [UIImage imageNamed:@"checkmark_icon-1"] : [UIImage imageNamed:@"checkmark_icon"];
     
     for (short index = 0; index < self.allItems.count; index++) {
         if (self.selectedItem.id == self.allItems[index].id) {
@@ -340,11 +341,15 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    //[collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
-    [self presentViewController:modalViewController animated:YES completion:nil];
+    //ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
+    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
+    modalViewController.delegate = self;
+    modalViewController.indexPath = indexPath;
+    
+    [self.navigationController pushViewController:modalViewController animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -388,6 +393,10 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)didSelectItem:(Item *)item {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [Request loadTimeTableForItem:item delegate:self];
+}
+
+- (void)didDismissViewControllerWithSelectedIndexPath:(NSIndexPath *)indexPath {
+    [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - URLRequestDelegate

@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) NSArray *datasource;
 @property (assign, nonatomic) BOOL isFiltred;
-@property (assign, nonatomic) BOOL isDarkMode;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @property (strong, nonatomic) NSArray <Item *>*allItems;
 
@@ -42,7 +42,7 @@
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
     
-    self.isDarkMode = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     
     [self getItemList];
@@ -107,7 +107,7 @@
 - (void)didParseItemListWithResponse:(id)response sections:(NSArray *)sections {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     self.datasource = response;
-    self.tableView.separatorColor = (self.isDarkMode) ? ApplicationThemeDarkSeparatorColor : ApplicationThemeLightSeparatorColor;
+    self.tableView.separatorColor = (self.isDarkTheme) ? ApplicationThemeDarkSeparatorColor : ApplicationThemeLightSeparatorColor;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
@@ -135,7 +135,7 @@
     cell.textLabel.text = [record valueForKey:@"title"];
     cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.textColor = (self.isDarkMode) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+    cell.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
     
     return cell;
 }

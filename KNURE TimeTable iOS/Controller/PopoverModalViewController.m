@@ -7,8 +7,12 @@
 //
 
 #import "PopoverModalViewController.h"
+#import "Configuration.h"
 
 @interface PopoverModalViewController ()
+
+@property (assign, nonatomic) BOOL hideHints;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -25,13 +29,18 @@
 - (instancetype)initWithLesson:(Lesson *)lesson {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        self.hideHints = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
+        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.title = NSLocalizedString(@"ModalView_Details", nil);
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
-        self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.showsVerticalScrollIndicator = NO;
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+            self.tableView.backgroundColor = [UIColor clearColor];
+        }
         
         self.titleLabel = [UILabel new];
-        self.titleLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.text = lesson.title;
@@ -132,10 +141,10 @@
         cell.tag = [[self.groups[indexPath.row] valueForKey:@"id"] integerValue];
     }
     
-    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
     cell.textLabel.numberOfLines = 0;
     
-    cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
     cell.detailTextLabel.numberOfLines = 0;
     
     cell.backgroundColor = [UIColor clearColor];
@@ -153,6 +162,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (self.hideHints) { return nil; }
     if (section == 1 || section == 2) {
         return NSLocalizedString(@"ModalView_Hint", nil);
     }
@@ -162,14 +172,14 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView *)view;
     headerView.textLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightRegular];
-    headerView.textLabel.textColor = [UIColor blackColor];
+    headerView.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
 }
 
 #pragma mark - UITablViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
     ItemType itemType;
     NSString *title;
