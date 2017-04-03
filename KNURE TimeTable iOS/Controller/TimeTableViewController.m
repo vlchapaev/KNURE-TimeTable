@@ -224,6 +224,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self.collectionViewCalendarLayout invalidateLayout];
     if (!self.isVerticalMode) {
         self.collectionViewCalendarLayout.hourHeight = (size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+    } else {
+        self.collectionViewCalendarLayout.sectionWidth = size.width - timeRowHeaderWidth - 10;
     }
 }
 
@@ -251,8 +253,9 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self.collectionViewCalendarLayout invalidateLayoutCache];
     
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        
+        if (!self.isVerticalMode) {
+            self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
+        }
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self.collectionView reloadData];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
