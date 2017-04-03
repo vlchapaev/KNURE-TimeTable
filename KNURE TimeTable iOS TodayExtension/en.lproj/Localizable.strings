@@ -6,5 +6,5 @@
   Copyright © 2017 Vlad Chapaev. All rights reserved.
 */
 
-TimeTable_NoItems = "Нет расписания";
-TimeTable_NoItemsMessage = "Добавьте группы, преподавателей или аудитории, распиcание которых необходимо отобразить";
+TimeTable_NoItems = "No timetable";
+TimeTable_NoItemsMessage = "Look's like you don't have any lessons today";

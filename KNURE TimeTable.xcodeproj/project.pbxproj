@@ -31,6 +31,8 @@
 		772963391DDB14660069EBCC /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson.m */; };
 		7729633B1DDB14E40069EBCC /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson.m */; };
 		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
+		774C7A5E1E92691A00BDC750 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
+		774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
 		776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */; };
 		776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */; };
 		776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */; };
@@ -698,6 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774C7A5E1E92691A00BDC750 /* Configuration.m in Sources */,
 				770D05F11DD3ABE6008D89E1 /* LessonCollectionViewCell.m in Sources */,
 				770D05F21DD3ABEC008D89E1 /* MSCurrentTimeGridline.m in Sources */,
 				770D05F81DD3ABF3008D89E1 /* MSTimeRowHeaderBackground.m in Sources */,
@@ -709,6 +712,7 @@
 				770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */,
 				770D05F61DD3ABF3008D89E1 /* MSGridline.m in Sources */,
 				770D05FC1DD3AF3B008D89E1 /* EventParser.m in Sources */,
+				774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */,
 				772548E51E10259B00399B67 /* MSCollectionViewCalendarLayout.m in Sources */,
 				770D05F51DD3ABF3008D89E1 /* MSDayColumnHeaderBackground.m in Sources */,
 			);

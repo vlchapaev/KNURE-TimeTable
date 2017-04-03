@@ -9,9 +9,10 @@
 #import "TodayViewController.h"
 #import "MSCollectionViewCalendarLayout.h"
 #import "LessonCollectionViewCell.h"
-#import "Lesson+CoreDataClass.h"
+#import "Lesson.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "EventParser.h"
+#import "Configuration.h"
 
 #import "MSGridline.h"
 #import "MSTimeRowHeaderBackground.h"
@@ -25,10 +26,6 @@ NSString *const MSEventCellReuseIdentifier = @"MSEventCellReuseIdentifier";
 NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdentifier";
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
-NSString *const ApplicationCacheName = @"ApplicationCacheName";
-NSString *const TimetableSelectedItem = @"TimetableSelectedItem";
-NSString *const TimetableVerticalMode = @"TimetableVerticalMode";
-
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
@@ -41,11 +38,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) NSArray <NSDate *>* pairDates;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
-
-@property (assign, nonatomic) BOOL isRunningInFullScreen;
-
-@property (assign, nonatomic) BOOL isDarkMode;
-@property (assign, nonatomic) BOOL showEmptyDays;
 
 @end
 
@@ -74,17 +66,15 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     [self setupProperties];
     [self setupCollectionView];
+    [self setupColorTheme];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:YES];
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
         self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
-    } else {
-        self.preferredContentSize = self.collectionView.contentSize;
     }
+    self.preferredContentSize = self.collectionView.contentSize;
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
@@ -103,7 +93,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
@@ -121,16 +111,17 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
-    [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
     [self.collectionViewLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
-    [self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
+    //[self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
+
 }
 
 - (void)setupProperties {
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];
     self.minPairNumber = [[pairNumbers valueForKeyPath:@"@min.intValue"] shortValue] - 1;
+    if (self.minPairNumber < 0) { self.minPairNumber = 0; }
     
     self.formatter = [[NSDateFormatter alloc]init];
     [self.formatter setDateFormat:@"EEEE, dd MMMM"];
@@ -158,7 +149,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     endDateComponents.day = 1;
     NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@))", selectedItem[@"id"], startDate, endDate];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", selectedItem[@"id"], startDate, endDate];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
@@ -169,7 +160,15 @@ CGFloat const dayColumnHeaderHeight = 40;
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+}
 
+- (void)setupColorTheme {
+    [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
+        
+    } else {
+        
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

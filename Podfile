@@ -13,6 +13,7 @@ target 'KNURE TimeTable iOS' do
     pod "Masonry"
     pod "AFNetworking"
     pod "DateTools"
+    #pod "AsyncDisplayKit"
 
 end
 

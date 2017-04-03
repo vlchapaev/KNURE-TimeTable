@@ -66,6 +66,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (self) {
         self.collectionViewCalendarLayout = [[MSCollectionViewCalendarLayout alloc] init];
         self.collectionViewCalendarLayout.delegate = self;
+        self.title = @"";
         self = [super initWithCollectionViewLayout:self.collectionViewCalendarLayout];
     }
     return self;

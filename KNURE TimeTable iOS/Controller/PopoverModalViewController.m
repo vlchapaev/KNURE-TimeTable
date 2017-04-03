@@ -35,9 +35,6 @@
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
         self.tableView.showsVerticalScrollIndicator = NO;
-        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
-            self.tableView.backgroundColor = [UIColor clearColor];
-        }
         
         self.titleLabel = [UILabel new];
         self.titleLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
