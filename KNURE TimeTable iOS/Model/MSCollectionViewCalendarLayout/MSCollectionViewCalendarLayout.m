@@ -601,23 +601,26 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                 UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
                 
                 NSDate *time = nil;
-                if (index % 2 == 0) {
-                    time = [self.delegate collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
-                } else {
-                    time = [self.delegate collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
+                NSDate *startTime = [self.delegate collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
+                NSDate *endTime = [self.delegate collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:[NSIndexPath indexPathForItem:index/2 inSection:section]];
+                if (![[NSCalendar currentCalendar]isDate:startTime equalToDate:endTime toUnitGranularity:NSCalendarUnitMinute]) {
+                    if (index % 2 == 0) {
+                        time = startTime;
+                    } else {
+                        time = endTime;
+                    }
+                    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:time];
+                    
+                    CGFloat timeY = (calendarGridMinY + nearbyintf(((components.hour - earliestHour) * self.hourHeight) + (components.minute * self.minuteHeight)));
+                    
+                    if (index % 2 == 0) {
+                        timeRowHeaderAttributes.frame = CGRectMake(0, timeY, self.timeRowHeaderWidth, self.hourHeight);
+                    } else {
+                        timeRowHeaderAttributes.frame = CGRectMake(0, timeY-15, self.timeRowHeaderWidth, self.hourHeight);
+                    }
+                    
+                    timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:NO];
                 }
-                
-                NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:time];
-                
-                CGFloat timeY = (calendarGridMinY + nearbyintf(((components.hour - earliestHour) * self.hourHeight) + (components.minute * self.minuteHeight)));
-                
-                if (index % 2 == 0) {
-                    timeRowHeaderAttributes.frame = CGRectMake(0, timeY, self.timeRowHeaderWidth, self.hourHeight);
-                } else {
-                    timeRowHeaderAttributes.frame = CGRectMake(0, timeY-15, self.timeRowHeaderWidth, self.hourHeight);
-                }
-                
-                timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:NO];
             }
         }
         
@@ -649,9 +652,13 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                 CGFloat itemMaxY = nearbyintf(endHourY + endMinuteY + calendarGridMinY - self.cellMargin.bottom);
                 CGFloat itemMinX = nearbyintf(calendarGridMinX + self.sectionMargin.left + self.cellMargin.left);
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - self.cellMargin.left - self.cellMargin.right));
-                itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
                 
-                itemAttributes.zIndex = [self zIndexForElementKind:nil];
+                if ((itemMaxY - itemMinY) > 0) {
+                    itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
+                    itemAttributes.zIndex = [self zIndexForElementKind:nil];
+                } else {
+                    continue;
+                }
                 
                 if (self.shouldMakeBouncingCells) {
                     [self addDynamicBehaviourForItem:itemAttributes];
