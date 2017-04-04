@@ -141,7 +141,7 @@
 }
 
 - (UIColor *)backgroundColorHighlighted:(BOOL)selected {
-    CGFloat opacity = (self.isDarkTheme) ? 0.55 : 0.2;
+    CGFloat opacity = (self.isDarkTheme) ? 0.55 : 0.3;
     return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:opacity];
 }
 

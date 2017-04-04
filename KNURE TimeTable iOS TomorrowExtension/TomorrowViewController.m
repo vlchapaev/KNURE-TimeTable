@@ -1,12 +1,12 @@
 //
 //  TodayViewController.m
-//  KNURE TimeTable iOS TodayExtension
+//  KNURE TimeTable iOS TomorrowExtension
 //
-//  Created by Vlad Chapaev on 09.11.16.
-//  Copyright © 2016 Vlad Chapaev. All rights reserved.
+//  Created by Vlad Chapaev on 04.04.17.
+//  Copyright © 2017 Vlad Chapaev. All rights reserved.
 //
 
-#import "TodayViewController.h"
+#import "TomorrowViewController.h"
 #import "MSCollectionViewCalendarLayout.h"
 #import "LessonCollectionViewCell.h"
 #import "Lesson.h"
@@ -29,7 +29,7 @@ NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifie
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TodayViewController () <NCWidgetProviding, MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
+@interface TomorrowViewController () <NCWidgetProviding, MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
@@ -41,7 +41,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @end
 
-@implementation TodayViewController
+@implementation TomorrowViewController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -61,8 +61,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.Shogunate.KNURE-Sked"];
     NSDictionary *selectedItem = [sharedDefaults valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        self.navigationItem.title = selectedItem[@"title"];
         [self setupFetchRequestWithItem:selectedItem];
+        self.navigationItem.title = selectedItem[@"title"];
     }
     
     [self setupProperties];
@@ -115,7 +115,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self.collectionViewLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
     //[self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
-
+    
 }
 
 - (void)setupProperties {
@@ -146,10 +146,10 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
     startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
     
+    startDateComponent.day += 1;
     NSDate *startDate = [calendar dateFromComponents:startDateComponent];
     endDateComponents.day = 1;
     NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
-    
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", selectedItem[@"id"], startDate, endDate];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     

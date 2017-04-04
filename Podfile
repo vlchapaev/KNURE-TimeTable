@@ -24,4 +24,11 @@ target 'KNURE TimeTable iOS TodayExtension' do
     pod "Masonry"
 end
 
+target 'KNURE TimeTable iOS TomorrowExtension' do
+    pod "DZNEmptyDataSet"
+    pod "MagicalRecord"
+    pod "DateTools"
+    pod "Masonry"
+end
+
 inhibit_all_warnings!

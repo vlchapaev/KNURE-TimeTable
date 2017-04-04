@@ -31,8 +31,26 @@
 		772963391DDB14660069EBCC /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson.m */; };
 		7729633B1DDB14E40069EBCC /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson.m */; };
 		773302911DD1D6F400F9D3F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
+		774AA0AC1E9434A5009E5326 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
+		774AA0AE1E9434AD009E5326 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 772548E31E10259B00399B67 /* MSCollectionViewCalendarLayout.m */; };
+		774AA0AF1E9434B3009E5326 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 772963371DDB14660069EBCC /* Lesson.m */; };
+		774AA0B01E9434B9009E5326 /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
+		774AA0B11E9434C7009E5326 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */; };
+		774AA0B21E9434CA009E5326 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */; };
+		774AA0B31E9434CD009E5326 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */; };
+		774AA0B41E9434D0009E5326 /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */; };
+		774AA0B51E9434D3009E5326 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */; };
+		774AA0B61E9434D5009E5326 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACC1DCB99A90083A658 /* MSGridline.m */; };
+		774AA0B71E9434D7009E5326 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */; };
+		774AA0B81E9434DA009E5326 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
 		774C7A5E1E92691A00BDC750 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
 		774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
+		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
+		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
+		775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775A39521E93EC710070B31F /* MainInterface.storyboard */; };
+		775A39581E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		775A39681E93EDFC0070B31F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A396A1E93EDFC0070B31F /* Localizable.strings */; };
+		775A396F1E93EE540070B31F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A39711E93EE540070B31F /* InfoPlist.strings */; };
 		776A1B691E242EC90055DCB4 /* PFConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */; };
 		776A1B6B1E242EC90055DCB4 /* PFNavigationDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */; };
 		776A1B6C1E242EC90055DCB4 /* PFTableCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */; };
@@ -64,6 +82,7 @@
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
 		77EA48711E7FE34B00DBBBC7 /* CalendarExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EA48701E7FE34B00DBBBC7 /* CalendarExportViewController.m */; };
 		77F433261D8EDA6C00775C4A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */; };
+		A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		C33FCC731819965300328F6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C33FCC721819965300328F6D /* main.m */; };
@@ -81,6 +100,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 770D05E01DD3A767008D89E1;
 			remoteInfo = "KNURE TimeTable iOS TodayExtension";
+		};
+		775A39561E93EC710070B31F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C33FCC5B1819965300328F6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 775A394B1E93EC710070B31F;
+			remoteInfo = "KNURE TimeTable iOS TomorrowExtension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -101,6 +127,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				775A39581E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex in Embed App Extensions */,
 				770D05ED1DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -136,6 +163,18 @@
 		7733028F1DD1D6F400F9D3F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controller/SettingsViewController.h; sourceTree = "<group>"; };
 		773302901DD1D6F400F9D3F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Controller/SettingsViewController.m; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TomorrowExtension.entitlements"; sourceTree = "<group>"; };
+		775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TomorrowExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		775A394F1E93EC710070B31F /* TomorrowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomorrowViewController.h; sourceTree = "<group>"; };
+		775A39501E93EC710070B31F /* TomorrowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomorrowViewController.m; sourceTree = "<group>"; };
+		775A39531E93EC710070B31F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		775A39551E93EC710070B31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		775A39691E93EDFC0070B31F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		775A396B1E93EDFF0070B31F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		775A396C1E93EE000070B31F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		775A39701E93EE540070B31F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		775A39721E93EE560070B31F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		775A39731E93EE570070B31F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
 		776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
 		776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
@@ -201,6 +240,7 @@
 		77EA486F1E7FE34B00DBBBC7 /* CalendarExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarExportViewController.h; path = Controller/CalendarExportViewController.h; sourceTree = "<group>"; };
 		77EA48701E7FE34B00DBBBC7 /* CalendarExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarExportViewController.m; path = Controller/CalendarExportViewController.m; sourceTree = "<group>"; };
 		77F433251D8EDA6C00775C4A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
+		7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; sourceTree = "<group>"; };
 		90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -215,6 +255,8 @@
 		C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemsTableViewController.h; path = Controller/AddItemsTableViewController.h; sourceTree = "<group>"; };
 		C3E9AC191878BF3900E84287 /* AddItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemsTableViewController.m; path = Controller/AddItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TomorrowExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A9195A42602F6993537CEE /* Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +267,15 @@
 			files = (
 				770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */,
 				C60869B8B422A8D006F04D9E /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775A39491E93EC710070B31F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */,
+				A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +352,20 @@
 				772548E31E10259B00399B67 /* MSCollectionViewCalendarLayout.m */,
 			);
 			path = MSCollectionViewCalendarLayout;
+			sourceTree = "<group>";
+		};
+		775A394E1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */ = {
+			isa = PBXGroup;
+			children = (
+				774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */,
+				775A394F1E93EC710070B31F /* TomorrowViewController.h */,
+				775A39501E93EC710070B31F /* TomorrowViewController.m */,
+				775A39521E93EC710070B31F /* MainInterface.storyboard */,
+				775A39551E93EC710070B31F /* Info.plist */,
+				775A396A1E93EDFC0070B31F /* Localizable.strings */,
+				775A39711E93EE540070B31F /* InfoPlist.strings */,
+			);
+			path = "KNURE TimeTable iOS TomorrowExtension";
 			sourceTree = "<group>";
 		};
 		776A1B5B1E242EC90055DCB4 /* PFNavigationDropdownMenu */ = {
@@ -434,6 +499,8 @@
 				339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */,
 				6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */,
 				F2A9195A42602F6993537CEE /* Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig */,
+				D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */,
+				7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -443,6 +510,7 @@
 			children = (
 				C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */,
 				770D05E31DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */,
+				775A394E1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
 				9591FB9BF91BE088FE60962A /* Pods */,
@@ -454,6 +522,7 @@
 			children = (
 				C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */,
 				770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */,
+				775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -468,6 +537,7 @@
 				773F6445196939220081165C /* NotificationCenter.framework */,
 				57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */,
 				90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */,
+				DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -519,6 +589,25 @@
 			productReference = 770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		775A394B1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 775A395B1E93EC710070B31F /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS TomorrowExtension" */;
+			buildPhases = (
+				D259627685D23C833D93DCA9 /* [CP] Check Pods Manifest.lock */,
+				775A39481E93EC710070B31F /* Sources */,
+				775A39491E93EC710070B31F /* Frameworks */,
+				775A394A1E93EC710070B31F /* Resources */,
+				F51F0C21CB8C3E99BEF6CB94 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KNURE TimeTable iOS TomorrowExtension";
+			productName = "KNURE TimeTable iOS TomorrowExtension";
+			productReference = 775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C33FCC621819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS" */;
@@ -536,6 +625,7 @@
 			);
 			dependencies = (
 				770D05EC1DD3A767008D89E1 /* PBXTargetDependency */,
+				775A39571E93EC710070B31F /* PBXTargetDependency */,
 			);
 			name = "KNURE TimeTable iOS";
 			productName = "KNURE-Sked";
@@ -553,6 +643,16 @@
 				TargetAttributes = {
 					770D05E01DD3A767008D89E1 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = GJ8GF93D7L;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					775A394B1E93EC710070B31F = {
+						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = GJ8GF93D7L;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -587,6 +687,7 @@
 			targets = (
 				C33FCC621819965300328F6D /* KNURE TimeTable iOS */,
 				770D05E01DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */,
+				775A394B1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -599,6 +700,16 @@
 				770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */,
 				77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */,
 				77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775A394A1E93EC710070B31F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */,
+				775A396F1E93EE540070B31F /* InfoPlist.strings in Resources */,
+				775A39681E93EDFC0070B31F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +804,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D259627685D23C833D93DCA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F51F0C21CB8C3E99BEF6CB94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -715,6 +856,26 @@
 				774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */,
 				772548E51E10259B00399B67 /* MSCollectionViewCalendarLayout.m in Sources */,
 				770D05F51DD3ABF3008D89E1 /* MSDayColumnHeaderBackground.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775A39481E93EC710070B31F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				774AA0AE1E9434AD009E5326 /* MSCollectionViewCalendarLayout.m in Sources */,
+				774AA0B31E9434CD009E5326 /* MSCurrentTimeIndicator.m in Sources */,
+				774AA0B01E9434B9009E5326 /* DataStorage.xcdatamodeld in Sources */,
+				774AA0B41E9434D0009E5326 /* MSDayColumnHeader.m in Sources */,
+				774AA0B71E9434D7009E5326 /* MSTimeRowHeader.m in Sources */,
+				774AA0B21E9434CA009E5326 /* MSCurrentTimeGridline.m in Sources */,
+				775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */,
+				774AA0B11E9434C7009E5326 /* LessonCollectionViewCell.m in Sources */,
+				774AA0AF1E9434B3009E5326 /* Lesson.m in Sources */,
+				774AA0B61E9434D5009E5326 /* MSGridline.m in Sources */,
+				774AA0B51E9434D3009E5326 /* MSDayColumnHeaderBackground.m in Sources */,
+				774AA0B81E9434DA009E5326 /* MSTimeRowHeaderBackground.m in Sources */,
+				774AA0AC1E9434A5009E5326 /* EventParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +929,11 @@
 			target = 770D05E01DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */;
 			targetProxy = 770D05EB1DD3A767008D89E1 /* PBXContainerItemProxy */;
 		};
+		775A39571E93EC710070B31F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 775A394B1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */;
+			targetProxy = 775A39561E93EC710070B31F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -788,6 +954,34 @@
 			);
 			name = InfoPlist.strings;
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		775A39521E93EC710070B31F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775A39531E93EC710070B31F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		775A396A1E93EDFC0070B31F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775A39691E93EDFC0070B31F /* Base */,
+				775A396B1E93EDFF0070B31F /* ru */,
+				775A396C1E93EE000070B31F /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		775A39711E93EE540070B31F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775A39701E93EE540070B31F /* Base */,
+				775A39721E93EE560070B31F /* ru */,
+				775A39731E93EE570070B31F /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */ = {
@@ -888,6 +1082,56 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked.KNURE-TimeTable-iOS-TodayExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		775A39591E93EC710070B31F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS TomorrowExtension/KNURE TimeTable iOS TomorrowExtension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GJ8GF93D7L;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "KNURE TimeTable iOS TomorrowExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked.KNURE-TimeTable-iOS-TomorrowExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		775A395A1E93EC710070B31F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "KNURE TimeTable iOS TomorrowExtension/KNURE TimeTable iOS TomorrowExtension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GJ8GF93D7L;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "KNURE TimeTable iOS TomorrowExtension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked.KNURE-TimeTable-iOS-TomorrowExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1049,6 +1293,15 @@
 			buildConfigurations = (
 				770D05EE1DD3A767008D89E1 /* Debug */,
 				770D05EF1DD3A767008D89E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		775A395B1E93EC710070B31F /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS TomorrowExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775A39591E93EC710070B31F /* Debug */,
+				775A395A1E93EC710070B31F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
