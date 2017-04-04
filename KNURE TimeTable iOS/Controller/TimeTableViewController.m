@@ -98,6 +98,25 @@ CGFloat const dayColumnHeaderHeight = 40;
     });
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // Request App Store review on after 20 views
+    NSNumber *number = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationOpenCount];
+    if (number) {
+        NSInteger integerNumber = number.integerValue;
+        integerNumber++;
+        if (integerNumber == 20) {
+            [SKStoreReviewController requestReview];
+        } else {
+            [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+    } else {
+        [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:1] forKey:ApplicationOpenCount];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+}
+
 #pragma mark - Setup
 
 - (void)setupCollectionView {

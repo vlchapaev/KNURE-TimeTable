@@ -28,6 +28,7 @@
 #define ApplicationSupportMessengerLink @"fb-messenger://user/chapaev.vlad"
 
 #define ApplicationPopoverSize CGSizeMake(400, 600)
+#define ApplicationOpenCount @"ApplicationOpenCount"
 
 #define ApplicationThemeLightTintColor [UIColor colorWithRed:0.21 green:0.60 blue:0.86 alpha:1.00]
 #define ApplicationThemeLightBackgroundPrimaryColor [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:1.00]
