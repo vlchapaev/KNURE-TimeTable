@@ -27,7 +27,7 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
 CGFloat const timeRowHeaderWidth = 44;
-CGFloat const dayColumnHeaderHeight = 40;
+CGFloat const dayColumnHeaderHeight = 60;
 
 @interface TodayViewController () <NCWidgetProviding, MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
 
@@ -38,6 +38,8 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) NSArray <NSDate *>* pairDates;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
+
+@property (strong, nonatomic) NSDictionary *selectedItem;
 
 @end
 
@@ -61,10 +63,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self setupColorTheme];
     
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.Shogunate.KNURE-Sked"];
-    NSDictionary *selectedItem = [sharedDefaults valueForKey:TimetableSelectedItem];
-    if (selectedItem) {
-        //self.navigationItem.title = selectedItem[@"title"];
-        
+    self.selectedItem = [sharedDefaults valueForKey:TimetableSelectedItem];
+    if (self.selectedItem) {
         NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
         NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
@@ -73,7 +73,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         NSDate *startDate = [calendar dateFromComponents:startDateComponent];
         endDateComponents.day = 1;
         NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", selectedItem[@"id"], startDate, endDate];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", self.selectedItem[@"id"], startDate, endDate];
         
         [self setupFetchRequestWithPredicate:predicate];
     }
@@ -102,6 +102,12 @@ CGFloat const dayColumnHeaderHeight = 40;
     }
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    self.collectionViewCalendarLayout.sectionWidth = size.width - timeRowHeaderWidth - 10;
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Setup
 
 - (void)setupCollectionView {
@@ -118,16 +124,13 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.collectionViewCalendarLayout.dayColumnHeaderHeight = dayColumnHeaderHeight;
     
     self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeVerticalTile;
-    //TODO: autosize width
-    self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width - timeRowHeaderWidth - 20;
+    self.collectionViewCalendarLayout.sectionWidth = self.collectionView.frame.size.width;
     self.collectionViewCalendarLayout.hourHeight = 30;
     
     [self.collectionViewLayout registerClass:MSCurrentTimeGridline.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeHorizontalGridline];
     [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindVerticalGridline];
     [self.collectionViewLayout registerClass:MSTimeRowHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindTimeRowHeaderBackground];
     [self.collectionViewLayout registerClass:MSDayColumnHeaderBackground.class forDecorationViewOfKind:MSCollectionElementKindDayColumnHeaderBackground];
-    //[self.collectionViewLayout registerClass:MSCurrentTimeIndicator.class forDecorationViewOfKind:MSCollectionElementKindCurrentTimeIndicator];
-
 }
 
 - (void)setupProperties {
@@ -207,6 +210,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         dayColumnHeader.formatter = self.formatter;
         dayColumnHeader.day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         dayColumnHeader.currentDay = YES;
+        dayColumnHeader.itemTitle = self.selectedItem[@"title"];
         
         return dayColumnHeader;
         
