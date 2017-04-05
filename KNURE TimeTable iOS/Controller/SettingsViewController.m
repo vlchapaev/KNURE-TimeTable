@@ -29,7 +29,7 @@
     self.verticalScrollSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableVerticalMode];
     self.bouncingCellsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
     self.removeEmptyDaysSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableRemoveEmptyDays];
-    self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.darkModeSwitch.on = [Configuration isDarkTheme];
     self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
     self.hourlyGridSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
 }

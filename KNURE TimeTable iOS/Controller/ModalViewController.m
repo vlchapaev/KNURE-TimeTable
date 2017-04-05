@@ -29,7 +29,7 @@
 - (instancetype)initWithDelegate:(id)delegate andLesson:(Lesson *)lesson {
     self = [super init];
     if (self) {
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.isDarkTheme = [Configuration isDarkTheme];
         
         self.delegate = delegate;
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;

@@ -8,14 +8,37 @@
 
 #import "PopoverMenuViewController.h"
 #import "ItemsTableViewController.h"
+#import "Configuration.h"
+
+@interface PopoverMenuViewController()
+
+@property (assign, nonatomic) BOOL isDarkTheme;
+
+@end
 
 @implementation PopoverMenuViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationColorThemeDidChage) name:ApplicationDidChangeThemeNotification object:nil];
+    self.isDarkTheme = [Configuration isDarkTheme];
+    
+    self.navigationController.popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-    self.preferredContentSize = CGSizeMake(400, 230);
+    self.preferredContentSize = CGSizeMake(400, self.tableView.contentSize.height);
+}
+
+#pragma mark - NSNotificationCenter
+
+- (void)applicationColorThemeDidChage {
+    self.isDarkTheme = [Configuration isDarkTheme];
+    self.navigationController.popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
 }
 
 #pragma mark - UITableViewDelegate 

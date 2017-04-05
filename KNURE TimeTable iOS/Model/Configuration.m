@@ -25,11 +25,15 @@
     return sharedInstance;
 }
 
++ (BOOL)isDarkTheme {
+    return [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+}
+
 - (void)setupTheme {
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    BOOL isDarkTheme = [Configuration isDarkTheme];
     if (isDarkTheme) {
         [self setDarkTheme];
     } else {
@@ -38,7 +42,8 @@
 }
 
 - (void)setDarkTheme {
-    [UIView appearance].tintColor = ApplicationThemeDarkTintColor;
+    [UIView appearance].tintColor = ApplicationThemeLightTintColor;
+    [UIButton appearance].tintColor = ApplicationThemeDarkTintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [UIApplication sharedApplication].statusBarHidden = NO;
     
@@ -69,6 +74,7 @@
 
 - (void)setLightTheme {
     [UIView appearance].tintColor = ApplicationThemeLightTintColor;
+    [UIButton appearance].tintColor = ApplicationThemeLightTintColor;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [UIApplication sharedApplication].statusBarHidden = NO;
     

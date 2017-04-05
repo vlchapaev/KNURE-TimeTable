@@ -32,7 +32,7 @@
         self.title.backgroundColor = [UIColor clearColor];
         [self addSubview:self.title];
         
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.isDarkTheme = [Configuration isDarkTheme];
         
         [self.titleBackground makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.title).with.insets(UIEdgeInsetsMake(-6.0, -12.0, -4.0, -12.0));

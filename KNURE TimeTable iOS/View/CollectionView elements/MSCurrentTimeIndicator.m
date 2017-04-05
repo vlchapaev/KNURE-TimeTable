@@ -21,8 +21,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        BOOL isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
-        self.backgroundColor = (isDarkTheme) ? ApplicationThemeDarkBackgroundPrimaryColor : ApplicationThemeLightBackgroundPrimaryColor;
+        self.backgroundColor = ([Configuration isDarkTheme]) ? ApplicationThemeDarkBackgroundPrimaryColor : ApplicationThemeLightBackgroundPrimaryColor;
         
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:12.0];

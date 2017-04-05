@@ -152,7 +152,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     if (!self.isRunningInFullScreen) {
         self.isVerticalMode = YES;
     }
-    self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.isDarkTheme = [Configuration isDarkTheme];
     
     NSArray *pairNumbers = [self.fetchedResultsController.fetchedObjects valueForKey:@"number_pair"];
     self.maxPairNumber = [[pairNumbers valueForKeyPath:@"@max.intValue"] shortValue];

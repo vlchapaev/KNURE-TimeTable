@@ -7,22 +7,28 @@
 //
 
 #import "PopoverComboBoxViewController.h"
+#import "Configuration.h"
 
 @interface PopoverComboBoxViewController ()
 
 @property (strong, nonatomic) NSArray <Item *>* datasource;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
 @implementation PopoverComboBoxViewController
 
 - (instancetype)initWithDelegate:(id)delegate {
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.delegate = delegate;
         self.datasource = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.showsVerticalScrollIndicator = NO;
+        self.isDarkTheme = [Configuration isDarkTheme];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            self.tableView.backgroundColor = [UIColor clearColor];
+        }
     }
     return self;
 }
@@ -44,7 +50,8 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.textLabel.text = self.datasource[indexPath.row].title;
-    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+    cell.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     if (self.selectedItemID == [self.datasource[indexPath.row].id integerValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }

@@ -45,7 +45,7 @@
 
 #define ApplicationThemeDarkTintColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkBackgroundPrimaryColor [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:1.00]
-#define ApplicationThemeDarkBackgroundSecondnaryColor [UIColor darkGrayColor]
+#define ApplicationThemeDarkBackgroundSecondnaryColor [UIColor colorWithRed:0.27 green:0.27 blue:0.27 alpha:1.00]
 #define ApplicationThemeDarkFontPrimaryColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkFontSecondnaryColor [UIColor colorWithRed:0.92 green:0.94 blue:0.95 alpha:1.00]
 #define ApplicationThemeDarkCurrentTimeIndicator [UIColor colorWithRed:0.75 green:0.23 blue:0.17 alpha:1.00]
@@ -56,6 +56,8 @@
 @interface Configuration : NSObject
 
 + (instancetype)sharedInstance;
+
++ (BOOL)isDarkTheme;
 
 - (void)setupTheme;
 - (void)setDarkTheme;

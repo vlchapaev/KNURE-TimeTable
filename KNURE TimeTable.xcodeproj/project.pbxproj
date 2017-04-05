@@ -43,7 +43,6 @@
 		774AA0B61E9434D5009E5326 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACC1DCB99A90083A658 /* MSGridline.m */; };
 		774AA0B71E9434D7009E5326 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */; };
 		774AA0B81E9434DA009E5326 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */; };
-		774C7A5E1E92691A00BDC750 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
 		774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
 		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
@@ -59,6 +58,7 @@
 		7773AA111E69699A00DDBDF9 /* MainIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7773AA131E69699A00DDBDF9 /* MainIpad.storyboard */; };
 		7777778D1DC90B8700F557B0 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778A1DC90B8700F557B0 /* EventParser.m */; };
 		7777778E1DC90B8700F557B0 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777778C1DC90B8700F557B0 /* Request.m */; };
+		777C60711E950210007A7930 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773302901DD1D6F400F9D3F1 /* SettingsViewController.m */; };
 		778E3AB71DCB86190083A658 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AAC1DCB86190083A658 /* Item.m */; };
 		778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */; };
 		778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */; };
@@ -77,6 +77,8 @@
 		77B0E0F01B656A4F00D4506E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77B0E0F21B656A4F00D4506E /* Localizable.strings */; };
 		77C8DF9D1B384688001FB152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C8DF9F1B384688001FB152 /* Main.storyboard */; };
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
+		77CB32EF1E95321800B54C54 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
+		77CB32F01E95321900B54C54 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
@@ -841,7 +843,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				774C7A5E1E92691A00BDC750 /* Configuration.m in Sources */,
 				770D05F11DD3ABE6008D89E1 /* LessonCollectionViewCell.m in Sources */,
 				770D05F21DD3ABEC008D89E1 /* MSCurrentTimeGridline.m in Sources */,
 				770D05F81DD3ABF3008D89E1 /* MSTimeRowHeaderBackground.m in Sources */,
@@ -852,6 +853,7 @@
 				770D05F71DD3ABF3008D89E1 /* MSTimeRowHeader.m in Sources */,
 				770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */,
 				770D05F61DD3ABF3008D89E1 /* MSGridline.m in Sources */,
+				77CB32EF1E95321800B54C54 /* Configuration.m in Sources */,
 				770D05FC1DD3AF3B008D89E1 /* EventParser.m in Sources */,
 				774C7A5F1E92695E00BDC750 /* SettingsViewController.m in Sources */,
 				772548E51E10259B00399B67 /* MSCollectionViewCalendarLayout.m in Sources */,
@@ -873,7 +875,9 @@
 				774AA0B11E9434C7009E5326 /* LessonCollectionViewCell.m in Sources */,
 				774AA0AF1E9434B3009E5326 /* Lesson.m in Sources */,
 				774AA0B61E9434D5009E5326 /* MSGridline.m in Sources */,
+				77CB32F01E95321900B54C54 /* Configuration.m in Sources */,
 				774AA0B51E9434D3009E5326 /* MSDayColumnHeaderBackground.m in Sources */,
+				777C60711E950210007A7930 /* SettingsViewController.m in Sources */,
 				774AA0B81E9434DA009E5326 /* MSTimeRowHeaderBackground.m in Sources */,
 				774AA0AC1E9434A5009E5326 /* EventParser.m in Sources */,
 			);
@@ -1092,6 +1096,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1117,6 +1122,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;

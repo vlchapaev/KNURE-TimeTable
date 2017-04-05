@@ -23,7 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.isDarkTheme = [Configuration isDarkTheme];
         UIActivityIndicatorViewStyle indicatorStyle = (self.isDarkTheme) ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray;
         self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:indicatorStyle];
         self.accessoryView = self.indicator;

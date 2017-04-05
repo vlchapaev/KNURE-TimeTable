@@ -42,7 +42,7 @@
     self.definesPresentationContext = NO;
     [self.searchController.searchBar sizeToFit];
     
-    self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+    self.isDarkTheme = [Configuration isDarkTheme];
     self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     
     [self getItemList];

@@ -30,11 +30,15 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.hideHints = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
-        self.isDarkTheme = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
+        self.isDarkTheme = [Configuration isDarkTheme];
         self.title = NSLocalizedString(@"ModalView_Details", nil);
         self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
         self.tableView.tableHeaderView = self.headerView;
         self.tableView.showsVerticalScrollIndicator = NO;
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            self.tableView.backgroundColor = [UIColor clearColor];
+        }
         
         self.titleLabel = [UILabel new];
         self.titleLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;

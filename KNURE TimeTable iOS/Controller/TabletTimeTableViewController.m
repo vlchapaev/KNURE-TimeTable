@@ -12,13 +12,16 @@
 #import "Configuration.h"
 #import "LessonCollectionViewCell.h"
 
-@interface TabletTimeTableViewController() <UIPopoverControllerDelegate, PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate>
+@interface TabletTimeTableViewController() <PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate>
+
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
 @implementation TabletTimeTableViewController
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
+    self.isDarkTheme = [Configuration isDarkTheme];
     return [super initWithCoder:coder];
 }
 
@@ -52,7 +55,7 @@
 }
 
 - (void)applicationDidChangeTheme {
-    
+    self.isDarkTheme = [Configuration isDarkTheme];
 }
 
 - (void)didChangeGridLayout {
@@ -99,7 +102,8 @@
     modalViewController.selectedItemID = [selectedItem[@"id"] integerValue];
     
     UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];
-    popoverViewController.delegate = self;
+    
+    popoverViewController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
     [popoverViewController presentPopoverFromRect:displayFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
@@ -115,7 +119,8 @@
     modalViewController.delegate = self;
     modalViewController.indexPath = indexPath;
     UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];
-    popoverViewController.delegate = self;
+    
+    popoverViewController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
     [popoverViewController presentPopoverFromRect:displayFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
