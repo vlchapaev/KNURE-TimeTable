@@ -11,8 +11,11 @@
 @import StoreKit;
 
 #import "Item.h"
+#import "MSCollectionViewCalendarLayout.h"
 
 @interface TimeTableViewController : UICollectionViewController
+
+@property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 

@@ -99,7 +99,6 @@
 
 #pragma mark - LessonCollectionViewCell
 
-
 - (void)setEvent:(Lesson *)event {
     _event = event;
     self.title.attributedText = [[NSAttributedString alloc] initWithString:event.brief attributes:[self titleAttributesHighlighted:self.selected]];

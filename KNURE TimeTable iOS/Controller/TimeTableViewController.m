@@ -7,7 +7,6 @@
 //
 
 #import "TimeTableViewController.h"
-#import "MSCollectionViewCalendarLayout.h"
 #import "LessonCollectionViewCell.h"
 #import "Lesson.h"
 #import "Item.h"
@@ -41,7 +40,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-@property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 @property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 @property (strong, nonatomic) NSArray <Item *>*allItems;
 @property (strong, nonatomic) Item *selectedItem;
@@ -77,7 +75,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     Item *item = [Item getSelectedItem];
     if (item) {
-        self.selectedItem = item;
         [self setupFetchRequestWithItem:item];
         [self setupProperties];
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
@@ -107,10 +104,9 @@ CGFloat const dayColumnHeaderHeight = 40;
         integerNumber++;
         if (integerNumber == 20) {
             [SKStoreReviewController requestReview];
-        } else {
-            [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
-            [[NSUserDefaults standardUserDefaults]synchronize];
         }
+        [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     } else {
         [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:1] forKey:ApplicationOpenCount];
         [[NSUserDefaults standardUserDefaults]synchronize];
@@ -184,6 +180,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (void)setupFetchRequestWithItem:(Item *)selectedItem {
+    self.selectedItem = selectedItem;
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
     self.removeEmptyDays = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableRemoveEmptyDays];
     NSPredicate *filter = (self.removeEmptyDays) ? [NSPredicate predicateWithFormat:@"item_id == %@ AND isDummy == NO", selectedItem.id] : [NSPredicate predicateWithFormat:@"item_id == %@", selectedItem.id];
@@ -411,6 +408,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - ModalViewDelegate
 
 - (void)didSelectItem:(Item *)item {
+    self.selectedItem = item;
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [Request loadTimeTableForItem:item delegate:self];
 }

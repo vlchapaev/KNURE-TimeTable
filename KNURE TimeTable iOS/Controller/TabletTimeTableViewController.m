@@ -26,6 +26,9 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didReceiveNotification:) name:TimetableDidUpdateDataNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationDidChangeTheme) name:ApplicationDidChangeThemeNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didChangeGridLayout) name:TimetableDidChangeGridLayoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didRemoveEmptyDays) name:TimetableDidRemoveEmptyDaysNotification object:nil];
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     [self setupGroupButtonWithItem:[selectedItem transformToNSManagedObject]];
@@ -45,6 +48,21 @@
     CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
     [self resizeHeightForSize:size];
     [self setupGroupButtonWithItem:notification.object];
+    [self.collectionView reloadData];
+}
+
+- (void)applicationDidChangeTheme {
+    
+}
+
+- (void)didChangeGridLayout {
+    
+}
+
+- (void)didRemoveEmptyDays {
+    [self setupFetchRequestWithItem:[Item getSelectedItem]];
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    [self.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
 }
 

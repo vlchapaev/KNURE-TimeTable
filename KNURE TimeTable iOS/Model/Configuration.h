@@ -9,9 +9,14 @@
 #define TimetableSelectedItem @"TimetableSelectedItem"
 #define TimetableSelectedItemGroup @"group.Shogunate.KNURE-Sked"
 #define TimetableVerticalMode @"TimetableVerticalMode"
-#define TimetableDidUpdateDataNotification @"TimetableDidUpdateDataNotification"
 #define TimetableRemoveEmptyDays @"TimetableRemoveEmptyDays"
 #define TimetableHourlyGridLayout @"TimetableHourlyGridLayout"
+
+#define TimetableDidUpdateDataNotification @"TimetableDidUpdateDataNotification"
+#define ApplicationDidChangeThemeNotification @"ApplicationDidChangeThemeNotification"
+#define TimetableDidChangeGridLayoutNotification @"TimetableDidChangeGridLayoutNotification"
+#define TimetableDidRemoveEmptyDaysNotification @"TimetableDidRemoveEmptyDaysNotification"
+#define TimetableDidEnableBouncingCellsNotification @"TimetableDidEnableBouncingCellsNotification"
 
 //Not in production
 #define TimetableBouncingCells @"TimetableBouncingCells"

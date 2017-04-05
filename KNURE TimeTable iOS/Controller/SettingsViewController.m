@@ -32,11 +32,6 @@
     self.darkModeSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationIsDarkTheme];
     self.hintsSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
     self.hourlyGridSwitch.on = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.verticalScrollSwitch.enabled = NO;
-    }
-    
 }
 
 #pragma mark - UITableViewDelegate
@@ -94,12 +89,19 @@
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:ApplicationIsDarkTheme];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:ApplicationDidChangeThemeNotification object:nil];
+    }
+    
     [[Configuration sharedInstance]applyTheme];
 }
 
 - (IBAction)removeEmptyDaysSwitchValueChanged:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableRemoveEmptyDays];
     [[NSUserDefaults standardUserDefaults]synchronize];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidRemoveEmptyDaysNotification object:nil];
+    }
 }
 
 - (IBAction)bouncingCellsSwitchValueChanged:(UISwitch *)sender {
@@ -115,6 +117,9 @@
 - (IBAction)hourlyGridSwitchValueChanged:(UISwitch *)sender {
     [[NSUserDefaults standardUserDefaults]setBool:sender.on forKey:TimetableHourlyGridLayout];
     [[NSUserDefaults standardUserDefaults]synchronize];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:TimetableDidChangeGridLayoutNotification object:nil];
+    }
 }
 
 @end
