@@ -79,6 +79,7 @@
 		77C8DFAA1B3857F5001FB152 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8DFA91B3857F5001FB152 /* InitViewController.m */; };
 		77CB32EF1E95321800B54C54 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
 		77CB32F01E95321900B54C54 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 779652D11E8663AF0045848B /* Configuration.m */; };
+		77CB32F11E953B0A00B54C54 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D8C1B11D8C876B0056B125 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */; };
@@ -865,6 +866,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77CB32F11E953B0A00B54C54 /* TodayViewController.m in Sources */,
 				774AA0AE1E9434AD009E5326 /* MSCollectionViewCalendarLayout.m in Sources */,
 				774AA0B31E9434CD009E5326 /* MSCurrentTimeIndicator.m in Sources */,
 				774AA0B01E9434B9009E5326 /* DataStorage.xcdatamodeld in Sources */,

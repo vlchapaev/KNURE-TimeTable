@@ -14,4 +14,6 @@
 
 @interface TodayViewController : UICollectionViewController
 
+- (void)setupFetchRequestWithPredicate:(NSPredicate *)predicate;
+
 @end

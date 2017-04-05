@@ -58,16 +58,28 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupColorTheme];
+    
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.Shogunate.KNURE-Sked"];
     NSDictionary *selectedItem = [sharedDefaults valueForKey:TimetableSelectedItem];
     if (selectedItem) {
-        self.navigationItem.title = selectedItem[@"title"];
-        [self setupFetchRequestWithItem:selectedItem];
+        //self.navigationItem.title = selectedItem[@"title"];
+        
+        NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
+        NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+        startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+        
+        NSDate *startDate = [calendar dateFromComponents:startDateComponent];
+        endDateComponents.day = 1;
+        NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", selectedItem[@"id"], startDate, endDate];
+        
+        [self setupFetchRequestWithPredicate:predicate];
     }
     
     [self setupProperties];
     [self setupCollectionView];
-    [self setupColorTheme];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -139,18 +151,10 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.pairDates = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
 }
 
-- (void)setupFetchRequestWithItem:(NSDictionary *)selectedItem {
+- (void)setupFetchRequestWithPredicate:(NSPredicate *)predicate {
     NSFetchRequest *fetchRequest = [Lesson fetchRequest];
-    NSDateComponents *endDateComponents = [[NSDateComponents alloc]init];
-    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *startDateComponent = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
-    startDateComponent.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
     
-    NSDate *startDate = [calendar dateFromComponents:startDateComponent];
-    endDateComponents.day = 1;
-    NSDate *endDate = [calendar dateByAddingComponents:endDateComponents toDate:startDate options:0];
-    
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"item_id == %@ AND ((start_time >= %@) AND (end_time <= %@)) AND isDummy == NO", selectedItem[@"id"], startDate, endDate];
+    fetchRequest.predicate = predicate;
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
@@ -168,7 +172,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
         
     } else {
-        
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:ApplicationIsDarkTheme];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }
 }
 

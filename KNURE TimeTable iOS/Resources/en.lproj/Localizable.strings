@@ -7,7 +7,6 @@
 */
 
 Interface_Error = "Error";
-Interface_Loading = "Downloading list";
 Interface_Ok = "Ok";
 Interface_Cancel = "Cancel";
 Interface_Other = "Other";

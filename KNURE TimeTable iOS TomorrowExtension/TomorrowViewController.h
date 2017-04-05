@@ -12,6 +12,8 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 
-@interface TomorrowViewController : UICollectionViewController
+#import "TodayViewController.h"
+
+@interface TomorrowViewController : TodayViewController
 
 @end

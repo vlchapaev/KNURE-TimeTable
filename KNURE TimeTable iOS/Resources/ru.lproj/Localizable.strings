@@ -7,7 +7,6 @@
 */
 
 Interface_Error = "Ошибка";
-Interface_Loading = "Загружаю список";
 Interface_Ok = "Хорошо";
 Interface_Cancel = "Отмена";
 Interface_Other = "Другое";
@@ -57,12 +56,12 @@ Settings_CalendarExport_NoItemsMessage = "Здесь вы можете эксп�
 Settings_CalendarExport_SheetTitle = "Экспорт в календарь";
 Settings_CalendarExport_SheetMessage = "Выберите промежуток дат для экспорта в календарь";
 Settings_CalendarExport_Today = "Сегодняшний день";
-Settings_CalendarExport_Tomorrow = "Завтравший день";
+Settings_CalendarExport_Tomorrow = "Завтрашний день";
 Settings_CalendarExport_ThisWeek = "Эта неделя";
 Settings_CalendarExport_NextWeek = "Следующая неделя";
 Settings_CalendarExport_ThisMonth = "Этот месяц";
 Settings_CalendarExport_NextMonth = "Следующий месяц";
 Settings_CalendarExport_Full = "Весь семестр";
-Settings_CalendarExport_AccessForbidden = "Доступ к календарю запрещен пользователем";
+Settings_CalendarExport_AccessForbidden = "Доступ к календарю запрещён пользователем";
 Settings_CalendarHint1 = "Выберите элемент, который необходимо экспортировать в Календарь";
 Settings_CalendarHint2 = "В приложении Календарь будет создан новый календарь с названием выбранного элемента";
