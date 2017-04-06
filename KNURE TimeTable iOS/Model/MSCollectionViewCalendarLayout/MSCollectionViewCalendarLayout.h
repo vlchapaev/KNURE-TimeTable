@@ -54,6 +54,9 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 
 @property (nonatomic, weak) id <MSCollectionViewDelegateCalendarLayout> delegate;
 
+@property (nonatomic, assign) BOOL shouldMakeBouncingCells;
+@property (nonatomic, assign) BOOL isHourlyGridLayout;
+
 /**
  Width of cell
  */

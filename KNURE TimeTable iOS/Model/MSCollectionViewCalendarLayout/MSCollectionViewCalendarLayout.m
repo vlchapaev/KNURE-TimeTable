@@ -27,7 +27,6 @@
 //
 
 #import "MSCollectionViewCalendarLayout.h"
-#import "Configuration.h"
 
 NSString * const MSCollectionElementKindTimeRowHeader = @"MSCollectionElementKindTimeRow";
 NSString * const MSCollectionElementKindDayColumnHeader = @"MSCollectionElementKindDayHeader";
@@ -116,9 +115,6 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
 @property (nonatomic, strong) NSMutableSet *visibleHeaderAndFooterSet;
 @property (nonatomic, assign) CGFloat latestDelta;
 @property (nonatomic, assign) UIInterfaceOrientation interfaceOrientation;
-
-@property (nonatomic, assign) BOOL shouldMakeBouncingCells;
-@property (nonatomic, assign) BOOL isHourlyGridLayout;
 
 - (void)initialize;
 // Minute Updates
@@ -977,9 +973,6 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
     self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
     self.visibleIndexPathsSet = [NSMutableSet set];
     self.visibleHeaderAndFooterSet = [[NSMutableSet alloc] init];
-    
-    self.shouldMakeBouncingCells = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
-    self.isHourlyGridLayout = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
     
     // Invalidate layout on minute ticks (to update the position of the current time indicator)
     NSDate *oneMinuteInFuture = [[NSDate date] dateByAddingTimeInterval:60];

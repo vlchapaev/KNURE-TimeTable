@@ -119,6 +119,9 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
+    self.collectionViewCalendarLayout.shouldMakeBouncingCells = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableBouncingCells];
+    self.collectionViewCalendarLayout.isHourlyGridLayout = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
+    
     [self.collectionView registerClass:LessonCollectionViewCell.class forCellWithReuseIdentifier:MSEventCellReuseIdentifier];
     [self.collectionView registerClass:MSDayColumnHeader.class forSupplementaryViewOfKind:MSCollectionElementKindDayColumnHeader withReuseIdentifier:MSDayColumnHeaderReuseIdentifier];
     [self.collectionView registerClass:MSTimeRowHeader.class forSupplementaryViewOfKind:MSCollectionElementKindTimeRowHeader withReuseIdentifier:MSTimeRowHeaderReuseIdentifier];

@@ -56,10 +56,16 @@
 
 - (void)applicationDidChangeTheme {
     self.isDarkTheme = [Configuration isDarkTheme];
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    [self.collectionViewLayout invalidateLayout];
+    [self.collectionView reloadData];
 }
 
 - (void)didChangeGridLayout {
-    
+    self.collectionViewCalendarLayout.isHourlyGridLayout = [[NSUserDefaults standardUserDefaults]boolForKey:TimetableHourlyGridLayout];
+    [self.collectionViewCalendarLayout invalidateLayoutCache];
+    [self.collectionViewLayout invalidateLayout];
+    [self.collectionView reloadData];
 }
 
 - (void)didRemoveEmptyDays {
