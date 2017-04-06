@@ -7,13 +7,11 @@
 //
 
 #import "MSDayColumnHeader.h"
-#import "Configuration.h"
 
 @interface MSDayColumnHeader ()
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIView *titleBackground;
-@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -31,8 +29,6 @@
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         [self addSubview:self.title];
-        
-        self.isDarkTheme = [Configuration isDarkTheme];
         
         [self.titleBackground makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.title).with.insets(UIEdgeInsetsMake(-6.0, -12.0, -4.0, -12.0));
@@ -65,10 +61,10 @@
     if (currentDay) {
         self.title.textColor = [UIColor whiteColor];
         self.title.font = [UIFont boldSystemFontOfSize:16.0];
-        self.titleBackground.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkCurrentTimeIndicator : ApplicationThemeLightCurrentTimeIndicator;
+        self.titleBackground.backgroundColor = self.titleBackgroundColor;
     } else {
         self.title.font = [UIFont systemFontOfSize:16.0];
-        self.title.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+        self.title.textColor = self.titleTextColor;
         self.titleBackground.backgroundColor = [UIColor clearColor];
     }
 }

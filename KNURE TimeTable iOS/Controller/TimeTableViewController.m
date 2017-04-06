@@ -38,8 +38,6 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 @interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate, EAIntroDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 @property (strong, nonatomic) NSArray <Item *>*allItems;
 @property (strong, nonatomic) Item *selectedItem;
@@ -328,7 +326,13 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
-    cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontSecondnaryColor;
+    cell.textColorHighlighted = ApplicationThemeDarkFontPrimaryColor;
+    cell.title = lesson.brief;
+    cell.location = lesson.auditory;
+    cell.mainColor = [EventParser getCellColorByType:lesson.type.integerValue isDarkTheme:self.isDarkTheme];
+    cell.opacity = (self.isDarkTheme) ? 0.55 : 0.3;
     return cell;
 }
 
@@ -341,6 +345,8 @@ CGFloat const dayColumnHeaderHeight = 40;
         NSDate *startOfDay = [[NSCalendar currentCalendar] startOfDayForDate:day];
         NSDate *startOfCurrentDay = [[NSCalendar currentCalendar] startOfDayForDate:currentDay];
         
+        dayColumnHeader.titleBackgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkCurrentTimeIndicator : ApplicationThemeLightCurrentTimeIndicator;
+        dayColumnHeader.titleTextColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         dayColumnHeader.formatter = self.formatter;
         dayColumnHeader.day = day;
         dayColumnHeader.currentDay = [startOfDay isEqualToDate:startOfCurrentDay];
@@ -349,6 +355,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
+        timeRowHeader.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
         return timeRowHeader;
     }

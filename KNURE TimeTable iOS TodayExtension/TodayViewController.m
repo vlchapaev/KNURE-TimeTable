@@ -40,6 +40,7 @@ CGFloat const dayColumnHeaderHeight = 60;
 @property (assign, nonatomic) short minPairNumber;
 
 @property (strong, nonatomic) NSDictionary *selectedItem;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -173,10 +174,9 @@ CGFloat const dayColumnHeaderHeight = 60;
 - (void)setupColorTheme {
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
-        
+        self.isDarkTheme = NO;
     } else {
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:ApplicationIsDarkTheme];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        self.isDarkTheme = YES;
     }
 }
 
@@ -199,7 +199,13 @@ CGFloat const dayColumnHeaderHeight = 60;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
-    cell.event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontSecondnaryColor;
+    cell.textColorHighlighted = ApplicationThemeDarkFontPrimaryColor;
+    cell.title = lesson.brief;
+    cell.location = lesson.auditory;
+    cell.mainColor = [EventParser getCellColorByType:lesson.type.integerValue isDarkTheme:self.isDarkTheme];
+    cell.opacity = (self.isDarkTheme) ? 0.55 : 0.3;
     return cell;
 }
 
@@ -207,6 +213,8 @@ CGFloat const dayColumnHeaderHeight = 60;
     if (kind == MSCollectionElementKindDayColumnHeader) {
         MSDayColumnHeader *dayColumnHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSDayColumnHeaderReuseIdentifier forIndexPath:indexPath];
         
+        dayColumnHeader.titleBackgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkCurrentTimeIndicator : ApplicationThemeLightCurrentTimeIndicator;
+        dayColumnHeader.titleTextColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         dayColumnHeader.formatter = self.formatter;
         dayColumnHeader.day = [self.collectionViewCalendarLayout dateForDayColumnHeaderAtIndexPath:indexPath];
         dayColumnHeader.currentDay = YES;
@@ -216,6 +224,7 @@ CGFloat const dayColumnHeaderHeight = 60;
         
     } else if (kind == MSCollectionElementKindTimeRowHeader) {
         MSTimeRowHeader *timeRowHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:MSTimeRowHeaderReuseIdentifier forIndexPath:indexPath];
+        timeRowHeader.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         timeRowHeader.time = [self.collectionViewCalendarLayout dateForTimeRowHeaderAtIndexPath:indexPath];
         return timeRowHeader;
     }

@@ -111,11 +111,14 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     LessonCollectionViewCell *cell = (LessonCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
     CGRect displayFrame = CGRectMake(cell.frame.origin.x - collectionView.contentOffset.x, cell.frame.origin.y - collectionView.contentOffset.y, cell.frame.size.width, cell.frame.size.height);
     
-    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:cell.event];
+    Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
     modalViewController.delegate = self;
     modalViewController.indexPath = indexPath;
     UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];

@@ -15,6 +15,7 @@
 
 @interface TimeTableViewController : UICollectionViewController
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) MSCollectionViewCalendarLayout *collectionViewCalendarLayout;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;

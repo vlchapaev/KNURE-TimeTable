@@ -15,4 +15,7 @@
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSString *itemTitle;
 
+@property (strong, nonatomic) UIColor *titleBackgroundColor;
+@property (strong, nonatomic) UIColor *titleTextColor;
+
 @end

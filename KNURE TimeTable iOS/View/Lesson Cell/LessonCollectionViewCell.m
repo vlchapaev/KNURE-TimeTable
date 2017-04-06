@@ -7,14 +7,6 @@
 //
 
 #import "LessonCollectionViewCell.h"
-#import "EventParser.h"
-#import "Configuration.h"
-
-@interface LessonCollectionViewCell()
-
-@property (assign, nonatomic) BOOL isDarkTheme;
-
-@end
 
 @implementation LessonCollectionViewCell
 
@@ -23,7 +15,6 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.isDarkTheme = [Configuration isDarkTheme];
         
         self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         self.layer.shouldRasterize = YES;
@@ -36,15 +27,15 @@
         self.borderView = [UIView new];
         [self.contentView addSubview:self.borderView];
         
-        self.title = [UILabel new];
-        self.title.numberOfLines = 0;
-        self.title.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:self.title];
+        self.titleLabel = [UILabel new];
+        self.titleLabel.numberOfLines = 0;
+        self.titleLabel.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:self.titleLabel];
         
-        self.location = [UILabel new];
-        self.location.numberOfLines = 0;
-        self.location.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:self.location];
+        self.locationLabel = [UILabel new];
+        self.locationLabel.numberOfLines = 0;
+        self.locationLabel.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:self.locationLabel];
         
         [self updateColors];
         
@@ -59,17 +50,17 @@
             make.top.equalTo(self.top);
         }];
         
-        [self.title makeConstraints:^(MASConstraintMaker *make) {
+        [self.titleLabel makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.top).offset(contentPadding.top);
             make.left.equalTo(self.left).offset(contentPadding.left);
-            //make.right.equalTo(self.right).offset(-contentPadding.right);
+            make.right.equalTo(self.right).offset(-contentPadding.right);
         }];
         
-        [self.location makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.title.bottom).offset(contentMargin);
+        [self.locationLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.titleLabel.bottom).offset(contentMargin);
             make.left.equalTo(self.left).offset(contentPadding.left);
-            //make.right.equalTo(self.right).offset(-contentPadding.right);
-            //make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
+            make.right.equalTo(self.right).offset(-contentPadding.right);
+            make.bottom.lessThanOrEqualTo(self.bottom).offset(-contentPadding.bottom);
         }];
         
     }
@@ -99,20 +90,25 @@
 
 #pragma mark - LessonCollectionViewCell
 
-- (void)setEvent:(Lesson *)event {
-    _event = event;
-    self.title.attributedText = [[NSAttributedString alloc] initWithString:event.brief attributes:[self titleAttributesHighlighted:self.selected]];
-    self.location.attributedText = [[NSAttributedString alloc] initWithString:event.auditory attributes:[self subtitleAttributesHighlighted:self.selected]];
-    self.mainColor = [EventParser getCellColorByType:[event.type integerValue] isDarkTheme:self.isDarkTheme];
+- (void)setMainColor:(UIColor *)mainColor {
+    _mainColor = mainColor;
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
+}
+
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:[self titleAttributesHighlighted:self.selected]];
+}
+
+- (void)setLocation:(NSString *)location {
+    self.locationLabel.attributedText = [[NSAttributedString alloc] initWithString:location attributes:[self subtitleAttributesHighlighted:self.selected]];
 }
 
 - (void)updateColors {
     self.contentView.backgroundColor = [self backgroundColorHighlighted:self.selected];
     self.borderView.backgroundColor = [self borderColor];
-    self.title.textColor = [self textColorHighlighted:self.selected];
-    self.location.textColor = [self textColorHighlighted:self.selected];
+    self.titleLabel.textColor = [self textColorHighlighted:self.selected];
+    self.locationLabel.textColor = [self textColorHighlighted:self.selected];
 }
 
 - (NSDictionary *)titleAttributesHighlighted:(BOOL)highlighted {
@@ -140,13 +136,11 @@
 }
 
 - (UIColor *)backgroundColorHighlighted:(BOOL)selected {
-    CGFloat opacity = (self.isDarkTheme) ? 0.55 : 0.3;
-    return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:opacity];
+    return selected ? self.mainColor : [self.mainColor colorWithAlphaComponent:self.opacity];
 }
 
 - (UIColor *)textColorHighlighted:(BOOL)selected {
-    UIColor *color = (selected) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontSecondnaryColor;
-    return (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : color;
+    return (selected) ? self.textColorHighlighted : self.textColor;
 }
 
 - (UIColor *)borderColor {

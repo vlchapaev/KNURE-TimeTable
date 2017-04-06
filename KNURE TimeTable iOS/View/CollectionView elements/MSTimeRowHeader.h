@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) NSDate *time;
+@property (strong, nonatomic) UIColor *textColor;
 
 @end

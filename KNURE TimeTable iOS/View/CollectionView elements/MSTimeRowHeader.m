@@ -7,20 +7,18 @@
 //
 
 #import "MSTimeRowHeader.h"
-#import "Configuration.h"
 
 @implementation MSTimeRowHeader
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        BOOL isDarkTheme = [Configuration isDarkTheme];
         self.backgroundColor = [UIColor clearColor];
         self.title = [UILabel new];
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont systemFontOfSize:12.0];
         self.title.textAlignment = NSTextAlignmentRight;
-        self.title.textColor = (isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
+        self.title.textColor = self.textColor;
         [self addSubview:self.title];
         
         [self.title makeConstraints:^(MASConstraintMaker *make) {
@@ -32,6 +30,11 @@
 }
 
 #pragma mark - MSTimeRowHeader
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.title.textColor = textColor;
+}
 
 - (void)setTime:(NSDate *)time {
     _time = time;

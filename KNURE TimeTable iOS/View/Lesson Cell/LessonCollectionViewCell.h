@@ -8,16 +8,19 @@
 
 @import UIKit;
 
-#import "Lesson.h"
-
 @interface LessonCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) Lesson *event;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *location;
 
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UILabel *location;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *locationLabel;
 
 @property (nonatomic, strong) UIColor *mainColor;
+@property (assign, nonatomic) CGFloat opacity;
 @property (nonatomic, strong) UIView *borderView;
+
+@property (strong, nonatomic) UIColor *textColor;
+@property (strong, nonatomic) UIColor *textColorHighlighted;
 
 @end

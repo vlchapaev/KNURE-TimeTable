@@ -12,6 +12,7 @@
 #import "MSTimeRowHeaderBackground.h"
 #import "MSGridline.h"
 #import "MSCurrentTimeGridline.h"
+#import "MSCurrentTimeIndicator.h"
 #import "SettingsViewController.h"
 
 @implementation Configuration
@@ -65,6 +66,7 @@
     [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [MSGridline appearance].backgroundColor = ApplicationThemeDarkSeparatorColor;
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeDarkCurrentTimeIndicator;
+    [MSCurrentTimeIndicator appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeDarkFontPrimaryColor;
     
@@ -95,6 +97,7 @@
     [MSTimeRowHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [MSGridline appearance].backgroundColor = ApplicationThemeLightSeparatorColor;
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
+    [MSCurrentTimeIndicator appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     
     [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceLight;
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeLightFontPrimaryColor;
