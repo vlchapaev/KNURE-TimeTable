@@ -200,12 +200,12 @@ CGFloat const dayColumnHeaderHeight = 60;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LessonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MSEventCellReuseIdentifier forIndexPath:indexPath];
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.opacity = (self.isDarkTheme) ? 0.55 : 0.3;
+    cell.mainColor = [EventParser getCellColorByType:lesson.type.integerValue isDarkTheme:self.isDarkTheme];
     cell.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontSecondnaryColor;
     cell.textColorHighlighted = ApplicationThemeDarkFontPrimaryColor;
     cell.title = lesson.brief;
     cell.location = lesson.auditory;
-    cell.mainColor = [EventParser getCellColorByType:lesson.type.integerValue isDarkTheme:self.isDarkTheme];
-    cell.opacity = (self.isDarkTheme) ? 0.55 : 0.3;
     return cell;
 }
 
