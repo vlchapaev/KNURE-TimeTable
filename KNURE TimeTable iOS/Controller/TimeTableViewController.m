@@ -53,6 +53,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (assign, nonatomic) BOOL isDarkTheme;
 @property (assign, nonatomic) BOOL removeEmptyDays;
 
+@property (assign, nonatomic) BOOL isNotUpdated;
+@property (assign, nonatomic) BOOL isNoItems;
+
 @end
 
 @implementation TimeTableViewController
@@ -78,7 +81,9 @@ CGFloat const dayColumnHeaderHeight = 40;
         if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
             [self setupDropDownController];
         }
+        self.isNotUpdated = !item.last_update;
     } else {
+        self.isNoItems = YES;
         self.refreshButton.enabled = NO;
     }
     
@@ -309,11 +314,13 @@ CGFloat const dayColumnHeaderHeight = 40;
 - (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedItem = self.allItems[indexPath.row];
     [self.selectedItem saveAsSelectedItem];
+    self.isNotUpdated = !self.selectedItem.last_update;
     [NSFetchedResultsController deleteCacheWithName:ApplicationCacheName];
     [self setupFetchRequestWithItem:self.selectedItem];
     [self setupProperties];
     CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
     [self resizeHeightForSize:size];
+    [self.collectionView reloadEmptyDataSet];
     [self.collectionView reloadData];
 }
 
@@ -474,7 +481,14 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = NSLocalizedString(@"TimeTable_NoItems", nil);
+    NSString *text;
+    if (self.isNoItems) {
+        text = NSLocalizedString(@"TimeTable_NoItems", nil);
+    } else if (self.isNotUpdated) {
+        text = NSLocalizedString(@"TimeTable_NeedToUpdate", nil);
+    } else {
+        text = NSLocalizedString(@"TimeTable_NoTimetable", nil);
+    }
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor grayColor]};
@@ -483,7 +497,14 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = NSLocalizedString(@"TimeTable_NoItemsMessage", nil);
+    NSString *text;
+    if (self.isNoItems) {
+        text = NSLocalizedString(@"TimeTable_NoItemsMessage", nil);
+    } else if (self.isNotUpdated) {
+        text = NSLocalizedString(@"TimeTable_NeedToUpdateMessage", nil);
+    } else {
+        text = NSLocalizedString(@"TimeTable_NoTimetableMessage", nil);
+    }
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -508,6 +529,10 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 #pragma mark - DZNEmptyDataSetDelegate
+
+- (void)emptyDataSetWillAppear:(UIScrollView *)scrollView {
+    scrollView.contentOffset = CGPointZero;
+}
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
     /*
