@@ -451,6 +451,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         item.last_update = [NSDate date];
         [item saveAsSelectedItem];
         self.selectedItem = item;
+        self.isNotUpdated = !self.selectedItem.last_update;
         [[item managedObjectContext] MR_saveToPersistentStoreAndWait];
         [self setupFetchRequestWithItem:item];
         [self setupProperties];
@@ -463,6 +464,7 @@ CGFloat const dayColumnHeaderHeight = 40;
         }
         [self.collectionViewCalendarLayout invalidateLayoutCache];
         [self.collectionViewCalendarLayout invalidateLayout];
+        [self.collectionView reloadEmptyDataSet];
         [self.collectionView reloadData];
     }];
 }
