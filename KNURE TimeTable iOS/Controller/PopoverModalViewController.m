@@ -36,10 +36,6 @@
         self.tableView.tableHeaderView = self.headerView;
         self.tableView.showsVerticalScrollIndicator = NO;
         
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            self.tableView.backgroundColor = [UIColor clearColor];
-        }
-        
         self.titleLabel = [UILabel new];
         self.titleLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -180,7 +176,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
     ItemType itemType;
     NSString *title;
