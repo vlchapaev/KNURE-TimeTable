@@ -56,4 +56,17 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     }];
 }
 
++ (void)loadTimeTableForItem:(Item *)item completion:(void (^)(id response))completion failure:(void (^)(NSError *error))failure {
+    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%hd&timetable_id=%@", baseURL, item.type, item.id];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        completion(responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
 @end

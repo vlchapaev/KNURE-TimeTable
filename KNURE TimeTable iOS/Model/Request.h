@@ -35,5 +35,6 @@ extern NSString *const RequestAddressAuditoryList;
  */
 + (void)loadItemListOfType:(ItemType)itemType delegate:(id)delegate;
 + (void)loadTimeTableForItem:(Item *)item delegate:(id)delegate;
++ (void)loadTimeTableForItem:(Item *)item completion:(void (^)(id response))completion failure:(void (^)(NSError *error))failure;
 
 @end
