@@ -12,12 +12,10 @@
 #import "Item.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "PFNavigationDropdownMenu.h"
-#import "ModalViewController.h"
 #import "MBProgressHUD.h"
 #import "Request.h"
 #import "EventParser.h"
 #import "Configuration.h"
-#import "EAIntroView.h"
 #import "PopoverModalViewController.h"
 
 #import "MSGridline.h"
@@ -36,7 +34,7 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate, EAIntroDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate>
 
 @property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 @property (strong, nonatomic) NSArray <Item *>*allItems;
@@ -223,18 +221,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     self.navigationItem.titleView = self.dropDownMenu;
 }
 
-- (EAIntroView *)setupIntro {
-    EAIntroPage *page1 = [EAIntroPage page];
-    page1.bgImage = [UIImage imageNamed:@"intro-1"];
-    page1.title = @"оловылфволыфо лволфы олво фылдов лоыфдлво лдфыовлд оыфлдводлыфовдлоыфлд овлд оыфдвд оыфдо вдфыд овдофдлы ово фдыовд офыдво ыфдло вдоыфо воф двод фыов дыфо";
-    
-    EAIntroPage *page2 = [EAIntroPage page];
-    page2.bgImage = [UIImage imageNamed:@"intro-2"];
-    page2.title = @"ваивышоавт атвышщ тащшвты шщатвы шщташщты шщватщшы втщаштвшщы тащштыв щшташщвы тщшат щывта щтвыщш тащвшыт шатвышщ ташщывт шатщ ывшта щшы";
-    
-    return [[EAIntroView alloc] initWithFrame:self.navigationController.view.bounds andPages:@[page1, page2]];
-}
-
 - (void)addDoubleTapGesture {
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapGestureRecognized:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
@@ -375,14 +361,10 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    //[collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    //ModalViewController *modalViewController = [[ModalViewController alloc]initWithDelegate:self andLesson:lesson];
     PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
     modalViewController.delegate = self;
     modalViewController.indexPath = indexPath;
-    
     [self.navigationController pushViewController:modalViewController animated:YES];
 }
 
@@ -422,7 +404,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     return lesson.day;
 }
 
-#pragma mark - ModalViewDelegate
+#pragma mark - PopoverModalViewControllerDelegate
 
 - (void)didSelectItem:(Item *)item {
     self.selectedItem = item;
@@ -519,38 +501,10 @@ CGFloat const dayColumnHeaderHeight = 40;
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-    UIFont *font = [UIFont systemFontOfSize:16.0];
-    UIColor *textColor = (state == UIControlStateNormal) ? ApplicationThemeLightTintColor : [UIColor colorWithRed:0.78 green:0.87 blue:0.98 alpha:1.00];
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    [attributes setObject:font forKey:NSFontAttributeName];
-    [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    
-    return [[NSAttributedString alloc] initWithString:NSLocalizedString(@"TimeTable_Tutorial", nil) attributes:attributes];
-}
-
 #pragma mark - DZNEmptyDataSetDelegate
 
 - (void)emptyDataSetWillAppear:(UIScrollView *)scrollView {
     scrollView.contentOffset = CGPointZero;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
-    /*
-    EAIntroView *introView = [self setupIntro];
-    introView.delegate = self;
-    introView.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    introView.pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
-    [introView.skipButton setTitleColor:[UIColor colorWithRed:0.00 green:0.48 blue:1.00 alpha:1.00] forState:UIControlStateNormal];
-    [introView.skipButton setTitleColor:[UIColor colorWithRed:0.78 green:0.87 blue:0.98 alpha:1.00] forState:UIControlStateHighlighted];
-    [introView showInView:self.navigationController.view animateDuration:0.3];
-     */
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"ЭЩУТКА" message:@"Инструкция будет в следующей бете 😜" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

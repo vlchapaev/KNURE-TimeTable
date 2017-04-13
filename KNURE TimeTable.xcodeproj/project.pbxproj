@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		594E716E471E6C4FF444401B /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */; };
 		6928EA27182D94BE00070B44 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928EA26182D94BE00070B44 /* ItemsTableViewController.m */; };
-		7701FB301E1059EA000D6768 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7701FB2F1E1059EA000D6768 /* ModalViewController.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
@@ -144,8 +143,6 @@
 		6928EA25182D94BE00070B44 /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewController.h; path = Controller/ItemsTableViewController.h; sourceTree = "<group>"; };
 		6928EA26182D94BE00070B44 /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewController.m; path = Controller/ItemsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		7701FB2E1E1059EA000D6768 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = Controller/ModalViewController.h; sourceTree = "<group>"; };
-		7701FB2F1E1059EA000D6768 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = Controller/ModalViewController.m; sourceTree = "<group>"; };
 		770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TodayExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770D05E41DD3A767008D89E1 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		770D05E51DD3A767008D89E1 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
@@ -446,8 +443,8 @@
 				771623731DE339EF00B9C928 /* MenuTableViewController.m */,
 				C33FCC7B1819965300328F6D /* TimeTableViewController.h */,
 				C33FCC7C1819965300328F6D /* TimeTableViewController.m */,
-				7701FB2E1E1059EA000D6768 /* ModalViewController.h */,
-				7701FB2F1E1059EA000D6768 /* ModalViewController.m */,
+				77B056341E6720C000351AF7 /* PopoverModalViewController.h */,
+				77B056351E6720C000351AF7 /* PopoverModalViewController.m */,
 				6928EA25182D94BE00070B44 /* ItemsTableViewController.h */,
 				6928EA26182D94BE00070B44 /* ItemsTableViewController.m */,
 				C3E9AC181878BF3900E84287 /* AddItemsTableViewController.h */,
@@ -470,8 +467,6 @@
 				779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */,
 				779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */,
 				779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */,
-				77B056341E6720C000351AF7 /* PopoverModalViewController.h */,
-				77B056351E6720C000351AF7 /* PopoverModalViewController.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -925,7 +920,6 @@
 				778E3AD21DCB99A90083A658 /* MSCurrentTimeIndicator.m in Sources */,
 				778E3AD11DCB99A90083A658 /* MSCurrentTimeGridline.m in Sources */,
 				779CF1F61DE9E98B002C9CA5 /* TabletTimeTableViewController.m in Sources */,
-				7701FB301E1059EA000D6768 /* ModalViewController.m in Sources */,
 				7777778E1DC90B8700F557B0 /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

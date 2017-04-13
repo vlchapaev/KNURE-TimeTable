@@ -19,17 +19,6 @@ TimeTable_NeedToUpdate = "Timetable is not updated";
 TimeTable_NeedToUpdateMessage = "Use button at top right to update timetable";
 TimeTable_Tutorial = "Show me tutorial";
 
-Application_Intro1 = "";
-Application_Intro2 = "";
-Application_Intro3 = "";
-Application_Intro4 = "";
-Application_Intro5 = "";
-Application_Intro6 = "";
-Application_Intro7 = "";
-Application_Intro8 = "";
-Application_Intro9 = "";
-Application_Intro10 = "";
-
 ModalView_Type = "Type";
 ModalView_Auditory = "Auditory";
 ModalView_Teacher = "Teacher";

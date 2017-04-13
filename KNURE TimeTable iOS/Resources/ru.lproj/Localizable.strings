@@ -19,17 +19,6 @@ TimeTable_NeedToUpdate = "Расписание не обновлено";
 TimeTable_NeedToUpdateMessage = "Используйте кнопку в правом верхнем углу, чтобы обновить расписание";
 TimeTable_Tutorial = "Инструкция к приложению";
 
-Application_Intro1 = "Нажмите на кнопку меню или проведите влево, чтобы попасть в меню.\nВ меню вы можете добавить расписание для групп, преподавателей и аудиторий.";
-Application_Intro2 = "Воспользуйтесь поиском чтобы найти группу, преподавателя или аудиторию.";
-Application_Intro3 = "При нажатии на выбранный элемент происходит обновление его расписания.";
-Application_Intro4 = "";
-Application_Intro5 = "";
-Application_Intro6 = "";
-Application_Intro7 = "";
-Application_Intro8 = "";
-Application_Intro9 = "";
-Application_Intro10 = "";
-
 ModalView_Type = "Тип";
 ModalView_Auditory = "Аудитория";
 ModalView_Teacher = "Преподаватель";
