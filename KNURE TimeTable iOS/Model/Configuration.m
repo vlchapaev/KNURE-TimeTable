@@ -69,8 +69,9 @@
     [MSCurrentTimeIndicator appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeDarkFontPrimaryColor;
-    
-    [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDark;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+        [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDark;
+    }
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeDarkFontPrimaryColor}];
 }
 
@@ -99,7 +100,10 @@
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeLightCurrentTimeIndicator;
     [MSCurrentTimeIndicator appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     
-    [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceLight;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+        [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDefault;
+    }
+    
     [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeLightFontPrimaryColor;
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeLightFontPrimaryColor}];
 }
