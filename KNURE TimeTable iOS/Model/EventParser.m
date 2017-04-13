@@ -170,18 +170,21 @@
             lesson.isDummy = NO;
         }
         
-        for (NSDate *date in semesterDates) {
-            
-            Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
-            lesson.item_id = [itemID integerValue];
-            lesson.start_time = date;
-            lesson.end_time = date;
-            lesson.isDummy = YES;
-            
-            lesson.brief = @"";
-            lesson.title = @"";
-            lesson.auditory = @"";
-            lesson.type = @1;
+        //Check is there is no events then don't insert anything
+        if (events) {
+            for (NSDate *date in semesterDates) {
+                
+                Lesson *lesson = [Lesson MR_createEntityInContext:localContext];
+                lesson.item_id = [itemID integerValue];
+                lesson.start_time = date;
+                lesson.end_time = date;
+                lesson.isDummy = YES;
+                
+                lesson.brief = @"";
+                lesson.title = @"";
+                lesson.auditory = @"";
+                lesson.type = @1;
+            }
         }
         
         [localContext MR_saveToPersistentStoreAndWait];
