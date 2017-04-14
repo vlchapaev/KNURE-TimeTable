@@ -37,6 +37,11 @@
 - vkontakte: https://vk.com/id40842906
 - messanger: https://m.me/chapaev.vlad
 
+:dollar: Благотворительность
+----
+
+Карта Приват банка: 5168 7555 2282 4859
+
 :page_facing_up: Лицензия
 ----
 
