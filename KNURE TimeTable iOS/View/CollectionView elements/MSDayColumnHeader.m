@@ -50,9 +50,8 @@
 
 - (void)setItemTitle:(NSString *)itemTitle {
     _itemTitle = itemTitle;
-    self.title.numberOfLines = 2;
     self.title.textAlignment = NSTextAlignmentCenter;
-    self.title.text = [NSString stringWithFormat:@"%@\n%@", itemTitle, self.title.text];
+    self.title.text = [NSString stringWithFormat:@"%@, %@", itemTitle, self.title.text];
 }
 
 - (void)setCurrentDay:(BOOL)currentDay {

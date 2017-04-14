@@ -13,7 +13,7 @@
 #define LessonTypeLightColorLaboratiry [UIColor colorWithRed:0.46 green:0.37 blue:0.77 alpha:1.00]
 #define LessonTypeLightColorConsultation [UIColor lightGrayColor]
 #define LessonTypeLightColorExam [UIColor colorWithRed:0.40 green:0.80 blue:1.00 alpha:1.00]
-#define LessonTypeLightColorСredit [UIColor magentaColor]
+#define LessonTypeLightColorСredit [UIColor colorWithRed:0.76 green:0.62 blue:0.72 alpha:1.00]
 #define LessonTypeLightColorUnknown [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0]
 
 #define LessonTypeDarkColorLection [UIColor colorWithRed:1.00 green:0.66 blue:0.00 alpha:1.00]
@@ -21,7 +21,7 @@
 #define LessonTypeDarkColorLaboratiry [UIColor colorWithRed:0.36 green:0.28 blue:0.63 alpha:1.00]
 #define LessonTypeDarkColorConsultation [UIColor lightGrayColor]
 #define LessonTypeDarkColorExam [UIColor colorWithRed:0.16 green:0.50 blue:0.73 alpha:1.00]
-#define LessonTypeDarkColorСredit [UIColor magentaColor]
+#define LessonTypeDarkColorСredit [UIColor colorWithRed:0.76 green:0.62 blue:0.72 alpha:1.00]
 #define LessonTypeDarkColorUnknown [UIColor colorWithRed:1 green:0.859 blue:0.957 alpha:1.0]
 
 @implementation EventParser
@@ -244,7 +244,7 @@
         return isDark ? LessonTypeDarkColorConsultation : LessonTypeLightColorConsultation;
         
     } else if (type == 40 || type == 41) {
-        return isDark ? LessonTypeDarkColorConsultation : LessonTypeLightColorConsultation;
+        return isDark ? LessonTypeDarkColorСredit : LessonTypeLightColorСredit;
         
     } else if (type == 50 || type == 51 || type == 52 || type == 53 || type == 54 || type == 55) {
         return isDark ? LessonTypeDarkColorExam : LessonTypeLightColorExam;
@@ -253,7 +253,7 @@
         return isDark ? LessonTypeDarkColorСredit : LessonTypeLightColorСredit;
         
     } else {
-        return isDark ? LessonTypeDarkColorСredit : LessonTypeLightColorСredit;
+        return isDark ? LessonTypeDarkColorUnknown : LessonTypeLightColorUnknown;
     }
     
 }

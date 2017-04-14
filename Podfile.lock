@@ -17,9 +17,6 @@ PODS:
   - AMSlideMenu (1.5.4)
   - DateTools (2.0.0)
   - DZNEmptyDataSet (1.8.1)
-  - EAIntroView (2.10.0):
-    - EARestrictedScrollView (~> 1.1.0)
-  - EARestrictedScrollView (1.1.0)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
@@ -31,7 +28,6 @@ DEPENDENCIES:
   - AMSlideMenu
   - DateTools
   - DZNEmptyDataSet
-  - EAIntroView
   - MagicalRecord
   - Masonry
   - MBProgressHUD
@@ -41,12 +37,10 @@ SPEC CHECKSUMS:
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
-  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: cd8baf31c165e201d65a78bcc447031a955ce6e2
+PODFILE CHECKSUM: 17b4b3d048ee81456e3433b6c78013daf35896aa
 
 COCOAPODS: 1.2.0

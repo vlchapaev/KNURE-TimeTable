@@ -27,7 +27,7 @@ NSString *const MSDayColumnHeaderReuseIdentifier = @"MSDayColumnHeaderReuseIdent
 NSString *const MSTimeRowHeaderReuseIdentifier = @"MSTimeRowHeaderReuseIdentifier";
 
 CGFloat const timeRowHeaderWidth = 44;
-CGFloat const dayColumnHeaderHeight = 60;
+CGFloat const dayColumnHeaderHeight = 44;
 
 @interface TodayViewController () <NCWidgetProviding, MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource>
 
@@ -91,6 +91,8 @@ CGFloat const dayColumnHeaderHeight = 60;
     self.preferredContentSize = self.collectionView.contentSize;
 }
 
+#pragma mark - NCWidgetProviding
+
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
     return UIEdgeInsetsZero;
 }
@@ -99,9 +101,11 @@ CGFloat const dayColumnHeaderHeight = 60;
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
         self.preferredContentSize = self.collectionView.contentSize;
     } else if (activeDisplayMode == NCWidgetDisplayModeCompact) {
-        self.preferredContentSize = maxSize;
+        self.preferredContentSize = CGSizeMake(maxSize.width, 400);
     }
 }
+
+#pragma mark - UIContentContainer
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [self.collectionViewCalendarLayout invalidateLayoutCache];
