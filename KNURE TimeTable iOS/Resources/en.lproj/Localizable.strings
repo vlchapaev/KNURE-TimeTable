@@ -6,18 +6,18 @@
   Copyright (c) 2015 Vlad Chapaev. All rights reserved.
 */
 
-Interface_Error = "Error";
+Interface_Error = "There Has Been an Error!";
 Interface_Ok = "Ok";
 Interface_Cancel = "Cancel";
 Interface_Other = "Other";
 
-TimeTable_NoItems = "No items selected";
-TimeTable_NoItemsMessage = "Use ≡ button at top left to add groups, teachers or classrooms";
+TimeTable_NoItems = "No items are selected";
+TimeTable_NoItemsMessage = "Use the ≡ button at top left to add groups, teachers or classrooms";
 TimeTable_NoTimetable = "No timetable";
-TimeTable_NoTimetableMessage = "It seems that selected item has no timetable";
-TimeTable_NeedToUpdate = "Timetable is not updated";
+TimeTable_NoTimetableMessage = "It seems that the selected item has no timetable";
+TimeTable_NeedToUpdate = "Timetable needs to be updated";
 TimeTable_NeedToUpdateMessage = "Use button at top right to update timetable";
-TimeTable_Tutorial = "Show me tutorial";
+TimeTable_Tutorial = "Show me tutorial!";
 
 ModalView_Type = "Type";
 ModalView_Auditory = "Auditory";
@@ -41,7 +41,7 @@ ItemList_AddClassroomsHint = "Tap + to add classrooms";
 ItemList_FailedToParseList = "Failed to process response";
 ItemList_FailedToUpdate = "Failed to update timetable";
 ItemList_Hint1 = "Tap on item to update it's timetable";
-ItemList_Hint2 = "Swipe left on item to remove it.\n\nAll items are sorted automatically by last update. All items are available in group list button at the top of main screen";
+ItemList_Hint2 = "Swipe left on an item to remove it.\n\nAll items are sorted automatically by last update. All items are available in the group list button at the top of main screen";
 
 Settings_Promote = "KNURE Timetable for iOS: https://appsto.re/i67M8zB";
 Settings_CalendarExport_NoItems = "No Items";
@@ -55,6 +55,6 @@ Settings_CalendarExport_NextWeek = "Next week";
 Settings_CalendarExport_ThisMonth = "This month";
 Settings_CalendarExport_NextMonth = "Next month";
 Settings_CalendarExport_Full = "Full semester";
-Settings_CalendarExport_AccessForbidden = "Access to calendar is forbidden";
-Settings_CalendarHint1 = "Select item you wish to export into your Calendar App";
-Settings_CalendarHint2 = "A new calendar with selected item name will be created in your Calendar App";
+Settings_CalendarExport_AccessForbidden = "Access to calendar is denied";
+Settings_CalendarHint1 = "Select the item you wish to export into your Calendar App";
+Settings_CalendarHint2 = "A new calendar with the selected item name will be created in your Calendar App";
