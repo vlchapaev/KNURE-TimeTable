@@ -98,19 +98,21 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // Request App Store review on after 20 views
-    NSNumber *number = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationOpenCount];
-    if (number) {
-        NSInteger integerNumber = number.integerValue;
-        integerNumber++;
-        if (integerNumber == 20) {
-            [SKStoreReviewController requestReview];
+    // Request App Store review on after 20, 60 or 120 views
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.3) {
+        NSNumber *number = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationOpenCount];
+        if (number) {
+            NSInteger integerNumber = number.integerValue;
+            integerNumber++;
+            if (integerNumber == 20 || integerNumber == 60 || integerNumber == 120) {
+                [SKStoreReviewController requestReview];
+            }
+            [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        } else {
+            [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:1] forKey:ApplicationOpenCount];
+            [[NSUserDefaults standardUserDefaults]synchronize];
         }
-        [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    } else {
-        [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:1] forKey:ApplicationOpenCount];
-        [[NSUserDefaults standardUserDefaults]synchronize];
     }
 }
 
@@ -454,6 +456,9 @@ CGFloat const dayColumnHeaderHeight = 40;
 #pragma mark - Events
 
 - (IBAction)refreshCurrentTimeTable {
+    if (self.dropDownMenu.isShown) {
+        [self.dropDownMenu hideMenu];
+    }
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [Request loadTimeTableForItem:self.selectedItem delegate:self];
 }

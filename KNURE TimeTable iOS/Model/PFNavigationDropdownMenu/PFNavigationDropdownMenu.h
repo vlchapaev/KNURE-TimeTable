@@ -33,6 +33,7 @@
 @property (nonatomic, assign) CGFloat maskBackgroundOpacity;
 @property (nonatomic, strong) PFTableView *tableView;
 @property (nonatomic, copy) void(^didSelectItemAtIndexHandler)(NSUInteger indexPath);
+@property (nonatomic, assign) BOOL isShown;
 
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title items:(NSArray *)items containerView:(UIView *)containerView;
 

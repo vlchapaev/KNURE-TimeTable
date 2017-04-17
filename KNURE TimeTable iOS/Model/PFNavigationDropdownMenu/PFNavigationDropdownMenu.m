@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UIImageView *menuArrow;
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, assign) BOOL isShown;
 @property (nonatomic, assign) CGFloat navigationBarHeight;
 @end
 
