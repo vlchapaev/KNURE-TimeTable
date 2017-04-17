@@ -32,7 +32,7 @@
         self.hideHints = [[NSUserDefaults standardUserDefaults]boolForKey:ApplicationHideHint];
         self.isDarkTheme = [Configuration isDarkTheme];
         self.title = NSLocalizedString(@"ModalView_Details", nil);
-        self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
+        self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0)];
         self.tableView.tableHeaderView = self.headerView;
         self.tableView.showsVerticalScrollIndicator = NO;
         
@@ -65,12 +65,12 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    [self.titleLabel sizeToFit];
+    CGSize neededSize = [self.titleLabel sizeThatFits:CGSizeMake(self.view.frame.size.width - 16, CGFLOAT_MAX)];
     
-    CGFloat headerHeight = self.titleLabel.frame.size.height + 40;
+    CGFloat headerHeight = neededSize.height + 40;
     [self.headerView setFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
     
     self.tableView.tableHeaderView = self.headerView;
