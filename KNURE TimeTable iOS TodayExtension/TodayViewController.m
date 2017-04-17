@@ -88,7 +88,7 @@ CGFloat const dayColumnHeaderHeight = 44;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
         self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
     }
-    self.preferredContentSize = self.collectionView.contentSize;
+    self.preferredContentSize = (self.collectionView.contentSize.height > 0) ? self.collectionView.contentSize : CGSizeMake(320, 80);
 }
 
 #pragma mark - NCWidgetProviding
@@ -280,7 +280,7 @@ CGFloat const dayColumnHeaderHeight = 44;
     NSString *text = NSLocalizedString(@"TimeTable_NoItems", nil);
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+                                 NSForegroundColorAttributeName: (self.isDarkTheme) ? [UIColor whiteColor] : [UIColor darkGrayColor]};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
@@ -293,7 +293,7 @@ CGFloat const dayColumnHeaderHeight = 44;
     paragraph.alignment = NSTextAlignmentCenter;
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor],
+                                 NSForegroundColorAttributeName: (self.isDarkTheme) ? [UIColor whiteColor] : [UIColor darkGrayColor],
                                  NSParagraphStyleAttributeName: paragraph};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
