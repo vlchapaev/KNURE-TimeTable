@@ -44,6 +44,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 @property (strong, nonatomic) NSArray <NSDate *>* pairDates;
 @property (assign, nonatomic) short maxPairNumber;
 @property (assign, nonatomic) short minPairNumber;
+@property (assign, nonatomic) CGFloat hourHeight;
 
 @property (assign, nonatomic) BOOL isRunningInFullScreen;
 
@@ -98,13 +99,13 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // Request App Store review on after 20, 60 or 120 views
+    // Request App Store review after 30, 60 or 120 views
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.3) {
         NSNumber *number = [[NSUserDefaults standardUserDefaults]valueForKey:ApplicationOpenCount];
         if (number) {
             NSInteger integerNumber = number.integerValue;
             integerNumber++;
-            if (integerNumber == 20 || integerNumber == 60 || integerNumber == 120) {
+            if (integerNumber == 30 || integerNumber == 60 || integerNumber == 120) {
                 [SKStoreReviewController requestReview];
             }
             [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithInteger:integerNumber] forKey:ApplicationOpenCount];
@@ -117,6 +118,22 @@ CGFloat const dayColumnHeaderHeight = 40;
 }
 
 #pragma mark - Setup
+
+- (CGFloat)hourHeight {
+    return [self hourHeightWithSize:self.view.frame.size];
+}
+
+/**
+ Calculates dynamic hour height for size. Don't ask me about method logic, it's just work.
+
+ @param size size of frame
+ @return hour height
+ */
+- (CGFloat)hourHeightWithSize:(CGSize)size {
+    short pairsForDate = self.maxPairNumber - self.minPairNumber;
+    return (size.height - 24 - timeRowHeaderWidth)/(pairsForDate * 2);
+    //return ((self.view.frame.size.height - dayColumnHeaderHeight)/pairsForDate) * 0.48;
+}
 
 - (void)setupCollectionView {
     self.collectionView.emptyDataSetSource = self;
@@ -141,7 +158,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
+        self.collectionViewCalendarLayout.hourHeight = self.hourHeight;
         [self.collectionViewLayout registerClass:MSGridline.class forDecorationViewOfKind:MSCollectionElementKindHorizontalGridline];
     }
     
@@ -235,7 +252,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self.collectionViewCalendarLayout invalidateLayoutCache];
     [self.collectionViewCalendarLayout invalidateLayout];
     if (!self.isVerticalMode) {
-        self.collectionViewCalendarLayout.hourHeight = (size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber)*2);
+        self.collectionViewCalendarLayout.hourHeight = [self hourHeightWithSize:size];
     } else {
         self.collectionViewCalendarLayout.sectionWidth = size.width - timeRowHeaderWidth - 10;
     }
@@ -251,7 +268,7 @@ CGFloat const dayColumnHeaderHeight = 40;
     } else {
         self.collectionViewCalendarLayout.sectionLayoutType = MSSectionLayoutTypeHorizontalTile;
         self.collectionViewCalendarLayout.sectionWidth = sectonWidth;
-        self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
+        self.collectionViewCalendarLayout.hourHeight = self.hourHeight;
     }
     
     [self.collectionViewCalendarLayout invalidateLayoutCache];
@@ -292,7 +309,7 @@ CGFloat const dayColumnHeaderHeight = 40;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self setupProperties];
-    self.collectionViewCalendarLayout.hourHeight = (self.collectionView.frame.size.height - 24 - timeRowHeaderWidth)/((self.maxPairNumber - self.minPairNumber) * 2);
+    self.collectionViewCalendarLayout.hourHeight = self.hourHeight;
     [self.collectionViewCalendarLayout invalidateLayoutCache];
     [self.collectionView reloadData];
 }

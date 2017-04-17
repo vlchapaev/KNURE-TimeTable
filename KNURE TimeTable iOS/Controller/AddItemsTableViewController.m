@@ -48,6 +48,10 @@
     [self getItemList];
 }
 
+- (void)dealloc {
+    [self.searchController.view removeFromSuperview];
+}
+
 #pragma mark - Logic
 
 - (void)getItemList {
