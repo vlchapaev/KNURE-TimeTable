@@ -34,7 +34,7 @@ CGFloat const sectonWidth = 110;
 CGFloat const timeRowHeaderWidth = 44;
 CGFloat const dayColumnHeaderHeight = 40;
 
-@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate>
+@interface TimeTableViewController() <MSCollectionViewDelegateCalendarLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PopoverModalViewControllerDelegate, URLRequestDelegate, PFNavigationDropdownMenuDelegate>
 
 @property (strong, nonatomic) PFNavigationDropdownMenu *dropDownMenu;
 @property (strong, nonatomic) NSArray <Item *>*allItems;
@@ -210,7 +210,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"start_time" ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"day" cacheName:nil];
-    self.fetchedResultsController.delegate = self;
     
     [[self.fetchedResultsController fetchRequest] setPredicate:filter];
     NSError *error = nil;
@@ -303,15 +302,6 @@ CGFloat const dayColumnHeaderHeight = 40;
     CGSize newSize = CGSizeMake(size.width, size.height + self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height);
     [self.dropDownMenu hideMenu];
     [self resizeHeightForSize:newSize];
-}
-
-#pragma mark - NSFetchedResultsControllerDelegate
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self setupProperties];
-    self.collectionViewCalendarLayout.hourHeight = self.hourHeight;
-    [self.collectionViewCalendarLayout invalidateLayoutCache];
-    [self.collectionView reloadData];
 }
 
 #pragma mark - PFNavigationDropdownMenuDelegate
