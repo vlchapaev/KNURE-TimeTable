@@ -98,12 +98,14 @@
 
 - (void)setTitle:(NSString *)title {
     if (title) {
+        _title = title;
         self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:[self titleAttributesHighlighted:self.selected]];
     }
 }
 
 - (void)setLocation:(NSString *)location {
     if (location) {
+        _location = location;
         self.locationLabel.attributedText = [[NSAttributedString alloc] initWithString:location attributes:[self subtitleAttributesHighlighted:self.selected]];
     }
 }
