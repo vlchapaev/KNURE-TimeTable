@@ -19,11 +19,13 @@
         self.title.font = [UIFont systemFontOfSize:12.0];
         self.title.textAlignment = NSTextAlignmentRight;
         self.title.textColor = self.textColor;
+        self.title.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.title];
         
         [self.title makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.top);
             make.right.equalTo(self.right).offset(-5.0);
+            make.left.equalTo(self.left).offset(3.0);
         }];
     }
     return self;
@@ -42,7 +44,7 @@
     static NSDateFormatter *dateFormatter;
     if (!dateFormatter) {
         dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"HH:mm";
+        dateFormatter.dateFormat = @"H:mm";
     }
     self.title.text = [dateFormatter stringFromDate:time];
     [self setNeedsLayout];

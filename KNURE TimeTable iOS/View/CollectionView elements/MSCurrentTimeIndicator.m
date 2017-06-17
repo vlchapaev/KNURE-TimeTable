@@ -20,15 +20,17 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.time = [UILabel new];
         self.time.font = [UIFont boldSystemFontOfSize:12.0];
         self.time.textColor = [UIColor colorWithRed:0.91 green:0.31 blue:0.24 alpha:1.00];
+        self.time.textAlignment = NSTextAlignmentRight;
+        self.time.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.time];
         
         [self.time makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.centerY);
             make.right.equalTo(self.right).offset(-5.0);
+            make.left.equalTo(self.left).offset(15);
         }];
         
         NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -52,9 +54,8 @@
 
 - (void)updateTime {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"HH:mm"];
+    [dateFormatter setDateFormat:@"H:mm"];
     self.time.text = [dateFormatter stringFromDate:[NSDate date]];
-    [self.time sizeToFit];
 }
 
 @end
