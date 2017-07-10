@@ -46,6 +46,8 @@
 
 Карта Приват банка: 5168 7555 2282 4859
 
+Кошелёк Bitcoin: `1MgFVCfZ2cHpPS3Zb1bAbprYkVtQJweUTN`
+
 :page_facing_up: Лицензия
 ----
 
