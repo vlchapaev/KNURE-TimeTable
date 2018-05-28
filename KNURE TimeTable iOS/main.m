@@ -2,8 +2,8 @@
 //  main.m
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 24.10.13.
-//  Copyright (c) 2013 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 24.10.13.
+//  Copyright (c) 2013 Vladislav Chapaev. All rights reserved.
 //
 
 @import UIKit;

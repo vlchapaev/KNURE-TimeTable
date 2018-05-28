@@ -2,8 +2,8 @@
   InfoPlist.strings
   KNURE TimeTable
 
-  Created by Vlad Chapaev on 05.02.17.
-  Copyright © 2017 Vlad Chapaev. All rights reserved.
+  Created by Vladislav Chapaev on 05.02.17.
+  Copyright © 2017 Vladislav Chapaev. All rights reserved.
 */
 
 CFBundleDisplayName = "Timetable for today";

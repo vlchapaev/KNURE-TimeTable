@@ -2,8 +2,8 @@
 //  CalendarExportViewController.m
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 20.03.17.
-//  Copyright © 2017 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 20.03.17.
+//  Copyright © 2017 Vladislav Chapaev. All rights reserved.
 //
 
 #import "CalendarExportViewController.h"

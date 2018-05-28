@@ -2,8 +2,8 @@
 //  InitViewController.h
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 07.09.14.
-//  Copyright (c) 2014 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 07.09.14.
+//  Copyright (c) 2014 Vladislav Chapaev. All rights reserved.
 //
 
 #import "AMSlideMenuMainViewController.h"

@@ -2,8 +2,8 @@
 //  TimeTableViewController.m
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 24.10.2013.
-//  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 24.10.2013.
+//  Copyright (c) 2016 Vladislav Chapaev. All rights reserved.
 //
 
 #import "TimeTableViewController.h"

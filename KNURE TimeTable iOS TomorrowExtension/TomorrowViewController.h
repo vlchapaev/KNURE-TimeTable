@@ -2,8 +2,8 @@
 //  TodayViewController.h
 //  KNURE TimeTable iOS TomorrowExtension
 //
-//  Created by Vlad Chapaev on 04.04.17.
-//  Copyright © 2017 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 04.04.17.
+//  Copyright © 2017 Vladislav Chapaev. All rights reserved.
 //
 
 @import UIKit;

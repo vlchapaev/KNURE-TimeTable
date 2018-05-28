@@ -2,8 +2,8 @@
 //  SettingsViewController.h
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 08.11.16.
-//  Copyright © 2016 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 08.11.16.
+//  Copyright © 2016 Vladislav Chapaev. All rights reserved.
 //
 
 @import UIKit;

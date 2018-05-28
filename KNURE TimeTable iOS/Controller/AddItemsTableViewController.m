@@ -2,8 +2,8 @@
 //  AddItemsTableViewController.m
 //  KNURE TimeTable
 //
-//  Created by Vlad Chapaev on 01.05.2014.
-//  Copyright (c) 2016 Vlad Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 01.05.2014.
+//  Copyright (c) 2016 Vladislav Chapaev. All rights reserved.
 //
 
 #import "AddItemsTableViewController.h"
