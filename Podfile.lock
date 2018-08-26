@@ -32,6 +32,16 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - AMSlideMenu
+    - DateTools
+    - DZNEmptyDataSet
+    - MagicalRecord
+    - Masonry
+    - MBProgressHUD
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMSlideMenu: 8571937703d2b8e187b22c1416be4cafc3532a11
@@ -43,4 +53,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 17b4b3d048ee81456e3433b6c78013daf35896aa
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3
