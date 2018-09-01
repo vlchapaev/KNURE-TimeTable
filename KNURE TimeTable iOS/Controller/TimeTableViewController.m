@@ -193,10 +193,11 @@ CGFloat const dayColumnHeaderHeight = 40;
     NSArray <NSDate *>*endTimeList = [self.fetchedResultsController.fetchedObjects valueForKey:@"end_time"];
     NSArray <NSDate *>*newArray = [startTimeList arrayByAddingObjectsFromArray:endTimeList];
     NSMutableArray <NSDate *>*dates = [[NSMutableArray alloc]init];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    calendar.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
     for (NSDate *date in newArray) {
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         NSDateComponents *component = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
-        component.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
+        component.timeZone = [NSTimeZone defaultTimeZone];
         [dates addObject:[calendar dateFromComponents:component]];
     }
     self.pairDates = [[[NSOrderedSet orderedSetWithArray:dates] array] sortedArrayUsingSelector:@selector(compare:)];
