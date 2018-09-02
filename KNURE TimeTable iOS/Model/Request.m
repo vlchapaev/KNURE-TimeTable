@@ -35,6 +35,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [delegate requestDidLoadItemList:responseObject ofType:itemType];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -49,6 +50,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [delegate requestDidLoadTimeTable:responseObject forItem:item];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -62,6 +64,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [manager GET:address parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completion(responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
