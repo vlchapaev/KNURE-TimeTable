@@ -60,6 +60,7 @@
     [UITableViewCell appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UITableViewCell appearance].textLabel.textColor = ApplicationThemeDarkFontPrimaryColor;
+    [UITableViewCell appearance].selectedBackgroundView = [self tableViewCellSelectedBackgroundView:YES];
     
     [UICollectionView appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundSecondnaryColor;
@@ -92,6 +93,7 @@
     [UITableView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UITableViewCell appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    [UITableViewCell appearance].selectedBackgroundView = [self tableViewCellSelectedBackgroundView:NO];
     
     [UICollectionView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundSecondnaryColor;
@@ -115,6 +117,16 @@
             [window addSubview:view];
         }
     }
+}
+
+- (UIView *)tableViewCellSelectedBackgroundView:(BOOL)isDarkTheme {
+    UIView *view = [UIView new];
+    if (isDarkTheme) {
+        view.backgroundColor = [UIColor darkGrayColor];
+    } else {
+        view.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.00];
+    }
+    return view;
 }
 
 @end
