@@ -15,6 +15,7 @@
 #import "Item.h"
 #import "Lesson.h"
 #import "Request.h"
+#import "Configuration.h"
 
 @interface ItemsTableViewController() <NSFetchedResultsControllerDelegate, DZNEmptyDataSetSource, AddItemsTableViewControllerDelegate, ItemsTableViewCellDelegate>
 
@@ -39,6 +40,12 @@
     [self.tableView registerClass:ItemsTableViewCell.class forCellReuseIdentifier:@"Item"];
     
     [self setupFetchRequest];
+    
+    if ([Configuration isDarkTheme]) {
+        self.navigationController.view.backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
+    } else {
+        self.navigationController.view.backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
