@@ -63,12 +63,20 @@
 
 - (void)requestDidLoadItemList:(id)data ofType:(ItemType)itemType {
     [EventParser alignEncoding:data callBack:^(NSData *data) {
-        if (data) {
-            id itemList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSError *error;
+        id itemList = [NSJSONSerialization JSONObjectWithData:data
+                                                      options:(NSJSONReadingMutableContainers |
+                                                               NSJSONReadingMutableLeaves |
+                                                               NSJSONReadingAllowFragments)
+                                                        error:&error];
+        if (!error) {
             [[EventParser sharedInstance] setDelegate:self];
             [[EventParser sharedInstance] parseItemList:itemList ofType:self.itemType];
         } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil) message:NSLocalizedString(@"ItemList_FailedToParseList", nil) preferredStyle:UIAlertControllerStyleAlert];
+            NSString *message = [NSString stringWithFormat:@"%@ \n\n %@", NSLocalizedString(@"ItemList_FailedToParseList", nil), error.debugDescription];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Interface_Error", nil)
+                                                                           message:message
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Interface_Ok", nil) style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
