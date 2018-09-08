@@ -60,7 +60,7 @@
     [UITableViewCell appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UITableViewCell appearance].textLabel.textColor = ApplicationThemeDarkFontPrimaryColor;
-    [UITableViewCell appearance].multipleSelectionBackgroundView = [self tableViewCellSelectedBackgroundView:YES];
+    [UITableViewCell appearance].selectedBackgroundView = [self tableViewCellSelectedBackgroundView:YES];
     
     [UICollectionView appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeDarkBackgroundSecondnaryColor;
@@ -93,7 +93,7 @@
     [UITableView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UITableViewCell appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UITableViewCell appearance].contentView.backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
-    [UITableViewCell appearance].multipleSelectionBackgroundView = [self tableViewCellSelectedBackgroundView:NO];
+    [UITableViewCell appearance].selectedBackgroundView = [self tableViewCellSelectedBackgroundView:NO];
     
     [UICollectionView appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [MSDayColumnHeaderBackground appearance].backgroundColor = ApplicationThemeLightBackgroundSecondnaryColor;

@@ -9,6 +9,7 @@
 #import "MenuTableViewController.h"
 #import "ItemsTableViewController.h"
 #import "EventParser.h"
+#import "Configuration.h"
 
 @interface MenuTableViewController()
 
@@ -48,6 +49,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedPath = indexPath;
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    
+    if ([Configuration isDarkTheme]) {
+        selectedBackgroundView.backgroundColor = [UIColor darkGrayColor];
+    } else {
+        selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.00];
+    }
+    
+    cell.selectedBackgroundView = selectedBackgroundView;
+    
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
