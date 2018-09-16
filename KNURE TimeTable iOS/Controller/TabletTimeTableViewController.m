@@ -101,7 +101,10 @@
 }
 
 - (IBAction)groupListButtonTap:(UIButton *)sender {
-    CGRect displayFrame = CGRectMake(sender.frame.origin.x, sender.frame.origin.y - 44, sender.frame.size.width, sender.frame.size.height);
+    CGRect displayFrame = CGRectMake(UIScreen.mainScreen.bounds.size.width / 2 - sender.frame.size.width / 2,
+                                     sender.frame.origin.y - 44,
+                                     sender.frame.size.width,
+                                     sender.frame.size.height);
     
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
     PopoverComboBoxViewController *modalViewController = [[PopoverComboBoxViewController alloc]initWithDelegate:self];
