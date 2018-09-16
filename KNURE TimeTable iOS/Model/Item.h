@@ -11,8 +11,6 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Item : NSManagedObject
 
 @property (nullable, nonatomic, copy) NSString *full_name;
@@ -46,5 +44,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (Item *)transformToNSManagedObject;
 
 @end
-
-NS_ASSUME_NONNULL_END
