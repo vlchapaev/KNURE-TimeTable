@@ -89,11 +89,8 @@ CGFloat const dayColumnHeaderHeight = 40;
     [self setupCollectionView];
     [self addDoubleTapGesture];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        sleep(0.5);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
-        });
+    dispatch_after(DISPATCH_TIME_NOW + 0.5, dispatch_get_main_queue(), ^{
+        [self.collectionViewCalendarLayout scrollCollectionViewToClosetSectionToCurrentTimeAnimated:NO];
     });
 }
 
