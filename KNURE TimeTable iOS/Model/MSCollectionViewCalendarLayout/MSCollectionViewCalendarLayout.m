@@ -312,6 +312,13 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
     
     // Time Row Header
     CGFloat timeRowHeaderMinX = fmaxf(self.collectionView.contentOffset.x, 0.0);
+
+    if (@available(iOS 11.0, *)) {
+        if (timeRowHeaderMinX > self.collectionView.safeAreaInsets.left) {
+            timeRowHeaderMinX += self.collectionView.safeAreaInsets.left;
+        }
+    }
+    
     BOOL timeRowHeaderFloating = ((timeRowHeaderMinX != 0) || self.displayHeaderBackgroundAtOrigin);;
     
     // Time Row Header Background
@@ -347,7 +354,7 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
         CGFloat timeY = (calendarContentMinY + nearbyintf(((currentTimeDateComponents.hour - earliestHour) * self.hourHeight) + (currentTimeDateComponents.minute * self.minuteHeight)));
         
         CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0)) + self.cellMargin.top;
-        CGFloat currentTimeIndicatorMinX = (fmaxf(self.collectionView.contentOffset.x, 0.0) + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
+        CGFloat currentTimeIndicatorMinX = (timeRowHeaderMinX + (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width));
         currentTimeIndicatorAttributes.frame = (CGRect){{currentTimeIndicatorMinX, currentTimeIndicatorMinY}, self.currentTimeIndicatorSize};
         currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeIndicator floating:timeRowHeaderFloating];
         
