@@ -139,6 +139,7 @@
     [semesterDates addObject:startDate];
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    gregorianCalendar.timeZone = [NSTimeZone timeZoneWithName:@"Europe/Kiev"];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay fromDate:startDate toDate:endDate options:0];
     
     for (int i = 1; i < components.day; ++i) {
