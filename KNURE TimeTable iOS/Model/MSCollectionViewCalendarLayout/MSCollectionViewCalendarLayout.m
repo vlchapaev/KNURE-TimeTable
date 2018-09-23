@@ -535,8 +535,13 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
     BOOL needsToPopulateItemAttributes = (self.itemAttributes.count == 0);
     BOOL needsToPopulateHorizontalGridlineAttributes = (self.horizontalGridlineAttributes.count == 0);
     
+    CGFloat minX = 0.0;
+    if (@available(iOS 11.0, *)) {
+        minX = self.collectionView.safeAreaInsets.left;
+    }
     CGFloat calendarGridMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
     CGFloat calendarGridWidth = (self.collectionViewContentSize.width - self.timeRowHeaderWidth - self.contentMargin.left - self.contentMargin.right);
+    calendarGridMinX += minX;
     
     [sectionIndexes enumerateIndexesUsingBlock:^(NSUInteger section, BOOL *stop) {
         
@@ -593,8 +598,9 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                 NSIndexPath *timeRowHeaderIndexPath = [NSIndexPath indexPathForItem:timeRowHeaderIndex inSection:section];
                 UICollectionViewLayoutAttributes *timeRowHeaderAttributes = [self layoutAttributesForSupplementaryViewAtIndexPath:timeRowHeaderIndexPath ofKind:MSCollectionElementKindTimeRowHeader withItemCache:self.timeRowHeaderAttributes];
                 // Frame
+                
                 CGFloat titleRowHeaderMinY = (calendarGridMinY + (self.hourHeight * (hour - earliestHour)) - nearbyintf(self.hourHeight / 2.0));
-                timeRowHeaderAttributes.frame = CGRectMake(0.0, titleRowHeaderMinY, self.timeRowHeaderWidth, self.hourHeight);
+                timeRowHeaderAttributes.frame = CGRectMake(minX, titleRowHeaderMinY, self.timeRowHeaderWidth, self.hourHeight);
                 timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader];
                 timeRowHeaderIndex++;
             }
@@ -617,9 +623,9 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                     CGFloat timeY = (calendarGridMinY + nearbyintf(((components.hour - earliestHour) * self.hourHeight) + (components.minute * self.minuteHeight)));
                     
                     if (index % 2 == 0) {
-                        timeRowHeaderAttributes.frame = CGRectMake(0, timeY, self.timeRowHeaderWidth, self.hourHeight);
+                        timeRowHeaderAttributes.frame = CGRectMake(minX, timeY, self.timeRowHeaderWidth, self.hourHeight);
                     } else {
-                        timeRowHeaderAttributes.frame = CGRectMake(0, timeY-15, self.timeRowHeaderWidth, self.hourHeight);
+                        timeRowHeaderAttributes.frame = CGRectMake(minX, timeY - 15, self.timeRowHeaderWidth, self.hourHeight);
                     }
                     
                     timeRowHeaderAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindTimeRowHeader floating:NO];
