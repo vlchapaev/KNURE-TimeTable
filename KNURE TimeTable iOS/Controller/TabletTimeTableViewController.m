@@ -101,40 +101,39 @@
 }
 
 - (IBAction)groupListButtonTap:(UIButton *)sender {
-    CGRect displayFrame = CGRectMake(UIScreen.mainScreen.bounds.size.width / 2 - sender.frame.size.width / 2,
-                                     sender.frame.origin.y - 44,
-                                     sender.frame.size.width,
-                                     sender.frame.size.height);
-    
     NSDictionary *selectedItem = [[NSUserDefaults standardUserDefaults]valueForKey:TimetableSelectedItem];
+    
     PopoverComboBoxViewController *modalViewController = [[PopoverComboBoxViewController alloc]initWithDelegate:self];
     modalViewController.selectedItemID = [selectedItem[@"id"] integerValue];
+    modalViewController.modalPresentationStyle = UIModalPresentationPopover;
     
-    UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];
+    UIPopoverPresentationController *popoverPresentationController = modalViewController.popoverPresentationController;
+    popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popoverPresentationController.sourceRect = sender.frame;
+    popoverPresentationController.sourceView = sender;
+    popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
-    popoverViewController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
-    
-    [popoverViewController presentPopoverFromRect:displayFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self presentViewController:modalViewController animated: YES completion: nil];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     LessonCollectionViewCell *cell = (LessonCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    
-    CGRect displayFrame = CGRectMake(cell.frame.origin.x - collectionView.contentOffset.x, cell.frame.origin.y - collectionView.contentOffset.y, cell.frame.size.width, cell.frame.size.height);
-    
     Lesson *lesson = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     PopoverModalViewController *modalViewController = [[PopoverModalViewController alloc]initWithLesson:lesson];
     modalViewController.delegate = self;
     modalViewController.indexPath = indexPath;
-    UIPopoverController *popoverViewController = [[UIPopoverController alloc]initWithContentViewController:modalViewController];
+    modalViewController.modalPresentationStyle = UIModalPresentationPopover;
     
-    popoverViewController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
+    UIPopoverPresentationController *popoverPresentationController = modalViewController.popoverPresentationController;
+    popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popoverPresentationController.sourceRect = cell.bounds;
+    popoverPresentationController.sourceView = cell;
+    popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
-    [popoverViewController presentPopoverFromRect:displayFrame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self presentViewController:modalViewController animated: YES completion: nil];
 }
 
 #pragma mark - PopoverModalViewControllerDelegate
