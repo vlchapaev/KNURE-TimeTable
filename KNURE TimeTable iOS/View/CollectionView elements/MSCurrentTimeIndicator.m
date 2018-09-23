@@ -30,7 +30,6 @@
         [self.time makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.centerY);
             make.right.equalTo(self.right).offset(-5.0);
-            make.left.equalTo(self.left).offset(15);
         }];
         
         NSCalendar *calendar = [NSCalendar currentCalendar];
