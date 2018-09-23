@@ -49,8 +49,7 @@
     [UIApplication sharedApplication].statusBarHidden = NO;
     
     [UIImageView appearance].tintColor = ApplicationThemeDarkTintColor;
-    [UIImageView appearanceWhenContainedIn:SettingsViewController.class, nil].tintColor = [UIColor whiteColor];
-    
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[SettingsViewController.class]].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     [UINavigationBar appearance].tintColor = ApplicationThemeDarkTintColor;
     [UINavigationBar appearance].barTintColor = ApplicationThemeDarkBackgroundPrimaryColor;
@@ -69,11 +68,11 @@
     [MSCurrentTimeGridline appearance].backgroundColor = ApplicationThemeDarkCurrentTimeIndicator;
     [MSCurrentTimeIndicator appearance].backgroundColor = ApplicationThemeDarkBackgroundPrimaryColor;
     
-    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeDarkFontPrimaryColor;
+    [UILabel appearanceWhenContainedInInstancesOfClasses:@[UITableViewCell.class]].textColor = ApplicationThemeDarkFontPrimaryColor;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDark;
     }
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeDarkFontPrimaryColor}];
+    [[UITextField appearanceWhenContainedInInstancesOfClasses:@[UISearchBar.class]] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeDarkFontPrimaryColor}];
 }
 
 - (void)setLightTheme {
@@ -83,7 +82,7 @@
     [UIApplication sharedApplication].statusBarHidden = NO;
     
     [UIImageView appearance].tintColor = ApplicationThemeLightTintColor;
-    [UIImageView appearanceWhenContainedIn:SettingsViewController.class, nil].tintColor = [UIColor blackColor];
+    [UIImageView appearanceWhenContainedInInstancesOfClasses:@[SettingsViewController.class]].tintColor = [UIColor blackColor];
     
     [UINavigationBar appearance].backgroundColor = ApplicationThemeLightBackgroundPrimaryColor;
     [UINavigationBar appearance].tintColor = ApplicationThemeLightTintColor;
@@ -106,8 +105,8 @@
         [UISearchBar appearance].keyboardAppearance = UIKeyboardAppearanceDefault;
     }
     
-    [UILabel appearanceWhenContainedIn:UITableViewCell.class, nil].textColor = ApplicationThemeLightFontPrimaryColor;
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeLightFontPrimaryColor}];
+    [UILabel appearanceWhenContainedInInstancesOfClasses:@[UITableViewCell.class]].textColor = ApplicationThemeLightFontPrimaryColor;
+    [[UITextField appearanceWhenContainedInInstancesOfClasses:@[UISearchBar.class]] setDefaultTextAttributes:@{NSForegroundColorAttributeName:ApplicationThemeLightFontPrimaryColor}];
 }
 
 - (void)applyTheme {
