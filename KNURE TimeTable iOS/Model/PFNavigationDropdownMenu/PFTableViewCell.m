@@ -43,10 +43,27 @@
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
+    
+    if (@available(iOS 11.0, *)) {
+
+        CGFloat minX = 20;
+        if (self.safeAreaInsets.left > 0) {
+            minX = self.safeAreaInsets.left;
+        }
+        
+        CGRect newLabelFrame = self.textLabel.frame;
+        newLabelFrame.origin.x = minX;
+        self.textLabel.frame = newLabelFrame;
+        
+        CGRect newIconFrame = self.checkmarkIcon.frame;
+        newIconFrame.origin.x = self.cellContentFrame.size.width - self.safeAreaInsets.right - 50;
+        self.checkmarkIcon.frame = newIconFrame;
+    }
+    
     self.bounds = self.cellContentFrame;
     self.contentView.frame = self.bounds;
 }
+
 @end
