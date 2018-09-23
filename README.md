@@ -1,13 +1,6 @@
 :mortar_board: Расписание ХНУРЭ для iOS
 ----
 
-![platform](https://img.shields.io/badge/platform-iOS%208%2B-brightgreen.svg)
-![XCode](https://img.shields.io/badge/XCode-8.3.1-brightgreen.svg)
-![cocoapods](https://img.shields.io/badge/cocoapods-1.2.0-red.svg)
-![language](https://img.shields.io/badge/language-Objective--C-blue.svg)
-![localization](https://img.shields.io/badge/localization-RU%2FENG-yellow.svg)
-![лицензия](https://img.shields.io/badge/license-GPL-blue.svg)
-
 ![](https://raw.githubusercontent.com/ShogunPhyched/KNURE-TimeTable/master/Resources/iPhone-7-Black-vertical-iPad-Pro-Space-Gray-horizontal.png)
 
 Расписание ХНУРЭ для iOS это небольшое, но очень полезное приложение для студентов и преподавателей ХНУРЭ. Приложение использует открытое API сайта расписания ХНУРЭ cist.nure.ua для отображение информации о расписании на ваших мобильных устройствах.
@@ -24,31 +17,17 @@
 
 Приложение уже доступно в [App Store](https://itunes.apple.com/us/app/knure-sked/id797074875?l=ru&ls=1&mt=8).
 
-:octocat: Сборка проекта
-----
-
-Чтобы собрать приложение из исходного кода, необходимо иметь macOS с установленным IDE XCode 8.3 и новее. Проект имеет зависимые сторонние библиотеки, которые устанавливаются через [cocoapods](https://cocoapods.org/).
-
-Сборка по шагам:
-1. Клонировать репозиторий
-2. Установить зависимые библиотеки через cocoapods.  В терминале `pod install`
-3. Открыть файл с расширением .xcworkspace
-
 :envelope: Контакты
 ----
 - email: chapaev.vlad@gmail.com
 - telegram: https://t.me/chapaev_vlad
-- vkontakte: https://vk.com/id40842906
 - messanger: https://m.me/chapaev.vlad
-
-:dollar: Благотворительность
-----
-
-Карта Приват банка: 5168 7555 2282 4859
 
 :page_facing_up: Лицензия
 ----
 
 GNU GENERAL PUBLIC LICENSE
 
-KNURE Timetable iOS  Copyright (C) 2017 Vladislav Chapaev.
+KNURE Timetable iOS
+
+Copyright (C) 2018 Vladislav Chapaev.
