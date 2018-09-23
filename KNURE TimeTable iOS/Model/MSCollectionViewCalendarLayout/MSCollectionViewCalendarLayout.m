@@ -585,6 +585,7 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
 
             CGFloat currentTimeIndicatorMinY = (timeY - nearbyintf(self.currentTimeIndicatorSize.height / 2.0));
             CGFloat currentTimeIndicatorMinX = (self.timeRowHeaderWidth - self.currentTimeIndicatorSize.width);
+            currentTimeIndicatorMinX += minX;
             currentTimeIndicatorAttributes.frame = (CGRect){{currentTimeIndicatorMinX, currentTimeIndicatorMinY}, self.currentTimeIndicatorSize};
             currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:MSCollectionElementKindCurrentTimeIndicator];
             
