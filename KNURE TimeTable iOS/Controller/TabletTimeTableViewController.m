@@ -109,7 +109,7 @@
     
     UIPopoverPresentationController *popoverPresentationController = modalViewController.popoverPresentationController;
     popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popoverPresentationController.sourceRect = sender.frame;
+    popoverPresentationController.sourceRect = sender.bounds;
     popoverPresentationController.sourceView = sender;
     popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
