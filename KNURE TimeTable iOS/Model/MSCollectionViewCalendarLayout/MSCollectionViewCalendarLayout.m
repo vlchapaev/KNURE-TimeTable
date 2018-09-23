@@ -536,9 +536,12 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
     BOOL needsToPopulateHorizontalGridlineAttributes = (self.horizontalGridlineAttributes.count == 0);
     
     CGFloat minX = 0.0;
+    CGFloat maxX = 0.0;
     if (@available(iOS 11.0, *)) {
         minX = self.collectionView.safeAreaInsets.left;
+        maxX = self.collectionView.safeAreaInsets.right;
     }
+    
     CGFloat calendarGridMinX = (self.timeRowHeaderWidth + self.contentMargin.left);
     CGFloat calendarGridWidth = (self.collectionViewContentSize.width - self.timeRowHeaderWidth - self.contentMargin.left - self.contentMargin.right);
     calendarGridMinX += minX;
@@ -661,6 +664,7 @@ CGFloat const kScrollResistanceFactorDefault = 800.0f;
                 CGFloat itemMaxY = nearbyintf(endHourY + endMinuteY + calendarGridMinY - self.cellMargin.bottom);
                 CGFloat itemMinX = nearbyintf(calendarGridMinX + self.sectionMargin.left + self.cellMargin.left);
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - self.cellMargin.left - self.cellMargin.right));
+                itemMaxX -= maxX;
                 
                 if ((itemMaxY - itemMinY) > 0) {
                     itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), (itemMaxY - itemMinY));
