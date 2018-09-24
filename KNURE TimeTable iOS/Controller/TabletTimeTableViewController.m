@@ -12,7 +12,7 @@
 #import "Configuration.h"
 #import "LessonCollectionViewCell.h"
 
-@interface TabletTimeTableViewController() <PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate>
+@interface TabletTimeTableViewController() <PopoverModalViewControllerDelegate, PopoverComboBoxViewControllerDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (assign, nonatomic) BOOL isDarkTheme;
 
@@ -111,6 +111,7 @@
     popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
     popoverPresentationController.sourceRect = sender.bounds;
     popoverPresentationController.sourceView = sender;
+    popoverPresentationController.delegate = self;
     popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
     [self presentViewController:modalViewController animated: YES completion: nil];
@@ -131,6 +132,7 @@
     popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
     popoverPresentationController.sourceRect = cell.bounds;
     popoverPresentationController.sourceView = cell;
+    popoverPresentationController.delegate = self;
     popoverPresentationController.backgroundColor = (self.isDarkTheme) ? ApplicationThemeDarkBackgroundSecondnaryColor : ApplicationThemeLightBackgroundSecondnaryColor;
     
     [self presentViewController:modalViewController animated: YES completion: nil];
@@ -156,6 +158,12 @@
     [self resizeHeightForSize:size];
     [self.collectionView reloadData];
     [item saveAsSelectedItem];
+}
+
+#pragma mark - UIPopoverPresentationControllerDelegate
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
 }
 
 @end
