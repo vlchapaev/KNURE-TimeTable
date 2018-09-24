@@ -45,6 +45,8 @@
     self.isDarkTheme = [Configuration isDarkTheme];
     self.allItems = [Item MR_findAllSortedBy:@"last_update" ascending:NO];
     
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Item"];
+    
     [self getItemList];
 }
 
@@ -132,24 +134,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Item"];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Item" forIndexPath:indexPath];
     
     NSDictionary *record = (self.isFiltred) ? self.searchResults[indexPath.row] : self.datasource[indexPath.row];
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.userInteractionEnabled = YES;
+    cell.textLabel.text = [record valueForKey:@"title"];
+    cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    cell.textLabel.numberOfLines = 0;
     
     if ([[self.allItems valueForKey:@"id"]containsObject:[record valueForKey:@"id"]]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.userInteractionEnabled = NO;
+        cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
     }
     
-    cell.textLabel.text = [record valueForKey:@"title"];
-    cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.textLabel.textColor = (self.isDarkTheme) ? ApplicationThemeDarkFontPrimaryColor : ApplicationThemeLightFontPrimaryColor;
 }
 
 #pragma mark - UITableViewDelegate
