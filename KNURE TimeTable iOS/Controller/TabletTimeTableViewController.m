@@ -84,6 +84,7 @@
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
     BOOL isRunningInFullScreen = CGRectEqualToRect([UIApplication sharedApplication].delegate.window.frame, [UIApplication sharedApplication].delegate.window.screen.bounds);
+    
     if (!isRunningInFullScreen) {
         self.menuButton.enabled = NO;
         self.menuButton.tintColor = [UIColor clearColor];
@@ -91,6 +92,12 @@
         self.menuButton.enabled = YES;
         self.menuButton.tintColor = nil;
     }
+    
+    UIViewController *presentedViewController = [self presentedViewController];
+    if (presentedViewController) {
+        [presentedViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    
     [super traitCollectionDidChange];
 }
 
