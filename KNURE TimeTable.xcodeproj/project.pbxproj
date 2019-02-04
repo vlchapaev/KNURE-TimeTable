@@ -52,6 +52,9 @@
 		7702917122081C8800B82CF4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913E22081C8800B82CF4 /* PFTableView.m */; };
 		7702917222081C8800B82CF4 /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914322081C8800B82CF4 /* PFTableViewCell.m */; };
 		7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
+		7702917622081CC700B82CF4 /* DataLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917522081CC700B82CF4 /* DataLayerAssembly.m */; };
+		7702917922081CE800B82CF4 /* DomainLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917822081CE800B82CF4 /* DomainLayerAssembly.m */; };
+		7702917C22081CFF00B82CF4 /* PresentationLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
@@ -200,6 +203,12 @@
 		7702914422081C8800B82CF4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
 		7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCollectionViewCalendarLayout.m; sourceTree = "<group>"; };
 		7702914722081C8800B82CF4 /* MSCollectionViewCalendarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCollectionViewCalendarLayout.h; sourceTree = "<group>"; };
+		7702917422081CC700B82CF4 /* DataLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLayerAssembly.h; sourceTree = "<group>"; };
+		7702917522081CC700B82CF4 /* DataLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataLayerAssembly.m; sourceTree = "<group>"; };
+		7702917722081CE800B82CF4 /* DomainLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DomainLayerAssembly.h; sourceTree = "<group>"; };
+		7702917822081CE800B82CF4 /* DomainLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DomainLayerAssembly.m; sourceTree = "<group>"; };
+		7702917A22081CFF00B82CF4 /* PresentationLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentationLayerAssembly.h; sourceTree = "<group>"; };
+		7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentationLayerAssembly.m; sourceTree = "<group>"; };
 		770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TodayExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770D05E41DD3A767008D89E1 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		770D05E51DD3A767008D89E1 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
@@ -290,6 +299,8 @@
 		770290EC22081C8700B82CF4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				7702917722081CE800B82CF4 /* DomainLayerAssembly.h */,
+				7702917822081CE800B82CF4 /* DomainLayerAssembly.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -297,6 +308,8 @@
 		770290ED22081C8800B82CF4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7702917422081CC700B82CF4 /* DataLayerAssembly.h */,
+				7702917522081CC700B82CF4 /* DataLayerAssembly.m */,
 				770290EE22081C8800B82CF4 /* Item.h */,
 				770290EF22081C8800B82CF4 /* Lesson.h */,
 				770290F022081C8800B82CF4 /* Lesson.m */,
@@ -317,6 +330,8 @@
 				7702911A22081C8800B82CF4 /* Main.strings */,
 				7702911C22081C8800B82CF4 /* MainIpad.strings */,
 				7702911E22081C8800B82CF4 /* View */,
+				7702917A22081CFF00B82CF4 /* PresentationLayerAssembly.h */,
+				7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -851,6 +866,7 @@
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
 				7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */,
 				7702916B22081C8800B82CF4 /* MSTimeRowHeaderBackground.m in Sources */,
+				7702917922081CE800B82CF4 /* DomainLayerAssembly.m in Sources */,
 				7702915422081C8800B82CF4 /* SettingsViewController.m in Sources */,
 				7702916D22081C8800B82CF4 /* Request.m in Sources */,
 				7702915622081C8800B82CF4 /* TabletTimeTableViewController.m in Sources */,
@@ -858,10 +874,12 @@
 				7702915E22081C8800B82CF4 /* TimeTableViewController.m in Sources */,
 				7702916F22081C8800B82CF4 /* PFConfiguration.m in Sources */,
 				7702914D22081C8800B82CF4 /* Lesson.m in Sources */,
+				7702917622081CC700B82CF4 /* DataLayerAssembly.m in Sources */,
 				7702916E22081C8800B82CF4 /* PFTableCellContentView.m in Sources */,
 				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
 				7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */,
 				7702915C22081C8800B82CF4 /* PopoverComboBoxViewController.m in Sources */,
+				7702917C22081CFF00B82CF4 /* PresentationLayerAssembly.m in Sources */,
 				7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */,
 				7702916822081C8800B82CF4 /* MSDayColumnHeader.m in Sources */,
 				7702917122081C8800B82CF4 /* PFTableView.m in Sources */,
