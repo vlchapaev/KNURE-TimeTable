@@ -292,6 +292,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770290DB220819B800B82CF4 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				772025441B51071A0082929F /* Resources */,
+				7713D5941CA5767A00FCDA9B /* View */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		770290DC220819D200B82CF4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		770290DD220819DA00B82CF4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				778E3ABD1DCB86270083A658 /* Item */,
+				778E3ABE1DCB86300083A658 /* Lesson */,
+				77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		770D05E31DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +341,7 @@
 				778E3ADC1DCB9F930083A658 /* Lesson Cell */,
 				778E3AC01DCB99A90083A658 /* CollectionView elements */,
 				77D8C1B01D8C876B0056B125 /* LaunchScreen.xib */,
+				779264B21A0EA23800FBC4A2 /* Controller */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -330,7 +357,6 @@
 				7777778C1DC90B8700F557B0 /* Request.m */,
 				776A1B5B1E242EC90055DCB4 /* PFNavigationDropdownMenu */,
 				772548E11E10259B00399B67 /* MSCollectionViewCalendarLayout */,
-				77F4568D1D9293DD0078BDAD /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,6 +418,7 @@
 				778E3AAC1DCB86190083A658 /* Item.m */,
 			);
 			name = Item;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		778E3ABE1DCB86300083A658 /* Lesson */ = {
@@ -401,6 +428,7 @@
 				772963371DDB14660069EBCC /* Lesson.m */,
 			);
 			name = Lesson;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		778E3AC01DCB99A90083A658 /* CollectionView elements */ = {
@@ -480,16 +508,6 @@
 			name = "Items cell";
 			sourceTree = "<group>";
 		};
-		77F4568D1D9293DD0078BDAD /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				778E3ABD1DCB86270083A658 /* Item */,
-				778E3ABE1DCB86300083A658 /* Lesson */,
-				77F433241D8EDA6C00775C4A /* DataStorage.xcdatamodeld */,
-			);
-			name = CoreData;
-			sourceTree = "<group>";
-		};
 		9591FB9BF91BE088FE60962A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,26 +561,26 @@
 		C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXGroup;
 			children = (
-				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
+				C33FCC6D1819965300328F6D /* Application */,
+				770290DD220819DA00B82CF4 /* Data */,
+				770290DC220819D200B82CF4 /* Domain */,
+				770290DB220819B800B82CF4 /* Presentation */,
 				7713D5A91CA585C900FCDA9B /* Model */,
-				7713D5941CA5767A00FCDA9B /* View */,
-				779264B21A0EA23800FBC4A2 /* Controller */,
-				772025441B51071A0082929F /* Resources */,
-				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE TimeTable iOS";
 			sourceTree = "<group>";
 		};
-		C33FCC6D1819965300328F6D /* Supporting Files */ = {
+		C33FCC6D1819965300328F6D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
 				C33FCC751819965300328F6D /* AppDelegate.h */,
 				C33FCC761819965300328F6D /* AppDelegate.m */,
 				77CA97851E0D5B6A0087BF1B /* PrefixHeader.pch */,
 				778C30B61B4FE8FD00E9A462 /* Info.plist */,
 				C33FCC721819965300328F6D /* main.m */,
 			);
-			name = "Supporting Files";
+			name = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
