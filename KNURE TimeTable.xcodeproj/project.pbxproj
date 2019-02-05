@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		594E716E471E6C4FF444401B /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */; };
 		7702914822081C8800B82CF4 /* ApplicationLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */; };
-		7702914922081C8800B82CF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E622081C8700B82CF4 /* main.m */; };
 		7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E822081C8700B82CF4 /* AppDelegate.m */; };
-		7702914B22081C8800B82CF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 770290EA22081C8700B82CF4 /* Info.plist */; };
 		7702914C22081C8800B82CF4 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		7702914D22081C8800B82CF4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
 		7702914E22081C8800B82CF4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F122081C8800B82CF4 /* Item.m */; };
@@ -65,9 +63,38 @@
 		775A39581E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		775A39681E93EDFC0070B31F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A396A1E93EDFC0070B31F /* Localizable.strings */; };
 		775A396F1E93EE540070B31F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A39711E93EE540070B31F /* InfoPlist.strings */; };
-		77CB32F11E953B0A00B54C54 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
+		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
+		77DC83D32209C71300B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
+		77DC83D42209C71400B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
+		77DC83D52209C71E00B4E543 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912722081C8800B82CF4 /* MSDayColumnHeaderBackground.m */; };
+		77DC83D62209C71E00B4E543 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912822081C8800B82CF4 /* MSTimeRowHeader.m */; };
+		77DC83D72209C71E00B4E543 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912C22081C8800B82CF4 /* MSCurrentTimeGridline.m */; };
+		77DC83D82209C71E00B4E543 /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913122081C8800B82CF4 /* MSDayColumnHeader.m */; };
+		77DC83D92209C71E00B4E543 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */; };
+		77DC83DA2209C71E00B4E543 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913322081C8800B82CF4 /* MSGridline.m */; };
+		77DC83DB2209C71E00B4E543 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */; };
+		77DC83DC2209C71F00B4E543 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912722081C8800B82CF4 /* MSDayColumnHeaderBackground.m */; };
+		77DC83DD2209C71F00B4E543 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912822081C8800B82CF4 /* MSTimeRowHeader.m */; };
+		77DC83DE2209C71F00B4E543 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912C22081C8800B82CF4 /* MSCurrentTimeGridline.m */; };
+		77DC83DF2209C71F00B4E543 /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913122081C8800B82CF4 /* MSDayColumnHeader.m */; };
+		77DC83E02209C71F00B4E543 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */; };
+		77DC83E12209C71F00B4E543 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913322081C8800B82CF4 /* MSGridline.m */; };
+		77DC83E22209C71F00B4E543 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */; };
+		77DC83E32209C75100B4E543 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913622081C8800B82CF4 /* EventParser.m */; };
+		77DC83E52209C75100B4E543 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
+		77DC83E62209C75200B4E543 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913622081C8800B82CF4 /* EventParser.m */; };
+		77DC83E82209C75200B4E543 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
+		77DC83E92209C79500B4E543 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
+		77DC83EA2209C79500B4E543 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F122081C8800B82CF4 /* Item.m */; };
+		77DC83EB2209C79600B4E543 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
+		77DC83EC2209C79600B4E543 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F122081C8800B82CF4 /* Item.m */; };
+		77DC83ED2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
+		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
+		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
+		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
+		77DC83FA2209C92E00B4E543 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC83F62209C92D00B4E543 /* main.m */; };
 		A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -123,12 +150,8 @@
 		770290E222081C8700B82CF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationLayerAssembly.m; sourceTree = "<group>"; };
 		770290E422081C8700B82CF4 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
-		770290E522081C8700B82CF4 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
-		770290E622081C8700B82CF4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		770290E722081C8700B82CF4 /* ApplicationLayerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationLayerAssembly.h; sourceTree = "<group>"; };
 		770290E822081C8700B82CF4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		770290E922081C8700B82CF4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		770290EA22081C8700B82CF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770290EB22081C8700B82CF4 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		770290EE22081C8800B82CF4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		770290EF22081C8800B82CF4 /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lesson.h; sourceTree = "<group>"; };
@@ -235,6 +258,10 @@
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		77DC83F62209C92D00B4E543 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		77DC83F72209C92D00B4E543 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; sourceTree = "<group>"; };
 		90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,12 +312,8 @@
 				770290E222081C8700B82CF4 /* AppDelegate.h */,
 				770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */,
 				770290E422081C8700B82CF4 /* Configuration.h */,
-				770290E522081C8700B82CF4 /* KNURE TimeTable iOS.entitlements */,
-				770290E622081C8700B82CF4 /* main.m */,
 				770290E722081C8700B82CF4 /* ApplicationLayerAssembly.h */,
 				770290E822081C8700B82CF4 /* AppDelegate.m */,
-				770290E922081C8700B82CF4 /* PrefixHeader.pch */,
-				770290EA22081C8700B82CF4 /* Info.plist */,
 				770290EB22081C8700B82CF4 /* Configuration.m */,
 			);
 			path = Application;
@@ -544,6 +567,10 @@
 		C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXGroup;
 			children = (
+				77DC83F82209C92E00B4E543 /* Info.plist */,
+				77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */,
+				77DC83F62209C92D00B4E543 /* main.m */,
+				77DC83F72209C92D00B4E543 /* PrefixHeader.pch */,
 				770290E122081C8700B82CF4 /* Application */,
 				770290ED22081C8800B82CF4 /* Data */,
 				770290EC22081C8700B82CF4 /* Domain */,
@@ -705,7 +732,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7702914B22081C8800B82CF4 /* Info.plist in Resources */,
 				7702915122081C8800B82CF4 /* InfoPlist.strings in Resources */,
 				7702915022081C8800B82CF4 /* Localizable.strings in Resources */,
 				7702916122081C8800B82CF4 /* MainIpad.strings in Resources */,
@@ -835,7 +861,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DC83E92209C79500B4E543 /* Lesson.m in Sources */,
+				77DC83DD2209C71F00B4E543 /* MSTimeRowHeader.m in Sources */,
+				77DC83DF2209C71F00B4E543 /* MSDayColumnHeader.m in Sources */,
+				77DC83E22209C71F00B4E543 /* MSTimeRowHeaderBackground.m in Sources */,
+				77DC83E02209C71F00B4E543 /* MSCurrentTimeIndicator.m in Sources */,
+				77DC83D32209C71300B4E543 /* LessonCollectionViewCell.m in Sources */,
+				77DC83DE2209C71F00B4E543 /* MSCurrentTimeGridline.m in Sources */,
+				77DC83E12209C71F00B4E543 /* MSGridline.m in Sources */,
+				77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */,
+				77DC83E52209C75100B4E543 /* MSCollectionViewCalendarLayout.m in Sources */,
+				77DC83ED2209C7C900B4E543 /* Configuration.m in Sources */,
 				770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */,
+				77DC83DC2209C71F00B4E543 /* MSDayColumnHeaderBackground.m in Sources */,
+				77DC83EA2209C79500B4E543 /* Item.m in Sources */,
+				77DC83E32209C75100B4E543 /* EventParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,8 +883,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77CB32F11E953B0A00B54C54 /* TodayViewController.m in Sources */,
+				77DC83EC2209C79600B4E543 /* Item.m in Sources */,
+				77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */,
+				77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */,
+				77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */,
+				77DC83D52209C71E00B4E543 /* MSDayColumnHeaderBackground.m in Sources */,
+				77DC83D92209C71E00B4E543 /* MSCurrentTimeIndicator.m in Sources */,
+				77DC83EB2209C79600B4E543 /* Lesson.m in Sources */,
+				77DC83DA2209C71E00B4E543 /* MSGridline.m in Sources */,
+				77DC83D42209C71400B4E543 /* LessonCollectionViewCell.m in Sources */,
+				77DC83E62209C75200B4E543 /* EventParser.m in Sources */,
 				775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */,
+				77DC83E82209C75200B4E543 /* MSCollectionViewCalendarLayout.m in Sources */,
+				77DC83D72209C71E00B4E543 /* MSCurrentTimeGridline.m in Sources */,
+				77DC83D82209C71E00B4E543 /* MSDayColumnHeader.m in Sources */,
+				77DC83DB2209C71E00B4E543 /* MSTimeRowHeaderBackground.m in Sources */,
+				77DC83D62209C71E00B4E543 /* MSTimeRowHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,8 +913,8 @@
 				7702915922081C8800B82CF4 /* PopoverModalViewController.m in Sources */,
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
 				7702914E22081C8800B82CF4 /* Item.m in Sources */,
-				7702914922081C8800B82CF4 /* main.m in Sources */,
 				7702915A22081C8800B82CF4 /* PopoverMenuViewController.m in Sources */,
+				77DC83FA2209C92E00B4E543 /* main.m in Sources */,
 				7702915822081C8800B82CF4 /* InitViewController.m in Sources */,
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
