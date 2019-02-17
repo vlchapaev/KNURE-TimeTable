@@ -27,7 +27,7 @@
 
 #define ApplicationAppStoreLinkShort @"https://appsto.re/i67M8zB"
 #define ApplicationAppStoreLinkFull @"https://itunes.apple.com/us/app/knure-sked/id797074875"
-#define ApplicationSupportGithubLink @"https://github.com/ShogunPhyched/KNURE-TimeTable"
+#define ApplicationSupportGithubLink @"https://github.com/vlchapaev/KNURE-TimeTable"
 #define ApplicationSupportVkontakteLink @"vk://vk.com/im?sel=40842906"
 #define ApplicationSupportTelegramLink @"http://t.me/chapaev_vlad"
 #define ApplicationSupportMessengerLink @"fb-messenger://user/chapaev.vlad"
