@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 #import "EventParser.h"
 #import "Item.h"
+#import "ApiKey.h"
 
 extern NSString *const RequestAddressGroupList;
 extern NSString *const RequestAddressTeacherList;

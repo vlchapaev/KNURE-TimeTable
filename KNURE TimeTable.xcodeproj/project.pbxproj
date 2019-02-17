@@ -211,6 +211,7 @@
 		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
 		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
 		779652D11E8663AF0045848B /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		779A1BA722194AB00082D2F3 /* ApiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
 		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
 		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
@@ -543,6 +544,7 @@
 		C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXGroup;
 			children = (
+				779A1BA722194AB00082D2F3 /* ApiKey.h */,
 				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
 				7713D5A91CA585C900FCDA9B /* Model */,
 				7713D5941CA5767A00FCDA9B /* View */,
