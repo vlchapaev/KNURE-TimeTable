@@ -45,7 +45,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
 }
 
 + (void)loadTimeTableForItem:(Item *)item delegate:(id)delegate {
-    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%hd&timetable_id=%@", baseURL, item.type, item.id];
+    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%hd&timetable_id=%@&idClient=%@", baseURL, item.type, item.id, API_KEY];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -59,7 +59,7 @@ NSString *const RequestAddressAuditoryList = @"http://cist.nure.ua/ias/app/tt/P_
 }
 
 + (void)loadTimeTableForItem:(Item *)item completion:(void (^)(id response))completion failure:(void (^)(NSError *error))failure {
-    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%hd&timetable_id=%@", baseURL, item.type, item.id];
+    NSString *address = [NSString stringWithFormat:@"%@P_API_EVENT_JSON?type_id=%hd&timetable_id=%@&idClient=%@", baseURL, item.type, item.id, API_KEY];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
