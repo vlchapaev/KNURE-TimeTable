@@ -76,6 +76,9 @@
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
 		777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
 		777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
+		777AE2132221988E00EAEE20 /* KNURETimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */; };
+		777AE2142221988E00EAEE20 /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* TimetableParser.swift */; };
+		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -267,6 +270,9 @@
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		777AE20A222195D900EAEE20 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+		777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURETimetableParser.swift; sourceTree = "<group>"; };
+		777AE2102221988E00EAEE20 /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
+		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
+				777AE2112221988E00EAEE20 /* extensions */,
+				777AE20E2221988E00EAEE20 /* parser */,
 				77915966220CB09200A8FC70 /* entities */,
 				770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */,
 			);
@@ -563,6 +571,23 @@
 			path = usecases;
 			sourceTree = "<group>";
 		};
+		777AE20E2221988E00EAEE20 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */,
+				777AE2102221988E00EAEE20 /* TimetableParser.swift */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		777AE2112221988E00EAEE20 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		77915966220CB09200A8FC70 /* entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +713,7 @@
 				773F6456196939220081165C /* Embed App Extensions */,
 				7713D58C1CA5748600FCDA9B /* Embed Frameworks */,
 				777AE2092221953000EAEE20 /* Carthage */,
+				777AE216222198F400EAEE20 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -821,6 +847,24 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
+		777AE216222198F400EAEE20 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -884,6 +928,7 @@
 				7702915922081C8800B82CF4 /* PopoverModalViewController.m in Sources */,
 				775A3F85222177AA00931A1F /* Item.swift in Sources */,
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
+				777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */,
 				7702914E22081C8800B82CF4 /* Item.m in Sources */,
 				775A3F9322217A9F00931A1F /* CalendarExportUseCase.swift in Sources */,
 				7702915A22081C8800B82CF4 /* PopoverMenuViewController.m in Sources */,
@@ -921,6 +966,8 @@
 				7702917022081C8800B82CF4 /* PFNavigationDropdownMenu.m in Sources */,
 				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,
 				7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */,
+				777AE2142221988E00EAEE20 /* TimetableParser.swift in Sources */,
+				777AE2132221988E00EAEE20 /* KNURETimetableParser.swift in Sources */,
 				775A3F792221743500931A1F /* KNURE_LessonRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
