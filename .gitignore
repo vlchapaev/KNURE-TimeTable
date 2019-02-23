@@ -5,7 +5,7 @@
 ## Build generated
 build/
 DerivedData/
-ApiKey.h
+ApiKey.swift
 
 ## Various settings
 *.pbxuser

@@ -76,6 +76,7 @@
 		775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9622217CE300931A1F /* TimetableSyncher.swift */; };
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
+		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -271,7 +272,7 @@
 		775A3F9622217CE300931A1F /* TimetableSyncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableSyncher.swift; sourceTree = "<group>"; };
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
-		779A1BA722194AB00082D2F3 /* ApiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
+		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -328,12 +329,12 @@
 			isa = PBXGroup;
 			children = (
 				775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */,
-				779A1BA722194AB00082D2F3 /* ApiKey.h */,
 				775A3F9822217FD700931A1F /* AppDelegate.swift */,
 				770290E222081C8700B82CF4 /* AppDelegate.h */,
 				770290E422081C8700B82CF4 /* Configuration.h */,
 				770290E822081C8700B82CF4 /* AppDelegate.m */,
 				770290EB22081C8700B82CF4 /* Configuration.m */,
+				775A3FBA222186AE00931A1F /* ApiKey.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -996,6 +997,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */,
+				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,
 				7702915B22081C8800B82CF4 /* AddItemsTableViewController.m in Sources */,
