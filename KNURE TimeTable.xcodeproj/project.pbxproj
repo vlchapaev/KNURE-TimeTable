@@ -256,6 +256,62 @@
 		77915968220CB0C000A8FC70 /* ItemsRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemsRepository.m; sourceTree = "<group>"; };
 		7791596C220CB18800A8FC70 /* LessonRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRepository.h; sourceTree = "<group>"; };
 		7791596D220CB18800A8FC70 /* LessonRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRepository.m; sourceTree = "<group>"; };
+		776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
+		776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
+		776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
+		776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
+		776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableCellContentView.h; sourceTree = "<group>"; };
+		776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableCellContentView.m; sourceTree = "<group>"; };
+		776A1B641E242EC90055DCB4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
+		776A1B651E242EC90055DCB4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
+		776A1B661E242EC90055DCB4 /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
+		776A1B671E242EC90055DCB4 /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
+		7773AA121E69699A00DDBDF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIpad.storyboard; sourceTree = "<group>"; };
+		7773AA151E69699E00DDBDF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainIpad.strings; sourceTree = "<group>"; };
+		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
+		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		7777778C1DC90B8700F557B0 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778E3AAB1DCB86190083A658 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		778E3AAC1DCB86190083A658 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		778E3AC11DCB99A90083A658 /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
+		778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
+		778E3AC31DCB99A90083A658 /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
+		778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
+		778E3AC51DCB99A90083A658 /* MSDayColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeader.h; sourceTree = "<group>"; };
+		778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeader.m; sourceTree = "<group>"; };
+		778E3AC71DCB99A90083A658 /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
+		778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
+		778E3ACB1DCB99A90083A658 /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
+		778E3ACC1DCB99A90083A658 /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
+		778E3ACD1DCB99A90083A658 /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
+		778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
+		778E3ACF1DCB99A90083A658 /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
+		778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
+		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
+		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
+		779652D11E8663AF0045848B /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		779A1BA722194AB00082D2F3 /* ApiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
+		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
+		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
+		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
+		779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverMenuViewController.m; path = Controller/PopoverMenuViewController.m; sourceTree = "<group>"; };
+		779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverComboBoxViewController.h; path = Controller/PopoverComboBoxViewController.h; sourceTree = "<group>"; };
+		779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverComboBoxViewController.m; path = Controller/PopoverComboBoxViewController.m; sourceTree = "<group>"; };
+		77A430081E74491B0031B2B9 /* ItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewCell.h; path = "View/Items cell/ItemsTableViewCell.h"; sourceTree = "<group>"; };
+		77A430091E74491B0031B2B9 /* ItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewCell.m; path = "View/Items cell/ItemsTableViewCell.m"; sourceTree = "<group>"; };
+		77B056331E67116200351AF7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		77B056341E6720C000351AF7 /* PopoverModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverModalViewController.h; path = Controller/PopoverModalViewController.h; sourceTree = "<group>"; };
+		77B056351E6720C000351AF7 /* PopoverModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverModalViewController.m; path = Controller/PopoverModalViewController.m; sourceTree = "<group>"; };
+		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77C857E51E7F1D6200990C82 /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		77C8DF9E1B384688001FB152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitViewController.h; path = Controller/InitViewController.h; sourceTree = "<group>"; };
+		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitViewController.m; path = Controller/InitViewController.m; sourceTree = "<group>"; };
+		77CA97851E0D5B6A0087BF1B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -608,6 +664,13 @@
 				770290EC22081C8700B82CF4 /* Domain */,
 				7702913522081C8800B82CF4 /* Model */,
 				770290F422081C8800B82CF4 /* Presentation */,
+				779A1BA722194AB00082D2F3 /* ApiKey.h */,
+				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
+				7713D5A91CA585C900FCDA9B /* Model */,
+				7713D5941CA5767A00FCDA9B /* View */,
+				779264B21A0EA23800FBC4A2 /* Controller */,
+				772025441B51071A0082929F /* Resources */,
+				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE TimeTable iOS";
 			sourceTree = "<group>";
