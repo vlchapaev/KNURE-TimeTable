@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		594E716E471E6C4FF444401B /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */; };
-		7702914822081C8800B82CF4 /* ApplicationLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */; };
 		7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E822081C8700B82CF4 /* AppDelegate.m */; };
 		7702914C22081C8800B82CF4 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		7702914D22081C8800B82CF4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
@@ -50,9 +49,6 @@
 		7702917122081C8800B82CF4 /* PFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913E22081C8800B82CF4 /* PFTableView.m */; };
 		7702917222081C8800B82CF4 /* PFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914322081C8800B82CF4 /* PFTableViewCell.m */; };
 		7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
-		7702917622081CC700B82CF4 /* DataLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917522081CC700B82CF4 /* DataLayerAssembly.m */; };
-		7702917922081CE800B82CF4 /* DomainLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917822081CE800B82CF4 /* DomainLayerAssembly.m */; };
-		7702917C22081CFF00B82CF4 /* PresentationLayerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
@@ -63,8 +59,23 @@
 		775A39581E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		775A39681E93EDFC0070B31F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A396A1E93EDFC0070B31F /* Localizable.strings */; };
 		775A396F1E93EE540070B31F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 775A39711E93EE540070B31F /* InfoPlist.strings */; };
-		77915969220CB0C000A8FC70 /* ItemsRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 77915968220CB0C000A8FC70 /* ItemsRepository.m */; };
-		7791596E220CB18800A8FC70 /* LessonRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791596D220CB18800A8FC70 /* LessonRepository.m */; };
+		775A3F75222172F900931A1F /* LessonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F74222172F900931A1F /* LessonRepository.swift */; };
+		775A3F772221731600931A1F /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F762221731600931A1F /* ItemRepository.swift */; };
+		775A3F792221743500931A1F /* KNURE_LessonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F782221743500931A1F /* KNURE_LessonRepository.swift */; };
+		775A3F7D222174A000931A1F /* KNURE_ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F7C222174A000931A1F /* KNURE_ItemRepository.swift */; };
+		775A3F7F2221775900931A1F /* DataLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F7E2221775900931A1F /* DataLayerAssembly.swift */; };
+		775A3F832221779200931A1F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F822221779200931A1F /* Lesson.swift */; };
+		775A3F85222177AA00931A1F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F84222177AA00931A1F /* Item.swift */; };
+		775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */; };
+		775A3F89222178E200931A1F /* DomailLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F88222178E200931A1F /* DomailLayerAssembly.swift */; };
+		775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8C2221797800931A1F /* SaveItemUseCase.swift */; };
+		775A3F8F222179A000931A1F /* RemoveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */; };
+		775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */; };
+		775A3F9322217A9F00931A1F /* CalendarExportUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */; };
+		775A3F9522217CB200931A1F /* TimetableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9422217CB200931A1F /* TimetableUseCase.swift */; };
+		775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9622217CE300931A1F /* TimetableSyncher.swift */; };
+		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
+		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -94,7 +105,6 @@
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
-		77DC83FA2209C92E00B4E543 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DC83F62209C92D00B4E543 /* main.m */; };
 		A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -148,9 +158,7 @@
 		57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		770290E222081C8700B82CF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationLayerAssembly.m; sourceTree = "<group>"; };
 		770290E422081C8700B82CF4 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
-		770290E722081C8700B82CF4 /* ApplicationLayerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationLayerAssembly.h; sourceTree = "<group>"; };
 		770290E822081C8700B82CF4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		770290EB22081C8700B82CF4 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		770290EE22081C8800B82CF4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -226,12 +234,6 @@
 		7702914422081C8800B82CF4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
 		7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCollectionViewCalendarLayout.m; sourceTree = "<group>"; };
 		7702914722081C8800B82CF4 /* MSCollectionViewCalendarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCollectionViewCalendarLayout.h; sourceTree = "<group>"; };
-		7702917422081CC700B82CF4 /* DataLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLayerAssembly.h; sourceTree = "<group>"; };
-		7702917522081CC700B82CF4 /* DataLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataLayerAssembly.m; sourceTree = "<group>"; };
-		7702917722081CE800B82CF4 /* DomainLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DomainLayerAssembly.h; sourceTree = "<group>"; };
-		7702917822081CE800B82CF4 /* DomainLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DomainLayerAssembly.m; sourceTree = "<group>"; };
-		7702917A22081CFF00B82CF4 /* PresentationLayerAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentationLayerAssembly.h; sourceTree = "<group>"; };
-		7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentationLayerAssembly.m; sourceTree = "<group>"; };
 		770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TodayExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770D05E41DD3A767008D89E1 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		770D05E51DD3A767008D89E1 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
@@ -252,74 +254,30 @@
 		775A39701E93EE540070B31F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		775A39721E93EE560070B31F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		775A39731E93EE570070B31F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		77915967220CB0C000A8FC70 /* ItemsRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemsRepository.h; sourceTree = "<group>"; };
-		77915968220CB0C000A8FC70 /* ItemsRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemsRepository.m; sourceTree = "<group>"; };
-		7791596C220CB18800A8FC70 /* LessonRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRepository.h; sourceTree = "<group>"; };
-		7791596D220CB18800A8FC70 /* LessonRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRepository.m; sourceTree = "<group>"; };
-		776A1B5D1E242EC90055DCB4 /* PFConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFConfiguration.h; sourceTree = "<group>"; };
-		776A1B5E1E242EC90055DCB4 /* PFConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFConfiguration.m; sourceTree = "<group>"; };
-		776A1B601E242EC90055DCB4 /* PFNavigationDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNavigationDropdownMenu.h; sourceTree = "<group>"; };
-		776A1B611E242EC90055DCB4 /* PFNavigationDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNavigationDropdownMenu.m; sourceTree = "<group>"; };
-		776A1B621E242EC90055DCB4 /* PFTableCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableCellContentView.h; sourceTree = "<group>"; };
-		776A1B631E242EC90055DCB4 /* PFTableCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableCellContentView.m; sourceTree = "<group>"; };
-		776A1B641E242EC90055DCB4 /* PFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableView.h; sourceTree = "<group>"; };
-		776A1B651E242EC90055DCB4 /* PFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableView.m; sourceTree = "<group>"; };
-		776A1B661E242EC90055DCB4 /* PFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTableViewCell.h; sourceTree = "<group>"; };
-		776A1B671E242EC90055DCB4 /* PFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTableViewCell.m; sourceTree = "<group>"; };
-		7773AA121E69699A00DDBDF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIpad.storyboard; sourceTree = "<group>"; };
-		7773AA151E69699E00DDBDF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainIpad.strings; sourceTree = "<group>"; };
-		777777891DC90B8700F557B0 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
-		7777778A1DC90B8700F557B0 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
-		7777778B1DC90B8700F557B0 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		7777778C1DC90B8700F557B0 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
-		778C30B61B4FE8FD00E9A462 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		778E3AAB1DCB86190083A658 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		778E3AAC1DCB86190083A658 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		778E3AC11DCB99A90083A658 /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
-		778E3AC21DCB99A90083A658 /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
-		778E3AC31DCB99A90083A658 /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
-		778E3AC41DCB99A90083A658 /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
-		778E3AC51DCB99A90083A658 /* MSDayColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeader.h; sourceTree = "<group>"; };
-		778E3AC61DCB99A90083A658 /* MSDayColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeader.m; sourceTree = "<group>"; };
-		778E3AC71DCB99A90083A658 /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
-		778E3AC81DCB99A90083A658 /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
-		778E3ACB1DCB99A90083A658 /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
-		778E3ACC1DCB99A90083A658 /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
-		778E3ACD1DCB99A90083A658 /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
-		778E3ACE1DCB99A90083A658 /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
-		778E3ACF1DCB99A90083A658 /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
-		778E3AD01DCB99A90083A658 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
-		778E3AD91DCB9F8D0083A658 /* LessonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCollectionViewCell.h; path = "View/Lesson Cell/LessonCollectionViewCell.h"; sourceTree = "<group>"; };
-		778E3ADA1DCB9F8D0083A658 /* LessonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCollectionViewCell.m; path = "View/Lesson Cell/LessonCollectionViewCell.m"; sourceTree = "<group>"; };
-		779652D11E8663AF0045848B /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		775A3F74222172F900931A1F /* LessonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRepository.swift; sourceTree = "<group>"; };
+		775A3F762221731600931A1F /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		775A3F782221743500931A1F /* KNURE_LessonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE_LessonRepository.swift; sourceTree = "<group>"; };
+		775A3F7C222174A000931A1F /* KNURE_ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE_ItemRepository.swift; sourceTree = "<group>"; };
+		775A3F7E2221775900931A1F /* DataLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerAssembly.swift; sourceTree = "<group>"; };
+		775A3F822221779200931A1F /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		775A3F84222177AA00931A1F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLayerAssembly.swift; sourceTree = "<group>"; };
+		775A3F88222178E200931A1F /* DomailLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomailLayerAssembly.swift; sourceTree = "<group>"; };
+		775A3F8C2221797800931A1F /* SaveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemUseCase.swift; sourceTree = "<group>"; };
+		775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveItemUseCase.swift; sourceTree = "<group>"; };
+		775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemsObserver.swift; sourceTree = "<group>"; };
+		775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExportUseCase.swift; sourceTree = "<group>"; };
+		775A3F9422217CB200931A1F /* TimetableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableUseCase.swift; sourceTree = "<group>"; };
+		775A3F9622217CE300931A1F /* TimetableSyncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableSyncher.swift; sourceTree = "<group>"; };
+		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		779A1BA722194AB00082D2F3 /* ApiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
-		779CF1F41DE9E98B002C9CA5 /* TabletTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabletTimeTableViewController.h; path = Controller/TabletTimeTableViewController.h; sourceTree = "<group>"; };
-		779CF1F51DE9E98B002C9CA5 /* TabletTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabletTimeTableViewController.m; path = Controller/TabletTimeTableViewController.m; sourceTree = "<group>"; };
-		779CF1FC1DE9EF6E002C9CA5 /* PopoverMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverMenuViewController.h; path = Controller/PopoverMenuViewController.h; sourceTree = "<group>"; };
-		779CF1FD1DE9EF6E002C9CA5 /* PopoverMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverMenuViewController.m; path = Controller/PopoverMenuViewController.m; sourceTree = "<group>"; };
-		779CF1FF1DE9EF9E002C9CA5 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverComboBoxViewController.h; path = Controller/PopoverComboBoxViewController.h; sourceTree = "<group>"; };
-		779CF2001DE9EF9E002C9CA5 /* PopoverComboBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverComboBoxViewController.m; path = Controller/PopoverComboBoxViewController.m; sourceTree = "<group>"; };
-		77A430081E74491B0031B2B9 /* ItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsTableViewCell.h; path = "View/Items cell/ItemsTableViewCell.h"; sourceTree = "<group>"; };
-		77A430091E74491B0031B2B9 /* ItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsTableViewCell.m; path = "View/Items cell/ItemsTableViewCell.m"; sourceTree = "<group>"; };
-		77B056331E67116200351AF7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		77B056341E6720C000351AF7 /* PopoverModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverModalViewController.h; path = Controller/PopoverModalViewController.h; sourceTree = "<group>"; };
-		77B056351E6720C000351AF7 /* PopoverModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverModalViewController.m; path = Controller/PopoverModalViewController.m; sourceTree = "<group>"; };
-		77B0E0F11B656A4F00D4506E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		77B0E0F31B656A5000D4506E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		77B0E0F41B656A5100D4506E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		77C857E51E7F1D6200990C82 /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
-		77C8DF9E1B384688001FB152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		77C8DFA81B3857F5001FB152 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitViewController.h; path = Controller/InitViewController.h; sourceTree = "<group>"; };
-		77C8DFA91B3857F5001FB152 /* InitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitViewController.m; path = Controller/InitViewController.m; sourceTree = "<group>"; };
-		77CA97851E0D5B6A0087BF1B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		77DC83F62209C92D00B4E543 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		77DC83F72209C92D00B4E543 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -369,10 +327,11 @@
 		770290E122081C8700B82CF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */,
+				779A1BA722194AB00082D2F3 /* ApiKey.h */,
+				775A3F9822217FD700931A1F /* AppDelegate.swift */,
 				770290E222081C8700B82CF4 /* AppDelegate.h */,
-				770290E322081C8700B82CF4 /* ApplicationLayerAssembly.m */,
 				770290E422081C8700B82CF4 /* Configuration.h */,
-				770290E722081C8700B82CF4 /* ApplicationLayerAssembly.h */,
 				770290E822081C8700B82CF4 /* AppDelegate.m */,
 				770290EB22081C8700B82CF4 /* Configuration.m */,
 			);
@@ -382,8 +341,8 @@
 		770290EC22081C8700B82CF4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				7702917722081CE800B82CF4 /* DomainLayerAssembly.h */,
-				7702917822081CE800B82CF4 /* DomainLayerAssembly.m */,
+				775A3F88222178E200931A1F /* DomailLayerAssembly.swift */,
+				775A3F70222172C600931A1F /* entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -391,8 +350,7 @@
 		770290ED22081C8800B82CF4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7702917422081CC700B82CF4 /* DataLayerAssembly.h */,
-				7702917522081CC700B82CF4 /* DataLayerAssembly.m */,
+				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
 				77915966220CB09200A8FC70 /* entities */,
 				770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */,
 			);
@@ -402,6 +360,9 @@
 		770290F422081C8800B82CF4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */,
+				7702913A22081C8800B82CF4 /* PFNavigationDropdownMenu */,
+				7702914522081C8800B82CF4 /* MSCollectionViewCalendarLayout */,
 				770290F522081C8800B82CF4 /* Resources */,
 				770290FE22081C8800B82CF4 /* Main.storyboard */,
 				7702910022081C8800B82CF4 /* MainIpad.storyboard */,
@@ -410,8 +371,6 @@
 				7702911A22081C8800B82CF4 /* Main.strings */,
 				7702911C22081C8800B82CF4 /* MainIpad.strings */,
 				7702911E22081C8800B82CF4 /* View */,
-				7702917A22081CFF00B82CF4 /* PresentationLayerAssembly.h */,
-				7702917B22081CFF00B82CF4 /* PresentationLayerAssembly.m */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -511,8 +470,6 @@
 				7702913722081C8800B82CF4 /* Request.m */,
 				7702913822081C8800B82CF4 /* EventParser.h */,
 				7702913922081C8800B82CF4 /* Request.h */,
-				7702913A22081C8800B82CF4 /* PFNavigationDropdownMenu */,
-				7702914522081C8800B82CF4 /* MSCollectionViewCalendarLayout */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -571,6 +528,55 @@
 			path = "KNURE TimeTable iOS TomorrowExtension";
 			sourceTree = "<group>";
 		};
+		775A3F70222172C600931A1F /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				775A3F71222172D000931A1F /* Lesson */,
+				775A3F72222172D700931A1F /* Item */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
+		775A3F71222172D000931A1F /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				775A3F74222172F900931A1F /* LessonRepository.swift */,
+				775A3F822221779200931A1F /* Lesson.swift */,
+				775A3F8A2221790300931A1F /* usecases */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		775A3F72222172D700931A1F /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				775A3F762221731600931A1F /* ItemRepository.swift */,
+				775A3F84222177AA00931A1F /* Item.swift */,
+				775A3F8B2221791200931A1F /* usecases */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		775A3F8A2221790300931A1F /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */,
+				775A3F9422217CB200931A1F /* TimetableUseCase.swift */,
+				775A3F9622217CE300931A1F /* TimetableSyncher.swift */,
+			);
+			path = usecases;
+			sourceTree = "<group>";
+		};
+		775A3F8B2221791200931A1F /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				775A3F8C2221797800931A1F /* SaveItemUseCase.swift */,
+				775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */,
+				775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */,
+			);
+			path = usecases;
+			sourceTree = "<group>";
+		};
 		77915966220CB09200A8FC70 /* entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,8 +591,7 @@
 			children = (
 				770290EE22081C8800B82CF4 /* Item.h */,
 				770290F122081C8800B82CF4 /* Item.m */,
-				77915967220CB0C000A8FC70 /* ItemsRepository.h */,
-				77915968220CB0C000A8FC70 /* ItemsRepository.m */,
+				775A3F7C222174A000931A1F /* KNURE_ItemRepository.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -596,8 +601,7 @@
 			children = (
 				770290EF22081C8800B82CF4 /* Lesson.h */,
 				770290F022081C8800B82CF4 /* Lesson.m */,
-				7791596C220CB18800A8FC70 /* LessonRepository.h */,
-				7791596D220CB18800A8FC70 /* LessonRepository.m */,
+				775A3F782221743500931A1F /* KNURE_LessonRepository.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -657,20 +661,11 @@
 			children = (
 				77DC83F82209C92E00B4E543 /* Info.plist */,
 				77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */,
-				77DC83F62209C92D00B4E543 /* main.m */,
-				77DC83F72209C92D00B4E543 /* PrefixHeader.pch */,
 				770290E122081C8700B82CF4 /* Application */,
 				770290ED22081C8800B82CF4 /* Data */,
 				770290EC22081C8700B82CF4 /* Domain */,
 				7702913522081C8800B82CF4 /* Model */,
 				770290F422081C8800B82CF4 /* Presentation */,
-				779A1BA722194AB00082D2F3 /* ApiKey.h */,
-				771623701DE32B4E00B9C928 /* KNURE TimeTable iOS.entitlements */,
-				7713D5A91CA585C900FCDA9B /* Model */,
-				7713D5941CA5767A00FCDA9B /* View */,
-				779264B21A0EA23800FBC4A2 /* Controller */,
-				772025441B51071A0082929F /* Resources */,
-				C33FCC6D1819965300328F6D /* Supporting Files */,
 			);
 			path = "KNURE TimeTable iOS";
 			sourceTree = "<group>";
@@ -770,6 +765,7 @@
 					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -999,46 +995,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,
 				7702915B22081C8800B82CF4 /* AddItemsTableViewController.m in Sources */,
+				775A3F772221731600931A1F /* ItemRepository.swift in Sources */,
+				775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */,
+				775A3F9522217CB200931A1F /* TimetableUseCase.swift in Sources */,
+				775A3F8F222179A000931A1F /* RemoveItemUseCase.swift in Sources */,
 				7702916C22081C8800B82CF4 /* EventParser.m in Sources */,
-				77915969220CB0C000A8FC70 /* ItemsRepository.m in Sources */,
 				7702915922081C8800B82CF4 /* PopoverModalViewController.m in Sources */,
+				775A3F85222177AA00931A1F /* Item.swift in Sources */,
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
 				7702914E22081C8800B82CF4 /* Item.m in Sources */,
+				775A3F9322217A9F00931A1F /* CalendarExportUseCase.swift in Sources */,
 				7702915A22081C8800B82CF4 /* PopoverMenuViewController.m in Sources */,
-				77DC83FA2209C92E00B4E543 /* main.m in Sources */,
+				775A3F7F2221775900931A1F /* DataLayerAssembly.swift in Sources */,
+				775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */,
+				775A3F7D222174A000931A1F /* KNURE_ItemRepository.swift in Sources */,
 				7702915822081C8800B82CF4 /* InitViewController.m in Sources */,
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
 				7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */,
+				775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */,
 				7702916B22081C8800B82CF4 /* MSTimeRowHeaderBackground.m in Sources */,
-				7702917922081CE800B82CF4 /* DomainLayerAssembly.m in Sources */,
 				7702915422081C8800B82CF4 /* SettingsViewController.m in Sources */,
 				7702916D22081C8800B82CF4 /* Request.m in Sources */,
 				7702915622081C8800B82CF4 /* TabletTimeTableViewController.m in Sources */,
-				7702914822081C8800B82CF4 /* ApplicationLayerAssembly.m in Sources */,
 				7702915E22081C8800B82CF4 /* TimeTableViewController.m in Sources */,
 				7702916F22081C8800B82CF4 /* PFConfiguration.m in Sources */,
+				775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */,
 				7702914D22081C8800B82CF4 /* Lesson.m in Sources */,
-				7702917622081CC700B82CF4 /* DataLayerAssembly.m in Sources */,
 				7702916E22081C8800B82CF4 /* PFTableCellContentView.m in Sources */,
-				7791596E220CB18800A8FC70 /* LessonRepository.m in Sources */,
 				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
+				775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */,
+				775A3F89222178E200931A1F /* DomailLayerAssembly.swift in Sources */,
 				7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */,
 				7702915C22081C8800B82CF4 /* PopoverComboBoxViewController.m in Sources */,
-				7702917C22081CFF00B82CF4 /* PresentationLayerAssembly.m in Sources */,
 				7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */,
 				7702916822081C8800B82CF4 /* MSDayColumnHeader.m in Sources */,
 				7702917122081C8800B82CF4 /* PFTableView.m in Sources */,
 				7702917222081C8800B82CF4 /* PFTableViewCell.m in Sources */,
+				775A3F832221779200931A1F /* Lesson.swift in Sources */,
+				775A3F75222172F900931A1F /* LessonRepository.swift in Sources */,
 				7702915722081C8800B82CF4 /* CalendarExportViewController.m in Sources */,
 				7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */,
 				7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */,
 				7702917022081C8800B82CF4 /* PFNavigationDropdownMenu.m in Sources */,
 				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,
 				7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */,
+				775A3F792221743500931A1F /* KNURE_LessonRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,7 +1414,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KNURE TimeTable iOS/Domain/entities/Lesson/KNURE TimeTable iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1431,6 +1439,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KNURE TimeTable iOS/Domain/entities/Lesson/KNURE TimeTable iOS-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
