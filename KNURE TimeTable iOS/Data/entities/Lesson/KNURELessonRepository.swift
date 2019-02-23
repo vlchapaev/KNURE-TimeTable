@@ -1,5 +1,5 @@
 //
-//  KNURE_LessonRepository.swift
+//  KNURELessonRepository.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 23/02/2019.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class KNURE_LessonRepository: LessonRepository {
-    
+class KNURELessonRepository: LessonRepository {
+
     init() {
         // TODO: parser service
         // TODO: coreData service

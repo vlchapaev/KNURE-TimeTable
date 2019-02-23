@@ -1,5 +1,5 @@
 //
-//  KNURE_ItemRepository.swift
+//  KNUREItemRepository.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 23/02/2019.
@@ -8,27 +8,26 @@
 
 import Foundation
 
-class KNURE_ItemRepository: ItemRepository {
+class KNUREItemRepository: ItemRepository {
     func localSelectedItems() -> [Item] {
         return []
     }
-    
+
     func localSaveItem(item: Item) {
         // TODO: implement
     }
-    
+
     func localRemoveItem(identifier: String) {
         // TODO: implement
     }
-    
+
     func remoteItems() {
         // TODO: implement
     }
-    
 
     init() {
         // TODO: parser service
         // TODO: coreData service
     }
-    
+
 }

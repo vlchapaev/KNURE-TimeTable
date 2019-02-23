@@ -17,7 +17,5 @@ enum TimetableItem: Int {
 /// DI should resolve this interface with implementation for university timetable
 /// the goal of parser is to parse timetable of any format to local data model
 protocol TimetableParser {
-    
-    
-    
+
 }

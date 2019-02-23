@@ -12,6 +12,6 @@ protocol ItemRepository {
     func localSelectedItems() -> [Item]
     func localSaveItem(item: Item)
     func localRemoveItem(identifier: String)
-    
+
     func remoteItems()
 }
