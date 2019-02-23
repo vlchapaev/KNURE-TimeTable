@@ -64,7 +64,7 @@
 		775A3F832221779200931A1F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F822221779200931A1F /* Lesson.swift */; };
 		775A3F85222177AA00931A1F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F84222177AA00931A1F /* Item.swift */; };
 		775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */; };
-		775A3F89222178E200931A1F /* DomailLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F88222178E200931A1F /* DomailLayerAssembly.swift */; };
+		775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F88222178E200931A1F /* DomainLayerAssembly.swift */; };
 		775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8C2221797800931A1F /* SaveItemUseCase.swift */; };
 		775A3F8F222179A000931A1F /* RemoveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */; };
 		775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */; };
@@ -258,7 +258,7 @@
 		775A3F822221779200931A1F /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		775A3F84222177AA00931A1F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLayerAssembly.swift; sourceTree = "<group>"; };
-		775A3F88222178E200931A1F /* DomailLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomailLayerAssembly.swift; sourceTree = "<group>"; };
+		775A3F88222178E200931A1F /* DomainLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3F8C2221797800931A1F /* SaveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemUseCase.swift; sourceTree = "<group>"; };
 		775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveItemUseCase.swift; sourceTree = "<group>"; };
 		775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemsObserver.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		770290EC22081C8700B82CF4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				775A3F88222178E200931A1F /* DomailLayerAssembly.swift */,
+				775A3F88222178E200931A1F /* DomainLayerAssembly.swift */,
 				775A3F70222172C600931A1F /* entities */,
 			);
 			path = Domain;
@@ -951,7 +951,7 @@
 				7702916E22081C8800B82CF4 /* PFTableCellContentView.m in Sources */,
 				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
 				775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */,
-				775A3F89222178E200931A1F /* DomailLayerAssembly.swift in Sources */,
+				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */,
 				7702915C22081C8800B82CF4 /* PopoverComboBoxViewController.m in Sources */,
 				7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */,

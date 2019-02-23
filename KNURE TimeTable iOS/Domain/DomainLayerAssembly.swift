@@ -1,5 +1,5 @@
 //
-//  DomailLayerAssembly.swift
+//  DomainLayerAssembly.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 23/02/2019.
