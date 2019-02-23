@@ -74,6 +74,8 @@
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
+		777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
+		777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -263,6 +265,8 @@
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		777AE20A222195D900EAEE20 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */,
+				777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
 			);
@@ -610,6 +616,8 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				777AE20A222195D900EAEE20 /* PromiseKit.framework */,
+				777AE20B222195D900EAEE20 /* Swinject.framework */,
 				772A180B1DE5B69C00BF0947 /* CoreImage.framework */,
 				C33FCC661819965300328F6D /* Foundation.framework */,
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
@@ -679,6 +687,7 @@
 				C33FCC611819965300328F6D /* Resources */,
 				773F6456196939220081165C /* Embed App Extensions */,
 				7713D58C1CA5748600FCDA9B /* Embed Frameworks */,
+				777AE2092221953000EAEE20 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -697,7 +706,7 @@
 		C33FCC5B1819965300328F6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Vladislav Chapaev";
 				TargetAttributes = {
 					770D05E01DD3A767008D89E1 = {
@@ -790,6 +799,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		777AE2092221953000EAEE20 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		770D05DD1DD3A767008D89E1 /* Sources */ = {
@@ -1141,7 +1173,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1203,7 +1235,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1219,6 +1251,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1233,6 +1266,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				INFOPLIST_FILE = "$(SRCROOT)/KNURE TimeTable iOS/Info.plist";
@@ -1258,6 +1295,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos7.0]" = "iPhone Developer: Vlad Chapaev (7UZ86QHPGM)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/KNURE TimeTable iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
