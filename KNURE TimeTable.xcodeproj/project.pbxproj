@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		594E716E471E6C4FF444401B /* libPods-KNURE TimeTable iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */; };
 		7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290E822081C8700B82CF4 /* AppDelegate.m */; };
 		7702914C22081C8800B82CF4 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		7702914D22081C8800B82CF4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
@@ -104,10 +103,8 @@
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
-		A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
-		C60869B8B422A8D006F04D9E /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,9 +150,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.release.xcconfig"; sourceTree = "<group>"; };
-		57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		770290E222081C8700B82CF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		770290E422081C8700B82CF4 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		770290E822081C8700B82CF4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -277,16 +271,10 @@
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
-		7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig"; sourceTree = "<group>"; };
-		90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TodayExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C33FCC6A1819965300328F6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNURE TimeTable iOS TomorrowExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2A9195A42602F6993537CEE /* Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +283,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */,
-				C60869B8B422A8D006F04D9E /* libPods-KNURE TimeTable iOS TodayExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */,
-				A2C4CC41FF99B4DBAB01452D /* libPods-KNURE TimeTable iOS TomorrowExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +300,6 @@
 			files = (
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
-				594E716E471E6C4FF444401B /* libPods-KNURE TimeTable iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,19 +586,6 @@
 			path = Lesson;
 			sourceTree = "<group>";
 		};
-		9591FB9BF91BE088FE60962A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */,
-				339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */,
-				6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */,
-				F2A9195A42602F6993537CEE /* Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig */,
-				D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */,
-				7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		C33FCC5A1819965300328F6D = {
 			isa = PBXGroup;
 			children = (
@@ -622,7 +594,6 @@
 				775A394E1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
-				9591FB9BF91BE088FE60962A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -644,9 +615,6 @@
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
 				C33FCC6A1819965300328F6D /* UIKit.framework */,
 				773F6445196939220081165C /* NotificationCenter.framework */,
-				57E4A5A53A5B2B0838E1F1E3 /* libPods-KNURE TimeTable iOS.a */,
-				90FB2EE85D62B7A94184E336 /* libPods-KNURE TimeTable iOS TodayExtension.a */,
-				DD9F8CB5615489A902C6155C /* libPods-KNURE TimeTable iOS TomorrowExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -672,11 +640,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 770D05F01DD3A767008D89E1 /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS TodayExtension" */;
 			buildPhases = (
-				7BA71EE07CDC45D85659432C /* [CP] Check Pods Manifest.lock */,
 				770D05DD1DD3A767008D89E1 /* Sources */,
 				770D05DE1DD3A767008D89E1 /* Frameworks */,
 				770D05DF1DD3A767008D89E1 /* Resources */,
-				7DA4B5ACDF0BB339831A3F65 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -691,11 +657,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 775A395B1E93EC710070B31F /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS TomorrowExtension" */;
 			buildPhases = (
-				D259627685D23C833D93DCA9 /* [CP] Check Pods Manifest.lock */,
 				775A39481E93EC710070B31F /* Sources */,
 				775A39491E93EC710070B31F /* Frameworks */,
 				775A394A1E93EC710070B31F /* Resources */,
-				F51F0C21CB8C3E99BEF6CB94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -710,13 +674,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS" */;
 			buildPhases = (
-				39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */,
 				C33FCC5F1819965300328F6D /* Sources */,
 				C33FCC601819965300328F6D /* Frameworks */,
 				C33FCC611819965300328F6D /* Resources */,
 				773F6456196939220081165C /* Embed App Extensions */,
 				7713D58C1CA5748600FCDA9B /* Embed Frameworks */,
-				01683DD0EEB66A63AC15E0F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -828,117 +790,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		01683DD0EEB66A63AC15E0F4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS-resources.sh",
-				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS/Pods-KNURE TimeTable iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		39D934364FAAB55AB9B5F47D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KNURE TimeTable iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7BA71EE07CDC45D85659432C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KNURE TimeTable iOS TodayExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7DA4B5ACDF0BB339831A3F65 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension-resources.sh",
-				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS TodayExtension/Pods-KNURE TimeTable iOS TodayExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D259627685D23C833D93DCA9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KNURE TimeTable iOS TomorrowExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F51F0C21CB8C3E99BEF6CB94 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension-resources.sh",
-				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KNURE TimeTable iOS TomorrowExtension/Pods-KNURE TimeTable iOS TomorrowExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		770D05DD1DD3A767008D89E1 /* Sources */ = {
@@ -1155,7 +1006,6 @@
 /* Begin XCBuildConfiguration section */
 		770D05EE1DD3A767008D89E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F9B3C9852C6F741E7807E8E /* Pods-KNURE TimeTable iOS TodayExtension.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1181,7 +1031,6 @@
 		};
 		770D05EF1DD3A767008D89E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2A9195A42602F6993537CEE /* Pods-KNURE TimeTable iOS TodayExtension.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1207,7 +1056,6 @@
 		};
 		775A39591E93EC710070B31F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D44EEA35CAD747D8E183C960 /* Pods-KNURE TimeTable iOS TomorrowExtension.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1233,7 +1081,6 @@
 		};
 		775A395A1E93EC710070B31F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7826E84F1C4E6A6448CF949B /* Pods-KNURE TimeTable iOS TomorrowExtension.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1379,7 +1226,6 @@
 		};
 		C33FCC961819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D27587E9845C57B26288F1AE /* Pods-KNURE TimeTable iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1405,7 +1251,6 @@
 		};
 		C33FCC971819965300328F6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 339A69FFC67A52D1E0A346AF /* Pods-KNURE TimeTable iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
