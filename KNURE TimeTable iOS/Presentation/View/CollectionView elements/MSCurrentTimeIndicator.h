@@ -1,13 +1,13 @@
+////
+////  MSCurrentTimeIndicator.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSCurrentTimeIndicator.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@interface MSCurrentTimeIndicator : UICollectionReusableView
 //
-
-@import UIKit;
-
-@interface MSCurrentTimeIndicator : UICollectionReusableView
-
-@end
+//@end

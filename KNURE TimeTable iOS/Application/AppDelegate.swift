@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func registerWindow() {
-        // swiftlint:disable:next force_unwrapping
-        let window = container.resolve(UIWindow.self)!
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
+        window.rootViewController = UIViewController()
         self.window = window
     }
 

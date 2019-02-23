@@ -1,17 +1,17 @@
+////
+////  MSTimeRowHeader.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSTimeRowHeader.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@interface MSTimeRowHeader : UICollectionReusableView
 //
-
-@import UIKit;
-
-@interface MSTimeRowHeader : UICollectionReusableView
-
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) NSDate *time;
-@property (strong, nonatomic) UIColor *textColor;
-
-@end
+//@property (nonatomic, strong) UILabel *title;
+//@property (nonatomic, strong) NSDate *time;
+//@property (strong, nonatomic) UIColor *textColor;
+//
+//@end

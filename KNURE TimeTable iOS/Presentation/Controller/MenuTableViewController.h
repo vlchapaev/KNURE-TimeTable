@@ -1,15 +1,15 @@
+////
+////  MenuTableViewController.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 21.11.16.
+////  Copyright © 2016 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MenuTableViewController.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 21.11.16.
-//  Copyright © 2016 Vladislav Chapaev. All rights reserved.
+//#import "AMSlideMenuMainViewController.h"
 //
-
-@import UIKit;
-
-#import "AMSlideMenuMainViewController.h"
-
-@interface MenuTableViewController : AMSlideMenuLeftTableViewController
-
-@end
+//@interface MenuTableViewController : AMSlideMenuLeftTableViewController
+//
+//@end

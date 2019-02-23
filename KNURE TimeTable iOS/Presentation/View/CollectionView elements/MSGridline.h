@@ -1,13 +1,13 @@
+////
+////  MSGridlineCollectionReusableView.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSGridlineCollectionReusableView.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@interface MSGridline : UICollectionReusableView
 //
-
-@import UIKit;
-
-@interface MSGridline : UICollectionReusableView
-
-@end
+//@end

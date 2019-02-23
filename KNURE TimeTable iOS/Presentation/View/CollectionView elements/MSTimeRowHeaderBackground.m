@@ -1,13 +1,13 @@
+////
+////  MSTimeRowHeaderBackground.m
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSTimeRowHeaderBackground.m
-//  KNURE TimeTable
+//#import "MSTimeRowHeaderBackground.h"
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@implementation MSTimeRowHeaderBackground
 //
-
-#import "MSTimeRowHeaderBackground.h"
-
-@implementation MSTimeRowHeaderBackground
-
-@end
+//@end

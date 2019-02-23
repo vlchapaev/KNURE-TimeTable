@@ -15,8 +15,6 @@
 		7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */; };
 		7702915022081C8800B82CF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 770290F622081C8800B82CF4 /* Localizable.strings */; };
 		7702915122081C8800B82CF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 770290F822081C8800B82CF4 /* InfoPlist.strings */; };
-		7702915222081C8800B82CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770290FE22081C8800B82CF4 /* Main.storyboard */; };
-		7702915322081C8800B82CF4 /* MainIpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7702910022081C8800B82CF4 /* MainIpad.storyboard */; };
 		7702915422081C8800B82CF4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910522081C8800B82CF4 /* MenuTableViewController.m */; };
 		7702915622081C8800B82CF4 /* TabletTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910722081C8800B82CF4 /* TabletTimeTableViewController.m */; };
@@ -173,8 +171,6 @@
 		770290FB22081C8800B82CF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		770290FC22081C8800B82CF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		770290FD22081C8800B82CF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		770290FF22081C8800B82CF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7702910122081C8800B82CF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIpad.storyboard; sourceTree = "<group>"; };
 		7702910322081C8800B82CF4 /* PopoverComboBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverComboBoxViewController.h; sourceTree = "<group>"; };
 		7702910422081C8800B82CF4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7702910522081C8800B82CF4 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
@@ -362,15 +358,11 @@
 			isa = PBXGroup;
 			children = (
 				775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */,
+				7702912222081C8800B82CF4 /* LaunchScreen.xib */,
 				7702913A22081C8800B82CF4 /* PFNavigationDropdownMenu */,
 				7702914522081C8800B82CF4 /* MSCollectionViewCalendarLayout */,
 				770290F522081C8800B82CF4 /* Resources */,
-				770290FE22081C8800B82CF4 /* Main.storyboard */,
-				7702910022081C8800B82CF4 /* MainIpad.storyboard */,
 				7702910222081C8800B82CF4 /* Controller */,
-				7702911922081C8800B82CF4 /* Images.xcassets */,
-				7702911A22081C8800B82CF4 /* Main.strings */,
-				7702911C22081C8800B82CF4 /* MainIpad.strings */,
 				7702911E22081C8800B82CF4 /* View */,
 			);
 			path = Presentation;
@@ -379,6 +371,9 @@
 		770290F522081C8800B82CF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7702911922081C8800B82CF4 /* Images.xcassets */,
+				7702911A22081C8800B82CF4 /* Main.strings */,
+				7702911C22081C8800B82CF4 /* MainIpad.strings */,
 				770290F622081C8800B82CF4 /* Localizable.strings */,
 				770290F822081C8800B82CF4 /* InfoPlist.strings */,
 			);
@@ -418,7 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				7702911F22081C8800B82CF4 /* Lesson Cell */,
-				7702912222081C8800B82CF4 /* LaunchScreen.xib */,
 				7702912322081C8800B82CF4 /* Items cell */,
 				7702912622081C8800B82CF4 /* CollectionView elements */,
 			);
@@ -829,9 +823,7 @@
 				7702916122081C8800B82CF4 /* MainIpad.strings in Resources */,
 				7702915F22081C8800B82CF4 /* Images.xcassets in Resources */,
 				7702916022081C8800B82CF4 /* Main.strings in Resources */,
-				7702915322081C8800B82CF4 /* MainIpad.storyboard in Resources */,
 				7702916322081C8800B82CF4 /* LaunchScreen.xib in Resources */,
-				7702915222081C8800B82CF4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1086,22 +1078,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		770290FE22081C8800B82CF4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				770290FF22081C8800B82CF4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7702910022081C8800B82CF4 /* MainIpad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7702910122081C8800B82CF4 /* Base */,
-			);
-			name = MainIpad.storyboard;
-			sourceTree = "<group>";
-		};
 		7702911A22081C8800B82CF4 /* Main.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1340,6 +1316,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 			};
 			name = Debug;
 		};
@@ -1394,6 +1372,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1416,7 +1395,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KNURE TimeTable iOS/Domain/entities/Lesson/KNURE TimeTable iOS-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1441,7 +1420,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KNURE TimeTable iOS/Domain/entities/Lesson/KNURE TimeTable iOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

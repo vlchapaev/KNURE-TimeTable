@@ -9,6 +9,22 @@
 import Foundation
 
 class KNURE_ItemRepository: ItemRepository {
+    func localSelectedItems() -> [Item] {
+        return []
+    }
+    
+    func localSaveItem(item: Item) {
+        // TODO: implement
+    }
+    
+    func localRemoveItem(identifier: String) {
+        // TODO: implement
+    }
+    
+    func remoteItems() {
+        // TODO: implement
+    }
+    
 
     init() {
         // TODO: parser service
