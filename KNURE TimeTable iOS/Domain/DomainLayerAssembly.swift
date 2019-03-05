@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import Swinject
+
+class DomainLayerAssembly: Assembly {
+	func configure(_ container: Container) {
+	}
+}

@@ -98,16 +98,15 @@
 		77DC83E02209C71F00B4E543 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */; };
 		77DC83E12209C71F00B4E543 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913322081C8800B82CF4 /* MSGridline.m */; };
 		77DC83E22209C71F00B4E543 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */; };
-		77DC83E32209C75100B4E543 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913622081C8800B82CF4 /* EventParser.m */; };
 		77DC83E52209C75100B4E543 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
-		77DC83E62209C75200B4E543 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913622081C8800B82CF4 /* EventParser.m */; };
 		77DC83E82209C75200B4E543 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
-		77DC83E92209C79500B4E543 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
-		77DC83EB2209C79600B4E543 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290F022081C8800B82CF4 /* Lesson.m */; };
 		77DC83ED2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
+		77F06F6B222F0DE10042B10D /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F69222F0DE10042B10D /* Eureka.framework */; };
+		77F06F6C222F0DE10042B10D /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F6A222F0DE10042B10D /* IGListKit.framework */; };
+		77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F06F6D222F0F8E0042B10D /* Assembly.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -281,6 +280,9 @@
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
+		77F06F69222F0DE10042B10D /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
+		77F06F6D222F0F8E0042B10D /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -311,7 +313,9 @@
 				777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */,
 				777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
+				77F06F6C222F0DE10042B10D /* IGListKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
+				77F06F6B222F0DE10042B10D /* Eureka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +325,7 @@
 		770290E122081C8700B82CF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				77F06F6D222F0F8E0042B10D /* Assembly.swift */,
 				775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */,
 				775A3F9822217FD700931A1F /* AppDelegate.swift */,
 				770290E222081C8700B82CF4 /* AppDelegate.h */,
@@ -345,6 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
+				770290EF22081C8800B82CF4 /* Lesson.h */,
+				770290F022081C8800B82CF4 /* Lesson.m */,
 				777AE2112221988E00EAEE20 /* extensions */,
 				777AE20E2221988E00EAEE20 /* parser */,
 				77915966220CB09200A8FC70 /* entities */,
@@ -457,17 +464,6 @@
 			path = "CollectionView elements";
 			sourceTree = "<group>";
 		};
-		7702913522081C8800B82CF4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7702913622081C8800B82CF4 /* EventParser.m */,
-				7702913722081C8800B82CF4 /* Request.m */,
-				7702913822081C8800B82CF4 /* EventParser.h */,
-				7702913922081C8800B82CF4 /* Request.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		7702913A22081C8800B82CF4 /* PFNavigationDropdownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +572,8 @@
 			children = (
 				777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */,
 				777AE2102221988E00EAEE20 /* TimetableParser.swift */,
+				7702913622081C8800B82CF4 /* EventParser.m */,
+				7702913822081C8800B82CF4 /* EventParser.h */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -610,8 +608,8 @@
 		7791596B220CB16B00A8FC70 /* Lesson */ = {
 			isa = PBXGroup;
 			children = (
-				770290EF22081C8800B82CF4 /* Lesson.h */,
-				770290F022081C8800B82CF4 /* Lesson.m */,
+				7702913722081C8800B82CF4 /* Request.m */,
+				7702913922081C8800B82CF4 /* Request.h */,
 				775A3F782221743500931A1F /* KNURELessonRepository.swift */,
 			);
 			path = Lesson;
@@ -641,6 +639,8 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77F06F69222F0DE10042B10D /* Eureka.framework */,
+				77F06F6A222F0DE10042B10D /* IGListKit.framework */,
 				777AE20A222195D900EAEE20 /* PromiseKit.framework */,
 				777AE20B222195D900EAEE20 /* Swinject.framework */,
 				772A180B1DE5B69C00BF0947 /* CoreImage.framework */,
@@ -660,7 +660,6 @@
 				770290E122081C8700B82CF4 /* Application */,
 				770290ED22081C8800B82CF4 /* Data */,
 				770290EC22081C8700B82CF4 /* Domain */,
-				7702913522081C8800B82CF4 /* Model */,
 				770290F422081C8800B82CF4 /* Presentation */,
 			);
 			path = "KNURE TimeTable iOS";
@@ -837,6 +836,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/IGListKit.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -872,7 +873,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77DC83E92209C79500B4E543 /* Lesson.m in Sources */,
 				77DC83DD2209C71F00B4E543 /* MSTimeRowHeader.m in Sources */,
 				77DC83DF2209C71F00B4E543 /* MSDayColumnHeader.m in Sources */,
 				77DC83E22209C71F00B4E543 /* MSTimeRowHeaderBackground.m in Sources */,
@@ -885,7 +885,6 @@
 				77DC83ED2209C7C900B4E543 /* Configuration.m in Sources */,
 				770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */,
 				77DC83DC2209C71F00B4E543 /* MSDayColumnHeaderBackground.m in Sources */,
-				77DC83E32209C75100B4E543 /* EventParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,10 +897,8 @@
 				77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */,
 				77DC83D52209C71E00B4E543 /* MSDayColumnHeaderBackground.m in Sources */,
 				77DC83D92209C71E00B4E543 /* MSCurrentTimeIndicator.m in Sources */,
-				77DC83EB2209C79600B4E543 /* Lesson.m in Sources */,
 				77DC83DA2209C71E00B4E543 /* MSGridline.m in Sources */,
 				77DC83D42209C71400B4E543 /* LessonCollectionViewCell.m in Sources */,
-				77DC83E62209C75200B4E543 /* EventParser.m in Sources */,
 				775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */,
 				77DC83E82209C75200B4E543 /* MSCollectionViewCalendarLayout.m in Sources */,
 				77DC83D72209C71E00B4E543 /* MSCurrentTimeGridline.m in Sources */,
@@ -916,6 +913,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */,
+				77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,

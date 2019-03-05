@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Swinject
 
-class DataLayerAssembly {
+class DataLayerAssembly: Assembly {
+	func configure(_ container: Container) {
+	}
 }
