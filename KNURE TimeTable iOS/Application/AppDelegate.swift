@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+	
+	let swinjectContainer: Container = Container(defaultObjectScope: .transient) { container in
+		let factories: [Assembly] = [
+			ApplicationLayerAssembly(),
+			DataLayerAssembly(),
+			DomainLayerAssembly(),
+			PresentationLayerAssembly()
+		]
+		
+		_ = factories.map { $0.configure(container) }
+	}
 
     func application(_: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
