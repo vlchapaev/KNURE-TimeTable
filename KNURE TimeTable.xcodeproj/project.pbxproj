@@ -26,8 +26,6 @@
 		7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702911122081C8800B82CF4 /* ItemsTableViewController.m */; };
 		7702915E22081C8800B82CF4 /* TimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702911422081C8800B82CF4 /* TimeTableViewController.m */; };
 		7702915F22081C8800B82CF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7702911922081C8800B82CF4 /* Images.xcassets */; };
-		7702916022081C8800B82CF4 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7702911A22081C8800B82CF4 /* Main.strings */; };
-		7702916122081C8800B82CF4 /* MainIpad.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7702911C22081C8800B82CF4 /* MainIpad.strings */; };
 		7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
 		7702916322081C8800B82CF4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7702912222081C8800B82CF4 /* LaunchScreen.xib */; };
 		7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912522081C8800B82CF4 /* ItemsTableViewCell.m */; };
@@ -816,9 +814,7 @@
 			files = (
 				7702915122081C8800B82CF4 /* InfoPlist.strings in Resources */,
 				7702915022081C8800B82CF4 /* Localizable.strings in Resources */,
-				7702916122081C8800B82CF4 /* MainIpad.strings in Resources */,
 				7702915F22081C8800B82CF4 /* Images.xcassets in Resources */,
-				7702916022081C8800B82CF4 /* Main.strings in Resources */,
 				7702916322081C8800B82CF4 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
