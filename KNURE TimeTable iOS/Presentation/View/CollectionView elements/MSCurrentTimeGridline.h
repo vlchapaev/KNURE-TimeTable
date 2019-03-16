@@ -1,13 +1,13 @@
+////
+////  MSCurrentTimeGridline.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSCurrentTimeGridline.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@interface MSCurrentTimeGridline : UICollectionReusableView
 //
-
-@import UIKit;
-
-@interface MSCurrentTimeGridline : UICollectionReusableView
-
-@end
+//@end

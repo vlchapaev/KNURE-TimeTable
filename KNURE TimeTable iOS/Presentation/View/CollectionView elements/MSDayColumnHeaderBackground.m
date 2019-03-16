@@ -1,13 +1,13 @@
+////
+////  MSDayColumnHeaderBackground.m
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSDayColumnHeaderBackground.m
-//  KNURE TimeTable
+//#import "MSDayColumnHeaderBackground.h"
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@implementation MSDayColumnHeaderBackground
 //
-
-#import "MSDayColumnHeaderBackground.h"
-
-@implementation MSDayColumnHeaderBackground
-
-@end
+//@end

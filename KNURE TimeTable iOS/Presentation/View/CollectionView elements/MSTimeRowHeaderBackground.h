@@ -1,13 +1,13 @@
+////
+////  MSTimeRowHeaderBackground.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 05.11.16.
+////  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+////
 //
-//  MSTimeRowHeaderBackground.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 05.11.16.
-//  Copyright (c) 2015 Vladislav Chapaev. All rights reserved.
+//@interface MSTimeRowHeaderBackground : UICollectionReusableView
 //
-
-@import UIKit;
-
-@interface MSTimeRowHeaderBackground : UICollectionReusableView
-
-@end
+//@end

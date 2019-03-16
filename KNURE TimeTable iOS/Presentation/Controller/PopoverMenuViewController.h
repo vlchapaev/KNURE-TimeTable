@@ -1,13 +1,13 @@
+////
+////  PopoverMenuViewController.h
+////  KNURE TimeTable
+////
+////  Created by Vladislav Chapaev on 26.11.16.
+////  Copyright © 2016 Vladislav Chapaev. All rights reserved.
+////
 //
-//  PopoverMenuViewController.h
-//  KNURE TimeTable
+//@import UIKit;
 //
-//  Created by Vladislav Chapaev on 26.11.16.
-//  Copyright © 2016 Vladislav Chapaev. All rights reserved.
+//@interface PopoverMenuViewController : UITableViewController
 //
-
-@import UIKit;
-
-@interface PopoverMenuViewController : UITableViewController
-
-@end
+//@end
