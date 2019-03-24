@@ -54,7 +54,7 @@ class CoreDataService {
 		let options: [String: Any] = [
 			NSMigratePersistentStoresAutomaticallyOption: true,
 			NSInferMappingModelAutomaticallyOption: true,
-			NSSQLitePragmasOption: ["journal_mode": "WAL"],
+			NSSQLitePragmasOption: ["journal_mode": "WAL"]
 			]
 
 		try _ = coordinator.addPersistentStore(ofType: NSSQLiteStoreType,

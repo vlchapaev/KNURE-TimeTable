@@ -49,6 +49,8 @@
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
 		770D05ED1DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		770D9F7F223E4C800037C5B1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770D9F7E223E4C800037C5B1 /* CoreDataService.swift */; };
+		7752F9392247E46E003DC9FE /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F9382247E46E003DC9FE /* CoreDataSource.swift */; };
+		7752F93D2247F018003DC9FE /* PromisedCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F93C2247F018003DC9FE /* PromisedCoreDataSource.swift */; };
 		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
 		775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775A39521E93EC710070B31F /* MainInterface.storyboard */; };
@@ -238,6 +240,8 @@
 		772A180B1DE5B69C00BF0947 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TomorrowExtension.entitlements"; sourceTree = "<group>"; };
+		7752F9382247E46E003DC9FE /* CoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
+		7752F93C2247F018003DC9FE /* PromisedCoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedCoreDataSource.swift; sourceTree = "<group>"; };
 		775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TomorrowExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775A394F1E93EC710070B31F /* TomorrowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomorrowViewController.h; sourceTree = "<group>"; };
 		775A39501E93EC710070B31F /* TomorrowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomorrowViewController.m; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				770D9F7E223E4C800037C5B1 /* CoreDataService.swift */,
+				7752F9382247E46E003DC9FE /* CoreDataSource.swift */,
+				7752F93C2247F018003DC9FE /* PromisedCoreDataSource.swift */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -921,9 +927,11 @@
 			files = (
 				775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */,
 				77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */,
+				7752F9392247E46E003DC9FE /* CoreDataSource.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,
+				7752F93D2247F018003DC9FE /* PromisedCoreDataSource.swift in Sources */,
 				7702915B22081C8800B82CF4 /* AddItemsTableViewController.m in Sources */,
 				775A3F772221731600931A1F /* ItemRepository.swift in Sources */,
 				775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */,
