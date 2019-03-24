@@ -18,11 +18,10 @@ class PromisedCoreDataSource: CoreDataSource {
 	}
 	
 	func fetch<T>(_ request: NSFetchRequest<NSFetchRequestResult>) -> Guarantee<[T]> {
-		return Guarantee(resolver: { [weak self] seal in
-			guard let __self = self else { return }
+		return Guarantee(resolver: { seal in
 			
 			var result: [T] = []
-			let context = __self.coreDataService.parentContext
+			let context = self.coreDataService.parentContext
 			
 			do {
 				let fetchResult = try context.fetch(request) as! T
@@ -37,6 +36,16 @@ class PromisedCoreDataSource: CoreDataSource {
 	}
 	
 	func delete(_ request: NSFetchRequest<NSFetchRequestResult>) -> Promise<Void> {
-		return Promise.value(())
+		return Promise(resolver: { seal in
+			let context = self.coreDataService.parentContext
+			do {
+				let objects: [NSManagedObject] = try context.fetch(request) as! [NSManagedObject]
+				objects.forEach { context.delete($0) }
+				try context.save()
+				seal.fulfill(())
+			} catch {
+				seal.reject(error)
+			}
+		})
 	}
 }
