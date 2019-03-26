@@ -10,8 +10,8 @@ import Foundation
 import Swinject
 
 class ApplicationLayerAssembly: Assembly {
-	
+
 	func configure(_ container: Container) {
 	}
-	
+
 }

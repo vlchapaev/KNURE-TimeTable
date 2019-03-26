@@ -13,7 +13,7 @@ import Swinject
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-	
+
 	let swinjectContainer: Container = Container(defaultObjectScope: .transient) { container in
 		let factories: [Assembly] = [
 			ApplicationLayerAssembly(),
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			DomainLayerAssembly(),
 			PresentationLayerAssembly()
 		]
-		
+
 		_ = factories.map { $0.configure(container) }
 	}
 

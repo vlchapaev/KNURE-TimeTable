@@ -75,11 +75,12 @@
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
-		777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
-		777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		777AE2132221988E00EAEE20 /* KNURETimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */; };
 		777AE2142221988E00EAEE20 /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* TimetableParser.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
+		778B3D93224AB29500B7DC40 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F6A222F0DE10042B10D /* IGListKit.framework */; };
+		778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
+		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -105,8 +106,6 @@
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
-		77F06F6B222F0DE10042B10D /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F69222F0DE10042B10D /* Eureka.framework */; };
-		77F06F6C222F0DE10042B10D /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F6A222F0DE10042B10D /* IGListKit.framework */; };
 		77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F06F6D222F0F8E0042B10D /* Assembly.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
@@ -284,7 +283,6 @@
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
-		77F06F69222F0DE10042B10D /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
 		77F06F6D222F0F8E0042B10D /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,12 +312,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				777AE20C222195D900EAEE20 /* PromiseKit.framework in Frameworks */,
-				777AE20D222195D900EAEE20 /* Swinject.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
-				77F06F6C222F0DE10042B10D /* IGListKit.framework in Frameworks */,
+				778B3D93224AB29500B7DC40 /* IGListKit.framework in Frameworks */,
+				778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */,
+				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
-				77F06F6B222F0DE10042B10D /* Eureka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +651,6 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				77F06F69222F0DE10042B10D /* Eureka.framework */,
 				77F06F6A222F0DE10042B10D /* IGListKit.framework */,
 				777AE20A222195D900EAEE20 /* PromiseKit.framework */,
 				777AE20B222195D900EAEE20 /* Swinject.framework */,
@@ -771,7 +767,7 @@
 					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -785,7 +781,7 @@
 			};
 			buildConfigurationList = C33FCC5E1819965300328F6D /* Build configuration list for PBXProject "KNURE TimeTable" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
@@ -849,7 +845,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IGListKit.framework",
 			);
 			name = Carthage;
@@ -1341,7 +1336,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1367,7 +1362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
