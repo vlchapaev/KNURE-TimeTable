@@ -50,4 +50,19 @@ class PromisedCoreDataSource: CoreDataSource {
 			}
 		})
 	}
+
+	func save(_ context: (NSManagedObjectContext) -> Void) -> Promise<Void> {
+		return Promise(resolver: { seal in
+			let backgroundContext = self.coreDataService.parentContext
+			backgroundContext.performAndWait {
+				do {
+					context(backgroundContext)
+					try backgroundContext.save()
+					seal.fulfill(())
+				} catch {
+					seal.reject(error)
+				}
+			}
+		})
+	}
 }
