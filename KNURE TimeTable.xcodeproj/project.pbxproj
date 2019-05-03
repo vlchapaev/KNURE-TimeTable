@@ -81,6 +81,7 @@
 		778B3D93224AB29500B7DC40 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F6A222F0DE10042B10D /* IGListKit.framework */; };
 		778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
+		778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D388CB224F64B500451611 /* RemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* RemoteSource.swift */; };
@@ -280,6 +281,7 @@
 		777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURETimetableParser.swift; sourceTree = "<group>"; };
 		777AE2102221988E00EAEE20 /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
 		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
+		778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerAssembly.swift; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -333,7 +335,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		770290E122081C8700B82CF4 /* Application */ = {
+		770290E122081C8700B82CF4 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				77F06F6D222F0F8E0042B10D /* Assembly.swift */,
@@ -345,23 +347,21 @@
 				770290EB22081C8700B82CF4 /* Configuration.m */,
 				775A3FBA222186AE00931A1F /* ApiKey.swift */,
 			);
-			path = Application;
+			path = ApplicationLayer;
 			sourceTree = "<group>";
 		};
-		770290EC22081C8700B82CF4 /* Domain */ = {
+		770290EC22081C8700B82CF4 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
 				775A3F88222178E200931A1F /* DomainLayerAssembly.swift */,
 				775A3F70222172C600931A1F /* entities */,
 			);
-			path = Domain;
+			path = DomainLayer;
 			sourceTree = "<group>";
 		};
-		770290ED22081C8800B82CF4 /* Data */ = {
+		770290ED22081C8800B82CF4 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				77D388C9224F512100451611 /* NetworkService */,
-				770D9F7B223E41E40037C5B1 /* StorageService */,
 				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
 				770290EF22081C8800B82CF4 /* Lesson.h */,
 				770290F022081C8800B82CF4 /* Lesson.m */,
@@ -370,10 +370,10 @@
 				77915966220CB09200A8FC70 /* entities */,
 				770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */,
 			);
-			path = Data;
+			path = DataLayer;
 			sourceTree = "<group>";
 		};
-		770290F422081C8800B82CF4 /* Presentation */ = {
+		770290F422081C8800B82CF4 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */,
@@ -384,7 +384,7 @@
 				7702910222081C8800B82CF4 /* Controller */,
 				7702911E22081C8800B82CF4 /* View */,
 			);
-			path = Presentation;
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 		770290F522081C8800B82CF4 /* Resources */ = {
@@ -609,6 +609,16 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		778E3117227C89DC00D138B5 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */,
+				77D388C9224F512100451611 /* NetworkService */,
+				770D9F7B223E41E40037C5B1 /* StorageService */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
 		77915966220CB09200A8FC70 /* entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,10 +701,11 @@
 			children = (
 				77DC83F82209C92E00B4E543 /* Info.plist */,
 				77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */,
-				770290E122081C8700B82CF4 /* Application */,
-				770290ED22081C8800B82CF4 /* Data */,
-				770290EC22081C8700B82CF4 /* Domain */,
-				770290F422081C8800B82CF4 /* Presentation */,
+				770290E122081C8700B82CF4 /* ApplicationLayer */,
+				778E3117227C89DC00D138B5 /* ServiceLayer */,
+				770290ED22081C8800B82CF4 /* DataLayer */,
+				770290EC22081C8700B82CF4 /* DomainLayer */,
+				770290F422081C8800B82CF4 /* PresentationLayer */,
 			);
 			path = "KNURE TimeTable iOS";
 			sourceTree = "<group>";
@@ -946,6 +957,7 @@
 				775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */,
 				77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */,
 				77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */,
+				778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */,
 				7752F9392247E46E003DC9FE /* CoreDataSource.swift in Sources */,
 				77D388D3224F89BB00451611 /* PromisedRemoteSource.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
