@@ -10,12 +10,19 @@ import Foundation
 
 class KNURELessonRepository: LessonRepository {
 
-    init() {
-        // TODO: parser service
-        // TODO: coreData service
+	let coreDataSource: CoreDataSource
+	let remoteSource: RemoteSource
+
+    init(coreDataSource: CoreDataSource,
+		 remoteSource: RemoteSource) {
+		self.coreDataSource = coreDataSource
+		self.remoteSource = remoteSource
     }
 
-    func remoteLoadTimetable(itemId: String) {
-        // TODO: implemet
+    func remoteLoadTimetable(itemId: String) throws {
+		let address = "http://cist.nure.ua/ias/app/tt/"
+		guard let url = URL(string: address) else { throw InvalidUrlError() }
+		let request = NetworkRequest(url: url)
+		remoteSource.execute(request)
     }
 }

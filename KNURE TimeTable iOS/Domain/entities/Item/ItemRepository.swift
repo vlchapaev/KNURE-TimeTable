@@ -6,12 +6,12 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
+import PromiseKit
 
 protocol ItemRepository {
-    func localSelectedItems() -> [Item]
-    func localSaveItem(item: Item)
-    func localRemoveItem(identifier: String)
+    func localSelectedItems() -> Promise<[Item]>
+    func localSaveItem(item: Item) -> Promise<Void>
+    func localRemoveItem(identifier: String) -> Promise<Void>
 
-    func remoteItems()
+	func remoteItems(ofType: TimetableItem) -> Promise<[Item]>
 }

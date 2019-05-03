@@ -6,8 +6,8 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
+import PromiseKit
 
 protocol LessonRepository {
-    func remoteLoadTimetable(itemId: String)
+    func remoteLoadTimetable(itemId: String) throws
 }

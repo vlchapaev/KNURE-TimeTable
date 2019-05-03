@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ItemManaged" representedClassName="ItemManaged" syncable="YES" codeGenerationType="class">
         <attribute name="full_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="last_update" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="Lesson" representedClassName="Lesson" syncable="YES" codeGenerationType="class">
+    <entity name="LessonManaged" representedClassName="LessonManaged" syncable="YES" codeGenerationType="class">
         <attribute name="auditory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="brief" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -24,7 +24,7 @@
         <attribute name="type_title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="54" positionY="162" width="126" height="120"/>
-        <element name="Lesson" positionX="277" positionY="198" width="128" height="255"/>
+        <element name="ItemManaged" positionX="54" positionY="162" width="126" height="120"/>
+        <element name="LessonManaged" positionX="277" positionY="198" width="128" height="255"/>
     </elements>
 </model>

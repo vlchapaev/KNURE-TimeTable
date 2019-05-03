@@ -64,3 +64,5 @@ class NetworkRequest {
 		return urlRequest
 	}
 }
+
+class InvalidUrlError: Error {}
