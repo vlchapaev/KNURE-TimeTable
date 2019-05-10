@@ -9,9 +9,9 @@
 import PromiseKit
 
 protocol ItemRepository {
-    func localSelectedItems() -> Promise<[Item]>
-    func localSaveItem(item: Item) -> Promise<Void>
-    func localRemoveItem(identifier: String) -> Promise<Void>
+//    func localSelectedItems() -> Promise<[Item]>
+//    func localSaveItem(item: Item) -> Promise<Void>
+//    func localRemoveItem(identifier: String) -> Promise<Void>
 
-	func remoteItems(ofType: TimetableItem) -> Promise<[Item]>
+	func remoteItems(ofType: TimetableItem) -> Promise<NetworkResponse>
 }
