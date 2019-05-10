@@ -82,7 +82,7 @@
 		778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */; };
-		778E311D227C952700D138B5 /* LessonManaged+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E311C227C952700D138B5 /* LessonManaged+Mapping.swift */; };
+		77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D388CB224F64B500451611 /* RemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* RemoteSource.swift */; };
@@ -283,7 +283,7 @@
 		777AE2102221988E00EAEE20 /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
 		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
 		778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerAssembly.swift; sourceTree = "<group>"; };
-		778E311C227C952700D138B5 /* LessonManaged+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonManaged+Mapping.swift"; sourceTree = "<group>"; };
+		77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLayerErrors.swift; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -348,6 +348,7 @@
 				770290E822081C8700B82CF4 /* AppDelegate.m */,
 				770290EB22081C8700B82CF4 /* Configuration.m */,
 				775A3FBA222186AE00931A1F /* ApiKey.swift */,
+				77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */,
 			);
 			path = ApplicationLayer;
 			sourceTree = "<group>";
@@ -646,7 +647,6 @@
 				7702913722081C8800B82CF4 /* Request.m */,
 				7702913922081C8800B82CF4 /* Request.h */,
 				775A3F782221743500931A1F /* KNURELessonRepository.swift */,
-				778E311C227C952700D138B5 /* LessonManaged+Mapping.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -986,6 +986,7 @@
 				7702915822081C8800B82CF4 /* InitViewController.m in Sources */,
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
+				77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */,
 				77D388D1224F706000451611 /* HTTPStatus.swift in Sources */,
 				7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */,
 				775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */,
@@ -1019,7 +1020,6 @@
 				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,
 				7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */,
 				777AE2142221988E00EAEE20 /* TimetableParser.swift in Sources */,
-				778E311D227C952700D138B5 /* LessonManaged+Mapping.swift in Sources */,
 				777AE2132221988E00EAEE20 /* KNURETimetableParser.swift in Sources */,
 				775A3F792221743500931A1F /* KNURELessonRepository.swift in Sources */,
 			);
