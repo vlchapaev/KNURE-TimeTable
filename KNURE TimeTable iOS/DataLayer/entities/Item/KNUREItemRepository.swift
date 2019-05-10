@@ -13,15 +13,18 @@ class KNUREItemRepository: ItemRepository {
 
 	let coreDataSource: CoreDataSource
 	let remoteSource: RemoteSource
+	let timetableParser: TimetableParser
 
 	init(coreDataSource: CoreDataSource,
-		 remoteSource: RemoteSource) {
+		 remoteSource: RemoteSource,
+		 timetableParser: TimetableParser) {
 		self.coreDataSource = coreDataSource
 		self.remoteSource = remoteSource
+		self.timetableParser = timetableParser
 	}
 
     func localSelectedItems() -> Promise<[Item]> {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ItemManaged")
+		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
         return Promise(coreDataSource.fetch(request))
     }
 
@@ -33,7 +36,7 @@ class KNUREItemRepository: ItemRepository {
 	}
 
     func localRemoveItem(identifier: String) -> Promise<Void> {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ItemManaged")
+		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
 		request.predicate = NSPredicate(format: "identifier = %@", identifier)
 		return coreDataSource.delete(request)
     }

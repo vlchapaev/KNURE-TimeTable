@@ -369,8 +369,8 @@
 				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
 				770290EF22081C8800B82CF4 /* Lesson.h */,
 				770290F022081C8800B82CF4 /* Lesson.m */,
+				777AE20E2221988E00EAEE20 /* Parser */,
 				777AE2112221988E00EAEE20 /* extensions */,
-				777AE20E2221988E00EAEE20 /* parser */,
 				77915966220CB09200A8FC70 /* entities */,
 				770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */,
 			);
@@ -594,7 +594,7 @@
 			path = usecases;
 			sourceTree = "<group>";
 		};
-		777AE20E2221988E00EAEE20 /* parser */ = {
+		777AE20E2221988E00EAEE20 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
 				777AE20F2221988E00EAEE20 /* KNURETimetableParser.swift */,
@@ -602,7 +602,7 @@
 				7702913622081C8800B82CF4 /* EventParser.m */,
 				7702913822081C8800B82CF4 /* EventParser.h */,
 			);
-			path = parser;
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		777AE2112221988E00EAEE20 /* extensions */ = {

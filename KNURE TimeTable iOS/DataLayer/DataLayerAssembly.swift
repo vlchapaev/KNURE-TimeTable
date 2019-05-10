@@ -13,7 +13,8 @@ class DataLayerAssembly: Assembly {
 	func configure(_ container: Container) {
 		container.register(ItemRepository.self) { resolver in
 			KNUREItemRepository(coreDataSource: resolver.resolve(CoreDataSource.self)!,
-								remoteSource: resolver.resolve(RemoteSource.self)!)
+								remoteSource: resolver.resolve(RemoteSource.self)!,
+								timetableParser: resolver.resolve(TimetableParser.self)!)
 		}
 
 		container.register(LessonRepository.self) { resolver in

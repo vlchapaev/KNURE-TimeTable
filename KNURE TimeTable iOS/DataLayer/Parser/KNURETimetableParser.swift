@@ -10,4 +10,10 @@ import Foundation
 
 class KNURETimetableParser: TimetableParser {
 
+	func parseTimetable(data: Data, _ completion: () -> Void) throws {
+	}
+
+	func parseItemList(data: Data, _ completion: () -> Void) throws {
+	}
+
 }
