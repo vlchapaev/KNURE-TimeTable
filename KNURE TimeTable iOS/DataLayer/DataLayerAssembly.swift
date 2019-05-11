@@ -19,7 +19,8 @@ class DataLayerAssembly: Assembly {
 
 		container.register(LessonRepository.self) { resolver in
 			KNURELessonRepository(coreDataSource: resolver.resolve(CoreDataSource.self)!,
-								  remoteSource: resolver.resolve(RemoteSource.self)!)
+								  remoteSource: resolver.resolve(RemoteSource.self)!,
+								  timetableParser: resolver.resolve(TimetableParser.self)!)
 		}
 	}
 }

@@ -10,4 +10,5 @@ import Foundation
 
 enum ApplicationLayerError: Error {
 	case nilSelfError
+	case dataCastError
 }
