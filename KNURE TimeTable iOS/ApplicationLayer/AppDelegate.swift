@@ -17,12 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	let swinjectContainer: Container = Container(defaultObjectScope: .transient) { container in
 		let factories: [Assembly] = [
 			ApplicationLayerAssembly(),
+			ServiceLayerAssembly(),
 			DataLayerAssembly(),
 			DomainLayerAssembly(),
 			PresentationLayerAssembly()
 		]
 
-		_ = factories.map { $0.configure(container) }
+		_ = factories.forEach { $0.configure(container) }
 	}
 
     func application(_: UIApplication,

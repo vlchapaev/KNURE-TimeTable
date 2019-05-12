@@ -64,3 +64,8 @@ class NetworkRequest {
 		return urlRequest
 	}
 }
+
+enum NetworkingError: Error {
+	case invalidUrlError
+	case nilResponseDataError
+}
