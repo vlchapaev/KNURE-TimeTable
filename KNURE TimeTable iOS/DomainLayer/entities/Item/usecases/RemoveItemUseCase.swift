@@ -6,4 +6,20 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
+import PromiseKit
+
+class RemoveItemUseCase: UseCase {
+
+	typealias Query = NSNumber
+	typealias Response = Void
+
+	let itemRepository: ItemRepository
+
+	init(itemRepository: ItemRepository) {
+		self.itemRepository = itemRepository
+	}
+
+	func execute(_ query: NSNumber) -> Promise<Void> {
+		return itemRepository.localRemoveItem(identifier: query)
+	}
+}
