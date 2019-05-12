@@ -65,4 +65,7 @@ class NetworkRequest {
 	}
 }
 
-class InvalidUrlError: Error {}
+enum NetworkingError: Error {
+	case invalidUrlError
+	case nilResponseDataError
+}

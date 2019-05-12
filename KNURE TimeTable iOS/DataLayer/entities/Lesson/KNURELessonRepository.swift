@@ -22,10 +22,10 @@ class KNURELessonRepository: LessonRepository {
 		self.timetableParser = timetableParser
     }
 
-    func remoteLoadTimetable(itemId: String) -> Promise<Void> {
+    func remoteLoadTimetable(itemId: NSNumber) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"
 		guard let url = URL(string: address) else {
-			return Promise(error: InvalidUrlError())
+			return Promise(error: NetworkingError.invalidUrlError)
 		}
 
 		return Promise(resolver: { seal in
@@ -37,9 +37,15 @@ class KNURELessonRepository: LessonRepository {
 						return
 					}
 
-					try self.timetableParser.parseItemList(data: response.data!) {
+					guard let data = response.data else {
+						seal.reject(NetworkingError.nilResponseDataError)
+						return
+					}
+
+					try self.timetableParser.parseTimetable(itemId: itemId, data: data) {
 						seal.fulfill(())
 					}
+
 				}.catch {
 					seal.reject($0)
 			}

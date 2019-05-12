@@ -16,7 +16,7 @@ class KNURETimetableParser: TimetableParser {
 		self.coreDataService = coreDataService
 	}
 
-	func parseTimetable(data: Data, _ completion: () -> Void) throws {
+	func parseTimetable(itemId: NSNumber, data: Data, _ completion: () -> Void) throws {
 		let utfEncodedData = try data.transform(from: .windowsCP1251, to: .utf8)
 		let json = try JSONSerialization.jsonObject(with: utfEncodedData, options: [])
 
@@ -50,6 +50,7 @@ class KNURETimetableParser: TimetableParser {
 
 			for event in events {
 				let lesson = LessonManaged(context: context)
+				lesson.itemIdentifier = itemId
 				lesson.auditory = event["auditory"] as? String
 				lesson.numberPair = event["number_pair"] as? NSNumber
 				lesson.startTimestamp = event["start_time"] as? NSNumber

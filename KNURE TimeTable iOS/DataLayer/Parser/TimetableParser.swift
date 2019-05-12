@@ -21,10 +21,12 @@ public protocol TimetableParser {
 	/// <#Description#>
 	///
 	/// - Parameters:
+	///   - itemId: <#itemId description#>
 	///   - data: <#data description#>
 	///   - completion: <#completion description#>
+	/// - Returns: <#return value description#>
 	/// - Throws: <#throws value description#>
-	func parseTimetable(data: Data, _ completion: () -> Void) throws
+	func parseTimetable(itemId: NSNumber, data: Data, _ completion: () -> Void) throws
 
 	/// <#Description#>
 	///
