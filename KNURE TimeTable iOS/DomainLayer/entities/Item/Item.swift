@@ -33,7 +33,6 @@ public class Item {
 	}
 }
 
-
 extension ItemManaged {
 	func toDomain() -> Item {
 		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group

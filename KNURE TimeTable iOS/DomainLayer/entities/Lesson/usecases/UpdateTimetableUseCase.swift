@@ -11,7 +11,7 @@ import PromiseKit
 class UpdateTimetableUseCase: UseCase {
 
 	typealias Query = NSNumber
-	typealias Response = Void
+	typealias Response = Promise<Void>
 
 	let lessonRepository: LessonRepository
 

@@ -8,8 +8,20 @@
 
 import PromiseKit
 import CoreData
+import RxSwift
 
 class KNUREItemRepository: ItemRepository {
+	func localSelectedItems() -> Promise<[Item]> {
+		return Promise.value([])
+	}
+
+	func localSaveItem(item: Item) -> Promise<Void> {
+		return Promise.value(())
+	}
+
+	func localRemoveItem(identifier: NSNumber) -> Promise<Void> {
+		return Promise.value(())
+	}
 
 	let coreDataSource: CoreDataSource
 	let remoteSource: RemoteSource
@@ -21,6 +33,11 @@ class KNUREItemRepository: ItemRepository {
 		self.coreDataSource = coreDataSource
 		self.remoteSource = remoteSource
 		self.timetableParser = timetableParser
+	}
+
+	func localSelectedItems() -> Observable<[Item]> {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		return coreDataSource.observe(request).map { $0.dom }
 	}
 
 //    func localSelectedItems() -> Promise<[Item]> {

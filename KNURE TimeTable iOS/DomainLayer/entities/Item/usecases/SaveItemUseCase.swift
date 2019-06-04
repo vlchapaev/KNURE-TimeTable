@@ -9,9 +9,9 @@
 import PromiseKit
 
 class SaveItemUseCase: UseCase {
-	
+
 	typealias Query = Item
-	typealias Response = Void
+	typealias Response = Promise<Void>
 
 	let itemRepository: ItemRepository
 

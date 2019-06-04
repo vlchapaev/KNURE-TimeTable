@@ -14,7 +14,7 @@ class KNURELessonRepository: LessonRepository {
 	let remoteSource: RemoteSource
 	let timetableParser: TimetableParser
 
-    init(coreDataSource: CoreDataSource,
+	init(coreDataSource: CoreDataSource,
 		 remoteSource: RemoteSource,
 		 timetableParser: TimetableParser) {
 		self.coreDataSource = coreDataSource

@@ -7,9 +7,10 @@
 //
 
 import PromiseKit
+import RxSwift
 
 protocol ItemRepository {
-    func localSelectedItems() -> Promise<[Item]>
+    func localSelectedItems() -> Observable<[Item]>
     func localSaveItem(item: Item) -> Promise<Void>
     func localRemoveItem(identifier: NSNumber) -> Promise<Void>
 

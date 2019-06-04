@@ -10,7 +10,7 @@ import PromiseKit
 
 class ItemsUseCase: UseCase {
 	typealias Query = TimetableItem
-	typealias Response = [Item]
+	typealias Response = Promise<[Item]>
 
 	let itemRepository: ItemRepository
 
