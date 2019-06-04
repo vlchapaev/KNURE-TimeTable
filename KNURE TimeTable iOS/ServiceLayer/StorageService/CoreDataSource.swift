@@ -8,9 +8,11 @@
 
 import CoreData
 import PromiseKit
+import RxSwift
 
 protocol CoreDataSource {
 	func fetch<T>(_ request: NSFetchRequest<T>) -> Guarantee<[T]>
 	func delete<T>(_ request: NSFetchRequest<T>) -> Promise<Void>
 	func save(_ context: (NSManagedObjectContext) -> Void) -> Promise<Void>
+	func observe<T>(_ request: NSFetchRequest<T>) -> Observable<[T]>
 }
