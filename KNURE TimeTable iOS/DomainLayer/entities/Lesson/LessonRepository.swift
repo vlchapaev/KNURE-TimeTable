@@ -9,5 +9,5 @@
 import PromiseKit
 
 protocol LessonRepository {
-    func remoteLoadTimetable(itemId: NSNumber) -> Promise<Void>
+    func remoteLoadTimetable(identifier: String) -> Promise<Void>
 }

@@ -26,7 +26,7 @@ public protocol TimetableParser {
 	///   - completion: <#completion description#>
 	/// - Returns: <#return value description#>
 	/// - Throws: <#throws value description#>
-	func parseTimetable(itemId: NSNumber, data: Data, _ completion: () -> Void) throws
+	func parseTimetable(identifier: String, data: Data, _ completion: () -> Void) throws
 
 	/// <#Description#>
 	///

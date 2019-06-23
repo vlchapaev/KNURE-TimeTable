@@ -6,5 +6,20 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
+class SelectedItemsObserver: UseCase {
+
+	typealias Query = Void
+	typealias Response = Observable<[Item]>
+
+	let itemRepository: ItemRepository
+
+	init(itemRepository: ItemRepository) {
+		self.itemRepository = itemRepository
+	}
+
+	func execute(_ query: Void) -> Observable<[Item]> {
+		return self.itemRepository.localSelectedItems()
+	}
+}

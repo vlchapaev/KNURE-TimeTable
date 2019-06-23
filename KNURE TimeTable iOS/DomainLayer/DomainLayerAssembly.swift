@@ -16,22 +16,26 @@ class DomainLayerAssembly: Assembly {
 	}
 
 	func configureItem(_ container: Container) {
-		container.register(SaveItemUseCase.self) { resolver in
-			SaveItemUseCase(itemRepository: resolver.resolve(ItemRepository.self)!)
+		container.register(SaveItemUseCase.self) {
+			SaveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
 		}
 
-		container.register(RemoveItemUseCase.self) { resolver in
-			RemoveItemUseCase(itemRepository: resolver.resolve(ItemRepository.self)!)
+		container.register(RemoveItemUseCase.self) {
+			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
 		}
 
-		container.register(ItemsUseCase.self) { resolver in
-			ItemsUseCase(itemRepository: resolver.resolve(ItemRepository.self)!)
+		container.register(ItemsUseCase.self) {
+			ItemsUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
+		}
+
+		container.register(SelectedItemsObserver.self) {
+			SelectedItemsObserver(itemRepository: $0.resolve(ItemRepository.self)!)
 		}
 	}
 
 	func configureLesson(_ container: Container) {
-		container.register(UpdateTimetableUseCase.self) { resolver in
-			UpdateTimetableUseCase(lessonRepository: resolver.resolve(LessonRepository.self)!)
+		container.register(UpdateTimetableUseCase.self) {
+			UpdateTimetableUseCase(lessonRepository: $0.resolve(LessonRepository.self)!)
 		}
 	}
 }

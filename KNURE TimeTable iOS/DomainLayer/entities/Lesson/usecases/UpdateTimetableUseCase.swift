@@ -10,7 +10,7 @@ import PromiseKit
 
 class UpdateTimetableUseCase: UseCase {
 
-	typealias Query = NSNumber
+	typealias Query = String
 	typealias Response = Promise<Void>
 
 	let lessonRepository: LessonRepository
@@ -19,7 +19,7 @@ class UpdateTimetableUseCase: UseCase {
 		self.lessonRepository = lessonRepository
 	}
 
-	func execute(_ query: NSNumber) -> Promise<Void> {
-		return lessonRepository.remoteLoadTimetable(itemId: query)
+	func execute(_ query: String) -> Promise<Void> {
+		return lessonRepository.remoteLoadTimetable(identifier: query)
 	}
 }

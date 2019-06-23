@@ -12,7 +12,7 @@ import Foundation
 public class Item {
 
 	/// unique value to store item
-	var identifier: NSNumber
+	var identifier: String
 
 	/// short name to represent entity
 	var shortName: String
@@ -26,28 +26,9 @@ public class Item {
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?
 
-	init(identifier: NSNumber, shortName: String, type: TimetableItem) {
+	init(identifier: String, shortName: String, type: TimetableItem) {
 		self.identifier = identifier
 		self.shortName = shortName
 		self.type = type
-	}
-}
-
-extension ItemManaged {
-	func toDomain() -> Item {
-		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group
-		let item = Item(identifier: identifier ?? 0,
-						shortName: title ?? "",
-						type: timetableType)
-
-		if let lastUpdateTimestamp = lastUpdateTimestamp?.doubleValue {
-			item.lastUpdate = Date(timeIntervalSince1970: lastUpdateTimestamp)
-		}
-
-		if let fullName = fullName {
-			item.fullName = fullName
-		}
-
-		return item
 	}
 }

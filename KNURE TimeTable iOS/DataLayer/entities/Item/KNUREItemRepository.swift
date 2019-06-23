@@ -11,19 +11,6 @@ import CoreData
 import RxSwift
 
 class KNUREItemRepository: ItemRepository {
-	func localSelectedItems() -> Promise<[Item]> {
-		return Promise.value([])
-	}
-
-	func localSaveItem(item: Item) -> Promise<Void> {
-		return coreDataSource.save { context in
-			let itemManaged = ItemManaged(context: context)
-			itemManaged.identifier = item.identifier
-			itemManaged.fullName = item.fullName
-			itemManaged.title = item.shortName
-			itemManaged.lastUpdateTimestamp = item.lastUpdate?.timeIntervalSince1970 as NSNumber?
-		}
-	}
 
 	let coreDataSource: CoreDataSource
 	let remoteSource: RemoteSource
@@ -42,8 +29,18 @@ class KNUREItemRepository: ItemRepository {
 		return coreDataSource.observe(request).map { $0.map({ $0.domainValue }) }
 	}
 
+	func localSaveItem(item: Item) -> Promise<Void> {
+		return coreDataSource.save { context in
+			let itemManaged = ItemManaged(context: context)
+			itemManaged.identifier = item.identifier
+			itemManaged.fullName = item.fullName
+			itemManaged.title = item.shortName
+			itemManaged.lastUpdateTimestamp = item.lastUpdate?.timeIntervalSince1970 as NSNumber?
+		}
+	}
+
     func localRemoveItem(identifier: String) -> Promise<Void> {
-		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "identifier = %@", identifier)
 		return coreDataSource.delete(request)
     }

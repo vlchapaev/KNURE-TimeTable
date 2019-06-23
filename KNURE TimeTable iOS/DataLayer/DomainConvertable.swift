@@ -10,11 +10,6 @@ import CoreData
 
 public protocol DomainConvertable: AnyObject {
 	associatedtype DomainType
+
 	var domainValue: DomainType { get }
 }
-
-//extension Sequence where Iterator.Element == NSManagedObject {
-//	func toDomain() -> [Any] {
-//		return self.map { ($0 as! DomainConvertable).domainValue }
-//	}
-//}
