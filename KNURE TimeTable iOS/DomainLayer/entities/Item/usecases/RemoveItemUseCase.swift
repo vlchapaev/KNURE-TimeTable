@@ -10,7 +10,7 @@ import PromiseKit
 
 class RemoveItemUseCase: UseCase {
 
-	typealias Query = NSNumber
+	typealias Query = String
 	typealias Response = Promise<Void>
 
 	let itemRepository: ItemRepository
@@ -19,7 +19,7 @@ class RemoveItemUseCase: UseCase {
 		self.itemRepository = itemRepository
 	}
 
-	func execute(_ query: NSNumber) -> Promise<Void> {
+	func execute(_ query: String) -> Promise<Void> {
 		return itemRepository.localRemoveItem(identifier: query)
 	}
 }

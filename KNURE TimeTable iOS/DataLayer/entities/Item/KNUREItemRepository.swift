@@ -16,11 +16,13 @@ class KNUREItemRepository: ItemRepository {
 	}
 
 	func localSaveItem(item: Item) -> Promise<Void> {
-		return Promise.value(())
-	}
-
-	func localRemoveItem(identifier: NSNumber) -> Promise<Void> {
-		return Promise.value(())
+		return coreDataSource.save { context in
+			let itemManaged = ItemManaged(context: context)
+			itemManaged.identifier = item.identifier
+			itemManaged.fullName = item.fullName
+			itemManaged.title = item.shortName
+			itemManaged.lastUpdateTimestamp = item.lastUpdate?.timeIntervalSince1970 as NSNumber?
+		}
 	}
 
 	let coreDataSource: CoreDataSource
@@ -37,26 +39,14 @@ class KNUREItemRepository: ItemRepository {
 
 	func localSelectedItems() -> Observable<[Item]> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		return coreDataSource.observe(request).map { $0.dom }
+		return coreDataSource.observe(request).map { $0.map({ $0.domainValue }) }
 	}
 
-//    func localSelectedItems() -> Promise<[Item]> {
-//		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
-//        return Promise(coreDataSource.fetch(request))
-//    }
-
-//    func localSaveItem(item: Item) -> Promise<Void> {
-//		return coreDataSource.save { context in
-//			// TODO: make ItemManaged instance
-//			// TODO: map domain to data
-//		}
-//	}
-
-//    func localRemoveItem(identifier: String) -> Promise<Void> {
-//		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
-//		request.predicate = NSPredicate(format: "identifier = %@", identifier)
-//		return coreDataSource.delete(request)
-//    }
+    func localRemoveItem(identifier: String) -> Promise<Void> {
+		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
+		request.predicate = NSPredicate(format: "identifier = %@", identifier)
+		return coreDataSource.delete(request)
+    }
 
 	func remoteItems(ofType: TimetableItem) -> Promise<NetworkResponse> {
 		let address = "http://cist.nure.ua/ias/app/tt/"

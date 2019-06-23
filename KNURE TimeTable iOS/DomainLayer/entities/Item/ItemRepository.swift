@@ -12,7 +12,7 @@ import RxSwift
 protocol ItemRepository {
     func localSelectedItems() -> Observable<[Item]>
     func localSaveItem(item: Item) -> Promise<Void>
-    func localRemoveItem(identifier: NSNumber) -> Promise<Void>
+    func localRemoveItem(identifier: String) -> Promise<Void>
 
 	func remoteItems(ofType: TimetableItem) -> Promise<NetworkResponse>
 }

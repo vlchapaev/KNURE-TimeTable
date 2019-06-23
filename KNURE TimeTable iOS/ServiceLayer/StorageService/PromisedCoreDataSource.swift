@@ -67,7 +67,7 @@ class PromisedCoreDataSource: CoreDataSource {
 		})
 	}
 
-	func observe<T>(_ request: NSFetchRequest<T>) -> Observable<[T]> where T : NSFetchRequestResult {
+	func observe<T>(_ request: NSFetchRequest<T>) -> Observable<[T]> where T: NSFetchRequestResult {
 		let context = self.coreDataService.parentContext
 		let scheduler = ContextScheduler(context: context)
 		return context.rx.entities(fetchRequest: request).subscribeOn(scheduler)

@@ -9,6 +9,7 @@
 import PromiseKit
 
 class ItemsUseCase: UseCase {
+
 	typealias Query = TimetableItem
 	typealias Response = Promise<[Item]>
 

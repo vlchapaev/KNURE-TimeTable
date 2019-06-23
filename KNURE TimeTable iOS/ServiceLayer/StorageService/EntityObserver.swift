@@ -18,9 +18,9 @@ final class EntityObserver<T: NSFetchRequestResult>: NSObject, NSFetchedResultsC
 
 	init(observer: Observer,
 		 fetchRequest: NSFetchRequest<T>,
-		context: NSManagedObjectContext,
-		sectionNameKeyPath: String?,
-		cacheName: String?) {
+		 context: NSManagedObjectContext,
+		 sectionNameKeyPath: String?,
+		 cacheName: String?) {
 
 		self.observer = observer
 		disposeBag = DisposeBag()

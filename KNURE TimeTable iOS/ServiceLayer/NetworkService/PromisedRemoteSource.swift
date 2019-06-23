@@ -10,20 +10,23 @@ import PromiseKit
 
 class PromisedRemoteSource: RemoteSource {
 
-	var session: URLSession
-	var queue: DispatchQueue
+	private let configuration: URLSessionConfiguration
 
 	init(configuration: URLSessionConfiguration) {
-		session = URLSession(configuration: configuration)
-		queue = DispatchQueue(label: "com.NetworkSession.queue")
+		self.configuration = configuration
+	}
+
+	init() {
+		configuration = URLSessionConfiguration.default
 	}
 
 	// MARK: - RemoteSource
 
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse> {
 		return Promise(resolver: { (resolver: Resolver<NetworkResponse>) in
-			self.session.dataTask(with: request.defaultUrlRequest,
-								  completionHandler: self.makeSessionCompletion(resolver: resolver)).resume()
+			let session = URLSession(configuration: self.configuration)
+			session.dataTask(with: request.defaultUrlRequest,
+							 completionHandler: self.makeSessionCompletion(resolver: resolver)).resume()
 		})
 	}
 
@@ -31,7 +34,7 @@ class PromisedRemoteSource: RemoteSource {
 		return { data, urlResponse, error in
 
 			guard let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode else {
-				resolver.reject(HTTPStatusNotResolvedError())
+				resolver.reject(HTTPStatus.undefined)
 				return
 			}
 
@@ -51,5 +54,3 @@ class PromisedRemoteSource: RemoteSource {
 		}
 	}
 }
-
-class HTTPStatusNotResolvedError: Error {}
