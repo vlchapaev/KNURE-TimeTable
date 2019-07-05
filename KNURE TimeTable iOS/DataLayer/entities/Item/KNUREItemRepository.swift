@@ -12,12 +12,12 @@ import RxSwift
 
 class KNUREItemRepository: ItemRepository {
 
-	let coreDataSource: CoreDataSource
-	let remoteSource: RemoteSource
-	let timetableParser: TimetableParser
+	private let coreDataSource: CoreDataSource
+	private let remoteSource: PromisedNetworkService
+	private let timetableParser: TimetableParser
 
 	init(coreDataSource: CoreDataSource,
-		 remoteSource: RemoteSource,
+		 remoteSource: PromisedNetworkService,
 		 timetableParser: TimetableParser) {
 		self.coreDataSource = coreDataSource
 		self.remoteSource = remoteSource

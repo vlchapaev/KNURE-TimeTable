@@ -1,5 +1,5 @@
 //
-//  RemoteSource.swift
+//  PromisedNetworkService.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 30/03/2019.
@@ -8,6 +8,6 @@
 
 import PromiseKit
 
-protocol RemoteSource {
+protocol PromisedNetworkService {
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse>
 }

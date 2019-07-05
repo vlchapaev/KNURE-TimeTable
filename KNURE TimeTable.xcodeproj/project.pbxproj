@@ -94,11 +94,11 @@
 		77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
-		77D388CB224F64B500451611 /* RemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* RemoteSource.swift */; };
+		77D388CB224F64B500451611 /* PromisedNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* PromisedNetworkService.swift */; };
 		77D388CD224F662000451611 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CC224F662000451611 /* NetworkRequest.swift */; };
 		77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CE224F6FCC00451611 /* NetworkResponse.swift */; };
 		77D388D1224F706000451611 /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D0224F706000451611 /* HTTPStatus.swift */; };
-		77D388D3224F89BB00451611 /* PromisedRemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* PromisedRemoteSource.swift */; };
+		77D388D3224F89BB00451611 /* PromisedNetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		77DC83D32209C71300B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
 		77DC83D42209C71400B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
@@ -308,11 +308,11 @@
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		77D388CA224F64B500451611 /* RemoteSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSource.swift; sourceTree = "<group>"; };
+		77D388CA224F64B500451611 /* PromisedNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedNetworkService.swift; sourceTree = "<group>"; };
 		77D388CC224F662000451611 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		77D388CE224F6FCC00451611 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		77D388D0224F706000451611 /* HTTPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatus.swift; sourceTree = "<group>"; };
-		77D388D2224F89BB00451611 /* PromisedRemoteSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedRemoteSource.swift; sourceTree = "<group>"; };
+		77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedNetworkServiceImpl.swift; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
@@ -681,11 +681,11 @@
 		77D388C9224F512100451611 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				77D388CA224F64B500451611 /* RemoteSource.swift */,
+				77D388CA224F64B500451611 /* PromisedNetworkService.swift */,
 				77D388CC224F662000451611 /* NetworkRequest.swift */,
 				77D388CE224F6FCC00451611 /* NetworkResponse.swift */,
 				77D388D0224F706000451611 /* HTTPStatus.swift */,
-				77D388D2224F89BB00451611 /* PromisedRemoteSource.swift */,
+				77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -992,7 +992,7 @@
 				778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */,
 				771A83D122A70130006964D7 /* NSManagedObjectContext+Reactive.swift in Sources */,
 				7752F9392247E46E003DC9FE /* CoreDataSource.swift in Sources */,
-				77D388D3224F89BB00451611 /* PromisedRemoteSource.swift in Sources */,
+				77D388D3224F89BB00451611 /* PromisedNetworkServiceImpl.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,
@@ -1051,7 +1051,7 @@
 				7702915722081C8800B82CF4 /* CalendarExportViewController.m in Sources */,
 				7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */,
 				7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */,
-				77D388CB224F64B500451611 /* RemoteSource.swift in Sources */,
+				77D388CB224F64B500451611 /* PromisedNetworkService.swift in Sources */,
 				7702917022081C8800B82CF4 /* PFNavigationDropdownMenu.m in Sources */,
 				771A83D722A707E1006964D7 /* DomainConvertable.swift in Sources */,
 				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,

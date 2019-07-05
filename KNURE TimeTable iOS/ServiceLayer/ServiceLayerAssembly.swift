@@ -19,8 +19,8 @@ class ServiceLayerAssembly: Assembly {
 			PromisedCoreDataSource(coreDataService: $0.resolve(CoreDataService.self)!)
 		}
 
-		container.register(RemoteSource.self) { _ in
-			PromisedRemoteSource()
+		container.register(PromisedNetworkService.self) { _ in
+			PromisedNetworkServiceImpl()
 		}
 	}
 }

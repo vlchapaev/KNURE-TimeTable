@@ -1,5 +1,5 @@
 //
-//  PromisedRemoteSource.swift
+//  PromisedNetworkServiceImpl.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 30/03/2019.
@@ -8,29 +8,29 @@
 
 import PromiseKit
 
-class PromisedRemoteSource: RemoteSource {
+class PromisedNetworkServiceImpl: PromisedNetworkService {
 
 	private let configuration: URLSessionConfiguration
 
-	init(configuration: URLSessionConfiguration) {
+	init(configuration: URLSessionConfiguration = .default) {
 		self.configuration = configuration
 	}
 
-	init() {
-		configuration = URLSessionConfiguration.default
-	}
-
-	// MARK: - RemoteSource
+	// MARK: - PromisedNetworkService
 
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse> {
-		return Promise(resolver: { (resolver: Resolver<NetworkResponse>) in
+		return Promise { [weak self] (resolver: Resolver<NetworkResponse>) in
+			guard let self = self else { resolver.reject(ApplicationLayerError.nilSelfError); return }
 			let session = URLSession(configuration: self.configuration)
+			let completion = self.makeSessionCompletion(resolver: resolver,
+														shouldConvertToJson: request.shouldConvertResponseToJSON)
 			session.dataTask(with: request.defaultUrlRequest,
-							 completionHandler: self.makeSessionCompletion(resolver: resolver)).resume()
-		})
+							 completionHandler: completion).resume()
+		}
 	}
 
-	func makeSessionCompletion(resolver: Resolver<NetworkResponse>) -> (Data?, URLResponse?, Error?) -> Void {
+	func makeSessionCompletion(resolver: Resolver<NetworkResponse>,
+							   shouldConvertToJson: Bool) -> (Data?, URLResponse?, Error?) -> Void {
 		return { data, urlResponse, error in
 
 			guard let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode else {
@@ -41,7 +41,7 @@ class PromisedRemoteSource: RemoteSource {
 			let httpStatus = HTTPStatus(code: statusCode)
 			var json: Any?
 
-			if let data = data {
+			if let data = data, shouldConvertToJson {
 				do {
 					json = try JSONSerialization.jsonObject(with: data, options: [])
 				} catch {

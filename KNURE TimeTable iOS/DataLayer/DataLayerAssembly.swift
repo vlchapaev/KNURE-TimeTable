@@ -13,13 +13,13 @@ class DataLayerAssembly: Assembly {
 	func configure(_ container: Container) {
 		container.register(ItemRepository.self) {
 			KNUREItemRepository(coreDataSource: $0.resolve(CoreDataSource.self)!,
-								remoteSource: $0.resolve(RemoteSource.self)!,
+								remoteSource: $0.resolve(PromisedNetworkService.self)!,
 								timetableParser: $0.resolve(TimetableParser.self)!)
 		}
 
 		container.register(LessonRepository.self) {
 			KNURELessonRepository(coreDataSource: $0.resolve(CoreDataSource.self)!,
-								  remoteSource: $0.resolve(RemoteSource.self)!,
+								  remoteSource: $0.resolve(PromisedNetworkService.self)!,
 								  timetableParser: $0.resolve(TimetableParser.self)!)
 		}
 	}
