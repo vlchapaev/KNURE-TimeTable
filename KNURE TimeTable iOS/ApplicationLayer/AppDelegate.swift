@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			PresentationLayerAssembly()
 		]
 
-		_ = factories.forEach { $0.configure(container) }
+		factories.forEach { $0.configure(container) }
 	}
 
     func application(_: UIApplication,

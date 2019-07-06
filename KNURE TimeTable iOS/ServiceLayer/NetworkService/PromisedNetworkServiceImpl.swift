@@ -20,11 +20,11 @@ class PromisedNetworkServiceImpl: PromisedNetworkService {
 
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse> {
 		return Promise { [weak self] (resolver: Resolver<NetworkResponse>) in
-			guard let self = self else { resolver.reject(ApplicationLayerError.nilSelfError); return }
+			guard let self = self else { resolver.reject(ApplicationLayer.nilSelfError); return }
 			let session = URLSession(configuration: self.configuration)
 			let completion = self.makeSessionCompletion(resolver: resolver,
 														shouldConvertToJson: request.shouldConvertResponseToJSON)
-			session.dataTask(with: request.defaultUrlRequest,
+			session.dataTask(with: request.urlRequest,
 							 completionHandler: completion).resume()
 		}
 	}

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ApplicationLayerError: Error {
+enum ApplicationLayer: Error {
 	case nilSelfError
 	case dataCastError
 }

@@ -12,6 +12,12 @@ import Swinject
 class ApplicationLayerAssembly: Assembly {
 
 	func configure(_ container: Container) {
+		registerApplicationConfig(container)
 	}
 
+	func registerApplicationConfig(_ container: Container) {
+		container.register(ApplicationConfig.self) { _ in
+			DefaultAppConfig()
+		}
+	}
 }

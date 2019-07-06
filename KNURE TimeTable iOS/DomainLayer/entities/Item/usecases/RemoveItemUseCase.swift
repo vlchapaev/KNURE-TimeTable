@@ -20,6 +20,6 @@ class RemoveItemUseCase: UseCase {
 	}
 
 	func execute(_ query: String) -> Promise<Void> {
-		return itemRepository.localRemoveItem(identifier: query)
+		return itemRepository.localDeleteItem(identifier: query)
 	}
 }

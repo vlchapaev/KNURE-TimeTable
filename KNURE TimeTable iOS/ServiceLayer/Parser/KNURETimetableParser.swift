@@ -6,14 +6,14 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
 class KNURETimetableParser: TimetableParser {
 
-	let coreDataService: CoreDataService
+	private let persistentContainer: NSPersistentContainer
 
-	init(coreDataService: CoreDataService) {
-		self.coreDataService = coreDataService
+	init(persistentContainer: NSPersistentContainer) {
+		self.persistentContainer = persistentContainer
 	}
 
 	func parseTimetable(identifier: String, data: Data, _ completion: () -> Void) throws {
@@ -44,10 +44,9 @@ class KNURETimetableParser: TimetableParser {
 			throw KNURETimeTableParseError.subjectsCastError
 		}
 
-		let context = coreDataService.mainContext
+		let context = persistentContainer.newBackgroundContext()
 
 		context.performAndWait {
-
 			for event in events {
 				let lesson = LessonManaged(context: context)
 				lesson.itemIdentifier = identifier

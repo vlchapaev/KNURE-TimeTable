@@ -17,30 +17,32 @@ enum HTTPMethod: String {
 }
 
 class NetworkRequest {
-	var httpMethod: HTTPMethod = .GET
+	var httpMethod: HTTPMethod
 	var url: URL
 	var urlParams: [AnyHashable: Any]?
 	var httpHeaders: [AnyHashable: Any]?
+	var httpBody: Data?
 	var shouldConvertResponseToJSON: Bool
 
 	init(url: URL) {
 		self.url = url
+		httpMethod = .GET
 		shouldConvertResponseToJSON = true
 	}
 
-	var defaultUrlRequest: URLRequest {
+	var urlRequest: URLRequest {
 		return makeUrlRequest(HTTPMethod: httpMethod.rawValue,
 							  url: url,
 							  urlParameters: urlParams,
-							  httpBody: nil,
+							  httpBody: httpBody,
 							  httpHeaders: httpHeaders)
 	}
 
-	func makeUrlRequest(HTTPMethod: String,
-						url: URL,
-						urlParameters: [AnyHashable: Any]?,
-						httpBody: Data?,
-						httpHeaders: [AnyHashable: Any]?) -> URLRequest {
+	private func makeUrlRequest(HTTPMethod: String,
+								url: URL,
+								urlParameters: [AnyHashable: Any]?,
+								httpBody: Data?,
+								httpHeaders: [AnyHashable: Any]?) -> URLRequest {
 
 		var urlRequest: URLRequest
 
@@ -65,7 +67,7 @@ class NetworkRequest {
 	}
 }
 
-enum NetworkingError: Error {
+enum Networking: Error {
 	case invalidUrlError
 	case nilResponseDataError
 }
