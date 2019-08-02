@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-	let swinjectContainer: Container = Container(defaultObjectScope: .transient) { container in
+	let container: Container = Container(defaultObjectScope: .transient) { container in
 		let factories: [Assembly] = [
 			ApplicationLayerAssembly(),
 			ServiceLayerAssembly(),

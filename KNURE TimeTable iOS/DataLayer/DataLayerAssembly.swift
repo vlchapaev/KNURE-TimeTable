@@ -6,7 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
 import Swinject
 
 class DataLayerAssembly: Assembly {

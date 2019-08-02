@@ -8,7 +8,6 @@
 
 import CoreData
 import PromiseKit
-import RxSwift
 
 class PromisedCoreDataServiceImpl: PromisedCoreDataService {
 

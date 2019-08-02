@@ -22,9 +22,7 @@ final class ContextScheduler: ImmediateSchedulerType {
 		let disposable = SingleAssignmentDisposable()
 
 		context.perform {
-			if disposable.isDisposed {
-				return
-			}
+			guard !disposable.isDisposed else { return }
 			disposable.setDisposable(action(state))
 		}
 

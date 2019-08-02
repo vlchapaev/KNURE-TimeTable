@@ -10,10 +10,10 @@ import PromiseKit
 
 class PromisedNetworkServiceImpl: PromisedNetworkService {
 
-	private let configuration: URLSessionConfiguration
+	let session: URLSession
 
 	init(configuration: URLSessionConfiguration = .default) {
-		self.configuration = configuration
+		session = URLSession(configuration: configuration)
 	}
 
 	// MARK: - PromisedNetworkService
@@ -21,7 +21,7 @@ class PromisedNetworkServiceImpl: PromisedNetworkService {
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse> {
 		return Promise { [weak self] (resolver: Resolver<NetworkResponse>) in
 			guard let self = self else { resolver.reject(ApplicationLayer.nilSelfError); return }
-			let session = URLSession(configuration: self.configuration)
+
 			let completion = self.makeSessionCompletion(resolver: resolver,
 														shouldConvertToJson: request.shouldConvertResponseToJSON)
 			session.dataTask(with: request.urlRequest,

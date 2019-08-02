@@ -6,9 +6,7 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import CoreData
-
-public protocol DomainConvertable: AnyObject {
+protocol DomainConvertable: AnyObject {
 	associatedtype DomainType
 
 	var domainValue: DomainType { get }
