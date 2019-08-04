@@ -8,6 +8,12 @@
 
 import Foundation
 
+/// Basic item types in list
+enum TimetableItem: Int {
+
+	case group = 1, teacher, auditory
+}
+
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
 public class Item {
 
@@ -26,7 +32,9 @@ public class Item {
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?
 
-	init(identifier: String, shortName: String, type: TimetableItem) {
+	init(identifier: String,
+		 shortName: String,
+		 type: TimetableItem) {
 		self.identifier = identifier
 		self.shortName = shortName
 		self.type = type

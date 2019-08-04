@@ -25,8 +25,12 @@ class ServiceLayerAssembly: Assembly {
 			PromisedNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
 		}
 
-		container.register(TimetableParser.self) { _ in
-			KNURETimetableParser(persistentContainer: appConfig.persistentStoreContainer)
+		container.register(ImportService.self, name: "KNURELesson") { _ in
+			KNURELessonImportSevice(persistentContainer: appConfig.persistentStoreContainer)
+		}
+
+		container.register(ImportService.self, name: "KNUREItem") { _ in
+			KNURELessonImportSevice(persistentContainer: appConfig.persistentStoreContainer)
 		}
 	}
 }

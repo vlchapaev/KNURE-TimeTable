@@ -15,30 +15,28 @@ class KNUREItemRepository: ItemRepository {
 	private let promisedCoreDataService: PromisedCoreDataService
 	private let reactiveCoreDataService: ReactiveCoreDataService
 	private let promisedNetworkingService: PromisedNetworkService
-	private let timetableParser: TimetableParser
+	private let importService: ImportService
 
 	init(promisedCoreDataService: PromisedCoreDataService,
 		 reactiveCoreDataService: ReactiveCoreDataService,
 		 promisedNetworkingService: PromisedNetworkService,
-		 timetableParser: TimetableParser) {
+		 importService: ImportService) {
 		self.promisedCoreDataService = promisedCoreDataService
 		self.reactiveCoreDataService = reactiveCoreDataService
 		self.promisedNetworkingService = promisedNetworkingService
-		self.timetableParser = timetableParser
+		self.importService = importService
 	}
 
 	func localSelectedItems() -> Observable<[Item]> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		return reactiveCoreDataService.observe(request).map { $0.map({ $0.domainValue }) }
+		return reactiveCoreDataService.observe(request).map {
+			$0.map { $0.domainValue }
+		}
 	}
 
 	func localSaveItem(item: Item) -> Promise<Void> {
 		return promisedCoreDataService.save { context in
-			let itemManaged = ItemManaged(context: context)
-			itemManaged.identifier = item.identifier
-			itemManaged.fullName = item.fullName
-			itemManaged.title = item.shortName
-			itemManaged.lastUpdateTimestamp = item.lastUpdate?.timeIntervalSince1970 as NSNumber?
+			_ = item.dataType(context: context)
 		}
 	}
 

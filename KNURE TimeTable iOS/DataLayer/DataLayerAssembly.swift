@@ -15,14 +15,14 @@ class DataLayerAssembly: Assembly {
 			KNUREItemRepository(promisedCoreDataService: $0.resolve(PromisedCoreDataService.self)!,
 								reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
 								promisedNetworkingService: $0.resolve(PromisedNetworkService.self)!,
-								timetableParser: $0.resolve(TimetableParser.self)!)
+								importService: $0.resolve(ImportService.self, name: "KNUREItem")!)
 		}
 
 		container.register(LessonRepository.self) {
 			KNURELessonRepository(promisedCoreDataService: $0.resolve(PromisedCoreDataService.self)!,
 								  reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
 								  promisedNetworkingService: $0.resolve(PromisedNetworkService.self)!,
-								  timetableParser: $0.resolve(TimetableParser.self)!)
+								  importService: $0.resolve(ImportService.self, name: "KNURELesson")!)
 		}
 	}
 }

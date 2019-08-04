@@ -13,16 +13,16 @@ class KNURELessonRepository: LessonRepository {
 	private let promisedCoreDataService: PromisedCoreDataService
 	private let reactiveCoreDataService: ReactiveCoreDataService
 	private let promisedNetworkingService: PromisedNetworkService
-	private let timetableParser: TimetableParser
+	private let importService: ImportService
 
 	init(promisedCoreDataService: PromisedCoreDataService,
 		 reactiveCoreDataService: ReactiveCoreDataService,
 		 promisedNetworkingService: PromisedNetworkService,
-		 timetableParser: TimetableParser) {
+		 importService: ImportService) {
 		self.promisedCoreDataService = promisedCoreDataService
 		self.reactiveCoreDataService = reactiveCoreDataService
 		self.promisedNetworkingService = promisedNetworkingService
-		self.timetableParser = timetableParser
+		self.importService = importService
     }
 
     func remoteLoadTimetable(identifier: String) -> Promise<Void> {
@@ -40,14 +40,9 @@ class KNURELessonRepository: LessonRepository {
 						return
 					}
 
-					guard let data = response.data else {
-						seal.reject(Networking.nilResponseDataError)
-						return
-					}
-
-					try self.timetableParser.parseTimetable(identifier: identifier, data: data) {
-						seal.fulfill(())
-					}
+//					try self.timetableParser.parseTimetable(identifier: identifier, data: data) {
+//						seal.fulfill(())
+//					}
 
 				}.catch {
 					seal.reject($0)

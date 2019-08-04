@@ -1,5 +1,5 @@
 //
-//  KNURETimetableParser.swift
+//  KNURELessonImportSevice.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 08/02/2019.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class KNURETimetableParser: TimetableParser {
+class KNURELessonImportSevice: ImportService {
 
 	private let persistentContainer: NSPersistentContainer
 
@@ -16,7 +16,12 @@ class KNURETimetableParser: TimetableParser {
 		self.persistentContainer = persistentContainer
 	}
 
-	func parseTimetable(identifier: String, data: Data, _ completion: () -> Void) throws {
+	func importData(_ data: Data?, _ completion: () -> Void) throws {
+
+		guard let data = data else {
+			throw KNURETimeTableParseError.nilDataError
+		}
+
 		let utfEncodedData = try data.transform(from: .windowsCP1251, to: .utf8)
 		let json = try JSONSerialization.jsonObject(with: utfEncodedData, options: [])
 
@@ -49,7 +54,7 @@ class KNURETimetableParser: TimetableParser {
 		context.performAndWait {
 			for event in events {
 				let lesson = LessonManaged(context: context)
-				lesson.itemIdentifier = identifier
+//				lesson.itemIdentifier = identifier
 				lesson.auditory = event["auditory"] as? String
 				lesson.numberPair = event["number_pair"] as? NSNumber
 				lesson.startTimestamp = event["start_time"] as? NSNumber
@@ -71,12 +76,10 @@ class KNURETimetableParser: TimetableParser {
 		completion()
 	}
 
-	func parseItemList(data: Data, _ completion: () -> Void) throws {
-	}
-
 }
 
 enum KNURETimeTableParseError: Error {
+	case nilDataError
 	case dataCastError
 	case eventsCastError
 	case groupsCastError
