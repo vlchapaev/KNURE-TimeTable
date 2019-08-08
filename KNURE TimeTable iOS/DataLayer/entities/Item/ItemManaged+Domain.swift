@@ -9,9 +9,9 @@
 import Foundation
 
 extension ItemManaged: DomainConvertable {
-	public typealias DomainType = Item
+	typealias DomainType = Item
 
-	public var domainValue: Item {
+	var domainValue: Item {
 		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group
 		let item = Item(identifier: identifier ?? "0",
 						shortName: title ?? "",

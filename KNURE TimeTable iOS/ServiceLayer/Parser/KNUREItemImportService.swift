@@ -17,12 +17,13 @@ class KNUREItemImportService: ImportService {
 	}
 
 	func importData(_ data: Data?,
-					transform: @escaping (inout [AnyHashable : Any]) -> Void,
+					transform: @escaping (inout [AnyHashable: Any]) -> Void,
 					completion: () -> Void) throws {
 		try importData(data, completion)
 	}
 
 	func importData(_ data: Data?, _ completion: () -> Void) throws {
+		// TODO: implement
 	}
 
 }

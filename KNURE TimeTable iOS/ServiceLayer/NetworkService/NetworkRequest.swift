@@ -16,7 +16,7 @@ enum HTTPMethod: String {
 	case DELETE
 }
 
-class NetworkRequest {
+struct NetworkRequest {
 	var httpMethod: HTTPMethod
 	var url: URL
 	var urlParams: [AnyHashable: Any]?

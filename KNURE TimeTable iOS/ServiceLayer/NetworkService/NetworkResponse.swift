@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkResponse {
+struct NetworkResponse {
 	var httpStatus: HTTPStatus
 	var data: Data?
 	var json: Any?

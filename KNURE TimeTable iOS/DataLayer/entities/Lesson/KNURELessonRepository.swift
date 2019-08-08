@@ -7,6 +7,8 @@
 //
 
 import PromiseKit
+import RxSwift
+import CoreData
 
 class KNURELessonRepository: LessonRepository {
 
@@ -24,6 +26,25 @@ class KNURELessonRepository: LessonRepository {
 		self.promisedNetworkingService = promisedNetworkingService
 		self.importService = importService
     }
+
+	func localTimetable(identifier: String) -> Observable<[Lesson]> {
+		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
+		request.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
+		return reactiveCoreDataService.observe(request).map {
+			$0.map { $0.domainValue }
+		}
+	}
+
+	func localLesson(identifier: String) -> Promise<Lesson> {
+		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
+		request.predicate = NSPredicate(format: "subjectIdentifier = %@", identifier)
+		return promisedCoreDataService.fetch(request).firstValue.map { $0.domainValue }
+	}
+
+	func localExport(identifier: String, range: Void) -> Promise<Void> {
+		// TODO: implement
+		return Promise()
+	}
 
     func remoteLoadTimetable(identifier: String) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"

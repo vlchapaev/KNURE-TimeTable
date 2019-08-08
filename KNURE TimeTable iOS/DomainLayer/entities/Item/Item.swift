@@ -15,19 +15,19 @@ enum TimetableItem: Int {
 }
 
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
-public class Item {
+class Item {
 
 	/// unique value to store item
-	var identifier: String
+	let identifier: String
 
 	/// short name to represent entity
-	var shortName: String
+	let shortName: String
 
 	/// full name to represent, such as full name of teacher
 	var fullName: String?
 
 	/// group, teacher or auditory
-	var type: TimetableItem
+	let type: TimetableItem
 
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?

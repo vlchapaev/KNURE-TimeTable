@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension Item: DataConvertable {
+extension Item: CoreDataConvertable {
 	typealias DataType = ItemManaged
 
 	func dataType(context: NSManagedObjectContext) -> ItemManaged {

@@ -7,7 +7,34 @@
 //
 
 import PromiseKit
+import RxSwift
 
+/// Access to lesson data
 protocol LessonRepository {
+
+	/// Observe timetable with item identifier
+	///
+	/// - Parameter identifier: item identifier
+	/// - Returns: Observable lesson list
+	func localTimetable(identifier: String) -> Observable<[Lesson]>
+
+	/// Access to single lesson by identifier
+	///
+	/// - Parameter identifier: lesson identifier
+	/// - Returns: Promise with finished operation
+	func localLesson(identifier: String) -> Promise<Lesson>
+
+	/// Export timetable with item identifier to local Calendar
+	///
+	/// - Parameters:
+	///   - identifier: item identifier
+	///   - range: range for export
+	/// - Returns: Promise with finished operation
+	func localExport(identifier: String, range: Void) -> Promise<Void>
+
+    /// Load and store timetable for item identifier
+    ///
+    /// - Parameter identifier: item identifier
+    /// - Returns: Promise with finished operation
     func remoteLoadTimetable(identifier: String) -> Promise<Void>
 }

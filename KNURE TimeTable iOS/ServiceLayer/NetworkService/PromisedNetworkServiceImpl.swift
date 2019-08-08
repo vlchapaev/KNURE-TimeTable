@@ -10,7 +10,7 @@ import PromiseKit
 
 class PromisedNetworkServiceImpl: PromisedNetworkService {
 
-	let session: URLSession
+	private let session: URLSession
 
 	init(configuration: URLSessionConfiguration = .default) {
 		session = URLSession(configuration: configuration)

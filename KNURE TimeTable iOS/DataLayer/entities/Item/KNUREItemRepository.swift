@@ -46,14 +46,14 @@ class KNUREItemRepository: ItemRepository {
 		return promisedCoreDataService.delete(request)
     }
 
-	func remoteItems(ofType: TimetableItem) -> Promise<NetworkResponse> {
+	func remoteItems(ofType: TimetableItem) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"
 		guard let url = URL(string: address) else {
 			return Promise(error: Networking.invalidUrlError)
 		}
 
 		let request = NetworkRequest(url: url)
-		return promisedNetworkingService.execute(request)
+		return promisedNetworkingService.execute(request).asVoid()
 	}
 
 }

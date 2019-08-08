@@ -25,15 +25,17 @@ class PromisedCoreDataServiceImpl: PromisedCoreDataService {
 	func fetch<T>(_ request: NSFetchRequest<T>,
 				  in context: NSManagedObjectContext) -> Guarantee<[T]> where T: NSFetchRequestResult {
 		return Guarantee { seal in
-			var result: [T] = []
+			context.performAndWait {
+				var result: [T] = []
 
-			do {
-				result = try context.fetch(request)
-			} catch {
-				print("\(#file) \(#function) \(error)")
+				do {
+					result = try context.fetch(request)
+				} catch {
+					seal([])
+				}
+
+				seal(result)
 			}
-
-			seal(result)
 		}
 	}
 

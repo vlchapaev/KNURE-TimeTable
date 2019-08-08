@@ -10,13 +10,42 @@ import CoreData
 import PromiseKit
 import RxSwift
 
+/// CoreData service based on Promises
 protocol PromisedCoreDataService {
+
+	/// Give a promise to fetch CoreData with request
+	///
+	/// - Parameter request: NSFetchRequest
+	/// - Returns: a promise to be fulfilled
 	func fetch<T>(_ request: NSFetchRequest<T>) -> Guarantee<[T]>
+
+	/// Give a promise to fetch CoreData with request in context
+	///
+	/// - Parameters:
+	///   - request: NSFetchRequest
+	///   - context: NSManagedObjectContext
+	/// - Returns: a promise to be fulfilled
 	func fetch<T>(_ request: NSFetchRequest<T>, in context: NSManagedObjectContext) -> Guarantee<[T]>
+
+	/// Give a promise to delete objects
+	///
+	/// - Parameter request: NSFetchRequest
+	/// - Returns: promise of finished operation
 	func delete<T>(_ request: NSFetchRequest<T>) -> Promise<Void> where T: NSManagedObject
+
+	/// Promised perform block with automatic save on Background
+	///
+	/// - Parameter context: NSManagedObjectContext
+	/// - Returns: promise with finished operation
 	func save(_ context: @escaping (NSManagedObjectContext) -> Void) -> Promise<Void>
 }
 
+/// CoreData service based on Reactive approach
 protocol ReactiveCoreDataService {
+
+	/// Observable for request
+	///
+	/// - Parameter request: NSFetchRequest
+	/// - Returns: Observable fetch result
 	func observe<T>(_ request: NSFetchRequest<T>) -> Observable<[T]>
 }

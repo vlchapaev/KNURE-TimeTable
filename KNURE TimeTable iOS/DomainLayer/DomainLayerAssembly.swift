@@ -24,10 +24,6 @@ class DomainLayerAssembly: Assembly {
 			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
 		}
 
-		container.register(ItemsUseCase.self) {
-			ItemsUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
-		}
-
 		container.register(SelectedItemsObserver.self) {
 			SelectedItemsObserver(itemRepository: $0.resolve(ItemRepository.self)!)
 		}

@@ -8,6 +8,12 @@
 
 import PromiseKit
 
+/// URL Service based on Promise
 protocol PromisedNetworkService {
+
+	/// Execute network request
+	///
+	/// - Parameter request: request instance
+	/// - Returns: Promise to execute request
 	func execute(_ request: NetworkRequest) -> Promise<NetworkResponse>
 }
