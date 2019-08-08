@@ -30,7 +30,7 @@ class ServiceLayerAssembly: Assembly {
 		}
 
 		container.register(ImportService.self, name: "KNUREItem") { _ in
-			KNURELessonImportSevice(persistentContainer: appConfig.persistentStoreContainer)
+			KNUREItemImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
 	}
 }

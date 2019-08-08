@@ -101,6 +101,7 @@
 		77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CE224F6FCC00451611 /* NetworkResponse.swift */; };
 		77D388D1224F706000451611 /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D0224F706000451611 /* HTTPStatus.swift */; };
 		77D388D3224F89BB00451611 /* PromisedNetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */; };
+		77DA947122FC40E4009105ED /* KNUREItemImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA947022FC40E4009105ED /* KNUREItemImportService.swift */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		77DC83D32209C71300B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
 		77DC83D42209C71400B4E543 /* LessonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */; };
@@ -317,6 +318,7 @@
 		77D388CE224F6FCC00451611 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		77D388D0224F706000451611 /* HTTPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatus.swift; sourceTree = "<group>"; };
 		77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedNetworkServiceImpl.swift; sourceTree = "<group>"; };
+		77DA947022FC40E4009105ED /* KNUREItemImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNUREItemImportService.swift; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 		777AE20E2221988E00EAEE20 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				77DA947022FC40E4009105ED /* KNUREItemImportService.swift */,
 				777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */,
 				777AE2102221988E00EAEE20 /* ImportService.swift */,
 				7702913622081C8800B82CF4 /* EventParser.m */,
@@ -1023,6 +1026,7 @@
 				775A3F7D222174A000931A1F /* KNUREItemRepository.swift in Sources */,
 				7702915822081C8800B82CF4 /* InitViewController.m in Sources */,
 				7716FCD922885B3A00615D39 /* UseCase.swift in Sources */,
+				77DA947122FC40E4009105ED /* KNUREItemImportService.swift in Sources */,
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
 				7716FCDB22885C4E00615D39 /* UpdateTimetableUseCase.swift in Sources */,
