@@ -27,7 +27,7 @@ enum HTTPStatus: Int, Error {
 
 	// MARK: - Success - 2xx
 
-	case ok = 200 // swiftlint:disable:this identifier_name
+	case ok = 200
 	case created = 201
 	case accepted = 202
 	case nonAuthoritativeInformation = 203

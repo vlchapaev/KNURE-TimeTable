@@ -1,2 +1,14 @@
 excluded:
-  - Carthage
+    - Carthage
+
+disabled_rules:
+    - vertical_parameter_alignment
+
+identifier_name:
+    excluded:
+        - ok
+        - id
+
+attributes:
+    always_on_same_line: ["@IBAction", "@IBOutlet", "@IBInspectable"]
+    always_on_line_above: ["@IBDesignable", "@UIApplicationMain", "@discardableResult", "@objc"]
