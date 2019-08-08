@@ -40,9 +40,11 @@ class KNURELessonRepository: LessonRepository {
 						return
 					}
 
-//					try self.timetableParser.parseTimetable(identifier: identifier, data: data) {
-//						seal.fulfill(())
-//					}
+					try self.importService.importData(response.data, transform: { json in
+						json["identifier"] = identifier
+					}, completion: {
+						seal.fulfill(())
+					})
 
 				}.catch {
 					seal.reject($0)

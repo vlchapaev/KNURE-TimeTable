@@ -17,6 +17,12 @@ class KNURELessonImportSevice: ImportService {
 	}
 
 	func importData(_ data: Data?, _ completion: () -> Void) throws {
+		try importData(data, transform: { _ in }, completion: completion)
+	}
+
+	func importData(_ data: Data?,
+					transform: @escaping (inout [AnyHashable: Any]) -> Void,
+					completion: () -> Void) throws {
 
 		guard let data = data else {
 			throw KNURETimeTableParseError.nilDataError
@@ -25,21 +31,27 @@ class KNURELessonImportSevice: ImportService {
 		let utfEncodedData = try data.transform(from: .windowsCP1251, to: .utf8)
 		let json = try JSONSerialization.jsonObject(with: utfEncodedData, options: [])
 
-		guard let dictionary = json as? [AnyHashable: Any] else {
+		guard var dictionary = json as? [AnyHashable: Any] else {
 			throw KNURETimeTableParseError.dataCastError
+		}
+
+		transform(&dictionary)
+
+		guard let identifier = dictionary["identifier"] as? String else {
+			throw KNURETimeTableParseError.nilIdentifierError
 		}
 
 		guard let events = dictionary["events"] as? [[AnyHashable: Any]] else {
 			throw KNURETimeTableParseError.eventsCastError
 		}
 
-//		guard let groups = dictionary["gropus"] as? [[AnyHashable: Any]] else {
-//			throw KNURETimeTableParseError.groupsCastError
-//		}
-//
-//		guard let teachers = dictionary["teachers"] as? [[AnyHashable: Any]] else {
-//			throw KNURETimeTableParseError.teachersCastError
-//		}
+		//		guard let groups = dictionary["gropus"] as? [[AnyHashable: Any]] else {
+		//			throw KNURETimeTableParseError.groupsCastError
+		//		}
+		//
+		//		guard let teachers = dictionary["teachers"] as? [[AnyHashable: Any]] else {
+		//			throw KNURETimeTableParseError.teachersCastError
+		//		}
 
 		guard let types = dictionary["types"] as? [[AnyHashable: Any]] else {
 			throw KNURETimeTableParseError.typesCastError
@@ -54,7 +66,7 @@ class KNURELessonImportSevice: ImportService {
 		context.performAndWait {
 			for event in events {
 				let lesson = LessonManaged(context: context)
-//				lesson.itemIdentifier = identifier
+				lesson.itemIdentifier = identifier
 				lesson.auditory = event["auditory"] as? String
 				lesson.numberPair = event["number_pair"] as? NSNumber
 				lesson.startTimestamp = event["start_time"] as? NSNumber
@@ -81,6 +93,7 @@ class KNURELessonImportSevice: ImportService {
 enum KNURETimeTableParseError: Error {
 	case nilDataError
 	case dataCastError
+	case nilIdentifierError
 	case eventsCastError
 	case groupsCastError
 	case teachersCastError
