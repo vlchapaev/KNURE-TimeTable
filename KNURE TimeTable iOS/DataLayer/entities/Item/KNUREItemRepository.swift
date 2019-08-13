@@ -49,7 +49,7 @@ class KNUREItemRepository: ItemRepository {
 	func remoteItems(ofType: TimetableItem) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"
 		guard let url = URL(string: address) else {
-			return Promise(error: Networking.invalidUrlError)
+			return Promise(error: DataLayerError.invalidUrlError)
 		}
 
 		let request = NetworkRequest(url: url)

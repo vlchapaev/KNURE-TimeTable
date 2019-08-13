@@ -17,6 +17,7 @@ protocol LessonRepository {
 	/// - Parameter identifier: item identifier
 	/// - Returns: Observable lesson list
 	func localTimetable(identifier: String) -> Observable<[Lesson]>
+	// PublishSubject
 
 	/// Access to single lesson by identifier
 	///

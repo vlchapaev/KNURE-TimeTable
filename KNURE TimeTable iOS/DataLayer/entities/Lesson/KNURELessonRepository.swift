@@ -49,7 +49,7 @@ class KNURELessonRepository: LessonRepository {
     func remoteLoadTimetable(identifier: String) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"
 		guard let url = URL(string: address) else {
-			return Promise(error: Networking.invalidUrlError)
+			return Promise(error: DataLayerError.invalidUrlError)
 		}
 
 		return Promise { seal in

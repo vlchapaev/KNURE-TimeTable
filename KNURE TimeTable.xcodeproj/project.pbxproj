@@ -83,6 +83,7 @@
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
+		776DC4162303288B008E8FAE /* DataLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776DC4152303288B008E8FAE /* DataLayerErrors.swift */; };
 		7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778E46722D1096000477BFE /* ApplicationConfig.swift */; };
 		777AE2132221988E00EAEE20 /* KNURELessonImportSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */; };
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
@@ -297,6 +298,7 @@
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		776DC4152303288B008E8FAE /* DataLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerErrors.swift; sourceTree = "<group>"; };
 		7778E46722D1096000477BFE /* ApplicationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfig.swift; sourceTree = "<group>"; };
 		777AE20A222195D900EAEE20 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				775A3F7E2221775900931A1F /* DataLayerAssembly.swift */,
+				776DC4152303288B008E8FAE /* DataLayerErrors.swift */,
 				770290EF22081C8800B82CF4 /* Lesson.h */,
 				770290F022081C8800B82CF4 /* Lesson.m */,
 				777AE2112221988E00EAEE20 /* extensions */,
@@ -1059,6 +1062,7 @@
 				7702917222081C8800B82CF4 /* PFTableViewCell.m in Sources */,
 				775A3F832221779200931A1F /* Lesson.swift in Sources */,
 				775A3F75222172F900931A1F /* LessonRepository.swift in Sources */,
+				776DC4162303288B008E8FAE /* DataLayerErrors.swift in Sources */,
 				773C1D8F22FC5C1000F1FF5C /* LessonManaged+Domain.swift in Sources */,
 				7702915722081C8800B82CF4 /* CalendarExportViewController.m in Sources */,
 				7702914A22081C8800B82CF4 /* AppDelegate.m in Sources */,
