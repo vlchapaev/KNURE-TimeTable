@@ -56,12 +56,8 @@ class KNURELessonRepository: LessonRepository {
 			let request = NetworkRequest(url: url)
 			promisedNetworkingService.execute(request)
 				.done { [weak self] response in
-					guard let self = self else {
-						seal.reject(ApplicationLayer.nilSelfError)
-						return
-					}
 
-					try self.importService.importData(response.data,
+					try self?.importService.importData(response.data,
 													  transform: { $0["identifier"] = identifier },
 													  completion: { seal.fulfill(()) })
 

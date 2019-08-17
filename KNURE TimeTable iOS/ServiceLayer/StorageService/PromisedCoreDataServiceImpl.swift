@@ -40,8 +40,8 @@ class PromisedCoreDataServiceImpl: PromisedCoreDataService {
 	}
 
 	func delete<T>(_ request: NSFetchRequest<T>) -> Promise<Void> where T: NSManagedObject {
-		return Promise { seal in
-			self.persistentContainer.performBackgroundTask { context in
+		return Promise { [weak self] seal in
+			self?.persistentContainer.performBackgroundTask { context in
 				do {
 					let objects = try context.fetch(request)
 					objects.forEach { context.delete($0) }
@@ -55,8 +55,8 @@ class PromisedCoreDataServiceImpl: PromisedCoreDataService {
 	}
 
 	func save(_ context: @escaping (NSManagedObjectContext) -> Void) -> Promise<Void> {
-		return Promise { seal in
-			self.persistentContainer.performBackgroundTask { backgroundContext in
+		return Promise { [weak self] seal in
+			self?.persistentContainer.performBackgroundTask { backgroundContext in
 				do {
 					context(backgroundContext)
 					try backgroundContext.save()
