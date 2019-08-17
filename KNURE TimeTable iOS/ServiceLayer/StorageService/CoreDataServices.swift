@@ -33,11 +33,11 @@ protocol PromisedCoreDataService {
 	/// - Returns: promise of finished operation
 	func delete<T>(_ request: NSFetchRequest<T>) -> Promise<Void> where T: NSManagedObject
 
-	/// Promised perform block with automatic save on Background
+	/// Give a promise to perform batch update for request
 	///
-	/// - Parameter context: NSManagedObjectContext
-	/// - Returns: promise with finished operation
-	func save(_ context: @escaping (NSManagedObjectContext) -> Void) -> Promise<Void>
+	/// - Parameter request: batch update request
+	/// - Returns: promise of finished operation
+	func update(_ request: NSBatchUpdateRequest) -> Promise<Void>
 }
 
 /// CoreData service based on Reactive approach

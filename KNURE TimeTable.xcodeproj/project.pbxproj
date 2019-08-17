@@ -58,7 +58,6 @@
 		773C1D8F22FC5C1000F1FF5C /* LessonManaged+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C1D8E22FC5C1000F1FF5C /* LessonManaged+Domain.swift */; };
 		7752F9392247E46E003DC9FE /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F9382247E46E003DC9FE /* CoreDataServices.swift */; };
 		7752F93D2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F93C2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift */; };
-		77559AE322F6CD0300D2516F /* Item+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77559AE222F6CD0300D2516F /* Item+Data.swift */; };
 		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
 		775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775A39521E93EC710070B31F /* MainInterface.storyboard */; };
@@ -268,7 +267,6 @@
 		774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TomorrowExtension.entitlements"; sourceTree = "<group>"; };
 		7752F9382247E46E003DC9FE /* CoreDataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
 		7752F93C2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedCoreDataServiceImpl.swift; sourceTree = "<group>"; };
-		77559AE222F6CD0300D2516F /* Item+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Data.swift"; sourceTree = "<group>"; };
 		775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TomorrowExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775A394F1E93EC710070B31F /* TomorrowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomorrowViewController.h; sourceTree = "<group>"; };
 		775A39501E93EC710070B31F /* TomorrowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomorrowViewController.m; sourceTree = "<group>"; };
@@ -674,7 +672,6 @@
 				770290F122081C8800B82CF4 /* Item.m */,
 				775A3F7C222174A000931A1F /* KNUREItemRepository.swift */,
 				771A83D422A7038C006964D7 /* ItemManaged+Domain.swift */,
-				77559AE222F6CD0300D2516F /* Item+Data.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1058,7 +1055,6 @@
 				7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */,
 				7702916822081C8800B82CF4 /* MSDayColumnHeader.m in Sources */,
 				7702917122081C8800B82CF4 /* PFTableView.m in Sources */,
-				77559AE322F6CD0300D2516F /* Item+Data.swift in Sources */,
 				7702917222081C8800B82CF4 /* PFTableViewCell.m in Sources */,
 				775A3F832221779200931A1F /* Lesson.swift in Sources */,
 				775A3F75222172F900931A1F /* LessonRepository.swift in Sources */,

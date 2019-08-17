@@ -54,12 +54,11 @@ class PromisedCoreDataServiceImpl: PromisedCoreDataService {
 		}
 	}
 
-	func save(_ context: @escaping (NSManagedObjectContext) -> Void) -> Promise<Void> {
+	func update(_ request: NSBatchUpdateRequest) -> Promise<Void> {
 		return Promise { [weak self] seal in
-			self?.persistentContainer.performBackgroundTask { backgroundContext in
+			self?.persistentContainer.performBackgroundTask { context in
 				do {
-					context(backgroundContext)
-					try backgroundContext.save()
+					try context.execute(request)
 					seal.fulfill(())
 				} catch {
 					seal.reject(error)

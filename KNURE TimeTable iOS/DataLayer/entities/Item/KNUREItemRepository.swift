@@ -29,24 +29,33 @@ class KNUREItemRepository: ItemRepository {
 
 	func localSelectedItems() -> Observable<[Item]> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "selected = %@", true)
 		return reactiveCoreDataService.observe(request).map {
 			$0.map { $0.domainValue }
 		}
 	}
 
-	func localSaveItem(item: Item) -> Promise<Void> {
-		return promisedCoreDataService.save { context in
-			_ = item.dataType(context: context)
-		}
+	func localSaveItem(identifier: String) -> Promise<Void> {
+		let request = NSBatchUpdateRequest(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "identifier = %@", identifier)
+		request.propertiesToUpdate = ["selected": true]
+		return promisedCoreDataService.update(request)
 	}
 
     func localDeleteItem(identifier: String) -> Promise<Void> {
-		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		request.predicate = NSPredicate(format: "identifier = %@", identifier)
-		return promisedCoreDataService.delete(request)
+		let itemRequest = NSBatchUpdateRequest(entityName: "ItemManaged")
+		itemRequest.predicate = NSPredicate(format: "identifier = %@", identifier)
+		itemRequest.propertiesToUpdate = ["selected": false]
+
+		let lessonRequest = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
+		lessonRequest.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
+
+		return promisedCoreDataService.update(itemRequest).then {
+			self.promisedCoreDataService.delete(lessonRequest)
+		}
     }
 
-	func remoteItems(ofType: TimetableItem) -> Promise<Void> {
+	func remoteUpdateItems(ofType: TimetableItem) -> Promise<Void> {
 		let address = "http://cist.nure.ua/ias/app/tt/"
 		guard let url = URL(string: address) else {
 			return Promise(error: DataLayerError.invalidUrlError)

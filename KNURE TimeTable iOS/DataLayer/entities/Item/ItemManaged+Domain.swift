@@ -13,7 +13,7 @@ extension ItemManaged: DomainConvertable {
 
 	var domainValue: Item {
 		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group
-		let item = Item(identifier: identifier ?? "0",
+		var item = Item(identifier: identifier ?? "0",
 						shortName: title ?? "",
 						type: timetableType)
 

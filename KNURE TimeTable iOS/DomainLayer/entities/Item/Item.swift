@@ -15,7 +15,7 @@ enum TimetableItem: Int {
 }
 
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
-class Item {
+struct Item {
 
 	/// unique value to store item
 	let identifier: String

@@ -10,7 +10,7 @@ import PromiseKit
 
 class SaveItemUseCase: UseCase {
 
-	typealias Query = Item
+	typealias Query = String
 	typealias Response = Promise<Void>
 
 	let itemRepository: ItemRepository
@@ -19,7 +19,7 @@ class SaveItemUseCase: UseCase {
 		self.itemRepository = itemRepository
 	}
 
-	func execute(_ query: Item) -> Promise<Void> {
-		return itemRepository.localSaveItem(item: query)
+	func execute(_ query: String) -> Promise<Void> {
+		return itemRepository.localSaveItem(identifier: query)
 	}
 }

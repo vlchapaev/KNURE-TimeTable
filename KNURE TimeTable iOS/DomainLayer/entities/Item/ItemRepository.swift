@@ -21,7 +21,7 @@ protocol ItemRepository {
     ///
     /// - Parameter item: timetable item
     /// - Returns: Promise with finished operation
-    func localSaveItem(item: Item) -> Promise<Void>
+    func localSaveItem(identifier: String) -> Promise<Void>
 
     /// Delete item from persistent store
     ///
@@ -29,5 +29,5 @@ protocol ItemRepository {
     /// - Returns: Promise with finished operation
     func localDeleteItem(identifier: String) -> Promise<Void>
 
-	func remoteItems(ofType: TimetableItem) -> Promise<Void>
+	func remoteUpdateItems(ofType: TimetableItem) -> Promise<Void>
 }
