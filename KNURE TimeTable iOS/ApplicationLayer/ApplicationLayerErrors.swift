@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
-
 enum ApplicationLayer: Error {
 	case nilSelfError
 	case dataCastError

@@ -16,13 +16,13 @@ class KNUREItemImportService: ImportService {
 		self.persistentContainer = persistentContainer
 	}
 
+	func importData(_ data: Data?, _ completion: () -> Void) throws {
+		try importData(data, transform: { _ in }, completion: completion)
+	}
+
 	func importData(_ data: Data?,
 					transform: @escaping (inout [AnyHashable: Any]) -> Void,
 					completion: () -> Void) throws {
-		try importData(data, completion)
-	}
-
-	func importData(_ data: Data?, _ completion: () -> Void) throws {
 		// TODO: implement
 	}
 

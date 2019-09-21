@@ -47,7 +47,7 @@ class KNURELessonRepository: LessonRepository {
 	}
 
     func remoteLoadTimetable(identifier: String) -> Promise<Void> {
-		let address = "http://cist.nure.ua/ias/app/tt/"
+		let address = "http://cist.nure.ua/ias/app/tt/P_API_EVENT_JSON/timetable_id=\(identifier)"
 		guard let url = URL(string: address) else {
 			return Promise(error: DataLayerError.invalidUrlError)
 		}

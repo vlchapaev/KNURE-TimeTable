@@ -27,6 +27,14 @@ class KNUREItemRepository: ItemRepository {
 		self.importService = importService
 	}
 
+	func localItems() -> Observable<[Item]> {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(value: true)
+		return reactiveCoreDataService.observe(request).map {
+			$0.map { $0.domainValue }
+		}
+	}
+
 	func localSelectedItems() -> Observable<[Item]> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "selected = %@", true)
@@ -55,14 +63,35 @@ class KNUREItemRepository: ItemRepository {
 		}
     }
 
-	func remoteUpdateItems(ofType: TimetableItem) -> Promise<Void> {
-		let address = "http://cist.nure.ua/ias/app/tt/"
+	func localSearchItems(query: String) {
+		// TODO: implement
+	}
+
+	func remoteUpdateItems(type: TimetableItem) -> Promise<Void> {
+		var address: String = "http://cist.nure.ua/ias/app/tt/"
+		switch type {
+		case .group:
+			address += "P_API_GROUP_JSON"
+
+		case .teacher:
+			address += "P_API_PODR_JSON"
+
+		case .auditory:
+			address += "P_API_AUDITORIES_JSON"
+		}
+
 		guard let url = URL(string: address) else {
 			return Promise(error: DataLayerError.invalidUrlError)
 		}
 
-		let request = NetworkRequest(url: url)
-		return promisedNetworkingService.execute(request).asVoid()
+		return Promise { seal in
+			let request = NetworkRequest(url: url)
+			promisedNetworkingService.execute(request)
+				.done { [weak self] response in
+					try self?.importService.importData(response.data,
+													   transform: { $0["type"] = type.rawValue },
+													   completion: { seal.fulfill(()) })
+				}.catch { seal.reject($0) }
+		}
 	}
-
 }

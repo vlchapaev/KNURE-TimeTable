@@ -24,16 +24,4 @@ extension Reactive where Base: NSManagedObjectContext {
 			}
 		}
 	}
-
-	func save() -> Observable<Void> {
-		return Observable.create { observer in
-			do {
-				try self.base.save()
-				observer.onNext(())
-			} catch {
-				observer.onError(error)
-			}
-			return Disposables.create()
-		}
-	}
 }

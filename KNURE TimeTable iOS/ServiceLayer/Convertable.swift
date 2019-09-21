@@ -13,9 +13,3 @@ protocol DomainConvertable: AnyObject {
 
 	var domainValue: DomainType { get }
 }
-
-protocol CoreDataConvertable: AnyObject {
-	associatedtype DataType
-
-	func dataType(context: NSManagedObjectContext) -> DataType
-}

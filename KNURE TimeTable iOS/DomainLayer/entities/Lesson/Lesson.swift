@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
-
-class Lesson {
+struct Lesson {
 
 }

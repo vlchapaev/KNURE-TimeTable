@@ -76,9 +76,7 @@
 		775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8C2221797800931A1F /* SaveItemUseCase.swift */; };
 		775A3F8F222179A000931A1F /* RemoveItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */; };
 		775A3F91222179CD00931A1F /* SelectedItemsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */; };
-		775A3F9322217A9F00931A1F /* CalendarExportUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */; };
 		775A3F9522217CB200931A1F /* TimetableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9422217CB200931A1F /* TimetableUseCase.swift */; };
-		775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9622217CE300931A1F /* TimetableSyncher.swift */; };
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
@@ -290,9 +288,7 @@
 		775A3F8C2221797800931A1F /* SaveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemUseCase.swift; sourceTree = "<group>"; };
 		775A3F8E222179A000931A1F /* RemoveItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveItemUseCase.swift; sourceTree = "<group>"; };
 		775A3F90222179CD00931A1F /* SelectedItemsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemsObserver.swift; sourceTree = "<group>"; };
-		775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExportUseCase.swift; sourceTree = "<group>"; };
 		775A3F9422217CB200931A1F /* TimetableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableUseCase.swift; sourceTree = "<group>"; };
-		775A3F9622217CE300931A1F /* TimetableSyncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableSyncher.swift; sourceTree = "<group>"; };
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
@@ -606,9 +602,7 @@
 		775A3F8A2221790300931A1F /* usecases */ = {
 			isa = PBXGroup;
 			children = (
-				775A3F9222217A9F00931A1F /* CalendarExportUseCase.swift */,
 				775A3F9422217CB200931A1F /* TimetableUseCase.swift */,
-				775A3F9622217CE300931A1F /* TimetableSyncher.swift */,
 				7716FCDA22885C4E00615D39 /* UpdateTimetableUseCase.swift */,
 			);
 			path = usecases;
@@ -1018,7 +1012,6 @@
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
 				777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */,
 				7702914E22081C8800B82CF4 /* Item.m in Sources */,
-				775A3F9322217A9F00931A1F /* CalendarExportUseCase.swift in Sources */,
 				7702915A22081C8800B82CF4 /* PopoverMenuViewController.m in Sources */,
 				775A3F7F2221775900931A1F /* DataLayerAssembly.swift in Sources */,
 				775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */,
@@ -1046,7 +1039,6 @@
 				7702914D22081C8800B82CF4 /* Lesson.m in Sources */,
 				7702916E22081C8800B82CF4 /* PFTableCellContentView.m in Sources */,
 				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
-				775A3F9722217CE300931A1F /* TimetableSyncher.swift in Sources */,
 				771A83D322A7029E006964D7 /* ContextScheduler.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */,
