@@ -85,13 +85,17 @@
 		777AE2132221988E00EAEE20 /* KNURELessonImportSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */; };
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
-		778B3D93224AB29500B7DC40 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F06F6A222F0DE10042B10D /* IGListKit.framework */; };
 		778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */; };
 		778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778EC065229B0C1C00D1F445 /* RxSwift.framework */; };
 		7796FD6422CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7796FD6322CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift */; };
 		77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */; };
+		77C2042E2337FF64007D3A1B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2042C2337FF64007D3A1B /* Nimble.framework */; };
+		77C2042F2337FF64007D3A1B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2042D2337FF64007D3A1B /* Quick.framework */; };
+		77C204312337FF9E007D3A1B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77C2042C2337FF64007D3A1B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77C204322337FF9E007D3A1B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77C2042D2337FF64007D3A1B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77C2043623380040007D3A1B /* NetworkRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C2043523380040007D3A1B /* NetworkRequestSpec.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
 		77D388CB224F64B500451611 /* PromisedNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* PromisedNetworkService.swift */; };
@@ -143,6 +147,13 @@
 			remoteGlobalIDString = 775A394B1E93EC710070B31F;
 			remoteInfo = "KNURE TimeTable iOS TomorrowExtension";
 		};
+		77C204272337FF32007D3A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C33FCC5B1819965300328F6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C33FCC621819965300328F6D;
+			remoteInfo = "KNURE TimeTable iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,6 +177,17 @@
 				770D05ED1DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77C204302337FF7A007D3A1B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				77C204312337FF9E007D3A1B /* Nimble.framework in CopyFiles */,
+				77C204322337FF9E007D3A1B /* Quick.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -303,6 +325,11 @@
 		778EC065229B0C1C00D1F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		7796FD6322CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveCoreDataServiceImpl.swift; sourceTree = "<group>"; };
 		77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLayerErrors.swift; sourceTree = "<group>"; };
+		77C204222337FF32007D3A1B /* KNURE TimeTable iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KNURE TimeTable iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77C204262337FF32007D3A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77C2042C2337FF64007D3A1B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		77C2042D2337FF64007D3A1B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		77C2043523380040007D3A1B /* NetworkRequestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestSpec.swift; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -342,12 +369,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77C2041F2337FF32007D3A1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77C2042E2337FF64007D3A1B /* Nimble.framework in Frameworks */,
+				77C2042F2337FF64007D3A1B /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C33FCC601819965300328F6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
-				778B3D93224AB29500B7DC40 /* IGListKit.framework in Frameworks */,
 				778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */,
 				778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */,
 				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
@@ -681,6 +716,23 @@
 			path = Lesson;
 			sourceTree = "<group>";
 		};
+		77C204232337FF32007D3A1B /* KNURE TimeTable iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				77C204332337FFFB007D3A1B /* ServiceLayer */,
+				77C204262337FF32007D3A1B /* Info.plist */,
+			);
+			path = "KNURE TimeTable iOS Tests";
+			sourceTree = "<group>";
+		};
+		77C204332337FFFB007D3A1B /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				77C2043523380040007D3A1B /* NetworkRequestSpec.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
 		77D388C9224F512100451611 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +751,7 @@
 				C33FCC6C1819965300328F6D /* KNURE TimeTable iOS */,
 				770D05E31DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */,
 				775A394E1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */,
+				77C204232337FF32007D3A1B /* KNURE TimeTable iOS Tests */,
 				C33FCC651819965300328F6D /* Frameworks */,
 				C33FCC641819965300328F6D /* Products */,
 			);
@@ -710,6 +763,7 @@
 				C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */,
 				770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */,
 				775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */,
+				77C204222337FF32007D3A1B /* KNURE TimeTable iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -717,6 +771,8 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77C2042C2337FF64007D3A1B /* Nimble.framework */,
+				77C2042D2337FF64007D3A1B /* Quick.framework */,
 				778EC065229B0C1C00D1F445 /* RxSwift.framework */,
 				77F06F6A222F0DE10042B10D /* IGListKit.framework */,
 				777AE20A222195D900EAEE20 /* PromiseKit.framework */,
@@ -781,6 +837,25 @@
 			productReference = 775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		77C204212337FF32007D3A1B /* KNURE TimeTable iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77C204292337FF32007D3A1B /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS Tests" */;
+			buildPhases = (
+				77C2041E2337FF32007D3A1B /* Sources */,
+				77C2041F2337FF32007D3A1B /* Frameworks */,
+				77C204202337FF32007D3A1B /* Resources */,
+				77C204302337FF7A007D3A1B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77C204282337FF32007D3A1B /* PBXTargetDependency */,
+			);
+			name = "KNURE TimeTable iOS Tests";
+			productName = "KNURE TimeTable iOS Tests";
+			productReference = 77C204222337FF32007D3A1B /* KNURE TimeTable iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C33FCC621819965300328F6D /* KNURE TimeTable iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C33FCC951819965300328F6D /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS" */;
@@ -810,6 +885,7 @@
 		C33FCC5B1819965300328F6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Vladislav Chapaev";
 				TargetAttributes = {
@@ -832,6 +908,13 @@
 								enabled = 1;
 							};
 						};
+					};
+					77C204212337FF32007D3A1B = {
+						CreatedOnToolsVersion = 10.3;
+						DevelopmentTeam = GJ8GF93D7L;
+						LastSwiftMigration = 1030;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C33FCC621819965300328F6D;
 					};
 					C33FCC621819965300328F6D = {
 						DevelopmentTeam = GJ8GF93D7L;
@@ -864,6 +947,7 @@
 				C33FCC621819965300328F6D /* KNURE TimeTable iOS */,
 				770D05E01DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension */,
 				775A394B1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */,
+				77C204212337FF32007D3A1B /* KNURE TimeTable iOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -886,6 +970,13 @@
 				775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */,
 				775A396F1E93EE540070B31F /* InfoPlist.strings in Resources */,
 				775A39681E93EDFC0070B31F /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77C204202337FF32007D3A1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1076,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77C2041E2337FF32007D3A1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77C2043623380040007D3A1B /* NetworkRequestSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C33FCC5F1819965300328F6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1078,6 +1177,11 @@
 			isa = PBXTargetDependency;
 			target = 775A394B1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension */;
 			targetProxy = 775A39561E93EC710070B31F /* PBXContainerItemProxy */;
+		};
+		77C204282337FF32007D3A1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C33FCC621819965300328F6D /* KNURE TimeTable iOS */;
+			targetProxy = 77C204272337FF32007D3A1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1277,6 +1381,77 @@
 			};
 			name = Release;
 		};
+		77C2042A2337FF32007D3A1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GJ8GF93D7L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "KNURE TimeTable iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vladislav-Chapaev.KNURE-TimeTable-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KNURE TimeTable iOS.app/KNURE TimeTable iOS";
+			};
+			name = Debug;
+		};
+		77C2042B2337FF32007D3A1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GJ8GF93D7L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "KNURE TimeTable iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vladislav-Chapaev.KNURE-TimeTable-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KNURE TimeTable iOS.app/KNURE TimeTable iOS";
+			};
+			name = Release;
+		};
 		C33FCC931819965300328F6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1470,6 +1645,15 @@
 			buildConfigurations = (
 				775A39591E93EC710070B31F /* Debug */,
 				775A395A1E93EC710070B31F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77C204292337FF32007D3A1B /* Build configuration list for PBXNativeTarget "KNURE TimeTable iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77C2042A2337FF32007D3A1B /* Debug */,
+				77C2042B2337FF32007D3A1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

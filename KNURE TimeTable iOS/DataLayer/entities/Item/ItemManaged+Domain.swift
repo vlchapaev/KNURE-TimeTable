@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
+import Foundation
+
 extension ItemManaged: DomainConvertable {
 	typealias DomainType = Item
 
