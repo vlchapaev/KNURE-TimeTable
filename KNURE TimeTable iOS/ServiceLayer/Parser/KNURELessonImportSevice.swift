@@ -24,16 +24,13 @@ class KNURELessonImportSevice: ImportService {
 					transform: @escaping (inout [AnyHashable: Any]) -> Void,
 					completion: () -> Void) throws {
 
-		guard let data = data else {
-			throw KNURETimeTableParseError.nilDataError
-		}
+		guard let data = data else { throw KNURETimeTableParseError.nilDataError }
 
 		let utfEncodedData = try data.transform(from: .windowsCP1251, to: .utf8)
-		let json = try JSONSerialization.jsonObject(with: utfEncodedData, options: [])
+		let json = try JSONSerialization.jsonObject(with: utfEncodedData,
+													options: [.mutableLeaves, .allowFragments, .mutableContainers])
 
-		guard var dictionary = json as? [AnyHashable: Any] else {
-			throw KNURETimeTableParseError.dataCastError
-		}
+		guard var dictionary = json as? [AnyHashable: Any] else { throw KNURETimeTableParseError.dataCastError }
 
 		transform(&dictionary)
 
@@ -45,13 +42,13 @@ class KNURELessonImportSevice: ImportService {
 			throw KNURETimeTableParseError.eventsCastError
 		}
 
-		//		guard let groups = dictionary["gropus"] as? [[AnyHashable: Any]] else {
-		//			throw KNURETimeTableParseError.groupsCastError
-		//		}
-		//
-		//		guard let teachers = dictionary["teachers"] as? [[AnyHashable: Any]] else {
-		//			throw KNURETimeTableParseError.teachersCastError
-		//		}
+		guard let groups = dictionary["gropus"] as? [[AnyHashable: Any]] else {
+			throw KNURETimeTableParseError.groupsCastError
+		}
+
+		guard let teachers = dictionary["teachers"] as? [[AnyHashable: Any]] else {
+			throw KNURETimeTableParseError.teachersCastError
+		}
 
 		guard let types = dictionary["types"] as? [[AnyHashable: Any]] else {
 			throw KNURETimeTableParseError.typesCastError
@@ -62,6 +59,11 @@ class KNURELessonImportSevice: ImportService {
 		}
 
 		let context = persistentContainer.newBackgroundContext()
+
+		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = LessonManaged.fetchRequest()
+		fetchRequest.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
+		let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+		try persistentContainer.persistentStoreCoordinator.execute(request, with: context)
 
 		context.performAndWait {
 			for event in events {
@@ -81,13 +83,16 @@ class KNURELessonImportSevice: ImportService {
 				lesson.type = type
 				lesson.typeBrief = types.first(where: { $0["id"] as? NSNumber == type })?["short_name"] as? String
 				lesson.typeTitle = types.first(where: { $0["id"] as? NSNumber == type })?["full_name"] as? String
+
+				// TODO: Parse
+				lesson.teachers = teachers as NSObject
+				lesson.groups = groups as NSObject
 			}
 		}
 
 		try context.save()
 		completion()
 	}
-
 }
 
 enum KNURETimeTableParseError: Error {
