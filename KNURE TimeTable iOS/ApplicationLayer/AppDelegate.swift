@@ -13,8 +13,9 @@ import Swinject
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+	private var coordinator: Coordinator?
 
-	let container: Container = Container(defaultObjectScope: .transient) { container in
+	private let container: Container = Container(defaultObjectScope: .transient) { container in
 		let factories: [Assembly] = [
 			ApplicationLayerAssembly(),
 			ServiceLayerAssembly(),
@@ -34,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func registerWindow() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.makeKeyAndVisible()
-        window.rootViewController = UIViewController()
         self.window = window
+		coordinator = MainCoordinator(window: window)
+		coordinator?.start()
     }
 
 }

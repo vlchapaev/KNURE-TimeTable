@@ -6,10 +6,9 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
 import Swinject
 
-class DomainLayerAssembly: Assembly {
+struct DomainLayerAssembly: Assembly {
 	func configure(_ container: Container) {
 		configureItem(container)
 		configureLesson(container)

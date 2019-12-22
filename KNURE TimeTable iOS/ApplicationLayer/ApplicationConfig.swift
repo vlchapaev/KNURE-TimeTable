@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 protocol ApplicationConfig {
-	var apiKey: String { get }
+	var apiKey: String? { get }
+	var host: String { get }
 	var urlSessionConfiguration: URLSessionConfiguration { get }
 	var persistentStoreContainer: NSPersistentContainer { get }
 }
@@ -46,15 +47,30 @@ class DefaultAppConfig: ApplicationConfig {
 		return container
 	}()
 
-	var apiKey: String {
-		return apiAccessKey
-	}
-
 	var urlSessionConfiguration: URLSessionConfiguration {
 		return .default
 	}
 
 	var persistentStoreContainer: NSPersistentContainer {
 		return persistentContainer
+	}
+
+	var host: String {
+		fatalError("Should override this property in child class")
+	}
+
+	var apiKey: String? {
+		return nil
+	}
+}
+
+class KNUREAppConfig: DefaultAppConfig {
+
+	override var host: String {
+		return "cist.nure.ua"
+	}
+
+	override var apiKey: String? {
+		return apiAccessKey
 	}
 }

@@ -8,7 +8,7 @@
 
 import Swinject
 
-class DataLayerAssembly: Assembly {
+struct DataLayerAssembly: Assembly {
 
 	func configure(_ container: Container) {
 		container.register(ItemRepository.self) {

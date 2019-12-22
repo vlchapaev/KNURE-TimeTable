@@ -6,10 +6,14 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Foundation
 import Swinject
 
-class PresentationLayerAssembly: Assembly {
+struct PresentationLayerAssembly: Assembly {
 	func configure(_ container: Container) {
+		let assembies: [Assembly] = [
+			TimetableAssembly()
+		]
+
+		assembies.forEach { $0.configure(container) }
 	}
 }

@@ -8,7 +8,7 @@
 
 import Swinject
 
-class ApplicationLayerAssembly: Assembly {
+struct ApplicationLayerAssembly: Assembly {
 
 	func configure(_ container: Container) {
 		registerApplicationConfig(container)
@@ -17,6 +17,10 @@ class ApplicationLayerAssembly: Assembly {
 	func registerApplicationConfig(_ container: Container) {
 		container.register(ApplicationConfig.self) { _ in
 			DefaultAppConfig()
+		}
+
+		container.register(ApplicationConfig.self, name: "KNURE") { _ in
+			KNUREAppConfig()
 		}
 	}
 }

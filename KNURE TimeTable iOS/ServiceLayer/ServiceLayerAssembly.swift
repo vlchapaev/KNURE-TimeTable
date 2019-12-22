@@ -8,7 +8,7 @@
 
 import Swinject
 
-class ServiceLayerAssembly: Assembly {
+struct ServiceLayerAssembly: Assembly {
 	func configure(_ container: Container) {
 
 		let appConfig = container.resolve(ApplicationConfig.self)!
@@ -25,11 +25,11 @@ class ServiceLayerAssembly: Assembly {
 			PromisedNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
 		}
 
-		container.register(ImportService.self, name: "KNURELesson") { _ in
+		container.register(ImportService.self, name: "KNURE") { _ in
 			KNURELessonImportSevice(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(ImportService.self, name: "KNUREItem") { _ in
+		container.register(ImportService.self, name: "KNURE") { _ in
 			KNUREItemImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
 	}
