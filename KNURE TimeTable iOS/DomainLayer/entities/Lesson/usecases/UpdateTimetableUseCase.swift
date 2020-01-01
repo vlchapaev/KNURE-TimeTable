@@ -8,18 +8,17 @@
 
 import PromiseKit
 
-class UpdateTimetableUseCase: UseCase {
+final class UpdateTimetableUseCase: UseCase<String, Promise<Void>> {
 
-	typealias Query = String
-	typealias Response = Promise<Void>
-
-	let lessonRepository: LessonRepository
+	private let lessonRepository: LessonRepository
 
 	init(lessonRepository: LessonRepository) {
 		self.lessonRepository = lessonRepository
 	}
 
-	func execute(_ query: String) -> Promise<Void> {
+	// MARK: - UseCase
+
+	override func execute(_ query: String) -> Promise<Void> {
 		return lessonRepository.remoteLoadTimetable(identifier: query)
 	}
 }

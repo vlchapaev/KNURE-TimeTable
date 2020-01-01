@@ -8,18 +8,17 @@
 
 import RxSwift
 
-class SelectedItemsObserver: UseCase {
+final class SelectedItemsObserver: UseCase<Void, Observable<[Item]>> {
 
-	typealias Query = Void
-	typealias Response = Observable<[Item]>
-
-	let itemRepository: ItemRepository
+	private let itemRepository: ItemRepository
 
 	init(itemRepository: ItemRepository) {
 		self.itemRepository = itemRepository
 	}
 
-	func execute(_ query: Void) -> Observable<[Item]> {
+	// MARK: - UseCase
+
+	override func execute(_ query: Void) -> Observable<[Item]> {
 		return self.itemRepository.localSelectedItems()
 	}
 }

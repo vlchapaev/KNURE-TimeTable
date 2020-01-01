@@ -7,14 +7,13 @@
 //
 
 /// UseCase represent basic unit of bisness logic
-/// Any use cases of this type should execute synchronously or return a promise
-public protocol UseCase {
-	associatedtype Query
-	associatedtype Response
+class UseCase<Query, Response> {
 
 	/// command to execute use case
 	///
 	/// - Parameter query: input type
 	/// - Returns: promise output type
-	func execute(_ query: Query) -> Response
+	func execute(_ query: Query) -> Response {
+		fatalError("Should override in super class")
+	}
 }

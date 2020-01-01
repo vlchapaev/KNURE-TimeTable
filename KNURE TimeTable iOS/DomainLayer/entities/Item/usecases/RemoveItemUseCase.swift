@@ -8,18 +8,17 @@
 
 import PromiseKit
 
-class RemoveItemUseCase: UseCase {
+final class RemoveItemUseCase: UseCase<String, Promise<Void>> {
 
-	typealias Query = String
-	typealias Response = Promise<Void>
-
-	let itemRepository: ItemRepository
+	private let itemRepository: ItemRepository
 
 	init(itemRepository: ItemRepository) {
 		self.itemRepository = itemRepository
 	}
 
-	func execute(_ query: String) -> Promise<Void> {
+	// MARK: - UseCase
+
+	override func execute(_ query: String) -> Promise<Void> {
 		return itemRepository.localDeleteItem(identifier: query)
 	}
 }
