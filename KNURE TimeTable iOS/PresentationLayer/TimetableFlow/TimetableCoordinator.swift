@@ -15,10 +15,6 @@ protocol TimetableCoordinatorOutput: AnyObject {
 
 final class TimetableCoordinator: Coordinator {
 
-	var name: String {
-		return NSStringFromClass(TimetableCoordinator.self)
-	}
-
 	weak var output: TimetableCoordinatorOutput?
 
 	// MARK: - Coordinator
