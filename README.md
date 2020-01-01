@@ -15,13 +15,12 @@
 
 Приложение имеет два виджета: для отображение расписания на текущий день и для отображения расписания на завтрашний день. Виджет отображает расписание последней выбранной группы, преподавателя или аудитории.
 
-Приложение уже доступно в [App Store](https://itunes.apple.com/us/app/knure-sked/id797074875?l=ru&ls=1&mt=8).
+Приложение уже доступно в [App Store](https://itunes.apple.com/ru/app/knure-sked/id797074875).
 
 :envelope: Контакты
 ----
 - email: chapaev.vlad@gmail.com
-- telegram: https://t.me/chapaev_vlad
-- messanger: https://m.me/chapaev.vlad
+- telegram: https://t.me/vlchapaev
 
 :page_facing_up: Лицензия
 ----
@@ -30,4 +29,4 @@ GNU GENERAL PUBLIC LICENSE
 
 KNURE Timetable iOS
 
-Copyright (C) 2018 Vladislav Chapaev.
+Copyright (C) 2019 Vladislav Chapaev.
