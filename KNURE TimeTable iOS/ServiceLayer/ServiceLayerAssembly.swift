@@ -9,7 +9,8 @@
 import Swinject
 
 struct ServiceLayerAssembly: Assembly {
-	func configure(_ container: Container) {
+
+	func assemble(container: Container) {
 
 		let appConfig = container.resolve(ApplicationConfig.self)!
 

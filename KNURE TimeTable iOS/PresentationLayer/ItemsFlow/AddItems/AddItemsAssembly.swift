@@ -10,7 +10,7 @@ import Swinject
 
 struct AddItemsAssembly: Assembly {
 
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		container.register(AddItemsViewController.self) {
 			let interactor = $0.resolve(AddItemsInteractor.self)!
 			let controller = AddItemsViewController()

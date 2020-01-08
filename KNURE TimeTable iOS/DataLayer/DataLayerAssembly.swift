@@ -10,7 +10,7 @@ import Swinject
 
 struct DataLayerAssembly: Assembly {
 
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		container.register(ItemRepository.self) {
 			KNUREItemRepository(promisedCoreDataService: $0.resolve(PromisedCoreDataService.self)!,
 								reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			PresentationLayerAssembly()
 		]
 
-		factories.forEach { $0.configure(container) }
+		factories.forEach { $0.assemble(container: container) }
 	}
 
     func application(_: UIApplication,

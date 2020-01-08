@@ -10,7 +10,7 @@ import Swinject
 
 struct TimetableAssembly: Assembly {
 
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		container.register(TimetableViewController.self) {
 			let interactor = $0.resolve(TimetableInteractor.self)!
 			let controller = TimetableViewController()

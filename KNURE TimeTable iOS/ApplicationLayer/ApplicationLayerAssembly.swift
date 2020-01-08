@@ -10,7 +10,7 @@ import Swinject
 
 struct ApplicationLayerAssembly: Assembly {
 
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		registerApplicationConfig(container)
 	}
 

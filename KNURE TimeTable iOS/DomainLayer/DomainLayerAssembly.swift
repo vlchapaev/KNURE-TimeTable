@@ -9,7 +9,7 @@
 import Swinject
 
 struct DomainLayerAssembly: Assembly {
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		configureItem(container)
 		configureLesson(container)
 	}

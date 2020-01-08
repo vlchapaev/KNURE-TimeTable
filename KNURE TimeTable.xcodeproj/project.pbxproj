@@ -149,7 +149,6 @@
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
-		77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F06F6D222F0F8E0042B10D /* Assembly.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -215,7 +214,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		770290E222081C8700B82CF4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		770290E422081C8700B82CF4 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		770290E822081C8700B82CF4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		770290EB22081C8700B82CF4 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
@@ -389,7 +387,6 @@
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
-		77F06F6D222F0F8E0042B10D /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -440,10 +437,8 @@
 		770290E122081C8700B82CF4 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				77F06F6D222F0F8E0042B10D /* Assembly.swift */,
 				775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */,
 				775A3F9822217FD700931A1F /* AppDelegate.swift */,
-				770290E222081C8700B82CF4 /* AppDelegate.h */,
 				770290E422081C8700B82CF4 /* Configuration.h */,
 				770290E822081C8700B82CF4 /* AppDelegate.m */,
 				770290EB22081C8700B82CF4 /* Configuration.m */,
@@ -1212,7 +1207,6 @@
 			files = (
 				775A3F91222179CD00931A1F /* SelectedItemsUseCase.swift in Sources */,
 				7712335C23BCFF1900CB01D6 /* AddItemsInteractor.swift in Sources */,
-				77F06F6E222F0F8E0042B10D /* Assembly.swift in Sources */,
 				77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */,
 				778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */,
 				77D4AAB223AF7B3D00729A93 /* TimetableViewModel.swift in Sources */,

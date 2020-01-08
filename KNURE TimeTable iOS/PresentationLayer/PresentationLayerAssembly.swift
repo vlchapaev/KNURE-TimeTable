@@ -9,7 +9,7 @@
 import Swinject
 
 struct PresentationLayerAssembly: Assembly {
-	func configure(_ container: Container) {
+	func assemble(container: Container) {
 		let assembies: [Assembly] = [
 			TimetableAssembly(),
 
@@ -17,6 +17,6 @@ struct PresentationLayerAssembly: Assembly {
 			AddItemsAssembly()
 		]
 
-		assembies.forEach { $0.configure(container) }
+		assembies.forEach { $0.assemble(container: container) }
 	}
 }
