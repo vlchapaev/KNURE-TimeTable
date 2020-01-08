@@ -6,7 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import PromiseKit
 import RxSwift
 
 /// Access to lesson data
@@ -23,7 +22,7 @@ protocol LessonRepository {
 	///
 	/// - Parameter identifier: lesson identifier
 	/// - Returns: Promise with finished operation
-	func localLesson(identifier: String) -> Promise<Lesson>
+//	func localLesson(identifier: String) -> Promise<Lesson>
 
 	/// Export timetable with item identifier to local Calendar
 	///
@@ -31,11 +30,11 @@ protocol LessonRepository {
 	///   - identifier: item identifier
 	///   - range: range for export
 	/// - Returns: Promise with finished operation
-	func localExport(identifier: String, range: Void) -> Promise<Void>
+//	func localExport(identifier: String, range: Void) -> Promise<Void>
 
     /// Load and store timetable for item identifier
     ///
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
-    func remoteLoadTimetable(identifier: String) -> Promise<Void>
+//    func remoteLoadTimetable(identifier: String) -> Promise<Void>
 }

@@ -6,19 +6,19 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import PromiseKit
+import RxSwift
 
-final class SaveItemUseCase: UseCase<String, Promise<Void>> {
+final class SaveItemUseCase: UseCase<String, Observable<Void>> {
 
-	private let itemRepository: ItemRepository
-
-	init(itemRepository: ItemRepository) {
-		self.itemRepository = itemRepository
-	}
-
-	// MARK: - UseCase
-
-	override func execute(_ query: String) -> Promise<Void> {
-		return itemRepository.localSaveItem(identifier: query)
-	}
+//	private let itemRepository: ItemRepository
+//
+//	init(itemRepository: ItemRepository) {
+//		self.itemRepository = itemRepository
+//	}
+//
+//	// MARK: - UseCase
+//
+//	override func execute(_ query: String) -> Promise<Void> {
+//		return itemRepository.localSaveItem(identifier: query)
+//	}
 }

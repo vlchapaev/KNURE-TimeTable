@@ -1,5 +1,4 @@
 github "Swinject/Swinject" ~> 2.7
-github "mxcl/PromiseKit" ~> 6.10
 github "ReactiveX/RxSwift" ~> 5.0
 github "Quick/Quick" ~> 2.2
 github "Quick/Nimble" ~> 8.0

@@ -68,8 +68,8 @@
 		771A83D522A7038C006964D7 /* ItemManaged+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771A83D422A7038C006964D7 /* ItemManaged+Domain.swift */; };
 		771A83D722A707E1006964D7 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771A83D622A707E1006964D7 /* Convertable.swift */; };
 		773C1D8F22FC5C1000F1FF5C /* LessonManaged+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C1D8E22FC5C1000F1FF5C /* LessonManaged+Domain.swift */; };
-		7752F9392247E46E003DC9FE /* CoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F9382247E46E003DC9FE /* CoreDataServices.swift */; };
-		7752F93D2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F93C2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift */; };
+		7752F9392247E46E003DC9FE /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F9382247E46E003DC9FE /* CoreDataService.swift */; };
+		7752F93D2247F018003DC9FE /* CoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F93C2247F018003DC9FE /* CoreDataServiceImpl.swift */; };
 		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
 		775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775A39521E93EC710070B31F /* MainInterface.storyboard */; };
@@ -112,11 +112,11 @@
 		77C2043623380040007D3A1B /* NetworkRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C2043523380040007D3A1B /* NetworkRequestSpec.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
-		77D388CB224F64B500451611 /* PromisedNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* PromisedNetworkService.swift */; };
+		77D388CB224F64B500451611 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* NetworkService.swift */; };
 		77D388CD224F662000451611 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CC224F662000451611 /* NetworkRequest.swift */; };
 		77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CE224F6FCC00451611 /* NetworkResponse.swift */; };
 		77D388D1224F706000451611 /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D0224F706000451611 /* HTTPStatus.swift */; };
-		77D388D3224F89BB00451611 /* PromisedNetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */; };
+		77D388D3224F89BB00451611 /* ReactiveNetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */; };
 		77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */; };
 		77D4AAB023AF7B2E00729A93 /* TimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAAF23AF7B2E00729A93 /* TimetableView.swift */; };
 		77D4AAB223AF7B3D00729A93 /* TimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAB123AF7B3D00729A93 /* TimetableViewModel.swift */; };
@@ -317,8 +317,8 @@
 		773C1D8E22FC5C1000F1FF5C /* LessonManaged+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonManaged+Domain.swift"; sourceTree = "<group>"; };
 		773F6445196939220081165C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TomorrowExtension.entitlements"; sourceTree = "<group>"; };
-		7752F9382247E46E003DC9FE /* CoreDataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServices.swift; sourceTree = "<group>"; };
-		7752F93C2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedCoreDataServiceImpl.swift; sourceTree = "<group>"; };
+		7752F9382247E46E003DC9FE /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		7752F93C2247F018003DC9FE /* CoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceImpl.swift; sourceTree = "<group>"; };
 		775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TomorrowExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775A394F1E93EC710070B31F /* TomorrowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomorrowViewController.h; sourceTree = "<group>"; };
 		775A39501E93EC710070B31F /* TomorrowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomorrowViewController.m; sourceTree = "<group>"; };
@@ -370,11 +370,11 @@
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		77D388CA224F64B500451611 /* PromisedNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedNetworkService.swift; sourceTree = "<group>"; };
+		77D388CA224F64B500451611 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		77D388CC224F662000451611 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		77D388CE224F6FCC00451611 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		77D388D0224F706000451611 /* HTTPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatus.swift; sourceTree = "<group>"; };
-		77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisedNetworkServiceImpl.swift; sourceTree = "<group>"; };
+		77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveNetworkServiceImpl.swift; sourceTree = "<group>"; };
 		77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		77D4AAAF23AF7B2E00729A93 /* TimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableView.swift; sourceTree = "<group>"; };
 		77D4AAB123AF7B3D00729A93 /* TimetableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewModel.swift; sourceTree = "<group>"; };
@@ -626,8 +626,8 @@
 		770D9F7B223E41E40037C5B1 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
-				7752F9382247E46E003DC9FE /* CoreDataServices.swift */,
-				7752F93C2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift */,
+				7752F9382247E46E003DC9FE /* CoreDataService.swift */,
+				7752F93C2247F018003DC9FE /* CoreDataServiceImpl.swift */,
 				771A83CE22A6FE9B006964D7 /* EntityObserver.swift */,
 				771A83D022A70130006964D7 /* NSManagedObjectContext+Reactive.swift */,
 				771A83D222A7029E006964D7 /* ContextScheduler.swift */,
@@ -832,11 +832,11 @@
 		77D388C9224F512100451611 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				77D388CA224F64B500451611 /* PromisedNetworkService.swift */,
+				77D388CA224F64B500451611 /* NetworkService.swift */,
 				77D388CC224F662000451611 /* NetworkRequest.swift */,
 				77D388CE224F6FCC00451611 /* NetworkResponse.swift */,
 				77D388D0224F706000451611 /* HTTPStatus.swift */,
-				77D388D2224F89BB00451611 /* PromisedNetworkServiceImpl.swift */,
+				77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1119,7 +1119,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IGListKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
@@ -1211,12 +1210,12 @@
 				778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */,
 				77D4AAB223AF7B3D00729A93 /* TimetableViewModel.swift in Sources */,
 				771A83D122A70130006964D7 /* NSManagedObjectContext+Reactive.swift in Sources */,
-				7752F9392247E46E003DC9FE /* CoreDataServices.swift in Sources */,
-				77D388D3224F89BB00451611 /* PromisedNetworkServiceImpl.swift in Sources */,
+				7752F9392247E46E003DC9FE /* CoreDataService.swift in Sources */,
+				77D388D3224F89BB00451611 /* ReactiveNetworkServiceImpl.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
 				7702916A22081C8800B82CF4 /* MSGridline.m in Sources */,
-				7752F93D2247F018003DC9FE /* PromisedCoreDataServiceImpl.swift in Sources */,
+				7752F93D2247F018003DC9FE /* CoreDataServiceImpl.swift in Sources */,
 				7702915B22081C8800B82CF4 /* AddItemsTableViewController.m in Sources */,
 				775A3F772221731600931A1F /* ItemRepository.swift in Sources */,
 				775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */,
@@ -1290,7 +1289,7 @@
 				77D4AAB423AF7B4F00729A93 /* TimetableInteractor.swift in Sources */,
 				7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */,
 				77D4AAB923AF7F3400729A93 /* TimetableAssembly.swift in Sources */,
-				77D388CB224F64B500451611 /* PromisedNetworkService.swift in Sources */,
+				77D388CB224F64B500451611 /* NetworkService.swift in Sources */,
 				7712336023BCFF3900CB01D6 /* AddItemsViewModel.swift in Sources */,
 				7712335423BCEFF400CB01D6 /* ItemsAssembly.swift in Sources */,
 				7702917022081C8800B82CF4 /* PFNavigationDropdownMenu.m in Sources */,

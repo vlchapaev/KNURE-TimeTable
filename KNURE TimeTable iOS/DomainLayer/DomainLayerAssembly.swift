@@ -15,13 +15,13 @@ struct DomainLayerAssembly: Assembly {
 	}
 
 	func configureItem(_ container: Container) {
-		container.register(SaveItemUseCase.self) {
-			SaveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
-		}
-
-		container.register(RemoveItemUseCase.self) {
-			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
-		}
+//		container.register(SaveItemUseCase.self) {
+//			SaveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
+//		}
+//
+//		container.register(RemoveItemUseCase.self) {
+//			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
+//		}
 
 		container.register(SelectedItemsUseCase.self) {
 			SelectedItemsUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
@@ -33,8 +33,8 @@ struct DomainLayerAssembly: Assembly {
 	}
 
 	func configureLesson(_ container: Container) {
-		container.register(UpdateTimetableUseCase.self) {
-			UpdateTimetableUseCase(lessonRepository: $0.resolve(LessonRepository.self)!)
-		}
+//		container.register(UpdateTimetableUseCase.self) {
+//			UpdateTimetableUseCase(lessonRepository: $0.resolve(LessonRepository.self)!)
+//		}
 	}
 }

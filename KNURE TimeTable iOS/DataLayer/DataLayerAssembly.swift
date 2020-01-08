@@ -12,16 +12,16 @@ struct DataLayerAssembly: Assembly {
 
 	func assemble(container: Container) {
 		container.register(ItemRepository.self) {
-			KNUREItemRepository(promisedCoreDataService: $0.resolve(PromisedCoreDataService.self)!,
+			KNUREItemRepository(coreDataService: $0.resolve(CoreDataService.self)!,
 								reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
-								promisedNetworkingService: $0.resolve(PromisedNetworkService.self)!,
+								reactiveNetworkingService: $0.resolve(ReactiveNetworkService.self)!,
 								importService: $0.resolve(ImportService.self, name: "KNUREItem")!)
 		}
 
 		container.register(LessonRepository.self) {
-			KNURELessonRepository(promisedCoreDataService: $0.resolve(PromisedCoreDataService.self)!,
+			KNURELessonRepository(coreDataService: $0.resolve(CoreDataService.self)!,
 								  reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
-								  promisedNetworkingService: $0.resolve(PromisedNetworkService.self)!,
+								  reactiveNetworkingService: $0.resolve(ReactiveNetworkService.self)!,
 								  importService: $0.resolve(ImportService.self, name: "KNURELesson")!)
 		}
 	}

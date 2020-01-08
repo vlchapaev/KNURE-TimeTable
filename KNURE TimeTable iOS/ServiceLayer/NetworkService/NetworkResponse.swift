@@ -11,11 +11,10 @@ import Foundation
 struct NetworkResponse {
 	var httpStatus: HTTPStatus
 	var data: Data?
-	var json: Any?
 
-	init(httpStatus: HTTPStatus, data: Data? = nil, json: Any? = nil) {
+	init(httpStatus: HTTPStatus,
+		 data: Data? = nil) {
 		self.httpStatus = httpStatus
 		self.data = data
-		self.json = json
 	}
 }

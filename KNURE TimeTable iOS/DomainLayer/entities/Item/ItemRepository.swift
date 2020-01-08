@@ -6,7 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import PromiseKit
 import RxSwift
 
 /// Access to timetable items
@@ -23,15 +22,15 @@ protocol ItemRepository {
     ///
     /// - Parameter item: timetable item
     /// - Returns: Promise with finished operation
-    func localSaveItem(identifier: String) -> Promise<Void>
+//    func localSaveItem(identifier: String) -> Promise<Void>
 
     /// Delete item from persistent store
     ///
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
-    func localDeleteItem(identifier: String) -> Promise<Void>
+//    func localDeleteItem(identifier: String) -> Promise<Void>
 
-	func localSearchItems(query: String)
+//	func localSearchItems(query: String)
 
-	func remoteUpdateItems(type: TimetableItem) -> Promise<Void>
+//	func remoteUpdateItems(type: TimetableItem) -> Promise<Void>
 }

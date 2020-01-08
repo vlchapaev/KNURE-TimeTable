@@ -9,7 +9,7 @@
 import RxSwift
 import CoreData
 
-class ReactiveCoreDataServiceImpl: ReactiveCoreDataService {
+final class ReactiveCoreDataServiceImpl: ReactiveCoreDataService {
 
 	private let persistentContainer: NSPersistentContainer
 
@@ -21,5 +21,20 @@ class ReactiveCoreDataServiceImpl: ReactiveCoreDataService {
 		let context = persistentContainer.viewContext
 		let scheduler = ContextScheduler(context: context)
 		return context.rx.entities(fetchRequest: request).subscribeOn(scheduler)
+	}
+
+	func update(_ request: NSBatchUpdateRequest) -> Single<Void> {
+		let context = persistentContainer.newBackgroundContext()
+		let coordinator = persistentContainer.persistentStoreCoordinator
+		return Single<Void>.create {
+			do {
+				try coordinator.execute(request, with: context)
+				$0(.success(()))
+			} catch {
+				$0(.error(error))
+			}
+
+			return SingleAssignmentDisposable()
+		}
 	}
 }

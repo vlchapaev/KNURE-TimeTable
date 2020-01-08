@@ -14,16 +14,12 @@ struct ServiceLayerAssembly: Assembly {
 
 		let appConfig = container.resolve(ApplicationConfig.self)!
 
-		container.register(PromisedCoreDataService.self) { _ in
-			PromisedCoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
-		}
-
 		container.register(ReactiveCoreDataService.self) { _ in
 			ReactiveCoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(PromisedNetworkService.self) { _ in
-			PromisedNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
+		container.register(ReactiveNetworkService.self) { _ in
+			ReactiveNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
 		}
 
 		container.register(ImportService.self, name: "KNURE") { _ in

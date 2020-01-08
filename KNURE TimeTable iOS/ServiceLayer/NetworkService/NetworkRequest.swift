@@ -21,14 +21,11 @@ struct NetworkRequest {
 	var url: URL
 	var httpHeaders: [AnyHashable: Any]?
 	var httpBody: Data?
-	var shouldConvertResponseToJSON: Bool
 
 	init(url: URL,
-		 httpMethod: HTTPMethod = .GET,
-		 shouldConvertResponseToJSON: Bool = true) {
+		 httpMethod: HTTPMethod = .GET) {
 		self.url = url
 		self.httpMethod = httpMethod
-		self.shouldConvertResponseToJSON = shouldConvertResponseToJSON
 	}
 
 	var urlRequest: URLRequest {
