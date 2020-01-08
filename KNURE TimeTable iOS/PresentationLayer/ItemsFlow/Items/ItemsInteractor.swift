@@ -16,12 +16,9 @@ final class ItemsInteractor: ItemsInteractorInput {
 
 	weak var output: ItemsInteractorOutput?
 
-	private let saveItemUseCase: SaveItemUseCase
 	private let removeItemUseCase: RemoveItemUseCase
 
-	init(saveItemUseCase: SaveItemUseCase,
-		 removeItemUseCase: RemoveItemUseCase) {
-		self.saveItemUseCase = saveItemUseCase
+	init(removeItemUseCase: RemoveItemUseCase) {
 		self.removeItemUseCase = removeItemUseCase
 	}
 

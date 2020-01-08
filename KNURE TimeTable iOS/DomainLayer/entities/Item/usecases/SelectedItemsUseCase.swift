@@ -1,5 +1,5 @@
 //
-//  SelectedItemsObserver.swift
+//  SelectedItemsUseCase.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 23/02/2019.
@@ -8,7 +8,7 @@
 
 import RxSwift
 
-final class SelectedItemsObserver: UseCase<Void, Observable<[Item]>> {
+final class SelectedItemsUseCase: UseCase<Void, Observable<[Item]>> {
 
 	private let itemRepository: ItemRepository
 
@@ -19,6 +19,6 @@ final class SelectedItemsObserver: UseCase<Void, Observable<[Item]>> {
 	// MARK: - UseCase
 
 	override func execute(_ query: Void) -> Observable<[Item]> {
-		return self.itemRepository.localSelectedItems()
+		return itemRepository.localSelectedItems()
 	}
 }

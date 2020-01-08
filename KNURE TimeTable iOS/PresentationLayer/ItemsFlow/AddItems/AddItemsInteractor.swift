@@ -6,7 +6,10 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
+import RxSwift
+
 protocol AddItemsInteractorInput {
+	func obtainItems() -> Observable<[Item]>
 }
 
 protocol AddItemsInteractorOutput: AnyObject {
@@ -16,15 +19,15 @@ final class AddItemsInteractor: AddItemsInteractorInput {
 
 	weak var output: AddItemsInteractorOutput?
 
-	private let saveItemUseCase: SaveItemUseCase
-	private let removeItemUseCase: RemoveItemUseCase
+	private let itemsUseCase: ItemsUseCase
 
-	init(saveItemUseCase: SaveItemUseCase,
-		 removeItemUseCase: RemoveItemUseCase) {
-		self.saveItemUseCase = saveItemUseCase
-		self.removeItemUseCase = removeItemUseCase
+	init(itemsUseCase: ItemsUseCase) {
+		self.itemsUseCase = itemsUseCase
 	}
 
 	// MARK: - AddItemsInteractorInput
 
+	func obtainItems() -> Observable<[Item]> {
+		return itemsUseCase.execute(())
+	}
 }

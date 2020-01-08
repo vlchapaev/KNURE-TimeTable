@@ -7,36 +7,55 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol AddItemsViewControllerOutput {
+	func addItemsViewControllerDidFinish(_ controller: AddItemsViewController)
 }
 
 final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 
 	var interactor: AddItemsInteractorInput?
+	var output: AddItemsViewControllerOutput?
+
+	private var viewModel: AddItemsViewModel
+	private let mainView: AddItemsView
+	private let bag = DisposeBag()
 
 	init() {
+		mainView = AddItemsView()
+		viewModel = AddItemsViewModel()
+
 		super.init(nibName: nil, bundle: nil)
+
+		mainView.tableView.delegate = self
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	override func loadView() {
+		view = mainView
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Do any additional setup after loading the view.
+		interactor?.obtainItems().map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
+		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: "TimetableAddItem")) {
+			$2.textLabel?.text = $1.fullName
+		}
+		.disposed(by: bag)
 	}
+}
 
-	/*
-	// MARK: - Navigation
+extension AddItemsViewController: UITableViewDelegate {
 
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	// Get the new view controller using segue.destination.
-	// Pass the selected object to the new view controller.
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+
+		output?.addItemsViewControllerDidFinish(self)
 	}
-	*/
-
 }
