@@ -11,7 +11,7 @@ import RxSwift
 /// Access to timetable items
 protocol ItemRepository {
 
-	func localItems() -> Observable<[Item]>
+//	func localItems() -> Observable<[Item]>
 
     /// Observe items that been selected
     ///
@@ -30,7 +30,7 @@ protocol ItemRepository {
     /// - Returns: Promise with finished operation
 //    func localDeleteItem(identifier: String) -> Promise<Void>
 
-//	func localSearchItems(query: String)
-
 //	func remoteUpdateItems(type: TimetableItem) -> Promise<Void>
+
+	func remoteItems(type: TimetableItem) -> Observable<[Item]>
 }

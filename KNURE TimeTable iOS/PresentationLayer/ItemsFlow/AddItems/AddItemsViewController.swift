@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol AddItemsViewControllerInput {
+	func configure(type: TimetableItem)
+}
+
 protocol AddItemsViewControllerOutput {
 	func addItemsViewControllerDidFinish(_ controller: AddItemsViewController)
 }
@@ -43,11 +47,17 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		interactor?.obtainItems().map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
-		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: "TimetableAddItem")) {
+		interactor?.obtainItems(type: viewModel.selectedType).map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
+		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
 			$2.textLabel?.text = $1.fullName
 		}
 		.disposed(by: bag)
+	}
+}
+
+extension AddItemsViewController: AddItemsViewControllerInput {
+	func configure(type: TimetableItem) {
+		viewModel.selectedType = type
 	}
 }
 

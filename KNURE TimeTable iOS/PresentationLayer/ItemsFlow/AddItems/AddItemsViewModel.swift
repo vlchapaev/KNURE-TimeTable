@@ -11,9 +11,13 @@ import RxSwift
 struct AddItemsViewModel {
 	var items: BehaviorSubject<[Item]>
 	var searchingItems: BehaviorSubject<[Item]>
+	var selectedType: TimetableItem
+
+	static let cellId = "TimetableAddItem"
 
 	init() {
 		items = BehaviorSubject(value: [])
 		searchingItems = BehaviorSubject(value: [])
+		selectedType = .group
 	}
 }

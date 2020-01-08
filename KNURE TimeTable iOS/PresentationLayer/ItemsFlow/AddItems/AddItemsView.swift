@@ -15,6 +15,7 @@ final class AddItemsView: UIView {
 
 	init() {
 		tableView = UITableView(frame: .zero, style: .plain)
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: AddItemsViewModel.cellId)
 		searchController = UISearchController(searchResultsController: nil)
 		searchController.dimsBackgroundDuringPresentation = false
 		searchController.hidesNavigationBarDuringPresentation = false

@@ -9,7 +9,7 @@
 import RxSwift
 
 protocol AddItemsInteractorInput {
-	func obtainItems() -> Observable<[Item]>
+	func obtainItems(type: TimetableItem) -> Observable<[Item]>
 }
 
 protocol AddItemsInteractorOutput: AnyObject {
@@ -27,7 +27,7 @@ final class AddItemsInteractor: AddItemsInteractorInput {
 
 	// MARK: - AddItemsInteractorInput
 
-	func obtainItems() -> Observable<[Item]> {
-		return itemsUseCase.execute(())
+	func obtainItems(type: TimetableItem) -> Observable<[Item]> {
+		return itemsUseCase.execute(type)
 	}
 }
