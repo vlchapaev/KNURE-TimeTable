@@ -7,12 +7,17 @@
 //
 
 import Swinject
+import CoreData
 
 struct ServiceLayerAssembly: Assembly {
 
 	func assemble(container: Container) {
 
 		let appConfig = container.resolve(ApplicationConfig.self)!
+
+		container.register(CoreDataService.self) { _ in
+			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
+		}
 
 		container.register(ReactiveCoreDataService.self) { _ in
 			ReactiveCoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
@@ -22,11 +27,11 @@ struct ServiceLayerAssembly: Assembly {
 			ReactiveNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
 		}
 
-		container.register(ImportService.self, name: "KNURE") { _ in
+		container.register(ImportService.self, name: "KNURELesson") { _ in
 			KNURELessonImportSevice(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(ImportService.self, name: "KNURE") { _ in
+		container.register(ImportService.self, name: "KNUREItem") { _ in
 			KNUREItemImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
 	}
