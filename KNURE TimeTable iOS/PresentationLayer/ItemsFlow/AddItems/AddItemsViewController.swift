@@ -32,8 +32,6 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 		viewModel = AddItemsViewModel()
 
 		super.init(nibName: nil, bundle: nil)
-
-		mainView.tableView.delegate = self
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -49,7 +47,7 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 
 		interactor?.obtainItems(type: viewModel.selectedType).map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
 		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
-			$2.textLabel?.text = $1.fullName
+			$2.textLabel?.text = $1.shortName
 		}
 		.disposed(by: bag)
 	}
@@ -58,14 +56,5 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 extension AddItemsViewController: AddItemsViewControllerInput {
 	func configure(type: TimetableItem) {
 		viewModel.selectedType = type
-	}
-}
-
-extension AddItemsViewController: UITableViewDelegate {
-
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-
-		output?.addItemsViewControllerDidFinish(self)
 	}
 }

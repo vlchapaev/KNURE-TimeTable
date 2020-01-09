@@ -6,18 +6,16 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
+import RxCocoa
 
-struct AddItemsViewModel {
-	var items: BehaviorSubject<[Item]>
-	var searchingItems: BehaviorSubject<[Item]>
+final class AddItemsViewModel {
+	var items: BehaviorRelay<[Item]>
 	var selectedType: TimetableItem
 
 	static let cellId = "TimetableAddItem"
 
 	init() {
-		items = BehaviorSubject(value: [])
-		searchingItems = BehaviorSubject(value: [])
+		items = BehaviorRelay(value: [])
 		selectedType = .group
 	}
 }
