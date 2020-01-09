@@ -9,10 +9,16 @@
 import RxCocoa
 
 final class AddItemsViewModel {
-	var items: BehaviorRelay<[Item]>
+	var items: BehaviorRelay<[Model]>
 	var selectedType: TimetableItem
 
 	static let cellId = "TimetableAddItem"
+
+	struct Model {
+		let identifier: String
+		let text: String
+		let selected: Bool
+	}
 
 	init() {
 		items = BehaviorRelay(value: [])

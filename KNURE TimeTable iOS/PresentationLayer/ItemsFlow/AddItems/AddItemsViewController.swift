@@ -47,7 +47,8 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 
 		interactor?.obtainItems(type: viewModel.selectedType).map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
 		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
-			$2.textLabel?.text = $1.shortName
+			$2.textLabel?.text = $1.text
+			$2.accessoryType = $1.selected ? .checkmark : .none
 		}
 		.disposed(by: bag)
 	}
