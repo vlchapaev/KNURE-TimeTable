@@ -45,12 +45,25 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		interactor?.obtainItems(type: viewModel.selectedType).map({ $0 }).bind(to: viewModel.items).disposed(by: bag)
-		viewModel.items.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
-			$2.textLabel?.text = $1.text
-			$2.accessoryType = $1.selected ? .checkmark : .none
-		}
-		.disposed(by: bag)
+		title = "Groups"
+		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationItem.searchController = mainView.searchController
+
+		interactor?.obtainItems(type: viewModel.selectedType).map { $0 }
+			.bind(to: viewModel.items).disposed(by: bag)
+
+		let searchQuery = mainView.searchController.searchBar.rx.text.orEmpty.distinctUntilChanged()
+
+		Observable.combineLatest(viewModel.items.asObservable(), searchQuery)
+			.map { (items, query) -> [AddItemsViewModel.Model] in
+				return items.filter { $0.text.hasPrefix(query) || $0.text.contains(query) }
+			}
+			.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
+				$2.textLabel?.text = $1.text
+				$2.accessoryType = $1.selected ? .checkmark : .none
+				$2.selectionStyle = $1.selected ? .none : .default
+			}
+			.disposed(by: bag)
 	}
 }
 
