@@ -97,7 +97,6 @@
 		777AE2132221988E00EAEE20 /* KNURELessonImportSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */; };
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
-		778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20A222195D900EAEE20 /* PromiseKit.framework */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		778DC8582364BF1500580786 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC8572364BF1500580786 /* MainCoordinator.swift */; };
 		778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC85B2364C08900580786 /* TimetableCoordinator.swift */; };
@@ -348,7 +347,6 @@
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		776DC4152303288B008E8FAE /* DataLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerErrors.swift; sourceTree = "<group>"; };
 		7778E46722D1096000477BFE /* ApplicationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfig.swift; sourceTree = "<group>"; };
-		777AE20A222195D900EAEE20 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURELessonImportSevice.swift; sourceTree = "<group>"; };
 		777AE2102221988E00EAEE20 /* ImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 		77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsUseCase.swift; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
-		77F06F6A222F0DE10042B10D /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -425,7 +422,6 @@
 			files = (
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */,
-				778B3D94224AB29500B7DC40 /* PromiseKit.framework in Frameworks */,
 				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
 			);
@@ -891,8 +887,6 @@
 				77C2042C2337FF64007D3A1B /* Nimble.framework */,
 				77C2042D2337FF64007D3A1B /* Quick.framework */,
 				778EC065229B0C1C00D1F445 /* RxSwift.framework */,
-				77F06F6A222F0DE10042B10D /* IGListKit.framework */,
-				777AE20A222195D900EAEE20 /* PromiseKit.framework */,
 				777AE20B222195D900EAEE20 /* Swinject.framework */,
 				772A180B1DE5B69C00BF0947 /* CoreImage.framework */,
 				C33FCC661819965300328F6D /* Foundation.framework */,
@@ -1120,7 +1114,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/IGListKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
