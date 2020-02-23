@@ -1,5 +1,5 @@
 //
-//  KNURELessonImportSevice.swift
+//  KNURELessonImportService.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 08/02/2019.
@@ -8,13 +8,15 @@
 
 import CoreData
 
-class KNURELessonImportSevice: ImportService {
+final class KNURELessonImportService: ImportService {
 
 	private let persistentContainer: NSPersistentContainer
 
 	init(persistentContainer: NSPersistentContainer) {
 		self.persistentContainer = persistentContainer
 	}
+
+	// MARK: - ImportService
 
 	func importData(_ data: Data?, _ completion: () -> Void) throws {
 		try importData(data, transform: { _ in }, completion: completion)
@@ -24,38 +26,38 @@ class KNURELessonImportSevice: ImportService {
 					transform: @escaping (inout [AnyHashable: Any]) -> Void,
 					completion: () -> Void) throws {
 
-		guard let data = data else { throw KNURETimeTableParseError.nilDataError }
+		guard let data = data else { throw ImportServiceError.nilData }
 
 		let utfEncodedData = try data.transform(from: .windowsCP1251, to: .utf8)
 		let json = try JSONSerialization.jsonObject(with: utfEncodedData,
 													options: [.mutableLeaves, .allowFragments, .mutableContainers])
 
-		guard var dictionary = json as? [AnyHashable: Any] else { throw KNURETimeTableParseError.dataCastError }
+		guard var dictionary = json as? [AnyHashable: Any] else { throw ImportServiceError.nilData }
 
 		transform(&dictionary)
 
 		guard let identifier = dictionary["identifier"] as? String else {
-			throw KNURETimeTableParseError.nilIdentifierError
+			throw ImportServiceError.missing("identifier")
 		}
 
 		guard let events = dictionary["events"] as? [[AnyHashable: Any]] else {
-			throw KNURETimeTableParseError.eventsCastError
+			throw ImportServiceError.missing("events")
 		}
 
 		guard let groups = dictionary["gropus"] as? [[AnyHashable: Any]] else {
-			throw KNURETimeTableParseError.groupsCastError
+			throw ImportServiceError.missing("gropus")
 		}
 
 		guard let teachers = dictionary["teachers"] as? [[AnyHashable: Any]] else {
-			throw KNURETimeTableParseError.teachersCastError
+			throw ImportServiceError.missing("teachers")
 		}
 
 		guard let types = dictionary["types"] as? [[AnyHashable: Any]] else {
-			throw KNURETimeTableParseError.typesCastError
+			throw ImportServiceError.missing("types")
 		}
 
 		guard let subjects = dictionary["subjects"] as? [[AnyHashable: Any]] else {
-			throw KNURETimeTableParseError.subjectsCastError
+			throw ImportServiceError.missing("subjects")
 		}
 
 		let context = persistentContainer.newBackgroundContext()
@@ -93,15 +95,4 @@ class KNURELessonImportSevice: ImportService {
 		try context.save()
 		completion()
 	}
-}
-
-enum KNURETimeTableParseError: Error {
-	case nilDataError
-	case dataCastError
-	case nilIdentifierError
-	case eventsCastError
-	case groupsCastError
-	case teachersCastError
-	case typesCastError
-	case subjectsCastError
 }

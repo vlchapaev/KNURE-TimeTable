@@ -32,3 +32,18 @@ public protocol ImportService {
 					transform: @escaping (inout [AnyHashable: Any]) -> Void,
 					completion: () -> Void) throws
 }
+
+enum ImportServiceError: LocalizedError {
+	case nilData
+	case missing(String)
+
+	var errorDescription: String? {
+		switch self {
+		case .missing(let key):
+			return "Error: missing value for key named: \(key)!"
+
+		case .nilData:
+			return "Can't find any value"
+		}
+	}
+}

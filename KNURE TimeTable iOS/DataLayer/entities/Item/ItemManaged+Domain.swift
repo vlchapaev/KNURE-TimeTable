@@ -8,10 +8,10 @@
 
 import Foundation
 
-extension ItemManaged: DomainConvertable {
-	typealias DomainType = Item
+extension ItemManaged: Convertable {
+	typealias NewType = Item
 
-	var domainValue: Item {
+	var newValue: Item {
 		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group
 		var item = Item(identifier: identifier ?? "0",
 						shortName: title ?? "",

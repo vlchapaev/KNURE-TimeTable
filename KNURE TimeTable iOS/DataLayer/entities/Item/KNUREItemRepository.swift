@@ -9,7 +9,7 @@
 import CoreData
 import RxSwift
 
-class KNUREItemRepository: ItemRepository {
+final class KNUREItemRepository: ItemRepository {
 
 	private let coreDataService: CoreDataService
 	private let reactiveCoreDataService: ReactiveCoreDataService
@@ -29,20 +29,21 @@ class KNUREItemRepository: ItemRepository {
 	func localItems() -> [Item] {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(value: true)
-		return coreDataService.fetch(request).map { $0.domainValue }
+		return coreDataService.fetch(request).map { $0.newValue }
 	}
 
 	func localItems(type: TimetableItem) -> [Item] {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		request.predicate = NSPredicate(format: "type = %@", type.rawValue)
-		return coreDataService.fetch(request).map { $0.domainValue }
+		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
+		return coreDataService.fetch(request).map { $0.newValue }
 	}
 
 	func localSelectedItems() -> Observable<[Item]> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		request.predicate = NSPredicate(format: "selected = %@", true)
+		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return reactiveCoreDataService.observe(request).map {
-			$0.map { $0.domainValue }
+			$0.map { $0.newValue }
 		}
 	}
 
@@ -81,20 +82,12 @@ class KNUREItemRepository: ItemRepository {
 
 		let request = NetworkRequest(url: URL(string: address)!)
 
-		return Observable<[Item]>.create { observer in
-			self.reactiveNetworkingService.execute(request).subscribe {
-				do {
-					try self.importService.importData($0.element?.data,
-													  transform: { $0["type"] = type.rawValue },
-													  completion: {
-														observer.onNext(self.localItems(type: type))
-														observer.onCompleted()
-					})
-				} catch {
-					observer.onNext(self.localItems(type: type))
-					observer.onCompleted()
-				}
-			}
-		}
+		return Observable.of(reactiveNetworkingService.execute(request))
+			.flatMap { $0 }
+			.map {
+				try self.importService.importData($0.data,
+												  transform: { $0["type"] = type.rawValue },
+												  completion: { })
+			}.map { self.localItems(type: type) }
 	}
 }

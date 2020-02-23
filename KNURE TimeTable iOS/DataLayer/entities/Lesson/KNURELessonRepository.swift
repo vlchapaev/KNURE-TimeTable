@@ -30,7 +30,7 @@ class KNURELessonRepository: LessonRepository {
 		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
 		request.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
 		return reactiveCoreDataService.observe(request).map {
-			$0.map { $0.domainValue }
+			$0.map { $0.newValue }
 		}
 	}
 

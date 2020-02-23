@@ -93,8 +93,8 @@
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
 		776DC4162303288B008E8FAE /* DataLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776DC4152303288B008E8FAE /* DataLayerErrors.swift */; };
+		77713ED723F80D70006E3E4C /* KNURELessonImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */; };
 		7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778E46722D1096000477BFE /* ApplicationConfig.swift */; };
-		777AE2132221988E00EAEE20 /* KNURELessonImportSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */; };
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
@@ -346,9 +346,9 @@
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		776DC4152303288B008E8FAE /* DataLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerErrors.swift; sourceTree = "<group>"; };
+		77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURELessonImportService.swift; sourceTree = "<group>"; };
 		7778E46722D1096000477BFE /* ApplicationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfig.swift; sourceTree = "<group>"; };
 		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
-		777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURELessonImportSevice.swift; sourceTree = "<group>"; };
 		777AE2102221988E00EAEE20 /* ImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
 		778DC8572364BF1500580786 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -733,7 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				77DA947022FC40E4009105ED /* KNUREItemImportService.swift */,
-				777AE20F2221988E00EAEE20 /* KNURELessonImportSevice.swift */,
+				77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */,
 				777AE2102221988E00EAEE20 /* ImportService.swift */,
 				7702913622081C8800B82CF4 /* EventParser.m */,
 				7702913822081C8800B82CF4 /* EventParser.h */,
@@ -1206,6 +1206,7 @@
 				77D4AAB223AF7B3D00729A93 /* TimetableViewModel.swift in Sources */,
 				771A83D122A70130006964D7 /* NSManagedObjectContext+Reactive.swift in Sources */,
 				7752F9392247E46E003DC9FE /* CoreDataService.swift in Sources */,
+				77713ED723F80D70006E3E4C /* KNURELessonImportService.swift in Sources */,
 				77D388D3224F89BB00451611 /* ReactiveNetworkServiceImpl.swift in Sources */,
 				775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */,
 				7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */,
@@ -1292,7 +1293,6 @@
 				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,
 				7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */,
 				777AE2142221988E00EAEE20 /* ImportService.swift in Sources */,
-				777AE2132221988E00EAEE20 /* KNURELessonImportSevice.swift in Sources */,
 				775A3F792221743500931A1F /* KNURELessonRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

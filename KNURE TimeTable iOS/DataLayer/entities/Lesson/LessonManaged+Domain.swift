@@ -6,10 +6,10 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-extension LessonManaged: DomainConvertable {
-	typealias DomainType = Lesson
+extension LessonManaged: Convertable {
+	typealias NewType = Lesson
 
-	var domainValue: Lesson {
+	var newValue: Lesson {
 		// TODO: implement
 		return Lesson()
 	}

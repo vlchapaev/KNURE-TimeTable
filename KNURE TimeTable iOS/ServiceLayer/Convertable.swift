@@ -6,8 +6,8 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-protocol DomainConvertable: AnyObject {
-	associatedtype DomainType
+protocol Convertable: AnyObject {
+	associatedtype NewType
 
-	var domainValue: DomainType { get }
+	var newValue: NewType { get }
 }
