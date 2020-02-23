@@ -18,9 +18,5 @@ struct ApplicationLayerAssembly: Assembly {
 		container.register(ApplicationConfig.self) { _ in
 			DefaultAppConfig()
 		}
-
-		container.register(ApplicationConfig.self, name: "KNURE") { _ in
-			KNUREAppConfig()
-		}
 	}
 }

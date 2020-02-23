@@ -29,9 +29,8 @@ final class NetworkRequestSpec: QuickSpec {
 
 				it("should create correct URLRequest") {
 
-					var request = NetworkRequest(url: URL(string: "google.com")!)
 					let headers = ["key1": "value1", "key2": "value2", "key3": "value3"]
-					request.httpHeaders = headers
+					let request = NetworkRequest(url: URL(string: "google.com")!, headers: headers)
 					let urlRequest = request.urlRequest
 					expect(urlRequest.allHTTPHeaderFields).to(equal(headers))
 				}
