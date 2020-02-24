@@ -114,7 +114,6 @@
 		77D388CB224F64B500451611 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* NetworkService.swift */; };
 		77D388CD224F662000451611 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CC224F662000451611 /* NetworkRequest.swift */; };
 		77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CE224F6FCC00451611 /* NetworkResponse.swift */; };
-		77D388D1224F706000451611 /* HTTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D0224F706000451611 /* HTTPStatus.swift */; };
 		77D388D3224F89BB00451611 /* ReactiveNetworkServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */; };
 		77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */; };
 		77D4AAB023AF7B2E00729A93 /* TimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAAF23AF7B2E00729A93 /* TimetableView.swift */; };
@@ -148,6 +147,8 @@
 		77DC83EE2209C7C900B4E543 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 770290EB22081C8700B82CF4 /* Configuration.m */; };
 		77DC83F12209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
 		77DC83F22209C83400B4E543 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702910422081C8800B82CF4 /* SettingsViewController.m */; };
+		77F160222402FA110028966F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F160212402FA110028966F /* HTTP.swift */; };
+		77F16024240313750028966F /* KNURERequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F16023240313750028966F /* KNURERequestBuilder.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -371,7 +372,6 @@
 		77D388CA224F64B500451611 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		77D388CC224F662000451611 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		77D388CE224F6FCC00451611 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
-		77D388D0224F706000451611 /* HTTPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatus.swift; sourceTree = "<group>"; };
 		77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveNetworkServiceImpl.swift; sourceTree = "<group>"; };
 		77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		77D4AAAF23AF7B2E00729A93 /* TimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableView.swift; sourceTree = "<group>"; };
@@ -384,6 +384,8 @@
 		77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsUseCase.swift; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
+		77F160212402FA110028966F /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		77F16023240313750028966F /* KNURERequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURERequestBuilder.swift; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -773,6 +775,7 @@
 				77D388C9224F512100451611 /* NetworkService */,
 				770D9F7B223E41E40037C5B1 /* StorageService */,
 				771A83D622A707E1006964D7 /* Convertable.swift */,
+				77F16023240313750028966F /* KNURERequestBuilder.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -831,8 +834,8 @@
 				77D388CA224F64B500451611 /* NetworkService.swift */,
 				77D388CC224F662000451611 /* NetworkRequest.swift */,
 				77D388CE224F6FCC00451611 /* NetworkResponse.swift */,
-				77D388D0224F706000451611 /* HTTPStatus.swift */,
 				77D388D2224F89BB00451611 /* ReactiveNetworkServiceImpl.swift */,
+				77F160212402FA110028966F /* HTTP.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1246,7 +1249,6 @@
 				7716FCDB22885C4E00615D39 /* UpdateTimetableUseCase.swift in Sources */,
 				77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */,
 				77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */,
-				77D388D1224F706000451611 /* HTTPStatus.swift in Sources */,
 				7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */,
 				775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */,
 				77D388CD224F662000451611 /* NetworkRequest.swift in Sources */,
@@ -1268,6 +1270,7 @@
 				7712335823BCFB3D00CB01D6 /* Coordinator.swift in Sources */,
 				771A83D322A7029E006964D7 /* ContextScheduler.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
+				77F160222402FA110028966F /* HTTP.swift in Sources */,
 				7702915522081C8800B82CF4 /* MenuTableViewController.m in Sources */,
 				7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */,
 				7702915C22081C8800B82CF4 /* PopoverComboBoxViewController.m in Sources */,
@@ -1284,6 +1287,7 @@
 				7712335A23BCFF0800CB01D6 /* AddItemsAssembly.swift in Sources */,
 				77D4AAB423AF7B4F00729A93 /* TimetableInteractor.swift in Sources */,
 				7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */,
+				77F16024240313750028966F /* KNURERequestBuilder.swift in Sources */,
 				77D4AAB923AF7F3400729A93 /* TimetableAssembly.swift in Sources */,
 				77D388CB224F64B500451611 /* NetworkService.swift in Sources */,
 				7712336023BCFF3900CB01D6 /* AddItemsViewModel.swift in Sources */,

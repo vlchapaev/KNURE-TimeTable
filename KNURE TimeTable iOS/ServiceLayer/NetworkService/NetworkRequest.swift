@@ -8,44 +8,30 @@
 
 import Foundation
 
-enum HTTPMethod: String {
-	case GET
-	case POST
-	case PUT
-	case PATCH
-	case DELETE
-}
-
 struct NetworkRequest {
-	var httpMethod: HTTPMethod
-	var url: URL
-	var httpHeaders: [AnyHashable: Any]?
-	var httpBody: Data?
+	private var method: HTTPMethod
+	private var url: URL
+	private var headers: [AnyHashable: Any]?
+	private var body: Data?
 
 	init(url: URL,
-		 httpMethod: HTTPMethod = .GET) {
+		 method: HTTPMethod = .GET,
+		 headers: [AnyHashable: Any]? = nil,
+		 body: Data? = nil) {
 		self.url = url
-		self.httpMethod = httpMethod
+		self.method = method
+		self.headers = headers
+		self.body = body
 	}
 
 	var urlRequest: URLRequest {
-		return makeUrlRequest(HTTPMethod: httpMethod.rawValue,
-							  url: url,
-							  httpBody: httpBody,
-							  httpHeaders: httpHeaders)
-	}
-
-	private func makeUrlRequest(HTTPMethod: String,
-								url: URL,
-								httpBody: Data?,
-								httpHeaders: [AnyHashable: Any]?) -> URLRequest {
 
 		var urlRequest = URLRequest(url: url)
 
-		urlRequest.httpMethod = HTTPMethod
-		urlRequest.httpBody = httpBody
+		urlRequest.httpMethod = method.rawValue
+		urlRequest.httpBody = body
 
-		if let headers = httpHeaders {
+		if let headers = headers {
 			headers.forEach { urlRequest.setValue("\($1)", forHTTPHeaderField: "\($0)") }
 		}
 

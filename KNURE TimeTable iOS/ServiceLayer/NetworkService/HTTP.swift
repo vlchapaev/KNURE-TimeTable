@@ -1,23 +1,14 @@
 //
-//  HTTPStatus.swift
+//  HTTP.swift
 //  KNURE TimeTable iOS
 //
-//  Created by Vladislav Chapaev on 30/03/2019.
-//  Copyright © 2019 Vladislav Chapaev. All rights reserved.
+//  Created by Vladislav Chapaev on 23/02/2020.
+//  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
 import Foundation
 
 enum HTTPStatus: Int, Error {
-
-	enum ResponseType {
-		case informational
-		case success
-		case redirection
-		case clientError
-		case serverError
-		case undefined
-	}
 
 	// MARK: - Informational - 1xx
 
@@ -54,42 +45,22 @@ enum HTTPStatus: Int, Error {
 
 	case undefined = -1
 
-	var responseType: ResponseType {
-
-		switch self.rawValue {
-
-		case 100..<200:
-			return .informational
-
-		case 200..<300:
-			return .success
-
-		case 300..<400:
-			return .redirection
-
-		case 400..<500:
-			return .clientError
-
-		case 500..<600:
-			return .serverError
-
-		default:
-			return .undefined
-
-		}
-
-	}
-
 	init(code: Int) {
 		self = HTTPStatus(rawValue: code) ?? .undefined
 	}
 
 }
 
-extension HTTPURLResponse {
+enum HTTPMethod: String {
+	case GET
+	case POST
+	case PUT
+	case PATCH
+	case DELETE
+}
 
+extension HTTPURLResponse {
 	var status: HTTPStatus {
 		return HTTPStatus(rawValue: statusCode) ?? .undefined
 	}
-
 }

@@ -29,12 +29,14 @@ final class KNUREItemRepository: ItemRepository {
 	func localItems() -> [Item] {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(value: true)
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return coreDataService.fetch(request).map { $0.newValue }
 	}
 
 	func localItems(type: TimetableItem) -> [Item] {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return coreDataService.fetch(request).map { $0.newValue }
 	}
 
@@ -68,20 +70,12 @@ final class KNUREItemRepository: ItemRepository {
 //    }
 
 	func remoteItems(type: TimetableItem) -> Observable<[Item]> {
-		var address: String = "http://cist.nure.ua/ias/app/tt/"
-		switch type {
-		case .group:
-			address += "P_API_GROUP_JSON"
-
-		case .teacher:
-			address += "P_API_PODR_JSON"
-
-		case .auditory:
-			address += "P_API_AUDITORIES_JSON"
+		let request: NetworkRequest
+		do {
+			request = try KNURERequestBuilder.make(endpoint: .item(type))
+		} catch {
+			return Observable.error(error)
 		}
-
-		let request = NetworkRequest(url: URL(string: address)!)
-
 		return Observable.of(reactiveNetworkingService.execute(request))
 			.flatMap { $0 }
 			.map {
