@@ -1,5 +1,5 @@
 //
-//  Coordinator.swift
+//  MainCoordinator.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 26/10/2019.
@@ -7,54 +7,31 @@
 //
 
 import UIKit
+import XCoordinator
 
-final class MainCoordinator: Coordinator {
-
-	private var children: [Coordinator] = []
-
-	private let window: UIWindow
-
-	init(window: UIWindow) {
-		self.window = window
-	}
-
-	// MARK: - Coordinator
-
-	func start() {
-		let controller = MainViewController(output: self)
-		window.rootViewController = controller
-		window.makeKeyAndVisible()
-	}
-
-	func startTimeTableFlow() {
-		let coordinator = TimetableCoordinator()
-		coordinator.output = self
-		coordinator.start()
-		children.append(coordinator)
-	}
-
-	func startItemsFlow() {
-		let coordinator = ItemsCoordinator()
-		coordinator.output = self
-		coordinator.start()
-		children.append(coordinator)
-	}
-
-	func startSettingsFlow() {
-	}
+enum MainRoute: Route {
+	case timetable
+	case items
+	case settings
 }
 
-extension MainCoordinator: MainViewControllerOutput {
-}
+final class MainCoordinator: TabBarCoordinator<MainRoute> {
 
-extension MainCoordinator: TimetableCoordinatorOutput {
-	func timetableCoordinatorDidFinish() {
-		children.removeAll(where: { $0.classType == TimetableCoordinator.self })
-	}
-}
+	private let itemsRouter: StrongRouter<ItemsRouter>
 
-extension MainCoordinator: ItemsCoordinatorOutput {
-	func itemsCoordinatorDidFinish() {
-		children.removeAll(where: { $0.classType == ItemsCoordinator.self })
+	init(viewControllerFactory: ViewControllerFactory) {
+        let itemsCoordinator = ItemsCoordinator(viewControllerFactory: viewControllerFactory)
+        itemsCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+
+		self.itemsRouter = itemsCoordinator.strongRouter
+
+		super.init(tabs: [itemsRouter], select: itemsRouter)
+    }
+
+	override func prepareTransition(for route: MainRoute) -> TabBarTransition {
+		switch route {
+		case .timetable, .items, .settings:
+			return .select(itemsRouter)
+		}
 	}
 }

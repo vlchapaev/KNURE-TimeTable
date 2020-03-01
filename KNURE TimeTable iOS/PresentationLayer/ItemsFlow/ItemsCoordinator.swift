@@ -7,18 +7,52 @@
 //
 
 import UIKit
+import XCoordinator
 
-protocol ItemsCoordinatorOutput: AnyObject {
-
-	func itemsCoordinatorDidFinish()
+enum ItemsRouter: Route {
+	case itemsList
+	case addItems(TimetableItem)
+	case close
 }
 
-final class ItemsCoordinator: Coordinator {
+final class ItemsCoordinator: NavigationCoordinator<ItemsRouter> {
 
-	weak var output: ItemsCoordinatorOutput?
+	private let viewControllerFactory: ViewControllerFactory
 
-	// MARK: - Coordinator
+	init(viewControllerFactory: ViewControllerFactory) {
+		self.viewControllerFactory = viewControllerFactory
+		super.init(initialRoute: .itemsList)
+	}
 
-	func start() {
+	override func prepareTransition(for route: ItemsRouter) -> NavigationTransition {
+		switch route {
+		case .close:
+			return .popToRoot()
+
+		case .addItems(let type):
+			let controller = viewControllerFactory.make(viewController: AddItemsViewController.self)
+			controller.output = self
+			controller.configure(type: type)
+			return .push(controller)
+
+		case .itemsList:
+			let controller = viewControllerFactory.make(viewController: ItemsViewController.self)
+			controller.output = self
+			return .push(controller)
+		}
+	}
+}
+
+extension ItemsCoordinator: ItemsViewControllerOutput {
+
+	func controller(_ controller: ItemsViewController, addItems type: TimetableItem) {
+		unownedRouter.trigger(.addItems(type))
+	}
+}
+
+extension ItemsCoordinator: AddItemsViewControllerOutput {
+
+	func didFinish(_ controller: AddItemsViewController) {
+		unownedRouter.trigger(.itemsList)
 	}
 }

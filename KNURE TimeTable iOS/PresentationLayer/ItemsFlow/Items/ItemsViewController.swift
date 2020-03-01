@@ -9,11 +9,14 @@
 import UIKit
 
 protocol ItemsViewControllerOutput {
+
+	func controller(_ controller: ItemsViewController, addItems type: TimetableItem)
 }
 
 final class ItemsViewController: UIViewController, ItemsInteractorOutput {
 
 	var interactor: ItemsInteractorInput?
+	var output: ItemsViewControllerOutput?
 
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -25,6 +28,11 @@ final class ItemsViewController: UIViewController, ItemsInteractorOutput {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add,
+										target: self,
+										action: #selector(addItems))
+		navigationItem.rightBarButtonItem = addButton
 
 		// Do any additional setup after loading the view.
 	}
@@ -39,4 +47,8 @@ final class ItemsViewController: UIViewController, ItemsInteractorOutput {
 	}
 	*/
 
+	@objc
+	func addItems() {
+		output?.controller(self, addItems: .group)
+	}
 }

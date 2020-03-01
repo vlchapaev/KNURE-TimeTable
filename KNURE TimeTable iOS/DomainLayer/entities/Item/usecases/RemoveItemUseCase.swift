@@ -10,14 +10,14 @@ import RxSwift
 
 final class RemoveItemUseCase: UseCase<String, Observable<Void>> {
 
-//	private let itemRepository: ItemRepository
-//
-//	init(itemRepository: ItemRepository) {
-//		self.itemRepository = itemRepository
-//	}
-//
-//	// MARK: - UseCase
-//
+	private let itemRepository: ItemRepository
+
+	init(itemRepository: ItemRepository) {
+		self.itemRepository = itemRepository
+	}
+
+	// MARK: - UseCase
+
 //	override func execute(_ query: String) -> Promise<Void> {
 //		return itemRepository.localDeleteItem(identifier: query)
 //	}

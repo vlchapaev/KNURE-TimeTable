@@ -9,6 +9,7 @@
 import Swinject
 
 struct PresentationLayerAssembly: Assembly {
+
 	func assemble(container: Container) {
 		let assembies: [Assembly] = [
 			TimetableAssembly(),
@@ -18,5 +19,13 @@ struct PresentationLayerAssembly: Assembly {
 		]
 
 		assembies.forEach { $0.assemble(container: container) }
+
+		configureFactories(container)
+	}
+
+	private func configureFactories(_ container: Container) {
+		container.register(ViewControllerFactory.self) { _ in
+			ViewControllerFactoryImpl(container: container)
+		}
 	}
 }

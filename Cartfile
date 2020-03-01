@@ -2,3 +2,4 @@ github "Swinject/Swinject" ~> 2.7
 github "ReactiveX/RxSwift" ~> 5.0
 github "Quick/Quick" ~> 2.2
 github "Quick/Nimble" ~> 8.0
+github "quickbirdstudios/XCoordinator" ~> 2.0

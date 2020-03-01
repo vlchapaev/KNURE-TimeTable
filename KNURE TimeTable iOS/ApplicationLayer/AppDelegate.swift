@@ -8,14 +8,15 @@
 
 import UIKit
 import Swinject
+import XCoordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-	private var coordinator: Coordinator?
+	var coordinator: MainCoordinator?
 
-	private let container: Container = Container(defaultObjectScope: .transient) { container in
+	private let container: Swinject.Container = Container(defaultObjectScope: .transient) { container in
 		let factories: [Assembly] = [
 			ApplicationLayerAssembly(),
 			ServiceLayerAssembly(),
@@ -27,17 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		factories.forEach { $0.assemble(container: container) }
 	}
 
-    func application(_: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        registerWindow()
-        return true
-    }
-
-    func registerWindow() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-		coordinator = MainCoordinator(window: window)
-		coordinator?.start()
-    }
-
+	func application(_ application: UIApplication,
+					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		window = UIWindow()
+		let factory = container.resolve(ViewControllerFactory.self)!
+		coordinator = MainCoordinator(viewControllerFactory: factory)
+		coordinator?.strongRouter.setRoot(for: window!)
+		return true
+	}
 }

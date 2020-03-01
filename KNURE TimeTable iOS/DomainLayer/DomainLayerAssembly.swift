@@ -18,10 +18,9 @@ struct DomainLayerAssembly: Assembly {
 //		container.register(SaveItemUseCase.self) {
 //			SaveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
 //		}
-//
-//		container.register(RemoveItemUseCase.self) {
-//			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
-//		}
+		container.register(RemoveItemUseCase.self) {
+			RemoveItemUseCase(itemRepository: $0.resolve(ItemRepository.self)!)
+		}
 
 		container.register(SelectedItemsUseCase.self) {
 			SelectedItemsUseCase(itemRepository: $0.resolve(ItemRepository.self)!)

@@ -54,7 +54,6 @@
 		7712335223BCEFE300CB01D6 /* ItemsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335123BCEFE300CB01D6 /* ItemsInteractor.swift */; };
 		7712335423BCEFF400CB01D6 /* ItemsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335323BCEFF400CB01D6 /* ItemsAssembly.swift */; };
 		7712335623BCF00900CB01D6 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335523BCF00900CB01D6 /* ItemsView.swift */; };
-		7712335823BCFB3D00CB01D6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335723BCFB3D00CB01D6 /* Coordinator.swift */; };
 		7712335A23BCFF0800CB01D6 /* AddItemsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335923BCFF0800CB01D6 /* AddItemsAssembly.swift */; };
 		7712335C23BCFF1900CB01D6 /* AddItemsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335B23BCFF1900CB01D6 /* AddItemsInteractor.swift */; };
 		7712335E23BCFF2A00CB01D6 /* AddItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712335D23BCFF2A00CB01D6 /* AddItemsViewController.swift */; };
@@ -122,6 +121,9 @@
 		77D4AAB723AF7BDA00729A93 /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAB623AF7BDA00729A93 /* CalendarLayout.swift */; };
 		77D4AAB923AF7F3400729A93 /* TimetableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAB823AF7F3400729A93 /* TimetableAssembly.swift */; };
 		77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AABA23AF8CAC00729A93 /* MainViewController.swift */; };
+		77DA785B240AF329001C442C /* XCoordinatorRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DA785A240AF329001C442C /* XCoordinatorRx.framework */; };
+		77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DA785C240AF339001C442C /* XCoordinator.framework */; };
+		77DA785F240AF927001C442C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA785E240AF927001C442C /* ViewControllerFactory.swift */; };
 		77DA947122FC40E4009105ED /* KNUREItemImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA947022FC40E4009105ED /* KNUREItemImportService.swift */; };
 		77DC23C923C48FDA00A40D57 /* ItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -299,7 +301,6 @@
 		7712335123BCEFE300CB01D6 /* ItemsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInteractor.swift; sourceTree = "<group>"; };
 		7712335323BCEFF400CB01D6 /* ItemsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsAssembly.swift; sourceTree = "<group>"; };
 		7712335523BCF00900CB01D6 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
-		7712335723BCFB3D00CB01D6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		7712335923BCFF0800CB01D6 /* AddItemsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsAssembly.swift; sourceTree = "<group>"; };
 		7712335B23BCFF1900CB01D6 /* AddItemsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsInteractor.swift; sourceTree = "<group>"; };
 		7712335D23BCFF2A00CB01D6 /* AddItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +381,9 @@
 		77D4AAB623AF7BDA00729A93 /* CalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
 		77D4AAB823AF7F3400729A93 /* TimetableAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableAssembly.swift; sourceTree = "<group>"; };
 		77D4AABA23AF8CAC00729A93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		77DA785A240AF329001C442C /* XCoordinatorRx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCoordinatorRx.framework; path = Carthage/Build/iOS/XCoordinatorRx.framework; sourceTree = "<group>"; };
+		77DA785C240AF339001C442C /* XCoordinator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCoordinator.framework; path = Carthage/Build/iOS/XCoordinator.framework; sourceTree = "<group>"; };
+		77DA785E240AF927001C442C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		77DA947022FC40E4009105ED /* KNUREItemImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNUREItemImportService.swift; sourceTree = "<group>"; };
 		77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsUseCase.swift; sourceTree = "<group>"; };
 		77DC83F82209C92E00B4E543 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */,
+				77DA785B240AF329001C442C /* XCoordinatorRx.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */,
 				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
@@ -475,7 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */,
-				7712335723BCFB3D00CB01D6 /* Coordinator.swift */,
+				77DA785E240AF927001C442C /* ViewControllerFactory.swift */,
 				778DC8572364BF1500580786 /* MainCoordinator.swift */,
 				77D4AABA23AF8CAC00729A93 /* MainViewController.swift */,
 				778DC8592364C04000580786 /* TimetableFlow */,
@@ -887,6 +893,8 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77DA785C240AF339001C442C /* XCoordinator.framework */,
+				77DA785A240AF329001C442C /* XCoordinatorRx.framework */,
 				77C2042C2337FF64007D3A1B /* Nimble.framework */,
 				77C2042D2337FF64007D3A1B /* Quick.framework */,
 				778EC065229B0C1C00D1F445 /* RxSwift.framework */,
@@ -1120,6 +1128,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XCoordinator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XCoordinatorRx.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -1247,6 +1257,7 @@
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7702916222081C8800B82CF4 /* LessonCollectionViewCell.m in Sources */,
 				7716FCDB22885C4E00615D39 /* UpdateTimetableUseCase.swift in Sources */,
+				77DA785F240AF927001C442C /* ViewControllerFactory.swift in Sources */,
 				77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */,
 				77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */,
 				7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */,
@@ -1267,7 +1278,6 @@
 				77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */,
 				7702916E22081C8800B82CF4 /* PFTableCellContentView.m in Sources */,
 				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
-				7712335823BCFB3D00CB01D6 /* Coordinator.swift in Sources */,
 				771A83D322A7029E006964D7 /* ContextScheduler.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				77F160222402FA110028966F /* HTTP.swift in Sources */,
