@@ -10,12 +10,30 @@ import UIKit
 
 final class ItemsView: UIView {
 
-	/*
-	// Only override draw() if you perform custom drawing.
-	// An empty implementation adversely affects performance during animation.
-	override func draw(_ rect: CGRect) {
-	// Drawing code
-	}
-	*/
+	let tableView: UITableView
 
+	init() {
+
+		if #available(iOS 13.0, *) {
+			tableView = UITableView(frame: .zero, style: .insetGrouped)
+
+		} else {
+			tableView = UITableView(frame: .zero, style: .grouped)
+		}
+
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: ItemsViewModel.cellId)
+
+		super.init(frame: .zero)
+
+		addSubview(tableView)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		tableView.frame = bounds
+	}
 }

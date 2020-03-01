@@ -91,6 +91,7 @@
 		775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3F9822217FD700931A1F /* AppDelegate.swift */; };
 		775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */; };
 		775A3FBB222186AE00931A1F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A3FBA222186AE00931A1F /* ApiKey.swift */; };
+		775B3E1C240BFBFE00662D6F /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775B3E1B240BFBFE00662D6F /* RxDataSources.framework */; };
 		776DC4162303288B008E8FAE /* DataLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776DC4152303288B008E8FAE /* DataLayerErrors.swift */; };
 		77713ED723F80D70006E3E4C /* KNURELessonImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */; };
 		7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778E46722D1096000477BFE /* ApplicationConfig.swift */; };
@@ -180,16 +181,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7713D58C1CA5748600FCDA9B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		773F6456196939220081165C /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -347,6 +338,7 @@
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
 		775A3FBA222186AE00931A1F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		775B3E1B240BFBFE00662D6F /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		776DC4152303288B008E8FAE /* DataLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerErrors.swift; sourceTree = "<group>"; };
 		77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURELessonImportService.swift; sourceTree = "<group>"; };
 		7778E46722D1096000477BFE /* ApplicationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfig.swift; sourceTree = "<group>"; };
@@ -429,6 +421,7 @@
 				77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */,
 				77DA785B240AF329001C442C /* XCoordinatorRx.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
+				775B3E1C240BFBFE00662D6F /* RxDataSources.framework in Frameworks */,
 				778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */,
 				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
@@ -893,6 +886,7 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				775B3E1B240BFBFE00662D6F /* RxDataSources.framework */,
 				77DA785C240AF339001C442C /* XCoordinator.framework */,
 				77DA785A240AF329001C442C /* XCoordinatorRx.framework */,
 				77C2042C2337FF64007D3A1B /* Nimble.framework */,
@@ -986,7 +980,6 @@
 				C33FCC601819965300328F6D /* Frameworks */,
 				C33FCC611819965300328F6D /* Resources */,
 				773F6456196939220081165C /* Embed App Extensions */,
-				7713D58C1CA5748600FCDA9B /* Embed Frameworks */,
 				777AE2092221953000EAEE20 /* Carthage */,
 				777AE216222198F400EAEE20 /* Swiftlint */,
 			);
@@ -1130,6 +1123,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XCoordinator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XCoordinatorRx.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
