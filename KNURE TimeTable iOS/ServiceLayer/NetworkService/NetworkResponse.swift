@@ -9,12 +9,13 @@
 import Foundation
 
 struct NetworkResponse {
-	var httpStatus: HTTPStatus
+
+	var status: HTTP.Status
 	var data: Data?
 
-	init(httpStatus: HTTPStatus,
+	init(status: HTTP.Status,
 		 data: Data? = nil) {
-		self.httpStatus = httpStatus
+		self.status = status
 		self.data = data
 	}
 }

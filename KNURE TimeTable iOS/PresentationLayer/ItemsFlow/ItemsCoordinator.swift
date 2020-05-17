@@ -11,7 +11,7 @@ import XCoordinator
 
 enum ItemsRouter: Route {
 	case itemsList
-	case addItems(TimetableItem)
+	case addItems(Item.Kind)
 	case close
 }
 
@@ -45,7 +45,7 @@ final class ItemsCoordinator: NavigationCoordinator<ItemsRouter> {
 
 extension ItemsCoordinator: ItemsViewControllerOutput {
 
-	func controller(_ controller: ItemsViewController, addItems type: TimetableItem) {
+	func controller(_ controller: ItemsViewController, addItems type: Item.Kind) {
 		unownedRouter.trigger(.addItems(type))
 	}
 }

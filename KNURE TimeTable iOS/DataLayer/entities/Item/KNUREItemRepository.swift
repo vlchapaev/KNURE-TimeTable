@@ -33,7 +33,7 @@ final class KNUREItemRepository: ItemRepository {
 		return coreDataService.fetch(request).map { $0.newValue }
 	}
 
-	func localItems(type: TimetableItem) -> [Item] {
+	func localItems(type: Item.Kind) -> [Item] {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
@@ -69,7 +69,7 @@ final class KNUREItemRepository: ItemRepository {
 //		}
 //    }
 
-	func remoteItems(type: TimetableItem) -> Observable<[Item]> {
+	func remoteItems(type: Item.Kind) -> Observable<[Item]> {
 		let request: NetworkRequest
 		do {
 			request = try KNURERequestBuilder.make(endpoint: .item(type))

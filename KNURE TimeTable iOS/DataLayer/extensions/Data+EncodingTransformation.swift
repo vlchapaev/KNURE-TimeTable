@@ -8,22 +8,20 @@
 
 import Foundation
 
-public extension Data {
-	func transform(from encodingSource: String.Encoding,
-				   to encodingResult: String.Encoding) throws -> Data {
+extension Data {
 
-		guard let tempData = String(data: self, encoding: encodingSource) else {
-			throw FailedToReadSourceData()
+	func transform(from sourceEncoding: String.Encoding,
+				   to resultEncoding: String.Encoding) throws -> Data {
+
+		guard let response = String(data: self, encoding: sourceEncoding)?.data(using: resultEncoding) else {
+			throw Error.transformation
 		}
 
-		guard var responseData = tempData.data(using: encodingResult) else {
-			throw FailedToTransfromResultData()
-		}
-
-		let range = Range<Data.Index>(0...responseData.count - 1)
-		return responseData.subdata(in: range)
+		let range = Range<Data.Index>(0...response.count - 1)
+		return response.subdata(in: range)
     }
-}
 
-class FailedToReadSourceData: Error {}
-class FailedToTransfromResultData: Error {}
+	enum Error: LocalizedError {
+		case transformation
+	}
+}

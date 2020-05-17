@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol AddItemsViewControllerInput {
-	func configure(type: TimetableItem)
+	func configure(type: Item.Kind)
 }
 
 protocol AddItemsViewControllerOutput {
@@ -68,7 +68,7 @@ final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
 }
 
 extension AddItemsViewController: AddItemsViewControllerInput {
-	func configure(type: TimetableItem) {
+	func configure(type: Item.Kind) {
 		viewModel.selectedType = type
 	}
 }

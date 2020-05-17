@@ -9,7 +9,7 @@
 import RxSwift
 
 protocol AddItemsInteractorInput {
-	func obtainItems(type: TimetableItem) -> Observable<[AddItemsViewModel.Model]>
+	func obtainItems(type: Item.Kind) -> Observable<[AddItemsViewModel.Model]>
 }
 
 protocol AddItemsInteractorOutput: AnyObject {
@@ -30,7 +30,7 @@ final class AddItemsInteractor: AddItemsInteractorInput {
 
 	// MARK: - AddItemsInteractorInput
 
-	func obtainItems(type: TimetableItem) -> Observable<[AddItemsViewModel.Model]> {
+	func obtainItems(type: Item.Kind) -> Observable<[AddItemsViewModel.Model]> {
 		return Observable.zip(itemsUseCase.execute(type), selectedItemsUseCase.execute(()))
 			.map {
 				let identifiers = $0.1.map { $0.identifier }

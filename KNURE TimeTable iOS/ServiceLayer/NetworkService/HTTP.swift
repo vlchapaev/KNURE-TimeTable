@@ -8,59 +8,64 @@
 
 import Foundation
 
-enum HTTPStatus: Int, Error {
+struct HTTP { }
 
-	// MARK: - Informational - 1xx
+extension HTTP {
 
-	case `continue` = 100
-	case switchingProtocols = 101
-	case processing = 102
+	enum Status: Int, Error {
 
-	// MARK: - Success - 2xx
+		// MARK: - Informational - 1xx
 
-	case ok = 200
-	case created = 201
-	case accepted = 202
-	case nonAuthoritativeInformation = 203
-	case noContent = 204
+		case `continue` = 100
+		case switchingProtocols = 101
+		case processing = 102
 
-	// MARK: - Redirection - 3xx
+		// MARK: - Success - 2xx
 
-	case notModified = 304
+		case ok = 200
+		case created = 201
+		case accepted = 202
+		case nonAuthoritativeInformation = 203
+		case noContent = 204
 
-	// MARK: - Client Error - 4xx
+		// MARK: - Redirection - 3xx
 
-	case badRequest = 400
-	case unauthorized = 401
-	case forbidden = 403
-	case notFound = 404
+		case notModified = 304
 
-	// MARK: - Server Error - 5xx
+		// MARK: - Client Error - 4xx
 
-	case internalServerError = 500
-	case notImplemented = 501
-	case badGateway = 502
-	case serviceUnavailable = 503
-	case gatewayTimeout = 504
+		case badRequest = 400
+		case unauthorized = 401
+		case forbidden = 403
+		case notFound = 404
 
-	case undefined = -1
+		// MARK: - Server Error - 5xx
 
-	init(code: Int) {
-		self = HTTPStatus(rawValue: code) ?? .undefined
+		case internalServerError = 500
+		case notImplemented = 501
+		case badGateway = 502
+		case serviceUnavailable = 503
+		case gatewayTimeout = 504
+
+		case undefined = -1
+
+		init(code: Int) {
+			self = Status(rawValue: code) ?? .undefined
+		}
+
 	}
 
-}
-
-enum HTTPMethod: String {
-	case GET
-	case POST
-	case PUT
-	case PATCH
-	case DELETE
+	enum Method: String {
+		case GET
+		case POST
+		case PUT
+		case PATCH
+		case DELETE
+	}
 }
 
 extension HTTPURLResponse {
-	var status: HTTPStatus {
-		return HTTPStatus(rawValue: statusCode) ?? .undefined
+	var status: HTTP.Status {
+		return HTTP.Status(rawValue: statusCode) ?? .undefined
 	}
 }

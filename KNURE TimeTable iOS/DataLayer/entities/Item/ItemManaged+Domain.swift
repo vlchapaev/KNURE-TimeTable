@@ -12,17 +12,14 @@ extension ItemManaged: Convertable {
 	typealias NewType = Item
 
 	var newValue: Item {
-		let timetableType: TimetableItem = TimetableItem(rawValue: type?.intValue ?? 0) ?? .group
+		let timetableType: Item.Kind = Item.Kind(rawValue: type?.intValue ?? 0) ?? .group
 		var item = Item(identifier: identifier ?? "0",
 						shortName: title ?? "",
+						fullName: fullName,
 						type: timetableType)
 
 		if let lastUpdateTimestamp = lastUpdateTimestamp?.doubleValue {
 			item.lastUpdate = Date(timeIntervalSince1970: lastUpdateTimestamp)
-		}
-
-		if let fullName = fullName {
-			item.fullName = fullName
 		}
 
 		return item

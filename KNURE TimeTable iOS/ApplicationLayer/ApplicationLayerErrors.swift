@@ -8,5 +8,4 @@
 
 enum ApplicationLayer: Error {
 	case nilSelfError
-	case dataCastError
 }

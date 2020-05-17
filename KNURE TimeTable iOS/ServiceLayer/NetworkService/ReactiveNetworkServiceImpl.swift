@@ -22,8 +22,8 @@ final class ReactiveNetworkServiceImpl: ReactiveNetworkService {
 	func execute(_ request: NetworkRequest) -> Observable<NetworkResponse> {
 		return session.rx.response(request: request.urlRequest)
 			.map {
-				let httpStatus = HTTPStatus(code: $0.response.statusCode)
-				return NetworkResponse(httpStatus: httpStatus, data: $0.data)
+				let status = HTTP.Status(code: $0.response.statusCode)
+				return NetworkResponse(status: status, data: $0.data)
 			}
 			.observeOn(MainScheduler.instance)
 	}

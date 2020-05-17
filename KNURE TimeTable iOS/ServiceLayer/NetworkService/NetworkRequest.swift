@@ -9,13 +9,13 @@
 import Foundation
 
 struct NetworkRequest {
-	private var method: HTTPMethod
+	private var method: HTTP.Method
 	private var url: URL
 	private var headers: [AnyHashable: Any]?
 	private var body: Data?
 
 	init(url: URL,
-		 method: HTTPMethod = .GET,
+		 method: HTTP.Method = .GET,
 		 headers: [AnyHashable: Any]? = nil,
 		 body: Data? = nil) {
 		self.url = url

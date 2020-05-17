@@ -13,7 +13,7 @@ import RxDataSources
 
 protocol ItemsViewControllerOutput {
 
-	func controller(_ controller: ItemsViewController, addItems type: TimetableItem)
+	func controller(_ controller: ItemsViewController, addItems type: Item.Kind)
 }
 
 final class ItemsViewController: UIViewController {

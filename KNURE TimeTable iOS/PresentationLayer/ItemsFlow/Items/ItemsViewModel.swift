@@ -14,7 +14,7 @@ final class ItemsViewModel {
 
 	var sections: BehaviorRelay<[Section]>
 
-	static let cellId = "TimetableItem"
+	static let cellId = "Item.Kind"
 
 	struct Section {
 		let name: String

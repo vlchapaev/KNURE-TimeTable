@@ -8,7 +8,7 @@
 
 import RxSwift
 
-final class ItemsUseCase: UseCase<TimetableItem, Observable<[Item]>> {
+final class ItemsUseCase: UseCase<Item.Kind, Observable<[Item]>> {
 
 	private let itemRepository: ItemRepository
 
@@ -18,7 +18,7 @@ final class ItemsUseCase: UseCase<TimetableItem, Observable<[Item]>> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: TimetableItem) -> Observable<[Item]> {
+	override func execute(_ query: Item.Kind) -> Observable<[Item]> {
 		return itemRepository.remoteItems(type: query)
 	}
 }

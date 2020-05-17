@@ -8,12 +8,6 @@
 
 import Foundation
 
-/// Basic item types in list
-enum TimetableItem: Int {
-
-	case group = 1, teacher, auditory
-}
-
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
 struct Item {
 
@@ -24,19 +18,29 @@ struct Item {
 	let shortName: String
 
 	/// full name to represent, such as full name of teacher
-	var fullName: String?
+	let fullName: String?
 
 	/// group, teacher or auditory
-	let type: TimetableItem
+	let type: Kind
 
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?
 
 	init(identifier: String,
 		 shortName: String,
-		 type: TimetableItem) {
+		 fullName: String? = nil,
+		 type: Kind) {
 		self.identifier = identifier
 		self.shortName = shortName
+		self.fullName = fullName
 		self.type = type
+	}
+}
+
+extension Item {
+	/// Basic item types in list
+	enum Kind: Int {
+
+		case group = 1, teacher, auditory
 	}
 }

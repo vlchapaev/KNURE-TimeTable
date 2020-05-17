@@ -10,7 +10,7 @@ import RxCocoa
 
 final class AddItemsViewModel {
 	var items: BehaviorRelay<[Model]>
-	var selectedType: TimetableItem
+	var selectedType: Item.Kind
 
 	static let cellId = "TimetableAddItem"
 

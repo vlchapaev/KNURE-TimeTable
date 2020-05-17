@@ -30,7 +30,7 @@ protocol ItemRepository {
     /// - Returns: Promise with finished operation
 //    func localDeleteItem(identifier: String) -> Promise<Void>
 
-//	func remoteUpdateItems(type: TimetableItem) -> Promise<Void>
+//	func remoteUpdateItems(type: Item.Kind) -> Promise<Void>
 
-	func remoteItems(type: TimetableItem) -> Observable<[Item]>
+	func remoteItems(type: Item.Kind) -> Observable<[Item]>
 }

@@ -11,8 +11,8 @@ import Foundation
 struct KNURERequestBuilder {
 
 	enum Endpoint {
-		case timetable(TimetableItem, String)
-		case item(TimetableItem)
+		case timetable(Item.Kind, String)
+		case item(Item.Kind)
 	}
 
 	static func make(endpoint: Endpoint) throws -> NetworkRequest {

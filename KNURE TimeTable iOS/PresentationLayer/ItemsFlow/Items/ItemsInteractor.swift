@@ -32,7 +32,7 @@ final class ItemsInteractor: ItemsInteractorInput {
 		selectedItemsUseCase.execute(()).map {
 			let items = ("Groups", $0.filter { $0.type == .group })
 			let teachers = ("Teachers", $0.filter { $0.type == .teacher })
-			let auditories = ("Auditories", $0.filter { $0.type == .auditory } )
+			let auditories = ("Auditories", $0.filter { $0.type == .auditory })
 
 			return [items, teachers, auditories]
 				.filter { !$0.1.isEmpty }
