@@ -103,7 +103,6 @@
 		778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC85B2364C08900580786 /* TimetableCoordinator.swift */; };
 		778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */; };
 		778EC066229B0C1C00D1F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778EC065229B0C1C00D1F445 /* RxSwift.framework */; };
-		7796FD6422CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7796FD6322CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift */; };
 		77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */; };
 		77C2042E2337FF64007D3A1B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2042C2337FF64007D3A1B /* Nimble.framework */; };
 		77C2042F2337FF64007D3A1B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2042D2337FF64007D3A1B /* Quick.framework */; };
@@ -351,7 +350,6 @@
 		778DC85B2364C08900580786 /* TimetableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCoordinator.swift; sourceTree = "<group>"; };
 		778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerAssembly.swift; sourceTree = "<group>"; };
 		778EC065229B0C1C00D1F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		7796FD6322CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveCoreDataServiceImpl.swift; sourceTree = "<group>"; };
 		77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLayerErrors.swift; sourceTree = "<group>"; };
 		77C204222337FF32007D3A1B /* KNURE TimeTable iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KNURE TimeTable iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C204262337FF32007D3A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -630,7 +628,6 @@
 				771A83CE22A6FE9B006964D7 /* EntityObserver.swift */,
 				771A83D022A70130006964D7 /* NSManagedObjectContext+Reactive.swift */,
 				771A83D222A7029E006964D7 /* ContextScheduler.swift */,
-				7796FD6322CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift */,
 				7710B0C424D06B7200BE4E2D /* CDPublisher.swift */,
 			);
 			path = StorageService;
@@ -1226,7 +1223,6 @@
 				7702915B22081C8800B82CF4 /* AddItemsTableViewController.m in Sources */,
 				775A3F772221731600931A1F /* ItemRepository.swift in Sources */,
 				775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */,
-				7796FD6422CFEB7C006DEFE0 /* ReactiveCoreDataServiceImpl.swift in Sources */,
 				775A3F9522217CB200931A1F /* TimetableUseCase.swift in Sources */,
 				77D4AAB023AF7B2E00729A93 /* TimetableView.swift in Sources */,
 				778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */,

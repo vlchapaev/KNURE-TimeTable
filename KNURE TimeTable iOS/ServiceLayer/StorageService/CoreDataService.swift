@@ -7,13 +7,16 @@
 //
 
 import CoreData
-import RxSwift
+import Combine
 
-protocol CoreDataService {
+/// Basic CoreData service
+protocol CoreDataService: ReactiveCoreDataService {
 
-	func fetch<T>(_ request: NSFetchRequest<T>) -> [T]
-
-	func fetch<T>(_ request: NSFetchRequest<T>, in context: NSManagedObjectContext) -> [T]
+	/// <#Description#>
+	/// - Parameters:
+	///   - request: <#request description#>
+	///   - convert: <#convert description#>
+	func fetch<T, R>(_ request: NSFetchRequest<T>, _ convert: (T) -> R) -> [R]
 }
 
 /// CoreData service based on Reactive approach
@@ -23,7 +26,6 @@ protocol ReactiveCoreDataService {
 	///
 	/// - Parameter request: NSFetchRequest
 	/// - Returns: Observable fetch result
-	func observe<T>(_ request: NSFetchRequest<T>) -> Observable<[T]>
-
-	func update(_ request: NSBatchUpdateRequest) -> Single<Void>
+	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
+		where T: NSFetchRequestResult & Convertable, R == T.NewType
 }

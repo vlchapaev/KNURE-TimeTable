@@ -7,30 +7,40 @@
 //
 
 import CoreData
+import Combine
 
-final class CoreDataServiceImpl: CoreDataService {
+final class CoreDataServiceImpl {
 
 	private let persistentContainer: NSPersistentContainer
 
 	init(persistentContainer: NSPersistentContainer) {
 		self.persistentContainer = persistentContainer
 	}
+}
 
-	func fetch<T>(_ request: NSFetchRequest<T>) -> [T] where T: NSFetchRequestResult {
+extension CoreDataServiceImpl: CoreDataService {
+
+	func fetch<T, R>(_ request: NSFetchRequest<T>,
+					 _ convert: (T) -> R) -> [R] where T: NSFetchRequestResult {
 		let context = persistentContainer.viewContext
-		return fetch(request, in: context)
-	}
-
-	func fetch<T>(_ request: NSFetchRequest<T>,
-				  in context: NSManagedObjectContext) -> [T] where T: NSFetchRequestResult {
-		var result: [T] = []
+		var result: [R] = []
 		context.performAndWait {
 			do {
-				result = try context.fetch(request)
+				result = try context.fetch(request).compactMap { convert($0) }
 			} catch {
 				print(error)
 			}
 		}
 		return result
+	}
+}
+
+extension CoreDataServiceImpl: ReactiveCoreDataService {
+
+	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
+		where T: NSFetchRequestResult & Convertable, R == T.NewType {
+		let context = persistentContainer.viewContext
+		let publisher = CDPublisher(request: request, context: context)
+		return AnyPublisher(publisher)
 	}
 }

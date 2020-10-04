@@ -9,7 +9,9 @@
 import Combine
 import CoreData
 
-final class CDPublisher<T: NSManagedObject & Convertable>: NSObject, Publisher, NSFetchedResultsControllerDelegate {
+final class CDPublisher<T: NSFetchRequestResult & Convertable>: NSObject,
+	Publisher,
+NSFetchedResultsControllerDelegate {
 
 	typealias Output = [T.NewType]
 	typealias Failure = Never
