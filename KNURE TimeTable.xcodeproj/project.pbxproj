@@ -12,6 +12,16 @@
 		7702915122081C8800B82CF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 770290F822081C8800B82CF4 /* InfoPlist.strings */; };
 		7702915F22081C8800B82CF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7702911922081C8800B82CF4 /* Images.xcassets */; };
 		7702916322081C8800B82CF4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7702912222081C8800B82CF4 /* LaunchScreen.xib */; };
+		7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912522081C8800B82CF4 /* ItemsTableViewCell.m */; };
+		7702916522081C8800B82CF4 /* MSDayColumnHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912722081C8800B82CF4 /* MSDayColumnHeaderBackground.m */; };
+		7702916622081C8800B82CF4 /* MSTimeRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912822081C8800B82CF4 /* MSTimeRowHeader.m */; };
+		7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702912C22081C8800B82CF4 /* MSCurrentTimeGridline.m */; };
+		7702916822081C8800B82CF4 /* MSDayColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913122081C8800B82CF4 /* MSDayColumnHeader.m */; };
+		7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */; };
+		7702916A22081C8800B82CF4 /* MSGridline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913322081C8800B82CF4 /* MSGridline.m */; };
+		7702916B22081C8800B82CF4 /* MSTimeRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */; };
+		7702916C22081C8800B82CF4 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913622081C8800B82CF4 /* EventParser.m */; };
+		7702916D22081C8800B82CF4 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702913722081C8800B82CF4 /* Request.m */; };
 		7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
 		770D05E21DD3A767008D89E1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -36,6 +46,9 @@
 		773C1D8F22FC5C1000F1FF5C /* LessonManaged+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C1D8E22FC5C1000F1FF5C /* LessonManaged+Domain.swift */; };
 		7752F9392247E46E003DC9FE /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F9382247E46E003DC9FE /* CoreDataService.swift */; };
 		7752F93D2247F018003DC9FE /* CoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752F93C2247F018003DC9FE /* CoreDataServiceImpl.swift */; };
+		7753DA52253340B20051A997 /* Mocks in Resources */ = {isa = PBXBuildFile; fileRef = 7753DA51253340B20051A997 /* Mocks */; };
+		7753DA54253342100051A997 /* KNUREItemsImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7753DA53253342100051A997 /* KNUREItemsImportTests.swift */; };
+		7753DA56253348530051A997 /* IgnoreFailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7753DA55253348530051A997 /* IgnoreFailable.swift */; };
 		775A394D1E93EC710070B31F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F6445196939220081165C /* NotificationCenter.framework */; };
 		775A39511E93EC710070B31F /* TomorrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775A39501E93EC710070B31F /* TomorrowViewController.m */; };
 		775A39541E93EC710070B31F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775A39521E93EC710070B31F /* MainInterface.storyboard */; };
@@ -63,6 +76,7 @@
 		7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778E46722D1096000477BFE /* ApplicationConfig.swift */; };
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
+		7783E9FD2544267F00198C9A /* MockJSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7783E9FC2544267F00198C9A /* MockJSONLoader.swift */; };
 		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		778DC8582364BF1500580786 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC8572364BF1500580786 /* MainCoordinator.swift */; };
 		778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC85B2364C08900580786 /* TimetableCoordinator.swift */; };
@@ -70,6 +84,11 @@
 		77B9A0E52285B26800B57374 /* ApplicationLayerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9A0E42285B26800B57374 /* ApplicationLayerErrors.swift */; };
 		77CBC05F1E71C05100B8FD25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CBC0611E71C05100B8FD25 /* Localizable.strings */; };
 		77CD00141E47B84A00F63874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CD00161E47B84A00F63874 /* InfoPlist.strings */; };
+		77D191132552CA61001771F9 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D191122552CA60001771F9 /* NameSpace.swift */; };
+		77D191152552CB23001771F9 /* KNURE.Items.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D191142552CB23001771F9 /* KNURE.Items.Response.swift */; };
+		77D191172552CCEC001771F9 /* KNURE.Teachers.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D191162552CCEC001771F9 /* KNURE.Teachers.Response.swift */; };
+		77D191192552CDAC001771F9 /* KNURE.Auditories.Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D191182552CDAC001771F9 /* KNURE.Auditories.Response.swift */; };
+		77D388CB224F64B500451611 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CA224F64B500451611 /* NetworkService.swift */; };
 		77D388CD224F662000451611 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CC224F662000451611 /* NetworkRequest.swift */; };
 		77D388CF224F6FCC00451611 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D388CE224F6FCC00451611 /* NetworkResponse.swift */; };
 		77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */; };
@@ -88,7 +107,7 @@
 		77DC83E82209C75200B4E543 /* MSCollectionViewCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */; };
 		77DDBA1B2552F2B900C6C8C9 /* AssemblyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDBA1A2552F2B900C6C8C9 /* AssemblyTests.swift */; };
 		77F160222402FA110028966F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F160212402FA110028966F /* HTTP.swift */; };
-		77F16024240313750028966F /* KNURERequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F16023240313750028966F /* KNURERequestBuilder.swift */; };
+		77F16024240313750028966F /* KNURE.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F16023240313750028966F /* KNURE.Request.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -153,6 +172,26 @@
 		7702911B22081C8800B82CF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		7702911D22081C8800B82CF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainIpad.strings; sourceTree = "<group>"; };
 		7702912222081C8800B82CF4 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		7702912422081C8800B82CF4 /* ItemsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableViewCell.h; sourceTree = "<group>"; };
+		7702912522081C8800B82CF4 /* ItemsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewCell.m; sourceTree = "<group>"; };
+		7702912722081C8800B82CF4 /* MSDayColumnHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeaderBackground.m; sourceTree = "<group>"; };
+		7702912822081C8800B82CF4 /* MSTimeRowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeader.m; sourceTree = "<group>"; };
+		7702912922081C8800B82CF4 /* MSGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridline.h; sourceTree = "<group>"; };
+		7702912A22081C8800B82CF4 /* MSCurrentTimeIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeIndicator.h; sourceTree = "<group>"; };
+		7702912B22081C8800B82CF4 /* MSDayColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeader.h; sourceTree = "<group>"; };
+		7702912C22081C8800B82CF4 /* MSCurrentTimeGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeGridline.m; sourceTree = "<group>"; };
+		7702912D22081C8800B82CF4 /* MSTimeRowHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeaderBackground.h; sourceTree = "<group>"; };
+		7702912E22081C8800B82CF4 /* MSTimeRowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTimeRowHeader.h; sourceTree = "<group>"; };
+		7702912F22081C8800B82CF4 /* MSDayColumnHeaderBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDayColumnHeaderBackground.h; sourceTree = "<group>"; };
+		7702913022081C8800B82CF4 /* MSCurrentTimeGridline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCurrentTimeGridline.h; sourceTree = "<group>"; };
+		7702913122081C8800B82CF4 /* MSDayColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDayColumnHeader.m; sourceTree = "<group>"; };
+		7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCurrentTimeIndicator.m; sourceTree = "<group>"; };
+		7702913322081C8800B82CF4 /* MSGridline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridline.m; sourceTree = "<group>"; };
+		7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTimeRowHeaderBackground.m; sourceTree = "<group>"; };
+		7702913622081C8800B82CF4 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
+		7702913722081C8800B82CF4 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		7702913822081C8800B82CF4 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		7702913922081C8800B82CF4 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		7702914622081C8800B82CF4 /* MSCollectionViewCalendarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCollectionViewCalendarLayout.m; sourceTree = "<group>"; };
 		7702914722081C8800B82CF4 /* MSCollectionViewCalendarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCollectionViewCalendarLayout.h; sourceTree = "<group>"; };
 		770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TodayExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +222,9 @@
 		774AA0AA1E94053E009E5326 /* KNURE TimeTable iOS TomorrowExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS TomorrowExtension.entitlements"; sourceTree = "<group>"; };
 		7752F9382247E46E003DC9FE /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		7752F93C2247F018003DC9FE /* CoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceImpl.swift; sourceTree = "<group>"; };
+		7753DA51253340B20051A997 /* Mocks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Mocks; sourceTree = "<group>"; };
+		7753DA53253342100051A997 /* KNUREItemsImportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNUREItemsImportTests.swift; sourceTree = "<group>"; };
+		7753DA55253348530051A997 /* IgnoreFailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreFailable.swift; sourceTree = "<group>"; };
 		775A394C1E93EC710070B31F /* KNURE TimeTable iOS TomorrowExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KNURE TimeTable iOS TomorrowExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775A394F1E93EC710070B31F /* TomorrowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomorrowViewController.h; sourceTree = "<group>"; };
 		775A39501E93EC710070B31F /* TomorrowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomorrowViewController.m; sourceTree = "<group>"; };
@@ -217,6 +259,7 @@
 		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		777AE2102221988E00EAEE20 /* ImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
+		7783E9FC2544267F00198C9A /* MockJSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSONLoader.swift; sourceTree = "<group>"; };
 		778DC8572364BF1500580786 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		778DC85B2364C08900580786 /* TimetableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCoordinator.swift; sourceTree = "<group>"; };
 		778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerAssembly.swift; sourceTree = "<group>"; };
@@ -232,6 +275,12 @@
 		77CD00151E47B84A00F63874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00171E47B84D00F63874 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		77CD00181E47B84E00F63874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		77D191122552CA60001771F9 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
+		77D191142552CB23001771F9 /* KNURE.Items.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Items.Response.swift; sourceTree = "<group>"; };
+		77D191162552CCEC001771F9 /* KNURE.Teachers.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Teachers.Response.swift; sourceTree = "<group>"; };
+		77D191182552CDAC001771F9 /* KNURE.Auditories.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Auditories.Response.swift; sourceTree = "<group>"; };
+		77D1911A2552E005001771F9 /* DataStorage_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage_v2.xcdatamodel; sourceTree = "<group>"; };
+		77D388CA224F64B500451611 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		77D388CC224F662000451611 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		77D388CE224F6FCC00451611 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		77D4AAAD23AF7B1000729A93 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +299,7 @@
 		77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "KNURE TimeTable iOS.entitlements"; sourceTree = "<group>"; };
 		77DDBA1A2552F2B900C6C8C9 /* AssemblyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyTests.swift; sourceTree = "<group>"; };
 		77F160212402FA110028966F /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		77F16023240313750028966F /* KNURERequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURERequestBuilder.swift; sourceTree = "<group>"; };
+		77F16023240313750028966F /* KNURE.Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Request.swift; sourceTree = "<group>"; };
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC681819965300328F6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -356,6 +405,84 @@
 				770290F822081C8800B82CF4 /* InfoPlist.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7702910222081C8800B82CF4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7702910322081C8800B82CF4 /* PopoverComboBoxViewController.h */,
+				7702910422081C8800B82CF4 /* SettingsViewController.m */,
+				7702910522081C8800B82CF4 /* MenuTableViewController.m */,
+				7702910622081C8800B82CF4 /* ItemsTableViewController.h */,
+				7702910722081C8800B82CF4 /* TabletTimeTableViewController.m */,
+				7702910822081C8800B82CF4 /* CalendarExportViewController.m */,
+				7702910922081C8800B82CF4 /* InitViewController.m */,
+				7702910A22081C8800B82CF4 /* PopoverModalViewController.m */,
+				7702910B22081C8800B82CF4 /* TimeTableViewController.h */,
+				7702910C22081C8800B82CF4 /* PopoverMenuViewController.m */,
+				7702910D22081C8800B82CF4 /* AddItemsTableViewController.m */,
+				7702910E22081C8800B82CF4 /* PopoverComboBoxViewController.m */,
+				7702910F22081C8800B82CF4 /* TabletTimeTableViewController.h */,
+				7702911022081C8800B82CF4 /* CalendarExportViewController.h */,
+				7702911122081C8800B82CF4 /* ItemsTableViewController.m */,
+				7702911222081C8800B82CF4 /* SettingsViewController.h */,
+				7702911322081C8800B82CF4 /* MenuTableViewController.h */,
+				7702911422081C8800B82CF4 /* TimeTableViewController.m */,
+				7702911522081C8800B82CF4 /* PopoverModalViewController.h */,
+				7702911622081C8800B82CF4 /* InitViewController.h */,
+				7702911722081C8800B82CF4 /* AddItemsTableViewController.h */,
+				7702911822081C8800B82CF4 /* PopoverMenuViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7702911E22081C8800B82CF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7702911F22081C8800B82CF4 /* Lesson Cell */,
+				7702912322081C8800B82CF4 /* Items cell */,
+				7702912622081C8800B82CF4 /* CollectionView elements */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7702911F22081C8800B82CF4 /* Lesson Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7702912022081C8800B82CF4 /* LessonCollectionViewCell.h */,
+				7702912122081C8800B82CF4 /* LessonCollectionViewCell.m */,
+			);
+			path = "Lesson Cell";
+			sourceTree = "<group>";
+		};
+		7702912322081C8800B82CF4 /* Items cell */ = {
+			isa = PBXGroup;
+			children = (
+				7702912422081C8800B82CF4 /* ItemsTableViewCell.h */,
+				7702912522081C8800B82CF4 /* ItemsTableViewCell.m */,
+			);
+			path = "Items cell";
+			sourceTree = "<group>";
+		};
+		7702912622081C8800B82CF4 /* CollectionView elements */ = {
+			isa = PBXGroup;
+			children = (
+				7702912722081C8800B82CF4 /* MSDayColumnHeaderBackground.m */,
+				7702912822081C8800B82CF4 /* MSTimeRowHeader.m */,
+				7702912922081C8800B82CF4 /* MSGridline.h */,
+				7702912A22081C8800B82CF4 /* MSCurrentTimeIndicator.h */,
+				7702912B22081C8800B82CF4 /* MSDayColumnHeader.h */,
+				7702912C22081C8800B82CF4 /* MSCurrentTimeGridline.m */,
+				7702912D22081C8800B82CF4 /* MSTimeRowHeaderBackground.h */,
+				7702912E22081C8800B82CF4 /* MSTimeRowHeader.h */,
+				7702912F22081C8800B82CF4 /* MSDayColumnHeaderBackground.h */,
+				7702913022081C8800B82CF4 /* MSCurrentTimeGridline.h */,
+				7702913122081C8800B82CF4 /* MSDayColumnHeader.m */,
+				7702913222081C8800B82CF4 /* MSCurrentTimeIndicator.m */,
+				7702913322081C8800B82CF4 /* MSGridline.m */,
+				7702913422081C8800B82CF4 /* MSTimeRowHeaderBackground.m */,
+			);
+			path = "CollectionView elements";
 			sourceTree = "<group>";
 		};
 		7702914522081C8800B82CF4 /* MSCollectionViewCalendarLayout */ = {
@@ -491,6 +618,9 @@
 		777AE20E2221988E00EAEE20 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				77D191142552CB23001771F9 /* KNURE.Items.Response.swift */,
+				77D191162552CCEC001771F9 /* KNURE.Teachers.Response.swift */,
+				77D191182552CDAC001771F9 /* KNURE.Auditories.Response.swift */,
 				77DA947022FC40E4009105ED /* KNUREItemImportService.swift */,
 				77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */,
 				777AE2102221988E00EAEE20 /* ImportService.swift */,
@@ -530,7 +660,8 @@
 				77D388C9224F512100451611 /* NetworkService */,
 				770D9F7B223E41E40037C5B1 /* StorageService */,
 				771A83D622A707E1006964D7 /* Convertable.swift */,
-				77F16023240313750028966F /* KNURERequestBuilder.swift */,
+				77F16023240313750028966F /* KNURE.Request.swift */,
+				7753DA55253348530051A997 /* IgnoreFailable.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -565,6 +696,8 @@
 		77C204232337FF32007D3A1B /* KNURE TimeTable iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7783E9FC2544267F00198C9A /* MockJSONLoader.swift */,
+				7753DA51253340B20051A997 /* Mocks */,
 				77C204332337FFFB007D3A1B /* ServiceLayer */,
 				77C204262337FF32007D3A1B /* Info.plist */,
 				77DDBA1A2552F2B900C6C8C9 /* AssemblyTests.swift */,
@@ -575,6 +708,8 @@
 		77C204332337FFFB007D3A1B /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				77C2043523380040007D3A1B /* NetworkRequestSpec.swift */,
+				7753DA53253342100051A997 /* KNUREItemsImportTests.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -657,6 +792,7 @@
 			children = (
 				77DC83F82209C92E00B4E543 /* Info.plist */,
 				77DC83F92209C92E00B4E543 /* KNURE TimeTable iOS.entitlements */,
+				77D191122552CA60001771F9 /* NameSpace.swift */,
 				770290E122081C8700B82CF4 /* ApplicationLayer */,
 				778E3117227C89DC00D138B5 /* ServiceLayer */,
 				770290ED22081C8800B82CF4 /* DataLayer */,
@@ -842,6 +978,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7753DA52253340B20051A997 /* Mocks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,6 +1061,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				77DDBA1B2552F2B900C6C8C9 /* AssemblyTests.swift in Sources */,
+				77C2043623380040007D3A1B /* NetworkRequestSpec.swift in Sources */,
+				7753DA54253342100051A997 /* KNUREItemsImportTests.swift in Sources */,
+				7783E9FD2544267F00198C9A /* MockJSONLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +1084,7 @@
 				775A3FB92221856F00931A1F /* PresentationLayerAssembly.swift in Sources */,
 				775A3F9522217CB200931A1F /* TimetableUseCase.swift in Sources */,
 				77D4AAB023AF7B2E00729A93 /* TimetableView.swift in Sources */,
+				7753DA56253348530051A997 /* IgnoreFailable.swift in Sources */,
 				778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */,
 				775A3F8F222179A000931A1F /* RemoveItemUseCase.swift in Sources */,
 				7710B0C524D06B7200BE4E2D /* CDPublisher.swift in Sources */,
@@ -961,6 +1102,8 @@
 				771A83D522A7038C006964D7 /* ItemManaged+Domain.swift in Sources */,
 				775A3F7D222174A000931A1F /* KNUREItemRepository.swift in Sources */,
 				77D4AAB723AF7BDA00729A93 /* CalendarLayout.swift in Sources */,
+				7702915822081C8800B82CF4 /* InitViewController.m in Sources */,
+				77D191152552CB23001771F9 /* KNURE.Items.Response.swift in Sources */,
 				7716FCD922885B3A00615D39 /* UseCase.swift in Sources */,
 				77DA947122FC40E4009105ED /* KNUREItemImportService.swift in Sources */,
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
@@ -975,9 +1118,21 @@
 				775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */,
 				778DC8582364BF1500580786 /* MainCoordinator.swift in Sources */,
 				77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */,
+				7702915E22081C8800B82CF4 /* TimeTableViewController.m in Sources */,
+				775A3F8D2221797800931A1F /* SaveItemUseCase.swift in Sources */,
+				778DC8582364BF1500580786 /* MainCoordinator.swift in Sources */,
+				7702914D22081C8800B82CF4 /* Lesson.m in Sources */,
+				77D191132552CA61001771F9 /* NameSpace.swift in Sources */,
+				77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */,
+				7702914C22081C8800B82CF4 /* Configuration.m in Sources */,
+				77D191192552CDAC001771F9 /* KNURE.Auditories.Response.swift in Sources */,
+				771A83D322A7029E006964D7 /* ContextScheduler.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				77F160222402FA110028966F /* HTTP.swift in Sources */,
 				7778E46822D1096000477BFE /* ApplicationConfig.swift in Sources */,
+				7702915C22081C8800B82CF4 /* PopoverComboBoxViewController.m in Sources */,
+				7702916422081C8800B82CF4 /* ItemsTableViewCell.m in Sources */,
+				7702916822081C8800B82CF4 /* MSDayColumnHeader.m in Sources */,
 				775A3F832221779200931A1F /* Lesson.swift in Sources */,
 				775A3F75222172F900931A1F /* LessonRepository.swift in Sources */,
 				776DC4162303288B008E8FAE /* DataLayerErrors.swift in Sources */,
@@ -985,10 +1140,15 @@
 				7712335A23BCFF0800CB01D6 /* AddItemsAssembly.swift in Sources */,
 				77D4AAB423AF7B4F00729A93 /* TimetableInteractor.swift in Sources */,
 				77F16024240313750028966F /* KNURERequestBuilder.swift in Sources */,
+				7702915D22081C8800B82CF4 /* ItemsTableViewController.m in Sources */,
+				77F16024240313750028966F /* KNURE.Request.swift in Sources */,
 				77D4AAB923AF7F3400729A93 /* TimetableAssembly.swift in Sources */,
 				7712336023BCFF3900CB01D6 /* AddItemsViewModel.swift in Sources */,
 				7712335423BCEFF400CB01D6 /* ItemsAssembly.swift in Sources */,
 				771A83D722A707E1006964D7 /* Convertable.swift in Sources */,
+				77D191172552CCEC001771F9 /* KNURE.Teachers.Response.swift in Sources */,
+				7702916922081C8800B82CF4 /* MSCurrentTimeIndicator.m in Sources */,
+				7702916722081C8800B82CF4 /* MSCurrentTimeGridline.m in Sources */,
 				777AE2142221988E00EAEE20 /* ImportService.swift in Sources */,
 				775A3F792221743500931A1F /* KNURELessonRepository.swift in Sources */,
 			);
@@ -1511,9 +1671,10 @@
 		770290F222081C8800B82CF4 /* DataStorage.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				77D1911A2552E005001771F9 /* DataStorage_v2.xcdatamodel */,
 				770290F322081C8800B82CF4 /* DataStorage.xcdatamodel */,
 			);
-			currentVersion = 770290F322081C8800B82CF4 /* DataStorage.xcdatamodel */;
+			currentVersion = 77D1911A2552E005001771F9 /* DataStorage_v2.xcdatamodel */;
 			path = DataStorage.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
