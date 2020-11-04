@@ -20,11 +20,7 @@ struct ServiceLayerAssembly: Assembly {
 		}
 
 		container.register(ReactiveCoreDataService.self) { _ in
-			ReactiveCoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
-		}
-
-		container.register(ReactiveNetworkService.self) { _ in
-			ReactiveNetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
+			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
 		container.register(ImportService.self, name: "KNURELesson") { _ in

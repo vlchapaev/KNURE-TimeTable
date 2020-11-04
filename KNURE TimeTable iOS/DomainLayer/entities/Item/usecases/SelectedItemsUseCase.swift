@@ -6,9 +6,7 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
-
-final class SelectedItemsUseCase: UseCase<Void, Observable<[Item]>> {
+final class SelectedItemsUseCase: UseCase<Void, [Item]> {
 
 	private let itemRepository: ItemRepository
 
@@ -18,7 +16,8 @@ final class SelectedItemsUseCase: UseCase<Void, Observable<[Item]>> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: Void) -> Observable<[Item]> {
-		return itemRepository.localSelectedItems()
+	override func execute(_ query: Void) -> [Item] {
+		return []
+//		return itemRepository.localSelectedItems()
 	}
 }

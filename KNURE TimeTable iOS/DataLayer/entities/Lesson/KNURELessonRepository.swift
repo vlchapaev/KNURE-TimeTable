@@ -6,33 +6,29 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
 import CoreData
 
 class KNURELessonRepository: LessonRepository {
 
 	private let coreDataService: CoreDataService
 	private let reactiveCoreDataService: ReactiveCoreDataService
-	private let reactiveNetworkingService: ReactiveNetworkService
 	private let importService: ImportService
 
 	init(coreDataService: CoreDataService,
 		 reactiveCoreDataService: ReactiveCoreDataService,
-		 reactiveNetworkingService: ReactiveNetworkService,
 		 importService: ImportService) {
 		self.coreDataService = coreDataService
 		self.reactiveCoreDataService = reactiveCoreDataService
-		self.reactiveNetworkingService = reactiveNetworkingService
 		self.importService = importService
     }
 
-	func localTimetable(identifier: String) -> Observable<[Lesson]> {
-		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
-		request.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
-		return reactiveCoreDataService.observe(request).map {
-			$0.map { $0.newValue }
-		}
-	}
+//	func localTimetable(identifier: String) -> Observable<[Lesson]> {
+//		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
+//		request.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
+//		return reactiveCoreDataService.observe(request).map {
+//			$0.map { $0.newValue }
+//		}
+//	}
 
 //	func localLesson(identifier: String) -> Promise<Lesson> {
 //		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")

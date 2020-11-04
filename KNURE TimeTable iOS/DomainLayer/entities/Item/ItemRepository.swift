@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
-
 /// Access to timetable items
 protocol ItemRepository {
 
@@ -16,7 +14,7 @@ protocol ItemRepository {
     /// Observe items that been selected
     ///
     /// - Returns: Observable items list
-    func localSelectedItems() -> Observable<[Item]>
+//    func localSelectedItems() -> Observable<[Item]>
 
     /// Save item in persistent store
     ///
@@ -32,5 +30,5 @@ protocol ItemRepository {
 
 //	func remoteUpdateItems(type: Item.Kind) -> Promise<Void>
 
-	func remoteItems(type: Item.Kind) -> Observable<[Item]>
+//	func remoteItems(type: Item.Kind) -> Observable<[Item]>
 }

@@ -6,9 +6,7 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
-
-final class ItemsUseCase: UseCase<Item.Kind, Observable<[Item]>> {
+final class ItemsUseCase: UseCase<Item.Kind, [Item]> {
 
 	private let itemRepository: ItemRepository
 
@@ -18,7 +16,8 @@ final class ItemsUseCase: UseCase<Item.Kind, Observable<[Item]>> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: Item.Kind) -> Observable<[Item]> {
-		return itemRepository.remoteItems(type: query)
+	override func execute(_ query: Item.Kind) -> [Item] {
+		return []
+//		return itemRepository.remoteItems(type: query)
 	}
 }

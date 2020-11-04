@@ -6,10 +6,8 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-import RxCocoa
-
 final class AddItemsViewModel {
-	var items: BehaviorRelay<[Model]>
+//	var items: BehaviorRelay<[Model]>
 	var selectedType: Item.Kind
 
 	static let cellId = "TimetableAddItem"
@@ -21,7 +19,7 @@ final class AddItemsViewModel {
 	}
 
 	init() {
-		items = BehaviorRelay(value: [])
+//		items = BehaviorRelay(value: [])
 		selectedType = .group
 	}
 }

@@ -7,12 +7,10 @@
 //
 
 import Foundation
-import RxCocoa
-import RxDataSources
 
 final class ItemsViewModel {
 
-	var sections: BehaviorRelay<[Section]>
+//	var sections: BehaviorRelay<[Section]>
 
 	static let cellId = "Item.Kind"
 
@@ -22,19 +20,19 @@ final class ItemsViewModel {
 	}
 
 	init() {
-		sections = BehaviorRelay(value: [])
+//		sections = BehaviorRelay(value: [])
 	}
 }
 
-extension ItemsViewModel.Section: SectionModelType {
-	typealias Item = KNURE_TimeTable_iOS.Item
-
-	init(original: ItemsViewModel.Section, items: [Item]) {
-		name = original.name
-		models = original.items
-	}
-
-	var items: [Item] {
-		return models
-	}
-}
+//extension ItemsViewModel.Section: SectionModelType {
+//	typealias Item = KNURE_TimeTable_iOS.Item
+//
+//	init(original: ItemsViewModel.Section, items: [Item]) {
+//		name = original.name
+//		models = original.items
+//	}
+//
+//	var items: [Item] {
+//		return models
+//	}
+//}

@@ -14,14 +14,12 @@ struct DataLayerAssembly: Assembly {
 		container.register(ItemRepository.self) {
 			KNUREItemRepository(coreDataService: $0.resolve(CoreDataService.self)!,
 								reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
-								reactiveNetworkingService: $0.resolve(ReactiveNetworkService.self)!,
 								importService: $0.resolve(ImportService.self, name: "KNUREItem")!)
 		}
 
 		container.register(LessonRepository.self) {
 			KNURELessonRepository(coreDataService: $0.resolve(CoreDataService.self)!,
 								  reactiveCoreDataService: $0.resolve(ReactiveCoreDataService.self)!,
-								  reactiveNetworkingService: $0.resolve(ReactiveNetworkService.self)!,
 								  importService: $0.resolve(ImportService.self, name: "KNURELesson")!)
 		}
 	}
