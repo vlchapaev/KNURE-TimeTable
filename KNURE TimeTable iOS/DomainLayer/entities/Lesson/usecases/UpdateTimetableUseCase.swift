@@ -6,19 +6,18 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
 
-final class UpdateTimetableUseCase: UseCase<String, Observable<Void>> {
+final class UpdateTimetableUseCase: UseCase<String, Void> {
 
-//	private let lessonRepository: LessonRepository
-//
-//	init(lessonRepository: LessonRepository) {
-//		self.lessonRepository = lessonRepository
-//	}
-//
-//	// MARK: - UseCase
-//
-//	override func execute(_ query: String) -> Promise<Void> {
+	private let lessonRepository: LessonRepository
+
+	init(lessonRepository: LessonRepository) {
+		self.lessonRepository = lessonRepository
+	}
+
+	// MARK: - UseCase
+
+	override func execute(_ query: String) {
 //		return lessonRepository.remoteLoadTimetable(identifier: query)
-//	}
+	}
 }

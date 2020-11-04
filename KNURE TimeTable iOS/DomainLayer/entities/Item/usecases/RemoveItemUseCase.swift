@@ -6,9 +6,7 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
-
-final class RemoveItemUseCase: UseCase<String, Observable<Void>> {
+final class RemoveItemUseCase: UseCase<String, Void> {
 
 	private let itemRepository: ItemRepository
 
@@ -16,9 +14,9 @@ final class RemoveItemUseCase: UseCase<String, Observable<Void>> {
 		self.itemRepository = itemRepository
 	}
 
-	// MARK: - UseCase
+//	 MARK: - UseCase
 
-//	override func execute(_ query: String) -> Promise<Void> {
+	override func execute(_ query: String) {
 //		return itemRepository.localDeleteItem(identifier: query)
-//	}
+	}
 }

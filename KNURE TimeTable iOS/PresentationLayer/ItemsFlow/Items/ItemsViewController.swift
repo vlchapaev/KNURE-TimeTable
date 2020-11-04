@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
-import RxDataSources
 
 protocol ItemsViewControllerOutput {
 
@@ -23,7 +20,6 @@ final class ItemsViewController: UIViewController {
 
 	private var viewModel: ItemsViewModel
 	private let mainView: ItemsView
-	private let bag = DisposeBag()
 
 	init() {
 		viewModel = ItemsViewModel()
@@ -47,20 +43,20 @@ final class ItemsViewController: UIViewController {
 										action: #selector(addItems))
 		navigationItem.rightBarButtonItem = addButton
 
-		interactor?.obtainItems().map { $0 }.bind(to: viewModel.sections).disposed(by: bag)
-		let datasource = RxTableViewSectionedReloadDataSource<ItemsViewModel.Section>(
-			configureCell: { _, tableView, indexPath, item in
-				let cell = tableView.dequeueReusableCell(withIdentifier: ItemsViewModel.cellId, for: indexPath)
-				cell.textLabel?.text = item.fullName ?? item.shortName
-				cell.detailTextLabel?.text = "some"
-				return cell
-		})
-
-		datasource.titleForHeaderInSection = { datasource, index in
-			return datasource.sectionModels[index].name
-		}
-
-		viewModel.sections.bind(to: mainView.tableView.rx.items(dataSource: datasource)).disposed(by: bag)
+//		interactor?.obtainItems().map { $0 }.bind(to: viewModel.sections).disposed(by: bag)
+//		let datasource = RxTableViewSectionedReloadDataSource<ItemsViewModel.Section>(
+//			configureCell: { _, tableView, indexPath, item in
+//				let cell = tableView.dequeueReusableCell(withIdentifier: ItemsViewModel.cellId, for: indexPath)
+//				cell.textLabel?.text = item.fullName ?? item.shortName
+//				cell.detailTextLabel?.text = "some"
+//				return cell
+//		})
+//
+//		datasource.titleForHeaderInSection = { datasource, index in
+//			return datasource.sectionModels[index].name
+//		}
+//
+//		viewModel.sections.bind(to: mainView.tableView.rx.items(dataSource: datasource)).disposed(by: bag)
 	}
 
 	@objc

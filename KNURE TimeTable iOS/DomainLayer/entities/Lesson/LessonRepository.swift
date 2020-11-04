@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import RxSwift
-
 /// Access to lesson data
 protocol LessonRepository {
 
@@ -15,7 +13,7 @@ protocol LessonRepository {
 	///
 	/// - Parameter identifier: item identifier
 	/// - Returns: Observable lesson list
-	func localTimetable(identifier: String) -> Observable<[Lesson]>
+//	func localTimetable(identifier: String) -> Observable<[Lesson]>
 	// PublishSubject
 
 	/// Access to single lesson by identifier
