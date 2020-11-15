@@ -9,5 +9,5 @@
 protocol Convertable: AnyObject {
 	associatedtype NewType
 
-	var newValue: NewType { get }
+	func convert() -> NewType
 }

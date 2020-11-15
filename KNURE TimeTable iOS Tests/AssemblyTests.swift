@@ -40,6 +40,9 @@ final class AssemblyTests: XCTestCase {
 		// act & assert
 		XCTAssertNotNil(sut.resolve(CoreDataService.self))
 		XCTAssertNotNil(sut.resolve(ReactiveCoreDataService.self))
+		XCTAssertNotNil(sut.resolve(ImportService.self, name: "KNURE_Group"))
+		XCTAssertNotNil(sut.resolve(ImportService.self, name: "KNURE_Teacher"))
+		XCTAssertNotNil(sut.resolve(ImportService.self, name: "KNURE_Auditory"))
 	}
 
 	func testDataLayerAssembler() {

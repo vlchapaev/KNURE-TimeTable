@@ -7,42 +7,38 @@
 //
 
 import CoreData
+import Combine
 
 final class KNUREItemRepository: ItemRepository {
 
 	private let coreDataService: CoreDataService
-	private let reactiveCoreDataService: ReactiveCoreDataService
 	private let importService: ImportService
 
 	init(coreDataService: CoreDataService,
-		 reactiveCoreDataService: ReactiveCoreDataService,
 		 importService: ImportService) {
 		self.coreDataService = coreDataService
-		self.reactiveCoreDataService = reactiveCoreDataService
 		self.importService = importService
 	}
 
-//	func localItems() -> [Item] {
-//		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-//		request.predicate = NSPredicate(value: true)
-//		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//		return coreDataService.fetch(request).map { $0.newValue }
-//	}
+	func localItems() -> [Item] {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(value: true)
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+		return coreDataService.fetch(request) { $0.convert() }
+	}
 
-//	func localItems(type: Item.Kind) -> [Item] {
-//		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-//		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
-//		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//		return coreDataService.fetch(request).map { $0.newValue }
-//	}
+	func local(items type: Item.Kind) -> [Item] {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+		return coreDataService.fetch(request) { $0.convert() }
+	}
 
-//	func localSelectedItems() -> Observable<[Item]> {
+//	func localSelectedItems() -> AnyPublisher<[Item], Never> {
 //		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 //		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
 //		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//		return reactiveCoreDataService.observe(request).map {
-//			$0.map { $0.newValue }
-//		}
+//		return coreDataService.observe(request)
 //	}
 
 //	func localSaveItem(identifier: String) -> Promise<Void> {

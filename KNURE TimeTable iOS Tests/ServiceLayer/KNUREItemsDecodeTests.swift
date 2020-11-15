@@ -1,5 +1,5 @@
 //
-//  KNUREItemsImportTests.swift
+//  KNUREItemsDecodeTests.swift
 //  KNURE TimeTable iOS Tests
 //
 //  Created by Vladislav Chapaev on 11/10/2020.
@@ -9,14 +9,14 @@
 import XCTest
 @testable import KNURE_TimeTable_iOS
 
-final class KNUREItemsImportTests: XCTestCase {
+final class KNUREItemsDecodeTests: XCTestCase {
 
     func testValidGroupsJSON() throws {
 		// arrange
 		let data = MockJSONLoader.load(json: "valid", item: .groups)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Items.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		let faculties = response.university.faculties
@@ -31,7 +31,7 @@ final class KNUREItemsImportTests: XCTestCase {
 		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Items.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		let faculties = response.university.faculties
@@ -43,7 +43,7 @@ final class KNUREItemsImportTests: XCTestCase {
 		let data = MockJSONLoader.load(json: "valid", item: .teachers)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Teachers.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		let faculties = response.university.faculties
@@ -58,7 +58,7 @@ final class KNUREItemsImportTests: XCTestCase {
 		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Teachers.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		let faculties = response.university.faculties
@@ -70,7 +70,7 @@ final class KNUREItemsImportTests: XCTestCase {
 		let data = MockJSONLoader.load(json: "valid", item: .auditories)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Auditories.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		let buildings = response.university.buildings
@@ -84,7 +84,7 @@ final class KNUREItemsImportTests: XCTestCase {
 		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Auditories.Response.self, from: data)
+		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
 
 		// assert
 		XCTAssertTrue(response.university.buildings.isEmpty)

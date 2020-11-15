@@ -12,17 +12,12 @@ extension KNURE {
 
 	struct Request {
 
-		enum Endpoint {
-			case timetable(Item.Kind, String)
-			case item(Item.Kind)
-		}
-
 		static func make(endpoint: Endpoint) throws -> NetworkRequest {
 			var components: URLComponents = .init()
 			components.host = "cist.nure.ua"
 			components.scheme = "https"
 			switch endpoint {
-				case .timetable(let type, let identifier):
+				case let .timetable(type, identifier):
 					components.path = "/ias/app/tt/P_API_EVENT_JSON"
 					components.queryItems = [
 						URLQueryItem(name: "timetable_id", value: identifier),
@@ -30,13 +25,13 @@ extension KNURE {
 						URLQueryItem(name: "idClient", value: apiAccessKey)
 				]
 
-				case .item(let type) where type == .group:
+				case let .item(type) where type == .group:
 					components.path = "/ias/app/tt/P_API_GROUP_JSON"
 
-				case .item(let type) where type == .teacher:
+				case let .item(type) where type == .teacher:
 					components.path = "/ias/app/tt/P_API_PODR_JSON"
 
-				case .item(let type) where type == .auditory:
+				case let .item(type) where type == .auditory:
 					components.path = "/ias/app/tt/P_API_AUDITORIES_JSON"
 
 				case .item:
@@ -49,16 +44,17 @@ extension KNURE {
 
 			return NetworkRequest(url: url)
 		}
+	}
+}
 
-		enum Error: LocalizedError {
-			case requestBuild(String)
+extension KNURE.Request {
 
-			var localizedDescription: String {
-				switch self {
-					case .requestBuild(let message):
-						return "Failed to build url: \(message)"
-				}
-			}
-		}
+	enum Endpoint {
+		case timetable(Item.Kind, String)
+		case item(Item.Kind)
+	}
+
+	enum Error: LocalizedError {
+		case requestBuild(String)
 	}
 }
