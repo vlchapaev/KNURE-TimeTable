@@ -19,72 +19,107 @@ final class KNURELessonImportService {
 
 extension KNURELessonImportService: ImportService {
 
-	func decode(_ data: Data, appending parameters: [String: Any]) throws {
+	func decode(_ data: Data, info: [String: String]) throws {
 		let response = try JSONDecoder().decode(KNURE.Response.Lesson.self, from: data)
 		persistentContainer.performBackgroundTask { context in
-			let helper: Helper = .init(groups: response.groups,
-									   teachers: response.teachers,
-									   subjects: response.subjects,
-									   types: response.types)
-			let entries = response.events.map {
-				self.transform($0, helper: helper)
-			}
 
 			do {
-//				let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LessonManaged")
-//				request.predicate = NSPredicate(format: "itemIdentifier = %@", <#T##args: CVarArg...##CVarArg#>)
-//				let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-//				try context.execute(deleteRequest)
 
-				let insertRequest = NSBatchInsertRequest(entity: LessonManaged.entity(), objects: entries)
-				insertRequest.resultType = NSBatchInsertRequestResultType.objectIDs
-				let result = try context.execute(insertRequest) as? NSBatchInsertResult
-				if let objectIDs = result?.result as? [NSManagedObjectID], !objectIDs.isEmpty {
-					NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSInsertedObjectsKey: objectIDs],
-														into: [context])
+				let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
+				let predicates = info.compactMap { NSPredicate(format: "\($0.key) = %@", $0.value) }
+				request.predicate = NSCompoundPredicate(type: .and, subpredicates: predicates)
+
+				guard let item = try context.fetch(request).first else { return }
+				item.lessons?
+					.compactMap { $0 as? LessonManaged }
+					.forEach { context.delete($0) }
+
+				let subjects = response.subjects.map { $0.toManagedObject(in: context) }
+				let types = response.types.map { $0.toManagedObject(in: context) }
+				let groups = response.groups.map { $0.toManagedObject(in: context) }
+				let teachers = response.teachers.map { $0.toManagedObject(in: context) }
+
+				let lessons = response.events
+					.compactMap { event -> Lesson? in
+						guard let subject = response.subjects.first(where: { $0.id == event.subject_id }) else { return nil }
+						guard let type = response.types.first(where: { $0.id == event.type }) else { return nil }
+						return Lesson(event: event, subject: subject, type: type)
 				}
+				.map { event -> LessonManaged in
+					let lesson = event.event.toManagedObject(in: context)
+					lesson.subject = subjects.first { $0.identifier == "\(event.subject.id)" }
+					lesson.type = types.first { $0.identifier == event.type.id }
+					lesson.setValue(NSSet(array: groups), forKey: "groups")
+					lesson.setValue(NSSet(array: teachers), forKey: "teachers")
+					return lesson
+				}
+
+				item.setValue(NSSet(array: lessons), forKey: "lessons")
+				item.lastUpdateTimestamp = Date().timeIntervalSince1970
+
+				try context.save()
 			} catch {
 				print(error)
 			}
 		}
 	}
+}
 
-	private func transform(_ event: KNURE.Response.Lesson.Event,
-						   helper: Helper) -> [String: Any] {
-		var result: [String: Any] = [:]
-		if let subject = helper.subjects.first(where: { $0.id == event.subject_id }) {
-			result["brief"] = subject.brief
-			result["title"] = subject.title
-		}
-
-		if let type = helper.types.first(where: { $0.id == event.type }) {
-			result["typeBrief"] = type.short_name
-			result["typeTitle"] = type.full_name
-			result["type"] = type.id_base
-		}
-
-		result["event"] = Int64(event.number_pair)
-		result["auditory"] = event.auditory
-		result["startTimestamp"] = event.start_time
-		result["endTimestamp"] = event.end_time
-
-		let teachers = helper.teachers
-			.filter { event.teachers.contains($0.id) }
-			.map { ["identifier": "\($0.id)", "title": $0.short_name, "fullName": $0.full_name, "type": 2] }
-
-		let groups = helper.groups
-			.filter { event.groups.contains($0.id) }
-			.map { ["identifier": "\($0.id)", "title": $0.name, "type": 1] }
-
-		result["items"] = groups + teachers
-
-		return result
+private extension KNURELessonImportService {
+	struct Lesson {
+		let event: KNURE.Response.Lesson.Event
+		let subject: KNURE.Response.Lesson.Subject
+		let type: KNURE.Response.Lesson.`Type`
 	}
+}
 
-	struct Helper {
-		let groups: [KNURE.Response.University.Faculty.Direction.Group]
-		let teachers: [KNURE.Response.University.Faculty.Department.Teacher]
-		let subjects: [KNURE.Response.Lesson.Subject]
-		let types: [KNURE.Response.Lesson.`Type`]
+private extension KNURE.Response.University.Faculty.Direction.Group {
+	func toManagedObject(in context: NSManagedObjectContext) -> GroupManaged {
+		let object = GroupManaged(context: context)
+		object.identifier = "\(id)"
+		object.name = name
+		return object
+	}
+}
+
+private extension KNURE.Response.University.Faculty.Department.Teacher {
+	func toManagedObject(in context: NSManagedObjectContext) -> TeacherManaged {
+		let object = TeacherManaged(context: context)
+		object.identifier = "\(id)"
+		object.shortName = short_name
+		object.fullName = full_name
+		return object
+	}
+}
+
+private extension KNURE.Response.Lesson.Event {
+	func toManagedObject(in context: NSManagedObjectContext) -> LessonManaged {
+		let object = LessonManaged(context: context)
+		object.numberPair = Int64(number_pair)
+		object.auditory = auditory
+		object.startTimestamp = start_time
+		object.endTimestamp = end_time
+		return object
+	}
+}
+
+private extension KNURE.Response.Lesson.Subject {
+	func toManagedObject(in context: NSManagedObjectContext) -> SubjectManaged {
+		let object = SubjectManaged(context: context)
+		object.identifier = "\(id)"
+		object.brief = brief
+		object.title = title
+		return object
+	}
+}
+
+private extension KNURE.Response.Lesson.`Type` {
+	func toManagedObject(in context: NSManagedObjectContext) -> TypeManaged {
+		let object = TypeManaged(context: context)
+		object.identifier = Int64(id)
+		object.baseId = Int64(id_base)
+		object.shortName = short_name
+		object.fullName = full_name
+		return object
 	}
 }

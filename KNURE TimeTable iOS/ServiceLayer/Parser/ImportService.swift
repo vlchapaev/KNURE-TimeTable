@@ -17,9 +17,8 @@ protocol ImportService {
 	/// - Parameters:
 	///   - data: data to import
 	///   - completion: signal for import is over
+	///   - info: additinal information for decoding, such as predicate keys
 	/// - Returns: Void
 	/// - Throws: throws error if something goes wrong
-	func decode(_ data: Data) throws
-
-	func decode(_ data: Data, appending parameters: [String: Any]) throws
+	func decode(_ data: Data, info: [String: String]) throws
 }

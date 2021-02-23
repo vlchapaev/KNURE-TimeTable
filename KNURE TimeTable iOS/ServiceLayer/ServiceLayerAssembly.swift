@@ -26,17 +26,5 @@ struct ServiceLayerAssembly: Assembly {
 		container.register(ImportService.self, name: "KNURE_Lesson") { _ in
 			KNURELessonImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
-
-		container.register(ImportService.self, name: "KNURE_Group") { _ in
-			KNUREGroupsImportService(persistentContainer: appConfig.persistentStoreContainer)
-		}
-
-		container.register(ImportService.self, name: "KNURE_Teacher") { _ in
-			KNURETeachersImportService(persistentContainer: appConfig.persistentStoreContainer)
-		}
-
-		container.register(ImportService.self, name: "KNURE_Auditory") { _ in
-			KNUREAuditoriesImportService(persistentContainer: appConfig.persistentStoreContainer)
-		}
 	}
 }

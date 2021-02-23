@@ -11,14 +11,11 @@ import CoreData
 class KNURELessonRepository: LessonRepository {
 
 	private let coreDataService: CoreDataService
-	private let reactiveCoreDataService: ReactiveCoreDataService
 	private let importService: ImportService
 
 	init(coreDataService: CoreDataService,
-		 reactiveCoreDataService: ReactiveCoreDataService,
 		 importService: ImportService) {
 		self.coreDataService = coreDataService
-		self.reactiveCoreDataService = reactiveCoreDataService
 		self.importService = importService
     }
 
@@ -41,24 +38,13 @@ class KNURELessonRepository: LessonRepository {
 //		return Promise()
 //	}
 //
-//    func remoteLoadTimetable(identifier: String) -> Promise<Void> {
-//		let address = "http://cist.nure.ua/ias/app/tt/P_API_EVENT_JSON/timetable_id=\(identifier)"
-//		guard let url = URL(string: address) else {
-//			return Promise(error: DataLayerError.invalidUrlError)
-//		}
-//
-//		return Promise { seal in
-//			let request = NetworkRequest(url: url)
-//			reactiveNetworkingService.execute(request)
-//				.done { [weak self] response in
-//
-//					try self?.importService.importData(response.data,
-//													  transform: { $0["identifier"] = identifier },
-//													  completion: { seal.fulfill(()) })
-//
-//				}.catch {
-//					seal.reject($0)
-//			}
+//    func remoteLoadTimetable(identifier: String) {
+//		do {
+//			let path = Bundle.main.path(forResource: "timetable", ofType: "json")
+//			let data = NSData(contentsOfFile: path!)! as Data
+//			try self.importService.decode(data, info: ["identifier": identifier])
+//		} catch {
+//			print(error)
 //		}
 //    }
 }

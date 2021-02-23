@@ -12,12 +12,9 @@ import Combine
 final class KNUREItemRepository: ItemRepository {
 
 	private let coreDataService: CoreDataService
-	private let importService: ImportService
 
-	init(coreDataService: CoreDataService,
-		 importService: ImportService) {
+	init(coreDataService: CoreDataService) {
 		self.coreDataService = coreDataService
-		self.importService = importService
 	}
 
 	func localItems() -> [Item] {

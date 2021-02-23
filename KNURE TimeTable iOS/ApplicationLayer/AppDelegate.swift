@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication,
 					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		window = UIWindow()
-		let factory = container.resolve(ViewControllerFactory.self)!
-		coordinator = MainCoordinator(viewControllerFactory: factory)
-		coordinator?.strongRouter.setRoot(for: window!)
+//		let factory = container.resolve(ViewControllerFactory.self)!
+//		coordinator = MainCoordinator(viewControllerFactory: factory)
+//		coordinator?.strongRouter.setRoot(for: window!)
 		return true
 	}
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G6032" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G8022" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GroupManaged" representedClassName="GroupManaged" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonManaged" inverseName="groups" inverseEntity="LessonManaged"/>
+    </entity>
     <entity name="ItemManaged" representedClassName="ItemManaged" syncable="YES" codeGenerationType="class">
         <attribute name="fullName" optional="YES" attributeType="String"/>
         <attribute name="identifier" attributeType="String" defaultValueString=""/>
@@ -8,25 +13,44 @@
         <attribute name="selected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" defaultValueString="title"/>
         <attribute name="type" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonManaged" inverseName="items" inverseEntity="LessonManaged"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonManaged" inverseName="items" inverseEntity="LessonManaged"/>
     </entity>
     <entity name="LessonManaged" representedClassName="LessonManaged" syncable="YES" codeGenerationType="class">
         <attribute name="auditory" optional="YES" attributeType="String"/>
-        <attribute name="brief" optional="YES" attributeType="String"/>
         <attribute name="endTimestamp" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="itemIdentifier" optional="YES" attributeType="String"/>
         <attribute name="numberPair" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="startTimestamp" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="subjectIdentifier" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <attribute name="timezone" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="typeBrief" optional="YES" attributeType="String"/>
-        <attribute name="typeTitle" optional="YES" attributeType="String"/>
-        <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="ItemManaged" inverseName="lessons" inverseEntity="ItemManaged"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GroupManaged" inverseName="lessons" inverseEntity="GroupManaged"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemManaged" inverseName="lessons" inverseEntity="ItemManaged"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SubjectManaged" inverseName="lessons" inverseEntity="SubjectManaged"/>
+        <relationship name="teachers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TeacherManaged" inverseName="lessons" inverseEntity="TeacherManaged"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TypeManaged" inverseName="lessons" inverseEntity="TypeManaged"/>
+    </entity>
+    <entity name="SubjectManaged" representedClassName="SubjectManaged" syncable="YES" codeGenerationType="class">
+        <attribute name="brief" attributeType="String"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonManaged" inverseName="subject" inverseEntity="LessonManaged"/>
+    </entity>
+    <entity name="TeacherManaged" representedClassName="TeacherManaged" syncable="YES" codeGenerationType="class">
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="shortName" attributeType="String"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonManaged" inverseName="teachers" inverseEntity="LessonManaged"/>
+    </entity>
+    <entity name="TypeManaged" representedClassName="TypeManaged" syncable="YES" codeGenerationType="class">
+        <attribute name="baseId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LessonManaged" inverseName="type" inverseEntity="LessonManaged"/>
     </entity>
     <elements>
-        <element name="ItemManaged" positionX="54" positionY="162" width="126" height="163"/>
-        <element name="LessonManaged" positionX="277" positionY="198" width="128" height="238"/>
+        <element name="GroupManaged" positionX="565.12109375" positionY="-126.921875" width="128" height="88"/>
+        <element name="ItemManaged" positionX="-95.609375" positionY="79.79296875" width="126" height="163"/>
+        <element name="LessonManaged" positionX="232.21484375" positionY="13.45703125" width="128" height="178"/>
+        <element name="SubjectManaged" positionX="597.5859375" positionY="-6.41796875" width="128" height="103"/>
+        <element name="TeacherManaged" positionX="596.1015625" positionY="114.2109375" width="128" height="103"/>
+        <element name="TypeManaged" positionX="518.3828125" positionY="263.51953125" width="128" height="118"/>
     </elements>
 </model>

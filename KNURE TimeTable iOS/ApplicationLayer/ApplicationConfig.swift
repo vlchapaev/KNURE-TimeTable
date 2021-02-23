@@ -16,7 +16,7 @@ protocol ApplicationConfig {
 
 class DefaultAppConfig: ApplicationConfig {
 
-	private let persistentContainer: NSPersistentContainer = {
+	private lazy var persistentContainer: NSPersistentContainer = {
 		/*
 		The persistent container for the application. This implementation
 		creates and returns a container, having loaded the store for the
@@ -24,10 +24,6 @@ class DefaultAppConfig: ApplicationConfig {
 		error conditions that could cause the creation of the store to fail.
 		*/
 		let container = NSPersistentContainer(name: "DataStorage")
-		let description = NSPersistentStoreDescription()
-		description.shouldMigrateStoreAutomatically = true
-		description.shouldInferMappingModelAutomatically = true
-		container.persistentStoreDescriptions = [description]
 		container.loadPersistentStores {
 			if let error = $1 {
 				// Replace this implementation with code to handle the error appropriately.
