@@ -27,22 +27,22 @@ final class KNURELessonImportServiceTests: XCTestCase {
 		super.tearDown()
     }
 
-	func testSuccessLessonImport() throws {
+	func testSuccessLessonImport() {
 		// arrange
 		let context = storeWrapper.persistentContainer.newBackgroundContext()
 		let itemManaged = ItemManaged(context: context)
 		itemManaged.identifier = "6949706"
-		try context.save()
+		XCTAssertNoThrow(try context.save())
 
 		let data = MockJSONLoader.load(json: "timetable", item: .groups)
 
 		// act
-		try sut.decode(data, info: ["identifier": "6949706"])
+		XCTAssertNoThrow(try sut.decode(data, info: ["identifier": "6949706"]))
 
 		// assert
 		sleep(1)
 		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
-		let result = try storeWrapper.persistentContainer.viewContext.fetch(request)
+		let result = XCTAssertNoRethrow(try storeWrapper.persistentContainer.viewContext.fetch(request))
 		XCTAssertGreaterThan(result.count, 0)
 	}
 

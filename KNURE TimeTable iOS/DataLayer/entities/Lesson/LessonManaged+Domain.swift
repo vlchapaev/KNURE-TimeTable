@@ -9,7 +9,7 @@
 extension LessonManaged: Convertable {
 	typealias NewType = Lesson
 
-	func convert() -> Lesson {
+	func convert() -> Lesson? {
 		// TODO: implement
 		return Lesson()
 	}

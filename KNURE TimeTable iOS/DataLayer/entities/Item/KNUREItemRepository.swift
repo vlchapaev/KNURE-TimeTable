@@ -12,20 +12,22 @@ import Combine
 final class KNUREItemRepository: ItemRepository {
 
 	private let coreDataService: CoreDataService
+	private let networkService: NetworkService
 
-	init(coreDataService: CoreDataService) {
+	init(coreDataService: CoreDataService,
+		 networkService: NetworkService) {
 		self.coreDataService = coreDataService
+		self.networkService = networkService
 	}
 
 	func localItems() -> [Item] {
-		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-		request.predicate = NSPredicate(value: true)
+		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return coreDataService.fetch(request) { $0.convert() }
 	}
 
 	func local(items type: Item.Kind) -> [Item] {
-		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
 		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return coreDataService.fetch(request) { $0.convert() }
@@ -58,19 +60,32 @@ final class KNUREItemRepository: ItemRepository {
 //		}
 //    }
 
-//	func remoteItems(type: Item.Kind) -> Observable<[Item]> {
-//		let request: NetworkRequest
-//		do {
-//			request = try KNURERequestBuilder.make(endpoint: .item(type))
-//		} catch {
-//			return Observable.error(error)
-//		}
-//		return Observable.of(reactiveNetworkingService.execute(request))
-//			.flatMap { $0 }
-//			.map {
-//				try self.importService.importData($0.data,
-//												  transform: { $0["type"] = type.rawValue },
-//												  completion: { })
-//			}.map { self.localItems(type: type) }
-//	}
+	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error> {
+		let request: URLRequest
+		do {
+			request = try KNURE.Request.make(endpoint: .item(type))
+		} catch {
+			return Fail(error: error).eraseToAnyPublisher()
+		}
+
+		let decoder = JSONDecoder()
+		decoder.keyDecodingStrategy = .convertFromSnakeCase
+		return networkService.execute(request)
+			.tryMap { element -> Data in
+				guard element.status == .ok else { throw element.status }
+				return element.data
+		}
+		.decode(type: KNURE.Response.self, decoder: decoder)
+		.map {
+			switch type {
+				case .group:
+					return $0.university.groups
+				case .teacher:
+					return $0.university.teachers
+				case .auditory:
+					return $0.university.auditories
+			}
+		}
+		.eraseToAnyPublisher()
+	}
 }

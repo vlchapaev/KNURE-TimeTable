@@ -9,15 +9,15 @@
 extension KNURE.Response.University {
 	struct Building: Decodable {
 		let id: String
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
-		@IgnoreFailable var auditories: [Auditory]
+		let shortName: String
+		let fullName: String
+		@Omissible var auditories: [Auditory]
 	}
 }
 
 extension KNURE.Response.University.Building {
 	struct Auditory: Decodable {
 		let id: String
-		let short_name: String // swiftlint:disable:this identifier_name
+		let shortName: String
 	}
 }

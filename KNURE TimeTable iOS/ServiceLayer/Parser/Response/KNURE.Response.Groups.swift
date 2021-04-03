@@ -9,19 +9,19 @@
 extension KNURE.Response.University.Faculty {
 	struct Direction: Decodable {
 		let id: Int
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
-		@IgnoreFailable var groups: [Group]
-		@IgnoreFailable var specialities: [Speciality]
+		let shortName: String
+		let fullName: String
+		@Omissible var groups: [Group]
+		@Omissible var specialities: [Speciality]
 	}
 }
 
 extension KNURE.Response.University.Faculty.Direction {
 	struct Speciality: Decodable {
 		let id: Int
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
-		@IgnoreFailable var groups: [Group]
+		let shortName: String
+		let fullName: String
+		@Omissible var groups: [Group]
 	}
 
 	struct Group: Decodable {

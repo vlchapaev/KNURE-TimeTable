@@ -13,18 +13,18 @@ struct ServiceLayerAssembly: Assembly {
 
 	func assemble(container: Container) {
 
-		let appConfig = container.resolve(ApplicationConfig.self)!
+		let appConfig = container.resolve(Configuration.self)!
 
 		container.register(CoreDataService.self) { _ in
 			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(ReactiveCoreDataService.self) { _ in
-			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
-		}
-
 		container.register(ImportService.self, name: "KNURE_Lesson") { _ in
 			KNURELessonImportService(persistentContainer: appConfig.persistentStoreContainer)
+		}
+
+		container.register(NetworkService.self) { _ in
+			NetworkService(configuration: appConfig.urlSessionConfiguration)
 		}
 	}
 }

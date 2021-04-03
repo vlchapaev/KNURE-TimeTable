@@ -48,11 +48,6 @@ extension HTTP {
 		case gatewayTimeout = 504
 
 		case undefined = -1
-
-		init(code: Int) {
-			self = Status(rawValue: code) ?? .undefined
-		}
-
 	}
 
 	enum Method: String {

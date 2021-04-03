@@ -11,12 +11,25 @@ import XCTest
 
 final class KNUREItemsDecodeTests: XCTestCase {
 
-    func testValidGroupsJSON() throws {
+	var sut: JSONDecoder!
+
+	override func setUp() {
+		super.setUp()
+		sut = JSONDecoder()
+		sut.keyDecodingStrategy = .convertFromSnakeCase
+	}
+
+	override func tearDown() {
+		sut = nil
+		super.tearDown()
+	}
+
+	func testValidGroupsJSON() {
 		// arrange
 		let data = MockJSONLoader.load(json: "valid", item: .groups)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		let faculties = response.university.faculties
@@ -25,13 +38,13 @@ final class KNUREItemsDecodeTests: XCTestCase {
 		XCTAssertFalse(faculties.first!.directions.first!.groups.isEmpty)
 	}
 
-	func testImportInvalidGroupsJSON() throws {
+	func testImportInvalidGroupsJSON() {
 		// arrange
 		let json = ["university": ["faculties": ["some", "some"]]]
-		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let data = XCTAssertNoRethrow(try JSONSerialization.data(withJSONObject: json))
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		let faculties = response.university.faculties
@@ -43,7 +56,7 @@ final class KNUREItemsDecodeTests: XCTestCase {
 		let data = MockJSONLoader.load(json: "valid", item: .teachers)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		let faculties = response.university.faculties
@@ -58,7 +71,7 @@ final class KNUREItemsDecodeTests: XCTestCase {
 		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		let faculties = response.university.faculties
@@ -70,7 +83,7 @@ final class KNUREItemsDecodeTests: XCTestCase {
 		let data = MockJSONLoader.load(json: "valid", item: .auditories)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		let buildings = response.university.buildings
@@ -84,7 +97,7 @@ final class KNUREItemsDecodeTests: XCTestCase {
 		let data = try JSONSerialization.data(withJSONObject: json)
 
 		// act
-		let response = try JSONDecoder().decode(KNURE.Response.self, from: data)
+		let response = XCTAssertNoRethrow(try sut.decode(KNURE.Response.self, from: data))
 
 		// assert
 		XCTAssertTrue(response.university.buildings.isEmpty)

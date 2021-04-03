@@ -9,16 +9,16 @@
 extension KNURE.Response.University.Faculty {
 	struct Department: Decodable {
 		let id: Int
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
-		@IgnoreFailable var teachers: [Teacher]
+		let shortName: String
+		let fullName: String
+		@Omissible var teachers: [Teacher]
 	}
 }
 
 extension KNURE.Response.University.Faculty.Department {
 	struct Teacher: Decodable {
 		let id: Int
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
+		let shortName: String
+		let fullName: String
 	}
 }

@@ -12,7 +12,8 @@ struct DataLayerAssembly: Assembly {
 
 	func assemble(container: Container) {
 		container.register(ItemRepository.self) {
-			KNUREItemRepository(coreDataService: $0.resolve(CoreDataService.self)!)
+			KNUREItemRepository(coreDataService: $0.resolve(CoreDataService.self)!,
+								networkService: $0.resolve(NetworkService.self)!)
 		}
 
 		container.register(LessonRepository.self) {

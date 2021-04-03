@@ -18,23 +18,13 @@ struct Item {
 	let shortName: String
 
 	/// full name to represent, such as full name of teacher
-	let fullName: String?
+	var fullName: String?
 
 	/// group, teacher or auditory
 	let type: Kind
 
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?
-
-	init(identifier: String,
-		 shortName: String,
-		 fullName: String? = nil,
-		 type: Kind) {
-		self.identifier = identifier
-		self.shortName = shortName
-		self.fullName = fullName
-		self.type = type
-	}
 }
 
 extension Item {

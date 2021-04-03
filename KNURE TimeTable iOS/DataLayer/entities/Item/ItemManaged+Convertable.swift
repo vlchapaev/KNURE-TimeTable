@@ -11,7 +11,7 @@ import Foundation
 extension ItemManaged: Convertable {
 	typealias NewType = Item
 
-	func convert() -> Item {
+	func convert() -> Item? {
 		let timetableType = Item.Kind(rawValue: Int(type)) ?? .group
 
 		var item = Item(identifier: identifier!,

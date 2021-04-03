@@ -12,7 +12,7 @@ extension KNURE {
 
 	struct Request {
 
-		static func make(endpoint: Endpoint) throws -> NetworkRequest {
+		static func make(endpoint: Endpoint) throws -> URLRequest {
 			var components: URLComponents = .init()
 			components.host = "cist.nure.ua"
 			components.scheme = "https"
@@ -22,7 +22,7 @@ extension KNURE {
 					components.queryItems = [
 						URLQueryItem(name: "timetable_id", value: identifier),
 						URLQueryItem(name: "type_id", value: "\(type.rawValue)"),
-						URLQueryItem(name: "idClient", value: apiAccessKey)
+						URLQueryItem(name: "idClient", value: "KNURESked")
 				]
 
 				case let .item(type) where type == .group:
@@ -38,11 +38,9 @@ extension KNURE {
 					break
 			}
 
-			guard let url = components.url else {
-				throw Request.Error.requestBuild(components.description)
-			}
+			guard let url = components.url else { throw URLError(.badURL) }
 
-			return NetworkRequest(url: url)
+			return URLRequest(url: url)
 		}
 	}
 }
@@ -52,9 +50,5 @@ extension KNURE.Request {
 	enum Endpoint {
 		case timetable(Item.Kind, String)
 		case item(Item.Kind)
-	}
-
-	enum Error: LocalizedError {
-		case requestBuild(String)
 	}
 }

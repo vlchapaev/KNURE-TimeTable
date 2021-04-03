@@ -15,7 +15,7 @@ struct ApplicationLayerAssembly: Assembly {
 	}
 
 	func registerApplicationConfig(_ container: Container) {
-		container.register(ApplicationConfig.self) { _ in
+		container.register(Configuration.self) { _ in
 			DefaultAppConfig()
 		}
 	}

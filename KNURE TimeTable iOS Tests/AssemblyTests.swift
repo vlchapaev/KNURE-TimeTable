@@ -29,7 +29,7 @@ final class AssemblyTests: XCTestCase {
 		ApplicationLayerAssembly().assemble(container: sut)
 
 		// act & assert
-		XCTAssertNotNil(sut.resolve(ApplicationConfig.self))
+		XCTAssertNotNil(sut.resolve(Configuration.self))
 	}
 
 	func testServiceLayerAssembler() {
@@ -39,8 +39,8 @@ final class AssemblyTests: XCTestCase {
 
 		// act & assert
 		XCTAssertNotNil(sut.resolve(CoreDataService.self))
-		XCTAssertNotNil(sut.resolve(ReactiveCoreDataService.self))
 		XCTAssertNotNil(sut.resolve(ImportService.self, name: "KNURE_Lesson"))
+		XCTAssertNotNil(sut.resolve(NetworkService.self))
 	}
 
 	func testDataLayerAssembler() {

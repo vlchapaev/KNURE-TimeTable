@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-protocol ApplicationConfig {
+protocol Configuration {
 	var urlSessionConfiguration: URLSessionConfiguration { get }
 	var persistentStoreContainer: NSPersistentContainer { get }
 }
 
-class DefaultAppConfig: ApplicationConfig {
+class DefaultAppConfig: Configuration {
 
 	private lazy var persistentContainer: NSPersistentContainer = {
 		/*

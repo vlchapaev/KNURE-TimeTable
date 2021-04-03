@@ -21,7 +21,7 @@ final class CoreDataServiceImpl {
 extension CoreDataServiceImpl: CoreDataService {
 
 	func fetch<T, R>(_ request: NSFetchRequest<T>,
-					 _ convert: (T) -> R) -> [R] where T: NSFetchRequestResult {
+					 _ convert: (T) -> R?) -> [R] where T: NSFetchRequestResult {
 		let context = persistentContainer.viewContext
 		var result: [R] = []
 		context.performAndWait {

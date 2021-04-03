@@ -20,7 +20,9 @@ final class KNURELessonImportService {
 extension KNURELessonImportService: ImportService {
 
 	func decode(_ data: Data, info: [String: String]) throws {
-		let response = try JSONDecoder().decode(KNURE.Response.Lesson.self, from: data)
+		let decoder = JSONDecoder()
+		decoder.keyDecodingStrategy = .convertFromSnakeCase
+		let response = try decoder.decode(KNURE.Response.Lesson.self, from: data)
 		persistentContainer.performBackgroundTask { context in
 
 			do {
@@ -41,7 +43,7 @@ extension KNURELessonImportService: ImportService {
 
 				let lessons = response.events
 					.compactMap { event -> Lesson? in
-						guard let subject = response.subjects.first(where: { $0.id == event.subject_id }) else { return nil }
+						guard let subject = response.subjects.first(where: { $0.id == event.subjectId }) else { return nil }
 						guard let type = response.types.first(where: { $0.id == event.type }) else { return nil }
 						return Lesson(event: event, subject: subject, type: type)
 				}
@@ -86,8 +88,8 @@ private extension KNURE.Response.University.Faculty.Department.Teacher {
 	func toManagedObject(in context: NSManagedObjectContext) -> TeacherManaged {
 		let object = TeacherManaged(context: context)
 		object.identifier = "\(id)"
-		object.shortName = short_name
-		object.fullName = full_name
+		object.shortName = shortName
+		object.fullName = fullName
 		return object
 	}
 }
@@ -95,10 +97,10 @@ private extension KNURE.Response.University.Faculty.Department.Teacher {
 private extension KNURE.Response.Lesson.Event {
 	func toManagedObject(in context: NSManagedObjectContext) -> LessonManaged {
 		let object = LessonManaged(context: context)
-		object.numberPair = Int64(number_pair)
+		object.numberPair = Int64(numberPair)
 		object.auditory = auditory
-		object.startTimestamp = start_time
-		object.endTimestamp = end_time
+		object.startTimestamp = startTime
+		object.endTimestamp = endTime
 		return object
 	}
 }
@@ -117,9 +119,9 @@ private extension KNURE.Response.Lesson.`Type` {
 	func toManagedObject(in context: NSManagedObjectContext) -> TypeManaged {
 		let object = TypeManaged(context: context)
 		object.identifier = Int64(id)
-		object.baseId = Int64(id_base)
-		object.shortName = short_name
-		object.fullName = full_name
+		object.baseId = Int64(idBase)
+		object.shortName = shortName
+		object.fullName = fullName
 		return object
 	}
 }

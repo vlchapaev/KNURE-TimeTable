@@ -14,53 +14,39 @@ extension KNURE {
 
 extension KNURE.Response {
 	struct University: Decodable {
-		let faculties: [Faculty]
-		let buildings: [Building]
-
-		init(from decoder: Decoder) throws {
-			let container = try decoder.container(keyedBy: CodingKeys.self)
-
-			faculties = (try? container.decode([Throwable<Faculty>].self, forKey: .faculties)
-				.compactMap { try? $0.result.get() }) ?? []
-
-			buildings = (try? container.decode([Throwable<Building>].self, forKey: .buildings)
-				.compactMap { try? $0.result.get() }) ?? []
-		}
-	}
-}
-
-extension KNURE.Response.University {
-	enum CodingKeys: CodingKey {
-		case faculties, buildings
+		@Omissible var faculties: [Faculty]
+		@Omissible var buildings: [Building]
 	}
 }
 
 extension KNURE.Response.University {
 	struct Faculty: Decodable {
 		let id: Int
-		let short_name: String // swiftlint:disable:this identifier_name
-		let full_name: String // swiftlint:disable:this identifier_name
-		let directions: [Direction]
-		let departments: [Department]
-
-		init(from decoder: Decoder) throws {
-			let container = try decoder.container(keyedBy: CodingKeys.self)
-
-			id = try container.decode(Int.self, forKey: .id)
-			short_name = try container.decode(String.self, forKey: .short_name)
-			full_name = try container.decode(String.self, forKey: .full_name)
-
-			directions = (try? container.decode([Throwable<Direction>].self, forKey: .directions)
-				.compactMap { try? $0.result.get() }) ?? []
-
-			departments = (try? container.decode([Throwable<Department>].self, forKey: .departments)
-				.compactMap { try? $0.result.get() }) ?? []
-		}
+		let shortName: String
+		let fullName: String
+		@Omissible var directions: [Direction]
+		@Omissible var departments: [Department]
 	}
 }
 
-extension KNURE.Response.University.Faculty {
-	enum CodingKeys: CodingKey {
-		case id, short_name, full_name, directions, departments // swiftlint:disable:this identifier_name
+extension KNURE.Response.University {
+	var groups: [Item] {
+		return faculties
+			.flatMap { $0.directions }
+			.flatMap { $0.groups }
+			.map { Item(identifier: "\($0.id)", shortName: $0.name, type: .group) }
+	}
+
+	var teachers: [Item] {
+		return faculties
+			.flatMap { $0.departments }
+			.flatMap { $0.teachers }
+			.map { Item(identifier: "\($0.id)", shortName: $0.shortName, fullName: $0.fullName, type: .teacher) }
+	}
+
+	var auditories: [Item] {
+		return buildings
+			.flatMap { $0.auditories }
+			.map { Item(identifier: $0.id, shortName: $0.shortName, type: .auditory) }
 	}
 }

@@ -39,7 +39,7 @@ extension Publishers {
 		func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 			context.perform { [weak self] in
 				guard let self = self else { return }
-				guard let objects = self.fetchResultsController.fetchedObjects else { return self.subject.send([]) }
+				guard let objects = controller.fetchedObjects as? [T] else { return self.subject.send([]) }
 				let result = objects.compactMap { $0.convert() }
 				self.subject.send(result)
 			}
