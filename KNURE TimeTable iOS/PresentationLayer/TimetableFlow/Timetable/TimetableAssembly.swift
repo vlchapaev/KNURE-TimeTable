@@ -6,13 +6,11 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Swinject
-
 struct TimetableAssembly: Assembly {
 
-	func assemble(container: Container) {
-		container.register(TimetableViewController.self) {
-			let interactor = $0.resolve(TimetableInteractor.self)!
+	func assemble(container: Container) throws {
+		try container.register(TimetableViewController.self) {
+			let interactor = try $0.resolve(TimetableInteractor.self)
 			let controller = TimetableViewController()
 
 			controller.interactor = interactor
@@ -21,8 +19,8 @@ struct TimetableAssembly: Assembly {
 			return controller
 		}
 
-		container.register(TimetableInteractor.self) {
-			TimetableInteractor(updateTimetableUseCase: $0.resolve(UpdateTimetableUseCase.self)!)
+		try container.register(TimetableInteractor.self) {
+			TimetableInteractor(updateTimetableUseCase: try $0.resolve(UpdateTimetableUseCase.self))
 		}
 	}
 }

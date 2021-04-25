@@ -6,13 +6,11 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-import Swinject
-
 struct AddItemsAssembly: Assembly {
 
-	func assemble(container: Container) {
-		container.register(AddItemsViewController.self) {
-			let interactor = $0.resolve(AddItemsInteractor.self)!
+	func assemble(container: Container) throws {
+		try container.register(AddItemsViewController.self) {
+			let interactor = try $0.resolve(AddItemsInteractor.self)
 			let controller = AddItemsViewController()
 
 			controller.interactor = interactor
@@ -21,9 +19,9 @@ struct AddItemsAssembly: Assembly {
 			return controller
 		}
 
-		container.register(AddItemsInteractor.self) {
-			AddItemsInteractor(itemsUseCase: $0.resolve(ItemsUseCase.self)!,
-							   selectedItemsUseCase: $0.resolve(SelectedItemsUseCase.self)!)
+		try container.register(AddItemsInteractor.self) {
+			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self),
+							   selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self))
 		}
 	}
 }

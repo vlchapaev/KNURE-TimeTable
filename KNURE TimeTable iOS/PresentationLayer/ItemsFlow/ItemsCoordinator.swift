@@ -30,13 +30,15 @@ final class ItemsCoordinator: NavigationCoordinator<ItemsRouter> {
 			return .popToRoot()
 
 		case .addItems(let type):
-			let controller = viewControllerFactory.make(viewController: AddItemsViewController.self)
+			// swiftlint:disable:next force_try
+			let controller = try! viewControllerFactory.make(viewController: AddItemsViewController.self)
 			controller.output = self
 			controller.configure(type: type)
 			return .push(controller)
 
 		case .itemsList:
-			let controller = viewControllerFactory.make(viewController: ItemsViewController.self)
+			// swiftlint:disable:next force_try
+			let controller = try! viewControllerFactory.make(viewController: ItemsViewController.self)
 			controller.output = self
 			return .push(controller)
 		}
