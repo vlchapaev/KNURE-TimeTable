@@ -33,20 +33,33 @@ extension KNURE.Response.University {
 	var groups: [Item] {
 		return faculties
 			.flatMap { $0.directions }
-			.flatMap { $0.groups }
-			.map { Item(identifier: "\($0.id)", shortName: $0.name, type: .group) }
+			.reduce([]) { result, current in
+				result + current.groups.map {
+					Item(identifier: "\($0.id)", shortName: $0.name, type: .group, hint: current.fullName)
+				}
+			}
 	}
 
 	var teachers: [Item] {
 		return faculties
 			.flatMap { $0.departments }
-			.flatMap { $0.teachers }
-			.map { Item(identifier: "\($0.id)", shortName: $0.shortName, fullName: $0.fullName, type: .teacher) }
+			.reduce([]) { result, current in
+				result + current.teachers.map {
+					Item(identifier: "\($0.id)",
+						 shortName: $0.shortName,
+						 fullName: $0.fullName,
+						 type: .teacher,
+						 hint: current.fullName)
+				}
+			}
 	}
 
 	var auditories: [Item] {
 		return buildings
-			.flatMap { $0.auditories }
-			.map { Item(identifier: $0.id, shortName: $0.shortName, type: .auditory) }
+			.reduce([]) { result, current in
+				result + current.auditories.map {
+					Item(identifier: $0.id, shortName: $0.shortName, type: .auditory, hint: current.fullName)
+				}
+			}
 	}
 }

@@ -26,6 +26,6 @@ protocol ReactiveCoreDataService {
 	///
 	/// - Parameter request: NSFetchRequest
 	/// - Returns: Observable fetch result
-	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
+	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Error>
 		where T: NSFetchRequestResult & Convertable, R == T.NewType
 }

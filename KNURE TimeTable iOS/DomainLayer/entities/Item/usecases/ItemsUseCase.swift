@@ -6,7 +6,9 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-final class ItemsUseCase: UseCase<Item.Kind, [Item]> {
+import Combine
+
+final class ItemsUseCase: UseCase<Item.Kind, AnyPublisher<[Item], Error>> {
 
 	private let itemRepository: ItemRepository
 
@@ -16,8 +18,7 @@ final class ItemsUseCase: UseCase<Item.Kind, [Item]> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: Item.Kind) -> [Item] {
-		return []
-//		return itemRepository.remoteItems(type: query)
+	override func execute(_ query: Item.Kind) -> AnyPublisher<[Item], Error> {
+		return itemRepository.remote(items: query)
 	}
 }

@@ -7,19 +7,31 @@
 //
 
 final class AddItemsViewModel {
-//	var items: BehaviorRelay<[Model]>
-	var selectedType: Item.Kind
+
+	var selectedType: Item.Kind = .group
+
+	var sections: [Section] = []
 
 	static let cellId = "TimetableAddItem"
+
+	struct Section {
+		let title: String?
+		let models: [Model]
+	}
 
 	struct Model {
 		let identifier: String
 		let text: String
 		let selected: Bool
 	}
+}
 
-	init() {
-//		items = BehaviorRelay(value: [])
-		selectedType = .group
+extension AddItemsViewModel.Section: Comparable {
+	static func < (lhs: AddItemsViewModel.Section, rhs: AddItemsViewModel.Section) -> Bool {
+		return lhs.title ?? "" < rhs.title ?? ""
+	}
+
+	static func == (lhs: AddItemsViewModel.Section, rhs: AddItemsViewModel.Section) -> Bool {
+		return lhs.title == rhs.title
 	}
 }

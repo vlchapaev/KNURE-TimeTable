@@ -6,37 +6,35 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-protocol AddItemsInteractorInput {
-//	func obtainItems(type: Item.Kind) -> Observable<[AddItemsViewModel.Model]>
-}
+import Combine
 
-protocol AddItemsInteractorOutput: AnyObject {
+protocol AddItemsInteractorInput {
+	func obtain(items type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Section], Error>
 }
 
 final class AddItemsInteractor: AddItemsInteractorInput {
 
-	weak var output: AddItemsInteractorOutput?
-
 	private let itemsUseCase: ItemsUseCase
-	private let selectedItemsUseCase: SelectedItemsUseCase
 
-	init(itemsUseCase: ItemsUseCase,
-		 selectedItemsUseCase: SelectedItemsUseCase) {
+	init(itemsUseCase: ItemsUseCase) {
 		self.itemsUseCase = itemsUseCase
-		self.selectedItemsUseCase = selectedItemsUseCase
 	}
 
 	// MARK: - AddItemsInteractorInput
 
-//	func obtainItems(type: Item.Kind) -> Observable<[AddItemsViewModel.Model]> {
-//		return Observable.zip(itemsUseCase.execute(type), selectedItemsUseCase.execute(()))
-//			.map {
-//				let identifiers = $0.1.map { $0.identifier }
-//				return $0.0.map {
-//					AddItemsViewModel.Model(identifier: $0.identifier,
-//											text: $0.shortName,
-//											selected: identifiers.contains($0.identifier))
-//				}
-//		}
-//	}
+	func obtain(items type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Section], Error> {
+		return itemsUseCase.execute(type)
+			.map { Dictionary(grouping: $0, by: \.hint) }
+			.map { result -> [AddItemsViewModel.Section] in
+				result.map { dict in
+					let models = dict.value.map {
+						AddItemsViewModel.Model(identifier: $0.identifier,
+												text: $0.fullName ?? $0.shortName,
+												selected: $0.selected)
+					}
+					return AddItemsViewModel.Section(title: dict.key, models: models)
+				}
+			}
+			.eraseToAnyPublisher()
+	}
 }

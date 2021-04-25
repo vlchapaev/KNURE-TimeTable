@@ -14,14 +14,12 @@ struct AddItemsAssembly: Assembly {
 			let controller = AddItemsViewController()
 
 			controller.interactor = interactor
-			interactor.output = controller
 
 			return controller
 		}
 
 		try container.register(AddItemsInteractor.self) {
-			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self),
-							   selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self))
+			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self))
 		}
 	}
 }
