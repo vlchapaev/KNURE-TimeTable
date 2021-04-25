@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
+import Combine
+
 /// Access to timetable items
 protocol ItemRepository {
 
@@ -14,7 +16,7 @@ protocol ItemRepository {
     /// Observe items that been selected
     ///
     /// - Returns: Observable items list
-//    func localSelectedItems() -> Observable<[Item]>
+    func localSelectedItems() -> AnyPublisher<[Item], Error>
 
     /// Save item in persistent store
     ///
@@ -30,5 +32,5 @@ protocol ItemRepository {
 
 //	func remoteUpdateItems(type: Item.Kind) -> Promise<Void>
 
-//	func remoteItems(type: Item.Kind) -> Observable<[Item]>
+	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error>
 }

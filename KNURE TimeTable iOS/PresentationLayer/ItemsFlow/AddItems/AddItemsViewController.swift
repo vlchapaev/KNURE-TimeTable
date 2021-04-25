@@ -16,7 +16,7 @@ protocol AddItemsViewControllerOutput {
 	func didFinish(_ controller: AddItemsViewController)
 }
 
-final class AddItemsViewController: UIViewController, AddItemsInteractorOutput {
+final class AddItemsViewController: UIViewController {
 
 	var interactor: AddItemsInteractorInput?
 	var output: AddItemsViewControllerOutput?

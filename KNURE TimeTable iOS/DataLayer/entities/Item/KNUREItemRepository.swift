@@ -33,12 +33,12 @@ final class KNUREItemRepository: ItemRepository {
 		return coreDataService.fetch(request) { $0.convert() }
 	}
 
-//	func localSelectedItems() -> AnyPublisher<[Item], Never> {
-//		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
-//		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
-//		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//		return coreDataService.observe(request)
-//	}
+	func localSelectedItems() -> AnyPublisher<[Item], Error> {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
+		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+		return coreDataService.observe(request)
+	}
 
 //	func localSaveItem(identifier: String) -> Promise<Void> {
 //		let request = NSBatchUpdateRequest(entityName: "ItemManaged")

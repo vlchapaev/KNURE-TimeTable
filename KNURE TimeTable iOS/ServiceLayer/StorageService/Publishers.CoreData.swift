@@ -51,7 +51,7 @@ extension Publishers {
 extension Publishers.CoreData: Publisher {
 
 	typealias Output = [T.NewType]
-	typealias Failure = Never
+	typealias Failure = Error
 
 	func receive<S>(subscriber: S) where S: Subscriber,
 		Publishers.CoreData<T>.Failure == S.Failure,

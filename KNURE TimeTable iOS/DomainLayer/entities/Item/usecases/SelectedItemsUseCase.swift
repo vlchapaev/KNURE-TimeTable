@@ -6,7 +6,9 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-final class SelectedItemsUseCase: UseCase<Void, [Item]> {
+import Combine
+
+final class SelectedItemsUseCase: UseCase<Void, AnyPublisher<[Item], Error>> {
 
 	private let itemRepository: ItemRepository
 
@@ -16,8 +18,7 @@ final class SelectedItemsUseCase: UseCase<Void, [Item]> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: Void) -> [Item] {
-		return []
-//		return itemRepository.localSelectedItems()
+	override func execute(_ query: Void) -> AnyPublisher<[Item], Error> {
+		return itemRepository.localSelectedItems()
 	}
 }

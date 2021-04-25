@@ -12,10 +12,11 @@ extension ItemManaged: Convertable {
 	typealias NewType = Item
 
 	func convert() -> Item? {
-		let timetableType = Item.Kind(rawValue: Int(type)) ?? .group
+		guard let timetableType = Item.Kind(rawValue: Int(type)),
+			let identifier = identifier, let title = title else { return nil }
 
-		var item = Item(identifier: identifier!,
-						shortName: title!,
+		var item = Item(identifier: identifier,
+						shortName: title,
 						fullName: fullName,
 						type: timetableType)
 
