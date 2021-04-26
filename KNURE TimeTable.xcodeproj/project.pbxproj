@@ -17,6 +17,7 @@
 		770D05E61DD3A767008D89E1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
 		770D05E91DD3A767008D89E1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770D05E71DD3A767008D89E1 /* MainInterface.storyboard */; };
 		770D05ED1DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 770D05E11DD3A767008D89E1 /* KNURE TimeTable iOS TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		770D6B202635CD8600356E93 /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770D6B1F2635CD8600356E93 /* ContainerTests.swift */; };
 		770FC9672618E1FB00B047B2 /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770FC9662618E1FB00B047B2 /* XCTestExtensions.swift */; };
 		7710B0C524D06B7200BE4E2D /* Publishers.CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7710B0C424D06B7200BE4E2D /* Publishers.CoreData.swift */; };
 		7712334A23BCEF8800CB01D6 /* ItemsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712334923BCEF8800CB01D6 /* ItemsCoordinator.swift */; };
@@ -67,7 +68,6 @@
 		777AE2142221988E00EAEE20 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2102221988E00EAEE20 /* ImportService.swift */; };
 		777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */; };
 		7783E9FD2544267F00198C9A /* MockJSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7783E9FC2544267F00198C9A /* MockJSONLoader.swift */; };
-		778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777AE20B222195D900EAEE20 /* Swinject.framework */; };
 		778DC8582364BF1500580786 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC8572364BF1500580786 /* MainCoordinator.swift */; };
 		778DC85C2364C08900580786 /* TimetableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778DC85B2364C08900580786 /* TimetableCoordinator.swift */; };
 		778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */; };
@@ -87,6 +87,9 @@
 		77D4AAB723AF7BDA00729A93 /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAB623AF7BDA00729A93 /* CalendarLayout.swift */; };
 		77D4AAB923AF7F3400729A93 /* TimetableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AAB823AF7F3400729A93 /* TimetableAssembly.swift */; };
 		77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4AABA23AF8CAC00729A93 /* MainViewController.swift */; };
+		77D932A12635AE8C00B0BD60 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A02635AE8C00B0BD60 /* Container.swift */; };
+		77D932A32635C24D00B0BD60 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A22635C24D00B0BD60 /* Injectable.swift */; };
+		77D932A52635C3D900B0BD60 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A42635C3D900B0BD60 /* Assembly.swift */; };
 		77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DA785C240AF339001C442C /* XCoordinator.framework */; };
 		77DA785F240AF927001C442C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA785E240AF927001C442C /* ViewControllerFactory.swift */; };
 		77DC23C923C48FDA00A40D57 /* ItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */; };
@@ -171,6 +174,7 @@
 		770D05E51DD3A767008D89E1 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		770D05E81DD3A767008D89E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		770D05EA1DD3A767008D89E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		770D6B1F2635CD8600356E93 /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		770FC9662618E1FB00B047B2 /* XCTestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtensions.swift; sourceTree = "<group>"; };
 		7710B0C424D06B7200BE4E2D /* Publishers.CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publishers.CoreData.swift; sourceTree = "<group>"; };
 		7712334923BCEF8800CB01D6 /* ItemsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCoordinator.swift; sourceTree = "<group>"; };
@@ -224,24 +228,19 @@
 		775A3F9422217CB200931A1F /* TimetableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableUseCase.swift; sourceTree = "<group>"; };
 		775A3F9822217FD700931A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775A3FB82221856F00931A1F /* PresentationLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLayerAssembly.swift; sourceTree = "<group>"; };
-		775B3E1B240BFBFE00662D6F /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		7766B3042561466C00CE638F /* KNURE.Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Response.swift; sourceTree = "<group>"; };
 		77713ED623F80D70006E3E4C /* KNURELessonImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNURELessonImportService.swift; sourceTree = "<group>"; };
 		7778E46722D1096000477BFE /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		777AE20B222195D900EAEE20 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		777AE2102221988E00EAEE20 /* ImportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		777AE2122221988E00EAEE20 /* Data+EncodingTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+EncodingTransformation.swift"; sourceTree = "<group>"; };
 		7783E9FC2544267F00198C9A /* MockJSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSONLoader.swift; sourceTree = "<group>"; };
 		778DC8572364BF1500580786 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		778DC85B2364C08900580786 /* TimetableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCoordinator.swift; sourceTree = "<group>"; };
 		778E3118227C8A1D00D138B5 /* ServiceLayerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayerAssembly.swift; sourceTree = "<group>"; };
-		778EC065229B0C1C00D1F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		779C10FC25E531BA00D9B435 /* KNURELessonImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURELessonImportServiceTests.swift; sourceTree = "<group>"; };
 		77BEB5EA25618792002AB818 /* KNURE.Response.Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNURE.Response.Lesson.swift; sourceTree = "<group>"; };
 		77C204222337FF32007D3A1B /* KNURE TimeTable iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KNURE TimeTable iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C204262337FF32007D3A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77C2042C2337FF64007D3A1B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		77C2042D2337FF64007D3A1B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		77CBC0601E71C05100B8FD25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0621E71C05200B8FD25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77CBC0631E71C05300B8FD25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -261,6 +260,9 @@
 		77D4AAB623AF7BDA00729A93 /* CalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
 		77D4AAB823AF7F3400729A93 /* TimetableAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableAssembly.swift; sourceTree = "<group>"; };
 		77D4AABA23AF8CAC00729A93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		77D932A02635AE8C00B0BD60 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		77D932A22635C24D00B0BD60 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		77D932A42635C3D900B0BD60 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		77DA785A240AF329001C442C /* XCoordinatorRx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCoordinatorRx.framework; path = Carthage/Build/iOS/XCoordinatorRx.framework; sourceTree = "<group>"; };
 		77DA785C240AF339001C442C /* XCoordinator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCoordinator.framework; path = Carthage/Build/iOS/XCoordinator.framework; sourceTree = "<group>"; };
 		77DA785E240AF927001C442C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
@@ -306,7 +308,6 @@
 			files = (
 				77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
-				778B3D95224AB29500B7DC40 /* Swinject.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +318,7 @@
 		770290E122081C8700B82CF4 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				77D9329F2635AE7500B0BD60 /* DI Container */,
 				775A3F86222177D200931A1F /* ApplicationLayerAssembly.swift */,
 				775A3F9822217FD700931A1F /* AppDelegate.swift */,
 				7778E46722D1096000477BFE /* Configuration.swift */,
@@ -606,6 +608,7 @@
 		77C204232337FF32007D3A1B /* KNURE TimeTable iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
+				770D6B1F2635CD8600356E93 /* ContainerTests.swift */,
 				7783E9FC2544267F00198C9A /* MockJSONLoader.swift */,
 				7753DA51253340B20051A997 /* Mocks */,
 				77C204332337FFFB007D3A1B /* ServiceLayer */,
@@ -655,6 +658,16 @@
 			path = CollectionViewLayout;
 			sourceTree = "<group>";
 		};
+		77D9329F2635AE7500B0BD60 /* DI Container */ = {
+			isa = PBXGroup;
+			children = (
+				77D932A02635AE8C00B0BD60 /* Container.swift */,
+				77D932A22635C24D00B0BD60 /* Injectable.swift */,
+				77D932A42635C3D900B0BD60 /* Assembly.swift */,
+			);
+			path = "DI Container";
+			sourceTree = "<group>";
+		};
 		C33FCC5A1819965300328F6D = {
 			isa = PBXGroup;
 			children = (
@@ -682,13 +695,8 @@
 		C33FCC651819965300328F6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				775B3E1B240BFBFE00662D6F /* RxDataSources.framework */,
 				77DA785C240AF339001C442C /* XCoordinator.framework */,
 				77DA785A240AF329001C442C /* XCoordinatorRx.framework */,
-				77C2042C2337FF64007D3A1B /* Nimble.framework */,
-				77C2042D2337FF64007D3A1B /* Quick.framework */,
-				778EC065229B0C1C00D1F445 /* RxSwift.framework */,
-				777AE20B222195D900EAEE20 /* Swinject.framework */,
 				772A180B1DE5B69C00BF0947 /* CoreImage.framework */,
 				C33FCC661819965300328F6D /* Foundation.framework */,
 				C33FCC681819965300328F6D /* CoreGraphics.framework */,
@@ -914,7 +922,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XCoordinator.framework",
 			);
 			name = Carthage;
@@ -973,6 +980,7 @@
 				77DDBA1B2552F2B900C6C8C9 /* AssemblyTests.swift in Sources */,
 				770FC9672618E1FB00B047B2 /* XCTestExtensions.swift in Sources */,
 				7753DA54253342100051A997 /* KNUREItemsDecodeTests.swift in Sources */,
+				770D6B202635CD8600356E93 /* ContainerTests.swift in Sources */,
 				779C10FD25E531BA00D9B435 /* KNURELessonImportServiceTests.swift in Sources */,
 				7783E9FD2544267F00198C9A /* MockJSONLoader.swift in Sources */,
 			);
@@ -1003,12 +1011,15 @@
 				77DC23C923C48FDA00A40D57 /* ItemsUseCase.swift in Sources */,
 				7712334A23BCEF8800CB01D6 /* ItemsCoordinator.swift in Sources */,
 				77CC5A5225EAA20600D1FEEF /* NetworkService.swift in Sources */,
+				77D932A52635C3D900B0BD60 /* Assembly.swift in Sources */,
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
 				777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */,
 				7712335E23BCFF2A00CB01D6 /* AddItemsViewController.swift in Sources */,
 				775A3F7F2221775900931A1F /* DataLayerAssembly.swift in Sources */,
+				77D932A12635AE8C00B0BD60 /* Container.swift in Sources */,
 				775A3F9922217FD700931A1F /* AppDelegate.swift in Sources */,
 				7712335223BCEFE300CB01D6 /* ItemsInteractor.swift in Sources */,
+				77D932A32635C24D00B0BD60 /* Injectable.swift in Sources */,
 				7712335623BCF00900CB01D6 /* ItemsView.swift in Sources */,
 				7712334E23BCEFC400CB01D6 /* ItemsViewController.swift in Sources */,
 				771A83D522A7038C006964D7 /* ItemManaged+Convertable.swift in Sources */,

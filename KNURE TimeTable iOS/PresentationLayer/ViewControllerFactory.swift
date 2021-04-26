@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Swinject
 
 protocol ViewControllerFactory {
 
-	func make<T: UIViewController>(viewController type: T.Type) -> T
+	func make<T: UIViewController>(viewController type: T.Type) throws -> T
 }
 
 struct ViewControllerFactoryImpl: ViewControllerFactory {
@@ -22,7 +21,7 @@ struct ViewControllerFactoryImpl: ViewControllerFactory {
 		self.container = container
 	}
 
-	func make<T>(viewController type: T.Type) -> T where T: UIViewController {
-		return container.resolve(type)!
+	func make<T>(viewController type: T.Type) throws -> T where T: UIViewController {
+		return try container.resolve(type)
 	}
 }

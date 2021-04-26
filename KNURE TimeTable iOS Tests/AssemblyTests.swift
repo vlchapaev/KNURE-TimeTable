@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Swinject
 @testable import KNURE_TimeTable_iOS
 
 final class AssemblyTests: XCTestCase {
@@ -16,7 +15,7 @@ final class AssemblyTests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		sut = Container()
+		sut = Container.shared
 	}
 
 	override func tearDown() {
@@ -26,21 +25,21 @@ final class AssemblyTests: XCTestCase {
 
 	func testApplicationLayerAssembler() {
 		// arrange
-		ApplicationLayerAssembly().assemble(container: sut)
+		XCTAssertNoThrow(try ApplicationLayerAssembly().assemble(container: sut))
 
 		// act & assert
-		XCTAssertNotNil(sut.resolve(Configuration.self))
+		XCTAssertNoThrow(try sut.resolve(Configuration.self))
 	}
 
 	func testServiceLayerAssembler() {
 		// arrange
 		let assembly: [Assembly] = [ApplicationLayerAssembly(), ServiceLayerAssembly()]
-		assembly.forEach { $0.assemble(container: sut) }
+		XCTAssertNoThrow(try assembly.forEach { try $0.assemble(container: sut) })
 
 		// act & assert
-		XCTAssertNotNil(sut.resolve(CoreDataService.self))
-		XCTAssertNotNil(sut.resolve(ImportService.self, name: "KNURE_Lesson"))
-		XCTAssertNotNil(sut.resolve(NetworkService.self))
+		XCTAssertNoThrow(try sut.resolve(CoreDataService.self))
+		XCTAssertNoThrow(try sut.resolve(ImportService.self, named: "KNURE_Lesson"))
+		XCTAssertNoThrow(try sut.resolve(NetworkService.self))
 	}
 
 	func testDataLayerAssembler() {
@@ -50,11 +49,11 @@ final class AssemblyTests: XCTestCase {
 			ServiceLayerAssembly(),
 			DataLayerAssembly()
 		]
-		assembly.forEach { $0.assemble(container: sut) }
+		XCTAssertNoThrow(try assembly.forEach { try $0.assemble(container: sut) })
 
 		// act & assert
-		XCTAssertNotNil(sut.resolve(ItemRepository.self))
-		XCTAssertNotNil(sut.resolve(LessonRepository.self))
+		XCTAssertNoThrow(try sut.resolve(ItemRepository.self, named: "KNURE"))
+		XCTAssertNoThrow(try sut.resolve(LessonRepository.self, named: "KNURE"))
 	}
 
 	func testDomainLayerAssembler() {
@@ -65,14 +64,14 @@ final class AssemblyTests: XCTestCase {
 			DataLayerAssembly(),
 			DomainLayerAssembly()
 		]
-		assembly.forEach { $0.assemble(container: sut) }
+		XCTAssertNoThrow(try assembly.forEach { try $0.assemble(container: sut) })
 
 		// act & assert
-		XCTAssertNotNil(sut.resolve(ItemsUseCase.self))
-		XCTAssertNotNil(sut.resolve(SaveItemUseCase.self))
-		XCTAssertNotNil(sut.resolve(RemoveItemUseCase.self))
-		XCTAssertNotNil(sut.resolve(SelectedItemsUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(ItemsUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(SaveItemUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(RemoveItemUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(SelectedItemsUseCase.self))
 
-		XCTAssertNotNil(sut.resolve(UpdateTimetableUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(UpdateTimetableUseCase.self))
 	}
 }

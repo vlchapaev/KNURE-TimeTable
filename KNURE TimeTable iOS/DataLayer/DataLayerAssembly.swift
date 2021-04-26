@@ -6,19 +6,17 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Swinject
-
 struct DataLayerAssembly: Assembly {
 
-	func assemble(container: Container) {
-		container.register(ItemRepository.self) {
-			KNUREItemRepository(coreDataService: $0.resolve(CoreDataService.self)!,
-								networkService: $0.resolve(NetworkService.self)!)
+	func assemble(container: Container) throws {
+		try container.register(ItemRepository.self, named: "KNURE", in: .graph) {
+			KNUREItemRepository(coreDataService: try $0.resolve(),
+								networkService: try $0.resolve())
 		}
 
-		container.register(LessonRepository.self) {
-			KNURELessonRepository(coreDataService: $0.resolve(CoreDataService.self)!,
-								  importService: $0.resolve(ImportService.self, name: "KNURE_Lesson")!)
+		try container.register(LessonRepository.self, named: "KNURE", in: .graph) {
+			KNURELessonRepository(coreDataService: try $0.resolve(),
+								  importService: try $0.resolve(ImportService.self, named: "KNURE_Lesson"))
 		}
 	}
 }

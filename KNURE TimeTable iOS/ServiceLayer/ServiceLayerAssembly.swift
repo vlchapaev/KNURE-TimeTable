@@ -6,24 +6,23 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Swinject
 import CoreData
 
 struct ServiceLayerAssembly: Assembly {
 
-	func assemble(container: Container) {
+	func assemble(container: Container) throws {
 
-		let appConfig = container.resolve(Configuration.self)!
+		let appConfig = try container.resolve(Configuration.self)
 
-		container.register(CoreDataService.self) { _ in
+		container.register(CoreDataService.self, in: .graph) { _ in
 			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(ImportService.self, name: "KNURE_Lesson") { _ in
+		container.register(ImportService.self, named: "KNURE_Lesson", in: .graph) { _ in
 			KNURELessonImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(NetworkService.self) { _ in
+		container.register(NetworkService.self, in: .graph) { _ in
 			NetworkService(configuration: appConfig.urlSessionConfiguration)
 		}
 	}

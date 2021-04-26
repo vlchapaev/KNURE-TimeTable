@@ -6,15 +6,13 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-import Swinject
-
 struct ApplicationLayerAssembly: Assembly {
 
-	func assemble(container: Container) {
-		registerApplicationConfig(container)
+	func assemble(container: Container) throws {
+		try registerApplicationConfig(container)
 	}
 
-	func registerApplicationConfig(_ container: Container) {
+	func registerApplicationConfig(_ container: Container) throws {
 		container.register(Configuration.self) { _ in
 			DefaultAppConfig()
 		}
