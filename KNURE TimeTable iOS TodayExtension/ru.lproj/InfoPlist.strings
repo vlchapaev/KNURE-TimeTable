@@ -1,9 +1,0 @@
-/* 
-  InfoPlist.strings
-  KNURE TimeTable
-
-  Created by Vladislav Chapaev on 05.02.17.
-  Copyright © 2017 Vladislav Chapaev. All rights reserved.
-*/
-
-CFBundleDisplayName = "Расписание на сегодня";
