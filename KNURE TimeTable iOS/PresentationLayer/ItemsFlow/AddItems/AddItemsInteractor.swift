@@ -26,8 +26,10 @@ final class AddItemsInteractor: AddItemsInteractorInput {
 	// MARK: - AddItemsInteractorInput
 
 	func obtainItems(type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Model], Error> {
-		return selectedItemsUseCase.execute(())
-			.combineLatest(itemsUseCase.execute(type))
+		let items = itemsUseCase.execute(type)
+		let selectedItems = selectedItemsUseCase.execute(())
+		return selectedItems
+			.combineLatest(items)
 			.map { result -> [AddItemsViewModel.Model] in
 				let identifiers = result.0.map { $0.identifier }
 				return result.1.map {

@@ -7,8 +7,8 @@
 //
 
 final class AddItemsViewModel {
-//	var items: BehaviorRelay<[Model]>
-	var selectedType: Item.Kind
+
+	var selectedType: Item.Kind = .group
 
 	static let cellId = "TimetableAddItem"
 
@@ -16,10 +16,5 @@ final class AddItemsViewModel {
 		let identifier: String
 		let text: String
 		let selected: Bool
-	}
-
-	init() {
-//		items = BehaviorRelay(value: [])
-		selectedType = .group
 	}
 }

@@ -11,9 +11,7 @@ import Combine
 /// Access to timetable items
 protocol ItemRepository {
 
-//	func localItems() -> Observable<[Item]>
-
-    /// Observe items that been selected
+    /// Observe items that is been selected
     ///
     /// - Returns: Observable items list
     func localSelectedItems() -> AnyPublisher<[Item], Error>
@@ -22,15 +20,15 @@ protocol ItemRepository {
     ///
     /// - Parameter item: timetable item
     /// - Returns: Promise with finished operation
-//    func localSaveItem(identifier: String) -> Promise<Void>
+    func local(save item: Item)
 
     /// Delete item from persistent store
     ///
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
-//    func localDeleteItem(identifier: String) -> Promise<Void>
+    func local(delete identifier: String)
 
-//	func remoteUpdateItems(type: Item.Kind) -> Promise<Void>
-
+	/// <#Description#>
+	/// - Parameter type: <#type description#>
 	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error>
 }

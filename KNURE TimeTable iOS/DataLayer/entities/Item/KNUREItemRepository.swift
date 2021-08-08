@@ -20,19 +20,6 @@ final class KNUREItemRepository: ItemRepository {
 		self.networkService = networkService
 	}
 
-	func localItems() -> [Item] {
-		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
-		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-		return coreDataService.fetch(request) { $0.convert() }
-	}
-
-	func local(items type: Item.Kind) -> [Item] {
-		let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
-		request.predicate = NSPredicate(format: "type = %@", NSNumber(value: type.rawValue))
-		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-		return coreDataService.fetch(request) { $0.convert() }
-	}
-
 	func localSelectedItems() -> AnyPublisher<[Item], Error> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
@@ -40,25 +27,13 @@ final class KNUREItemRepository: ItemRepository {
 		return coreDataService.observe(request)
 	}
 
-//	func localSaveItem(identifier: String) -> Promise<Void> {
-//		let request = NSBatchUpdateRequest(entityName: "ItemManaged")
-//		request.predicate = NSPredicate(format: "identifier = %@", identifier)
-//		request.propertiesToUpdate = ["selected": true]
-//		return coreDataService.update(request)
-//	}
-//
-//    func localDeleteItem(identifier: String) -> Promise<Void> {
-//		let itemRequest = NSBatchUpdateRequest(entityName: "ItemManaged")
-//		itemRequest.predicate = NSPredicate(format: "identifier = %@", identifier)
-//		itemRequest.propertiesToUpdate = ["selected": false]
-//
-//		let lessonRequest = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
-//		lessonRequest.predicate = NSPredicate(format: "itemIdentifier = %@", identifier)
-//
-//		return coreDataService.update(itemRequest).then {
-//			self.coreDataService.delete(lessonRequest)
-//		}
-//    }
+	func local(save item: Item) {
+		// TODO: implement
+	}
+
+	func local(delete identifier: String) {
+		// TODO: implement
+	}
 
 	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error> {
 		let request: URLRequest
@@ -78,12 +53,9 @@ final class KNUREItemRepository: ItemRepository {
 		.decode(type: KNURE.Response.self, decoder: decoder)
 		.map {
 			switch type {
-				case .group:
-					return $0.university.groups
-				case .teacher:
-					return $0.university.teachers
-				case .auditory:
-					return $0.university.auditories
+				case .group: return $0.university.groups
+				case .teacher: return $0.university.teachers
+				case .auditory: return $0.university.auditories
 			}
 		}
 		.eraseToAnyPublisher()
