@@ -46,18 +46,28 @@ final class KNUREItemRepository: ItemRepository {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 		return networkService.execute(request)
-			.tryMap { element -> Data in
-				guard element.status == .ok else { throw element.status }
-				return element.data
+			.tryMap(handle)
+			.tryMap { try $0.transform(from: .windowsCP1251, to: .utf8) }
+			.decode(type: KNURE.Response.self, decoder: decoder)
+			.map { self.transform(response: $0, by: type) }
+			.eraseToAnyPublisher()
+	}
+}
+
+private extension KNUREItemRepository {
+	func handle(_ response: NetworkResponse) throws -> Data {
+		guard response.status == .ok else { throw response.status }
+		return response.data
+	}
+
+	func transform(response: KNURE.Response, by type: Item.Kind) -> [Item] {
+		switch type {
+		case .group:
+			return response.university.groups
+		case .teacher:
+			return response.university.teachers
+		case .auditory:
+			return response.university.auditories
 		}
-		.decode(type: KNURE.Response.self, decoder: decoder)
-		.map {
-			switch type {
-				case .group: return $0.university.groups
-				case .teacher: return $0.university.teachers
-				case .auditory: return $0.university.auditories
-			}
-		}
-		.eraseToAnyPublisher()
 	}
 }

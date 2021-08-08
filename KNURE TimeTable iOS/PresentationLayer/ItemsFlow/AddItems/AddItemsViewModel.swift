@@ -10,9 +10,11 @@ final class AddItemsViewModel {
 
 	var selectedType: Item.Kind = .group
 
+	var models: [Model] = []
+
 	static let cellId = "TimetableAddItem"
 
-	struct Model {
+	struct Model: Hashable {
 		let identifier: String
 		let text: String
 		let selected: Bool

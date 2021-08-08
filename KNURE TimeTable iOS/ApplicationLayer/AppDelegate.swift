@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import XCoordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-	var coordinator: MainCoordinator?
 
 	private var container: Container!
 	private let factories: [Assembly] = [
@@ -26,17 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication,
 					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		window = UIWindow()
 		container = .shared
+
 		do {
-			try factories.forEach { try $0.assemble(container: container!) }
+			try factories.forEach { try $0.assemble(container: container) }
+
+			let factory = try container.resolve(ViewControllerFactory.self)
+			let itemsController = try factory.make(viewController: AddItemsViewController.self)
+			let navController = UINavigationController(rootViewController: itemsController)
+			window?.rootViewController = navController
+			window?.makeKeyAndVisible()
 		} catch {
 			print(error)
 		}
 
-		window = UIWindow()
-//		let factory = container.resolve(ViewControllerFactory.self)!
-//		coordinator = MainCoordinator(viewControllerFactory: factory)
-//		coordinator?.strongRouter.setRoot(for: window!)
 		return true
 	}
 }

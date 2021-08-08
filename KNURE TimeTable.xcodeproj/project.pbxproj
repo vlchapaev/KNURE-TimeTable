@@ -90,7 +90,6 @@
 		77D932A12635AE8C00B0BD60 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A02635AE8C00B0BD60 /* Container.swift */; };
 		77D932A32635C24D00B0BD60 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A22635C24D00B0BD60 /* Injectable.swift */; };
 		77D932A52635C3D900B0BD60 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D932A42635C3D900B0BD60 /* Assembly.swift */; };
-		77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DA785C240AF339001C442C /* XCoordinator.framework */; };
 		77DA785F240AF927001C442C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA785E240AF927001C442C /* ViewControllerFactory.swift */; };
 		77DC23C923C48FDA00A40D57 /* ItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC23C823C48FDA00A40D57 /* ItemsUseCase.swift */; };
 		77DC83D22209C6FD00B4E543 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770D05E51DD3A767008D89E1 /* TodayViewController.m */; };
@@ -306,7 +305,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77DA785D240AF339001C442C /* XCoordinator.framework in Frameworks */,
 				C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */,
 				C33FCC671819965300328F6D /* Foundation.framework in Frameworks */,
 			);
@@ -784,7 +782,6 @@
 				C33FCC601819965300328F6D /* Frameworks */,
 				C33FCC611819965300328F6D /* Resources */,
 				773F6456196939220081165C /* Embed App Extensions */,
-				777AE2092221953000EAEE20 /* Carthage */,
 				777AE216222198F400EAEE20 /* Swiftlint */,
 			);
 			buildRules = (
@@ -914,25 +911,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		777AE2092221953000EAEE20 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/XCoordinator.framework",
-			);
-			name = Carthage;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		777AE216222198F400EAEE20 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

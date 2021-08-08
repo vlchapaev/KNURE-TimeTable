@@ -15,7 +15,8 @@ extension Publishers {
 
 		private let fetchResultsController: NSFetchedResultsController<T>
 		private let context: NSManagedObjectContext
-		private let subject: CurrentValueSubject<[T.NewType], Failure>
+
+		fileprivate let subject: CurrentValueSubject<[T.NewType], Failure>
 
 		init(request: NSFetchRequest<T>,
 			 context: NSManagedObjectContext,
@@ -57,13 +58,49 @@ extension Publishers.CoreData: Publisher {
 		Publishers.CoreData<T>.Failure == S.Failure,
 		Publishers.CoreData<T>.Output == S.Input {
 
-			context.perform { [weak self] in
-				guard let self = self else { return }
-				try? self.fetchResultsController.performFetch()
+		context.perform { [weak self] in
+			guard let self = self else { return }
 
-				guard let objects = self.fetchResultsController.fetchedObjects else { return self.subject.send([]) }
-				let result = objects.compactMap { $0.convert() }
-				self.subject.send(result)
+			do {
+				try self.fetchResultsController.performFetch()
+			} catch {
+				self.subject.send(completion: .failure(error))
 			}
+
+			guard let objects = self.fetchResultsController.fetchedObjects else { return self.subject.send([]) }
+			let result = objects.compactMap { $0.convert() }
+			self.subject.send(result)
+		}
+
+		Subscribers.CoreData<T>(publisher: self, subscriber: AnySubscriber(subscriber))
+	}
+}
+
+extension Subscribers {
+
+	final class CoreData<T: NSFetchRequestResult & Convertable>: Subscription {
+		private var publisher: Publishers.CoreData<T>?
+		private var cancellable: AnyCancellable?
+
+		@discardableResult
+		init(publisher: Publishers.CoreData<T>, subscriber: AnySubscriber<[T.NewType], Error>) {
+			self.publisher = publisher
+
+			subscriber.receive(subscription: self)
+
+			cancellable = publisher.subject.sink(receiveCompletion: { completion in
+				subscriber.receive(completion: completion)
+			}, receiveValue: { value in
+				_ = subscriber.receive(value)
+			})
+		}
+
+		func request(_ demand: Subscribers.Demand) { }
+
+		func cancel() {
+			cancellable?.cancel()
+			cancellable = nil
+			publisher = nil
+		}
 	}
 }
