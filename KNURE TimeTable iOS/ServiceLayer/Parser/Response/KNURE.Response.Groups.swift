@@ -12,7 +12,7 @@ extension KNURE.Response.University.Faculty {
 		let shortName: String
 		let fullName: String
 		@Omissible var groups: [Group]
-		@Omissible var specialities: [Speciality]
+		@Omissible var specialities: [Direction]
 	}
 }
 

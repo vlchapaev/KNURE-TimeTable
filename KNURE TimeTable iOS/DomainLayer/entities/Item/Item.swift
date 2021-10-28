@@ -23,11 +23,18 @@ struct Item {
 	/// group, teacher or auditory
 	let type: Kind
 
+	/// item selection indicator
+	var selected: Bool = false
+
+	/// Item's hint
+	var hint: String?
+
 	/// date wich specify the last time this item schedule was updated
 	var lastUpdate: Date?
 }
 
 extension Item {
+
 	/// Basic item types in list
 	enum Kind: Int {
 

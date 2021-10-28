@@ -19,8 +19,7 @@ struct AddItemsAssembly: Assembly {
 		}
 
 		try container.register(AddItemsInteractor.self) {
-			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self),
-							   selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self))
+			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self))
 		}
 	}
 }

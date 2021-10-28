@@ -9,35 +9,32 @@
 import Combine
 
 protocol AddItemsInteractorInput {
-	func obtainItems(type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Model], Error>
+	func obtain(items type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Section], Error>
 }
 
 final class AddItemsInteractor: AddItemsInteractorInput {
 
 	private let itemsUseCase: ItemsUseCase
-	private let selectedItemsUseCase: SelectedItemsUseCase
 
-	init(itemsUseCase: ItemsUseCase,
-		 selectedItemsUseCase: SelectedItemsUseCase) {
+	init(itemsUseCase: ItemsUseCase) {
 		self.itemsUseCase = itemsUseCase
-		self.selectedItemsUseCase = selectedItemsUseCase
 	}
 
 	// MARK: - AddItemsInteractorInput
 
-	func obtainItems(type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Model], Error> {
-		let items = itemsUseCase.execute(type)
-		let selectedItems = selectedItemsUseCase.execute(())
-		return selectedItems
-			.combineLatest(items)
-			.map { result -> [AddItemsViewModel.Model] in
-				let identifiers = result.0.map { $0.identifier }
-				return result.1.map {
-					AddItemsViewModel.Model(identifier: $0.identifier,
-											text: $0.fullName ?? $0.shortName,
-											selected: identifiers.contains($0.identifier))
+	func obtain(items type: Item.Kind) -> AnyPublisher<[AddItemsViewModel.Section], Error> {
+		return itemsUseCase.execute(type)
+			.map { Dictionary(grouping: $0, by: \.hint) }
+			.map { result -> [AddItemsViewModel.Section] in
+				result.map { dict in
+					let models = dict.value.map {
+						AddItemsViewModel.Model(identifier: $0.identifier,
+												text: $0.fullName ?? $0.shortName,
+												selected: $0.selected)
+					}
+					return AddItemsViewModel.Section(title: dict.key, models: models)
 				}
-		}
-		.eraseToAnyPublisher()
+			}
+			.eraseToAnyPublisher()
 	}
 }

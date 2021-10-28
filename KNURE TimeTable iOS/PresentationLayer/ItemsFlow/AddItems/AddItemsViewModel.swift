@@ -10,13 +10,28 @@ final class AddItemsViewModel {
 
 	var selectedType: Item.Kind = .group
 
-	var models: [Model] = []
+	var sections: [Section] = []
 
 	static let cellId = "TimetableAddItem"
 
-	struct Model: Hashable {
+	struct Section {
+		let title: String?
+		let models: [Model]
+	}
+
+	struct Model {
 		let identifier: String
 		let text: String
 		let selected: Bool
+	}
+}
+
+extension AddItemsViewModel.Section: Comparable {
+	static func < (lhs: AddItemsViewModel.Section, rhs: AddItemsViewModel.Section) -> Bool {
+		return lhs.title ?? "" < rhs.title ?? ""
+	}
+
+	static func == (lhs: AddItemsViewModel.Section, rhs: AddItemsViewModel.Section) -> Bool {
+		return lhs.title == rhs.title
 	}
 }

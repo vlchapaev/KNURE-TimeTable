@@ -53,8 +53,8 @@ final class AddItemsViewController: UIViewController {
 
 		let searchPublisher = mainView.searchController.searchBar.publisher(for: \.text).didChange()
 
-		interactor?.obtainItems(type: viewModel.selectedType)
-			.catch { error -> Just<[AddItemsViewModel.Model]> in
+		interactor?.obtain(items: viewModel.selectedType)
+			.catch { error -> Just<[AddItemsViewModel.Section]> in
 				print(error)
 				// TODO: Alert with error
 				// TODO: activity indicator
@@ -62,8 +62,8 @@ final class AddItemsViewController: UIViewController {
 			}
 			.receive(on: DispatchQueue.main)
 			.sink {
-				self.viewModel.models = $0
-				self.mainView.tableView.reloadSections(.init(integer: 0), with: .automatic)
+				self.viewModel.sections = $0.sorted(by: <)
+				self.mainView.tableView.reloadData()
 			}
 			.store(in: &subscriptions)
 
@@ -83,13 +83,33 @@ final class AddItemsViewController: UIViewController {
 }
 
 extension AddItemsViewController: UITableViewDataSource {
+
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return viewModel.sections.count
+	}
+
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return viewModel.sections[section].title
+	}
+
+	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		return viewModel.sections
+			.compactMap { $0.title }
+			.map { String($0.prefix(1)) }
+			.reduce(into: [String]()) {
+				if !$0.contains($1) {
+					$0.append($1)
+				}
+			}
+	}
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.models.count
+		return viewModel.sections[section].models.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: AddItemsViewModel.cellId, for: indexPath)
-		let model = viewModel.models[indexPath.row]
+		let model = viewModel.sections[indexPath.section].models[indexPath.row]
 
 		cell.textLabel?.text = model.text
 		cell.accessoryType = model.selected ? .checkmark : .none

@@ -19,7 +19,8 @@ extension ItemManaged: Convertable {
 		var item = Item(identifier: identifier,
 						shortName: title,
 						fullName: fullName,
-						type: timetableType)
+						type: timetableType,
+						selected: selected)
 
 		item.lastUpdate = Date(timeIntervalSince1970: lastUpdateTimestamp)
 
