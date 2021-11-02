@@ -15,6 +15,7 @@ final class CoreDataServiceImpl {
 
 	init(persistentContainer: NSPersistentContainer) {
 		self.persistentContainer = persistentContainer
+		self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
 	}
 }
 
@@ -32,6 +33,31 @@ extension CoreDataServiceImpl: CoreDataService {
 			}
 		}
 		return result
+	}
+
+	func delete<T>(_ request: NSFetchRequest<T>) where T: NSManagedObject {
+		persistentContainer.performBackgroundTask { context in
+			do {
+				try context.fetch(request)
+					.forEach { context.delete($0) }
+
+				try context.save()
+			} catch {
+				print(error)
+			}
+		}
+	}
+
+	func save(_ request: NSBatchInsertRequest) {
+		persistentContainer.performBackgroundTask { context in
+			if let result = try? context.execute(request) as? NSBatchInsertResult {
+
+				if let identifiers = result.result as? [NSManagedObjectID], !identifiers.isEmpty {
+					NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSInsertedObjectsKey: identifiers],
+														into: [self.persistentContainer.viewContext])
+				}
+			}
+		}
 	}
 }
 

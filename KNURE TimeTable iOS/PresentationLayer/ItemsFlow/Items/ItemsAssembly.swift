@@ -17,7 +17,8 @@ struct ItemsAssembly: Assembly {
 
 		try container.register(ItemsInteractor.self) {
 			ItemsInteractor(removeItemUseCase: try $0.resolve(RemoveItemUseCase.self),
-							selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self))
+							selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self),
+							updateTimetableUseCase: try $0.resolve(UpdateTimetableUseCase.self))
 		}
 	}
 }

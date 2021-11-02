@@ -17,6 +17,14 @@ protocol CoreDataService: ReactiveCoreDataService {
 	///   - request: <#request description#>
 	///   - convert: <#convert description#>
 	func fetch<T, R>(_ request: NSFetchRequest<T>, _ convert: (T) -> R?) -> [R]
+
+	/// <#Description#>
+	/// - Parameter request: <#request description#>
+	func delete<T: NSManagedObject>(_ request: NSFetchRequest<T>)
+
+	/// <#Description#>
+	/// - Parameter request: <#request description#>
+	func save(_ request: NSBatchInsertRequest)
 }
 
 /// CoreData service based on Reactive approach

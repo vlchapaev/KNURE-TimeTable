@@ -30,7 +30,7 @@ struct Item {
 	var hint: String?
 
 	/// date wich specify the last time this item schedule was updated
-	var lastUpdate: Date?
+	var updated: Date?
 }
 
 extension Item {
@@ -39,5 +39,28 @@ extension Item {
 	enum Kind: Int {
 
 		case group = 1, teacher, auditory
+	}
+}
+
+extension Item {
+	func toDictionary() -> [String: Any] {
+		var dictionary: [String: Any] = [:]
+		dictionary["identifier"] = identifier
+		dictionary["title"] = shortName
+		dictionary["fullName"] = fullName
+		dictionary["type"] = NSNumber(value: type.rawValue)
+		dictionary["selected"] = NSNumber(value: selected)
+		return dictionary
+	}
+}
+
+extension Item.Kind {
+
+	var presentationValue: String {
+		switch self {
+		case .group: return "Группы"
+		case .teacher: return "Преподаватели"
+		case .auditory: return "Аудитории"
+		}
 	}
 }

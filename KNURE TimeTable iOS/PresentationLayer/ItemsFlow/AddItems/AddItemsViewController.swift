@@ -45,13 +45,22 @@ final class AddItemsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		title = "Groups"
+		title = viewModel.selectedType.presentationValue
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.searchController = mainView.searchController
 
 		mainView.tableView.dataSource = self
+		mainView.tableView.delegate = self
 
-		let searchPublisher = mainView.searchController.searchBar.publisher(for: \.text).didChange()
+//		mainView.searchController.searchBar.publisher(for: \.text).didChange()
+//			.throttle(for: .milliseconds(250), scheduler: DispatchQueue.main, latest: true)
+//			.map {
+//				self.viewModel.sections.filter { $0.model }
+//			}
+//			.sink {
+//				self.viewModel.sections = $0.sorted(by: <)
+//				self.mainView.tableView.reloadData()
+//			}
 
 		interactor?.obtain(items: viewModel.selectedType)
 			.catch { error -> Just<[AddItemsViewModel.Section]> in
@@ -116,6 +125,19 @@ extension AddItemsViewController: UITableViewDataSource {
 		cell.selectionStyle = model.selected ? .none : .default
 
 		return cell
+	}
+}
+
+extension AddItemsViewController: UITableViewDelegate {
+
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let model = viewModel.sections[indexPath.section].models[indexPath.row]
+		interactor?.save(item: model, type: viewModel.selectedType)
+		output?.didFinish(self)
+		tableView.deselectRow(at: indexPath, animated: true)
+
+		// TODO: remove
+		self.navigationController?.popToRootViewController(animated: true)
 	}
 }
 

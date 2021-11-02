@@ -8,15 +8,15 @@
 
 final class RemoveItemUseCase: UseCase<String, Void> {
 
-	private let itemRepository: ItemRepository
+	private let repository: ItemRepository
 
-	init(itemRepository: ItemRepository) {
-		self.itemRepository = itemRepository
+	init(repository: ItemRepository) {
+		self.repository = repository
 	}
 
-//	 MARK: - UseCase
+	//	 MARK: - UseCase
 
 	override func execute(_ query: String) {
-//		return itemRepository.localDeleteItem(identifier: query)
+		repository.local(delete: query)
 	}
 }

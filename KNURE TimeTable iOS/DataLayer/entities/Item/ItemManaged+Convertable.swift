@@ -22,7 +22,7 @@ extension ItemManaged: Convertable {
 						type: timetableType,
 						selected: selected)
 
-		item.lastUpdate = Date(timeIntervalSince1970: lastUpdateTimestamp)
+		item.updated = Date(timeIntervalSince1970: lastUpdateTimestamp)
 
 		return item
 	}

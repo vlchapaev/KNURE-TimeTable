@@ -10,29 +10,21 @@ import Foundation
 
 final class ItemsViewModel {
 
-//	var sections: BehaviorRelay<[Section]>
-
 	static let cellId = "Item.Kind"
+
+	var sections: [Section] = []
 
 	struct Section {
 		let name: String
-		let models: [Item]
-	}
-
-	init() {
-//		sections = BehaviorRelay(value: [])
+		let models: [Model]
 	}
 }
 
-//extension ItemsViewModel.Section: SectionModelType {
-//	typealias Item = KNURE_TimeTable_iOS.Item
-//
-//	init(original: ItemsViewModel.Section, items: [Item]) {
-//		name = original.name
-//		models = original.items
-//	}
-//
-//	var items: [Item] {
-//		return models
-//	}
-//}
+extension ItemsViewModel {
+
+	struct Model {
+		let identifier: String
+		let text: String
+		var updated: Date?
+	}
+}

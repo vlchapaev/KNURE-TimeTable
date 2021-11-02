@@ -14,25 +14,25 @@ struct DomainLayerAssembly: Assembly {
 
 	func configureItem(_ container: Container) throws {
 		try container.register(SaveItemUseCase.self) {
-			SaveItemUseCase(itemRepository: try $0.resolve(named: "KNURE"))
+			SaveItemUseCase(repository: try $0.resolve(named: "KNURE"))
 		}
 
 		try container.register(RemoveItemUseCase.self) {
-			RemoveItemUseCase(itemRepository: try $0.resolve(named: "KNURE"))
+			RemoveItemUseCase(repository: try $0.resolve(named: "KNURE"))
 		}
 
 		try container.register(SelectedItemsUseCase.self) {
-			SelectedItemsUseCase(itemRepository: try $0.resolve(named: "KNURE"))
+			SelectedItemsUseCase(repository: try $0.resolve(named: "KNURE"))
 		}
 
 		try container.register(ItemsUseCase.self) {
-			ItemsUseCase(itemRepository: try $0.resolve(named: "KNURE"))
+			ItemsUseCase(repository: try $0.resolve(named: "KNURE"))
 		}
 	}
 
 	func configureLesson(_ container: Container) throws {
 		try container.register(UpdateTimetableUseCase.self) {
-			UpdateTimetableUseCase(lessonRepository: try $0.resolve(named: "KNURE"))
+			UpdateTimetableUseCase(repository: try $0.resolve(named: "KNURE"))
 		}
 	}
 }

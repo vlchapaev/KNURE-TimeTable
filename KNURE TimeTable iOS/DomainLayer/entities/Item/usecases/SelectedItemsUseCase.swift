@@ -10,15 +10,15 @@ import Combine
 
 final class SelectedItemsUseCase: UseCase<Void, AnyPublisher<[Item], Error>> {
 
-	private let itemRepository: ItemRepository
+	private let repository: ItemRepository
 
-	init(itemRepository: ItemRepository) {
-		self.itemRepository = itemRepository
+	init(repository: ItemRepository) {
+		self.repository = repository
 	}
 
 	// MARK: - UseCase
 
 	override func execute(_ query: Void) -> AnyPublisher<[Item], Error> {
-		return itemRepository.localSelectedItems()
+		return repository.localSelectedItems()
 	}
 }
