@@ -18,9 +18,9 @@ protocol ItemRepository {
 
     /// Save item in persistent store
     ///
-    /// - Parameter item: timetable item
+    /// - Parameter items: timetable item
     /// - Returns: Promise with finished operation
-    func local(save item: Item)
+	func local(save items: [[String: Any]])
 
     /// Delete item from persistent store
     ///

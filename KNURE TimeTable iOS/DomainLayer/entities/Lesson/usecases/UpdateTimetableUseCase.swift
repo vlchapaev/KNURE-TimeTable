@@ -6,13 +6,12 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-
 final class UpdateTimetableUseCase: UseCase<String, Void> {
 
-	private let lessonRepository: LessonRepository
+	private let repository: LessonRepository
 
-	init(lessonRepository: LessonRepository) {
-		self.lessonRepository = lessonRepository
+	init(repository: LessonRepository) {
+		self.repository = repository
 	}
 
 	// MARK: - UseCase

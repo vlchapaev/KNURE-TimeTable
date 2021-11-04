@@ -10,15 +10,15 @@ import Combine
 
 final class ItemsUseCase: UseCase<Item.Kind, AnyPublisher<[Item], Error>> {
 
-	private let itemRepository: ItemRepository
+	private let repository: ItemRepository
 
-	init(itemRepository: ItemRepository) {
-		self.itemRepository = itemRepository
+	init(repository: ItemRepository) {
+		self.repository = repository
 	}
 
 	// MARK: - UseCase
 
 	override func execute(_ query: Item.Kind) -> AnyPublisher<[Item], Error> {
-		return itemRepository.remote(items: query)
+		return repository.remote(items: query)
 	}
 }

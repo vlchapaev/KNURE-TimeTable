@@ -14,14 +14,10 @@ final class ItemsView: UIView {
 
 	init() {
 
-		if #available(iOS 13.0, *) {
-			tableView = UITableView(frame: .zero, style: .insetGrouped)
-
-		} else {
-			tableView = UITableView(frame: .zero, style: .grouped)
-		}
-
+		tableView = UITableView(frame: .zero, style: .insetGrouped)
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: ItemsViewModel.cellId)
+		tableView.rowHeight = UITableView.automaticDimension
+		tableView.estimatedRowHeight = 44
 
 		super.init(frame: .zero)
 

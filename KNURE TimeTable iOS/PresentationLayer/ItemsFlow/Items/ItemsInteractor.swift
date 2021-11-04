@@ -6,39 +6,55 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
+import Combine
+
 protocol ItemsInteractorInput {
 
-//	func obtainItems() -> Observable<[ItemsViewModel.Section]>
+	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Error>
 
-	func removeItem(identifier: String)
+	func remove(item identifier: String)
+
+	func updateTimetable(item identifier: String)
 }
 
-final class ItemsInteractor: ItemsInteractorInput {
+final class ItemsInteractor {
 
 	private let removeItemUseCase: RemoveItemUseCase
 	private let selectedItemsUseCase: SelectedItemsUseCase
+	private let updateTimetableUseCase: UpdateTimetableUseCase
 
 	init(removeItemUseCase: RemoveItemUseCase,
-		 selectedItemsUseCase: SelectedItemsUseCase) {
+		 selectedItemsUseCase: SelectedItemsUseCase,
+		 updateTimetableUseCase: UpdateTimetableUseCase) {
 		self.removeItemUseCase = removeItemUseCase
 		self.selectedItemsUseCase = selectedItemsUseCase
+		self.updateTimetableUseCase = updateTimetableUseCase
+	}
+}
+
+extension ItemsInteractor: ItemsInteractorInput {
+
+	func remove(item identifier: String) {
+		removeItemUseCase.execute(identifier)
 	}
 
-	// MARK: - ItemsInteractorInput
+	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Error> {
+		return selectedItemsUseCase.execute(())
+			.map { Dictionary(grouping: $0, by: \.type) }
+			.map { result -> [ItemsViewModel.Section] in
+				result.map { dictionary in
+					let models = dictionary.value.map {
+						ItemsViewModel.Model(identifier: $0.identifier,
+											 text: $0.fullName ?? $0.shortName,
+											 updated: $0.updated)
+					}
+					return ItemsViewModel.Section(name: dictionary.key.presentationValue, models: models)
+				}
+			}
+			.eraseToAnyPublisher()
+	}
 
-//	func obtainItems() -> Observable<[ItemsViewModel.Section]> {
-//		selectedItemsUseCase.execute(()).map {
-//			let items = ("Groups", $0.filter { $0.type == .group })
-//			let teachers = ("Teachers", $0.filter { $0.type == .teacher })
-//			let auditories = ("Auditories", $0.filter { $0.type == .auditory })
-//
-//			return [items, teachers, auditories]
-//				.filter { !$0.1.isEmpty }
-//				.map { ItemsViewModel.Section(name: $0.0, models: $0.1) }
-//		}
-//	}
-
-	func removeItem(identifier: String) {
-		_ = removeItemUseCase.execute(identifier)
+	func updateTimetable(item identifier: String) {
+		updateTimetableUseCase.execute(identifier)
 	}
 }

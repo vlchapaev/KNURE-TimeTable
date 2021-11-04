@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			try factories.forEach { try $0.assemble(container: container) }
 
 			let factory = try container.resolve(ViewControllerFactory.self)
-			let itemsController = try factory.make(viewController: AddItemsViewController.self)
+			let itemsController = try factory.make(viewController: ItemsViewController.self)
+			itemsController.output = self
 			let navController = UINavigationController(rootViewController: itemsController)
 			window?.rootViewController = navController
 			window?.makeKeyAndVisible()
@@ -39,6 +40,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			print(error)
 		}
 
+		let docDirPath =
+		NSSearchPathForDirectoriesInDomains(.documentDirectory,
+											.userDomainMask, true).first
+		print(docDirPath)
+
 		return true
+	}
+}
+
+extension AppDelegate: ItemsViewControllerOutput {
+	func controller(_ controller: ItemsViewController, addItems type: Item.Kind) {
+		do {
+			let newController = try container.resolve(AddItemsViewController.self)
+			newController.configure(type: type)
+			(window?.rootViewController as? UINavigationController)?
+				.pushViewController(newController, animated: true)
+		} catch {
+			print(error)
+		}
 	}
 }

@@ -27,12 +27,16 @@ final class KNUREItemRepository: ItemRepository {
 		return coreDataService.observe(request)
 	}
 
-	func local(save item: Item) {
-		// TODO: implement
+	func local(save items: [[String: Any]]) {
+		let request = NSBatchInsertRequest(entity: ItemManaged.entity(), objects: items)
+		request.resultType = .objectIDs
+		coreDataService.save(request)
 	}
 
 	func local(delete identifier: String) {
-		// TODO: implement
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "identifier = %@", identifier)
+		coreDataService.delete(request)
 	}
 
 	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error> {
