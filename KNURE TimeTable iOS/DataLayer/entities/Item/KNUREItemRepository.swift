@@ -20,7 +20,7 @@ final class KNUREItemRepository: ItemRepository {
 		self.networkService = networkService
 	}
 
-	func localSelectedItems() -> AnyPublisher<[Item], Error> {
+	func localSelectedItems() -> AnyPublisher<[Item], Never> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]

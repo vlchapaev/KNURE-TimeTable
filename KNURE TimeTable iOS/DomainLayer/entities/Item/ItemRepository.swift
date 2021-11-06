@@ -14,7 +14,7 @@ protocol ItemRepository {
     /// Observe items that is been selected
     ///
     /// - Returns: Observable items list
-    func localSelectedItems() -> AnyPublisher<[Item], Error>
+    func localSelectedItems() -> AnyPublisher<[Item], Never>
 
     /// Save item in persistent store
     ///

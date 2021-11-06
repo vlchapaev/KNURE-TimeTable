@@ -63,7 +63,7 @@ extension CoreDataServiceImpl: CoreDataService {
 
 extension CoreDataServiceImpl: ReactiveCoreDataService {
 
-	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Error>
+	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
 		where T: NSFetchRequestResult & Convertable, R == T.NewType {
 			let context = persistentContainer.viewContext
 			let publisher = Publishers.CoreData(request: request, context: context)

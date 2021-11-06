@@ -20,7 +20,7 @@ final class AddItemsView: UIView {
 		tableView.estimatedRowHeight = 44
 
 		searchController = UISearchController(searchResultsController: nil)
-		searchController.dimsBackgroundDuringPresentation = false
+		searchController.obscuresBackgroundDuringPresentation = false
 		searchController.hidesNavigationBarDuringPresentation = false
 		searchController.searchBar.searchBarStyle = .minimal
 
