@@ -8,7 +8,7 @@
 
 import Combine
 
-final class SelectedItemsUseCase: UseCase<Void, AnyPublisher<[Item], Error>> {
+final class SelectedItemsUseCase: UseCase<Void, AnyPublisher<[Item], Never>> {
 
 	private let repository: ItemRepository
 
@@ -18,7 +18,7 @@ final class SelectedItemsUseCase: UseCase<Void, AnyPublisher<[Item], Error>> {
 
 	// MARK: - UseCase
 
-	override func execute(_ query: Void) -> AnyPublisher<[Item], Error> {
+	override func execute(_ query: Void) -> AnyPublisher<[Item], Never> {
 		return repository.localSelectedItems()
 	}
 }

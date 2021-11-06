@@ -16,7 +16,7 @@ extension Publishers {
 		private let fetchResultsController: NSFetchedResultsController<T>
 		private let context: NSManagedObjectContext
 
-		fileprivate let subject: CurrentValueSubject<[T.NewType], Failure>
+		fileprivate let subject: CurrentValueSubject<[T.NewType], Never>
 
 		init(request: NSFetchRequest<T>,
 			 context: NSManagedObjectContext,
@@ -52,7 +52,7 @@ extension Publishers {
 extension Publishers.CoreData: Publisher {
 
 	typealias Output = [T.NewType]
-	typealias Failure = Error
+	typealias Failure = Never
 
 	func receive<S>(subscriber: S) where S: Subscriber,
 		Publishers.CoreData<T>.Failure == S.Failure,
@@ -64,7 +64,7 @@ extension Publishers.CoreData: Publisher {
 			do {
 				try self.fetchResultsController.performFetch()
 			} catch {
-				self.subject.send(completion: .failure(error))
+				self.subject.send([])
 			}
 
 			guard let objects = self.fetchResultsController.fetchedObjects else { return self.subject.send([]) }
@@ -83,7 +83,7 @@ extension Subscribers {
 		private var cancellable: AnyCancellable?
 
 		@discardableResult
-		init(publisher: Publishers.CoreData<T>, subscriber: AnySubscriber<[T.NewType], Error>) {
+		init(publisher: Publishers.CoreData<T>, subscriber: AnySubscriber<[T.NewType], Never>) {
 			self.publisher = publisher
 
 			subscriber.receive(subscription: self)

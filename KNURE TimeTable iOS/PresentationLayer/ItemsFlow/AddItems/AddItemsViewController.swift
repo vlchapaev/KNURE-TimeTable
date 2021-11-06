@@ -25,8 +25,6 @@ final class AddItemsViewController: UIViewController {
 	private var viewModel: AddItemsViewModel
 	private let mainView: AddItemsView
 
-	private var subscriptions: [AnyCancellable] = []
-
 	init() {
 		mainView = AddItemsView()
 		viewModel = AddItemsViewModel()
@@ -52,42 +50,8 @@ final class AddItemsViewController: UIViewController {
 		mainView.tableView.dataSource = self
 		mainView.tableView.delegate = self
 
-//		mainView.searchController.searchBar.publisher(for: \.text).didChange()
-//			.throttle(for: .milliseconds(250), scheduler: DispatchQueue.main, latest: true)
-//			.map {
-//				self.viewModel.sections.filter { $0.model }
-//			}
-//			.sink {
-//				self.viewModel.sections = $0.sorted(by: <)
-//				self.mainView.tableView.reloadData()
-//			}
-
-		interactor?.obtain(items: viewModel.selectedType)
-			.catch { error -> Just<[AddItemsViewModel.Section]> in
-				print(error)
-				// TODO: Alert with error
-				// TODO: activity indicator
-				return Just([])
-			}
-			.receive(on: DispatchQueue.main)
-			.sink {
-				self.viewModel.sections = $0.sorted(by: <)
-				self.mainView.tableView.reloadData()
-			}
-			.store(in: &subscriptions)
-
-//		let searchQuery = mainView.searchController.searchBar.rx.text.orEmpty.distinctUntilChanged()
-//
-//		Observable.combineLatest(viewModel.items.asObservable(), searchQuery)
-//			.map { (items, query) -> [AddItemsViewModel.Model] in
-//				return items.filter { $0.text.hasPrefix(query) || $0.text.contains(query) }
-//			}
-//			.bind(to: mainView.tableView.rx.items(cellIdentifier: AddItemsViewModel.cellId)) {
-//				$2.textLabel?.text = $1.text
-//				$2.accessoryType = $1.selected ? .checkmark : .none
-//				$2.selectionStyle = $1.selected ? .none : .default
-//			}
-//			.disposed(by: bag)
+		subscribeOnSearchBar()
+		subscribeOnTableView()
 	}
 }
 
@@ -99,17 +63,6 @@ extension AddItemsViewController: UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return viewModel.sections[section].title
-	}
-
-	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-		return viewModel.sections
-			.compactMap { $0.title }
-			.map { String($0.prefix(1)) }
-			.reduce(into: [String]()) {
-				if !$0.contains($1) {
-					$0.append($1)
-				}
-			}
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,6 +91,58 @@ extension AddItemsViewController: UITableViewDelegate {
 
 		// TODO: remove
 		self.navigationController?.popToRootViewController(animated: true)
+	}
+}
+
+private extension AddItemsViewController {
+
+	func subscribeOnSearchBar() {
+		NotificationCenter.default
+			.publisher(for: UISearchTextField.textDidChangeNotification,
+					   object: self.mainView.searchController.searchBar.searchTextField)
+			.compactMap { ($0.object as? UISearchTextField)?.text }
+			.debounce(for: .milliseconds(250), scheduler: RunLoop.main)
+			.removeDuplicates()
+			.sink(receiveValue: filter)
+			.store(in: &viewModel.subscriptions)
+	}
+
+	func subscribeOnTableView() {
+		interactor?.obtain(items: viewModel.selectedType)
+			.catch { error -> Just<[AddItemsViewModel.Section]> in
+				print(error)
+				// TODO: Alert with error
+				// TODO: activity indicator
+				return Just([])
+			}
+			.receive(on: RunLoop.main)
+			.sink(receiveValue: update)
+			.store(in: &viewModel.subscriptions)
+	}
+
+	func filter(query: String) {
+		guard !query.isEmpty else {
+			viewModel.sections = viewModel.sourceSections
+			mainView.tableView.reloadData()
+			return
+		}
+
+		viewModel.sections = viewModel.sourceSections
+			.reduce(into: [AddItemsViewModel.Section]()) { resultItem, currentItem in
+				let models: [AddItemsViewModel.Model] = currentItem.models.filter { $0.text.contains(query) }
+				if !models.isEmpty {
+					let section = AddItemsViewModel.Section(title: currentItem.title, models: models)
+					resultItem.append(section)
+				}
+			}
+			.sorted(by: <)
+		mainView.tableView.reloadData()
+	}
+
+	func update(viewModel: [AddItemsViewModel.Section]) {
+		self.viewModel.sections = viewModel.sorted(by: <)
+		self.viewModel.sourceSections = self.viewModel.sections
+		mainView.tableView.reloadData()
 	}
 }
 

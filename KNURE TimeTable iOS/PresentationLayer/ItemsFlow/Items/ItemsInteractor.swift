@@ -10,7 +10,7 @@ import Combine
 
 protocol ItemsInteractorInput {
 
-	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Error>
+	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Never>
 
 	func remove(item identifier: String)
 
@@ -38,7 +38,7 @@ extension ItemsInteractor: ItemsInteractorInput {
 		removeItemUseCase.execute(identifier)
 	}
 
-	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Error> {
+	func observeSelectedItems() -> AnyPublisher<[ItemsViewModel.Section], Never> {
 		return selectedItemsUseCase.execute(())
 			.map { Dictionary(grouping: $0, by: \.type) }
 			.map { result -> [ItemsViewModel.Section] in

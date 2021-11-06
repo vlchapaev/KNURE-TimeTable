@@ -6,11 +6,15 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
+import Combine
+
 final class AddItemsViewModel {
 
 	var selectedType: Item.Kind = .group
 
 	var sections: [Section] = []
+	var filtredSections: [Section] = []
+	var sourceSections: [Section] = []
 
 	static let cellId = "TimetableAddItem"
 
@@ -24,6 +28,8 @@ final class AddItemsViewModel {
 		let text: String
 		let selected: Bool
 	}
+
+	var subscriptions: [AnyCancellable] = []
 }
 
 extension AddItemsViewModel.Section: Comparable {
