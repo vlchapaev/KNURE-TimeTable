@@ -7,6 +7,16 @@
 //
 
 import UIKit
+import SwiftUI
+
+struct TimetableView: UIViewControllerRepresentable {
+	func makeUIViewController(context: Context) -> TimetableViewController {
+		TimetableViewController()
+	}
+
+	func updateUIViewController(_ uiViewController: TimetableViewController, context: Context) {
+	}
+}
 
 protocol TimetableViewControllerOutput {
 }
@@ -19,6 +29,7 @@ final class TimetableViewController: UIViewController, TimetableInteractorOutput
 		super.init(nibName: nil, bundle: nil)
 	}
 
+	@available(*, unavailable)
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
