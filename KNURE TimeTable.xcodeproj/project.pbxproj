@@ -83,6 +83,8 @@
 		77F16024240313750028966F /* KNURE.Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F16023240313750028966F /* KNURE.Request.swift */; };
 		C33FCC671819965300328F6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC661819965300328F6D /* Foundation.framework */; };
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
+		D469AADE2B8D13ED0091D91D /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADD2B8D13ED0091D91D /* ItemsListView.swift */; };
+		D469AAE02B8D20CE0091D91D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADF2B8D20CE0091D91D /* ItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,8 @@
 		C33FCC631819965300328F6D /* KNURE TimeTable iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KNURE TimeTable iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33FCC661819965300328F6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C33FCC6A1819965300328F6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D469AADD2B8D13ED0091D91D /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
+		D469AADF2B8D20CE0091D91D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +317,7 @@
 		7712334823BCEF6400CB01D6 /* ItemsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				D469AADC2B8D13CC0091D91D /* ItemsV2 */,
 				7712334B23BCEF9400CB01D6 /* Items */,
 				7712334C23BCEFA000CB01D6 /* AddItems */,
 			);
@@ -575,6 +580,15 @@
 			path = "KNURE TimeTable iOS";
 			sourceTree = "<group>";
 		};
+		D469AADC2B8D13CC0091D91D /* ItemsV2 */ = {
+			isa = PBXGroup;
+			children = (
+				D469AADD2B8D13ED0091D91D /* ItemsListView.swift */,
+				D469AADF2B8D20CE0091D91D /* ItemView.swift */,
+			);
+			path = ItemsV2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -767,6 +781,7 @@
 				7702914F22081C8800B82CF4 /* DataStorage.xcdatamodeld in Sources */,
 				7716FCDB22885C4E00615D39 /* UpdateTimetableUseCase.swift in Sources */,
 				77DA785F240AF927001C442C /* ViewControllerFactory.swift in Sources */,
+				D469AADE2B8D13ED0091D91D /* ItemsListView.swift in Sources */,
 				77D4AAAE23AF7B1000729A93 /* TimetableViewController.swift in Sources */,
 				775A3F87222177D200931A1F /* ApplicationLayerAssembly.swift in Sources */,
 				7712336223BCFF4500CB01D6 /* AddItemsView.swift in Sources */,
@@ -775,6 +790,7 @@
 				77D4AABB23AF8CAC00729A93 /* MainViewController.swift in Sources */,
 				77D191132552CA61001771F9 /* NameSpace.swift in Sources */,
 				77D191192552CDAC001771F9 /* KNURE.Response.Auditories.swift in Sources */,
+				D469AAE02B8D20CE0091D91D /* ItemView.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				77F160222402FA110028966F /* HTTP.swift in Sources */,
 				7778E46822D1096000477BFE /* Configuration.swift in Sources */,
@@ -965,7 +981,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -1022,7 +1038,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
@@ -1043,7 +1059,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				INFOPLIST_FILE = "$(SRCROOT)/KNURE TimeTable iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1068,7 +1084,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/KNURE TimeTable iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Shogunate.KNURE-Sked";
 				PRODUCT_NAME = "$(TARGET_NAME)";
