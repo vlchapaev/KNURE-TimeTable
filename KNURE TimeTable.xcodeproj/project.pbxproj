@@ -85,6 +85,8 @@
 		C33FCC6B1819965300328F6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FCC6A1819965300328F6D /* UIKit.framework */; };
 		D469AADE2B8D13ED0091D91D /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADD2B8D13ED0091D91D /* ItemsListView.swift */; };
 		D469AAE02B8D20CE0091D91D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADF2B8D20CE0091D91D /* ItemView.swift */; };
+		D4ACC83A2B8E7AB200AE732A /* AddItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ACC8392B8E7AB200AE732A /* AddItemsListView.swift */; };
+		D4ACC83C2B8E7AC000AE732A /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ACC83B2B8E7AC000AE732A /* AddItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +213,8 @@
 		C33FCC6A1819965300328F6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D469AADD2B8D13ED0091D91D /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		D469AADF2B8D20CE0091D91D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		D4ACC8392B8E7AB200AE732A /* AddItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsListView.swift; sourceTree = "<group>"; };
+		D4ACC83B2B8E7AC000AE732A /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +321,7 @@
 		7712334823BCEF6400CB01D6 /* ItemsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				D4ACC8382B8E7A8D00AE732A /* AddItemsV2 */,
 				D469AADC2B8D13CC0091D91D /* ItemsV2 */,
 				7712334B23BCEF9400CB01D6 /* Items */,
 				7712334C23BCEFA000CB01D6 /* AddItems */,
@@ -589,6 +594,15 @@
 			path = ItemsV2;
 			sourceTree = "<group>";
 		};
+		D4ACC8382B8E7A8D00AE732A /* AddItemsV2 */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACC8392B8E7AB200AE732A /* AddItemsListView.swift */,
+				D4ACC83B2B8E7AC000AE732A /* AddItemView.swift */,
+			);
+			path = AddItemsV2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -745,6 +759,7 @@
 				775A3F91222179CD00931A1F /* SelectedItemsUseCase.swift in Sources */,
 				7766B3052561466C00CE638F /* KNURE.Response.swift in Sources */,
 				7712335C23BCFF1900CB01D6 /* AddItemsInteractor.swift in Sources */,
+				D4ACC83C2B8E7AC000AE732A /* AddItemView.swift in Sources */,
 				778E3119227C8A1D00D138B5 /* ServiceLayerAssembly.swift in Sources */,
 				77D4AAB223AF7B3D00729A93 /* TimetableViewModel.swift in Sources */,
 				7752F9392247E46E003DC9FE /* CoreDataService.swift in Sources */,
@@ -791,6 +806,7 @@
 				77D191132552CA61001771F9 /* NameSpace.swift in Sources */,
 				77D191192552CDAC001771F9 /* KNURE.Response.Auditories.swift in Sources */,
 				D469AAE02B8D20CE0091D91D /* ItemView.swift in Sources */,
+				D4ACC83A2B8E7AB200AE732A /* AddItemsListView.swift in Sources */,
 				775A3F89222178E200931A1F /* DomainLayerAssembly.swift in Sources */,
 				77F160222402FA110028966F /* HTTP.swift in Sources */,
 				7778E46822D1096000477BFE /* Configuration.swift in Sources */,

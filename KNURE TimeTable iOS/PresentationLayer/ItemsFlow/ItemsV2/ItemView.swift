@@ -16,7 +16,9 @@ struct ItemView: View {
 		HStack(alignment: .center) {
 			VStack(alignment: .leading) {
 				Text(model.title)
+					.fontWeight(.medium)
 				Text(model.subtitle)
+					.foregroundStyle(.gray)
 			}
 			Spacer()
 			if model.updating {
