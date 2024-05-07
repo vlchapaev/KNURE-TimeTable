@@ -8,17 +8,19 @@
 
 struct ItemsAssembly: Assembly {
 
-	func assemble(container: Container) throws {
-		try container.register(ItemsViewController.self) {
+	func assemble(container: Container) {
+		container.register(ItemsViewController.self) {
 			let controller = ItemsViewController()
 			controller.interactor = try $0.resolve(ItemsInteractor.self)
 			return controller
 		}
 
-		try container.register(ItemsInteractor.self) {
-			ItemsInteractor(removeItemUseCase: try $0.resolve(RemoveItemUseCase.self),
-							selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self),
-							updateTimetableUseCase: try $0.resolve(UpdateTimetableUseCase.self))
+		container.register(ItemsInteractor.self) {
+			ItemsInteractor(
+				removeItemUseCase: try $0.resolve(RemoveItemUseCase.self),
+				selectedItemsUseCase: try $0.resolve(SelectedItemsUseCase.self),
+				updateTimetableUseCase: try $0.resolve(UpdateTimetableUseCase.self)
+			)
 		}
 	}
 }

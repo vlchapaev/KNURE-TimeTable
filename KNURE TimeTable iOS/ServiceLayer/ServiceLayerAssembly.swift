@@ -10,20 +10,21 @@ import CoreData
 
 struct ServiceLayerAssembly: Assembly {
 
-	func assemble(container: Container) throws {
+	func assemble(container: Container) {
 
-		let appConfig = try container.resolve(Configuration.self)
-
-		container.register(CoreDataService.self, in: .graph) { _ in
-			CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
+		container.register(CoreDataService.self, in: .graph) { container in
+			let appConfig = try container.resolve(Configuration.self)
+			return CoreDataServiceImpl(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(ImportService.self, named: "KNURE_Lesson", in: .graph) { _ in
-			KNURELessonImportService(persistentContainer: appConfig.persistentStoreContainer)
+		container.register(ImportService.self, named: "KNURE_Lesson", in: .graph) { container in
+			let appConfig = try container.resolve(Configuration.self)
+			return KNURELessonImportService(persistentContainer: appConfig.persistentStoreContainer)
 		}
 
-		container.register(NetworkService.self, in: .graph) { _ in
-			NetworkService(configuration: appConfig.urlSessionConfiguration)
+		container.register(NetworkService.self, in: .graph) { container in
+			let appConfig = try container.resolve(Configuration.self)
+			return NetworkService(configuration: appConfig.urlSessionConfiguration)
 		}
 	}
 }

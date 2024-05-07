@@ -8,15 +8,19 @@
 
 struct DataLayerAssembly: Assembly {
 
-	func assemble(container: Container) throws {
-		try container.register(ItemRepository.self, named: "KNURE", in: .graph) {
-			KNUREItemRepository(coreDataService: try $0.resolve(),
-								networkService: try $0.resolve())
+	func assemble(container: Container) {
+		container.register(ItemRepository.self, named: "KNURE", in: .graph) {
+			KNUREItemRepository(
+				coreDataService: try $0.resolve(),
+				networkService: try $0.resolve()
+			)
 		}
 
-		try container.register(LessonRepository.self, named: "KNURE", in: .graph) {
-			KNURELessonRepository(coreDataService: try $0.resolve(),
-								  importService: try $0.resolve(ImportService.self, named: "KNURE_Lesson"))
+		container.register(LessonRepository.self, named: "KNURE", in: .graph) {
+			KNURELessonRepository(
+				coreDataService: try $0.resolve(),
+				importService: try $0.resolve(ImportService.self, named: "KNURE_Lesson")
+			)
 		}
 	}
 }

@@ -8,8 +8,8 @@
 
 struct AddItemsAssembly: Assembly {
 
-	func assemble(container: Container) throws {
-		try container.register(AddItemsViewController.self) {
+	func assemble(container: Container) {
+		container.register(AddItemsViewController.self) {
 			let interactor = try $0.resolve(AddItemsInteractor.self)
 			let controller = AddItemsViewController()
 
@@ -17,10 +17,12 @@ struct AddItemsAssembly: Assembly {
 
 			return controller
 		}
-
-		try container.register(AddItemsInteractor.self) {
-			AddItemsInteractor(itemsUseCase: try $0.resolve(ItemsUseCase.self),
-							   saveItemUseCase: try $0.resolve(SaveItemUseCase.self))
+		
+		container.register(AddItemsInteractor.self) {
+			AddItemsInteractor(
+				itemsUseCase: try $0.resolve(ItemsUseCase.self),
+				saveItemUseCase: try $0.resolve(SaveItemUseCase.self)
+			)
 		}
 	}
 }

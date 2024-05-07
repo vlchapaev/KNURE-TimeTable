@@ -8,8 +8,8 @@
 
 struct TimetableAssembly: Assembly {
 
-	func assemble(container: Container) throws {
-		try container.register(TimetableViewController.self) {
+	func assemble(container: Container) {
+		container.register(TimetableViewController.self) {
 			let interactor = try $0.resolve(TimetableInteractor.self)
 			let controller = TimetableViewController()
 
@@ -19,7 +19,7 @@ struct TimetableAssembly: Assembly {
 			return controller
 		}
 
-		try container.register(TimetableInteractor.self) {
+		container.register(TimetableInteractor.self) {
 			TimetableInteractor(updateTimetableUseCase: try $0.resolve(UpdateTimetableUseCase.self))
 		}
 	}

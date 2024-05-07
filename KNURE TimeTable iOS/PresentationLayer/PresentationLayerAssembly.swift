@@ -8,7 +8,7 @@
 
 struct PresentationLayerAssembly: Assembly {
 
-	func assemble(container: Container) throws {
+	func assemble(container: Container) {
 		let assembies: [Assembly] = [
 			TimetableAssembly(),
 
@@ -16,14 +16,14 @@ struct PresentationLayerAssembly: Assembly {
 			AddItemsAssembly()
 		]
 
-		try assembies.forEach { try $0.assemble(container: container) }
+		assembies.forEach { $0.assemble(container: container) }
 
-		try configureFactories(container)
+		configureFactories(container)
 	}
 
-	private func configureFactories(_ container: Container) throws {
-		container.register(ViewControllerFactory.self, in: .graph) {
-			ViewControllerFactoryImpl(container: $0)
+	private func configureFactories(_ container: Container) {
+		container.register(ViewControllerFactory.self, in: .graph) { _ in
+			ViewControllerFactoryImpl()
 		}
 	}
 }

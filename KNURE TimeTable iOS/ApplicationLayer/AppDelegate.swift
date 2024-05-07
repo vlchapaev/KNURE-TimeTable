@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-	private var container: Container!
+	private var container: Container = .shared
 	private let factories: [Assembly] = [
 		ApplicationLayerAssembly(),
 		ServiceLayerAssembly(),
@@ -25,13 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication,
 					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		window = UIWindow()
-		container = .shared
 
 		do {
-			try factories.forEach { try $0.assemble(container: container) }
+			factories.forEach { $0.assemble(container: container) }
 
 			let factory = try container.resolve(ViewControllerFactory.self)
-			let itemsController = try factory.make(viewController: ItemsViewController.self)
+			let itemsController = try factory.make(viewController: ItemsViewController.self, in: container)
 			itemsController.output = self
 			let navController = UINavigationController(rootViewController: itemsController)
 			window?.rootViewController = navController

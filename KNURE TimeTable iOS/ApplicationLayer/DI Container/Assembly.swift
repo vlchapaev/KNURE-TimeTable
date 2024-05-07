@@ -8,5 +8,5 @@
 
 protocol Assembly {
 
-	func assemble(container: Container) throws
+	func assemble(container: Container)
 }
