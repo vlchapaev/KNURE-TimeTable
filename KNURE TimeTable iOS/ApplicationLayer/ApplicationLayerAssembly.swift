@@ -8,11 +8,11 @@
 
 struct ApplicationLayerAssembly: Assembly {
 
-	func assemble(container: Container) throws {
-		try registerApplicationConfig(container)
+	func assemble(container: Container) {
+		registerApplicationConfig(container)
 	}
 
-	func registerApplicationConfig(_ container: Container) throws {
+	func registerApplicationConfig(_ container: Container) {
 		container.register(Configuration.self) { _ in
 			DefaultAppConfig()
 		}

@@ -10,18 +10,12 @@ import UIKit
 
 protocol ViewControllerFactory {
 
-	func make<T: UIViewController>(viewController type: T.Type) throws -> T
+	func make<T: UIViewController>(viewController type: T.Type, in container: Container) throws -> T
 }
 
 struct ViewControllerFactoryImpl: ViewControllerFactory {
 
-	private let container: Container
-
-	init(container: Container) {
-		self.container = container
-	}
-
-	func make<T>(viewController type: T.Type) throws -> T where T: UIViewController {
+	func make<T>(viewController type: T.Type, in container: Container) throws -> T where T: UIViewController {
 		return try container.resolve(type)
 	}
 }

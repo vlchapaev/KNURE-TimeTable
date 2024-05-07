@@ -18,10 +18,12 @@ struct Container {
 		return try component.make(with: self)
 	}
 
-	func register<T>(_ dependency: T.Type = T.self,
-					 named name: String? = nil,
-					 in scope: Scope = .unique,
-					 _ factory: @escaping (Container) throws -> T) rethrows {
+	func register<T>(
+		_ dependency: T.Type = T.self,
+		named name: String? = nil,
+		in scope: Scope = .unique,
+		_ factory: @escaping (Container) throws -> T
+	) {
 		let key = Key(object: ObjectIdentifier(dependency), name: name)
 		let resolver = Component(factory: factory, scope: scope, wrapper: scope.wrapper)
 		storage.append(entry: resolver, for: key)
