@@ -9,6 +9,10 @@
 struct TimetableAssembly: Assembly {
 
 	func assemble(container: Container) {
+		container.register(TimetableView.self) { _ in
+			TimetableView()
+		}
+
 		container.register(TimetableViewController.self) {
 			let interactor = try $0.resolve(TimetableInteractor.self)
 			let controller = TimetableViewController()
