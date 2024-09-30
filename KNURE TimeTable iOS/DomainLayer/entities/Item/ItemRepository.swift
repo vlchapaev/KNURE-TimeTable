@@ -16,19 +16,23 @@ protocol ItemRepository {
     /// - Returns: Observable items list
     func localSelectedItems() -> AnyPublisher<[Item], Never>
 
+	/// <#Description#>
+	/// - Returns: <#description#>
+	func localAddedItems() -> AnyPublisher<[Item.Kind: [Item]], Never>
+
     /// Save item in persistent store
     ///
     /// - Parameter items: timetable item
     /// - Returns: Promise with finished operation
-	func local(save items: [[String: Any]])
+	func local(add items: [Item]) async throws
 
     /// Delete item from persistent store
     ///
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
-    func local(delete identifier: String)
+	func local(delete identifier: String) async throws
 
 	/// <#Description#>
 	/// - Parameter type: <#type description#>
-	func remote(items type: Item.Kind) -> AnyPublisher<[Item], Error>
+	func remote(items type: Item.Kind) async throws -> [Item]
 }

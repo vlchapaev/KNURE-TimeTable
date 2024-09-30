@@ -10,7 +10,8 @@
 ///
 /// Typically used to convert an NSManagedObject instance to a local data transfer object or business layer model
 protocol Convertable: AnyObject {
-	associatedtype NewType
+
+	associatedtype NewType: Sendable
 
 	/// Command for synchronous value conversion. Return nil if conversion failed
 	func convert() -> NewType?

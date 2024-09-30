@@ -7,13 +7,14 @@
 //
 
 /// UseCase represent basic unit of bisness logic
-class UseCase<Query, Response> {
+protocol UseCase: Sendable {
+
+	associatedtype Request: Sendable
+	associatedtype Response: Sendable
 
 	/// command to execute use case
 	///
-	/// - Parameter query: input type
+	/// - Parameter request: input type
 	/// - Returns: promise output type
-	func execute(_ query: Query) -> Response {
-		fatalError("Should override in super class")
-	}
+	func execute(_ request: Request) async throws -> Response
 }

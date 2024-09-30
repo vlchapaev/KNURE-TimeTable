@@ -10,8 +10,10 @@ import Foundation
 
 extension Data {
 
-	func transform(from sourceEncoding: String.Encoding,
-				   to resultEncoding: String.Encoding) throws -> Data {
+	func transform(
+		from sourceEncoding: String.Encoding,
+		to resultEncoding: String.Encoding
+	) throws -> Data {
 
 		guard let response = String(data: self, encoding: sourceEncoding)?.data(using: resultEncoding) else {
 			throw Error.transformation

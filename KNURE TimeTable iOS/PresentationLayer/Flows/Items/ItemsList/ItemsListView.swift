@@ -8,16 +8,9 @@
 
 import SwiftUI
 
-struct ItemsListViewModel: Identifiable {
-
-	let id = UUID()
-	let sectionName: String
-	var items: [ItemView.Model] = []
-}
-
 struct ItemsListView: View {
 
-	var viewModel: [ItemsListViewModel] = []
+	var viewModel: [ItemsListView.Model] = []
 
 	let resolver: DIResolvingView
 
@@ -26,7 +19,7 @@ struct ItemsListView: View {
 			List(viewModel) { record in
 				Section(record.sectionName) {
 					ForEach(record.items) { item in
-						ItemView(model: item)
+						ItemCell(model: item)
 					}
 				}
 			}
@@ -45,6 +38,15 @@ struct ItemsListView: View {
 			Label("Items", systemImage: "list.bullet")
 		}
     }
+}
+
+extension ItemsListView {
+	struct Model: Identifiable {
+
+		let id = UUID()
+		let sectionName: String
+		var items: [ItemCell.Model] = []
+	}
 }
 
 #Preview {

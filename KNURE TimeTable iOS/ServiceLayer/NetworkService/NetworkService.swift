@@ -9,31 +9,40 @@
 import Combine
 import Foundation
 
-final class NetworkService {
+struct NetworkResponse: Sendable {
+	let status: HTTP.Status
+	let data: Data
+}
+
+protocol NetworkService: Sendable {
+
+	func execute(_ request: URLRequest) async throws -> NetworkResponse
+}
+
+final class NetworkServiceImpl {
 
 	private let session: URLSession
 
 	init(configuration: URLSessionConfiguration = .default) {
 		session = .init(configuration: configuration, delegate: nil, delegateQueue: nil)
 	}
+}
 
-	func execute(_ request: URLRequest) -> AnyPublisher<NetworkResponse, URLError> {
-		session.dataTaskPublisher(for: request)
-			.compactMap(transform)
-			.eraseToAnyPublisher()
+extension NetworkServiceImpl: NetworkService {
+
+	func execute(_ request: URLRequest) async throws -> NetworkResponse {
+		let result = try await session.data(for: request)
+		return try transform(data: result.0, response: result.1)
 	}
 
-	private func transform(data: Data, response: URLResponse) -> NetworkResponse? {
-		guard let status = response as? HTTPURLResponse,
-			let statusCode = HTTP.Status(rawValue: status.statusCode) else {
-				return nil
+	private func transform(data: Data, response: URLResponse) throws -> NetworkResponse {
+		guard
+			let status = response as? HTTPURLResponse,
+			let statusCode = HTTP.Status(rawValue: status.statusCode)
+		else {
+			throw URLError(.badServerResponse)
 		}
 
 		return NetworkResponse(status: statusCode, data: data)
 	}
-}
-
-struct NetworkResponse {
-	let status: HTTP.Status
-	let data: Data
 }

@@ -6,18 +6,18 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-final class SaveItemUseCase: UseCase<Item, Void> {
+final class SaveItemUseCase {
 
 	private let repository: ItemRepository
 
 	init(repository: ItemRepository) {
 		self.repository = repository
 	}
+}
 
-	// MARK: - UseCase
+extension SaveItemUseCase: UseCase {
 
-	override func execute(_ query: Item) {
-		let item = query.toDictionary()
-		repository.local(save: [item])
+	func execute(_ query: Item) async throws {
+		try await repository.local(add: [query])
 	}
 }

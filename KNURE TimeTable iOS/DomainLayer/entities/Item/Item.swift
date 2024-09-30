@@ -9,7 +9,7 @@
 import Foundation
 
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
-struct Item {
+struct Item: Sendable {
 
 	/// unique value to store item
 	let identifier: String
@@ -18,19 +18,19 @@ struct Item {
 	let shortName: String
 
 	/// full name to represent, such as full name of teacher
-	var fullName: String?
+	let fullName: String?
 
 	/// group, teacher or auditory
 	let type: Kind
 
 	/// item selection indicator
-	var selected: Bool = false
+	let selected: Bool
 
 	/// Item's hint
-	var hint: String?
+	let hint: String?
 
 	/// date wich specify the last time this item schedule was updated
-	var updated: Date?
+	let updated: Date?
 }
 
 extension Item {

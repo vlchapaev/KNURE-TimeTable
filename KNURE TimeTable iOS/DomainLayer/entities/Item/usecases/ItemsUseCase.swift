@@ -6,19 +6,18 @@
 //  Copyright © 2020 Vladislav Chapaev. All rights reserved.
 //
 
-import Combine
-
-final class ItemsUseCase: UseCase<Item.Kind, AnyPublisher<[Item], Error>> {
+final class ItemsUseCase {
 
 	private let repository: ItemRepository
 
 	init(repository: ItemRepository) {
 		self.repository = repository
 	}
+}
 
-	// MARK: - UseCase
+extension ItemsUseCase: UseCase {
 
-	override func execute(_ query: Item.Kind) -> AnyPublisher<[Item], Error> {
-		return repository.remote(items: query)
+	func execute(_ request: Item.Kind) async throws -> [Item] {
+		try await repository.remote(items: request)
 	}
 }

@@ -24,7 +24,7 @@ struct ServiceLayerAssembly: Assembly {
 
 		container.register(NetworkService.self, in: .graph) { container in
 			let appConfig = try container.resolve(Configuration.self)
-			return NetworkService(configuration: appConfig.urlSessionConfiguration)
+			return NetworkServiceImpl(configuration: appConfig.urlSessionConfiguration)
 		}
 	}
 }

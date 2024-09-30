@@ -18,17 +18,21 @@ extension Publishers {
 
 		fileprivate let subject: CurrentValueSubject<[T.NewType], Never>
 
-		init(request: NSFetchRequest<T>,
-			 context: NSManagedObjectContext,
-			 sectionNameKeyPath: String? = nil,
-			 cacheName: String? = nil) {
+		init(
+			request: NSFetchRequest<T>,
+			context: NSManagedObjectContext,
+			sectionNameKeyPath: String? = nil,
+			cacheName: String? = nil
+		) {
 
 			self.context = context
 			subject = .init([])
-			fetchResultsController = NSFetchedResultsController(fetchRequest: request,
-																managedObjectContext: context,
-																sectionNameKeyPath: sectionNameKeyPath,
-																cacheName: cacheName)
+			fetchResultsController = NSFetchedResultsController(
+				fetchRequest: request,
+				managedObjectContext: context,
+				sectionNameKeyPath: sectionNameKeyPath,
+				cacheName: cacheName
+			)
 
 			super.init()
 

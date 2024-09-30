@@ -10,30 +10,29 @@ import CoreData
 import Combine
 
 /// Basic CoreData service
-protocol CoreDataService: ReactiveCoreDataService {
-
-	/// <#Description#>
-	/// - Parameters:
-	///   - request: <#request description#>
-	///   - convert: <#convert description#>
-	func fetch<T, R>(_ request: NSFetchRequest<T>, _ convert: (T) -> R?) -> [R]
-
-	/// <#Description#>
-	/// - Parameter request: <#request description#>
-	func delete<T: NSManagedObject>(_ request: NSFetchRequest<T>)
-
-	/// <#Description#>
-	/// - Parameter request: <#request description#>
-	func save(_ request: NSBatchInsertRequest)
-}
-
-/// CoreData service based on Reactive approach
-protocol ReactiveCoreDataService {
+protocol CoreDataService: Sendable {
 
 	/// Observable for request
 	///
 	/// - Parameter request: NSFetchRequest
 	/// - Returns: Observable fetch result
-	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
+	func observe<T, R: Sendable>(_ request: NSFetchRequest<T>, sectionNameKeyPath: String?) -> AnyPublisher<[R], Never>
 		where T: NSFetchRequestResult & Convertable, R == T.NewType
+
+	/// <#Description#>
+	/// - Parameters:
+	///   - request: <#request description#>
+	///   - convert: <#convert description#>
+	func fetch<T, R: Sendable>(
+		_ request: NSFetchRequest<T>,
+		_ convert: @escaping @Sendable (T) -> R?
+	)  async throws -> [R]
+
+	/// <#Description#>
+	/// - Parameter request: <#request description#>
+	func delete<T: NSManagedObject>(_ request: NSFetchRequest<T>) async throws
+
+	/// <#Description#>
+	/// - Parameter request: <#request description#>
+	func perform(_ closure: @escaping (NSManagedObjectContext) -> Void) async throws
 }

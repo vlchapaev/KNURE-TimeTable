@@ -12,7 +12,7 @@ struct HTTP { }
 
 extension HTTP {
 
-	enum Status: Int, Error {
+	enum Status: Int, Error, Sendable {
 
 		// MARK: - Informational - 1xx
 

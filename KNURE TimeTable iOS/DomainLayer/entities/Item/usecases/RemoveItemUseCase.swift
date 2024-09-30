@@ -6,17 +6,18 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-final class RemoveItemUseCase: UseCase<String, Void> {
+final class RemoveItemUseCase {
 
 	private let repository: ItemRepository
 
 	init(repository: ItemRepository) {
 		self.repository = repository
 	}
+}
 
-	//	 MARK: - UseCase
+extension RemoveItemUseCase: UseCase {
 
-	override func execute(_ query: String) {
-		repository.local(delete: query)
+	func execute(_ query: String) async throws {
+		try await repository.local(delete: query)
 	}
 }
