@@ -29,14 +29,20 @@ extension KNUREItemRepository: ItemRepository {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.predicate = NSPredicate(format: "selected = %@", NSNumber(value: true))
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-		return coreDataService.observe(request, sectionNameKeyPath: nil)
+		return coreDataService.observe(request)
 	}
 
 	func localAddedItems() -> AnyPublisher<[Item.Kind: [Item]], Never> {
 		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
 		request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 		return coreDataService.observe(request, sectionNameKeyPath: "type")
-			.map { [Item.Kind(rawValue: $0): $0.values] }
+			.map { record in
+				record.reduce(into: [Item.Kind: [Item]]()) { result, entity in
+					if let key = Item.Kind(rawValue: Int(entity.name) ?? 0) {
+						result[key] = entity.items
+					}
+				}
+			}
 			.eraseToAnyPublisher()
 	}
 

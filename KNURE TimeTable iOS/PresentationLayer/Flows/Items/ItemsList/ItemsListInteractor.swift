@@ -26,8 +26,15 @@ extension ItemsListInteractor: ItemsListInteractorInput {
 
 	func observeAddedItems() -> AnyPublisher<[ItemsListView.Model], Never> {
 		addedItemsSubscription.subscribe(())
-			.map {
-				ItemsListView.Model(sectionName: <#T##String#>, items: <#T##[ItemCell.Model]#>)
+			.map { dictionary in
+				dictionary.map { key, value in
+					ItemsListView.Model(
+						sectionName: key.presentationValue,
+						items: value.map {
+							ItemCell.Model(title: $0.shortName, subtitle: String(describing: $0.updated))
+						}
+					)
+				}
 			}
 			.eraseToAnyPublisher()
 	}

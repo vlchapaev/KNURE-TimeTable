@@ -6,26 +6,24 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
+@MainActor
 protocol TimetableInteractorInput {
-	func updateTimetable(identifier: String)
+	func updateTimetable(identifier: String) async throws
 }
 
-protocol TimetableInteractorOutput: AnyObject {
-}
 
+@MainActor
 final class TimetableInteractor: TimetableInteractorInput {
 
-	weak var output: TimetableInteractorOutput?
+//	private let updateTimetableUseCase: UpdateTimetableUseCase
 
-	private let updateTimetableUseCase: UpdateTimetableUseCase
-
-	init(updateTimetableUseCase: UpdateTimetableUseCase) {
-		self.updateTimetableUseCase = updateTimetableUseCase
-	}
+//	init(updateTimetableUseCase: UpdateTimetableUseCase) {
+//		self.updateTimetableUseCase = updateTimetableUseCase
+//	}
 
 	// MARK: - TimetableInteractorInput
 
-	func updateTimetable(identifier: String) {
-		_ = updateTimetableUseCase.execute(identifier)
+	func updateTimetable(identifier: String) async throws {
+//		_ = updateTimetableUseCase.execute(identifier)
 	}
 }

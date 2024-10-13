@@ -1,5 +1,5 @@
 //
-//  SelectedItemsUseCase.swift
+//  SelectedItemsSubscription.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 23/02/2019.
@@ -8,7 +8,7 @@
 
 import Combine
 
-final class SelectedItemsUseCase {
+final class SelectedItemsSubscription {
 
 	private let repository: ItemRepository
 
@@ -17,9 +17,9 @@ final class SelectedItemsUseCase {
 	}
 }
 
-extension SelectedItemsUseCase: Subscribing {
+extension SelectedItemsSubscription: Subscribing {
 
 	func subscribe(_ query: Void) -> AnyPublisher<[Item], Never> {
-		return repository.localSelectedItems()
+		repository.localSelectedItems()
 	}
 }

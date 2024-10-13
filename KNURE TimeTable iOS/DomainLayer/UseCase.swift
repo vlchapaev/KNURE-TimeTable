@@ -7,7 +7,7 @@
 //
 
 /// UseCase represent basic unit of bisness logic
-protocol UseCase: Sendable {
+protocol UseCase<Request, Response>: Sendable {
 
 	associatedtype Request: Sendable
 	associatedtype Response: Sendable

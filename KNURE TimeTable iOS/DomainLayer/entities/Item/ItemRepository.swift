@@ -9,7 +9,7 @@
 import Combine
 
 /// Access to timetable items
-protocol ItemRepository {
+protocol ItemRepository: Sendable {
 
     /// Observe items that is been selected
     ///

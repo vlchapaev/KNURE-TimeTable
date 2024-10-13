@@ -8,34 +8,60 @@
 
 import SwiftUI
 
-struct AddItemsListViewModel: Identifiable {
-
-	let id = UUID()
-	let title: String
-	let selected: Bool
-}
-
 struct AddItemsListView: View {
 
+	@Environment(\.dismiss) private var dismiss
 	@State private var searchText = ""
-	var viewModel: [AddItemsListViewModel] = []
+	@State private var selected: Int? {
+		didSet {
+			if let selected {
+				Task {
+					try await interactor.save(item: viewModel[selected].item)
+				}
+			}
+			dismiss()
+		}
+	}
+
+	@State private var viewModel: [AddItemsListView.Model] = []
+	@State private var isErrorOccured: Bool = false
+
+	let interactor: AddItemsInteractor
 
     var body: some View {
 		NavigationStack {
-			List(viewModel) { record in
-				AddItemView(model: .init(title: record.title, selected: record.selected))
+			List(viewModel, selection: $selected) { record in
+				AddItemCell(model: .init(title: record.title, selected: record.selected))
 			}
 			.navigationTitle("Add Items List")
 			.listStyle(.plain)
+			.task {
+				do {
+					viewModel = try await interactor.obtainItems(kind: .group)
+				} catch {
+					isErrorOccured = true
+				}
+			}
 		}
 		.searchable(text: $searchText)
+		.alert("An Error has occured", isPresented: $isErrorOccured) {
+			Button(role: .cancel) {
+				isErrorOccured = false
+			} label: {
+				Text("Ok")
+			}
+
+		}
     }
 }
 
-#Preview {
-	AddItemsListView(viewModel: [
-		.init(title: "some", selected: false),
-		.init(title: "some 1", selected: true),
-		.init(title: "some 2", selected: false)
-	])
+extension AddItemsListView {
+
+	struct Model: Identifiable {
+		let id = UUID()
+		let title: String
+		let selected: Bool
+
+		let item: Item
+	}
 }

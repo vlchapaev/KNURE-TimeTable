@@ -21,7 +21,7 @@ struct TimetableView: UIViewControllerRepresentable {
 protocol TimetableViewControllerOutput {
 }
 
-final class TimetableViewController: UIViewController, TimetableInteractorOutput {
+final class TimetableViewController: UIViewController {
 
 	var interactor: TimetableInteractorInput?
 

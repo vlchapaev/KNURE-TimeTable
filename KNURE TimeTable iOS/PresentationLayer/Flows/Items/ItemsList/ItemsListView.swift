@@ -10,9 +10,15 @@ import SwiftUI
 
 struct ItemsListView: View {
 
-	var viewModel: [ItemsListView.Model] = []
+	@State var viewModel: [ItemsListView.Model] = []
 
-	let resolver: DIResolvingView
+	private let interactor: ItemsListInteractor
+
+	init(
+		interactor: ItemsListInteractor
+	) {
+		self.interactor = interactor
+	}
 
     var body: some View {
 		NavigationStack {
@@ -23,11 +29,37 @@ struct ItemsListView: View {
 					}
 				}
 			}
+			.onReceive(interactor.observeAddedItems()) { output in
+				viewModel = output
+			}
 			.navigationTitle("Items List")
 			.toolbar {
 				ToolbarItem(placement: .primaryAction) {
 					NavigationLink {
-						AnyView(resolver { try $0.resolve(AddItemsListView.self) })
+						AddItemsListView(
+							interactor: AddItemsInteractor(
+								itemsUseCase: ItemsUseCase(
+									repository: KNUREItemRepository(
+										coreDataService: CoreDataServiceImpl(
+											persistentContainer: DefaultAppConfig().persistentStoreContainer
+										),
+										networkService: NetworkServiceImpl(
+											configuration: DefaultAppConfig().urlSessionConfiguration
+										)
+									)
+								),
+								saveItemUseCase: SaveItemUseCase(
+									repository: KNUREItemRepository(
+										coreDataService: CoreDataServiceImpl(
+											persistentContainer: DefaultAppConfig().persistentStoreContainer
+										),
+										networkService: NetworkServiceImpl(
+											configuration: DefaultAppConfig().urlSessionConfiguration
+										)
+									)
+								)
+							)
+						)
 					} label: {
 						Image(systemName: "plus")
 					}
@@ -47,20 +79,4 @@ extension ItemsListView {
 		let sectionName: String
 		var items: [ItemCell.Model] = []
 	}
-}
-
-#Preview {
-
-	ItemsListView(viewModel: [
-		.init(sectionName: "Groups", items: [
-			.init(title: "group 1", subtitle: "updated 23.10.1111", updating: false)
-		]),
-		.init(sectionName: "Teachers", items: [
-			.init(title: "Very very long teacher name from some country", subtitle: "updated 23.10.1111", updating: true),
-			.init(title: "teacher 2", subtitle: "updated 23.10.1111", updating: false)
-		]),
-		.init(sectionName: "Auditories", items: [
-			.init(title: "auditory 1", subtitle: "updated 23.10.1111", updating: false)
-		])
-	], resolver: { _ in EmptyView() })
 }

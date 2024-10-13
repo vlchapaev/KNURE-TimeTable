@@ -1,5 +1,5 @@
 //
-//  AddItemView.swift
+//  AddItemCell.swift
 //  KNURE TimeTable iOS
 //
 //  Created by Vladislav Chapaev on 27.02.2024.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AddItemView: View {
+struct AddItemCell: View {
 
 	var model: Model
 
@@ -40,5 +40,5 @@ struct AddItemView: View {
 }
 
 #Preview {
-	AddItemView(model: .init(title: "Some Name", selected: true))
+	AddItemCell(model: .init(title: "Some Name", selected: true))
 }

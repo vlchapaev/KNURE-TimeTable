@@ -16,8 +16,18 @@ protocol CoreDataService: Sendable {
 	///
 	/// - Parameter request: NSFetchRequest
 	/// - Returns: Observable fetch result
-	func observe<T, R: Sendable>(_ request: NSFetchRequest<T>, sectionNameKeyPath: String?) -> AnyPublisher<[R], Never>
+	func observe<T, R: Sendable>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
 		where T: NSFetchRequestResult & Convertable, R == T.NewType
+	
+	/// <#Description#>
+	/// - Parameters:
+	///   - request: <#request description#>
+	///   - sectionNameKeyPath: <#sectionNameKeyPath description#>
+	/// - Returns: <#description#>
+	func observe<T>(
+		_ request: NSFetchRequest<T>,
+		sectionNameKeyPath: String?
+	) -> AnyPublisher<[Publishers.SectionedEntity<T>.Section], Never> where T: NSFetchRequestResult & Convertable
 
 	/// <#Description#>
 	/// - Parameters:

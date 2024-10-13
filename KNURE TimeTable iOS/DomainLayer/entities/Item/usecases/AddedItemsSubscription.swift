@@ -1,5 +1,5 @@
 //
-//  AddedItemsUseCase.swift
+//  AddedItemsSubscription.swift
 //  KNURE TimeTable
 //
 //  Created by Vladislav Chapaev on 30.09.2024.
@@ -8,7 +8,7 @@
 
 import Combine
 
-final class AddedItemsUseCase {
+final class AddedItemsSubscription {
 
 	private let repository: ItemRepository
 
@@ -17,7 +17,7 @@ final class AddedItemsUseCase {
 	}
 }
 
-extension AddedItemsUseCase: Subscribing {
+extension AddedItemsSubscription: Subscribing {
 
 	func subscribe(_ request: Void) -> AnyPublisher<[Item.Kind: [Item]], Never> {
 		repository.localAddedItems()

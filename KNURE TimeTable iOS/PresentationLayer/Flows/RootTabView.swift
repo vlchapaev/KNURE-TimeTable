@@ -10,20 +10,26 @@ import SwiftUI
 
 struct RootTabView: View {
 
-	let resolver: DIResolvingView
 
 	var body: some View {
 		TabView {
-			AnyView(
-				resolver { try $0.resolve(TimetableView.self) }
-					.tabItem { Label("Timetable", systemImage: "calendar") }
+			TimetableView()
+				.tabItem { Label("Timetable", systemImage: "calendar") }
+			ItemsListView(
+				interactor: ItemsListInteractor(
+					addedItemsSubscription: AddedItemsSubscription(
+						repository: KNUREItemRepository(
+							coreDataService: CoreDataServiceImpl(
+								persistentContainer: DefaultAppConfig().persistentStoreContainer
+							),
+							networkService: NetworkServiceImpl(
+								configuration: DefaultAppConfig().urlSessionConfiguration
+							)
+						)
+					)
+				)
 			)
-			AnyView(
-				resolver { try $0.resolve(ItemsListView.self) }
-			)
-			AnyView(
-				resolver { try $0.resolve(SettingsView.self) }
-			)
+			SettingsView()
 		}
 	}
 }

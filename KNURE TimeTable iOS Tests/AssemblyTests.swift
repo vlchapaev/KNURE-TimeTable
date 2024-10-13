@@ -70,7 +70,7 @@ final class AssemblyTests: XCTestCase {
 		XCTAssertNoThrow(try sut.resolve(ItemsUseCase.self))
 		XCTAssertNoThrow(try sut.resolve(SaveItemUseCase.self))
 		XCTAssertNoThrow(try sut.resolve(RemoveItemUseCase.self))
-		XCTAssertNoThrow(try sut.resolve(SelectedItemsUseCase.self))
+		XCTAssertNoThrow(try sut.resolve(SelectedItemsSubscription.self))
 
 		XCTAssertNoThrow(try sut.resolve(UpdateTimetableUseCase.self))
 	}

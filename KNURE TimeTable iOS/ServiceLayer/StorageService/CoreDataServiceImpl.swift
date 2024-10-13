@@ -47,13 +47,24 @@ extension CoreDataServiceImpl: CoreDataService {
 		}
 	}
 
-	func observe<T, R>(_ request: NSFetchRequest<T>, sectionNameKeyPath: String?) -> AnyPublisher<[R], Never>
-		where T: NSFetchRequestResult & Convertable, R == T.NewType {
-			Publishers.CoreData(
-				request: request,
-				context: persistentContainer.viewContext,
-				sectionNameKeyPath: sectionNameKeyPath
-			)
-			.eraseToAnyPublisher()
+	func observe<T, R>(_ request: NSFetchRequest<T>) -> AnyPublisher<[R], Never>
+	where T: NSFetchRequestResult & Convertable, R == T.NewType {
+		Publishers.Entity(
+			request: request,
+			context: persistentContainer.viewContext
+		)
+		.eraseToAnyPublisher()
+	}
+
+	func observe<T>(
+		_ request: NSFetchRequest<T>,
+		sectionNameKeyPath: String?
+	) -> AnyPublisher<[Publishers.SectionedEntity<T>.Section], Never> where T: NSFetchRequestResult & Convertable {
+		Publishers.SectionedEntity(
+			request: request,
+			context: persistentContainer.viewContext,
+			sectionNameKeyPath: sectionNameKeyPath
+		)
+		.eraseToAnyPublisher()
 	}
 }

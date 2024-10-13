@@ -42,18 +42,6 @@ extension Item {
 	}
 }
 
-extension Item {
-	func toDictionary() -> [String: Any] {
-		var dictionary: [String: Any] = [:]
-		dictionary["identifier"] = identifier
-		dictionary["title"] = shortName
-		dictionary["fullName"] = fullName
-		dictionary["type"] = NSNumber(value: type.rawValue)
-		dictionary["selected"] = NSNumber(value: selected)
-		return dictionary
-	}
-}
-
 extension Item.Kind {
 
 	var presentationValue: String {
