@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Foundation
 
 /// Access to timetable items
 protocol ItemRepository: Sendable {
@@ -31,6 +32,8 @@ protocol ItemRepository: Sendable {
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
 	func local(delete identifier: String) async throws
+
+	func local(setLastUpdate date: Date, for identifier: String) async throws
 
 	/// <#Description#>
 	/// - Parameter type: <#type description#>

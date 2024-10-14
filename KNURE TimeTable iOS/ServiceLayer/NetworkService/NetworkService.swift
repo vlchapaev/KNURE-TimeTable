@@ -17,6 +17,8 @@ struct NetworkResponse: Sendable {
 protocol NetworkService: Sendable {
 
 	func execute(_ request: URLRequest) async throws -> NetworkResponse
+
+	func validate(_ response: NetworkResponse) throws -> Data
 }
 
 final class NetworkServiceImpl {
@@ -33,6 +35,11 @@ extension NetworkServiceImpl: NetworkService {
 	func execute(_ request: URLRequest) async throws -> NetworkResponse {
 		let result = try await session.data(for: request)
 		return try transform(data: result.0, response: result.1)
+	}
+
+	func validate(_ response: NetworkResponse) throws -> Data {
+		guard response.status == .ok else { throw response.status }
+		return response.data
 	}
 
 	private func transform(data: Data, response: URLResponse) throws -> NetworkResponse {

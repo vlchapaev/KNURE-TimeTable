@@ -44,5 +44,5 @@ protocol CoreDataService: Sendable {
 
 	/// <#Description#>
 	/// - Parameter request: <#request description#>
-	func perform(_ closure: @escaping (NSManagedObjectContext) -> Void) async throws
+	func perform(_ closure: @escaping (NSManagedObjectContext) throws -> Void) async throws
 }

@@ -18,7 +18,7 @@ extension ItemManaged: Convertable {
 			let title = title
 		else { return nil }
 
-		var item = Item(
+		return Item(
 			identifier: identifier,
 			shortName: title,
 			fullName: fullName,
@@ -27,7 +27,5 @@ extension ItemManaged: Convertable {
 			hint: nil,
 			updated: Date(timeIntervalSince1970: lastUpdateTimestamp)
 		)
-
-		return item
 	}
 }

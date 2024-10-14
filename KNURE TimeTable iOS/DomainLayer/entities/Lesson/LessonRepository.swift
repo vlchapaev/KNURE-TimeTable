@@ -7,7 +7,7 @@
 //
 
 /// Access to lesson data
-protocol LessonRepository {
+protocol LessonRepository: Sendable {
 
 	/// Observe timetable with item identifier
 	///
@@ -34,5 +34,5 @@ protocol LessonRepository {
     ///
     /// - Parameter identifier: item identifier
     /// - Returns: Promise with finished operation
-//    func remoteLoadTimetable(identifier: String) -> Promise<Void>
+	func remoteLoadTimetable(of type: Item.Kind, identifier: String) async throws
 }

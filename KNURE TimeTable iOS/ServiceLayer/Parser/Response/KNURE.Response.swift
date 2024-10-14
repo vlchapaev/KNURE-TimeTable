@@ -35,7 +35,15 @@ extension KNURE.Response.University {
 			.flatMap { $0.directions }
 			.reduce([]) { result, current in
 				result + current.groups.map {
-					Item(identifier: "\($0.id)", shortName: $0.name, type: .group, hint: current.fullName)
+					Item(
+						identifier: "\($0.id)",
+						shortName: $0.name,
+						fullName: nil,
+						type: .group,
+						selected: false,
+						hint: current.fullName,
+						updated: nil
+					)
 				}
 			}
 	}
@@ -45,11 +53,15 @@ extension KNURE.Response.University {
 			.flatMap { $0.departments }
 			.reduce([]) { result, current in
 				result + current.teachers.map {
-					Item(identifier: "\($0.id)",
-						 shortName: $0.shortName,
-						 fullName: $0.fullName,
-						 type: .teacher,
-						 hint: current.fullName)
+					Item(
+						identifier: "\($0.id)",
+						shortName: $0.shortName,
+						fullName: $0.fullName,
+						type: .teacher,
+						selected: false,
+						hint: current.fullName,
+						updated: nil
+					)
 				}
 			}
 	}
@@ -58,7 +70,15 @@ extension KNURE.Response.University {
 		return buildings
 			.reduce([]) { result, current in
 				result + current.auditories.map {
-					Item(identifier: $0.id, shortName: $0.shortName, type: .auditory, hint: current.fullName)
+					Item(
+						identifier: $0.id,
+						shortName: $0.shortName,
+						fullName: nil,
+						type: .auditory,
+						selected: false,
+						hint: current.fullName,
+						updated: nil
+					)
 				}
 			}
 	}

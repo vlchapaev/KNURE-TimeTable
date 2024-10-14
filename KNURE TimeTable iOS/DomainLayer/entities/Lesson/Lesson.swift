@@ -6,6 +6,29 @@
 //  Copyright © 2019 Vladislav Chapaev. All rights reserved.
 //
 
-struct Lesson {
+import Foundation
 
+struct Lesson: Sendable {
+
+//	let auditory: String
+//
+//	let start: Date
+//
+//	let end: Date
+//
+//	let number: Int
+//
+//	let subject: Subject
+}
+
+extension Lesson {
+
+	struct Subject: Sendable {
+
+		let identifier: String
+
+		let brief: String
+
+		let title: String
+	}
 }

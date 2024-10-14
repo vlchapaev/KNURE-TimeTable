@@ -19,33 +19,31 @@ final class KNURELessonImportService {
 
 extension KNURELessonImportService: ImportService {
 
-	func decode(_ data: Data, info: [String: String]) throws {
+	func decode(_ data: Data, info: [String: String]) async throws {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 		let response = try decoder.decode(KNURE.Response.Lesson.self, from: data)
-		persistentContainer.performBackgroundTask { context in
+		try await persistentContainer.performBackgroundTask { context in
 
-			do {
+			let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
+			let predicates = info.compactMap { NSPredicate(format: "\($0.key) = %@", $0.value) }
+			request.predicate = NSCompoundPredicate(type: .and, subpredicates: predicates)
 
-				let request: NSFetchRequest<ItemManaged> = ItemManaged.fetchRequest()
-				let predicates = info.compactMap { NSPredicate(format: "\($0.key) = %@", $0.value) }
-				request.predicate = NSCompoundPredicate(type: .and, subpredicates: predicates)
+			guard let item = try context.fetch(request).first else { return }
+			item.lessons?
+				.compactMap { $0 as? LessonManaged }
+				.forEach { context.delete($0) }
 
-				guard let item = try context.fetch(request).first else { return }
-				item.lessons?
-					.compactMap { $0 as? LessonManaged }
-					.forEach { context.delete($0) }
+			let subjects = response.subjects.map { $0.toManagedObject(in: context) }
+			let types = response.types.map { $0.toManagedObject(in: context) }
+			let groups = response.groups.map { $0.toManagedObject(in: context) }
+			let teachers = response.teachers.map { $0.toManagedObject(in: context) }
 
-				let subjects = response.subjects.map { $0.toManagedObject(in: context) }
-				let types = response.types.map { $0.toManagedObject(in: context) }
-				let groups = response.groups.map { $0.toManagedObject(in: context) }
-				let teachers = response.teachers.map { $0.toManagedObject(in: context) }
-
-				let lessons = response.events
-					.compactMap { event -> Lesson? in
-						guard let subject = response.subjects.first(where: { $0.id == event.subjectId }) else { return nil }
-						guard let type = response.types.first(where: { $0.id == event.type }) else { return nil }
-						return Lesson(event: event, subject: subject, type: type)
+			let lessons = response.events
+				.compactMap { event -> Lesson? in
+					guard let subject = response.subjects.first(where: { $0.id == event.subjectId }) else { return nil }
+					guard let type = response.types.first(where: { $0.id == event.type }) else { return nil }
+					return Lesson(event: event, subject: subject, type: type)
 				}
 				.map { event -> LessonManaged in
 					let lesson = event.event.toManagedObject(in: context)
@@ -56,13 +54,10 @@ extension KNURELessonImportService: ImportService {
 					return lesson
 				}
 
-				item.setValue(NSSet(array: lessons), forKey: "lessons")
-				item.lastUpdateTimestamp = Date().timeIntervalSince1970
+			item.setValue(NSSet(array: lessons), forKey: "lessons")
+			item.lastUpdateTimestamp = Date().timeIntervalSince1970
 
-				try context.save()
-			} catch {
-				print(error)
-			}
+			try context.save()
 		}
 	}
 }

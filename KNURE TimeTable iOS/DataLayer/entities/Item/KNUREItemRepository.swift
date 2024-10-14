@@ -64,23 +64,29 @@ extension KNUREItemRepository: ItemRepository {
 		try await coreDataService.delete(request)
 	}
 
+	func local(setLastUpdate date: Date, for identifier: String) async throws {
+		let request = NSFetchRequest<ItemManaged>(entityName: "ItemManaged")
+		request.predicate = NSPredicate(format: "identifier = %@", identifier)
+		try await coreDataService.perform { context in
+			try context.fetch(request).forEach { item in
+				item.lastUpdateTimestamp = date.timeIntervalSince1970
+			}
+		}
+	}
+
 	func remote(items type: Item.Kind) async throws -> [Item]{
 		let request = try KNURE.Request.make(endpoint: .item(type))
 
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 		let response = try await networkService.execute(request)
-		let data = try handle(response).transform(from: .windowsCP1251, to: .utf8)
+		let data = try networkService.validate(response).transform(from: .windowsCP1251, to: .utf8)
 		let decoded = try decoder.decode(KNURE.Response.self, from: data)
 		return transform(response: decoded, by: type)
 	}
 }
 
 private extension KNUREItemRepository {
-	func handle(_ response: NetworkResponse) throws -> Data {
-		guard response.status == .ok else { throw response.status }
-		return response.data
-	}
 
 	func transform(response: KNURE.Response, by type: Item.Kind) -> [Item] {
 		switch type {

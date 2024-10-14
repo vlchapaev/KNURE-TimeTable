@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +16,17 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfX-A6-WwX">
                     <rect key="frame" x="20" y="603" width="335" height="44"/>
+                    <viewLayoutGuide key="safeArea" id="68p-75-2l0"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="7Iz-o7-NZf"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="68p-75-2l0"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">KNURE Timetable 
-© Vladislav Chapaev 2019</string>
+© Vladislav Chapaev 2024</string>
                             <attributes>
                                 <color key="NSBackgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" metaFont="system" size="17"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -44,6 +42,7 @@
                     </constraints>
                 </imageView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="1nq-Dj-6Ki"/>
             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="KyP-UW-XpH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="8y7-Ra-KbG"/>
@@ -53,11 +52,10 @@
                 <constraint firstAttribute="bottom" secondItem="JfX-A6-WwX" secondAttribute="bottom" constant="20" id="xaP-xq-jNY"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <viewLayoutGuide key="safeArea" id="1nq-Dj-6Ki"/>
             <point key="canvasLocation" x="24" y="51"/>
         </view>
     </objects>
     <resources>
-        <image name="nure_icon" width="245.75999450683594" height="245.75999450683594"/>
+        <image name="nure_icon" width="1024" height="1024"/>
     </resources>
 </document>

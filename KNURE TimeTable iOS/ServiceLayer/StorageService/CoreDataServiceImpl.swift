@@ -38,9 +38,9 @@ extension CoreDataServiceImpl: CoreDataService {
 		}
 	}
 
-	func perform(_ closure: @escaping (NSManagedObjectContext) -> Void) async throws {
+	func perform(_ closure: @escaping (NSManagedObjectContext) throws -> Void) async throws {
 		try await persistentContainer.performBackgroundTask { context in
-			closure(context)
+			try closure(context)
 			if context.hasChanges {
 				try context.save()
 			}

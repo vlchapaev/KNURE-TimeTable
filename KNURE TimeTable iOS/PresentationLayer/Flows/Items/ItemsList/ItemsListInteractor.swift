@@ -11,14 +11,21 @@ import Combine
 protocol ItemsListInteractorInput {
 
 	func observeAddedItems() -> AnyPublisher<[ItemsListView.Model], Never>
+
+	func updateTimetable(of type: Item.Kind, identifier: String) async throws
 }
 
 final class ItemsListInteractor {
 
 	private let addedItemsSubscription: any Subscribing<Void, [Item.Kind: [Item]]>
+	private let updateTimetableUseCase: any UseCase<UpdateTimetableUseCase.Query, Void>
 
-	init(addedItemsSubscription: any Subscribing<Void, [Item.Kind: [Item]]>) {
+	init(
+		addedItemsSubscription: any Subscribing<Void, [Item.Kind: [Item]]>,
+		updateTimetableUseCase: any UseCase<UpdateTimetableUseCase.Query, Void>
+	) {
 		self.addedItemsSubscription = addedItemsSubscription
+		self.updateTimetableUseCase = updateTimetableUseCase
 	}
 }
 
@@ -37,5 +44,9 @@ extension ItemsListInteractor: ItemsListInteractorInput {
 				}
 			}
 			.eraseToAnyPublisher()
+	}
+
+	func updateTimetable(of type: Item.Kind, identifier: String) async throws {
+		try await updateTimetableUseCase.execute(.init(identifier: identifier, type: type))
 	}
 }

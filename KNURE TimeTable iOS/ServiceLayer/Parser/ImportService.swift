@@ -10,7 +10,7 @@ import Foundation
 
 /// Provide basic interface for data import
 /// DI should resolve this interface with implementation for specific data model
-protocol ImportService {
+protocol ImportService: Sendable {
 
 	/// Import data with completion
 	///
@@ -20,5 +20,5 @@ protocol ImportService {
 	///   - info: additinal information for decoding, such as predicate keys
 	/// - Returns: Void
 	/// - Throws: throws error if something goes wrong
-	func decode(_ data: Data, info: [String: String]) throws
+	func decode(_ data: Data, info: [String: String]) async throws
 }

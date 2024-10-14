@@ -6,7 +6,7 @@
 //  Copyright © 2024 Vladislav Chapaev. All rights reserved.
 //
 
-protocol AddItemsInteractorInput {
+protocol AddItemsInteractorInput: Sendable {
 	func obtainItems(kind: Item.Kind) async throws -> [AddItemsListView.Model]
 	func save(item: Item) async throws
 }

@@ -12,13 +12,7 @@ struct ItemsListView: View {
 
 	@State var viewModel: [ItemsListView.Model] = []
 
-	private let interactor: ItemsListInteractor
-
-	init(
-		interactor: ItemsListInteractor
-	) {
-		self.interactor = interactor
-	}
+	let interactor: ItemsListInteractorInput
 
     var body: some View {
 		NavigationStack {
@@ -29,6 +23,7 @@ struct ItemsListView: View {
 					}
 				}
 			}
+			.listStyle(.insetGrouped)
 			.onReceive(interactor.observeAddedItems()) { output in
 				viewModel = output
 			}

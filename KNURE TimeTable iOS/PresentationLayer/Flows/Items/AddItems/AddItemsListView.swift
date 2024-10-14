@@ -42,22 +42,21 @@ struct AddItemsListView: View {
 					isErrorOccured = true
 				}
 			}
-		}
-		.searchable(text: $searchText)
-		.alert("An Error has occured", isPresented: $isErrorOccured) {
-			Button(role: .cancel) {
-				isErrorOccured = false
-			} label: {
-				Text("Ok")
+			.searchable(text: $searchText)
+			.alert("An Error has occured", isPresented: $isErrorOccured) {
+				Button(role: .cancel) {
+					isErrorOccured = false
+				} label: {
+					Text("Ok")
+				}
 			}
-
 		}
     }
 }
 
 extension AddItemsListView {
 
-	struct Model: Identifiable {
+	struct Model: Identifiable, Sendable {
 		let id = UUID()
 		let title: String
 		let selected: Bool

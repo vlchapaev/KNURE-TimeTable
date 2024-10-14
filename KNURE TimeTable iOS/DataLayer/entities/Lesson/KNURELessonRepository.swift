@@ -7,17 +7,35 @@
 //
 
 import CoreData
+import Foundation
 
-class KNURELessonRepository: LessonRepository {
+final class KNURELessonRepository {
 
 	private let coreDataService: CoreDataService
 	private let importService: ImportService
+	private let networkService: NetworkService
 
-	init(coreDataService: CoreDataService,
-		 importService: ImportService) {
+	init(
+		coreDataService: CoreDataService,
+		importService: ImportService,
+		networkService: NetworkService
+	) {
 		self.coreDataService = coreDataService
 		self.importService = importService
-    }
+		self.networkService = networkService
+	}
+}
+
+extension KNURELessonRepository: LessonRepository {
+
+	func remoteLoadTimetable(of type: Item.Kind, identifier: String) async throws {
+		let request = try KNURE.Request.make(endpoint: .timetable(type, identifier))
+		let decoder = JSONDecoder()
+		decoder.keyDecodingStrategy = .convertFromSnakeCase
+		let response = try await networkService.execute(request)
+		let data = try networkService.validate(response).transform(from: .windowsCP1251, to: .utf8)
+		try await importService.decode(data, info: ["identifier": identifier])
+	}
 
 //	func localTimetable(identifier: String) -> Observable<[Lesson]> {
 //		let request = NSFetchRequest<LessonManaged>(entityName: "LessonManaged")
