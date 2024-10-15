@@ -57,7 +57,7 @@ struct AddItemsListView: View {
 extension AddItemsListView {
 
 	struct Model: Identifiable, Sendable {
-		let id = UUID()
+		var id: String { item.identifier }
 		let title: String
 		let selected: Bool
 

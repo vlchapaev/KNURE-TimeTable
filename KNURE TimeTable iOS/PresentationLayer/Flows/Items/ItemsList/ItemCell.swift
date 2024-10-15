@@ -17,26 +17,23 @@ struct ItemCell: View {
 			VStack(alignment: .leading) {
 				Text(model.title)
 					.fontWeight(.medium)
-					.padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
 				Text(model.subtitle)
 					.foregroundStyle(.gray)
-					.padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
 			}
 			Spacer()
 			if model.updating {
 				ProgressView()
-					.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
 			}
 		}
     }
 
-	struct Model: Identifiable {
+	struct Model: Identifiable, Equatable {
 
 		var id: String { title + subtitle }
 
 		let title: String
 		let subtitle: String
-		var updating: Bool = true
+		var updating: Bool = false
 	}
 }
 

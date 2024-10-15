@@ -36,6 +36,7 @@ extension ItemsListInteractor: ItemsListInteractorInput {
 			.map { dictionary in
 				dictionary.map { key, value in
 					ItemsListView.Model(
+						id: value.map(\.identifier).joined(),
 						sectionName: key.presentationValue,
 						items: value.map {
 							ItemCell.Model(title: $0.shortName, subtitle: String(describing: $0.updated))

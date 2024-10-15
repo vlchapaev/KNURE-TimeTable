@@ -25,7 +25,9 @@ struct ItemsListView: View {
 			}
 			.listStyle(.insetGrouped)
 			.onReceive(interactor.observeAddedItems()) { output in
-				viewModel = output
+				if viewModel != output {
+					viewModel = output
+				}
 			}
 			.navigationTitle("Items List")
 			.toolbar {
@@ -68,9 +70,9 @@ struct ItemsListView: View {
 }
 
 extension ItemsListView {
-	struct Model: Identifiable {
+	struct Model: Identifiable, Equatable {
 
-		let id = UUID()
+		let id: String
 		let sectionName: String
 		var items: [ItemCell.Model] = []
 	}
