@@ -16,7 +16,7 @@ extension Publishers {
 		private let fetchResultsController: NSFetchedResultsController<T>
 		private let context: NSManagedObjectContext
 
-		fileprivate let subject: CurrentValueSubject<[T.NewType], Never>
+		fileprivate let subject: PassthroughSubject<[T.NewType], Never> = .init()
 
 		init(
 			request: NSFetchRequest<T>,
@@ -25,7 +25,6 @@ extension Publishers {
 		) {
 
 			self.context = context
-			subject = .init([])
 			fetchResultsController = NSFetchedResultsController(
 				fetchRequest: request,
 				managedObjectContext: context,

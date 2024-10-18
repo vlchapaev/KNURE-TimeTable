@@ -12,32 +12,29 @@ struct AddItemsListView: View {
 
 	@Environment(\.dismiss) private var dismiss
 	@State private var searchText = ""
-	@State private var selected: Int? {
-		didSet {
-			if let selected {
-				Task {
-					try await interactor.save(item: viewModel[selected].item)
-				}
-			}
-			dismiss()
-		}
-	}
-
 	@State private var viewModel: [AddItemsListView.Model] = []
 	@State private var isErrorOccured: Bool = false
 
 	let interactor: AddItemsInteractor
+	let itemType: Item.Kind
 
     var body: some View {
 		NavigationStack {
-			List(viewModel, selection: $selected) { record in
-				AddItemCell(model: .init(title: record.title, selected: record.selected))
+			List(viewModel) { record in
+				Button {
+					Task {
+						try await interactor.save(item: record.item)
+						dismiss()
+					}
+				} label: {
+					AddItemCell(model: .init(title: record.title, selected: record.selected))
+				}
 			}
 			.navigationTitle("Add Items List")
 			.listStyle(.plain)
 			.task {
 				do {
-					viewModel = try await interactor.obtainItems(kind: .group)
+					viewModel = try await interactor.obtainItems(kind: itemType)
 				} catch {
 					isErrorOccured = true
 				}
@@ -56,7 +53,7 @@ struct AddItemsListView: View {
 
 extension AddItemsListView {
 
-	struct Model: Identifiable, Sendable {
+	struct Model: Identifiable, Sendable, Hashable {
 		var id: String { item.identifier }
 		let title: String
 		let selected: Bool

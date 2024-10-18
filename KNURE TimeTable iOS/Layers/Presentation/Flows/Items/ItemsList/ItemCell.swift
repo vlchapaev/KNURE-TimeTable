@@ -17,26 +17,48 @@ struct ItemCell: View {
 			VStack(alignment: .leading) {
 				Text(model.title)
 					.fontWeight(.medium)
+					.font(.title3)
 				Text(model.subtitle)
 					.foregroundStyle(.gray)
 			}
 			Spacer()
-			if model.updating {
-				ProgressView()
+			switch model.state {
+				case .idle:
+					Button(role: nil) {
+
+					} label: {
+						Image(systemName: "arrow.down.to.line")
+							.foregroundStyle(.blue)
+					}
+				case .selected:
+					Button(role: nil) {
+
+					} label: {
+						Image(systemName: "checkmark")
+							.foregroundStyle(.blue)
+					}
+				case .updating:
+					ProgressView()
 			}
 		}
     }
 
 	struct Model: Identifiable, Equatable {
 
-		var id: String { title + subtitle }
+		let id: String
 
 		let title: String
 		let subtitle: String
-		var updating: Bool = false
+		let state: State
+
+		enum State: String {
+			case idle
+			case selected
+			case updating
+		}
 	}
 }
 
 #Preview {
-	ItemCell(model: .init(title: "some title", subtitle: "some subtitle"))
+	ItemCell(model: .init(id: "some", title: "PI-11-3", subtitle: "Not updated", state: .idle))
 }

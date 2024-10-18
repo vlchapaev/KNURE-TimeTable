@@ -21,8 +21,7 @@ extension KNURE {
 					components.path = "/ias/app/tt/P_API_EVENT_JSON"
 					components.queryItems = [
 						URLQueryItem(name: "timetable_id", value: identifier),
-						URLQueryItem(name: "type_id", value: "\(type.rawValue)"),
-						URLQueryItem(name: "idClient", value: "KNURESked")
+						URLQueryItem(name: "type_id", value: "\(type.rawValue)")
 				]
 
 				case let .item(type) where type == .group:

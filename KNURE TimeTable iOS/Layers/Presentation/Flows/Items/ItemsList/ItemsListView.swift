@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ItemsListView: View {
 
-	@State var viewModel: [ItemsListView.Model] = []
+	@State private var viewModel: [ItemsListView.Model] = []
 
 	let interactor: ItemsListInteractorInput
 
@@ -20,45 +20,29 @@ struct ItemsListView: View {
 				Section(record.sectionName) {
 					ForEach(record.items) { item in
 						ItemCell(model: item)
+							.swipeActions(edge: .trailing, allowsFullSwipe: true) {
+								Button(role: .destructive) {
+									Task {
+										try await interactor.removeItem(identifier: item.id)
+									}
+								} label: {
+									Label("Delete", systemImage: "trash")
+								}
+							}
 					}
 				}
 			}
 			.listStyle(.insetGrouped)
 			.onReceive(interactor.observeAddedItems()) { output in
-				if viewModel != output {
-					viewModel = output
-				}
+				viewModel = output
 			}
 			.navigationTitle("Items List")
 			.toolbar {
-				ToolbarItem(placement: .primaryAction) {
+				ToolbarItem(placement: .confirmationAction) {
 					NavigationLink {
-						AddItemsListView(
-							interactor: AddItemsInteractor(
-								itemsUseCase: ItemsUseCase(
-									repository: KNUREItemRepository(
-										coreDataService: CoreDataServiceImpl(
-											persistentContainer: DefaultAppConfig().persistentStoreContainer
-										),
-										networkService: NetworkServiceImpl(
-											configuration: DefaultAppConfig().urlSessionConfiguration
-										)
-									)
-								),
-								saveItemUseCase: SaveItemUseCase(
-									repository: KNUREItemRepository(
-										coreDataService: CoreDataServiceImpl(
-											persistentContainer: DefaultAppConfig().persistentStoreContainer
-										),
-										networkService: NetworkServiceImpl(
-											configuration: DefaultAppConfig().urlSessionConfiguration
-										)
-									)
-								)
-							)
-						)
+						ItemPopoverPicker()
 					} label: {
-						Image(systemName: "plus")
+						Label("Add", systemImage: "plus")
 					}
 				}
 			}
@@ -72,8 +56,25 @@ struct ItemsListView: View {
 extension ItemsListView {
 	struct Model: Identifiable, Equatable {
 
-		let id: String
+		var id: String { items.map(\.id).joined(separator: "_") }
 		let sectionName: String
 		var items: [ItemCell.Model] = []
+	}
+}
+
+struct ItemPopoverPicker: View {
+
+	@Environment(\.dismiss) private var dismiss
+
+	var body: some View {
+		NavigationStack {
+			List(Item.Kind.allCases) { type in
+				NavigationLink {
+					Assembly.shared.makeAddItemsView(for: type)
+				} label: {
+					Text(type.presentationValue)
+				}
+			}
+		}
 	}
 }

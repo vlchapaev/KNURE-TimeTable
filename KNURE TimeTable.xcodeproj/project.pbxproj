@@ -60,6 +60,7 @@
 		D466DD8F2CAB4B8C002A97BB /* ItemsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D466DD8E2CAB4B80002A97BB /* ItemsListInteractor.swift */; };
 		D469AADE2B8D13ED0091D91D /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADD2B8D13ED0091D91D /* ItemsListView.swift */; };
 		D469AAE02B8D20CE0091D91D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469AADF2B8D20CE0091D91D /* ItemCell.swift */; };
+		D474E1DA2CC2ECD7009A0709 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474E1D92CC2ECD1009A0709 /* Assembly.swift */; };
 		D48A24802C14700A0081BF3A /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A247F2C14700A0081BF3A /* RootTabView.swift */; };
 		D48A24C12C1638210081BF3A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A24C02C1638210081BF3A /* SettingsView.swift */; };
 		D48A24DB2C1A1CEE0081BF3A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48A24C92C1A1CEE0081BF3A /* Images.xcassets */; };
@@ -166,6 +167,7 @@
 		D466DD8E2CAB4B80002A97BB /* ItemsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListInteractor.swift; sourceTree = "<group>"; };
 		D469AADD2B8D13ED0091D91D /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		D469AADF2B8D20CE0091D91D /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		D474E1D92CC2ECD1009A0709 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		D48A247F2C14700A0081BF3A /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		D48A24C02C1638210081BF3A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D48A24C92C1A1CEE0081BF3A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 		D48A24BD2C1637DA0081BF3A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				D474E1D92CC2ECD1009A0709 /* Assembly.swift */,
 				D48A247F2C14700A0081BF3A /* RootTabView.swift */,
 				778DC8592364C04000580786 /* Timetable */,
 				7712334823BCEF6400CB01D6 /* Items */,
@@ -718,6 +721,7 @@
 				7702917322081C8800B82CF4 /* MSCollectionViewCalendarLayout.m in Sources */,
 				777AE2152221988E00EAEE20 /* Data+EncodingTransformation.swift in Sources */,
 				D48A24C12C1638210081BF3A /* SettingsView.swift in Sources */,
+				D474E1DA2CC2ECD7009A0709 /* Assembly.swift in Sources */,
 				775A3F9922217FD700931A1F /* Main.swift in Sources */,
 				771A83D522A7038C006964D7 /* ItemManaged+Convertable.swift in Sources */,
 				D466DD8B2CAB467E002A97BB /* Subscribing.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Item is the representation of entity than can contain timetable, such as group, teacher or auditory
-struct Item: Sendable {
+struct Item: Sendable, Hashable {
 
 	/// unique value to store item
 	let identifier: String
@@ -36,7 +36,8 @@ struct Item: Sendable {
 extension Item {
 
 	/// Basic item types in list
-	enum Kind: Int {
+	enum Kind: Int, CaseIterable, Identifiable {
+		var id: Int { self.rawValue }
 
 		case group = 1, teacher, auditory
 	}
